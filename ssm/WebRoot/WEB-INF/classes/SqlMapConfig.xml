@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<typeAliases>
+		<!-- 指定某一个具体类的别名 -->
+		<!-- <typeAlias type="com.hk.bean.User" alias="user"/> -->
+		<!-- 还可以扫描包进行一个处理 
+			mybatis批量生产别名，指定包路径，自动扫描包下的javabean对象，定义别名，别名是类名(首字母小写或者大写)
+		-->
+		<package name="com.hk.bean"/>
+	</typeAliases>
+	
+</configuration>
