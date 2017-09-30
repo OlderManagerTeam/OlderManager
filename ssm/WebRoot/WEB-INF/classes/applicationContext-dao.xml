@@ -12,9 +12,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<!-- spring 集成 c3p0 连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-		<property name="jdbcUrl" value="jdbc:mysql:///mybatis"/>
-		<property name="user" value="root"/>
-		<property name="password" value="root"/>
+		<property name="jdbcUrl" value="jdbc:mysql:120.25.244.74:3306/OlderManager"/>
+		<property name="user" value="min"/>
+		<property name="password" value="123456"/>
 	</bean>
 	
 	<!-- spring创建sqlSessionFactory对象 -->
