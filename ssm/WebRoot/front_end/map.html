@@ -31,7 +31,7 @@
     //创建地图函数：
     function createMap(){
         var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
-        var point = new BMap.Point(114.973952,30.10775);//定义一个中心点坐标
+        var point = new BMap.Point(121.388341,32.189425);//定义一个中心点坐标
         map.centerAndZoom(point,18);//设定地图的中心点和坐标并将地图显示在地图容器中
         window.map = map;//将map变量存储在全局
     }
@@ -58,7 +58,7 @@
     }
 
     //标注点数组
-    var markerArr = [{title:"云阿拉丁",content:"我的备注",point:"114.973692|30.107946",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"通州湾科创城",content:"我的备注",point:"121.388341,32.189425",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
     ];
     //创建marker
     function addMarker(){
