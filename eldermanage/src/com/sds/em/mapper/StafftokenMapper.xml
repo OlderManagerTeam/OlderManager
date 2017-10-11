@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.QuestionMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Question" >
-    <id column="question" property="question" jdbcType="INTEGER" />
-    <result column="questionContent" property="questioncontent" jdbcType="VARCHAR" />
+<mapper namespace="com.sds.em.mapper.StafftokenMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Stafftoken" >
+    <id column="staffId" property="staffid" jdbcType="INTEGER" />
+    <result column="staffToken" property="stafftoken" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -64,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    question, questionContent
+    staffId, staffToken
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.QuestionExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.StafftokenExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from question
+    from stafftoken
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +83,56 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from question
-    where question = #{question,jdbcType=INTEGER}
+    from stafftoken
+    where staffId = #{staffid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from question
-    where question = #{question,jdbcType=INTEGER}
+    delete from stafftoken
+    where staffId = #{staffid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.QuestionExample" >
-    delete from question
+  <delete id="deleteByExample" parameterType="com.sds.em.po.StafftokenExample" >
+    delete from stafftoken
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Question" >
-    insert into question (question, questionContent)
-    values (#{question,jdbcType=INTEGER}, #{questioncontent,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.sds.em.po.Stafftoken" >
+    insert into stafftoken (staffId, staffToken)
+    values (#{staffid,jdbcType=INTEGER}, #{stafftoken,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Question" >
-    insert into question
+  <insert id="insertSelective" parameterType="com.sds.em.po.Stafftoken" >
+    insert into stafftoken
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="question != null" >
-        question,
+      <if test="staffid != null" >
+        staffId,
       </if>
-      <if test="questioncontent != null" >
-        questionContent,
+      <if test="stafftoken != null" >
+        staffToken,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="question != null" >
-        #{question,jdbcType=INTEGER},
+      <if test="staffid != null" >
+        #{staffid,jdbcType=INTEGER},
       </if>
-      <if test="questioncontent != null" >
-        #{questioncontent,jdbcType=VARCHAR},
+      <if test="stafftoken != null" >
+        #{stafftoken,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.QuestionExample" resultType="java.lang.Integer" >
-    select count(*) from question
+  <select id="countByExample" parameterType="com.sds.em.po.StafftokenExample" resultType="java.lang.Integer" >
+    select count(*) from stafftoken
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update question
+    update stafftoken
     <set >
-      <if test="record.question != null" >
-        question = #{record.question,jdbcType=INTEGER},
+      <if test="record.staffid != null" >
+        staffId = #{record.staffid,jdbcType=INTEGER},
       </if>
-      <if test="record.questioncontent != null" >
-        questionContent = #{record.questioncontent,jdbcType=VARCHAR},
+      <if test="record.stafftoken != null" >
+        staffToken = #{record.stafftoken,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -140,25 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update question
-    set question = #{record.question,jdbcType=INTEGER},
-      questionContent = #{record.questioncontent,jdbcType=VARCHAR}
+    update stafftoken
+    set staffId = #{record.staffid,jdbcType=INTEGER},
+      staffToken = #{record.stafftoken,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Question" >
-    update question
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Stafftoken" >
+    update stafftoken
     <set >
-      <if test="questioncontent != null" >
-        questionContent = #{questioncontent,jdbcType=VARCHAR},
+      <if test="stafftoken != null" >
+        staffToken = #{stafftoken,jdbcType=VARCHAR},
       </if>
     </set>
-    where question = #{question,jdbcType=INTEGER}
+    where staffId = #{staffid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Question" >
-    update question
-    set questionContent = #{questioncontent,jdbcType=VARCHAR}
-    where question = #{question,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Stafftoken" >
+    update stafftoken
+    set staffToken = #{stafftoken,jdbcType=VARCHAR}
+    where staffId = #{staffid,jdbcType=INTEGER}
   </update>
 </mapper>
