@@ -1,5 +1,9 @@
 package com.sds.em.po;
-
+/**
+ * 
+ * @author wenbowu
+ *信息传输类，把数据打包传输到前端
+ */
 public class Message {
 	private boolean success;
 	private String information;
