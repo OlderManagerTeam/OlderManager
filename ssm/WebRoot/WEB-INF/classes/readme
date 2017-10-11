@@ -1,2 +1,0 @@
-@RequestMapping("/queryAllUsers.action") 这个注解的设置
-url的窄化
