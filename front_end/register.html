@@ -34,6 +34,8 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/style.css">
+	<!--文件上传css文件-->
+	<link rel="stylesheet" type="text/css" href="css/fileinput.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -144,6 +146,7 @@
 						</div>
 					</div>
 				</div>
+
                    <div class="row text-center">
 						<div class="form-group">
 							<p>已经注册？请<a href="login.html">登录</a></p>
@@ -171,6 +174,22 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Main JS -->
 	<script src="js/login.js"></script>
+	<!-- 文件上传 JS -->
+	<script type="text/javascript" src="js/fileinput.js"></script>
+	<!-- Main JS -->
+	<script>
+    $("#file-1").fileinput({
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+	});
+    </script>
 
 	</body>
 </html>
