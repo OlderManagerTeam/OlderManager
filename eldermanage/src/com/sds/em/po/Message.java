@@ -42,4 +42,6 @@ public class Message {
 	public void setData(Object data) {
 		this.data = data;
 	}
+	
+	
 }
