@@ -4,6 +4,7 @@
 <head>
     <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
@@ -19,6 +20,14 @@
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/themes/flat-blue.css">
+	
+	<script type="text/javascript" src="../../js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function (){
+			$("#newscontent > .w-e-text-container").height(800);
+		})
+	</script>
+	
 </head>
 
 <body class="flat-blue">
@@ -31,8 +40,13 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
+<<<<<<< HEAD
                             <li>表单</li>
                             <li class="active">老人信息录入表单</li>
+=======
+                            <li>Form</li>
+                            <li class="active">发布新闻</li>
+>>>>>>> 6f9a1da0f2908b68fc46e92b255eff3f8aa55c8a
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -253,23 +267,24 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">Form UI Kits</span>
-                        <div class="description">A ui elements use in form, input, select, etc.</div>
+                        <span class="title">新闻发布页面</span>
+                        <div class="description"></div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Form Elements</div>
+                                        <div class="title">发布新闻</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    Examples of standard form controls. such as input, textarea, select, checkboxes and radios , static control, etc.
-                                    <div class="sub-title">Input</div>
+                                    
+                                    <div class="sub-title">编辑新闻标题</div>
                                     <div>
                                         <input type="text" class="form-control" placeholder="Text input">
                                     </div>
+<<<<<<< HEAD
                                     <div class="sub-title">Textarea</div>
                                     <div>
                                         <textarea class="form-control" rows="3"></textarea>
@@ -640,10 +655,27 @@
                                             </div>
                                         </div>
                                     </form>
+=======
+                                    <div class="sub-title">编辑新闻内容</div>
+									<div id = "newscontent">
+									</div>
+									
+									<script type="text/javascript" src="../../js/wangEditor.min.js"></script>
+									<script type="text/javascript">
+										var E = window.wangEditor
+										var newscontent = new E('#newscontent')
+										newscontent.customConfig.uploadImgShowBase64 = true
+										newscontent.create()
+									</script>
+									
+                                    
+                                    
+>>>>>>> 6f9a1da0f2908b68fc46e92b255eff3f8aa55c8a
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
