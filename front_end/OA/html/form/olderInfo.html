@@ -4,7 +4,6 @@
 <head>
     <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
@@ -184,8 +183,7 @@
                                         <ul class="nav navbar-nav">
                                             <li><a href="../form/ui-kits.html">Form UI Kits</a>
                                             </li>
-											<li><a href="../form/releaseNews.html">发布新闻</a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -255,7 +253,7 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">Form UI Kits</span>
+                        <span class="title">表单 UI 套件</span>
                         <div class="description">A ui elements use in form, input, select, etc.</div>
                     </div>
                     <div class="row">
@@ -263,20 +261,20 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Form Elements</div>
+                                        <div class="title">表单元素</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     Examples of standard form controls. such as input, textarea, select, checkboxes and radios , static control, etc.
-                                    <div class="sub-title">Input</div>
+                                    <div class="sub-title">输入</div>
                                     <div>
-                                        <input type="text" class="form-control" placeholder="Text input">
+                                        <input type="text" class="form-control" placeholder="文本输入">
                                     </div>
-                                    <div class="sub-title">Textarea</div>
+                                    <div class="sub-title">多行文本输入区</div>
                                     <div>
                                         <textarea class="form-control" rows="3"></textarea>
                                     </div>
-                                    <div class="sub-title">Checkboxes and radios <span class="description">( with <a href="https://github.com/tui2tone/checkbox3">checkbox3</a> )</span></div>
+                                    <div class="sub-title">复选框 and 圆角复选框 <span class="description">( with <a href="https://github.com/tui2tone/checkbox3">checkbox3</a> )</span></div>
                                     <div>
                                         <div class="checkbox3 checkbox-round">
                                           <input type="checkbox" id="checkbox-2">
@@ -428,8 +426,12 @@
                                 <div class="card-body">
                                     <form>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
+                                            <label for="exampleInputEmail1">老人姓名:</label>
                                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                        <div style="width: 200px">
+                                        </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password</label>
@@ -483,23 +485,148 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Horizontal form</div>
+                                        <div class="title">老人信息录入</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <form class="form-horizontal">
                                         <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                            <label for="odlerName" class="col-sm-3 control-label">老人姓名：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="odlerName" placeholder="老人姓名">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                                            <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                            <label for="olderSex" class="col-sm-3 control-label">老人性别：</label>
+                                            <div class="col-sm-5">
+                                                <select id="olderSex">
+                                                    <optgroup label="性别">
+                                                        <option value="AK">男</option>
+                                                        <option value="HI">女</option>
+                                                    </optgroup>
+                                                </select>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="olderBirthday" class="col-sm-3 control-label">老人出生日期：</label>
+                                            <div class="col-sm-5">
+                                                <input type="date" class="form-control" id="olderBirthday" placeholder="老人出生日期">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderPassword" class="col-sm-3 control-label">老人账户密码：</label>
+                                            <div class="col-sm-5">
+                                                <input type="password" class="form-control" id="olderPassword" placeholder="老人账户密码">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="odlerTel" class="col-sm-3 control-label">老人电话号码：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="odlerTel" placeholder="老人电话号码">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="odlerAdress" class="col-sm-3 control-label">老人地址：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="odlerAdress" placeholder="老人地址">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderSingleStatus" class="col-sm-3 control-label">老人独居状况：</label>
+                                            <div class="col-sm-5">
+                                                <select id="olderSingleStatus">
+                                                    <optgroup label="状况">
+                                                        <option value="AK">单人独居</option>
+                                                        <option value="HI">夫妻独居</option>
+                                                        <option value="HI">同子女居住</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderIDE" class="col-sm-3 control-label">老人身份证号：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="olderIDE" placeholder="老人地址">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="odlerNation" class="col-sm-3 control-label">老人民族：</label>
+                                            <div class="col-sm-5">
+                                                <select id="odlerNation">
+                                                    <optgroup label="名族">
+                                                        <option value="AK">汉族</option>
+                                                        <option value="HI">蒙古族</option>
+                                                        <option value="AK">回族</option>
+                                                        <option value="HI">藏族</option>
+                                                        <option value="AK">维吾尔族</option>
+                                                        <option value="HI">彝族</option>
+                                                        <option value="AK">壮族</option>
+                                                        <option value="HI">布依族</option>
+                                                        <option value="AK">朝鲜族</option>
+                                                        <option value="HI">满族</option>
+                                                        <option value="AK">侗族</option>
+                                                        <option value="HI">瑶族</option>
+                                                        <option value="AK">白族</option>
+                                                        <option value="HI">土家族</option>
+                                                        <option value="AK">哈尼族</option>
+                                                        <option value="HI">哈萨克族</option>
+                                                        <option value="AK">傣族</option>
+                                                        <option value="HI">黎族</option>
+                                                        <option value="AK">僳僳族</option>
+                                                        <option value="HI">佤族</option>
+                                                        <option value="AK">畲族</option>
+                                                        <option value="HI">高山族</option>
+                                                        <option value="AK">拉祜族</option>
+                                                        <option value="HI">水族</option>
+                                                        <option value="AK">东乡族</option>
+                                                        <option value="HI">纳西族</option>
+                                                        <option value="AK">景颇族</option>
+                                                        <option value="HI">柯尔克孜族</option>
+                                                        <option value="AK">土族</option>
+                                                        <option value="HI">达斡尔族</option>
+                                                        <option value="AK">仫佬族</option>
+                                                        <option value="HI">仫佬族</option>
+                                                        <option value="AK">布朗族</option>
+                                                        <option value="HI">撒拉族</option>
+                                                        <option value="AK">毛南族</option>
+                                                        <option value="HI">仡佬族</option>
+                                                        <option value="AK">锡伯族</option>
+                                                        <option value="HI">阿昌族</option>
+                                                        <option value="AK">普米族</option>
+                                                        <option value="HI">塔吉克族</option>
+                                                        <option value="AK">怒族</option>
+                                                        <option value="HI">乌孜别克族</option>
+                                                        <option value="AK">俄罗斯族</option>
+                                                        <option value="HI">鄂温克族</option>
+                                                        <option value="AK">德昂族</option>
+                                                        <option value="HI">保安族</option>
+                                                        <option value="AK">裕固族</option>
+                                                        <option value="HI">京族</option>
+                                                        <option value="AK">塔塔尔族</option>
+                                                        <option value="HI">独龙族</option>
+                                                        <option value="AK">鄂伦春族</option>
+                                                        <option value="HI">赫哲族</option>
+                                                        <option value="AK">门巴族</option>
+                                                        <option value="HI">珞巴族</option>
+                                                        <option value="AK">基诺族</option>
+                                                        <option value="HI">其他</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderHeadUrl" class="col-sm-3 control-label">老人照片：</label>
+                                            <div class="col-sm-5">
+                                                <input type="file" id="olderHeadUrl">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderBranchId" class="col-sm-3 control-label">管理老人的分店：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="olderBranchId" placeholder="管理老人的分店">
+                                            </div>
+                                        </div>
+                                        <!--
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
                                               <div class="checkbox3 checkbox-round checkbox-check checkbox-light">
@@ -510,9 +637,10 @@
                                               </div>
                                             </div>
                                         </div>
+                                        -->
                                         <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-default">Sign in</button>
+                                            <div class="col-sm-offset-3 col-sm-5">
+                                                <button type="submit" class="btn btn-default">提交</button>
                                             </div>
                                         </div>
                                     </form>
