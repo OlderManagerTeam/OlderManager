@@ -146,7 +146,7 @@ public class IndexServiceImpl implements IndexService {
 
 				QuestionExample qustionExample = new QuestionExample();
 				com.sds.em.po.QuestionExample.Criteria criteria3 = qustionExample.createCriteria();
-				criteria3.andQuestionidEqualTo(securityQuestionId);
+				criteria3.andQuestionEqualTo(securityQuestionId);
 				List<Question> questionList = questionMapper.selectByExample(qustionExample);
 				String questionContent = questionList.get(0).getQuestioncontent();
 
