@@ -1,4 +1,4 @@
-package com.sds.em.service;
+/*package com.sds.em.service;
 
 import com.sds.em.po.Message;
 import com.sds.em.po.Role;
@@ -12,3 +12,4 @@ public interface StaffService {
 	public Message login(String staffTel,String staffPassword);//µÇÂ¼ÅĞ¶ÏÃÜÂë
 	public Role returnRole(int staffId);//·µ»Ø½ÇÉ«
 }
+*/
