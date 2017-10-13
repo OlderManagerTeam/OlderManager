@@ -385,7 +385,7 @@
 		where olderId =
 		#{olderid,jdbcType=INTEGER}
 	</update>
-	<!-- 录入老人基本信息，并传回id -->
+	<!-- lu 2017-10-12 录入老人基本信息，并传回id -->
 	<insert id="insertOlderBase" parameterType="com.sds.em.po.Olderbase">
 		<selectKey keyProperty="olderid" order="AFTER" resultType="java.lang.Integer">
 			SELECT
@@ -407,4 +407,5 @@
 		#{olderpoint,jdbcType=INTEGER},
 		#{olderbranchid,jdbcType=INTEGER})
 	</insert>
+
 </mapper>

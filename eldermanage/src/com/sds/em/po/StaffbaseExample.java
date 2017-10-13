@@ -802,66 +802,6 @@ public class StaffbaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andStaffbranchidIsNull() {
-            addCriterion("staffBranchId is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidIsNotNull() {
-            addCriterion("staffBranchId is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidEqualTo(Integer value) {
-            addCriterion("staffBranchId =", value, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidNotEqualTo(Integer value) {
-            addCriterion("staffBranchId <>", value, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidGreaterThan(Integer value) {
-            addCriterion("staffBranchId >", value, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("staffBranchId >=", value, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidLessThan(Integer value) {
-            addCriterion("staffBranchId <", value, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidLessThanOrEqualTo(Integer value) {
-            addCriterion("staffBranchId <=", value, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidIn(List<Integer> values) {
-            addCriterion("staffBranchId in", values, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidNotIn(List<Integer> values) {
-            addCriterion("staffBranchId not in", values, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidBetween(Integer value1, Integer value2) {
-            addCriterion("staffBranchId between", value1, value2, "staffbranchid");
-            return (Criteria) this;
-        }
-
-        public Criteria andStaffbranchidNotBetween(Integer value1, Integer value2) {
-            addCriterion("staffBranchId not between", value1, value2, "staffbranchid");
-            return (Criteria) this;
-        }
-
         public Criteria andStaffpasswordIsNull() {
             addCriterion("staffPassword is null");
             return (Criteria) this;
@@ -929,6 +869,66 @@ public class StaffbaseExample {
 
         public Criteria andStaffpasswordNotBetween(String value1, String value2) {
             addCriterion("staffPassword not between", value1, value2, "staffpassword");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidIsNull() {
+            addCriterion("staffRoleId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidIsNotNull() {
+            addCriterion("staffRoleId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidEqualTo(Integer value) {
+            addCriterion("staffRoleId =", value, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidNotEqualTo(Integer value) {
+            addCriterion("staffRoleId <>", value, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidGreaterThan(Integer value) {
+            addCriterion("staffRoleId >", value, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("staffRoleId >=", value, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidLessThan(Integer value) {
+            addCriterion("staffRoleId <", value, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidLessThanOrEqualTo(Integer value) {
+            addCriterion("staffRoleId <=", value, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidIn(List<Integer> values) {
+            addCriterion("staffRoleId in", values, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidNotIn(List<Integer> values) {
+            addCriterion("staffRoleId not in", values, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidBetween(Integer value1, Integer value2) {
+            addCriterion("staffRoleId between", value1, value2, "staffroleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andStaffroleidNotBetween(Integer value1, Integer value2) {
+            addCriterion("staffRoleId not between", value1, value2, "staffroleid");
             return (Criteria) this;
         }
     }

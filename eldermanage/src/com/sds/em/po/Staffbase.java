@@ -23,9 +23,9 @@ public class Staffbase {
 
     private Integer staffdepartmentid;
 
-    private Integer staffbranchid;
-
     private String staffpassword;
+
+    private Integer staffroleid;
 
     public Integer getStaffid() {
         return staffid;
@@ -107,19 +107,19 @@ public class Staffbase {
         this.staffdepartmentid = staffdepartmentid;
     }
 
-    public Integer getStaffbranchid() {
-        return staffbranchid;
-    }
-
-    public void setStaffbranchid(Integer staffbranchid) {
-        this.staffbranchid = staffbranchid;
-    }
-
     public String getStaffpassword() {
         return staffpassword;
     }
 
     public void setStaffpassword(String staffpassword) {
         this.staffpassword = staffpassword == null ? null : staffpassword.trim();
+    }
+
+    public Integer getStaffroleid() {
+        return staffroleid;
+    }
+
+    public void setStaffroleid(Integer staffroleid) {
+        this.staffroleid = staffroleid;
     }
 }
