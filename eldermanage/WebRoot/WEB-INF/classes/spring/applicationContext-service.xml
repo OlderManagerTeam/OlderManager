@@ -13,4 +13,5 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
 		<bean id="staffService" class="com.sds.em.service.impl.StaffServiceImpl"/>
+		<bean id="BranchManageService" class="com.sds.em.service.impl.BranchManageServiceImpl"/>
 </beans>

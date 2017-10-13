@@ -62,7 +62,6 @@ public class StaffController {
 		cookie.setSecure(true);
 		cookie.setMaxAge(24*60*60);//保存一天
 		response.addCookie(cookie); // 输出到客户端
-
 		modelAndView.setViewName("login.jsp");
 		return modelAndView;
 	}
