@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,8 +29,8 @@ public class StaffController {
 	@Autowired
 	StaffService staffService;
 
-	@RequestMapping(method = RequestMethod.GET, value = "signin")
-	public @ResponseBody Message sigin(String staffTel) {// 验证员工电话号码是否可用
+	@RequestMapping(value = "signin")
+	public @ResponseBody Message sigin(@RequestBody String staffTel) {// 验证员工电话号码是否可用
 		return staffService.checkStaffName(staffTel);
 	}
 
