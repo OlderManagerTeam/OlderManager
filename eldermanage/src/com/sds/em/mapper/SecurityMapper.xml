@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.QuestionMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Question" >
-    <id column="questionId" property="questionid" jdbcType="INTEGER" />
-    <result column="questionContent" property="questioncontent" jdbcType="VARCHAR" />
+<mapper namespace="com.sds.em.mapper.SecurityMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Security" >
+    <id column="securityId" property="securityid" jdbcType="INTEGER" />
+    <result column="securityQuestionId" property="securityquestionid" jdbcType="INTEGER" />
+    <result column="securityStaffId" property="securitystaffid" jdbcType="INTEGER" />
+    <result column="securityAnswer" property="securityanswer" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -64,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    questionId, questionContent
+    securityId, securityQuestionId, securityStaffId, securityAnswer
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.QuestionExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.SecurityExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from question
+    from security
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from question
-    where questionId = #{questionid,jdbcType=INTEGER}
+    from security
+    where securityId = #{securityid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from question
-    where questionId = #{questionid,jdbcType=INTEGER}
+    delete from security
+    where securityId = #{securityid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.QuestionExample" >
-    delete from question
+  <delete id="deleteByExample" parameterType="com.sds.em.po.SecurityExample" >
+    delete from security
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Question" >
-    insert into question (questionId, questionContent)
-    values (#{questionid,jdbcType=INTEGER}, #{questioncontent,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.sds.em.po.Security" >
+    insert into security (securityId, securityQuestionId, securityStaffId, 
+      securityAnswer)
+    values (#{securityid,jdbcType=INTEGER}, #{securityquestionid,jdbcType=INTEGER}, #{securitystaffid,jdbcType=INTEGER}, 
+      #{securityanswer,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Question" >
-    insert into question
+  <insert id="insertSelective" parameterType="com.sds.em.po.Security" >
+    insert into security
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="questionid != null" >
-        questionId,
+      <if test="securityid != null" >
+        securityId,
       </if>
-      <if test="questioncontent != null" >
-        questionContent,
+      <if test="securityquestionid != null" >
+        securityQuestionId,
+      </if>
+      <if test="securitystaffid != null" >
+        securityStaffId,
+      </if>
+      <if test="securityanswer != null" >
+        securityAnswer,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="questionid != null" >
-        #{questionid,jdbcType=INTEGER},
+      <if test="securityid != null" >
+        #{securityid,jdbcType=INTEGER},
       </if>
-      <if test="questioncontent != null" >
-        #{questioncontent,jdbcType=VARCHAR},
+      <if test="securityquestionid != null" >
+        #{securityquestionid,jdbcType=INTEGER},
+      </if>
+      <if test="securitystaffid != null" >
+        #{securitystaffid,jdbcType=INTEGER},
+      </if>
+      <if test="securityanswer != null" >
+        #{securityanswer,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.QuestionExample" resultType="java.lang.Integer" >
-    select count(*) from question
+  <select id="countByExample" parameterType="com.sds.em.po.SecurityExample" resultType="java.lang.Integer" >
+    select count(*) from security
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update question
+    update security
     <set >
-      <if test="record.questionid != null" >
-        questionId = #{record.questionid,jdbcType=INTEGER},
+      <if test="record.securityid != null" >
+        securityId = #{record.securityid,jdbcType=INTEGER},
       </if>
-      <if test="record.questioncontent != null" >
-        questionContent = #{record.questioncontent,jdbcType=VARCHAR},
+      <if test="record.securityquestionid != null" >
+        securityQuestionId = #{record.securityquestionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.securitystaffid != null" >
+        securityStaffId = #{record.securitystaffid,jdbcType=INTEGER},
+      </if>
+      <if test="record.securityanswer != null" >
+        securityAnswer = #{record.securityanswer,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -140,25 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update question
-    set questionId = #{record.questionid,jdbcType=INTEGER},
-      questionContent = #{record.questioncontent,jdbcType=VARCHAR}
+    update security
+    set securityId = #{record.securityid,jdbcType=INTEGER},
+      securityQuestionId = #{record.securityquestionid,jdbcType=INTEGER},
+      securityStaffId = #{record.securitystaffid,jdbcType=INTEGER},
+      securityAnswer = #{record.securityanswer,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Question" >
-    update question
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Security" >
+    update security
     <set >
-      <if test="questioncontent != null" >
-        questionContent = #{questioncontent,jdbcType=VARCHAR},
+      <if test="securityquestionid != null" >
+        securityQuestionId = #{securityquestionid,jdbcType=INTEGER},
+      </if>
+      <if test="securitystaffid != null" >
+        securityStaffId = #{securitystaffid,jdbcType=INTEGER},
+      </if>
+      <if test="securityanswer != null" >
+        securityAnswer = #{securityanswer,jdbcType=VARCHAR},
       </if>
     </set>
-    where questionId = #{questionid,jdbcType=INTEGER}
+    where securityId = #{securityid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Question" >
-    update question
-    set questionContent = #{questioncontent,jdbcType=VARCHAR}
-    where questionId = #{questionid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Security" >
+    update security
+    set securityQuestionId = #{securityquestionid,jdbcType=INTEGER},
+      securityStaffId = #{securitystaffid,jdbcType=INTEGER},
+      securityAnswer = #{securityanswer,jdbcType=VARCHAR}
+    where securityId = #{securityid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,16 +1,16 @@
 package com.sds.em.po;
 
 public class Question {
-    private Integer question;
+    private Integer questionid;
 
     private String questioncontent;
 
-    public Integer getQuestion() {
-        return question;
+    public Integer getQuestionid() {
+        return questionid;
     }
 
-    public void setQuestion(Integer question) {
-        this.question = question;
+    public void setQuestionid(Integer questionid) {
+        this.questionid = questionid;
     }
 
     public String getQuestioncontent() {

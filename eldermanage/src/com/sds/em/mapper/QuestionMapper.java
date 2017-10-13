@@ -10,7 +10,7 @@ public interface QuestionMapper {
 
     int deleteByExample(QuestionExample example);
 
-    int deleteByPrimaryKey(Integer question);
+    int deleteByPrimaryKey(Integer questionid);
 
     int insert(Question record);
 
@@ -18,7 +18,7 @@ public interface QuestionMapper {
 
     List<Question> selectByExample(QuestionExample example);
 
-    Question selectByPrimaryKey(Integer question);
+    Question selectByPrimaryKey(Integer questionid);
 
     int updateByExampleSelective(@Param("record") Question record, @Param("example") QuestionExample example);
 
