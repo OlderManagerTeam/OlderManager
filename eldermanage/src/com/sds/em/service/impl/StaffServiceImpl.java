@@ -9,6 +9,7 @@ import com.sds.em.mapper.RoleMapper;
 import com.sds.em.mapper.StaffbaseMapper;
 import com.sds.em.mapper.StafftokenMapper;
 import com.sds.em.po.Message;
+import com.sds.em.po.Question;
 import com.sds.em.po.QuestionExample;
 import com.sds.em.po.Role;
 import com.sds.em.po.RoleExample;
@@ -16,7 +17,6 @@ import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
 import com.sds.em.po.StaffbaseExample.Criteria;
 import com.sds.em.po.Stafftoken;
-import com.sds.em.po.StafftokenExample;
 import com.sds.em.service.StaffService;
 import com.sds.em.util.Md5;
 import com.sds.em.util.Uuid;
@@ -56,7 +56,7 @@ public class StaffServiceImpl implements StaffService {
 			QuestionExample qExample = new QuestionExample();
 			com.sds.em.po.QuestionExample.Criteria qCriteria = qExample.createCriteria();
 			qCriteria.andQuestioncontentIsNotNull();
-			List l = questionMapper.selectByExample(qExample);
+			List<Question> l = questionMapper.selectByExample(qExample);
 			if (l.isEmpty())
 				return new Message(false, "无可用记录", null);
 			return new Message(true, "返回成功", l);

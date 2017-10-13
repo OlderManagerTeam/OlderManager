@@ -17,9 +17,7 @@
 	<context:component-scan base-package="com.sds.em.controller" />
 
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
-<!-- 	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/v1/" />
-	</bean> -->
+	<mvc:resources location="/html/" mapping="/html/**"/>
+		<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+			<property name="prefix" value="/v1/" /> </bean> -->
 </beans>
