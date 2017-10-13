@@ -38,7 +38,7 @@
 	$(document).ready(function(){
 		$(".submit").click(function(){
 			$.ajax({
-				type:"post",
+				type:"delete",
 				url:"http://localhost:8080/eldermanage/v1/staff/signin",
 				contentType:'application/json;charset=utf-8',
 				data:'{"staffTel":"1821240000"}',
