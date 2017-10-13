@@ -74,9 +74,18 @@ public class IndexController {
 
 	}
 
+	//返回个人密保问题
 	@RequestMapping(method = RequestMethod.GET, value = "question")
-	public @ResponseBody Message question(String staffTel) {// 验证员工电话号码是否可用
+	public @ResponseBody Message question(String staffTel) {
 		return indexService.returnQuestion(staffTel);
 	}
+	@RequestMapping(method=RequestMethod.POST,value="answer")
+	public @ResponseBody Message answer(String securityAnswer,int staffId){
+		return indexService.checkSecurity(securityAnswer, staffId);
+	}
 
+	/*@RequestMapping(method=RequestMethod.POST,value="password")
+	public @ResponseBody Message password(String staffPassword,int staffId){
+		
+	}*/
 }

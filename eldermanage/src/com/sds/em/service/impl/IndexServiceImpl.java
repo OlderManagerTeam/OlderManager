@@ -170,4 +170,32 @@ public class IndexServiceImpl implements IndexService {
 		}
 	}
 
+	@Override
+	public Message checkSecurity(String securityAnswer, int staffId) {
+		try {
+			SecurityExample securityExample = new SecurityExample();
+			com.sds.em.po.SecurityExample.Criteria criteria2 = securityExample.createCriteria();
+			criteria2.andSecuritystaffidEqualTo(staffId);
+			List<Security> securityList = securityMapper.selectByExample(securityExample);
+			if (securityAnswer.equals(securityList.get(0).getSecurityanswer())) {
+				return new Message(true, ",确认用户", null);
+			} else {
+				return new Message(false, ",用户校验失败", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+/*	@Override
+	public Message modifyPassword(String staffPassword, int staffId) {
+		staffbaseMapper.updateByExampleSelective(record, example)
+		
+		
+		return null;
+	}*/
+
 }
