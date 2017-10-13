@@ -12,12 +12,13 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
-
-
+	<!-- 	对静态资源的解析 js img css -->
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/img/" mapping="/img/**" />
 	<context:component-scan base-package="com.sds.em.controller" />
-
+<!-- 使用注解开发 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	<mvc:resources location="/html/" mapping="/html/**"/>
-		<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-			<property name="prefix" value="/v1/" /> </bean> -->
+<!-- 	<mvc:resources location="/html/" mapping="/html/**" /> -->
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/v1/" /> </bean> -->
 </beans>
