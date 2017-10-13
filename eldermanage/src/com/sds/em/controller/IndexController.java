@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sds.em.po.Message;
 import com.sds.em.po.Role;
 import com.sds.em.po.Staffbase;
-import com.sds.em.service.StaffService;
+import com.sds.em.service.IndexService;
 
 /**
  * 
@@ -23,33 +24,34 @@ import com.sds.em.service.StaffService;
  */
 
 @Controller
-@RequestMapping("v1/staff/")
-public class StaffController {
-	@Autowired
-	StaffService staffService;
+@RequestMapping("v1/index/staff/")
+public class IndexController {
 
-	@RequestMapping(method = RequestMethod.GET, value = "signin")
-	public @ResponseBody Message sigin(String staffTel) {// 验证员工电话号码是否可用
-		return staffService.checkStaffName(staffTel);
+	@Autowired
+	IndexService indexService;
+
+	@RequestMapping(value = "signin")
+	public @ResponseBody Message sigin(@RequestBody String staffTel) {// 验证员工电话号码是否可用
+		return indexService.checkStaffName(staffTel);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "securities")
 	public @ResponseBody Message securities() {// 返回所有问题列表
-		return staffService.returnSecurities();
+		return indexService.returnSecurities();
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "login")
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			String staffTel, String staffPassword) {
 		ModelAndView modelAndView = new ModelAndView();
-		
-		Message message = staffService.login(staffTel, staffPassword);
+
+		Message message = indexService.login(staffTel, staffPassword);
 
 		Staffbase staffbase = (Staffbase) message.getData();
 		int staffId = staffbase.getStaffid();
 		String staffName = staffbase.getStaffname();
 
-		Role role = staffService.returnRole(staffId);
+		Role role = indexService.returnRole(staffId);
 		session.setAttribute("staffId", staffId);
 		session.setAttribute("staffName", staffName);
 
@@ -60,9 +62,21 @@ public class StaffController {
 		// cookie
 		Cookie cookie = new Cookie("cookieName", "cookie"); // 新建Cookie
 		cookie.setSecure(true);
-		cookie.setMaxAge(24*60*60);//保存一天
+		cookie.setMaxAge(24 * 60 * 60);// 保存一天
 		response.addCookie(cookie); // 输出到客户端
 		modelAndView.setViewName("login.jsp");
 		return modelAndView;
 	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "news")
+	public @ResponseBody Message news() {
+		return null;
+
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "question")
+	public @ResponseBody Message question(String staffTel) {// 验证员工电话号码是否可用
+		return indexService.returnQuestion(staffTel);
+	}
+
 }

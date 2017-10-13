@@ -1,4 +1,4 @@
-package com.sds.em.service.impl;
+/*package com.sds.em.service.impl;
 
 import java.util.List;
 
@@ -116,3 +116,4 @@ public class StaffServiceImpl implements StaffService {
 		return (Role) roleMapper.selectByExample(roleExample);
 	}
 }
+*/

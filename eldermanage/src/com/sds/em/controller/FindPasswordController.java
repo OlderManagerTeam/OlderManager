@@ -1,4 +1,4 @@
-package com.sds.em.controller;
+/*package com.sds.em.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,3 +21,4 @@ public class FindPasswordController {
 	}
 
 }
+*/
