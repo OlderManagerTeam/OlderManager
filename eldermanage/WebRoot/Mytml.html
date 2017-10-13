@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title></title>
 	<style>
 	.form{
@@ -38,8 +38,10 @@
 	$(document).ready(function(){
 		$(".submit").click(function(){
 			$.ajax({
-				type:"GET",
-				url:"http://localhost:8080/eldermanage/v1/staff/signin.action?staffTel=18212400001",
+				type:"post",
+				url:"http://localhost:8080/eldermanage/v1/staff/signin",
+				contentType:'application/json;charset=utf-8',
+				data:'{"staffTel":"1821240000"}',
 				success:function(data,status){
 					alert(data + " " +status);
 				},
@@ -55,6 +57,7 @@
 
 <body>
 	<input type="button" name="submit" id="submit" class="submit" value="获取">
+	<h1>获取</h1>
 </body>
 
 </html>
