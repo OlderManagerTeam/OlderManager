@@ -48,14 +48,6 @@
 		<servlet-name>jsp</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
-	<mime-mapping>
-		<extension>htm</extension>
-		<mime-type>text/html;charset=UTF-8</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>html</extension>
-		<mime-type>text/html;charset=UTF-8</mime-type>
-	</mime-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
