@@ -19,27 +19,33 @@ import com.sds.em.service.BrenchService;
  * 
  * */
 @Controller
-@RequestMapping("v1/brench/elder/")
+@RequestMapping("v1/brench/")
 public class BrenchController {
 	@Autowired
 	BrenchService brenchManageService;
 
 	// 老人基本信息的录入
-	@RequestMapping(method = RequestMethod.POST, value = "info")
+	@RequestMapping(method = RequestMethod.POST, value = "elder/info")
 	public @ResponseBody Message info(Olderbase olderbase) throws Exception {
 		return brenchManageService.addElderInfo(olderbase);
 
 	}
 
 	// 老人基本信息的修改
-	@RequestMapping(method = RequestMethod.PUT, value = "info")
+	@RequestMapping(method = RequestMethod.PUT, value = "elder/info")
 	public @ResponseBody Message update(Olderbase olderbase) throws Exception {
 		return brenchManageService.modifyOlder(olderbase);
 	}
 
 	// 老人病历信息的录入
-	@RequestMapping(method = RequestMethod.POST, value = "sicks")
+	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
 	public @ResponseBody Message sicks(int sickOlderId, Oldersick oldersick) throws Exception {
+		return brenchManageService.addSicks(sickOlderId, oldersick);
+	}
+	
+	//发布活动
+	@RequestMapping(method = RequestMethod.POST, value = "action")
+	public @ResponseBody Message action(int sickOlderId, Oldersick oldersick) throws Exception {
 		return brenchManageService.addSicks(sickOlderId, oldersick);
 	}
 }
