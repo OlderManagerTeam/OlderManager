@@ -1,4 +1,4 @@
-package com.sds.em.po;
+package com.sds.em.mapper;
 
 import java.util.Date;
 
