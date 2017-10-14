@@ -1,6 +1,5 @@
 package com.sds.em.service;
 
-import com.sds.em.po.Action;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
@@ -19,9 +18,9 @@ public interface BrenchService {
 
 	public Message olderRate(int olderId) throws Exception;
 
-	// 发布活动
+/*	// 发布活动
 	public Message publishAction(Action action) throws Exception;
 
 	// 修改活动
-	public Message modifyAction(Action action) throws Exception;
+	public Message modifyAction(Action action) throws Exception;*/
 }

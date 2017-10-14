@@ -4,10 +4,8 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sds.em.mapper.ActionMapper;
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
-import com.sds.em.po.Action;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
@@ -20,9 +18,9 @@ public class BrenchServiceImpl implements BrenchService {
 	@Autowired
 	OldersickMapper oldersickMapper;
 
-	@Autowired
+	/*@Autowired
 	ActionMapper actionMapper;
-
+*/
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
 		try {
@@ -77,7 +75,7 @@ public class BrenchServiceImpl implements BrenchService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+/*
 	@Override
 	public Message publishAction(Action action) throws Exception {
 		try {
@@ -109,5 +107,5 @@ public class BrenchServiceImpl implements BrenchService {
 			e.printStackTrace();
 			return new Message(false, "Êý¾Ý¿â´íÎó", null);
 		}
-	}
+	}*/
 }
