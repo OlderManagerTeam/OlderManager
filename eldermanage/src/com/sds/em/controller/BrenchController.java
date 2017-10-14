@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sds.em.po.Action;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
@@ -50,7 +51,14 @@ public class BrenchController {
 	
 	//发布活动
 	@RequestMapping(method = RequestMethod.POST, value = "action")
-	public @ResponseBody Message action(int sickOlderId, Oldersick oldersick) throws Exception {
-		return brenchManageService.addSicks(sickOlderId, oldersick);
+	public @ResponseBody Message addAction(Action action) throws Exception {
+		return brenchManageService.publishAction(action);
+	}
+	
+	//修改活动
+	
+	@RequestMapping(method = RequestMethod.PUT, value = "action")
+	public @ResponseBody Message updateAction(Action action) throws Exception {
+		return brenchManageService.modifyAction(action);
 	}
 }

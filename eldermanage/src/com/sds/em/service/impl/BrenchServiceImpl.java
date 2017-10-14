@@ -4,8 +4,10 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sds.em.mapper.ActionMapper;
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
+import com.sds.em.po.Action;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
@@ -17,6 +19,9 @@ public class BrenchServiceImpl implements BrenchService {
 
 	@Autowired
 	OldersickMapper oldersickMapper;
+
+	@Autowired
+	ActionMapper actionMapper;
 
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
@@ -71,5 +76,38 @@ public class BrenchServiceImpl implements BrenchService {
 	public Message olderRate(int olderId) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Message publishAction(Action action) throws Exception {
+		try {
+			int flag = 0;
+			flag = actionMapper.insert(action);
+			if (flag != 0) {
+				return new Message(true, "发布成功", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message modifyAction(Action action) throws Exception {
+		try {
+			int flag = 0;
+			flag = actionMapper.updateByPrimaryKeySelective(action);
+			if (flag != 0) {
+				return new Message(true, "修改成功", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 }
