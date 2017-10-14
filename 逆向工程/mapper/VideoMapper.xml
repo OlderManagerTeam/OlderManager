@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sds.em.mapper.VideoMapper">
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Video">
+    <id column="videoId" jdbcType="INTEGER" property="videoid" />
+    <result column="videoPicUrl" jdbcType="VARCHAR" property="videopicurl" />
+    <result column="videoUrl" jdbcType="VARCHAR" property="videourl" />
+    <result column="videoName" jdbcType="VARCHAR" property="videoname" />
+    <result column="videoIntro" jdbcType="VARCHAR" property="videointro" />
+    <result column="videoDetail" jdbcType="VARCHAR" property="videodetail" />
+    <result column="videoTime" jdbcType="REAL" property="videotime" />
+    <result column="videoPublishDate" jdbcType="DATE" property="videopublishdate" />
+    <result column="videoHeat" jdbcType="INTEGER" property="videoheat" />
+    <result column="videoStatus" jdbcType="INTEGER" property="videostatus" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    videoId, videoPicUrl, videoUrl, videoName, videoIntro, videoDetail, videoTime, videoPublishDate, 
+    videoHeat, videoStatus
+  </sql>
+  <select id="selectByExample" parameterType="com.sds.em.po.VideoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where videoId = #{videoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from video
+    where videoId = #{videoid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.VideoExample">
+    delete from video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Video">
+    insert into video (videoId, videoPicUrl, videoUrl, 
+      videoName, videoIntro, videoDetail, 
+      videoTime, videoPublishDate, videoHeat, 
+      videoStatus)
+    values (#{videoid,jdbcType=INTEGER}, #{videopicurl,jdbcType=VARCHAR}, #{videourl,jdbcType=VARCHAR}, 
+      #{videoname,jdbcType=VARCHAR}, #{videointro,jdbcType=VARCHAR}, #{videodetail,jdbcType=VARCHAR}, 
+      #{videotime,jdbcType=REAL}, #{videopublishdate,jdbcType=DATE}, #{videoheat,jdbcType=INTEGER}, 
+      #{videostatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Video">
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoid != null">
+        videoId,
+      </if>
+      <if test="videopicurl != null">
+        videoPicUrl,
+      </if>
+      <if test="videourl != null">
+        videoUrl,
+      </if>
+      <if test="videoname != null">
+        videoName,
+      </if>
+      <if test="videointro != null">
+        videoIntro,
+      </if>
+      <if test="videodetail != null">
+        videoDetail,
+      </if>
+      <if test="videotime != null">
+        videoTime,
+      </if>
+      <if test="videopublishdate != null">
+        videoPublishDate,
+      </if>
+      <if test="videoheat != null">
+        videoHeat,
+      </if>
+      <if test="videostatus != null">
+        videoStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoid != null">
+        #{videoid,jdbcType=INTEGER},
+      </if>
+      <if test="videopicurl != null">
+        #{videopicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videourl != null">
+        #{videourl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoname != null">
+        #{videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videointro != null">
+        #{videointro,jdbcType=VARCHAR},
+      </if>
+      <if test="videodetail != null">
+        #{videodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="videotime != null">
+        #{videotime,jdbcType=REAL},
+      </if>
+      <if test="videopublishdate != null">
+        #{videopublishdate,jdbcType=DATE},
+      </if>
+      <if test="videoheat != null">
+        #{videoheat,jdbcType=INTEGER},
+      </if>
+      <if test="videostatus != null">
+        #{videostatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.VideoExample" resultType="java.lang.Integer">
+    select count(*) from video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update video
+    <set>
+      <if test="record.videoid != null">
+        videoId = #{record.videoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.videopicurl != null">
+        videoPicUrl = #{record.videopicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videourl != null">
+        videoUrl = #{record.videourl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoname != null">
+        videoName = #{record.videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videointro != null">
+        videoIntro = #{record.videointro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videodetail != null">
+        videoDetail = #{record.videodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videotime != null">
+        videoTime = #{record.videotime,jdbcType=REAL},
+      </if>
+      <if test="record.videopublishdate != null">
+        videoPublishDate = #{record.videopublishdate,jdbcType=DATE},
+      </if>
+      <if test="record.videoheat != null">
+        videoHeat = #{record.videoheat,jdbcType=INTEGER},
+      </if>
+      <if test="record.videostatus != null">
+        videoStatus = #{record.videostatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update video
+    set videoId = #{record.videoid,jdbcType=INTEGER},
+      videoPicUrl = #{record.videopicurl,jdbcType=VARCHAR},
+      videoUrl = #{record.videourl,jdbcType=VARCHAR},
+      videoName = #{record.videoname,jdbcType=VARCHAR},
+      videoIntro = #{record.videointro,jdbcType=VARCHAR},
+      videoDetail = #{record.videodetail,jdbcType=VARCHAR},
+      videoTime = #{record.videotime,jdbcType=REAL},
+      videoPublishDate = #{record.videopublishdate,jdbcType=DATE},
+      videoHeat = #{record.videoheat,jdbcType=INTEGER},
+      videoStatus = #{record.videostatus,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Video">
+    update video
+    <set>
+      <if test="videopicurl != null">
+        videoPicUrl = #{videopicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videourl != null">
+        videoUrl = #{videourl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoname != null">
+        videoName = #{videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videointro != null">
+        videoIntro = #{videointro,jdbcType=VARCHAR},
+      </if>
+      <if test="videodetail != null">
+        videoDetail = #{videodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="videotime != null">
+        videoTime = #{videotime,jdbcType=REAL},
+      </if>
+      <if test="videopublishdate != null">
+        videoPublishDate = #{videopublishdate,jdbcType=DATE},
+      </if>
+      <if test="videoheat != null">
+        videoHeat = #{videoheat,jdbcType=INTEGER},
+      </if>
+      <if test="videostatus != null">
+        videoStatus = #{videostatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where videoId = #{videoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Video">
+    update video
+    set videoPicUrl = #{videopicurl,jdbcType=VARCHAR},
+      videoUrl = #{videourl,jdbcType=VARCHAR},
+      videoName = #{videoname,jdbcType=VARCHAR},
+      videoIntro = #{videointro,jdbcType=VARCHAR},
+      videoDetail = #{videodetail,jdbcType=VARCHAR},
+      videoTime = #{videotime,jdbcType=REAL},
+      videoPublishDate = #{videopublishdate,jdbcType=DATE},
+      videoHeat = #{videoheat,jdbcType=INTEGER},
+      videoStatus = #{videostatus,jdbcType=INTEGER}
+    where videoId = #{videoid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Video">
+    <id column="videoId" jdbcType="INTEGER" property="videoid" />
+    <result column="videoPicUrl" jdbcType="VARCHAR" property="videopicurl" />
+    <result column="videoUrl" jdbcType="VARCHAR" property="videourl" />
+    <result column="videoName" jdbcType="VARCHAR" property="videoname" />
+    <result column="videoIntro" jdbcType="VARCHAR" property="videointro" />
+    <result column="videoDetail" jdbcType="VARCHAR" property="videodetail" />
+    <result column="videoTime" jdbcType="REAL" property="videotime" />
+    <result column="videoPublishDate" jdbcType="DATE" property="videopublishdate" />
+    <result column="videoHeat" jdbcType="INTEGER" property="videoheat" />
+    <result column="videoStatus" jdbcType="INTEGER" property="videostatus" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    videoId, videoPicUrl, videoUrl, videoName, videoIntro, videoDetail, videoTime, videoPublishDate, 
+    videoHeat, videoStatus
+  </sql>
+  <select id="selectByExample" parameterType="com.sds.em.po.VideoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where videoId = #{videoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from video
+    where videoId = #{videoid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.VideoExample">
+    delete from video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Video">
+    insert into video (videoId, videoPicUrl, videoUrl, 
+      videoName, videoIntro, videoDetail, 
+      videoTime, videoPublishDate, videoHeat, 
+      videoStatus)
+    values (#{videoid,jdbcType=INTEGER}, #{videopicurl,jdbcType=VARCHAR}, #{videourl,jdbcType=VARCHAR}, 
+      #{videoname,jdbcType=VARCHAR}, #{videointro,jdbcType=VARCHAR}, #{videodetail,jdbcType=VARCHAR}, 
+      #{videotime,jdbcType=REAL}, #{videopublishdate,jdbcType=DATE}, #{videoheat,jdbcType=INTEGER}, 
+      #{videostatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Video">
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoid != null">
+        videoId,
+      </if>
+      <if test="videopicurl != null">
+        videoPicUrl,
+      </if>
+      <if test="videourl != null">
+        videoUrl,
+      </if>
+      <if test="videoname != null">
+        videoName,
+      </if>
+      <if test="videointro != null">
+        videoIntro,
+      </if>
+      <if test="videodetail != null">
+        videoDetail,
+      </if>
+      <if test="videotime != null">
+        videoTime,
+      </if>
+      <if test="videopublishdate != null">
+        videoPublishDate,
+      </if>
+      <if test="videoheat != null">
+        videoHeat,
+      </if>
+      <if test="videostatus != null">
+        videoStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoid != null">
+        #{videoid,jdbcType=INTEGER},
+      </if>
+      <if test="videopicurl != null">
+        #{videopicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videourl != null">
+        #{videourl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoname != null">
+        #{videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videointro != null">
+        #{videointro,jdbcType=VARCHAR},
+      </if>
+      <if test="videodetail != null">
+        #{videodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="videotime != null">
+        #{videotime,jdbcType=REAL},
+      </if>
+      <if test="videopublishdate != null">
+        #{videopublishdate,jdbcType=DATE},
+      </if>
+      <if test="videoheat != null">
+        #{videoheat,jdbcType=INTEGER},
+      </if>
+      <if test="videostatus != null">
+        #{videostatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.VideoExample" resultType="java.lang.Integer">
+    select count(*) from video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update video
+    <set>
+      <if test="record.videoid != null">
+        videoId = #{record.videoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.videopicurl != null">
+        videoPicUrl = #{record.videopicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videourl != null">
+        videoUrl = #{record.videourl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoname != null">
+        videoName = #{record.videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videointro != null">
+        videoIntro = #{record.videointro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videodetail != null">
+        videoDetail = #{record.videodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videotime != null">
+        videoTime = #{record.videotime,jdbcType=REAL},
+      </if>
+      <if test="record.videopublishdate != null">
+        videoPublishDate = #{record.videopublishdate,jdbcType=DATE},
+      </if>
+      <if test="record.videoheat != null">
+        videoHeat = #{record.videoheat,jdbcType=INTEGER},
+      </if>
+      <if test="record.videostatus != null">
+        videoStatus = #{record.videostatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update video
+    set videoId = #{record.videoid,jdbcType=INTEGER},
+      videoPicUrl = #{record.videopicurl,jdbcType=VARCHAR},
+      videoUrl = #{record.videourl,jdbcType=VARCHAR},
+      videoName = #{record.videoname,jdbcType=VARCHAR},
+      videoIntro = #{record.videointro,jdbcType=VARCHAR},
+      videoDetail = #{record.videodetail,jdbcType=VARCHAR},
+      videoTime = #{record.videotime,jdbcType=REAL},
+      videoPublishDate = #{record.videopublishdate,jdbcType=DATE},
+      videoHeat = #{record.videoheat,jdbcType=INTEGER},
+      videoStatus = #{record.videostatus,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Video">
+    update video
+    <set>
+      <if test="videopicurl != null">
+        videoPicUrl = #{videopicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="videourl != null">
+        videoUrl = #{videourl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoname != null">
+        videoName = #{videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="videointro != null">
+        videoIntro = #{videointro,jdbcType=VARCHAR},
+      </if>
+      <if test="videodetail != null">
+        videoDetail = #{videodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="videotime != null">
+        videoTime = #{videotime,jdbcType=REAL},
+      </if>
+      <if test="videopublishdate != null">
+        videoPublishDate = #{videopublishdate,jdbcType=DATE},
+      </if>
+      <if test="videoheat != null">
+        videoHeat = #{videoheat,jdbcType=INTEGER},
+      </if>
+      <if test="videostatus != null">
+        videoStatus = #{videostatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where videoId = #{videoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Video">
+    update video
+    set videoPicUrl = #{videopicurl,jdbcType=VARCHAR},
+      videoUrl = #{videourl,jdbcType=VARCHAR},
+      videoName = #{videoname,jdbcType=VARCHAR},
+      videoIntro = #{videointro,jdbcType=VARCHAR},
+      videoDetail = #{videodetail,jdbcType=VARCHAR},
+      videoTime = #{videotime,jdbcType=REAL},
+      videoPublishDate = #{videopublishdate,jdbcType=DATE},
+      videoHeat = #{videoheat,jdbcType=INTEGER},
+      videoStatus = #{videostatus,jdbcType=INTEGER}
+    where videoId = #{videoid,jdbcType=INTEGER}
+  </update>
+</mapper>
