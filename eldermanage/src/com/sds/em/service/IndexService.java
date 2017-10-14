@@ -30,4 +30,10 @@ public interface IndexService {
 	// 返回所有的部门
 
 	public Message allDepartments();
+	
+	//返回当前部门所有职位
+	
+	public Message allRoles(int departmentId);
+	//新闻列表查询
+	public Message allNews();
 }

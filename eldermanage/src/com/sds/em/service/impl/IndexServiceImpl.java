@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.DepartmentMapper;
+import com.sds.em.mapper.NewsMapper;
 import com.sds.em.mapper.QuestionMapper;
 import com.sds.em.mapper.RoleMapper;
 import com.sds.em.mapper.SecurityMapper;
@@ -17,6 +18,8 @@ import com.sds.em.po.Department;
 import com.sds.em.po.DepartmentExample;
 import com.sds.em.po.DepartmentExample.Criterion;
 import com.sds.em.po.Message;
+import com.sds.em.po.News;
+import com.sds.em.po.NewsExample;
 import com.sds.em.po.Question;
 import com.sds.em.po.QuestionExample;
 import com.sds.em.po.Role;
@@ -50,6 +53,9 @@ public class IndexServiceImpl implements IndexService {
 
 	@Autowired
 	DepartmentMapper departmentMapper;
+
+	@Autowired
+	NewsMapper newsMapper;
 
 	@Override
 	public Message checkStaffName(String staffTel) {// 验证员工电话号码是否可用
@@ -244,6 +250,55 @@ public class IndexServiceImpl implements IndexService {
 				jsonObjectList.add(jsonObject);
 			}
 			return new Message(true, "返回成功", jsonObjectList.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message allRoles(int departmentId) {
+		RoleExample roleExample = new RoleExample();
+		com.sds.em.po.RoleExample.Criteria criteria = roleExample.createCriteria();
+		// criteria.a
+		List<Role> roleList = roleMapper.selectByExample(roleExample);
+		return null;
+	}
+
+	@Override
+	public Message allNews() {
+		try {
+			NewsExample newsExample = new NewsExample();
+			com.sds.em.po.NewsExample.Criteria criteria = newsExample.createCriteria();
+
+			List<News> newsList = newsMapper.selectByExample(newsExample);
+
+			List<JSONObject> jsonObjectList = new ArrayList<JSONObject>();
+
+			for (News n : newsList) {
+				JSONObject jsonObject = new JSONObject();
+				try {
+
+					jsonObject.put("Newsid", n.getNewsid());
+					jsonObject.put("Newstitle", n.getNewstitle());
+					jsonObject.put("Newsintro", n.getNewsintro());
+					jsonObject.put("Newstype", n.getNewstype());
+
+					jsonObject.put("Newscontent", n.getNewscontent());
+
+					jsonObject.put("Newsimg", n.getNewsimg());
+					jsonObject.put("Newseditorid", n.getNewseditorid());
+					jsonObject.put("Newsissueddate", n.getNewsissueddate());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				jsonObjectList.add(jsonObject);
+			}
+
+			return new Message(true, "获取成功", jsonObjectList.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

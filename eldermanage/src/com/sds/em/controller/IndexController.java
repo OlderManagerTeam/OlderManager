@@ -95,11 +95,17 @@ public class IndexController {
 	public @ResponseBody Message departments() {
 		return indexService.allDepartments();
 	}
+
+	// 返回当前部门所有职位
+	@RequestMapping(method = RequestMethod.GET, value = "roles")
+	public @ResponseBody Message roles(int departmentId) {
+		return indexService.allRoles(departmentId);
+	}
 	
-/*	//返回当前部门所有职位
-	@RequestMapping(method = RequestMethod.GET, value = "departments")
-	public @ResponseBody Message departments() {
-		return indexService.allDepartments();
-	}*/
-	
+	//新闻列表查询
+		@RequestMapping(method = RequestMethod.GET, value = "news")
+		public @ResponseBody Message news() {
+			return indexService.allNews();
+		}
+
 }
