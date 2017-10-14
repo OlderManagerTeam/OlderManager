@@ -42,6 +42,11 @@ public class BrenchController {
 	public @ResponseBody Message sicks(int sickOlderId, Oldersick oldersick) throws Exception {
 		return brenchManageService.addSicks(sickOlderId, oldersick);
 	}
+	//老人评价
+	@RequestMapping(method = RequestMethod.POST, value = "elder/rate")
+	public @ResponseBody Message rate(int olderId) throws Exception {
+		return brenchManageService.olderRate(olderId);
+	}
 	
 	//发布活动
 	@RequestMapping(method = RequestMethod.POST, value = "action")

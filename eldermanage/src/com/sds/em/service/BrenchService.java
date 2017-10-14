@@ -14,6 +14,9 @@ public interface BrenchService {
 	// 老人病历信息的录入
 	public Message addSicks(int sickOlderId, Oldersick oldersick) throws Exception;
 	
+	//老人评价
+	
+	public Message olderRate(int olderId) throws Exception;
 	/*//发布活动
 	public Message publishAction() throws Exception;*/
 }

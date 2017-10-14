@@ -66,4 +66,10 @@ public class BrenchServiceImpl implements BrenchService {
 		}
 
 	}
+
+	@Override
+	public Message olderRate(int olderId) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
