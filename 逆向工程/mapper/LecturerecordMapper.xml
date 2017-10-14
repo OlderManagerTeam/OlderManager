@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sds.em.mapper.LecturerecordMapper">
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Lecturerecord">
+    <id column="lRecordId" jdbcType="INTEGER" property="lrecordid" />
+    <result column="lRecordOlderId" jdbcType="INTEGER" property="lrecordolderid" />
+    <result column="lRecordDate" jdbcType="DATE" property="lrecorddate" />
+    <result column="lRecordLectureId" jdbcType="INTEGER" property="lrecordlectureid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    lRecordId, lRecordOlderId, lRecordDate, lRecordLectureId
+  </sql>
+  <select id="selectByExample" parameterType="com.sds.em.po.LecturerecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lecturerecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lecturerecord
+    where lRecordId = #{lrecordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lecturerecord
+    where lRecordId = #{lrecordid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.LecturerecordExample">
+    delete from lecturerecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Lecturerecord">
+    insert into lecturerecord (lRecordId, lRecordOlderId, lRecordDate, 
+      lRecordLectureId)
+    values (#{lrecordid,jdbcType=INTEGER}, #{lrecordolderid,jdbcType=INTEGER}, #{lrecorddate,jdbcType=DATE}, 
+      #{lrecordlectureid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Lecturerecord">
+    insert into lecturerecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lrecordid != null">
+        lRecordId,
+      </if>
+      <if test="lrecordolderid != null">
+        lRecordOlderId,
+      </if>
+      <if test="lrecorddate != null">
+        lRecordDate,
+      </if>
+      <if test="lrecordlectureid != null">
+        lRecordLectureId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lrecordid != null">
+        #{lrecordid,jdbcType=INTEGER},
+      </if>
+      <if test="lrecordolderid != null">
+        #{lrecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="lrecorddate != null">
+        #{lrecorddate,jdbcType=DATE},
+      </if>
+      <if test="lrecordlectureid != null">
+        #{lrecordlectureid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.LecturerecordExample" resultType="java.lang.Integer">
+    select count(*) from lecturerecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lecturerecord
+    <set>
+      <if test="record.lrecordid != null">
+        lRecordId = #{record.lrecordid,jdbcType=INTEGER},
+      </if>
+      <if test="record.lrecordolderid != null">
+        lRecordOlderId = #{record.lrecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.lrecorddate != null">
+        lRecordDate = #{record.lrecorddate,jdbcType=DATE},
+      </if>
+      <if test="record.lrecordlectureid != null">
+        lRecordLectureId = #{record.lrecordlectureid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lecturerecord
+    set lRecordId = #{record.lrecordid,jdbcType=INTEGER},
+      lRecordOlderId = #{record.lrecordolderid,jdbcType=INTEGER},
+      lRecordDate = #{record.lrecorddate,jdbcType=DATE},
+      lRecordLectureId = #{record.lrecordlectureid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Lecturerecord">
+    update lecturerecord
+    <set>
+      <if test="lrecordolderid != null">
+        lRecordOlderId = #{lrecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="lrecorddate != null">
+        lRecordDate = #{lrecorddate,jdbcType=DATE},
+      </if>
+      <if test="lrecordlectureid != null">
+        lRecordLectureId = #{lrecordlectureid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lRecordId = #{lrecordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Lecturerecord">
+    update lecturerecord
+    set lRecordOlderId = #{lrecordolderid,jdbcType=INTEGER},
+      lRecordDate = #{lrecorddate,jdbcType=DATE},
+      lRecordLectureId = #{lrecordlectureid,jdbcType=INTEGER}
+    where lRecordId = #{lrecordid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Lecturerecord">
+    <id column="lRecordId" jdbcType="INTEGER" property="lrecordid" />
+    <result column="lRecordOlderId" jdbcType="INTEGER" property="lrecordolderid" />
+    <result column="lRecordDate" jdbcType="DATE" property="lrecorddate" />
+    <result column="lRecordLectureId" jdbcType="INTEGER" property="lrecordlectureid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    lRecordId, lRecordOlderId, lRecordDate, lRecordLectureId
+  </sql>
+  <select id="selectByExample" parameterType="com.sds.em.po.LecturerecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lecturerecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lecturerecord
+    where lRecordId = #{lrecordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lecturerecord
+    where lRecordId = #{lrecordid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.LecturerecordExample">
+    delete from lecturerecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Lecturerecord">
+    insert into lecturerecord (lRecordId, lRecordOlderId, lRecordDate, 
+      lRecordLectureId)
+    values (#{lrecordid,jdbcType=INTEGER}, #{lrecordolderid,jdbcType=INTEGER}, #{lrecorddate,jdbcType=DATE}, 
+      #{lrecordlectureid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Lecturerecord">
+    insert into lecturerecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lrecordid != null">
+        lRecordId,
+      </if>
+      <if test="lrecordolderid != null">
+        lRecordOlderId,
+      </if>
+      <if test="lrecorddate != null">
+        lRecordDate,
+      </if>
+      <if test="lrecordlectureid != null">
+        lRecordLectureId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lrecordid != null">
+        #{lrecordid,jdbcType=INTEGER},
+      </if>
+      <if test="lrecordolderid != null">
+        #{lrecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="lrecorddate != null">
+        #{lrecorddate,jdbcType=DATE},
+      </if>
+      <if test="lrecordlectureid != null">
+        #{lrecordlectureid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.LecturerecordExample" resultType="java.lang.Integer">
+    select count(*) from lecturerecord
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lecturerecord
+    <set>
+      <if test="record.lrecordid != null">
+        lRecordId = #{record.lrecordid,jdbcType=INTEGER},
+      </if>
+      <if test="record.lrecordolderid != null">
+        lRecordOlderId = #{record.lrecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.lrecorddate != null">
+        lRecordDate = #{record.lrecorddate,jdbcType=DATE},
+      </if>
+      <if test="record.lrecordlectureid != null">
+        lRecordLectureId = #{record.lrecordlectureid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lecturerecord
+    set lRecordId = #{record.lrecordid,jdbcType=INTEGER},
+      lRecordOlderId = #{record.lrecordolderid,jdbcType=INTEGER},
+      lRecordDate = #{record.lrecorddate,jdbcType=DATE},
+      lRecordLectureId = #{record.lrecordlectureid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Lecturerecord">
+    update lecturerecord
+    <set>
+      <if test="lrecordolderid != null">
+        lRecordOlderId = #{lrecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="lrecorddate != null">
+        lRecordDate = #{lrecorddate,jdbcType=DATE},
+      </if>
+      <if test="lrecordlectureid != null">
+        lRecordLectureId = #{lrecordlectureid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lRecordId = #{lrecordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Lecturerecord">
+    update lecturerecord
+    set lRecordOlderId = #{lrecordolderid,jdbcType=INTEGER},
+      lRecordDate = #{lrecorddate,jdbcType=DATE},
+      lRecordLectureId = #{lrecordlectureid,jdbcType=INTEGER}
+    where lRecordId = #{lrecordid,jdbcType=INTEGER}
+  </update>
+</mapper>
