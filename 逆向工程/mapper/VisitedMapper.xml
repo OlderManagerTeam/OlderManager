@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sds.em.mapper.VisitedMapper">
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Visited">
+    <id column="visitedId" jdbcType="INTEGER" property="visitedid" />
+    <result column="visitedAssistantId" jdbcType="INTEGER" property="visitedassistantid" />
+    <result column="visitedOlderId" jdbcType="INTEGER" property="visitedolderid" />
+    <result column="visitedjudgeContent" jdbcType="VARCHAR" property="visitedjudgecontent" />
+    <result column="visitedjudgeStar" jdbcType="INTEGER" property="visitedjudgestar" />
+    <result column="visitedContent" jdbcType="VARCHAR" property="visitedcontent" />
+    <result column="visitedDate" jdbcType="DATE" property="visiteddate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    visitedId, visitedAssistantId, visitedOlderId, visitedjudgeContent, visitedjudgeStar, 
+    visitedContent, visitedDate
+  </sql>
+  <select id="selectByExample" parameterType="com.sds.em.po.VisitedExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from visited
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from visited
+    where visitedId = #{visitedid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from visited
+    where visitedId = #{visitedid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.VisitedExample">
+    delete from visited
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Visited">
+    insert into visited (visitedId, visitedAssistantId, visitedOlderId, 
+      visitedjudgeContent, visitedjudgeStar, 
+      visitedContent, visitedDate)
+    values (#{visitedid,jdbcType=INTEGER}, #{visitedassistantid,jdbcType=INTEGER}, #{visitedolderid,jdbcType=INTEGER}, 
+      #{visitedjudgecontent,jdbcType=VARCHAR}, #{visitedjudgestar,jdbcType=INTEGER}, 
+      #{visitedcontent,jdbcType=VARCHAR}, #{visiteddate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Visited">
+    insert into visited
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="visitedid != null">
+        visitedId,
+      </if>
+      <if test="visitedassistantid != null">
+        visitedAssistantId,
+      </if>
+      <if test="visitedolderid != null">
+        visitedOlderId,
+      </if>
+      <if test="visitedjudgecontent != null">
+        visitedjudgeContent,
+      </if>
+      <if test="visitedjudgestar != null">
+        visitedjudgeStar,
+      </if>
+      <if test="visitedcontent != null">
+        visitedContent,
+      </if>
+      <if test="visiteddate != null">
+        visitedDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="visitedid != null">
+        #{visitedid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedassistantid != null">
+        #{visitedassistantid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedolderid != null">
+        #{visitedolderid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedjudgecontent != null">
+        #{visitedjudgecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="visitedjudgestar != null">
+        #{visitedjudgestar,jdbcType=INTEGER},
+      </if>
+      <if test="visitedcontent != null">
+        #{visitedcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="visiteddate != null">
+        #{visiteddate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.VisitedExample" resultType="java.lang.Integer">
+    select count(*) from visited
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update visited
+    <set>
+      <if test="record.visitedid != null">
+        visitedId = #{record.visitedid,jdbcType=INTEGER},
+      </if>
+      <if test="record.visitedassistantid != null">
+        visitedAssistantId = #{record.visitedassistantid,jdbcType=INTEGER},
+      </if>
+      <if test="record.visitedolderid != null">
+        visitedOlderId = #{record.visitedolderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.visitedjudgecontent != null">
+        visitedjudgeContent = #{record.visitedjudgecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visitedjudgestar != null">
+        visitedjudgeStar = #{record.visitedjudgestar,jdbcType=INTEGER},
+      </if>
+      <if test="record.visitedcontent != null">
+        visitedContent = #{record.visitedcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visiteddate != null">
+        visitedDate = #{record.visiteddate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update visited
+    set visitedId = #{record.visitedid,jdbcType=INTEGER},
+      visitedAssistantId = #{record.visitedassistantid,jdbcType=INTEGER},
+      visitedOlderId = #{record.visitedolderid,jdbcType=INTEGER},
+      visitedjudgeContent = #{record.visitedjudgecontent,jdbcType=VARCHAR},
+      visitedjudgeStar = #{record.visitedjudgestar,jdbcType=INTEGER},
+      visitedContent = #{record.visitedcontent,jdbcType=VARCHAR},
+      visitedDate = #{record.visiteddate,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Visited">
+    update visited
+    <set>
+      <if test="visitedassistantid != null">
+        visitedAssistantId = #{visitedassistantid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedolderid != null">
+        visitedOlderId = #{visitedolderid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedjudgecontent != null">
+        visitedjudgeContent = #{visitedjudgecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="visitedjudgestar != null">
+        visitedjudgeStar = #{visitedjudgestar,jdbcType=INTEGER},
+      </if>
+      <if test="visitedcontent != null">
+        visitedContent = #{visitedcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="visiteddate != null">
+        visitedDate = #{visiteddate,jdbcType=DATE},
+      </if>
+    </set>
+    where visitedId = #{visitedid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Visited">
+    update visited
+    set visitedAssistantId = #{visitedassistantid,jdbcType=INTEGER},
+      visitedOlderId = #{visitedolderid,jdbcType=INTEGER},
+      visitedjudgeContent = #{visitedjudgecontent,jdbcType=VARCHAR},
+      visitedjudgeStar = #{visitedjudgestar,jdbcType=INTEGER},
+      visitedContent = #{visitedcontent,jdbcType=VARCHAR},
+      visitedDate = #{visiteddate,jdbcType=DATE}
+    where visitedId = #{visitedid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Visited">
+    <id column="visitedId" jdbcType="INTEGER" property="visitedid" />
+    <result column="visitedAssistantId" jdbcType="INTEGER" property="visitedassistantid" />
+    <result column="visitedOlderId" jdbcType="INTEGER" property="visitedolderid" />
+    <result column="visitedjudgeContent" jdbcType="VARCHAR" property="visitedjudgecontent" />
+    <result column="visitedjudgeStar" jdbcType="INTEGER" property="visitedjudgestar" />
+    <result column="visitedContent" jdbcType="VARCHAR" property="visitedcontent" />
+    <result column="visitedDate" jdbcType="DATE" property="visiteddate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    visitedId, visitedAssistantId, visitedOlderId, visitedjudgeContent, visitedjudgeStar, 
+    visitedContent, visitedDate
+  </sql>
+  <select id="selectByExample" parameterType="com.sds.em.po.VisitedExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from visited
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from visited
+    where visitedId = #{visitedid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from visited
+    where visitedId = #{visitedid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.VisitedExample">
+    delete from visited
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Visited">
+    insert into visited (visitedId, visitedAssistantId, visitedOlderId, 
+      visitedjudgeContent, visitedjudgeStar, 
+      visitedContent, visitedDate)
+    values (#{visitedid,jdbcType=INTEGER}, #{visitedassistantid,jdbcType=INTEGER}, #{visitedolderid,jdbcType=INTEGER}, 
+      #{visitedjudgecontent,jdbcType=VARCHAR}, #{visitedjudgestar,jdbcType=INTEGER}, 
+      #{visitedcontent,jdbcType=VARCHAR}, #{visiteddate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Visited">
+    insert into visited
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="visitedid != null">
+        visitedId,
+      </if>
+      <if test="visitedassistantid != null">
+        visitedAssistantId,
+      </if>
+      <if test="visitedolderid != null">
+        visitedOlderId,
+      </if>
+      <if test="visitedjudgecontent != null">
+        visitedjudgeContent,
+      </if>
+      <if test="visitedjudgestar != null">
+        visitedjudgeStar,
+      </if>
+      <if test="visitedcontent != null">
+        visitedContent,
+      </if>
+      <if test="visiteddate != null">
+        visitedDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="visitedid != null">
+        #{visitedid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedassistantid != null">
+        #{visitedassistantid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedolderid != null">
+        #{visitedolderid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedjudgecontent != null">
+        #{visitedjudgecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="visitedjudgestar != null">
+        #{visitedjudgestar,jdbcType=INTEGER},
+      </if>
+      <if test="visitedcontent != null">
+        #{visitedcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="visiteddate != null">
+        #{visiteddate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.VisitedExample" resultType="java.lang.Integer">
+    select count(*) from visited
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update visited
+    <set>
+      <if test="record.visitedid != null">
+        visitedId = #{record.visitedid,jdbcType=INTEGER},
+      </if>
+      <if test="record.visitedassistantid != null">
+        visitedAssistantId = #{record.visitedassistantid,jdbcType=INTEGER},
+      </if>
+      <if test="record.visitedolderid != null">
+        visitedOlderId = #{record.visitedolderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.visitedjudgecontent != null">
+        visitedjudgeContent = #{record.visitedjudgecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visitedjudgestar != null">
+        visitedjudgeStar = #{record.visitedjudgestar,jdbcType=INTEGER},
+      </if>
+      <if test="record.visitedcontent != null">
+        visitedContent = #{record.visitedcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visiteddate != null">
+        visitedDate = #{record.visiteddate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update visited
+    set visitedId = #{record.visitedid,jdbcType=INTEGER},
+      visitedAssistantId = #{record.visitedassistantid,jdbcType=INTEGER},
+      visitedOlderId = #{record.visitedolderid,jdbcType=INTEGER},
+      visitedjudgeContent = #{record.visitedjudgecontent,jdbcType=VARCHAR},
+      visitedjudgeStar = #{record.visitedjudgestar,jdbcType=INTEGER},
+      visitedContent = #{record.visitedcontent,jdbcType=VARCHAR},
+      visitedDate = #{record.visiteddate,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Visited">
+    update visited
+    <set>
+      <if test="visitedassistantid != null">
+        visitedAssistantId = #{visitedassistantid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedolderid != null">
+        visitedOlderId = #{visitedolderid,jdbcType=INTEGER},
+      </if>
+      <if test="visitedjudgecontent != null">
+        visitedjudgeContent = #{visitedjudgecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="visitedjudgestar != null">
+        visitedjudgeStar = #{visitedjudgestar,jdbcType=INTEGER},
+      </if>
+      <if test="visitedcontent != null">
+        visitedContent = #{visitedcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="visiteddate != null">
+        visitedDate = #{visiteddate,jdbcType=DATE},
+      </if>
+    </set>
+    where visitedId = #{visitedid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Visited">
+    update visited
+    set visitedAssistantId = #{visitedassistantid,jdbcType=INTEGER},
+      visitedOlderId = #{visitedolderid,jdbcType=INTEGER},
+      visitedjudgeContent = #{visitedjudgecontent,jdbcType=VARCHAR},
+      visitedjudgeStar = #{visitedjudgestar,jdbcType=INTEGER},
+      visitedContent = #{visitedcontent,jdbcType=VARCHAR},
+      visitedDate = #{visiteddate,jdbcType=DATE}
+    where visitedId = #{visitedid,jdbcType=INTEGER}
+  </update>
+</mapper>
