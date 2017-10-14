@@ -15,6 +15,8 @@ public class Oldersick {
 
     private String sickadvice;
 
+    private String sickhospital;
+
     public Integer getSickid() {
         return sickid;
     }
@@ -61,5 +63,13 @@ public class Oldersick {
 
     public void setSickadvice(String sickadvice) {
         this.sickadvice = sickadvice == null ? null : sickadvice.trim();
+    }
+
+    public String getSickhospital() {
+        return sickhospital;
+    }
+
+    public void setSickhospital(String sickhospital) {
+        this.sickhospital = sickhospital == null ? null : sickhospital.trim();
     }
 }

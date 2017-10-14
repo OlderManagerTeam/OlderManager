@@ -89,8 +89,13 @@
 							<input type="text" class="form-control" id="staffName" placeholder="员工姓名" autocomplete="off" name="name">
 						</div>
 						<div class="form-group">
-							<label for="staffSex" class="sr-only">员工性别</label>
-							<input type="text" class="form-control" id="staffSex" placeholder="员工性别" autocomplete="off">
+							<label for="staffSex" class="sr-only">性别</label>
+							<!-- <input type="select" class="form-control" id="security" placeholder="请选择您的密保问题" autocomplete="off"> -->
+							<select class="form-control">
+								<option value="" style="display: none;" disabled selected>员工性别</option>
+  								<option id ="man">男</option>
+  								<option id ="faman">女</option>
+							</select>
 						</div>
 				        <div class="form-group">
 							<label for="staffIDE" class="sr-only">员工身份证号码</label>
@@ -100,7 +105,7 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-md-5" style="font-size: 1.8em;color: rgba(0, 0, 0, 0.3)">
-							        <label for="staffBirthday" style="font-size: 0.55em">员工出生日期:</label>
+							        <label for="staffBirthday" style="font-size: 0.6em">出生日期:</label>
 							    </div>
 							    <div class="col-md-7">
 							        <input type="date" class="form-control" id="staffBirthday" placeholder="员工出生日期" autocomplete="off">
@@ -109,21 +114,21 @@
 						</div>
 						<div class="form-group">
 							<label for="staffAddress" class="sr-only">员工住址</label>
-							<input type="telephone" class="form-control" id="staffAddress" placeholder="员工住址" autocomplete="off">
+							<input type="telephone" class="form-control" id="staffAddress" placeholder="员工住址" autocomplete="off" name="adderss">
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="staffTel" class="sr-only">员工电话号码</label>
-							<input type="telephone" class="form-control" id="staffTel" placeholder="员工电话号码" autocomplete="off">
+							<input type="telephone" class="form-control" id="staffTel" placeholder="员工电话号码" autocomplete="off" name="Tel">
 						</div>
 						<div class="form-group">
 							<label for="staffPassword" class="sr-only">密码</label>
-							<input type="password" class="form-control" id="staffPassword" placeholder="密码" name="email">
+							<input type="password" class="form-control" id="staffPassword" placeholder="密码" name="password">
 						</div>
 						<div class="form-group">
 							<label for="re-staffPassword" class="sr-only">请再输入一次密码</label>
-							<input type="password" class="form-control" id="re-staffPassword" placeholder="请再输入一次密码" autocomplete="off">
+							<input type="password" class="form-control" id="re-staffPassword" placeholder="请再输入一次密码" autocomplete="off" name="confirmPassword">
 						</div>
 						<div class="form-group">
 							<label for="security" class="sr-only">请选择您的密保问题</label>
@@ -215,6 +220,7 @@
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
+        	//检验用户名
             name: {
                 message: '姓名不能为空',
                 validators: {
@@ -230,8 +236,8 @@
                     },
                     //验证名字是不是中文
                     regexp: {
-                        regexp: /^[a-zA-Z0-9_\.]+$/,
-                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                        regexp:/^[\u4e00-\u9fa5]+$/,
+                        message: '名字只能是中文'
                     },
                     remote: {
                         url: 'remote.php',
@@ -244,85 +250,73 @@
                     }
                 }
             },
+            //检验用户名
             IDE: {
                 validators: {
-                    emailAddress: {
-                        message: 'The input is not a valid email address'
+                	//身份证是否为空
+                    notEmpty: {
+                        message: '身份证不能为空'
+                    },
+                    //身份证格式
+                    regexp: {
+                        regexp: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/ ,
+                        message:'请输入正确的身份证格式'
                     }
                 }
             },
+            //检验密码
             password: {
                 validators: {
+                	//密码不能为空
                     notEmpty: {
-                        message: 'The password is required and cannot be empty'
+                        message: '密码不能为空'
                     },
-                    identical: {
-                        field: 'confirmPassword',
-                        message: 'The password and its confirm are not the same'
+                    //规定密码的组成方式
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: '密码必须由数字与字母组成'
                     },
-                    different: {
-                        field: 'username',
-                        message: 'The password cannot be the same as username'
+                    //规定密码的长度
+                    stringLength:{
+                    	min:6,
+                    	max:12,
+                    	message:'密码只能是6到12位'
                     }
                 }
             },
             confirmPassword: {
                 validators: {
                     notEmpty: {
-                        message: 'The confirm password is required and cannot be empty'
+                        message: '密码不能为空'
                     },
                     identical: {
                         field: 'password',
-                        message: 'The password and its confirm are not the same'
+                        message: '两次密码不一致'
                     },
-                    different: {
-                        field: 'username',
-                        message: 'The password cannot be the same as username'
-                    }
                 }
             },
-            birthday: {
-                validators: {
-                    date: {
-                        format: 'YYYY/MM/DD',
-                        message: 'The birthday is not valid'
-                    }
-                }
+            Tel:{
+            	validators:{
+            		notEmpty:{
+            			message:'电话不能为空'
+            		},
+            		regexp:{
+            			regexp:/^1[3|5|8]{1}[0-9]{9}$/,
+            			message:'请输入正确的电话号码格式,例如：187XXXXXXXX'
+            		}
+            	}
+            }, 
+            adderss:{
+            	validators:{
+            		notEmpty:{
+            			message:'地址不能为空'
+            		},
+            		regexp:{
+            			regexp:/^[\u4e00-\u9fa5]{2,4}省[\u4e00-\u9fa5]{2,6}市[\u4e00-\u9fa5]{2,6}县[\u4e00-\u9fa5]{0,20}$/,
+            			message:'请输入正确的地址格式，格式为：XX省XX市XX县XXX'
+            		}
+            	}
             },
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required'
-                    }
-                }
-            },
-            'languages[]': {
-                validators: {
-                    notEmpty: {
-                        message: 'Please specify at least one language you can speak'
-                    }
-                }
-            },
-            'programs[]': {
-                validators: {
-                    choice: {
-                        min: 2,
-                        max: 4,
-                        message: 'Please choose 2 - 4 programming languages you are good at'
-                    }
-                }
-            },
-            captcha: {
-                validators: {
-                    callback: {
-                        message: 'Wrong answer',
-                        callback: function(value, validator) {
-                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
-                            return value == sum;
-                        }
-                    }
-                }
-            }
         }
     });
 
