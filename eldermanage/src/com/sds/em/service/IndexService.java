@@ -19,4 +19,15 @@ public interface IndexService {
 
 	public Message returnQuestion(String staffTel);
 
+	// lu:10-14
+	// 校验密保问题答案
+	public Message checkSecurity(String securityAnswer, int staffId);
+
+	// 修改密码
+
+	public Message modifyPassword(String staffPassword, int staffId);
+
+	// 返回所有的部门
+
+	public Message allDepartments();
 }

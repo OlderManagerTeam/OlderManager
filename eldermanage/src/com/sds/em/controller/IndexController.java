@@ -68,15 +68,38 @@ public class IndexController {
 		return modelAndView;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "news")
-	public @ResponseBody Message news() {
-		return null;
+	/*
+	 * lu-10-14
+	 */
 
-	}
-
+	// 返回个人密保问题
 	@RequestMapping(method = RequestMethod.GET, value = "question")
-	public @ResponseBody Message question(String staffTel) {// 验证员工电话号码是否可用
+	public @ResponseBody Message question(String staffTel) {
 		return indexService.returnQuestion(staffTel);
 	}
 
+	// 校验密保问题答案
+	@RequestMapping(method = RequestMethod.POST, value = "answer")
+	public @ResponseBody Message answer(String securityAnswer, int staffId) {
+		return indexService.checkSecurity(securityAnswer, staffId);
+	}
+
+	// 修改密码
+	@RequestMapping(method = RequestMethod.POST, value = "password")
+	public @ResponseBody Message password(String staffPassword, int staffId) {
+		return indexService.modifyPassword(staffPassword, staffId);
+	}
+
+	// 返回所有的部门
+	@RequestMapping(method = RequestMethod.GET, value = "departments")
+	public @ResponseBody Message departments() {
+		return indexService.allDepartments();
+	}
+	
+/*	//返回当前部门所有职位
+	@RequestMapping(method = RequestMethod.GET, value = "departments")
+	public @ResponseBody Message departments() {
+		return indexService.allDepartments();
+	}*/
+	
 }

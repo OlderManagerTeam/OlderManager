@@ -1,16 +1,21 @@
 package com.sds.em.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sds.em.mapper.DepartmentMapper;
 import com.sds.em.mapper.QuestionMapper;
 import com.sds.em.mapper.RoleMapper;
 import com.sds.em.mapper.SecurityMapper;
 import com.sds.em.mapper.StaffbaseMapper;
 import com.sds.em.mapper.StafftokenMapper;
+import com.sds.em.po.Department;
+import com.sds.em.po.DepartmentExample;
+import com.sds.em.po.DepartmentExample.Criterion;
 import com.sds.em.po.Message;
 import com.sds.em.po.Question;
 import com.sds.em.po.QuestionExample;
@@ -42,6 +47,9 @@ public class IndexServiceImpl implements IndexService {
 
 	@Autowired
 	QuestionMapper questionMapper;
+
+	@Autowired
+	DepartmentMapper departmentMapper;
 
 	@Override
 	public Message checkStaffName(String staffTel) {// 验证员工电话号码是否可用
@@ -168,6 +176,80 @@ public class IndexServiceImpl implements IndexService {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
+	}
+
+	@Override
+	public Message checkSecurity(String securityAnswer, int staffId) {
+		try {
+			SecurityExample securityExample = new SecurityExample();
+			com.sds.em.po.SecurityExample.Criteria criteria2 = securityExample.createCriteria();
+			criteria2.andSecuritystaffidEqualTo(staffId);
+			List<Security> securityList = securityMapper.selectByExample(securityExample);
+			if (securityAnswer.equals(securityList.get(0).getSecurityanswer())) {
+				return new Message(true, ",确认用户", null);
+			} else {
+				return new Message(false, ",用户校验失败", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message modifyPassword(String staffPassword, int staffId) {
+		try {
+			Staffbase staffbase = new Staffbase();
+
+			staffbase.setStaffid(staffId);
+			staffbase.setStaffpassword(staffPassword);
+
+			int flag = 0;
+			flag = staffbaseMapper.updateByPrimaryKeySelective(staffbase);
+			if (flag != 0) {
+				return new Message(true, ",成功修改密码", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message allDepartments() {
+		try {
+			DepartmentExample departmentExample = new DepartmentExample();
+
+			com.sds.em.po.DepartmentExample.Criteria criteria = departmentExample.createCriteria();
+
+			List<Department> departmentList = departmentMapper.selectByExample(departmentExample);
+
+			List<JSONObject> jsonObjectList = new ArrayList<JSONObject>();
+
+			for (Department d : departmentList) {
+				JSONObject jsonObject = new JSONObject();
+				try {
+					jsonObject.put("departmentName", d.getDepartmentname());
+					jsonObject.put("departmentId", d.getDepartmentid());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				jsonObjectList.add(jsonObject);
+			}
+			return new Message(true, "返回成功", jsonObjectList.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
 	}
 
 }
