@@ -51,12 +51,8 @@ public class IndexController {
 		int staffId = staffbase.getStaffid();
 		String staffName = staffbase.getStaffname();
 
-		Role role = indexService.returnRole(staffId);
 		session.setAttribute("staffId", staffId);
 		session.setAttribute("staffName", staffName);
-
-		session.setAttribute("role", role);
-
 		modelAndView.addObject("message", message);
 
 		// cookie
@@ -74,20 +70,20 @@ public class IndexController {
 
 	// 返回个人密保问题
 	@RequestMapping(method = RequestMethod.GET, value = "question")
-	public @ResponseBody Message question(String staffTel) {
-		return indexService.returnQuestion(staffTel);
+	public @ResponseBody Message question(@RequestBody String stafftel) {
+		return indexService.returnQuestion(stafftel);
 	}
 
 	// 校验密保问题答案
 	@RequestMapping(method = RequestMethod.POST, value = "answer")
-	public @ResponseBody Message answer(String securityAnswer, int staffId) {
-		return indexService.checkSecurity(securityAnswer, staffId);
+	public @ResponseBody Message answer(@RequestBody String securityanswer, @RequestBody int staffid) {
+		return indexService.checkSecurity(securityanswer, staffid);
 	}
 
 	// 修改密码
 	@RequestMapping(method = RequestMethod.POST, value = "password")
-	public @ResponseBody Message password(String staffPassword, int staffId) {
-		return indexService.modifyPassword(staffPassword, staffId);
+	public @ResponseBody Message password(@RequestBody String staffpassword,@RequestBody int staffid) {
+		return indexService.modifyPassword(staffpassword, staffid);
 	}
 
 	// 返回所有的部门
@@ -98,8 +94,8 @@ public class IndexController {
 
 	// 返回当前部门所有职位
 	@RequestMapping(method = RequestMethod.GET, value = "roles")
-	public @ResponseBody Message roles(int departmentId) {
-		return indexService.allRoles(departmentId);
+	public @ResponseBody Message roles(@RequestBody int departmentid) {
+		return indexService.allRoles(departmentid);
 	}
 	
 	//新闻列表查询
