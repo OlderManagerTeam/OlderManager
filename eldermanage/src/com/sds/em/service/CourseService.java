@@ -15,4 +15,6 @@ public interface CourseService {
 	public Message currentLecture();
 	//老人报名讲座（添加讲座记录表）
 	public Message joinLecture(String olderToken,int lectureId);
+	//查看当地活动
+	public Message localAction(String olderToken);
 }

@@ -1,17 +1,25 @@
 package com.sds.em.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sds.em.mapper.DepartmentMapper;
+import com.sds.em.mapper.NewsMapper;
 import com.sds.em.mapper.QuestionMapper;
 import com.sds.em.mapper.RoleMapper;
 import com.sds.em.mapper.SecurityMapper;
 import com.sds.em.mapper.StaffbaseMapper;
 import com.sds.em.mapper.StafftokenMapper;
+import com.sds.em.po.Department;
+import com.sds.em.po.DepartmentExample;
+import com.sds.em.po.DepartmentExample.Criterion;
 import com.sds.em.po.Message;
+import com.sds.em.po.News;
+import com.sds.em.po.NewsExample;
 import com.sds.em.po.Question;
 import com.sds.em.po.QuestionExample;
 import com.sds.em.po.Role;
@@ -42,6 +50,12 @@ public class IndexServiceImpl implements IndexService {
 
 	@Autowired
 	QuestionMapper questionMapper;
+
+	@Autowired
+	DepartmentMapper departmentMapper;
+
+	@Autowired
+	NewsMapper newsMapper;
 
 	@Override
 	public Message checkStaffName(String staffTel) {// 验证员工电话号码是否可用
@@ -118,14 +132,7 @@ public class IndexServiceImpl implements IndexService {
 		return new Message(false, "数据库错误", null);
 	}
 
-	@Override
-	public Role returnRole(int staffId) {
-		RoleExample roleExample = new RoleExample();
-		com.sds.em.po.RoleExample.Criteria criteria = roleExample.createCriteria();
-		criteria.andRolestaffidEqualTo(staffId);
-		return (Role) roleMapper.selectByExample(roleExample);
-	}
-
+	
 	/**
 	 * 
 	 */
@@ -146,7 +153,7 @@ public class IndexServiceImpl implements IndexService {
 
 				QuestionExample qustionExample = new QuestionExample();
 				com.sds.em.po.QuestionExample.Criteria criteria3 = qustionExample.createCriteria();
-				criteria3.andQuestionEqualTo(securityQuestionId);
+				criteria3.andQuestionidEqualTo(securityQuestionId);
 				List<Question> questionList = questionMapper.selectByExample(qustionExample);
 				String questionContent = questionList.get(0).getQuestioncontent();
 
@@ -190,12 +197,107 @@ public class IndexServiceImpl implements IndexService {
 
 	}
 
-/*	@Override
+	@Override
 	public Message modifyPassword(String staffPassword, int staffId) {
-		staffbaseMapper.updateByExampleSelective(record, example)
-		
-		
+		try {
+			Staffbase staffbase = new Staffbase();
+
+			staffbase.setStaffid(staffId);
+			staffbase.setStaffpassword(staffPassword);
+
+			int flag = 0;
+			flag = staffbaseMapper.updateByPrimaryKeySelective(staffbase);
+			if (flag != 0) {
+				return new Message(true, ",成功修改密码", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message allDepartments() {
+		try {
+			DepartmentExample departmentExample = new DepartmentExample();
+
+			com.sds.em.po.DepartmentExample.Criteria criteria = departmentExample.createCriteria();
+
+			List<Department> departmentList = departmentMapper.selectByExample(departmentExample);
+
+			List<JSONObject> jsonObjectList = new ArrayList<JSONObject>();
+
+			for (Department d : departmentList) {
+				JSONObject jsonObject = new JSONObject();
+				try {
+					jsonObject.put("departmentName", d.getDepartmentname());
+					jsonObject.put("departmentId", d.getDepartmentid());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				jsonObjectList.add(jsonObject);
+			}
+			return new Message(true, "返回成功", jsonObjectList.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message allRoles(int departmentId) {
+		RoleExample roleExample = new RoleExample();
+		com.sds.em.po.RoleExample.Criteria criteria = roleExample.createCriteria();
+		// criteria.a
+		List<Role> roleList = roleMapper.selectByExample(roleExample);
 		return null;
-	}*/
+	}
+
+	@Override
+	public Message allNews() {
+		try {
+			NewsExample newsExample = new NewsExample();
+			com.sds.em.po.NewsExample.Criteria criteria = newsExample.createCriteria();
+
+			List<News> newsList = newsMapper.selectByExample(newsExample);
+
+			List<JSONObject> jsonObjectList = new ArrayList<JSONObject>();
+
+			for (News n : newsList) {
+				JSONObject jsonObject = new JSONObject();
+				try {
+
+					jsonObject.put("Newsid", n.getNewsid());
+					jsonObject.put("Newstitle", n.getNewstitle());
+					jsonObject.put("Newsintro", n.getNewsintro());
+					jsonObject.put("Newstype", n.getNewstype());
+
+					jsonObject.put("Newscontent", n.getNewscontent());
+
+					jsonObject.put("Newsimg", n.getNewsimg());
+					jsonObject.put("Newseditorid", n.getNewseditorid());
+					jsonObject.put("Newsissueddate", n.getNewsissueddate());
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				jsonObjectList.add(jsonObject);
+			}
+
+			return new Message(true, "获取成功", jsonObjectList.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
 
 }
