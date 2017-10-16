@@ -15,4 +15,7 @@
 		
 		<bean id="BrenchService" class="com.sds.em.service.impl.BrenchServiceImpl"/>
 		<bean id="IndexService" class="com.sds.em.service.impl.IndexServiceImpl"/>
+		<bean id="CourseService" class="com.sds.em.service.impl.CourseServiceImpl"/>
+		
+		
 </beans>

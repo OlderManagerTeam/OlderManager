@@ -1,4 +1,7 @@
 /com/
+<<<<<<< HEAD
+=======
 /log4j.properties
 /mybatis/
 /spring/
+>>>>>>> af4accce1632656854796f8d4cf42230ebd84335
