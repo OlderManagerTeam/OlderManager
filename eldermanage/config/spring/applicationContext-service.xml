@@ -12,10 +12,11 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
-		
-		<bean id="BrenchService" class="com.sds.em.service.impl.BrenchServiceImpl"/>
-		<bean id="IndexService" class="com.sds.em.service.impl.IndexServiceImpl"/>
-		<bean id="CourseService" class="com.sds.em.service.impl.CourseServiceImpl"/>
-		
-		
+
+	<bean id="BrenchService" class="com.sds.em.service.impl.BrenchServiceImpl" />
+	<bean id="IndexService" class="com.sds.em.service.impl.IndexServiceImpl" />
+	<bean id="CourseService" class="com.sds.em.service.impl.CourseServiceImpl" />
+	<bean id="NewsService" class="com.sds.em.service.impl.NewsServiceImpl" />
+
+
 </beans>

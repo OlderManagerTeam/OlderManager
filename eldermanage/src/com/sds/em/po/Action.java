@@ -5,6 +5,8 @@ import java.util.Date;
 public class Action {
     private Integer actionid;
 
+    private Integer actionbranchid;
+
     private Date actionstartdate;
 
     private String actionintro;
@@ -21,6 +23,14 @@ public class Action {
 
     public void setActionid(Integer actionid) {
         this.actionid = actionid;
+    }
+
+    public Integer getActionbranchid() {
+        return actionbranchid;
+    }
+
+    public void setActionbranchid(Integer actionbranchid) {
+        this.actionbranchid = actionbranchid;
     }
 
     public Date getActionstartdate() {

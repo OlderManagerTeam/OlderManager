@@ -3,6 +3,7 @@
 <mapper namespace="com.sds.em.mapper.ActionMapper" >
   <resultMap id="BaseResultMap" type="com.sds.em.po.Action" >
     <id column="actionId" property="actionid" jdbcType="INTEGER" />
+    <result column="actionBranchId" property="actionbranchid" jdbcType="INTEGER" />
     <result column="actionStartDate" property="actionstartdate" jdbcType="DATE" />
     <result column="actionIntro" property="actionintro" jdbcType="VARCHAR" />
     <result column="actionName" property="actionname" jdbcType="VARCHAR" />
@@ -68,7 +69,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    actionId, actionStartDate, actionIntro, actionName, actionAddress, actionStatus
+    actionId, actionBranchId, actionStartDate, actionIntro, actionName, actionAddress, 
+    actionStatus
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ActionExample" >
     select
@@ -101,18 +103,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.sds.em.po.Action" >
-    insert into action (actionId, actionStartDate, actionIntro, 
-      actionName, actionAddress, actionStatus
-      )
-    values (#{actionid,jdbcType=INTEGER}, #{actionstartdate,jdbcType=DATE}, #{actionintro,jdbcType=VARCHAR}, 
-      #{actionname,jdbcType=VARCHAR}, #{actionaddress,jdbcType=VARCHAR}, #{actionstatus,jdbcType=INTEGER}
-      )
+    insert into action (actionId, actionBranchId, actionStartDate, 
+      actionIntro, actionName, actionAddress, 
+      actionStatus)
+    values (#{actionid,jdbcType=INTEGER}, #{actionbranchid,jdbcType=INTEGER}, #{actionstartdate,jdbcType=DATE}, 
+      #{actionintro,jdbcType=VARCHAR}, #{actionname,jdbcType=VARCHAR}, #{actionaddress,jdbcType=VARCHAR}, 
+      #{actionstatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Action" >
     insert into action
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="actionid != null" >
         actionId,
+      </if>
+      <if test="actionbranchid != null" >
+        actionBranchId,
       </if>
       <if test="actionstartdate != null" >
         actionStartDate,
@@ -133,6 +138,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="actionid != null" >
         #{actionid,jdbcType=INTEGER},
+      </if>
+      <if test="actionbranchid != null" >
+        #{actionbranchid,jdbcType=INTEGER},
       </if>
       <if test="actionstartdate != null" >
         #{actionstartdate,jdbcType=DATE},
@@ -163,6 +171,9 @@
       <if test="record.actionid != null" >
         actionId = #{record.actionid,jdbcType=INTEGER},
       </if>
+      <if test="record.actionbranchid != null" >
+        actionBranchId = #{record.actionbranchid,jdbcType=INTEGER},
+      </if>
       <if test="record.actionstartdate != null" >
         actionStartDate = #{record.actionstartdate,jdbcType=DATE},
       </if>
@@ -186,6 +197,7 @@
   <update id="updateByExample" parameterType="map" >
     update action
     set actionId = #{record.actionid,jdbcType=INTEGER},
+      actionBranchId = #{record.actionbranchid,jdbcType=INTEGER},
       actionStartDate = #{record.actionstartdate,jdbcType=DATE},
       actionIntro = #{record.actionintro,jdbcType=VARCHAR},
       actionName = #{record.actionname,jdbcType=VARCHAR},
@@ -198,6 +210,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Action" >
     update action
     <set >
+      <if test="actionbranchid != null" >
+        actionBranchId = #{actionbranchid,jdbcType=INTEGER},
+      </if>
       <if test="actionstartdate != null" >
         actionStartDate = #{actionstartdate,jdbcType=DATE},
       </if>
@@ -218,7 +233,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Action" >
     update action
-    set actionStartDate = #{actionstartdate,jdbcType=DATE},
+    set actionBranchId = #{actionbranchid,jdbcType=INTEGER},
+      actionStartDate = #{actionstartdate,jdbcType=DATE},
       actionIntro = #{actionintro,jdbcType=VARCHAR},
       actionName = #{actionname,jdbcType=VARCHAR},
       actionAddress = #{actionaddress,jdbcType=VARCHAR},
