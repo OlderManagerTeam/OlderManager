@@ -132,14 +132,7 @@ public class IndexServiceImpl implements IndexService {
 		return new Message(false, "Êý¾Ý¿â´íÎó", null);
 	}
 
-	@Override
-	public Role returnRole(int staffId) {
-		RoleExample roleExample = new RoleExample();
-		com.sds.em.po.RoleExample.Criteria criteria = roleExample.createCriteria();
-		criteria.andRolestaffidEqualTo(staffId);
-		return (Role) roleMapper.selectByExample(roleExample);
-	}
-
+	
 	/**
 	 * 
 	 */

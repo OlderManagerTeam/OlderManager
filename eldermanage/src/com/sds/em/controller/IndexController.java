@@ -51,12 +51,8 @@ public class IndexController {
 		int staffId = staffbase.getStaffid();
 		String staffName = staffbase.getStaffname();
 
-		Role role = indexService.returnRole(staffId);
 		session.setAttribute("staffId", staffId);
 		session.setAttribute("staffName", staffName);
-
-		session.setAttribute("role", role);
-
 		modelAndView.addObject("message", message);
 
 		// cookie
