@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sds.em.po.Action;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
@@ -24,40 +25,40 @@ public class BrenchController {
 	@Autowired
 	BrenchService brenchManageService;
 
-	// 老人基本信息的录入
+	// 老人基本信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/info")
-	public @ResponseBody Message info(Olderbase olderbase) throws Exception {
+	public @ResponseBody Message info(@RequestBody Olderbase olderbase) throws Exception {
 		return brenchManageService.addElderInfo(olderbase);
 
 	}
 
-	// 老人基本信息的修改
+	// 老人基本信息的修改-测试通过
 	@RequestMapping(method = RequestMethod.PUT, value = "elder/info")
-	public @ResponseBody Message update(Olderbase olderbase) throws Exception {
+	public @ResponseBody Message update(@RequestBody Olderbase olderbase) throws Exception {
 		return brenchManageService.modifyOlder(olderbase);
 	}
 
-	// 老人病历信息的录入
+	// 老人病历信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
-	public @ResponseBody Message sicks(int sickOlderId, Oldersick oldersick) throws Exception {
-		return brenchManageService.addSicks(sickOlderId, oldersick);
+	public @ResponseBody Message sicks(@RequestBody Oldersick oldersick) throws Exception {
+		return brenchManageService.addSicks(oldersick);
 	}
-	//老人评价
+
+	// 老人评价-未测试
 	@RequestMapping(method = RequestMethod.POST, value = "elder/rate")
-	public @ResponseBody Message rate(int olderId) throws Exception {
-		return brenchManageService.olderRate(olderId);
+	public @ResponseBody Message rate(@RequestBody int olderid) throws Exception {
+		return brenchManageService.olderRate(olderid);
 	}
-	
-	/*//发布活动
+
+	// 发布活动-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "action")
-	public @ResponseBody Message addAction(Action action) throws Exception {
+	public @ResponseBody Message addAction(@RequestBody Action action) throws Exception {
 		return brenchManageService.publishAction(action);
 	}
-	
-	//修改活动
-	
+
+	// 修改活动-测试通过
 	@RequestMapping(method = RequestMethod.PUT, value = "action")
-	public @ResponseBody Message updateAction(Action action) throws Exception {
+	public @ResponseBody Message updateAction(@RequestBody Action action) throws Exception {
 		return brenchManageService.modifyAction(action);
-	}*/
+	}
 }
