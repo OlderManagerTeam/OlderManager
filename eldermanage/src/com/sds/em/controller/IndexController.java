@@ -41,11 +41,12 @@ public class IndexController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "login")
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			String staffTel, String staffPassword) {
-		ModelAndView modelAndView = new ModelAndView();
+	@ResponseBody
+	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@RequestBody Staffbase s) {
+	/*	ModelAndView modelAndView = new ModelAndView();
 
-		Message message = indexService.login(staffTel, staffPassword);
+		Message message = indexService.login(s.getStafftel(), s.getStaffpassword());
 
 		Staffbase staffbase = (Staffbase) message.getData();
 		int staffId = staffbase.getStaffid();
@@ -60,8 +61,8 @@ public class IndexController {
 		cookie.setSecure(true);
 		cookie.setMaxAge(24 * 60 * 60);// 保存一天
 		response.addCookie(cookie); // 输出到客户端
-		modelAndView.setViewName("login.jsp");
-		return modelAndView;
+		modelAndView.setViewName("login.jsp");*/
+		return "{\"staffTel\":\"18212400001\",\"staffPassword\":\"123456wwb\"}";
 	}
 
 	/*
