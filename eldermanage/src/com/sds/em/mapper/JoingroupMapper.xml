@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.RoleMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Role" >
-    <id column="roleId" property="roleid" jdbcType="INTEGER" />
-    <result column="roleContent" property="rolecontent" jdbcType="VARCHAR" />
-    <result column="depaertmentId" property="depaertmentid" jdbcType="INTEGER" />
+<mapper namespace="com.sds.em.mapper.JoingroupMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Joingroup" >
+    <id column="joinGroupId" property="joingroupid" jdbcType="INTEGER" />
+    <result column="joinId" property="joinid" jdbcType="INTEGER" />
+    <result column="joinOlderId" property="joinolderid" jdbcType="INTEGER" />
+    <result column="joinDate" property="joindate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    roleId, roleContent, depaertmentId
+    joinGroupId, joinId, joinOlderId, joinDate
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.RoleExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.JoingroupExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from role
+    from joingroup
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from role
-    where roleId = #{roleid,jdbcType=INTEGER}
+    from joingroup
+    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from role
-    where roleId = #{roleid,jdbcType=INTEGER}
+    delete from joingroup
+    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.RoleExample" >
-    delete from role
+  <delete id="deleteByExample" parameterType="com.sds.em.po.JoingroupExample" >
+    delete from joingroup
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Role" >
-    insert into role (roleId, roleContent, depaertmentId
-      )
-    values (#{roleid,jdbcType=INTEGER}, #{rolecontent,jdbcType=VARCHAR}, #{depaertmentid,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="com.sds.em.po.Joingroup" >
+    insert into joingroup (joinGroupId, joinId, joinOlderId, 
+      joinDate)
+    values (#{joingroupid,jdbcType=INTEGER}, #{joinid,jdbcType=INTEGER}, #{joinolderid,jdbcType=INTEGER}, 
+      #{joindate,jdbcType=DATE})
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Role" >
-    insert into role
+  <insert id="insertSelective" parameterType="com.sds.em.po.Joingroup" >
+    insert into joingroup
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="roleid != null" >
-        roleId,
+      <if test="joingroupid != null" >
+        joinGroupId,
       </if>
-      <if test="rolecontent != null" >
-        roleContent,
+      <if test="joinid != null" >
+        joinId,
       </if>
-      <if test="depaertmentid != null" >
-        depaertmentId,
+      <if test="joinolderid != null" >
+        joinOlderId,
+      </if>
+      <if test="joindate != null" >
+        joinDate,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="roleid != null" >
-        #{roleid,jdbcType=INTEGER},
+      <if test="joingroupid != null" >
+        #{joingroupid,jdbcType=INTEGER},
       </if>
-      <if test="rolecontent != null" >
-        #{rolecontent,jdbcType=VARCHAR},
+      <if test="joinid != null" >
+        #{joinid,jdbcType=INTEGER},
       </if>
-      <if test="depaertmentid != null" >
-        #{depaertmentid,jdbcType=INTEGER},
+      <if test="joinolderid != null" >
+        #{joinolderid,jdbcType=INTEGER},
+      </if>
+      <if test="joindate != null" >
+        #{joindate,jdbcType=DATE},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.RoleExample" resultType="java.lang.Integer" >
-    select count(*) from role
+  <select id="countByExample" parameterType="com.sds.em.po.JoingroupExample" resultType="java.lang.Integer" >
+    select count(*) from joingroup
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update role
+    update joingroup
     <set >
-      <if test="record.roleid != null" >
-        roleId = #{record.roleid,jdbcType=INTEGER},
+      <if test="record.joingroupid != null" >
+        joinGroupId = #{record.joingroupid,jdbcType=INTEGER},
       </if>
-      <if test="record.rolecontent != null" >
-        roleContent = #{record.rolecontent,jdbcType=VARCHAR},
+      <if test="record.joinid != null" >
+        joinId = #{record.joinid,jdbcType=INTEGER},
       </if>
-      <if test="record.depaertmentid != null" >
-        depaertmentId = #{record.depaertmentid,jdbcType=INTEGER},
+      <if test="record.joinolderid != null" >
+        joinOlderId = #{record.joinolderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.joindate != null" >
+        joinDate = #{record.joindate,jdbcType=DATE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,30 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update role
-    set roleId = #{record.roleid,jdbcType=INTEGER},
-      roleContent = #{record.rolecontent,jdbcType=VARCHAR},
-      depaertmentId = #{record.depaertmentid,jdbcType=INTEGER}
+    update joingroup
+    set joinGroupId = #{record.joingroupid,jdbcType=INTEGER},
+      joinId = #{record.joinid,jdbcType=INTEGER},
+      joinOlderId = #{record.joinolderid,jdbcType=INTEGER},
+      joinDate = #{record.joindate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Role" >
-    update role
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Joingroup" >
+    update joingroup
     <set >
-      <if test="rolecontent != null" >
-        roleContent = #{rolecontent,jdbcType=VARCHAR},
+      <if test="joinid != null" >
+        joinId = #{joinid,jdbcType=INTEGER},
       </if>
-      <if test="depaertmentid != null" >
-        depaertmentId = #{depaertmentid,jdbcType=INTEGER},
+      <if test="joinolderid != null" >
+        joinOlderId = #{joinolderid,jdbcType=INTEGER},
+      </if>
+      <if test="joindate != null" >
+        joinDate = #{joindate,jdbcType=DATE},
       </if>
     </set>
-    where roleId = #{roleid,jdbcType=INTEGER}
+    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Role" >
-    update role
-    set roleContent = #{rolecontent,jdbcType=VARCHAR},
-      depaertmentId = #{depaertmentid,jdbcType=INTEGER}
-    where roleId = #{roleid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Joingroup" >
+    update joingroup
+    set joinId = #{joinid,jdbcType=INTEGER},
+      joinOlderId = #{joinolderid,jdbcType=INTEGER},
+      joinDate = #{joindate,jdbcType=DATE}
+    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
   </update>
 </mapper>

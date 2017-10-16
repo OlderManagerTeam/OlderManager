@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.RoleMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Role" >
-    <id column="roleId" property="roleid" jdbcType="INTEGER" />
-    <result column="roleContent" property="rolecontent" jdbcType="VARCHAR" />
-    <result column="depaertmentId" property="depaertmentid" jdbcType="INTEGER" />
+<mapper namespace="com.sds.em.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Order" >
+    <id column="orderId" property="orderid" jdbcType="INTEGER" />
+    <result column="orderOlderId" property="orderolderid" jdbcType="INTEGER" />
+    <result column="orderDate" property="orderdate" jdbcType="TIME" />
+    <result column="orderStatus" property="orderstatus" jdbcType="VARCHAR" />
+    <result column="orderTotal" property="ordertotal" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    roleId, roleContent, depaertmentId
+    orderId, orderOlderId, orderDate, orderStatus, orderTotal
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.RoleExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.OrderExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from role
+    from order
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +86,85 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from role
-    where roleId = #{roleid,jdbcType=INTEGER}
+    from order
+    where orderId = #{orderid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from role
-    where roleId = #{roleid,jdbcType=INTEGER}
+    delete from order
+    where orderId = #{orderid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.RoleExample" >
-    delete from role
+  <delete id="deleteByExample" parameterType="com.sds.em.po.OrderExample" >
+    delete from order
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Role" >
-    insert into role (roleId, roleContent, depaertmentId
-      )
-    values (#{roleid,jdbcType=INTEGER}, #{rolecontent,jdbcType=VARCHAR}, #{depaertmentid,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="com.sds.em.po.Order" >
+    insert into order (orderId, orderOlderId, orderDate, 
+      orderStatus, orderTotal)
+    values (#{orderid,jdbcType=INTEGER}, #{orderolderid,jdbcType=INTEGER}, #{orderdate,jdbcType=TIME}, 
+      #{orderstatus,jdbcType=VARCHAR}, #{ordertotal,jdbcType=REAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Role" >
-    insert into role
+  <insert id="insertSelective" parameterType="com.sds.em.po.Order" >
+    insert into order
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="roleid != null" >
-        roleId,
+      <if test="orderid != null" >
+        orderId,
       </if>
-      <if test="rolecontent != null" >
-        roleContent,
+      <if test="orderolderid != null" >
+        orderOlderId,
       </if>
-      <if test="depaertmentid != null" >
-        depaertmentId,
+      <if test="orderdate != null" >
+        orderDate,
+      </if>
+      <if test="orderstatus != null" >
+        orderStatus,
+      </if>
+      <if test="ordertotal != null" >
+        orderTotal,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="roleid != null" >
-        #{roleid,jdbcType=INTEGER},
+      <if test="orderid != null" >
+        #{orderid,jdbcType=INTEGER},
       </if>
-      <if test="rolecontent != null" >
-        #{rolecontent,jdbcType=VARCHAR},
+      <if test="orderolderid != null" >
+        #{orderolderid,jdbcType=INTEGER},
       </if>
-      <if test="depaertmentid != null" >
-        #{depaertmentid,jdbcType=INTEGER},
+      <if test="orderdate != null" >
+        #{orderdate,jdbcType=TIME},
+      </if>
+      <if test="orderstatus != null" >
+        #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertotal != null" >
+        #{ordertotal,jdbcType=REAL},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.RoleExample" resultType="java.lang.Integer" >
-    select count(*) from role
+  <select id="countByExample" parameterType="com.sds.em.po.OrderExample" resultType="java.lang.Integer" >
+    select count(*) from order
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update role
+    update order
     <set >
-      <if test="record.roleid != null" >
-        roleId = #{record.roleid,jdbcType=INTEGER},
+      <if test="record.orderid != null" >
+        orderId = #{record.orderid,jdbcType=INTEGER},
       </if>
-      <if test="record.rolecontent != null" >
-        roleContent = #{record.rolecontent,jdbcType=VARCHAR},
+      <if test="record.orderolderid != null" >
+        orderOlderId = #{record.orderolderid,jdbcType=INTEGER},
       </if>
-      <if test="record.depaertmentid != null" >
-        depaertmentId = #{record.depaertmentid,jdbcType=INTEGER},
+      <if test="record.orderdate != null" >
+        orderDate = #{record.orderdate,jdbcType=TIME},
+      </if>
+      <if test="record.orderstatus != null" >
+        orderStatus = #{record.orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordertotal != null" >
+        orderTotal = #{record.ordertotal,jdbcType=REAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,30 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update role
-    set roleId = #{record.roleid,jdbcType=INTEGER},
-      roleContent = #{record.rolecontent,jdbcType=VARCHAR},
-      depaertmentId = #{record.depaertmentid,jdbcType=INTEGER}
+    update order
+    set orderId = #{record.orderid,jdbcType=INTEGER},
+      orderOlderId = #{record.orderolderid,jdbcType=INTEGER},
+      orderDate = #{record.orderdate,jdbcType=TIME},
+      orderStatus = #{record.orderstatus,jdbcType=VARCHAR},
+      orderTotal = #{record.ordertotal,jdbcType=REAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Role" >
-    update role
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Order" >
+    update order
     <set >
-      <if test="rolecontent != null" >
-        roleContent = #{rolecontent,jdbcType=VARCHAR},
+      <if test="orderolderid != null" >
+        orderOlderId = #{orderolderid,jdbcType=INTEGER},
       </if>
-      <if test="depaertmentid != null" >
-        depaertmentId = #{depaertmentid,jdbcType=INTEGER},
+      <if test="orderdate != null" >
+        orderDate = #{orderdate,jdbcType=TIME},
+      </if>
+      <if test="orderstatus != null" >
+        orderStatus = #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertotal != null" >
+        orderTotal = #{ordertotal,jdbcType=REAL},
       </if>
     </set>
-    where roleId = #{roleid,jdbcType=INTEGER}
+    where orderId = #{orderid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Role" >
-    update role
-    set roleContent = #{rolecontent,jdbcType=VARCHAR},
-      depaertmentId = #{depaertmentid,jdbcType=INTEGER}
-    where roleId = #{roleid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Order" >
+    update order
+    set orderOlderId = #{orderolderid,jdbcType=INTEGER},
+      orderDate = #{orderdate,jdbcType=TIME},
+      orderStatus = #{orderstatus,jdbcType=VARCHAR},
+      orderTotal = #{ordertotal,jdbcType=REAL}
+    where orderId = #{orderid,jdbcType=INTEGER}
   </update>
 </mapper>
