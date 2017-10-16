@@ -18,15 +18,9 @@ public class BrenchServiceImpl implements BrenchService {
 	@Autowired
 	OldersickMapper oldersickMapper;
 
-	/*@Autowired
+	@Autowired
 	ActionMapper actionMapper;
-<<<<<<< HEAD
-*/
-=======
-	
-	
 
->>>>>>> 5a86b154791750598dd747b659fe5cf6b14193ce
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
 		try {
