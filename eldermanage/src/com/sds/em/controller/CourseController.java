@@ -50,6 +50,6 @@ public class CourseController {
 		return courseService.joinLecture(olderToken, lectureId);
 	}
 	
-	//
+	//查看当地活动
 	
 }
