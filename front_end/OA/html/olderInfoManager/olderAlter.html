@@ -36,7 +36,7 @@
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
                             <li>分店管理</li>
-                            <li class="active">老年人基本信息录入</li>
+                            <li class="active">老年人信息修改</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -273,28 +273,28 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">老人基本信息录入</span>
-                        <div class="description">Olderman Information Entry</div>
+                        <span class="title">老人基本信息修改</span>
+                        <div class="description">Olderman Basic Information Alter</div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">老人基本信息录入</div>
+                                        <div class="title">老人基本信息修改</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                 	<!--老人信息录入时候需要的表单-->
                                     <form class="form-horizontal" id="odlerInfoForm">
                                         <div class="form-group">
-                                            <label for="odlerName" class="col-sm-3 control-label">老人姓名：</label>
+                                            <label for="odlerName" class="col-sm-3 control-label">修改老人姓名：</label>
                                             <div class="col-sm-5">
                                                 <input type="text" class="form-control" id="odlerName" placeholder="老人姓名" name="name">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="olderSex" class="col-sm-3 control-label">老人性别：</label>
+                                            <label for="olderSex" class="col-sm-3 control-label">修改老人性别：</label>
                                             <div class="col-sm-5">
                                                 <select id="olderSex">
                                                     <optgroup label="性别">
@@ -305,32 +305,32 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="olderBirthday" class="col-sm-3 control-label">老人出生日期：</label>
+                                            <label for="olderBirthday" class="col-sm-3 control-label">修改老人出生日期：</label>
                                             <div class="col-sm-5">
                                                 <input type="date" class="form-control" id="olderBirthday" placeholder="老人出生日期" name="dete">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="odlerTel" class="col-sm-3 control-label">老人电话号码：</label>
+                                            <label for="odlerTel" class="col-sm-3 control-label">修改老人电话号码：</label>
                                             <div class="col-sm-5">
                                                 <input type="text" class="form-control" id="odlerTel" placeholder="老人电话号码" name="Tel">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="olderPassword" class="col-sm-3 control-label">老人账户密码：</label>
+                                            <label for="olderPassword" class="col-sm-3 control-label">修改老人账户密码：</label>
                                             <div class="col-sm-5">
                                                 <input type="password" class="form-control" id="olderPassword" placeholder="老人账户密码" name="password">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="odlerAdress" class="col-sm-3 control-label">老人地址：</label>
+                                            <label for="odlerAdress" class="col-sm-3 control-label">修改老人地址：</label>
                                             <div class="col-sm-5">
                                                 <input type="text" class="form-control" id="odlerAdress" placeholder="老人地址" name="adderss">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="olderSingleStatus" class="col-sm-3 control-label">老人独居状况：</label>
+                                            <label for="olderSingleStatus" class="col-sm-3 control-label">修改老人独居状况：</label>
                                             <div class="col-sm-5">
                                                 <select id="olderSingleStatus" name="single">
                                                         <option value="">单身状况</option>
@@ -341,13 +341,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="olderIDE" class="col-sm-3 control-label">老人身份证号：</label>
+                                            <label for="olderIDE" class="col-sm-3 control-label">修改老人身份证号：</label>
                                             <div class="col-sm-5">
                                                 <input type="text" class="form-control" id="olderIDE" placeholder="老人地址" name="IDE">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="odlerNation" class="col-sm-3 control-label">老人民族：</label>
+                                            <label for="odlerNation" class="col-sm-3 control-label">修改老人民族：</label>
                                             <div class="col-sm-5">
                                                 <select id="odlerNation">
                                                     <optgroup label="名族">
@@ -413,13 +413,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="olderHeadUrl" class="col-sm-3 control-label">老人照片：</label>
+                                            <label for="olderHeadUrl" class="col-sm-3 control-label">修改老人照片：</label>
                                             <div class="col-sm-5">
                                                 <input type="file" id="file-3">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="olderBranchId" class="col-sm-3 control-label">管理老人的分店：</label>
+                                            <label for="olderBranchId" class="col-sm-3 control-label">修改管理老人的分店：</label>
                                             <div class="col-sm-5">
                                                 <input type="text" class="form-control" id="olderBranchId" placeholder="管理老人的分店">
                                             </div>
@@ -438,7 +438,7 @@
                                         -->
                                         <div class="form-group">
                                             <div class="col-sm-offset-3 col-sm-5">
-                                                <button type="submit" class="btn btn-default">提交</button>
+                                                <button type="submit" class="btn btn-default">确认修改</button>
                                             </div>
                                         </div>
                                     </form>
@@ -475,6 +475,7 @@
             <script src="../../lib/js/fileinput_locale_zh.js" type="text/javascript"></script>
             <!--验证js文件-->
             <script type="text/javascript" src="../../lib/js/bootstrapValidator.min.js"></script>
+            </script>
     <script>
     $("#file-3").fileinput({
         showUpload: false,
@@ -484,7 +485,6 @@
         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
     });
     </script>
-
     <!--表单验证-->
     <script type="text/javascript">
    $(document).ready(function() {
