@@ -122,6 +122,7 @@ public class CourseServiceImpl implements CourseService{
 
 	//	VideorecordExample videorecordExample = new VideorecordExample();
 		Videorecord videorecord = new Videorecord();
+		videorecord.setVrecordvideoid(videoId);
 		videorecord.setVrecordolderid(olderId);
 		videorecord.setVrecorddate(vRecordDate);
 		videorecord.setVrecordcurrentdate(vRecordCurrentDate);
@@ -170,7 +171,7 @@ public class CourseServiceImpl implements CourseService{
 
 
 
-    //老人报名讲座
+    //老人报名参加讲座
 	@Override
 	public Message joinLecture(String olderToken, int lectureId) {
 		
@@ -191,5 +192,22 @@ public class CourseServiceImpl implements CourseService{
         	return new Message(true,"成功报名讲座",null);
         }
 		return new Message(false,"数据库错误",null);
+	}
+
+
+
+    //查看当地活动
+	@Override
+	public Message localAction(String olderToken) {
+		
+		OldertokenExample oldertokenExample = new OldertokenExample();
+		com.sds.em.po.OldertokenExample.Criteria oldertokenCriteria = oldertokenExample.createCriteria();
+		oldertokenCriteria.andOldertokenEqualTo(olderToken);
+		List<Oldertoken> olderTokenList = oldertokenMapper.selectByExample(oldertokenExample);
+		int olderId = olderTokenList.get(0).getOlderid();
+		
+		
+		
+		return null;
 	}
 }
