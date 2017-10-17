@@ -1,0 +1,15 @@
+
+<!-- lu 2017-10-12 录入老人病历信息，并传回id -->
+	<insert id="insertOlderSick" parameterType="com.sds.em.po.Oldersick">
+		<selectKey keyProperty="sickid" order="AFTER" resultType="java.lang.Integer">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into oldersick (sickOlderId, sickInfo,
+		sickDoctor, sickDate, sickAdvice
+		)
+		values (#{sickolderid,jdbcType=INTEGER}, #{sickinfo,jdbcType=VARCHAR},
+		#{sickdoctor,jdbcType=VARCHAR}, #{sickdate,jdbcType=DATE},
+		#{sickadvice,jdbcType=VARCHAR}
+		)
+	</insert>

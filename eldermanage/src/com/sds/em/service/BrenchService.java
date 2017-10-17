@@ -13,7 +13,7 @@ public interface BrenchService {
 	public Message modifyOlder(Olderbase olderbase) throws Exception;
 
 	// 老人病历信息的录入
-	public Message addSicks(int sickOlderId, Oldersick oldersick) throws Exception;
+	public Message addSicks(Oldersick oldersick) throws Exception;
 
 	// 老人评价
 

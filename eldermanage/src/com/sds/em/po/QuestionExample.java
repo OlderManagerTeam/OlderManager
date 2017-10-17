@@ -104,63 +104,63 @@ public class QuestionExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andQuestionIsNull() {
-            addCriterion("question is null");
+        public Criteria andQuestionidIsNull() {
+            addCriterion("questionId is null");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionIsNotNull() {
-            addCriterion("question is not null");
+        public Criteria andQuestionidIsNotNull() {
+            addCriterion("questionId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionEqualTo(Integer value) {
-            addCriterion("question =", value, "question");
+        public Criteria andQuestionidEqualTo(Integer value) {
+            addCriterion("questionId =", value, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionNotEqualTo(Integer value) {
-            addCriterion("question <>", value, "question");
+        public Criteria andQuestionidNotEqualTo(Integer value) {
+            addCriterion("questionId <>", value, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionGreaterThan(Integer value) {
-            addCriterion("question >", value, "question");
+        public Criteria andQuestionidGreaterThan(Integer value) {
+            addCriterion("questionId >", value, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionGreaterThanOrEqualTo(Integer value) {
-            addCriterion("question >=", value, "question");
+        public Criteria andQuestionidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("questionId >=", value, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionLessThan(Integer value) {
-            addCriterion("question <", value, "question");
+        public Criteria andQuestionidLessThan(Integer value) {
+            addCriterion("questionId <", value, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionLessThanOrEqualTo(Integer value) {
-            addCriterion("question <=", value, "question");
+        public Criteria andQuestionidLessThanOrEqualTo(Integer value) {
+            addCriterion("questionId <=", value, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionIn(List<Integer> values) {
-            addCriterion("question in", values, "question");
+        public Criteria andQuestionidIn(List<Integer> values) {
+            addCriterion("questionId in", values, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionNotIn(List<Integer> values) {
-            addCriterion("question not in", values, "question");
+        public Criteria andQuestionidNotIn(List<Integer> values) {
+            addCriterion("questionId not in", values, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionBetween(Integer value1, Integer value2) {
-            addCriterion("question between", value1, value2, "question");
+        public Criteria andQuestionidBetween(Integer value1, Integer value2) {
+            addCriterion("questionId between", value1, value2, "questionid");
             return (Criteria) this;
         }
 
-        public Criteria andQuestionNotBetween(Integer value1, Integer value2) {
-            addCriterion("question not between", value1, value2, "question");
+        public Criteria andQuestionidNotBetween(Integer value1, Integer value2) {
+            addCriterion("questionId not between", value1, value2, "questionid");
             return (Criteria) this;
         }
 
