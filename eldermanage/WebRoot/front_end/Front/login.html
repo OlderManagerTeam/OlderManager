@@ -94,7 +94,7 @@
 							<p>未注册？ <a href="register.html">注册</a> | <a href="forgot.html">忘记密码？</a></p>
 						</div>
 						<div class="form-group">
-							<input type="submit" id="loginsubmit" value="登陆" class="btn btn-primary">
+							<input type="submit" value="登陆" class="btn btn-primary" onclick="CheckLogin(true)">
 						</div>
 					</form>
 					<!-- END Sign In Form -->
@@ -114,26 +114,7 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Main JS -->
 	<script src="js/login.js"></script>
-	<script>
-		$("#loginsubmit").click(function(){
-			var data = {
-				tel: $("tel").val(),
-				password: $("password").val(),
-			}
-			
-			$.ajax({
-				type: 'post',
-				url: "http://localhost:8080/eldermanage/v1/index/staff/login/",
-				data: data,
-				success:function(result){
-					alert(result.information)
-				},
-				error:function(){
-					alert('fail')
-				}
-			})
-		})
-	</script>
+
 
 	</body>
 </html>
