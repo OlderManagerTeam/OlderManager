@@ -132,14 +132,7 @@ public class IndexServiceImpl implements IndexService {
 		return new Message(false, "Êý¾Ý¿â´íÎó", null);
 	}
 
-	@Override
-	public Role returnRole(int staffId) {
-		RoleExample roleExample = new RoleExample();
-		com.sds.em.po.RoleExample.Criteria criteria = roleExample.createCriteria();
-		criteria.andRolestaffidEqualTo(staffId);
-		return (Role) roleMapper.selectByExample(roleExample);
-	}
-
+	
 	/**
 	 * 
 	 */
@@ -160,7 +153,7 @@ public class IndexServiceImpl implements IndexService {
 
 				QuestionExample qustionExample = new QuestionExample();
 				com.sds.em.po.QuestionExample.Criteria criteria3 = qustionExample.createCriteria();
-				criteria3.andQuestionEqualTo(securityQuestionId);
+				criteria3.andQuestionidEqualTo(securityQuestionId);
 				List<Question> questionList = questionMapper.selectByExample(qustionExample);
 				String questionContent = questionList.get(0).getQuestioncontent();
 

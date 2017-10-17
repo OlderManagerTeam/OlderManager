@@ -14,7 +14,6 @@ public interface IndexService {
 
 	public Message login(String staffTel, String staffPassword);// µÇÂ¼ÅĞ¶ÏÃÜÂë
 
-	public Role returnRole(int staffId);// ·µ»Ø½ÇÉ«
 	// yan:10-13
 
 	public Message returnQuestion(String staffTel);

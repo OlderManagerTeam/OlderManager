@@ -192,6 +192,66 @@ public class ActionExample {
             return (Criteria) this;
         }
 
+        public Criteria andActionbranchidIsNull() {
+            addCriterion("actionBranchId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidIsNotNull() {
+            addCriterion("actionBranchId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidEqualTo(Integer value) {
+            addCriterion("actionBranchId =", value, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidNotEqualTo(Integer value) {
+            addCriterion("actionBranchId <>", value, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidGreaterThan(Integer value) {
+            addCriterion("actionBranchId >", value, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("actionBranchId >=", value, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidLessThan(Integer value) {
+            addCriterion("actionBranchId <", value, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidLessThanOrEqualTo(Integer value) {
+            addCriterion("actionBranchId <=", value, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidIn(List<Integer> values) {
+            addCriterion("actionBranchId in", values, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidNotIn(List<Integer> values) {
+            addCriterion("actionBranchId not in", values, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidBetween(Integer value1, Integer value2) {
+            addCriterion("actionBranchId between", value1, value2, "actionbranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionbranchidNotBetween(Integer value1, Integer value2) {
+            addCriterion("actionBranchId not between", value1, value2, "actionbranchid");
+            return (Criteria) this;
+        }
+
         public Criteria andActionstartdateIsNull() {
             addCriterion("actionStartDate is null");
             return (Criteria) this;

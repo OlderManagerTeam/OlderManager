@@ -5,7 +5,7 @@ public class Role {
 
     private String rolecontent;
 
-    private Integer rolestaffid;
+    private Integer depaertmentid;
 
     public Integer getRoleid() {
         return roleid;
@@ -23,11 +23,11 @@ public class Role {
         this.rolecontent = rolecontent == null ? null : rolecontent.trim();
     }
 
-    public Integer getRolestaffid() {
-        return rolestaffid;
+    public Integer getDepaertmentid() {
+        return depaertmentid;
     }
 
-    public void setRolestaffid(Integer rolestaffid) {
-        this.rolestaffid = rolestaffid;
+    public void setDepaertmentid(Integer depaertmentid) {
+        this.depaertmentid = depaertmentid;
     }
 }

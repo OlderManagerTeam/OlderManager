@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.RoleMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Role" >
-    <id column="roleId" property="roleid" jdbcType="INTEGER" />
-    <result column="roleContent" property="rolecontent" jdbcType="VARCHAR" />
-    <result column="depaertmentId" property="depaertmentid" jdbcType="INTEGER" />
+<mapper namespace="com.sds.em.mapper.UrlresourcesMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Urlresources" >
+    <id column="resourcesId" property="resourcesid" jdbcType="INTEGER" />
+    <result column="resourcesDroitId" property="resourcesdroitid" jdbcType="INTEGER" />
+    <result column="resourcesName" property="resourcesname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    roleId, roleContent, depaertmentId
+    resourcesId, resourcesDroitId, resourcesName
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.RoleExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.UrlresourcesExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from role
+    from urlresources
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +84,67 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from role
-    where roleId = #{roleid,jdbcType=INTEGER}
+    from urlresources
+    where resourcesId = #{resourcesid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from role
-    where roleId = #{roleid,jdbcType=INTEGER}
+    delete from urlresources
+    where resourcesId = #{resourcesid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.RoleExample" >
-    delete from role
+  <delete id="deleteByExample" parameterType="com.sds.em.po.UrlresourcesExample" >
+    delete from urlresources
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Role" >
-    insert into role (roleId, roleContent, depaertmentId
+  <insert id="insert" parameterType="com.sds.em.po.Urlresources" >
+    insert into urlresources (resourcesId, resourcesDroitId, resourcesName
       )
-    values (#{roleid,jdbcType=INTEGER}, #{rolecontent,jdbcType=VARCHAR}, #{depaertmentid,jdbcType=INTEGER}
+    values (#{resourcesid,jdbcType=INTEGER}, #{resourcesdroitid,jdbcType=INTEGER}, #{resourcesname,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Role" >
-    insert into role
+  <insert id="insertSelective" parameterType="com.sds.em.po.Urlresources" >
+    insert into urlresources
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="roleid != null" >
-        roleId,
+      <if test="resourcesid != null" >
+        resourcesId,
       </if>
-      <if test="rolecontent != null" >
-        roleContent,
+      <if test="resourcesdroitid != null" >
+        resourcesDroitId,
       </if>
-      <if test="depaertmentid != null" >
-        depaertmentId,
+      <if test="resourcesname != null" >
+        resourcesName,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="roleid != null" >
-        #{roleid,jdbcType=INTEGER},
+      <if test="resourcesid != null" >
+        #{resourcesid,jdbcType=INTEGER},
       </if>
-      <if test="rolecontent != null" >
-        #{rolecontent,jdbcType=VARCHAR},
+      <if test="resourcesdroitid != null" >
+        #{resourcesdroitid,jdbcType=INTEGER},
       </if>
-      <if test="depaertmentid != null" >
-        #{depaertmentid,jdbcType=INTEGER},
+      <if test="resourcesname != null" >
+        #{resourcesname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.RoleExample" resultType="java.lang.Integer" >
-    select count(*) from role
+  <select id="countByExample" parameterType="com.sds.em.po.UrlresourcesExample" resultType="java.lang.Integer" >
+    select count(*) from urlresources
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update role
+    update urlresources
     <set >
-      <if test="record.roleid != null" >
-        roleId = #{record.roleid,jdbcType=INTEGER},
+      <if test="record.resourcesid != null" >
+        resourcesId = #{record.resourcesid,jdbcType=INTEGER},
       </if>
-      <if test="record.rolecontent != null" >
-        roleContent = #{record.rolecontent,jdbcType=VARCHAR},
+      <if test="record.resourcesdroitid != null" >
+        resourcesDroitId = #{record.resourcesdroitid,jdbcType=INTEGER},
       </if>
-      <if test="record.depaertmentid != null" >
-        depaertmentId = #{record.depaertmentid,jdbcType=INTEGER},
+      <if test="record.resourcesname != null" >
+        resourcesName = #{record.resourcesname,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,30 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update role
-    set roleId = #{record.roleid,jdbcType=INTEGER},
-      roleContent = #{record.rolecontent,jdbcType=VARCHAR},
-      depaertmentId = #{record.depaertmentid,jdbcType=INTEGER}
+    update urlresources
+    set resourcesId = #{record.resourcesid,jdbcType=INTEGER},
+      resourcesDroitId = #{record.resourcesdroitid,jdbcType=INTEGER},
+      resourcesName = #{record.resourcesname,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Role" >
-    update role
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Urlresources" >
+    update urlresources
     <set >
-      <if test="rolecontent != null" >
-        roleContent = #{rolecontent,jdbcType=VARCHAR},
+      <if test="resourcesdroitid != null" >
+        resourcesDroitId = #{resourcesdroitid,jdbcType=INTEGER},
       </if>
-      <if test="depaertmentid != null" >
-        depaertmentId = #{depaertmentid,jdbcType=INTEGER},
+      <if test="resourcesname != null" >
+        resourcesName = #{resourcesname,jdbcType=VARCHAR},
       </if>
     </set>
-    where roleId = #{roleid,jdbcType=INTEGER}
+    where resourcesId = #{resourcesid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Role" >
-    update role
-    set roleContent = #{rolecontent,jdbcType=VARCHAR},
-      depaertmentId = #{depaertmentid,jdbcType=INTEGER}
-    where roleId = #{roleid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Urlresources" >
+    update urlresources
+    set resourcesDroitId = #{resourcesdroitid,jdbcType=INTEGER},
+      resourcesName = #{resourcesname,jdbcType=VARCHAR}
+    where resourcesId = #{resourcesid,jdbcType=INTEGER}
   </update>
 </mapper>
