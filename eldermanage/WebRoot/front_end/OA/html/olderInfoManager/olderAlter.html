@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <!-- CSS Libs -->
+    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/checkbox3.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/select2.min.css">
+    <!-- CSS App -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/themes/flat-blue.css">
+    <!--文件上传css文件-->
+    <link href="../../lib/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+    <!--验证css文件-->
+    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrapValidator.min.css">
+</head>
+
+<body class="flat-blue">
+    <div class="app-container">
+        <div class="row content-container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-expand-toggle">
+                            <i class="fa fa-bars icon"></i>
+                        </button>
+                        <ol class="breadcrumb navbar-breadcrumb">
+                            <li>分店管理</li>
+                            <li class="active">老年人信息修改</li>
+                        </ol>
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-th icon"></i>
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-times icon"></i>
+                        </button>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">0</span>
+                                </li>
+                                <li class="message">
+                                    No new notification
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown danger">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+                            <ul class="dropdown-menu danger  animated fadeInDown">
+                                <li class="title">
+                                    Notification <span class="badge pull-right">4</span>
+                                </li>
+                                <li>
+                                    <ul class="list-group notifications">
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item">
+                                                <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
+                                            </li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="list-group-item message">
+                                                view all
+                                            </li>
+                                        </a>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown profile">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+                            <ul class="dropdown-menu animated fadeInDown">
+                                <li class="profile-img">
+                                    <img src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+                                </li>
+                                <li>
+                                    <div class="profile-info">
+                                        <h4 class="username">Emily Hart</h4>
+                                        <p>emily_hart@email.com</p>
+                                        <div class="btn-group margin-bottom-2x" role="group">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="side-menu sidebar-inverse">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa fa-paper-plane"></div>
+                                <div class="title">Flat Admin V.2</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="../index.html">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-element">
+                                    <span class="icon fa fa-desktop"></span><span class="title">UI Kits</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-element" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="../ui-kits/grid.html">Grid</a></li>
+                                            <li><a href="../ui-kits/theming.html">Theming</a></li>
+                                            </li>
+                                            <li><a href="../ui-kits/button.html">Buttons</a>
+                                            </li>
+                                            <li><a href="../ui-kits/card.html">Cards</a>
+                                            </li>
+                                            <li><a href="../ui-kits/list.html">Lists</a>
+                                            </li>
+                                            <li><a href="../ui-kits/modal.html">Modals</a>
+                                            </li>
+                                            <li><a href="../ui-kits/alert.html">Alerts & Toasts</a>
+                                            </li>
+                                            <li><a href="../ui-kits/panel.html">Panels</a>
+                                            </li>
+                                            <li><a href="../ui-kits/loader.html">Loaders</a>
+                                            </li>
+                                            <li><a href="../ui-kits/step.html">Tabs & Steps</a>
+                                            </li>
+                                            <li><a href="../ui-kits/other.html">Other</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-table">
+                                    <span class="icon fa fa-table"></span><span class="title">Table</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-table" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="../table/table.html">Table</a>
+                                            </li>
+                                            <li><a href="../table/datatable.html">Datatable</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-form">
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-form" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="../form/ui-kits.html">Form UI Kits</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--添加在左边导航栏-->
+                            <li class="active panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-olderEntry">
+                                    <span class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-olderEntry" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
+                                            <li><a href="../olderInfoManager/olderEntry.html">老年人基本信息录入</a></li>
+                                            <li><a href="../olderInfoManager/olderAlter.html">老年人基本信息修改</a></li>
+                                            <li><a href="../olderInfoManager/olderSicks.html">老年人病历信息录入</a></li>
+                                            <li><a href="../olderInfoManager/olderAction.html">老年人活动发布</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#component-example">
+                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="component-example" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="../components/pricing-table.html">Pricing Table</a>
+                                            </li>
+                                            <li><a href="../components/chartjs.html">Chart.JS</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-example">
+                                    <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-example" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="../pages/login.html">Login</a>
+                                            </li>
+                                            <li><a href="../pages/index.html">Landing Page</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Dropdown-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="#dropdown-icon">
+                                    <span class="icon fa fa-archive"></span><span class="title">Icons</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-icon" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="../icons/glyphicons.html">Glyphicons</a>
+                                            </li>
+                                            <li><a href="../icons/font-awesome.html">Font Awesomes</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="../license.html">
+                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+            <!-- Main Content -->
+            <div class="container-fluid">
+                <div class="side-body">
+                    <div class="page-title">
+                        <span class="title">老人基本信息修改</span>
+                        <div class="description">Olderman Basic Information Alter</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <div class="title">老人基本信息修改</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                	<!--老人信息录入时候需要的表单-->
+                                    <form class="form-horizontal" id="odlerInfoForm">
+                                        <div class="form-group">
+                                            <label for="odlerName" class="col-sm-3 control-label">修改老人姓名：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="odlerName" placeholder="老人姓名" name="name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderSex" class="col-sm-3 control-label">修改老人性别：</label>
+                                            <div class="col-sm-5">
+                                                <select id="olderSex">
+                                                    <optgroup label="性别">
+                                                        <option value="AK">男</option>
+                                                        <option value="HI">女</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderBirthday" class="col-sm-3 control-label">修改老人出生日期：</label>
+                                            <div class="col-sm-5">
+                                                <input type="date" class="form-control" id="olderBirthday" placeholder="老人出生日期" name="dete">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="odlerTel" class="col-sm-3 control-label">修改老人电话号码：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="odlerTel" placeholder="老人电话号码" name="Tel">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="olderPassword" class="col-sm-3 control-label">修改老人账户密码：</label>
+                                            <div class="col-sm-5">
+                                                <input type="password" class="form-control" id="olderPassword" placeholder="老人账户密码" name="password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="odlerAdress" class="col-sm-3 control-label">修改老人地址：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="odlerAdress" placeholder="老人地址" name="adderss">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderSingleStatus" class="col-sm-3 control-label">修改老人独居状况：</label>
+                                            <div class="col-sm-5">
+                                                <select id="olderSingleStatus" name="single">
+                                                        <option value="">单身状况</option>
+                                                        <option value="HI">单身</option>
+                                                        <option value="HI">非单身</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderIDE" class="col-sm-3 control-label">修改老人身份证号：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="olderIDE" placeholder="老人地址" name="IDE">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="odlerNation" class="col-sm-3 control-label">修改老人民族：</label>
+                                            <div class="col-sm-5">
+                                                <select id="odlerNation">
+                                                    <optgroup label="名族">
+                                                        <option value="">民族</option>
+                                                        <option value="AK">汉族</option>
+                                                        <option value="HI">蒙古族</option>
+                                                        <option value="AK">回族</option>
+                                                        <option value="HI">藏族</option>
+                                                        <option value="AK">维吾尔族</option>
+                                                        <option value="HI">彝族</option>
+                                                        <option value="AK">壮族</option>
+                                                        <option value="HI">布依族</option>
+                                                        <option value="AK">朝鲜族</option>
+                                                        <option value="HI">满族</option>
+                                                        <option value="AK">侗族</option>
+                                                        <option value="HI">瑶族</option>
+                                                        <option value="AK">白族</option>
+                                                        <option value="HI">土家族</option>
+                                                        <option value="AK">哈尼族</option>
+                                                        <option value="HI">哈萨克族</option>
+                                                        <option value="AK">傣族</option>
+                                                        <option value="HI">黎族</option>
+                                                        <option value="AK">僳僳族</option>
+                                                        <option value="HI">佤族</option>
+                                                        <option value="AK">畲族</option>
+                                                        <option value="HI">高山族</option>
+                                                        <option value="AK">拉祜族</option>
+                                                        <option value="HI">水族</option>
+                                                        <option value="AK">东乡族</option>
+                                                        <option value="HI">纳西族</option>
+                                                        <option value="AK">景颇族</option>
+                                                        <option value="HI">柯尔克孜族</option>
+                                                        <option value="AK">土族</option>
+                                                        <option value="HI">达斡尔族</option>
+                                                        <option value="AK">仫佬族</option>
+                                                        <option value="HI">仫佬族</option>
+                                                        <option value="AK">布朗族</option>
+                                                        <option value="HI">撒拉族</option>
+                                                        <option value="AK">毛南族</option>
+                                                        <option value="HI">仡佬族</option>
+                                                        <option value="AK">锡伯族</option>
+                                                        <option value="HI">阿昌族</option>
+                                                        <option value="AK">普米族</option>
+                                                        <option value="HI">塔吉克族</option>
+                                                        <option value="AK">怒族</option>
+                                                        <option value="HI">乌孜别克族</option>
+                                                        <option value="AK">俄罗斯族</option>
+                                                        <option value="HI">鄂温克族</option>
+                                                        <option value="AK">德昂族</option>
+                                                        <option value="HI">保安族</option>
+                                                        <option value="AK">裕固族</option>
+                                                        <option value="HI">京族</option>
+                                                        <option value="AK">塔塔尔族</option>
+                                                        <option value="HI">独龙族</option>
+                                                        <option value="AK">鄂伦春族</option>
+                                                        <option value="HI">赫哲族</option>
+                                                        <option value="AK">门巴族</option>
+                                                        <option value="HI">珞巴族</option>
+                                                        <option value="AK">基诺族</option>
+                                                        <option value="HI">其他</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderHeadUrl" class="col-sm-3 control-label">修改老人照片：</label>
+                                            <div class="col-sm-5">
+                                                <input type="file" id="file-3">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="olderBranchId" class="col-sm-3 control-label">修改管理老人的分店：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="olderBranchId" placeholder="管理老人的分店">
+                                            </div>
+                                        </div>
+                                        <!--
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                              <div class="checkbox3 checkbox-round checkbox-check checkbox-light">
+                                                <input type="checkbox" id="checkbox-10">
+                                                <label for="checkbox-10">
+                                                  Remember me
+                                                </label>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        -->
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-3 col-sm-5">
+                                                <button type="submit" class="btn btn-default">确认修改</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="app-footer">
+            <div class="wrapper">
+                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+            </div>
+        </footer>
+        <div>
+            <!-- Javascript Libs -->
+            <script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+            <script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+            <script type="text/javascript" src="../../lib/js/bootstrap-switch.min.js"></script>
+
+            <script type="text/javascript" src="../../lib/js/jquery.matchHeight-min.js"></script>
+            <script type="text/javascript" src="../../lib/js/jquery.dataTables.min.js"></script>
+            <script type="text/javascript" src="../../lib/js/dataTables.bootstrap.min.js"></script>
+            <script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+            <script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+            <script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+            <script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+            <!-- Javascript -->
+            <script type="text/javascript" src="../../js/app.js"></script>
+            <!-- 文件上传 JS -->
+            <script src="../../lib/js/fileinput.js" type="text/javascript"></script>
+            <script src="../../lib/js/fileinput_locale_zh.js" type="text/javascript"></script>
+            <!--验证js文件-->
+            <script type="text/javascript" src="../../lib/js/bootstrapValidator.min.js"></script>
+            </script>
+    <script>
+    $("#file-3").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-primary btn-lg",
+        fileType: "any",
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
+    });
+    </script>
+    <!--表单验证-->
+    <script type="text/javascript">
+   $(document).ready(function() {
+    // Generate a simple captcha
+    
+    $('#odlerInfoForm').bootstrapValidator({
+//        live: 'disabled',
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok-circle',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh',
+            regexp:'glyphicon glyphicon-ok-circle'
+        },
+        fields: {
+            //检验用户名
+            name: {
+                message: '姓名不能为空',
+                validators: {
+                    //验证名字是否为空
+                    notEmpty: {
+                        message: '姓名不能为空'
+                    },
+                    //验证名字长度
+                    stringLength: {
+                        min: 2,
+                        max: 6,
+                        message: '姓名只能2到6位汉字'
+                    },
+                    //验证名字是不是中文
+                    regexp: {
+                        regexp:/^[\u4e00-\u9fa5]+$/,
+                        message: '名字只能是中文'
+                    },
+                }
+            },
+            //检验用户名
+            IDE: {
+                validators: {
+                    //身份证是否为空
+                    notEmpty: {
+                        message: '身份证不能为空'
+                    },
+                    //身份证格式
+                    regexp: {
+                        regexp: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/ ,
+                        message:'请输入正确的身份证格式'
+                    }
+                }
+            },
+            //检验密码
+            password: {
+                validators: {
+                    //密码不能为空
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                    //规定密码的组成方式
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: '密码必须由数字与字母组成'
+                    },
+                    //规定密码的长度
+                    stringLength:{
+                        min:6,
+                        max:12,
+                        message:'密码只能是6到12位'
+                    },
+                    identical:{
+                        field:'Tel',
+                        message:'密码不能和电话相同'
+                    }
+                }
+            },
+            Tel:{
+                validators:{
+                    notEmpty:{
+                        message:'电话不能为空'
+                    },
+                    regexp:{
+                        regexp:/^1[3|5|8]{1}[0-9]{9}$/,
+                        message:'请输入正确的电话号码格式,例如：187XXXXXXXX'
+                    }
+                }
+            }, 
+            adderss:{
+                validators:{
+                    notEmpty:{
+                        message:'地址不能为空'
+                    },
+                    regexp:{
+                        regexp:/^[\u4e00-\u9fa5]{2,4}省[\u4e00-\u9fa5]{2,6}市[\u4e00-\u9fa5]{2,6}县[\u4e00-\u9fa5]{0,20}$/,
+                        message:'请输入正确的地址格式，格式为：XX省XX市XX县XXX'
+                    }
+                }
+            },
+            single:{
+                enabled: false,
+                validators:{
+                    message:'居住状况必须选择'
+                }
+            },
+        }
+    });
+
+    // Validate the form manually
+    
+});
+        
+    </script>
+</body>
+
+</html>
