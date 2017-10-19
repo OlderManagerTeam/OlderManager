@@ -11,8 +11,6 @@ public class Videorecord {
 
     private Date vrecorddate;
 
-    private Float vrecordcurrentdate;
-
     public Integer getVrecordid() {
         return vrecordid;
     }
@@ -43,13 +41,5 @@ public class Videorecord {
 
     public void setVrecorddate(Date vrecorddate) {
         this.vrecorddate = vrecorddate;
-    }
-
-    public Float getVrecordcurrentdate() {
-        return vrecordcurrentdate;
-    }
-
-    public void setVrecordcurrentdate(Float vrecordcurrentdate) {
-        this.vrecordcurrentdate = vrecordcurrentdate;
     }
 }

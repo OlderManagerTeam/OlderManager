@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sds.em.mapper.JoingroupMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Joingroup" >
+    <id column="joinGroupId" property="joingroupid" jdbcType="INTEGER" />
+    <result column="joinId" property="joinid" jdbcType="INTEGER" />
+    <result column="joinOlderId" property="joinolderid" jdbcType="INTEGER" />
+    <result column="joinDate" property="joindate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    joinGroupId, joinId, joinOlderId, joinDate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.JoingroupExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from joingroup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from joingroup
+    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from joingroup
+    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.JoingroupExample" >
+    delete from joingroup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Joingroup" >
+    insert into joingroup (joinGroupId, joinId, joinOlderId, 
+      joinDate)
+    values (#{joingroupid,jdbcType=INTEGER}, #{joinid,jdbcType=INTEGER}, #{joinolderid,jdbcType=INTEGER}, 
+      #{joindate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Joingroup" >
+    insert into joingroup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="joingroupid != null" >
+        joinGroupId,
+      </if>
+      <if test="joinid != null" >
+        joinId,
+      </if>
+      <if test="joinolderid != null" >
+        joinOlderId,
+      </if>
+      <if test="joindate != null" >
+        joinDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="joingroupid != null" >
+        #{joingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="joinid != null" >
+        #{joinid,jdbcType=INTEGER},
+      </if>
+      <if test="joinolderid != null" >
+        #{joinolderid,jdbcType=INTEGER},
+      </if>
+      <if test="joindate != null" >
+        #{joindate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.JoingroupExample" resultType="java.lang.Integer" >
+    select count(*) from joingroup
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update joingroup
+    <set >
+      <if test="record.joingroupid != null" >
+        joinGroupId = #{record.joingroupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.joinid != null" >
+        joinId = #{record.joinid,jdbcType=INTEGER},
+      </if>
+      <if test="record.joinolderid != null" >
+        joinOlderId = #{record.joinolderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.joindate != null" >
+        joinDate = #{record.joindate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update joingroup
+    set joinGroupId = #{record.joingroupid,jdbcType=INTEGER},
+      joinId = #{record.joinid,jdbcType=INTEGER},
+      joinOlderId = #{record.joinolderid,jdbcType=INTEGER},
+      joinDate = #{record.joindate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Joingroup" >
+    update joingroup
+    <set >
+      <if test="joinid != null" >
+        joinId = #{joinid,jdbcType=INTEGER},
+      </if>
+      <if test="joinolderid != null" >
+        joinOlderId = #{joinolderid,jdbcType=INTEGER},
+      </if>
+      <if test="joindate != null" >
+        joinDate = #{joindate,jdbcType=DATE},
+      </if>
+    </set>
+    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Joingroup" >
+    update joingroup
+    set joinId = #{joinid,jdbcType=INTEGER},
+      joinOlderId = #{joinolderid,jdbcType=INTEGER},
+      joinDate = #{joindate,jdbcType=DATE}
+    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -551,6 +551,66 @@ public class ProductgroupExample {
             addCriterion("groupTotalPeople not between", value1, value2, "grouptotalpeople");
             return (Criteria) this;
         }
+
+        public Criteria andGoupdiscountpriceIsNull() {
+            addCriterion("goupDiscountPrice is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceIsNotNull() {
+            addCriterion("goupDiscountPrice is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceEqualTo(Float value) {
+            addCriterion("goupDiscountPrice =", value, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceNotEqualTo(Float value) {
+            addCriterion("goupDiscountPrice <>", value, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceGreaterThan(Float value) {
+            addCriterion("goupDiscountPrice >", value, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("goupDiscountPrice >=", value, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceLessThan(Float value) {
+            addCriterion("goupDiscountPrice <", value, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceLessThanOrEqualTo(Float value) {
+            addCriterion("goupDiscountPrice <=", value, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceIn(List<Float> values) {
+            addCriterion("goupDiscountPrice in", values, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceNotIn(List<Float> values) {
+            addCriterion("goupDiscountPrice not in", values, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceBetween(Float value1, Float value2) {
+            addCriterion("goupDiscountPrice between", value1, value2, "goupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoupdiscountpriceNotBetween(Float value1, Float value2) {
+            addCriterion("goupDiscountPrice not between", value1, value2, "goupdiscountprice");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
