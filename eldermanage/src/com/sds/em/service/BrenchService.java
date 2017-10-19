@@ -24,4 +24,16 @@ public interface BrenchService {
 
 	// 修改活动
 	public Message modifyAction(Action action) throws Exception;
+	
+	//查询这个管理员所在的分店名
+	public Message getBranchName(int staffid) throws Exception;
+	
+	//查询本分店所有老人的基本信息
+	public Message getAllElder(int branchid)throws Exception;
+	
+	//// 删除某个老人的信息
+	public Message deleteANElder(String oldertel) throws Exception;
+	
+	//获取某个老人的信息
+	public Message getElder(String oldertel)throws Exception;
 }
