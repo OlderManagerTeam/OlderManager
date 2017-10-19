@@ -1,7 +1,5 @@
 package com.sds.em.service.impl;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.ShiroroleMapper;
 import com.sds.em.mapper.StaffbaseMapper;
-import com.sds.em.po.Olderbase;
-import com.sds.em.po.ShiroroleExample;
-import com.sds.em.po.ShiroroleKey;
 import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
 import com.sds.em.po.StaffbaseExample.Criteria;
@@ -31,6 +26,9 @@ public class ShiroServiceImpl implements ShiroService {
 		StaffbaseExample staffbaseExample = new StaffbaseExample();
 		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
 		staffbaseCriteria.andStafftelEqualTo(tel);
+/*		StaffbaseExample staffbaseExample = new StaffbaseExample();
+		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
+		staffbaseCriteria.andStafftelEqualTo(tel);
 		ShiroroleExample shiroroleExample = new ShiroroleExample();
 		com.sds.em.po.ShiroroleExample.Criteria shiroroleCriteria = shiroroleExample.createCriteria();
 		shiroroleCriteria
@@ -39,13 +37,12 @@ public class ShiroServiceImpl implements ShiroService {
 		Set<String> roles = new HashSet<String>();
 		for(ShiroroleKey s:shiroroleKeyList){
 			roles.add(s.getShirorole());
-		}
-		return roles;
+		}*/
+		return getRoles(null);
 	}
 
 	@Override
 	public Staffbase getPerson(String stafftel) {
-		// TODO �Զ����ɵķ������
 		StaffbaseExample staffbaseExample = new StaffbaseExample();
 		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
 		staffbaseCriteria.andStafftelEqualTo(stafftel);
