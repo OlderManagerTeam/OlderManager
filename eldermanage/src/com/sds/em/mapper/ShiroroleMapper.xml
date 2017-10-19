@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.StaffattachMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Staffattach" >
-    <id column="staffId" property="staffid" jdbcType="INTEGER" />
-    <result column="depaertmentId" property="depaertmentid" jdbcType="INTEGER" />
-    <result column="roleId" property="roleid" jdbcType="INTEGER" />
+<mapper namespace="com.sds.em.mapper.ShiroroleMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.ShiroroleKey" >
+    <id column="shiroroleStaffid" property="shirorolestaffid" jdbcType="INTEGER" />
+    <id column="shirorole" property="shirorole" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    staffId, depaertmentId, roleId
+    shiroroleStaffid, shirorole
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.StaffattachExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ShiroroleExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from staffattach
+    from shirorole
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -81,70 +80,54 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from staffattach
-    where staffId = #{staffid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from staffattach
-    where staffId = #{staffid,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="com.sds.em.po.ShiroroleKey" >
+    delete from shirorole
+    where shiroroleStaffid = #{shirorolestaffid,jdbcType=INTEGER}
+      and shirorole = #{shirorole,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.StaffattachExample" >
-    delete from staffattach
+  <delete id="deleteByExample" parameterType="com.sds.em.po.ShiroroleExample" >
+    delete from shirorole
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Staffattach" >
-    insert into staffattach (staffId, depaertmentId, roleId
-      )
-    values (#{staffid,jdbcType=INTEGER}, #{depaertmentid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="com.sds.em.po.ShiroroleKey" >
+    insert into shirorole (shiroroleStaffid, shirorole)
+    values (#{shirorolestaffid,jdbcType=INTEGER}, #{shirorole,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Staffattach" >
-    insert into staffattach
+  <insert id="insertSelective" parameterType="com.sds.em.po.ShiroroleKey" >
+    insert into shirorole
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="staffid != null" >
-        staffId,
+      <if test="shirorolestaffid != null" >
+        shiroroleStaffid,
       </if>
-      <if test="depaertmentid != null" >
-        depaertmentId,
-      </if>
-      <if test="roleid != null" >
-        roleId,
+      <if test="shirorole != null" >
+        shirorole,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="staffid != null" >
-        #{staffid,jdbcType=INTEGER},
+      <if test="shirorolestaffid != null" >
+        #{shirorolestaffid,jdbcType=INTEGER},
       </if>
-      <if test="depaertmentid != null" >
-        #{depaertmentid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null" >
-        #{roleid,jdbcType=INTEGER},
+      <if test="shirorole != null" >
+        #{shirorole,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.StaffattachExample" resultType="java.lang.Integer" >
-    select count(*) from staffattach
+  <select id="countByExample" parameterType="com.sds.em.po.ShiroroleExample" resultType="java.lang.Integer" >
+    select count(*) from shirorole
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update staffattach
+    update shirorole
     <set >
-      <if test="record.staffid != null" >
-        staffId = #{record.staffid,jdbcType=INTEGER},
+      <if test="record.shirorolestaffid != null" >
+        shiroroleStaffid = #{record.shirorolestaffid,jdbcType=INTEGER},
       </if>
-      <if test="record.depaertmentid != null" >
-        depaertmentId = #{record.depaertmentid,jdbcType=INTEGER},
-      </if>
-      <if test="record.roleid != null" >
-        roleId = #{record.roleid,jdbcType=INTEGER},
+      <if test="record.shirorole != null" >
+        shirorole = #{record.shirorole,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,30 +135,11 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update staffattach
-    set staffId = #{record.staffid,jdbcType=INTEGER},
-      depaertmentId = #{record.depaertmentid,jdbcType=INTEGER},
-      roleId = #{record.roleid,jdbcType=INTEGER}
+    update shirorole
+    set shiroroleStaffid = #{record.shirorolestaffid,jdbcType=INTEGER},
+      shirorole = #{record.shirorole,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Staffattach" >
-    update staffattach
-    <set >
-      <if test="depaertmentid != null" >
-        depaertmentId = #{depaertmentid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null" >
-        roleId = #{roleid,jdbcType=INTEGER},
-      </if>
-    </set>
-    where staffId = #{staffid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Staffattach" >
-    update staffattach
-    set depaertmentId = #{depaertmentid,jdbcType=INTEGER},
-      roleId = #{roleid,jdbcType=INTEGER}
-    where staffId = #{staffid,jdbcType=INTEGER}
   </update>
 </mapper>

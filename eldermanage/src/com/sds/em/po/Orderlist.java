@@ -9,7 +9,7 @@ public class Orderlist {
 
     private Integer orderproductcount;
 
-    private Float orderdiscount;
+    private Float orderdiscountprice;
 
     public Integer getOrderlistid() {
         return orderlistid;
@@ -43,11 +43,11 @@ public class Orderlist {
         this.orderproductcount = orderproductcount;
     }
 
-    public Float getOrderdiscount() {
-        return orderdiscount;
+    public Float getOrderdiscountprice() {
+        return orderdiscountprice;
     }
 
-    public void setOrderdiscount(Float orderdiscount) {
-        this.orderdiscount = orderdiscount;
+    public void setOrderdiscountprice(Float orderdiscountprice) {
+        this.orderdiscountprice = orderdiscountprice;
     }
 }

@@ -240,7 +240,8 @@
       sickHospital = #{sickhospital,jdbcType=VARCHAR}
     where sickId = #{sickid,jdbcType=INTEGER}
   </update>
-  <!-- lu 2017-10-12 录入老人病历信息，并传回id -->
+
+<!-- lu 2017-10-12 id -->
 	<insert id="insertOlderSick" parameterType="com.sds.em.po.Oldersick">
 		<selectKey keyProperty="sickid" order="AFTER" resultType="java.lang.Integer">
 			SELECT
