@@ -17,6 +17,8 @@ public class Productgroup {
 
     private Integer grouptotalpeople;
 
+    private Float goupdiscountprice;
+
     public Integer getGroupid() {
         return groupid;
     }
@@ -71,5 +73,13 @@ public class Productgroup {
 
     public void setGrouptotalpeople(Integer grouptotalpeople) {
         this.grouptotalpeople = grouptotalpeople;
+    }
+
+    public Float getGoupdiscountprice() {
+        return goupdiscountprice;
+    }
+
+    public void setGoupdiscountprice(Float goupdiscountprice) {
+        this.goupdiscountprice = goupdiscountprice;
     }
 }

@@ -1,5 +1,9 @@
 package com.sds.em.controller;
 
+import java.util.Date;
+
+import javax.xml.crypto.Data;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +16,7 @@ import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
 import com.sds.em.service.BrenchService;
+import com.sds.em.util.DateSimp;
 
 /*
  * 作者：刘露
@@ -25,9 +30,34 @@ public class BrenchController {
 	@Autowired
 	BrenchService brenchManageService;
 
+	// olderpoint;
+
+	// odermaxpoint;
+
 	// 老人基本信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/info")
-	public @ResponseBody Message info(@RequestBody Olderbase olderbase) throws Exception {
+	public @ResponseBody Message info(String oldername, String oldersex, String olderbirthday, String olderpassword,
+			String oldertel, String olderaddress, String oldersinglestatus, String olderide, String oldernation,
+			String olderheadurl, int olderbranchid) throws Exception {
+
+		Olderbase olderbase = new Olderbase();
+		olderbase.setOlderaddress(olderaddress);
+
+		Date date = DateSimp.simp(olderbirthday);
+
+		olderbase.setOlderbirthday(date);
+		olderbase.setOlderbranchid(olderbranchid);
+		olderbase.setOlderheadurl(olderheadurl);
+		olderbase.setOlderide(olderide);
+		olderbase.setOldername(oldername);
+		olderbase.setOldernation(oldernation);
+		olderbase.setOlderpassword(olderpassword);
+
+		olderbase.setOlderpoint(0);
+		olderbase.setOldersex(oldersex);
+		olderbase.setOldersinglestatus(oldersinglestatus);
+		olderbase.setOldertel(oldertel);
+		olderbase.setOdermaxpoint(0);
 		return brenchManageService.addElderInfo(olderbase);
 
 	}
@@ -38,9 +68,11 @@ public class BrenchController {
 		return brenchManageService.modifyOlder(olderbase);
 	}
 
+	
 	// 老人病历信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
 	public @ResponseBody Message sicks(@RequestBody Oldersick oldersick) throws Exception {
+
 		return brenchManageService.addSicks(oldersick);
 	}
 

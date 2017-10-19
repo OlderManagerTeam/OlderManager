@@ -11,7 +11,7 @@
     <result column="videoTime" property="videotime" jdbcType="REAL" />
     <result column="videoPublishDate" property="videopublishdate" jdbcType="DATE" />
     <result column="videoHeat" property="videoheat" jdbcType="INTEGER" />
-    <result column="videoStatus" property="videostatus" jdbcType="INTEGER" />
+    <result column="videoPartition" property="videopartition" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List" >
     videoId, videoPicUrl, videoUrl, videoName, videoIntro, videoDetail, videoTime, videoPublishDate, 
-    videoHeat, videoStatus
+    videoHeat, videoPartition
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.VideoExample" >
     select
@@ -109,11 +109,11 @@
     insert into video (videoId, videoPicUrl, videoUrl, 
       videoName, videoIntro, videoDetail, 
       videoTime, videoPublishDate, videoHeat, 
-      videoStatus)
+      videoPartition)
     values (#{videoid,jdbcType=INTEGER}, #{videopicurl,jdbcType=VARCHAR}, #{videourl,jdbcType=VARCHAR}, 
       #{videoname,jdbcType=VARCHAR}, #{videointro,jdbcType=VARCHAR}, #{videodetail,jdbcType=VARCHAR}, 
       #{videotime,jdbcType=REAL}, #{videopublishdate,jdbcType=DATE}, #{videoheat,jdbcType=INTEGER}, 
-      #{videostatus,jdbcType=INTEGER})
+      #{videopartition,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Video" >
     insert into video
@@ -145,8 +145,8 @@
       <if test="videoheat != null" >
         videoHeat,
       </if>
-      <if test="videostatus != null" >
-        videoStatus,
+      <if test="videopartition != null" >
+        videoPartition,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -177,8 +177,8 @@
       <if test="videoheat != null" >
         #{videoheat,jdbcType=INTEGER},
       </if>
-      <if test="videostatus != null" >
-        #{videostatus,jdbcType=INTEGER},
+      <if test="videopartition != null" >
+        #{videopartition,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -218,8 +218,8 @@
       <if test="record.videoheat != null" >
         videoHeat = #{record.videoheat,jdbcType=INTEGER},
       </if>
-      <if test="record.videostatus != null" >
-        videoStatus = #{record.videostatus,jdbcType=INTEGER},
+      <if test="record.videopartition != null" >
+        videoPartition = #{record.videopartition,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -237,7 +237,7 @@
       videoTime = #{record.videotime,jdbcType=REAL},
       videoPublishDate = #{record.videopublishdate,jdbcType=DATE},
       videoHeat = #{record.videoheat,jdbcType=INTEGER},
-      videoStatus = #{record.videostatus,jdbcType=INTEGER}
+      videoPartition = #{record.videopartition,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -269,8 +269,8 @@
       <if test="videoheat != null" >
         videoHeat = #{videoheat,jdbcType=INTEGER},
       </if>
-      <if test="videostatus != null" >
-        videoStatus = #{videostatus,jdbcType=INTEGER},
+      <if test="videopartition != null" >
+        videoPartition = #{videopartition,jdbcType=VARCHAR},
       </if>
     </set>
     where videoId = #{videoid,jdbcType=INTEGER}
@@ -285,7 +285,7 @@
       videoTime = #{videotime,jdbcType=REAL},
       videoPublishDate = #{videopublishdate,jdbcType=DATE},
       videoHeat = #{videoheat,jdbcType=INTEGER},
-      videoStatus = #{videostatus,jdbcType=INTEGER}
+      videoPartition = #{videopartition,jdbcType=VARCHAR}
     where videoId = #{videoid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,4 +1,4 @@
-package com.sds.em.po;
+package com.sds.em.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
