@@ -10,6 +10,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sds.em.po.Olderbase;
 import com.sds.em.po.Staffbase;
 import com.sds.em.service.StaffShiroService;
 
@@ -37,6 +38,7 @@ public class Myrealm extends AuthorizingRealm {
 		// TODO 自动生成的方法存根
 		String stafftel = (String) arg0.getPrincipal();
 		Staffbase staff = staffShiroService.getStaff(stafftel);
+		Olderbase older=
 		if (staff != null) {
 			AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(staff.getStafftel(), staff.getStaffpassword(),
 					staff.getStafftel());
