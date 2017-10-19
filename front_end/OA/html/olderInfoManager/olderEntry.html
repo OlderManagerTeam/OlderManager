@@ -415,13 +415,13 @@
                                         <div class="form-group">
                                             <label for="olderHeadUrl" class="col-sm-3 control-label">老人照片：</label>
                                             <div class="col-sm-5">
-                                                <input type="file" id="file-3">
+                                                <input type="file" id="file-1">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="olderBranchId" class="col-sm-3 control-label">管理老人的分店：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="olderBranchId" placeholder="管理老人的分店">
+                                                <text class="form-control" id="olderBranchId" >例如：贵阳分店</text>
                                             </div>
                                         </div>
                                         <!--
@@ -476,15 +476,18 @@
             <!--验证js文件-->
             <script type="text/javascript" src="../../lib/js/bootstrapValidator.min.js"></script>
     <script>
-    $("#file-3").fileinput({
-        showUpload: false,
-        showCaption: false,
-        browseClass: "btn btn-primary btn-lg",
-        fileType: "any",
-        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
-    });
-    </script>
-
+    $("#file-1").fileinput({
+        uploadUrl: '', // you must set a valid URL here else you will get an error
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+	});
+</script>
     <!--表单验证-->
     <script type="text/javascript">
    $(document).ready(function() {
@@ -553,9 +556,9 @@
                         max:12,
                         message:'密码只能是6到12位'
                     },
-                    identical:{
-                        field:'Tel',
-                        message:'密码不能和电话相同'
+                    different: {
+                        field: 'Tel',
+                        message: '密码不能和电话相同'
                     }
                 }
             },
@@ -595,6 +598,41 @@
 });
         
     </script>
+    <script type="text/javascript">
+			$("#entrysubmit").click(function() {
+			    var olderPoint=0
+				var data = {
+					oldername : $("#olderName").val(),
+					oldersex :$("#olderSex").find("option:selected").text(),
+					olderpassword : $("#olderPassword").val(),
+					oldertel : $("#olderBirthday").val(),
+					olderaddress : $("#olderAdress").val(),
+					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
+					olderide : $("#olderIDE").val(),
+					
+					oldernation : $("#odlerNation").find("option:selected").text(),
+					olderheadurl : $("#olderHeadUrl").val(),
+					olderpoint :$("#olderPoint").val(),
+					olderbranchid : $("#olderBranchId").val(), 
+				}
+				$.ajax({
+				type: 'post',
+				contentType:'application/json',
+				url: "http://localhost:8080/eldermanage/v1/brench/elder/info",
+				data: JSON.stringify(data),
+				success:function(result){
+					var resultdata = JSON.parse(result)
+					alert(resultdata.success)
+				},
+				error:function(){
+					alert('fail')
+				}
+			})
+				
+			}
+			)
+		</script>
+
 </body>
 
 </html>
