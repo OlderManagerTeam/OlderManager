@@ -17,6 +17,8 @@ public class News {
 
     private String newsintro;
 
+    private Integer newsheat;
+
     private String newscontent;
 
     public Integer getNewsid() {
@@ -73,6 +75,14 @@ public class News {
 
     public void setNewsintro(String newsintro) {
         this.newsintro = newsintro == null ? null : newsintro.trim();
+    }
+
+    public Integer getNewsheat() {
+        return newsheat;
+    }
+
+    public void setNewsheat(Integer newsheat) {
+        this.newsheat = newsheat;
     }
 
     public String getNewscontent() {

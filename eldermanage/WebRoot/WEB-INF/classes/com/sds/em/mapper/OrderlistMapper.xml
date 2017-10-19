@@ -6,7 +6,7 @@
     <result column="orderListFId" property="orderlistfid" jdbcType="INTEGER" />
     <result column="orderProductId" property="orderproductid" jdbcType="INTEGER" />
     <result column="orderProductCount" property="orderproductcount" jdbcType="INTEGER" />
-    <result column="orderDiscount" property="orderdiscount" jdbcType="REAL" />
+    <result column="orderDiscountPrice" property="orderdiscountprice" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    orderListId, orderListFId, orderProductId, orderProductCount, orderDiscount
+    orderListId, orderListFId, orderProductId, orderProductCount, orderDiscountPrice
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.OrderlistExample" >
     select
@@ -101,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.sds.em.po.Orderlist" >
     insert into orderlist (orderListId, orderListFId, orderProductId, 
-      orderProductCount, orderDiscount)
+      orderProductCount, orderDiscountPrice)
     values (#{orderlistid,jdbcType=INTEGER}, #{orderlistfid,jdbcType=INTEGER}, #{orderproductid,jdbcType=INTEGER}, 
-      #{orderproductcount,jdbcType=INTEGER}, #{orderdiscount,jdbcType=REAL})
+      #{orderproductcount,jdbcType=INTEGER}, #{orderdiscountprice,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Orderlist" >
     insert into orderlist
@@ -120,8 +120,8 @@
       <if test="orderproductcount != null" >
         orderProductCount,
       </if>
-      <if test="orderdiscount != null" >
-        orderDiscount,
+      <if test="orderdiscountprice != null" >
+        orderDiscountPrice,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -137,8 +137,8 @@
       <if test="orderproductcount != null" >
         #{orderproductcount,jdbcType=INTEGER},
       </if>
-      <if test="orderdiscount != null" >
-        #{orderdiscount,jdbcType=REAL},
+      <if test="orderdiscountprice != null" >
+        #{orderdiscountprice,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -163,8 +163,8 @@
       <if test="record.orderproductcount != null" >
         orderProductCount = #{record.orderproductcount,jdbcType=INTEGER},
       </if>
-      <if test="record.orderdiscount != null" >
-        orderDiscount = #{record.orderdiscount,jdbcType=REAL},
+      <if test="record.orderdiscountprice != null" >
+        orderDiscountPrice = #{record.orderdiscountprice,jdbcType=REAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -177,7 +177,7 @@
       orderListFId = #{record.orderlistfid,jdbcType=INTEGER},
       orderProductId = #{record.orderproductid,jdbcType=INTEGER},
       orderProductCount = #{record.orderproductcount,jdbcType=INTEGER},
-      orderDiscount = #{record.orderdiscount,jdbcType=REAL}
+      orderDiscountPrice = #{record.orderdiscountprice,jdbcType=REAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -194,8 +194,8 @@
       <if test="orderproductcount != null" >
         orderProductCount = #{orderproductcount,jdbcType=INTEGER},
       </if>
-      <if test="orderdiscount != null" >
-        orderDiscount = #{orderdiscount,jdbcType=REAL},
+      <if test="orderdiscountprice != null" >
+        orderDiscountPrice = #{orderdiscountprice,jdbcType=REAL},
       </if>
     </set>
     where orderListId = #{orderlistid,jdbcType=INTEGER}
@@ -205,7 +205,7 @@
     set orderListFId = #{orderlistfid,jdbcType=INTEGER},
       orderProductId = #{orderproductid,jdbcType=INTEGER},
       orderProductCount = #{orderproductcount,jdbcType=INTEGER},
-      orderDiscount = #{orderdiscount,jdbcType=REAL}
+      orderDiscountPrice = #{orderdiscountprice,jdbcType=REAL}
     where orderListId = #{orderlistid,jdbcType=INTEGER}
   </update>
 </mapper>

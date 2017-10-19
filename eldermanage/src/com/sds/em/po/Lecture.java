@@ -19,6 +19,8 @@ public class Lecture {
 
     private String lectureaddress;
 
+    private Integer lecturebranchid;
+
     public Integer getLectureid() {
         return lectureid;
     }
@@ -81,5 +83,13 @@ public class Lecture {
 
     public void setLectureaddress(String lectureaddress) {
         this.lectureaddress = lectureaddress == null ? null : lectureaddress.trim();
+    }
+
+    public Integer getLecturebranchid() {
+        return lecturebranchid;
+    }
+
+    public void setLecturebranchid(Integer lecturebranchid) {
+        this.lecturebranchid = lecturebranchid;
     }
 }

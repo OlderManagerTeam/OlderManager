@@ -641,6 +641,66 @@ public class LectureExample {
             addCriterion("lectureAddress not between", value1, value2, "lectureaddress");
             return (Criteria) this;
         }
+
+        public Criteria andLecturebranchidIsNull() {
+            addCriterion("lectureBranchId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidIsNotNull() {
+            addCriterion("lectureBranchId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidEqualTo(Integer value) {
+            addCriterion("lectureBranchId =", value, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidNotEqualTo(Integer value) {
+            addCriterion("lectureBranchId <>", value, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidGreaterThan(Integer value) {
+            addCriterion("lectureBranchId >", value, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("lectureBranchId >=", value, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidLessThan(Integer value) {
+            addCriterion("lectureBranchId <", value, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidLessThanOrEqualTo(Integer value) {
+            addCriterion("lectureBranchId <=", value, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidIn(List<Integer> values) {
+            addCriterion("lectureBranchId in", values, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidNotIn(List<Integer> values) {
+            addCriterion("lectureBranchId not in", values, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidBetween(Integer value1, Integer value2) {
+            addCriterion("lectureBranchId between", value1, value2, "lecturebranchid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturebranchidNotBetween(Integer value1, Integer value2) {
+            addCriterion("lectureBranchId not between", value1, value2, "lecturebranchid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

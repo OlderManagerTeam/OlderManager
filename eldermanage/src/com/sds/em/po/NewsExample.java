@@ -591,6 +591,66 @@ public class NewsExample {
             addCriterion("newsIntro not between", value1, value2, "newsintro");
             return (Criteria) this;
         }
+
+        public Criteria andNewsheatIsNull() {
+            addCriterion("newsHeat is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatIsNotNull() {
+            addCriterion("newsHeat is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatEqualTo(Integer value) {
+            addCriterion("newsHeat =", value, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatNotEqualTo(Integer value) {
+            addCriterion("newsHeat <>", value, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatGreaterThan(Integer value) {
+            addCriterion("newsHeat >", value, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatGreaterThanOrEqualTo(Integer value) {
+            addCriterion("newsHeat >=", value, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatLessThan(Integer value) {
+            addCriterion("newsHeat <", value, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatLessThanOrEqualTo(Integer value) {
+            addCriterion("newsHeat <=", value, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatIn(List<Integer> values) {
+            addCriterion("newsHeat in", values, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatNotIn(List<Integer> values) {
+            addCriterion("newsHeat not in", values, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatBetween(Integer value1, Integer value2) {
+            addCriterion("newsHeat between", value1, value2, "newsheat");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsheatNotBetween(Integer value1, Integer value2) {
+            addCriterion("newsHeat not between", value1, value2, "newsheat");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
