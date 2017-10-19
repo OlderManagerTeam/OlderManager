@@ -32,7 +32,7 @@ public class ShiroServiceImpl implements ShiroService {
 		OlderbaseExample olderbaseExample=new OlderbaseExample();
 		com.sds.em.po.OlderbaseExample.Criteria olderbaseCriteria=olderbaseExample.createCriteria();
 		olderbaseCriteria.andOldertelEqualTo(tel);
-		Olderbase olderbase
+		//Olderbase olderbase
 /*		StaffbaseExample staffbaseExample = new StaffbaseExample();
 		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
 		staffbaseCriteria.andStafftelEqualTo(tel);
