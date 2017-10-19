@@ -1,8 +1,5 @@
 package com.sds.em.controller;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
@@ -15,11 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.sds.em.po.Message;
-import com.sds.em.po.Role;
-import com.sds.em.po.Staffbase;
 import com.sds.em.service.IndexService;
 
 /**
@@ -74,7 +67,7 @@ public class IndexController {
 		 * ����һ�� response.addCookie(cookie); // ������ͻ���
 		 * modelAndView.setViewName("login.jsp");
 		 */
-		return "{\"staffTel\":\"18212400001\",\"staffPassword\":\"123456wwb\"}";
+		return "成功登录";
 	}
 
 	/*

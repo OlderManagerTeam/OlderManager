@@ -241,8 +241,6 @@ public class BrenchServiceImpl implements BrenchService {
 				if (flag != 0) {
 					return new Message(true, "删除成功", null);
 				}
-			} else {
-				return new Message(false, "数据库错误", null);
 			}
 			return new Message(false, "数据库错误", null);
 		} catch (Exception e) {
