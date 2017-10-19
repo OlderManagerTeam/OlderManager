@@ -1,5 +1,8 @@
 package com.sds.em.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,8 @@ import com.sds.em.mapper.ShiroroleMapper;
 import com.sds.em.mapper.StaffbaseMapper;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.OlderbaseExample;
+import com.sds.em.po.ShiroroleExample;
+import com.sds.em.po.ShiroroleKey;
 import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
 import com.sds.em.po.StaffbaseExample.Criteria;
@@ -28,32 +33,43 @@ public class ShiroServiceImpl implements ShiroService {
 		StaffbaseExample staffbaseExample = new StaffbaseExample();
 		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
 		staffbaseCriteria.andStafftelEqualTo(tel);
-		Staffbase staffbase=staffbaseMapper.selectByExample(staffbaseExample).get(0);
+		List<Staffbase> staffbaselist=staffbaseMapper.selectByExample(staffbaseExample);
 		OlderbaseExample olderbaseExample=new OlderbaseExample();
 		com.sds.em.po.OlderbaseExample.Criteria olderbaseCriteria=olderbaseExample.createCriteria();
 		olderbaseCriteria.andOldertelEqualTo(tel);
-		//Olderbase olderbase
-/*		StaffbaseExample staffbaseExample = new StaffbaseExample();
-		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
-		staffbaseCriteria.andStafftelEqualTo(tel);
-		ShiroroleExample shiroroleExample = new ShiroroleExample();
-		com.sds.em.po.ShiroroleExample.Criteria shiroroleCriteria = shiroroleExample.createCriteria();
-		shiroroleCriteria
-				.andShirorolestaffidEqualTo(staffbaseMapper.selectByExample(staffbaseExample).get(0).getStaffid());
-		ArrayList<ShiroroleKey> shiroroleKeyList=(ArrayList<ShiroroleKey>) shiroroleMapper.selectByExample(shiroroleExample);
+		List<Olderbase> olderbaselist=olderbaseMapper.selectByExample(olderbaseExample);
 		Set<String> roles = new HashSet<String>();
-		for(ShiroroleKey s:shiroroleKeyList){
-			roles.add(s.getShirorole());
-		}*/
-		return getRoles(null);
+		if(staffbaselist.isEmpty()&&(!olderbaselist.isEmpty())){
+			roles.add("elder");
+		}else if((!staffbaselist.isEmpty())&&olderbaselist.isEmpty()){
+			ShiroroleExample shiroroleExample = new ShiroroleExample();
+			com.sds.em.po.ShiroroleExample.Criteria shiroroleCriteria = shiroroleExample.createCriteria();
+			shiroroleCriteria
+					.andShirotelEqualTo(staffbaselist.get(0).getStafftel());
+			ArrayList<ShiroroleKey> shiroroleKeyList=(ArrayList<ShiroroleKey>) shiroroleMapper.selectByExample(shiroroleExample);
+			for(ShiroroleKey s:shiroroleKeyList){
+				roles.add(s.getShirorole());
+			}
+		}
+		return roles;
 	}
 
 	@Override
-	public Staffbase getPerson(String stafftel) {
+	public Object getPerson(String tel) {
 		StaffbaseExample staffbaseExample = new StaffbaseExample();
 		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
-		staffbaseCriteria.andStafftelEqualTo(stafftel);
-		return staffbaseMapper.selectByExample(staffbaseExample).get(0);
+		staffbaseCriteria.andStafftelEqualTo(tel);
+		List<Staffbase> staffbaselist=staffbaseMapper.selectByExample(staffbaseExample);
+		OlderbaseExample olderbaseExample=new OlderbaseExample();
+		com.sds.em.po.OlderbaseExample.Criteria olderbaseCriteria=olderbaseExample.createCriteria();
+		olderbaseCriteria.andOldertelEqualTo(tel);
+		List<Olderbase> olderbaselist=olderbaseMapper.selectByExample(olderbaseExample);
+		if((!staffbaselist.isEmpty())&&olderbaselist.isEmpty()){
+			return staffbaselist.get(0);
+		}
+		if(staffbaselist.isEmpty()&&(!olderbaselist.isEmpty())){
+			return olderbaselist.get(0);
+		}
+		return null;
 	}
-
 }

@@ -30,7 +30,8 @@
 		<property name="basePackage" value="com.sds.em.mapper"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-
+	<!-- 自定义Realm -->
+	<bean id="myRealm" class="com.sds.em.realm.Myrealm"/>  
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="myRealm" />
