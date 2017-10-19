@@ -3,7 +3,7 @@
 
 <head>
     <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
@@ -198,10 +198,8 @@
                                     <div class="panel-body">
                                          <ul class="nav navbar-nav">
                                             <li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                                            <li><a href="../olderInfoManager/olderEntry.html">老年人基本信息录入</a></li>
-                                            <li><a href="../olderInfoManager/olderAlter.html">老年人基本信息修改</a></li>
-                                            <li><a href="../olderInfoManager/olderSicks.html">老年人病历信息录入</a></li>
-                                            <li><a href="../olderInfoManager/olderAction.html">老年人活动发布</a></li>
+                                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+                                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -292,13 +290,14 @@
                                                 <th>老人姓名</th>
                                                 <th>老人性别</th>
                                                 <th>老人出生日期</th>
-                                                <th>老人账户密码</th>
                                                 <th>老人电话号码</th>
                                                 <th>老人地址</th>
                                                 <th>老人独居状况</th>
-                                                <th>老人身份证号码</th>
-                                                <th>老人照片</th>
-                                                <th>管理老人分店</th>
+                                                <th>老人最大积分</th>
+                                                <th>查看老人订单</th>
+                                                <th>查看详细信息</th>
+                                                <th>查看病历</th>
+                                                <th>查看回访记录</th>
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
@@ -308,13 +307,14 @@
                                                 <th>老人姓名</th>
                                                 <th>老人性别</th>
                                                 <th>老人出生日期</th>
-                                                <th>老人账户密码</th>
                                                 <th>老人电话号码</th>
                                                 <th>老人地址</th>
                                                 <th>老人独居状况</th>
-                                                <th>老人身份证号码</th>
-                                                <th>老人照片</th>
-                                                <th>管理老人分店</th>
+                                                <th>老人最大积分</th>
+                                                <th>查看老人订单</th>
+                                                <th>查看详细信息</th>
+                                                <th>查看病历</th>
+                                                <th>查看回访记录</th>
                                                 <th>操作</th>
                                             </tr>
                                         </tfoot>
@@ -328,13 +328,20 @@
                                                 <td>2011/04/25</td>
                                                 <td>$320,800</td>
                                                 <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
+                                                <td></td>
+                                                <td><a class="btn btn-primary btn-xs" href="../olderInfoManager/orderView.html" role="button">查看老人订单</a></td>
                                                 <td>
-                                                	<button>修改</button>
-                                                	<button>删除</button>
+                                                	<a class="btn btn-primary btn-xs" href="../olderInfoManager/olderInfo.html" role="button">查看详细信息</a>
+                                                </td>
+                                                <td>
+                                                	<a class="btn btn-primary btn-xs" href="../olderInfoManager/olderSickView.html" role="button">查看病历</a>
+                                                </td>
+                                                <td>
+                                                	<a class="btn btn-primary btn-xs" href="../olderInfoManager/visitedView.html" role="button">查看回访记录</a>
+                                                </td>
+                                                <td>
+                                                	<a class="btn btn-primary btn-xs" href="../olderInfoManager/olderAlter.html" role="button">修改</a>
+                                                	<button class="btn btn-primary btn-xs">删除</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -346,10 +353,11 @@
                                                 <td>$170,750</td>
                                                 <td>Garrett Winters</td>
                                                 <td>Accountant</td>
+                                                <td></td>
+                                                <td></td>
                                                 <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                                <td>$170,750</td>
+                                                <td>Tokyo</td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Ashton Cox</td>
@@ -361,9 +369,10 @@
                                                 <td>Ashton Cox</td>
                                                 <td>Junior Technical Author</td>
                                                 <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td>
-                                                <td>$86,000</td>
+                                                <td>Tokyo</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Cedric Kelly</td>
@@ -375,9 +384,10 @@
                                                 <td>Cedric Kelly</td>
                                                 <td>Senior Javascript Developer</td>
                                                 <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
+                                                <td>Tokyo</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Airi Satou</td>
@@ -389,9 +399,10 @@
                                                 <td>Airi Satou</td>
                                                 <td>Accountant</td>
                                                 <td>Tokyo</td>
-                                                <td>33</td>
-                                                <td>2008/11/28</td>
-                                                <td>$162,700</td>
+                                                <td>Tokyo</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Brielle Williamson</td>
@@ -403,6 +414,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td>Tokyo</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -414,6 +426,7 @@
                                                 <td>59</td>
                                                 <td>2012/08/06</td>
                                                 <td>$137,500</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -434,6 +447,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Colleen Hurst</td>
@@ -442,6 +456,7 @@
                                                 <td>39</td>
                                                 <td>2009/09/15</td>
                                                 <td>$205,500</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -462,6 +477,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Jena Gaines</td>
@@ -470,6 +486,7 @@
                                                 <td>30</td>
                                                 <td>2008/12/19</td>
                                                 <td>$90,560</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -490,6 +507,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Charde Marshall</td>
@@ -498,6 +516,7 @@
                                                 <td>36</td>
                                                 <td>2008/10/16</td>
                                                 <td>$470,600</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -518,6 +537,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Tatyana Fitzpatrick</td>
@@ -526,6 +546,7 @@
                                                 <td>19</td>
                                                 <td>2010/03/17</td>
                                                 <td>$385,750</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -546,6 +567,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Paul Byrd</td>
@@ -554,6 +576,7 @@
                                                 <td>64</td>
                                                 <td>2010/06/09</td>
                                                 <td>$725,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -574,6 +597,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Bradley Greer</td>
@@ -582,6 +606,7 @@
                                                 <td>41</td>
                                                 <td>2012/10/13</td>
                                                 <td>$132,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -602,6 +627,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Jenette Caldwell</td>
@@ -610,6 +636,7 @@
                                                 <td>30</td>
                                                 <td>2011/09/03</td>
                                                 <td>$345,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -630,6 +657,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Caesar Vance</td>
@@ -638,6 +666,7 @@
                                                 <td>21</td>
                                                 <td>2011/12/12</td>
                                                 <td>$106,450</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -658,6 +687,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Angelica Ramos</td>
@@ -666,6 +696,7 @@
                                                 <td>47</td>
                                                 <td>2009/10/09</td>
                                                 <td>$1,200,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -686,6 +717,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Jennifer Chang</td>
@@ -694,6 +726,7 @@
                                                 <td>28</td>
                                                 <td>2010/11/14</td>
                                                 <td>$357,650</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -714,6 +747,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Fiona Green</td>
@@ -722,6 +756,7 @@
                                                 <td>48</td>
                                                 <td>2010/03/11</td>
                                                 <td>$850,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -742,6 +777,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Michelle House</td>
@@ -750,6 +786,7 @@
                                                 <td>37</td>
                                                 <td>2011/06/02</td>
                                                 <td>$95,400</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -770,6 +807,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Prescott Bartlett</td>
@@ -778,6 +816,7 @@
                                                 <td>27</td>
                                                 <td>2011/05/07</td>
                                                 <td>$145,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -798,6 +837,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Martena Mccray</td>
@@ -806,6 +846,7 @@
                                                 <td>46</td>
                                                 <td>2011/03/09</td>
                                                 <td>$324,050</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -826,6 +867,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Howard Hatfield</td>
@@ -834,6 +876,7 @@
                                                 <td>51</td>
                                                 <td>2008/12/16</td>
                                                 <td>$164,500</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -854,6 +897,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Vivian Harrell</td>
@@ -862,6 +906,7 @@
                                                 <td>62</td>
                                                 <td>2009/02/14</td>
                                                 <td>$452,500</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -882,6 +927,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Jackson Bradshaw</td>
@@ -890,6 +936,7 @@
                                                 <td>65</td>
                                                 <td>2008/09/26</td>
                                                 <td>$645,750</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -910,6 +957,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Bruno Nash</td>
@@ -918,6 +966,7 @@
                                                 <td>38</td>
                                                 <td>2011/05/03</td>
                                                 <td>$163,500</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -938,6 +987,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Thor Walton</td>
@@ -946,6 +996,7 @@
                                                 <td>61</td>
                                                 <td>2013/08/11</td>
                                                 <td>$98,540</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -966,6 +1017,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Serge Baldwin</td>
@@ -974,6 +1026,7 @@
                                                 <td>64</td>
                                                 <td>2012/04/09</td>
                                                 <td>$138,575</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -994,6 +1047,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Zorita Serrano</td>
@@ -1002,6 +1056,7 @@
                                                 <td>56</td>
                                                 <td>2012/06/01</td>
                                                 <td>$115,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -1022,6 +1077,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Cara Stevens</td>
@@ -1030,6 +1086,7 @@
                                                 <td>46</td>
                                                 <td>2011/12/06</td>
                                                 <td>$145,600</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -1050,6 +1107,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Lael Greer</td>
@@ -1058,6 +1116,7 @@
                                                 <td>21</td>
                                                 <td>2009/02/27</td>
                                                 <td>$103,500</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -1078,6 +1137,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>柯尧</td>
@@ -1086,6 +1146,7 @@
                                                 <td>51</td>
                                                 <td>2008/11/13</td>
                                                 <td>$183,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -1106,6 +1167,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Donna Snider</td>
@@ -1114,6 +1176,7 @@
                                                 <td>27</td>
                                                 <td>2011/01/25</td>
                                                 <td>$112,000</td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>

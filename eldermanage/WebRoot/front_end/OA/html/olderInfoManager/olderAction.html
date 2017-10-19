@@ -3,7 +3,7 @@
 
 <head>
     <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
@@ -202,10 +202,8 @@
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
                                             <li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                                            <li><a href="../olderInfoManager/olderEntry.html">老年人基本信息录入</a></li>
-                                            <li><a href="../olderInfoManager/olderAlter.html">老年人基本信息修改</a></li>
-                                            <li><a href="../olderInfoManager/olderSicks.html">老年人病历信息录入</a></li>
-                                            <li><a href="../olderInfoManager/olderAction.html">老年人活动发布</a></li>
+                                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+                                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -287,7 +285,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                	<!--老人信息录入时候需要的表单-->
+                                	<!--活动录入时候需要的表单-->
                                     <form class="form-horizontal" id="odlerInfoForm">
                                         <div class="form-group">
                                             <label for="actionStartDate" class="col-sm-3 control-label">活动时间：</label>
@@ -308,9 +306,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="aactionStatus" class="col-sm-3 control-label">活动等级：</label>
+                                            <label for="actionStatus" class="col-sm-3 control-label">活动状态：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="actionStatus" placeholder="活动等级" name="Status">
+                                                <select id="actionStatus" style="width:80px">
+											        <optgroup label="活动状态">
+											          <option value="1">正在进行</option>
+											          <option value="0">已结束</option>
+											</optgroup>
+										</select>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -321,7 +324,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-offset-3 col-sm-5">
-                                                <button type="submit" class="btn btn-default">提交</button>
+                                                <button type="submit" class="btn btn-default" id="actionsubmit">提交活动</button>
                                             </div>
                                         </div>
                                     </form>
@@ -334,7 +337,7 @@
         </div>
         <footer class="app-footer">
             <div class="wrapper">
-                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> 漏 2015 Copyright.
             </div>
         </footer>
         <div>
@@ -370,7 +373,7 @@
         message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok-circle',
-            invalid: 'glyphicon glyphicon-remove',
+            invalid: 'glyphicon glyphicon-remove-circle',
             validating: 'glyphicon glyphicon-refresh',
             regexp:'glyphicon glyphicon-ok-circle'
         },
@@ -398,7 +401,7 @@
             Address: {
                 validators: {
                     notEmpty: {
-                        message: '地址不能为空'
+                        message: '举办地址不能为空'
                     },
                 }
             },
@@ -410,6 +413,32 @@
 });
         
     </script>
+    <script type="text/javascript">
+			$("#actionsubmit").click(function() {
+				var data = {
+					actionstartdate : $("#actionStartDate").val(),
+					actionname :$("#actionName").val(),
+					actionaddress : $("#actionAddress").val(),
+					actionstatus : $("#actionStatus").find("option:selected").text(),
+					actionintro : $("#actionIntro").val(),
+				}
+				$.ajax({
+				type: 'post',
+				contentType:'application/json',
+				url: "http://localhost:8080/eldermanage/v1/brech/action",
+				data: JSON.stringify(data),
+				success:function(result){
+					var resultdata = JSON.parse(result)
+					alert(resultdata.success)
+				},
+				error:function(){
+					alert('fail')
+				}
+			})
+				
+			}
+			)
+		</script>
 </body>
 
 </html>
