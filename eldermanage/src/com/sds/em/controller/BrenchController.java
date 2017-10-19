@@ -2,6 +2,7 @@ package com.sds.em.controller;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,6 @@ public class BrenchController {
 		return brenchManageService.modifyOlder(olderbase);
 	}
 
-	
 	// 老人病历信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
 	public @ResponseBody Message sicks(@RequestBody Oldersick oldersick) throws Exception {
@@ -93,4 +93,36 @@ public class BrenchController {
 	public @ResponseBody Message updateAction(@RequestBody Action action) throws Exception {
 		return brenchManageService.modifyAction(action);
 	}
+
+	// 查询这个管理员所在的分店名
+
+	@RequestMapping(method = RequestMethod.GET, value = "branchname")
+	public @ResponseBody Message getBranchName(@RequestBody int staffid) throws Exception {
+		return brenchManageService.getBranchName(staffid);
+	}
+
+	// 查询本分店所有老人的基本信息
+
+	@RequestMapping(method = RequestMethod.GET, value = "elders/info")
+	public @ResponseBody Message allOlderByBranch(HttpSession session) throws Exception {
+		int branchid = (int) session.getAttribute("branchid");
+		return brenchManageService.getAllElder(branchid);
+	}
+
+	// 删除某个老人的信息
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "elder/info")
+	public @ResponseBody Message deleteOlder(@RequestBody String oldertel) throws Exception {
+
+		return brenchManageService.deleteANElder(oldertel);
+	}
+	
+	//获取某个老人的信息
+	
+	@RequestMapping(method = RequestMethod.GET, value = "elder/info")
+	public @ResponseBody Message getOlder(@RequestBody String oldertel) throws Exception {
+
+		return brenchManageService.getElder(oldertel);
+	}
+
 }

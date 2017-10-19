@@ -17,6 +17,7 @@
 	<bean id="IndexService" class="com.sds.em.service.impl.IndexServiceImpl" />
 	<bean id="CourseService" class="com.sds.em.service.impl.CourseServiceImpl" />
 	<bean id="NewsService" class="com.sds.em.service.impl.NewsServiceImpl" />
+	<bean id="ShiroService" class="com.sds.em.service.impl.ShiroServiceImpl" />
 
 
 </beans>
