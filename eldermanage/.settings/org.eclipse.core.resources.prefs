@@ -2,5 +2,6 @@ eclipse.preferences.version=1
 encoding//WebRoot/Html3.html=UTF-8
 encoding//WebRoot/html.html=UTF-8
 encoding//WebRoot/html2.html=UTF-8
+encoding//src/com/sds/em/controller/IndexController.java=UTF-8
 encoding//src/com/sds/em/service/impl/CourseServiceImpl.java=UTF-8
 encoding/WebRoot=UTF-8
