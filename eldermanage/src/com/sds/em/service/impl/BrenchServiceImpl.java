@@ -1,4 +1,4 @@
-package com.sds.em.service.impl;
+ï»¿package com.sds.em.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,13 +50,13 @@ public class BrenchServiceImpl implements BrenchService {
 		try {
 			olderbaseMapper.insertOlderBase(olderbase);
 			if (olderbase.getOlderid() != null) {
-				return new Message(true, "»ù±¾ĞÅÏ¢Â¼Èë³É¹¦", olderbase.getOlderid());
+				return new Message(true, "åŸºæœ¬ä¿¡æ¯å½•å…¥æˆåŠŸ", olderbase.getOlderid());
 			} else {
-				return new Message(false, "»ù±¾ĞÅÏ¢Â¼ÈëÊ§°Ü", null);
+				return new Message(false, "åŸºæœ¬ä¿¡æ¯å½•å…¥å¤±è´¥", null);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 
@@ -65,13 +65,13 @@ public class BrenchServiceImpl implements BrenchService {
 		try {
 			oldersickMapper.insertOlderSick(oldersick);
 			if (oldersick.getSickid() != null) {
-				return new Message(true, "²¡ÀúĞÅÏ¢Â¼Èë³É¹¦", oldersick.getSickid());
+				return new Message(true, "ç—…å†ä¿¡æ¯å½•å…¥æˆåŠŸ", oldersick.getSickid());
 			} else {
-				return new Message(false, "²¡ÀúĞÅÏ¢Â¼ÈëÊ§°Ü", null);
+				return new Message(false, "ç—…å†ä¿¡æ¯å½•å…¥å¤±è´¥", null);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 
@@ -81,14 +81,14 @@ public class BrenchServiceImpl implements BrenchService {
 			int flag = 0;
 			flag = olderbaseMapper.updateByPrimaryKeySelective(olderbase);
 			if (flag != 0) {
-				return new Message(true, "»ù±¾ĞÅÏ¢ĞŞ¸Ä³É¹¦", null);
+				return new Message(true, "åŸºæœ¬ä¿¡æ¯ä¿®æ”¹æˆåŠŸ", null);
 			} else {
-				return new Message(false, "Êı¾İ¿â´íÎó", null);
+				return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 
 	}
@@ -137,11 +137,11 @@ public class BrenchServiceImpl implements BrenchService {
 				jsonObjectList.add(jsonObject);
 
 			}
-			return new Message(true, "·µ»Ø³É¹¦", jsonObjectList.toString());
+			return new Message(true, "è¿”å›æˆåŠŸ", jsonObjectList.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 
@@ -151,14 +151,14 @@ public class BrenchServiceImpl implements BrenchService {
 			int flag = 0;
 			flag = actionMapper.insert(action);
 			if (flag != 0) {
-				return new Message(true, "·¢²¼³É¹¦", null);
+				return new Message(true, "å‘å¸ƒæˆåŠŸ", null);
 			} else {
-				return new Message(false, "Êı¾İ¿â´íÎó", null);
+				return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 
@@ -168,13 +168,13 @@ public class BrenchServiceImpl implements BrenchService {
 			int flag = 0;
 			flag = actionMapper.updateByPrimaryKeySelective(action);
 			if (flag != 0) {
-				return new Message(true, "ĞŞ¸Ä³É¹¦", null);
+				return new Message(true, "ä¿®æ”¹æˆåŠŸ", null);
 			} else {
-				return new Message(false, "Êı¾İ¿â´íÎó", null);
+				return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 }

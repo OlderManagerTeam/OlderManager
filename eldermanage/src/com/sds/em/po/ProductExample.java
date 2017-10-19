@@ -641,6 +641,66 @@ public class ProductExample {
             addCriterionForJDBCDate("productUponDate not between", value1, value2, "productupondate");
             return (Criteria) this;
         }
+
+        public Criteria andProductdiscountpriceIsNull() {
+            addCriterion("productDiscountPrice is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceIsNotNull() {
+            addCriterion("productDiscountPrice is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceEqualTo(Float value) {
+            addCriterion("productDiscountPrice =", value, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceNotEqualTo(Float value) {
+            addCriterion("productDiscountPrice <>", value, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceGreaterThan(Float value) {
+            addCriterion("productDiscountPrice >", value, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("productDiscountPrice >=", value, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceLessThan(Float value) {
+            addCriterion("productDiscountPrice <", value, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceLessThanOrEqualTo(Float value) {
+            addCriterion("productDiscountPrice <=", value, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceIn(List<Float> values) {
+            addCriterion("productDiscountPrice in", values, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceNotIn(List<Float> values) {
+            addCriterion("productDiscountPrice not in", values, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceBetween(Float value1, Float value2) {
+            addCriterion("productDiscountPrice between", value1, value2, "productdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductdiscountpriceNotBetween(Float value1, Float value2) {
+            addCriterion("productDiscountPrice not between", value1, value2, "productdiscountprice");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

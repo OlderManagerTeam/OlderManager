@@ -106,30 +106,30 @@ public class VideorecordExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+            addCriterion(condition, new java.sql.Time(value.getTime()), property);
         }
 
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
             if (values == null || values.size() == 0) {
                 throw new RuntimeException("Value list for " + property + " cannot be null or empty");
             }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
             Iterator<Date> iter = values.iterator();
             while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
+                timeList.add(new java.sql.Time(iter.next().getTime()));
             }
-            addCriterion(condition, dateList, property);
+            addCriterion(condition, timeList, property);
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
         }
 
         public Criteria andVrecordidIsNull() {
@@ -323,52 +323,52 @@ public class VideorecordExample {
         }
 
         public Criteria andVrecorddateEqualTo(Date value) {
-            addCriterionForJDBCDate("vRecordDate =", value, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate =", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("vRecordDate <>", value, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate <>", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateGreaterThan(Date value) {
-            addCriterionForJDBCDate("vRecordDate >", value, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate >", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("vRecordDate >=", value, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate >=", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateLessThan(Date value) {
-            addCriterionForJDBCDate("vRecordDate <", value, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate <", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("vRecordDate <=", value, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate <=", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateIn(List<Date> values) {
-            addCriterionForJDBCDate("vRecordDate in", values, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate in", values, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("vRecordDate not in", values, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate not in", values, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("vRecordDate between", value1, value2, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate between", value1, value2, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("vRecordDate not between", value1, value2, "vrecorddate");
+            addCriterionForJDBCTime("vRecordDate not between", value1, value2, "vrecorddate");
             return (Criteria) this;
         }
     }

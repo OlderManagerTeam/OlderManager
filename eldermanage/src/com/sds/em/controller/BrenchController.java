@@ -1,4 +1,4 @@
-package com.sds.em.controller;
+ï»¿package com.sds.em.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +14,8 @@ import com.sds.em.po.Oldersick;
 import com.sds.em.service.BrenchService;
 
 /*
- * ×÷Õß£ºÁõÂ¶
- * ÃèÊö£º·Öµê¹ÜÀíÏµÍ³µÄºóÌ¨Ïà¹Ø¹¦ÄÜ
+ * ä½œè€…ï¼šåˆ˜éœ²
+ * æè¿°ï¼šåˆ†åº—ç®¡ç†ç³»ç»Ÿçš„åå°ç›¸å…³åŠŸèƒ½
  * 
  * 
  * */
@@ -25,38 +25,38 @@ public class BrenchController {
 	@Autowired
 	BrenchService brenchManageService;
 
-	// ÀÏÈË»ù±¾ĞÅÏ¢µÄÂ¼Èë-²âÊÔÍ¨¹ı
+	// è€äººåŸºæœ¬ä¿¡æ¯çš„å½•å…¥-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.POST, value = "elder/info")
 	public @ResponseBody Message info(@RequestBody Olderbase olderbase) throws Exception {
 		return brenchManageService.addElderInfo(olderbase);
 
 	}
 
-	// ÀÏÈË»ù±¾ĞÅÏ¢µÄĞŞ¸Ä-²âÊÔÍ¨¹ı
+	// è€äººåŸºæœ¬ä¿¡æ¯çš„ä¿®æ”¹-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.PUT, value = "elder/info")
 	public @ResponseBody Message update(@RequestBody Olderbase olderbase) throws Exception {
 		return brenchManageService.modifyOlder(olderbase);
 	}
 
-	// ÀÏÈË²¡ÀúĞÅÏ¢µÄÂ¼Èë-²âÊÔÍ¨¹ı
+	// è€äººç—…å†ä¿¡æ¯çš„å½•å…¥-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
 	public @ResponseBody Message sicks(@RequestBody Oldersick oldersick) throws Exception {
 		return brenchManageService.addSicks(oldersick);
 	}
 
-	// ÀÏÈËÆÀ¼Û-Î´²âÊÔ
+	// è€äººè¯„ä»·-æœªæµ‹è¯•
 	@RequestMapping(method = RequestMethod.POST, value = "elder/rate")
 	public @ResponseBody Message rate(@RequestBody int olderid) throws Exception {
 		return brenchManageService.olderRate(olderid);
 	}
 
-	// ·¢²¼»î¶¯-²âÊÔÍ¨¹ı
+	// å‘å¸ƒæ´»åŠ¨-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.POST, value = "action")
 	public @ResponseBody Message addAction(@RequestBody Action action) throws Exception {
 		return brenchManageService.publishAction(action);
 	}
 
-	// ĞŞ¸Ä»î¶¯-²âÊÔÍ¨¹ı
+	// ä¿®æ”¹æ´»åŠ¨-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.PUT, value = "action")
 	public @ResponseBody Message updateAction(@RequestBody Action action) throws Exception {
 		return brenchManageService.modifyAction(action);
