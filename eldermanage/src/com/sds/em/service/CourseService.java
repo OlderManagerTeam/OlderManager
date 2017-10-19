@@ -21,13 +21,13 @@ public interface CourseService {
 	public Message classRecord(String olderToken, int videoId, Date vRecordDate);
 
 	// 返回当前讲座
-	public Message currentLecture();
+	public Message currentLecture(int olderid,String olderbranchid);
 
 	// 老人报名讲座（添加讲座记录表/修改预约人数+1）
-	public Message joinLecture(String olderToken, int lectureId);
+	public Message joinLecture(int olderid, int lectureId);
 
   //播放热度列表实现
-   
+   public Message videoHeatTop();
 	
 
 }

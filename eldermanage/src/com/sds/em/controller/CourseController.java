@@ -2,6 +2,8 @@ package com.sds.em.controller;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,17 +46,26 @@ public class CourseController {
 	
 	//返回当前讲座
 	@RequestMapping(method = RequestMethod.GET,value="lecture")
-	public @ResponseBody Message currentLecture(){
-		return courseService.currentLecture();
+	public @ResponseBody Message currentLecture(HttpSession s){
+//		int olderid = 0;
+//		s.setAttribute("olderid", olderid);
+		
+		int olderid=(int) s.getAttribute("olderid");
+		String olderbranchid = (String) s.getAttribute("olderbranchid");
+		return courseService.currentLecture(olderid,olderbranchid);
 	}
 	
-	//某老人报名讲座(参加讲座、讲座已预约人数修改)
+	
+	
+	
+	//某老人报名讲座(参加讲座、将讲座已预约人数修改)
 	@RequestMapping(method = RequestMethod.POST,value="lecture/join")
-	public @ResponseBody Message insertlectureRecord(@RequestBody String oldertoken,@RequestBody int lectureid){
-		return courseService.joinLecture(oldertoken, lectureid);
+	public @ResponseBody Message insertlectureRecord(HttpSession s,int lectureid){
+		int olderid=(int) s.getAttribute("olderid");
+		return courseService.joinLecture(olderid, lectureid);
 	}
 	
    //播放热度列表实现
-	
+	//public
 	
 }
