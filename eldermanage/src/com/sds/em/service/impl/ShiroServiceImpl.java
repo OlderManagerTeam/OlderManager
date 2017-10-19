@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.ShiroroleMapper;
 import com.sds.em.mapper.StaffbaseMapper;
+import com.sds.em.po.Olderbase;
+import com.sds.em.po.OlderbaseExample;
 import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
 import com.sds.em.po.StaffbaseExample.Criteria;
@@ -26,6 +28,11 @@ public class ShiroServiceImpl implements ShiroService {
 		StaffbaseExample staffbaseExample = new StaffbaseExample();
 		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
 		staffbaseCriteria.andStafftelEqualTo(tel);
+		Staffbase staffbase=staffbaseMapper.selectByExample(staffbaseExample).get(0);
+		OlderbaseExample olderbaseExample=new OlderbaseExample();
+		com.sds.em.po.OlderbaseExample.Criteria olderbaseCriteria=olderbaseExample.createCriteria();
+		olderbaseCriteria.andOldertelEqualTo(tel);
+		Olderbase olderbase
 /*		StaffbaseExample staffbaseExample = new StaffbaseExample();
 		Criteria staffbaseCriteria = staffbaseExample.createCriteria();
 		staffbaseCriteria.andStafftelEqualTo(tel);
