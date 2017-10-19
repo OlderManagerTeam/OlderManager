@@ -31,7 +31,7 @@ import com.sds.em.service.CourseService;
 
 /**
  * 
- * @author ²ÌÎÄÑÞ-2017-10-17
+ * @author ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-2017-10-17
  *
  */
 public class CourseServiceImpl implements CourseService {
@@ -52,7 +52,7 @@ public class CourseServiceImpl implements CourseService {
 	@Autowired
 	OlderbaseMapper olderbaseMapper;
 
-	// ·µ»ØËùÓÐµÄ¿Î³Ì ·µ»Ø¿Î³ÌÁÐ±í
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¿Î³ï¿½ ï¿½ï¿½ï¿½Ø¿Î³ï¿½ï¿½Ð±ï¿½
 	@Override
 	public Message allClasses() {
 
@@ -60,15 +60,15 @@ public class CourseServiceImpl implements CourseService {
 		Criteria videoCriteria = videoExample.createCriteria();
 		List<Video> videoList = videoMapper.selectByExample(videoExample);
 		if (!videoList.isEmpty()) {
-			return new Message(true, "·µ»Ø³É¹¦", videoList);
+			return new Message(true, "ï¿½ï¿½ï¿½Ø³É¹ï¿½", videoList);
 		}
 
-		return new Message(false, "Êý¾Ý´íÎó", null);
+		return new Message(false, "ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½", null);
 
 	}
 
 	//
-	// //·µ»Ø¿Î³ÌÊÓÆµÏêÏ¸
+	// //ï¿½ï¿½ï¿½Ø¿Î³ï¿½ï¿½ï¿½Æµï¿½ï¿½Ï¸
 	// @Override
 	// public Message classDetail(int videoId) {
 	//
@@ -88,14 +88,14 @@ public class CourseServiceImpl implements CourseService {
 	// // TODO Auto-generated catch block
 	// e.printStackTrace();
 	// }
-	// return new Message(true,"·µ»Ø³É¹¦",videoList.toString());
+	// return new Message(true,"ï¿½ï¿½ï¿½Ø³É¹ï¿½",videoList.toString());
 	// }
-	// return new Message(false,"Êý¾Ý´íÎó",null);
+	// return new Message(false,"ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½",null);
 	//
 	// }
 	//
 
-	// Ìí¼ÓÀÏÈË¿Î³Ì¹Û¿´¼ÇÂ¼
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿Î³Ì¹Û¿ï¿½ï¿½ï¿½Â¼
 	@Override
 	public Message classRecord(String olderToken, int videoId, Date vRecordDate) {
 
@@ -115,39 +115,39 @@ public class CourseServiceImpl implements CourseService {
 
 		int flag = videorecordMapper.insert(videorecord);
 		if (flag == 1) {
-			return new Message(true, "Ìí¼Ó³É¹¦", null);
+			return new Message(true, "ï¿½ï¿½Ó³É¹ï¿½", null);
 		}
 
-		return new Message(false, "Êý¾Ý´íÎó", null);
+		return new Message(false, "ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½", null);
 	}
 
-	// ·µ»Øµ±Ç°½²×ù
+	// ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public Message currentLecture(int olderid,String olderbranchid) {
 
 		if(olderid != ' '){
 		     LectureExample lectureExample = new LectureExample();
 		     com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
-		     lectureCriteria.andlectureb
+		    // lectureCriteria.andlectureb
 		     
 		}
 		
-		return new Message(false,"Êý¾Ý´íÎó",null);
+		return new Message(false,"ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½",null);
 
 	}
 
-	// ÀÏÈË±¨Ãû²Î¼Ó½²×ù(¸üÐÂlectureeEnroll)
+	// ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½Î¼Ó½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½lectureeEnroll)
 	@Override
 	public Message joinLecture(int olderid, int lectureId) {
 
 		if(olderid != ' '){
 			
 		}
-		return new Message(false, "Êý¾Ý¿â´íÎó", null);
+		return new Message(false, "ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½", null);
 
 	}
 
-	//²¥·ÅÈÈ¶ÈÁÐ±íÊµÏÖ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½Ð±ï¿½Êµï¿½ï¿½
 	@Override
 	public Message videoHeatTop() {
 		int topnum =10;

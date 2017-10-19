@@ -57,7 +57,7 @@ public class BrenchController {
 		olderbase.setOldersex(oldersex);
 		olderbase.setOldersinglestatus(oldersinglestatus);
 		olderbase.setOldertel(oldertel);
-		olderbase.setOdermaxpoint(0);
+		olderbase.setOldermaxpoint(0);
 		return brenchManageService.addElderInfo(olderbase);
 
 	}
