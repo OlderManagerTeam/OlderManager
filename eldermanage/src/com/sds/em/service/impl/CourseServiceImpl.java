@@ -151,9 +151,6 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Message videoHeatTop() {
 		int topnum =10;
-		
-		
-		
 		return null;
 	}
 
