@@ -29,6 +29,7 @@ import com.sds.em.po.Orders;
 import com.sds.em.po.OrdersExample;
 import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
+import com.sds.em.util.DateSimp;
 
 public class BrenchServiceImpl implements BrenchService {
 	@Autowired
@@ -208,9 +209,19 @@ public class BrenchServiceImpl implements BrenchService {
 			criteria.andOlderbranchidEqualTo(branchid);
 
 			List<Olderbase> olderbasesList = olderbaseMapper.selectByExample(olderbaseExample);
+			List<Integer> olderAgeList = new ArrayList<Integer>();
+			for (Olderbase o : olderbasesList) {
+				String olderAgeS = DateSimp.simpToSting(o.getOlderbirthday());
+				int olderAgeD = DateSimp.getAgeFromBirthTime(olderAgeS);
+				olderAgeList.add(olderAgeD);
+			}
+
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("olderbasesList", olderbasesList);
+			jsonObject.put("olderAgeList", olderAgeList);
 
 			if (!olderbasesList.isEmpty()) {
-				return new Message(true, "返回成功", olderbasesList);
+				return new Message(true, "返回成功", jsonObject);
 			} else {
 
 				return new Message(false, "数据库错误", null);
@@ -231,12 +242,13 @@ public class BrenchServiceImpl implements BrenchService {
 			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample.createCriteria();
 			criteria.andOldertelEqualTo(oldertel);
 			List<Olderbase> olderbasesList = olderbaseMapper.selectByExample(olderbaseExample);
+
 			if (!olderbasesList.isEmpty()) {
 				// 将其中的分店设置为null
 				int flag = 0;
 				Olderbase olderbase = new Olderbase();
 				olderbase.setOlderid(olderbasesList.get(0).getOlderid());
-				olderbase.setOlderbranchid(null);
+				olderbase.setOlderbranchid(0);
 				flag = olderbaseMapper.updateByPrimaryKeySelective(olderbase);
 				if (flag != 0) {
 					return new Message(true, "删除成功", null);
@@ -270,5 +282,70 @@ public class BrenchServiceImpl implements BrenchService {
 			return new Message(false, "数据库错误", null);
 		}
 
+	}
+
+	@Override
+	public Message getOlderAllSick(int olderid) throws Exception {
+		try {
+			OldersickExample oldersickExample = new OldersickExample();
+			com.sds.em.po.OldersickExample.Criteria criteria = oldersickExample.createCriteria();
+			criteria.andSickolderidEqualTo(olderid);
+			List<Oldersick> olderSickList = oldersickMapper.selectByExample(oldersickExample);
+			/*
+			 * List<String> sickDataSList = new ArrayList<String>(); for
+			 * (Oldersick o : olderSickList) { //o.getSickdate().toString();
+			 * String sickDataS = DateSimp.simpToSting(o.getSickdate());
+			 * sickDataSList.add(sickDataS); } JSONObject jsonObject = new
+			 * JSONObject(); jsonObject.put("olderSickList", olderSickList);
+			 * jsonObject.put("sickDataSList", sickDataSList);
+			 */
+			if (!olderSickList.isEmpty()) {
+				return new Message(true, "返回成功", olderSickList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message deleteOlderSick(int sickid) throws Exception {
+		try {
+			int flag = 0;
+			flag = oldersickMapper.deleteByPrimaryKey(sickid);
+			if (flag != 0) {
+				return new Message(true, "删除成功", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message getOlderAllOrder(int olderid) throws Exception {
+		try {
+			OrderExample orderExample = new OrderExample();
+			Criteria criteria = orderExample.createCriteria();
+			criteria.andOrderolderidEqualTo(olderid);
+			List<Order> orderList = orderMapper.selectByExample(orderExample);
+			if (!orderList.isEmpty()) {
+				return new Message(true, "返回成功", orderList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 }

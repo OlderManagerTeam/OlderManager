@@ -36,4 +36,14 @@ public interface BrenchService {
 	
 	//获取某个老人的信息
 	public Message getElder(String oldertel)throws Exception;
+	
+	////查看本老人的所有病历信息
+	public Message getOlderAllSick(int olderid)throws Exception;
+	
+	//删除一条老人病历信息
+	public Message deleteOlderSick(int sickid)throws Exception;
+	
+	//查看本老人的订单信息
+	public Message getOlderAllOrder(int olderid)throws Exception;
+	
 }
