@@ -29,7 +29,7 @@ public class Olderbase {
 
     private Integer olderbranchid;
 
-    private Integer odermaxpoint;
+    private Integer oldermaxpoint;
 
     public Integer getOlderid() {
         return olderid;
@@ -135,11 +135,11 @@ public class Olderbase {
         this.olderbranchid = olderbranchid;
     }
 
-    public Integer getOdermaxpoint() {
-        return odermaxpoint;
+    public Integer getOldermaxpoint() {
+        return oldermaxpoint;
     }
 
-    public void setOdermaxpoint(Integer odermaxpoint) {
-        this.odermaxpoint = odermaxpoint;
+    public void setOldermaxpoint(Integer oldermaxpoint) {
+        this.oldermaxpoint = oldermaxpoint;
     }
 }

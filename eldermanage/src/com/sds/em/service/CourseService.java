@@ -2,6 +2,11 @@ package com.sds.em.service;
 
 import java.util.Date;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.sds.em.po.Action;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Oldertoken;
@@ -22,9 +27,11 @@ public interface CourseService {
 	// 添加老人观看课程记录
 	public Message classRecord(int olderid,int videoid,Date lrecorddate);
 
-	// 返回当前讲座
-	public Message currentLecture(int olderid,int olderbranchid);
-
+	// 返回未登录时的所有讲座
+	public Message allLectureByolder(int olderid,int olderbranchid);
+	// 返回未登录后的所有讲座
+	public Message allLectures();
+	
 	// 老人报名讲座（添加讲座记录表/修改预约人数+1）
 	public Message joinLecture(int olderid, int lectureId);
 
@@ -35,4 +42,19 @@ public interface CourseService {
    public Message publishVideos(Video video);
    //发布讲座
    public Message publishLectures(Lecture lecture);
+   
+   //老人查看自己的视频播放记录
+   public Message videoRecord(int olderid);
+  
+   
+   //活动发布
+ 	public Message publishAction(Action actions);
+ 	//老人登陆后看到该片区所有活动
+ 	public Message allActionsByolder(int olderid,int olderbranchid);
+ 	//所有活动
+	public Message allActions();
+ 	//老人参加过的活动
+ 	public Message olderActions(int olderid,int olderbranchid);
+ 	//插入活动记录表
+ 	public Message joinAction(int olderid, int lectureid);
 }

@@ -4,16 +4,24 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<display-name>eldermanage</display-name>
-<!-- 	restful请求实现
-<filter>
-		<filter-name>hiddenHttpMethodFilter</filter-name>
-		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	<!-- restful请求实现 <filter> <filter-name>hiddenHttpMethodFilter</filter-name> 
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>hiddenHttpMethodFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+	<!-- shiro拦截器 -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<!-- 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<filter-name>shiroFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
-
+	</filter-mapping>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring/applicationContext-*.xml</param-value>
@@ -45,11 +53,8 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-<!-- springmvc返回html
-	<servlet-mapping>
-		<servlet-name>jsp</servlet-name>
-		<url-pattern>*.html</url-pattern>
-	</servlet-mapping> -->
+	<!-- springmvc返回html <servlet-mapping> <servlet-name>jsp</servlet-name> 
+		<url-pattern>*.html</url-pattern> </servlet-mapping> -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

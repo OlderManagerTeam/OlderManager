@@ -202,10 +202,8 @@
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
                                             <li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                                            <li><a href="../olderInfoManager/olderEntry.html">老年人基本信息录入</a></li>
-                                            <li><a href="../olderInfoManager/olderAlter.html">老年人基本信息修改</a></li>
-                                            <li><a href="../olderInfoManager/olderSicks.html">老年人病历信息录入</a></li>
-                                            <li><a href="../olderInfoManager/olderAction.html">老年人活动发布</a></li>
+                                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+                                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -308,15 +306,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="actionStatus" class="col-sm-3 control-label">活动等级：</label>
+                                            <label for="actionStatus" class="col-sm-3 control-label">活动状态：</label>
                                             <div class="col-sm-5">
-                                                <select id="actionStatus" name="level" style="width:80px">
-											        <optgroup label="活动等级">
-											          <option value="level1">等级1</option>
-											          <option value="level2">等级2</option>
-											          <option value="level3">等级3</option>
-											          <option value="level4">等级4</option>
-											          <option value="level5">等级5</option>
+                                                <select id="actionStatus" style="width:80px">
+											        <optgroup label="活动状态">
+											          <option value="1">正在进行</option>
+											          <option value="0">已结束</option>
 											</optgroup>
 										</select>
                                             </div>

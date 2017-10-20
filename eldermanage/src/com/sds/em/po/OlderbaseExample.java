@@ -1002,63 +1002,63 @@ public class OlderbaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointIsNull() {
-            addCriterion("oderMaxPoint is null");
+        public Criteria andOldermaxpointIsNull() {
+            addCriterion("olderMaxPoint is null");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointIsNotNull() {
-            addCriterion("oderMaxPoint is not null");
+        public Criteria andOldermaxpointIsNotNull() {
+            addCriterion("olderMaxPoint is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointEqualTo(Integer value) {
-            addCriterion("oderMaxPoint =", value, "odermaxpoint");
+        public Criteria andOldermaxpointEqualTo(Integer value) {
+            addCriterion("olderMaxPoint =", value, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointNotEqualTo(Integer value) {
-            addCriterion("oderMaxPoint <>", value, "odermaxpoint");
+        public Criteria andOldermaxpointNotEqualTo(Integer value) {
+            addCriterion("olderMaxPoint <>", value, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointGreaterThan(Integer value) {
-            addCriterion("oderMaxPoint >", value, "odermaxpoint");
+        public Criteria andOldermaxpointGreaterThan(Integer value) {
+            addCriterion("olderMaxPoint >", value, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointGreaterThanOrEqualTo(Integer value) {
-            addCriterion("oderMaxPoint >=", value, "odermaxpoint");
+        public Criteria andOldermaxpointGreaterThanOrEqualTo(Integer value) {
+            addCriterion("olderMaxPoint >=", value, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointLessThan(Integer value) {
-            addCriterion("oderMaxPoint <", value, "odermaxpoint");
+        public Criteria andOldermaxpointLessThan(Integer value) {
+            addCriterion("olderMaxPoint <", value, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointLessThanOrEqualTo(Integer value) {
-            addCriterion("oderMaxPoint <=", value, "odermaxpoint");
+        public Criteria andOldermaxpointLessThanOrEqualTo(Integer value) {
+            addCriterion("olderMaxPoint <=", value, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointIn(List<Integer> values) {
-            addCriterion("oderMaxPoint in", values, "odermaxpoint");
+        public Criteria andOldermaxpointIn(List<Integer> values) {
+            addCriterion("olderMaxPoint in", values, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointNotIn(List<Integer> values) {
-            addCriterion("oderMaxPoint not in", values, "odermaxpoint");
+        public Criteria andOldermaxpointNotIn(List<Integer> values) {
+            addCriterion("olderMaxPoint not in", values, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointBetween(Integer value1, Integer value2) {
-            addCriterion("oderMaxPoint between", value1, value2, "odermaxpoint");
+        public Criteria andOldermaxpointBetween(Integer value1, Integer value2) {
+            addCriterion("olderMaxPoint between", value1, value2, "oldermaxpoint");
             return (Criteria) this;
         }
 
-        public Criteria andOdermaxpointNotBetween(Integer value1, Integer value2) {
-            addCriterion("oderMaxPoint not between", value1, value2, "odermaxpoint");
+        public Criteria andOldermaxpointNotBetween(Integer value1, Integer value2) {
+            addCriterion("olderMaxPoint not between", value1, value2, "oldermaxpoint");
             return (Criteria) this;
         }
     }

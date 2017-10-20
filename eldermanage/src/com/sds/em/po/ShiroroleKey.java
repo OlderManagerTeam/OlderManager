@@ -1,16 +1,16 @@
 package com.sds.em.po;
 
 public class ShiroroleKey {
-    private Integer shirorolestaffid;
+    private String shirotel;
 
     private String shirorole;
 
-    public Integer getShirorolestaffid() {
-        return shirorolestaffid;
+    public String getShirotel() {
+        return shirotel;
     }
 
-    public void setShirorolestaffid(Integer shirorolestaffid) {
-        this.shirorolestaffid = shirorolestaffid;
+    public void setShirotel(String shirotel) {
+        this.shirotel = shirotel == null ? null : shirotel.trim();
     }
 
     public String getShirorole() {
