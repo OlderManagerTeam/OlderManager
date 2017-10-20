@@ -1,26 +1,24 @@
 package com.sds.em.service;
 
-import java.util.List;
-
 import com.sds.em.po.Message;
 import com.sds.em.po.News;
 
 /*
- * ÁõÂ¶
+ * ï¿½ï¿½Â¶
  */
 public interface NewsService {
-	// ·¢²¼ĞÂÎÅ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Message publishNews(News news);
 
-	// ²é¿´ÒÑ·¢²¼ĞÂÎÅ
+	// ï¿½é¿´ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Message publishedNews(String newsType);
 
-	// ²é¿´ĞÂÎÅÏêÇé
+	// ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Message newsDetail(int newsId);
 
-	// É¾³ıĞÂÎÅ
+	// É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Message deleteNews(int newsId);
 	
-	//ÀÏÈËµÇÂ¼
+	//ï¿½ï¿½ï¿½Ëµï¿½Â¼
 	public Message olderLogin(String olderTel,String olderPassword);
 }

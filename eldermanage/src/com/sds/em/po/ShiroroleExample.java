@@ -104,63 +104,73 @@ public class ShiroroleExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andShirorolestaffidIsNull() {
-            addCriterion("shiroroleStaffid is null");
+        public Criteria andShirotelIsNull() {
+            addCriterion("shirotel is null");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidIsNotNull() {
-            addCriterion("shiroroleStaffid is not null");
+        public Criteria andShirotelIsNotNull() {
+            addCriterion("shirotel is not null");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidEqualTo(Integer value) {
-            addCriterion("shiroroleStaffid =", value, "shirorolestaffid");
+        public Criteria andShirotelEqualTo(String value) {
+            addCriterion("shirotel =", value, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidNotEqualTo(Integer value) {
-            addCriterion("shiroroleStaffid <>", value, "shirorolestaffid");
+        public Criteria andShirotelNotEqualTo(String value) {
+            addCriterion("shirotel <>", value, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidGreaterThan(Integer value) {
-            addCriterion("shiroroleStaffid >", value, "shirorolestaffid");
+        public Criteria andShirotelGreaterThan(String value) {
+            addCriterion("shirotel >", value, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("shiroroleStaffid >=", value, "shirorolestaffid");
+        public Criteria andShirotelGreaterThanOrEqualTo(String value) {
+            addCriterion("shirotel >=", value, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidLessThan(Integer value) {
-            addCriterion("shiroroleStaffid <", value, "shirorolestaffid");
+        public Criteria andShirotelLessThan(String value) {
+            addCriterion("shirotel <", value, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidLessThanOrEqualTo(Integer value) {
-            addCriterion("shiroroleStaffid <=", value, "shirorolestaffid");
+        public Criteria andShirotelLessThanOrEqualTo(String value) {
+            addCriterion("shirotel <=", value, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidIn(List<Integer> values) {
-            addCriterion("shiroroleStaffid in", values, "shirorolestaffid");
+        public Criteria andShirotelLike(String value) {
+            addCriterion("shirotel like", value, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidNotIn(List<Integer> values) {
-            addCriterion("shiroroleStaffid not in", values, "shirorolestaffid");
+        public Criteria andShirotelNotLike(String value) {
+            addCriterion("shirotel not like", value, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidBetween(Integer value1, Integer value2) {
-            addCriterion("shiroroleStaffid between", value1, value2, "shirorolestaffid");
+        public Criteria andShirotelIn(List<String> values) {
+            addCriterion("shirotel in", values, "shirotel");
             return (Criteria) this;
         }
 
-        public Criteria andShirorolestaffidNotBetween(Integer value1, Integer value2) {
-            addCriterion("shiroroleStaffid not between", value1, value2, "shirorolestaffid");
+        public Criteria andShirotelNotIn(List<String> values) {
+            addCriterion("shirotel not in", values, "shirotel");
+            return (Criteria) this;
+        }
+
+        public Criteria andShirotelBetween(String value1, String value2) {
+            addCriterion("shirotel between", value1, value2, "shirotel");
+            return (Criteria) this;
+        }
+
+        public Criteria andShirotelNotBetween(String value1, String value2) {
+            addCriterion("shirotel not between", value1, value2, "shirotel");
             return (Criteria) this;
         }
 
