@@ -2,7 +2,7 @@ package com.sds.em.po;
 
 import java.util.Date;
 
-public class Order {
+public class Orders {
     private Integer orderid;
 
     private Integer orderolderid;
