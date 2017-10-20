@@ -94,10 +94,10 @@ public class BrenchController {
 		return brenchManageService.modifyAction(action);
 	}
 
-	// 查询这个管理员所在的分店名
+	// 查询这个管理员所在的分店名--测试通过
 
 	@RequestMapping(method = RequestMethod.GET, value = "branchname")
-	public @ResponseBody Message getBranchName(@RequestBody int staffid) throws Exception {
+	public @ResponseBody Message getBranchName(int staffid) throws Exception {
 		return brenchManageService.getBranchName(staffid);
 	}
 
@@ -109,20 +109,37 @@ public class BrenchController {
 		return brenchManageService.getAllElder(branchid);
 	}
 
-	// 删除某个老人的信息
+	// 删除某个老人的信息--测试成功
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "elder/info")
 	public @ResponseBody Message deleteOlder(@RequestBody String oldertel) throws Exception {
 
 		return brenchManageService.deleteANElder(oldertel);
 	}
-	
-	//获取某个老人的信息
-	
+
+	// 获取某个老人的信息--测试成功
+
 	@RequestMapping(method = RequestMethod.GET, value = "elder/info")
-	public @ResponseBody Message getOlder(@RequestBody String oldertel) throws Exception {
+	public @ResponseBody Message getOlder(String oldertel) throws Exception {
 
 		return brenchManageService.getElder(oldertel);
 	}
 
+	// 查看本老人的所有病历信息
+	@RequestMapping(method = RequestMethod.GET, value = "elder/sicks")
+	public @ResponseBody Message getOlderAllSick(int olderid) throws Exception {
+		return brenchManageService.getOlderAllSick(olderid);
+	}
+
+	// 删除一条老人病历信息--测试成功
+	@RequestMapping(method = RequestMethod.DELETE, value = "elder/sick")
+	public @ResponseBody Message deleteOlderSick(int sickid) throws Exception {
+		return brenchManageService.deleteOlderSick(sickid);
+	}
+
+	// 查看本老人的订单信息
+	@RequestMapping(method = RequestMethod.GET, value = "elder/orders")
+	public @ResponseBody Message getOlderAllOrder(int olderid) throws Exception {
+		return brenchManageService.getOlderAllOrder(olderid);
+	}
 }

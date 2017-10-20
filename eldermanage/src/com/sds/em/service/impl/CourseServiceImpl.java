@@ -18,6 +18,7 @@ import com.sds.em.mapper.VideorecordMapper;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.LectureExample;
 import com.sds.em.po.Lecturerecord;
+import com.sds.em.po.LecturerecordExample;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.OlderbaseExample;
@@ -31,7 +32,7 @@ import com.sds.em.service.CourseService;
 
 /**
  * 
- * @author ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-2017-10-17
+ * @author ²ÌÎÄÑÞ-2017-10-17
  *
  */
 public class CourseServiceImpl implements CourseService {
@@ -52,7 +53,7 @@ public class CourseServiceImpl implements CourseService {
 	@Autowired
 	OlderbaseMapper olderbaseMapper;
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¿Î³ï¿½ ï¿½ï¿½ï¿½Ø¿Î³ï¿½ï¿½Ð±ï¿½
+	// ·µ»ØËùÓÐµÄ¿Î³Ì ·µ»Ø¿Î³ÌÁÐ±í
 	@Override
 	public Message allClasses() {
 
@@ -60,99 +61,169 @@ public class CourseServiceImpl implements CourseService {
 		Criteria videoCriteria = videoExample.createCriteria();
 		List<Video> videoList = videoMapper.selectByExample(videoExample);
 		if (!videoList.isEmpty()) {
-			return new Message(true, "ï¿½ï¿½ï¿½Ø³É¹ï¿½", videoList);
+			return new Message(true, "·µ»Ø³É¹¦", videoList);
 		}
 
-		return new Message(false, "ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½", null);
+		return new Message(false, "Êý¾Ý´íÎó", null);
 
 	}
 
-	//
-	// //ï¿½ï¿½ï¿½Ø¿Î³ï¿½ï¿½ï¿½Æµï¿½ï¿½Ï¸
-	// @Override
-	// public Message classDetail(int videoId) {
-	//
-	// VideoExample videoExample = new VideoExample();
-	// Criteria videoCriteria = videoExample.createCriteria();
-	// videoCriteria.andVideoidEqualTo(videoId);
-	// List<Video> videoList = videoMapper.selectByExample(videoExample);
-	// if(!videoList.isEmpty()){
-	// JSONObject jsonObject = new JSONObject();
-	// try {
-	// jsonObject.put("videoName", videoList.get(0).getVideoname());
-	// jsonObject.put("videoUrl", videoList.get(0).getVideopicurl());
-	// jsonObject.put("videoPublishDate",
-	// videoList.get(0).getVideopublishdate());
-	// jsonObject.put("videoDetail", videoList.get(0).getVideodetail());
-	// } catch (JSONException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// return new Message(true,"ï¿½ï¿½ï¿½Ø³É¹ï¿½",videoList.toString());
-	// }
-	// return new Message(false,"ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½",null);
-	//
-	// }
-	//
+	
+	 //·µ»Ø¿Î³ÌÊÓÆµÏêÏ¸
+	 @Override
+	 public Message classDetail(int videoId) {
+	
+	 VideoExample videoExample = new VideoExample();
+	 Criteria videoCriteria = videoExample.createCriteria();
+	 videoCriteria.andVideoidEqualTo(videoId);
+	 List<Video> videoList = videoMapper.selectByExample(videoExample);
+	 if(!videoList.isEmpty()){
+		 JSONObject jsonObject = new JSONObject();
+	 try {
+		 jsonObject.put("videoName", videoList.get(0).getVideoname());
+		 jsonObject.put("videoUrl", videoList.get(0).getVideopicurl());
+		 jsonObject.put("videoPublishDate",
+		 videoList.get(0).getVideopublishdate());
+		 jsonObject.put("videoDetail", videoList.get(0).getVideodetail());
+	 } catch (JSONException e) {
+		 // TODO Auto-generated catch block
+		 e.printStackTrace();
+	 }
+	 	return new Message(true,"·µ»Ø³É¹¦",videoList.toString());
+	 }
+	 	return new Message(false,"Êý¾Ý´íÎó",null);
+	
+	 }
+	
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿Î³Ì¹Û¿ï¿½ï¿½ï¿½Â¼
+	// Ìí¼ÓÀÏÈË¿Î³Ì¹Û¿´¼ÇÂ¼
 	@Override
-	public Message classRecord(String olderToken, int videoId, Date vRecordDate) {
+	public Message classRecord(int olderid,int videoid,Date lrecorddate) {
 
-		OldertokenExample oldertokenExample = new OldertokenExample();
-		com.sds.em.po.OldertokenExample.Criteria olderTokenCriteria = oldertokenExample.createCriteria();
-		olderTokenCriteria.andOldertokenEqualTo(olderToken);
-		List<Oldertoken> olderTokenList = oldertokenMapper.selectByExample(oldertokenExample);
-
-		// System.out.println("qqqqqqq"+olderTokenList.get(0));
-		int olderId = olderTokenList.get(0).getOlderid();
-
-		// VideorecordExample videorecordExample = new VideorecordExample();
 		Videorecord videorecord = new Videorecord();
-		videorecord.setVrecordvideoid(videoId);
-		videorecord.setVrecordolderid(olderId);
-		videorecord.setVrecorddate(vRecordDate);
+		videorecord.setVrecordvideoid(videoid);
+		videorecord.setVrecordolderid(olderid);
+		videorecord.setVrecorddate(lrecorddate);
 
 		int flag = videorecordMapper.insert(videorecord);
 		if (flag == 1) {
-			return new Message(true, "ï¿½ï¿½Ó³É¹ï¿½", null);
+			
+			VideoExample videoExample = new VideoExample();
+			Criteria videoCriteria = videoExample.createCriteria();
+			videoCriteria.andVideoidEqualTo(videoid);
+			List<Video> videoList = videoMapper.selectByExample(videoExample);
+			
+			int videoheat=videoList.get(0).getVideoheat()+1;
+			
+			Video video = new Video();
+			video.setVideoid(videoid);
+			video.setVideoheat(videoheat);
+			videoMapper.updateByPrimaryKey(video);
+			
+			return new Message(true, "Ìí¼Ó³É¹¦", null);
 		}
 
-		return new Message(false, "ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½", null);
+		return new Message(false, "Êý¾Ý´íÎó", null);
 	}
 
-	// ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+	// ·µ»Øµ±Ç°½²×ù
 	@Override
-	public Message currentLecture(int olderid,String olderbranchid) {
+	public Message currentLecture(int olderid,int olderbranchid) {
 
+		 LectureExample lectureExample1 = new LectureExample();
+	     com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample1.createCriteria();
+	     
 		if(olderid != ' '){
-		     LectureExample lectureExample = new LectureExample();
-		     com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
-		    // lectureCriteria.andlectureb
+		    
+		     lectureCriteria.andLecturebranchidEqualTo(olderbranchid);
+		     List<Lecture> lectureList1 = lectureMapper.selectByExample(lectureExample1);
+		     if(!lectureList1.isEmpty()){
 		     
+		    	 return new Message(true, "·µ»Ø³É¹¦", lectureList1);
+
+		     }
+		     else 
+		    	 return new Message(false, "Ã»ÓÐ¸Ã·ÖÇø½²×ù", null);
+		}
+		else {
+			List<Lecture> lectureList2 = lectureMapper.selectByExample(lectureExample1);
+		    if(!lectureList2.isEmpty()){
+		     
+	    	     return new Message(true, "·µ»Ø³É¹¦", lectureList2);
+         	  }
+	        else 
+	    	     return new Message(false, "Êý¾Ý´íÎó", null);
 		}
 		
-		return new Message(false,"ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½",null);
-
 	}
 
-	// ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½Î¼Ó½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½lectureeEnroll)
+	// ÀÏÈË±¨Ãû²Î¼Ó½²×ù(¸üÐÂlectureeEnroll)
 	@Override
-	public Message joinLecture(int olderid, int lectureId) {
+	public Message joinLecture(int olderid, int lectureid) {
 
-		if(olderid != ' '){
-			
+		Lecturerecord lectureRecord = new Lecturerecord();
+		lectureRecord.setLrecordolderid(olderid);
+		lectureRecord.setLrecordlectureid(lectureid);
+		lectureRecord.setLrecorddate(new Date());
+		
+		lecturerecordMapper.insert(lectureRecord);
+		
+		LectureExample lectureExample = new LectureExample();
+		com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
+		lectureCriteria.andLectureidEqualTo(lectureid);
+		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
+		int lectureenroll =lectureList.get(0).getLectureenroll()+1;
+		Lecture lecture = new Lecture();
+		lecture.setLectureid(lectureid);
+		lecture.setLectureenroll(lectureenroll);
+		int flag = lectureMapper.updateByPrimaryKey(lecture);
+		if(flag==1){
+			return new Message(true, "·µ»Ø³É¹¦", null);
 		}
-		return new Message(false, "ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½", null);
+		
+		return new Message(false, "Êý¾Ý¿â´íÎó", null);
 
 	}
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½Ð±ï¿½Êµï¿½ï¿½
+	//²¥·ÅÈÈ¶ÈÁÐ±íÊµÏÖ
 	@Override
 	public Message videoHeatTop() {
-		int topnum =10;
-		return null;
+		
+		VideoExample videoExample = new VideoExample();
+		videoExample.setOrderByClause("videoheat DESC,videoid DESC");
+		
+		List<Video> videoList = videoMapper.selectByExample(videoExample);
+		if(!videoList.isEmpty()){
+			return new Message(true,"·µ»Ø³É¹¦",videoList);
+		}
+		
+		return new Message(false,"Êý¾Ý´íÎó",null);
 	}
+
+	//·¢²¼¿Î³Ì
+	@Override
+	public Message publishVideos(Video video) {
+		int flag = 0;
+		flag = videoMapper.insert(video);
+		if (flag != 0) {
+			return new Message(true, "·¢²¼³É¹¦", null);
+		}
+		return new Message(false, "Êý¾Ý¿â´íÎó", null);
+		
+	}
+
+	//·¢²¼½²×ù
+	@Override
+	public Message publishLectures(Lecture lecture) {
+		int flag = 0;
+		flag = lectureMapper.insert(lecture);
+		if (flag != 0) {
+			return new Message(true, "·¢²¼³É¹¦", null);
+		}
+		return new Message(false, "Êý¾Ý¿â´íÎó", null);
+	}
+	
+	
 
 	
 	
