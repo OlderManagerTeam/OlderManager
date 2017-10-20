@@ -12,8 +12,26 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=utf-8</value>
+							<value>text/html;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
 	<!-- 对静态资源的解析 js img css -->
-	<mvc:resources location="/js/" mapping="/js/**" />
+	<!-- <mvc:resources location="/js/" mapping="/js/**" /> -->
 	<mvc:resources location="/front_end/" mapping="/front_end/**" />
 	<context:component-scan base-package="com.sds.em.controller" />
 	<!-- 使用注解开发 -->
@@ -21,4 +39,11 @@
 	<!-- <mvc:resources location="/html/" mapping="/html/**" /> -->
 	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
 		<property name="prefix" value="/v1/" /> </bean> -->
+
+<!-- 	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		转换器
+		<property name="converters"> <list> <bean class="com.sds.em.convert.CustomDateConverter"/> 
+			</list> </property>
+	</bean> -->
 </beans>

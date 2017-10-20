@@ -10,6 +10,7 @@
     <result column="productImg" property="productimg" jdbcType="VARCHAR" />
     <result column="productWeight" property="productweight" jdbcType="REAL" />
     <result column="productUponDate" property="productupondate" jdbcType="DATE" />
+    <result column="productDiscountPrice" property="productdiscountprice" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List" >
     productId, productName, productPrice, productTypeNumber, productInfo, productImg, 
-    productWeight, productUponDate
+    productWeight, productUponDate, productDiscountPrice
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ProductExample" >
     select
@@ -106,10 +107,12 @@
   <insert id="insert" parameterType="com.sds.em.po.Product" >
     insert into product (productId, productName, productPrice, 
       productTypeNumber, productInfo, productImg, 
-      productWeight, productUponDate)
+      productWeight, productUponDate, productDiscountPrice
+      )
     values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productprice,jdbcType=REAL}, 
       #{producttypenumber,jdbcType=INTEGER}, #{productinfo,jdbcType=VARCHAR}, #{productimg,jdbcType=VARCHAR}, 
-      #{productweight,jdbcType=REAL}, #{productupondate,jdbcType=DATE})
+      #{productweight,jdbcType=REAL}, #{productupondate,jdbcType=DATE}, #{productdiscountprice,jdbcType=REAL}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Product" >
     insert into product
@@ -138,6 +141,9 @@
       <if test="productupondate != null" >
         productUponDate,
       </if>
+      <if test="productdiscountprice != null" >
+        productDiscountPrice,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="productid != null" >
@@ -163,6 +169,9 @@
       </if>
       <if test="productupondate != null" >
         #{productupondate,jdbcType=DATE},
+      </if>
+      <if test="productdiscountprice != null" >
+        #{productdiscountprice,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -199,6 +208,9 @@
       <if test="record.productupondate != null" >
         productUponDate = #{record.productupondate,jdbcType=DATE},
       </if>
+      <if test="record.productdiscountprice != null" >
+        productDiscountPrice = #{record.productdiscountprice,jdbcType=REAL},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +225,8 @@
       productInfo = #{record.productinfo,jdbcType=VARCHAR},
       productImg = #{record.productimg,jdbcType=VARCHAR},
       productWeight = #{record.productweight,jdbcType=REAL},
-      productUponDate = #{record.productupondate,jdbcType=DATE}
+      productUponDate = #{record.productupondate,jdbcType=DATE},
+      productDiscountPrice = #{record.productdiscountprice,jdbcType=REAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +255,9 @@
       <if test="productupondate != null" >
         productUponDate = #{productupondate,jdbcType=DATE},
       </if>
+      <if test="productdiscountprice != null" >
+        productDiscountPrice = #{productdiscountprice,jdbcType=REAL},
+      </if>
     </set>
     where productId = #{productid,jdbcType=INTEGER}
   </update>
@@ -253,7 +269,8 @@
       productInfo = #{productinfo,jdbcType=VARCHAR},
       productImg = #{productimg,jdbcType=VARCHAR},
       productWeight = #{productweight,jdbcType=REAL},
-      productUponDate = #{productupondate,jdbcType=DATE}
+      productUponDate = #{productupondate,jdbcType=DATE},
+      productDiscountPrice = #{productdiscountprice,jdbcType=REAL}
     where productId = #{productid,jdbcType=INTEGER}
   </update>
 </mapper>

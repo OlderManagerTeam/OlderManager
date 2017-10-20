@@ -28,6 +28,6 @@ public interface OlderbaseMapper {
 
     int updateByPrimaryKey(Olderbase record);
     
-    //lu 2017-10-12:Â¼ÈëÀÏÈË»ù±¾ĞÅÏ¢£¬²¢´«»Øid 
+    //lu 2017-10-12:Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id 
     public int insertOlderBase(Olderbase olderbase);
 }

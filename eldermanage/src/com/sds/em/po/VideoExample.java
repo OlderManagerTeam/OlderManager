@@ -722,63 +722,73 @@ public class VideoExample {
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusIsNull() {
-            addCriterion("videoStatus is null");
+        public Criteria andVideopartitionIsNull() {
+            addCriterion("videoPartition is null");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusIsNotNull() {
-            addCriterion("videoStatus is not null");
+        public Criteria andVideopartitionIsNotNull() {
+            addCriterion("videoPartition is not null");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusEqualTo(Integer value) {
-            addCriterion("videoStatus =", value, "videostatus");
+        public Criteria andVideopartitionEqualTo(String value) {
+            addCriterion("videoPartition =", value, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusNotEqualTo(Integer value) {
-            addCriterion("videoStatus <>", value, "videostatus");
+        public Criteria andVideopartitionNotEqualTo(String value) {
+            addCriterion("videoPartition <>", value, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusGreaterThan(Integer value) {
-            addCriterion("videoStatus >", value, "videostatus");
+        public Criteria andVideopartitionGreaterThan(String value) {
+            addCriterion("videoPartition >", value, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("videoStatus >=", value, "videostatus");
+        public Criteria andVideopartitionGreaterThanOrEqualTo(String value) {
+            addCriterion("videoPartition >=", value, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusLessThan(Integer value) {
-            addCriterion("videoStatus <", value, "videostatus");
+        public Criteria andVideopartitionLessThan(String value) {
+            addCriterion("videoPartition <", value, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusLessThanOrEqualTo(Integer value) {
-            addCriterion("videoStatus <=", value, "videostatus");
+        public Criteria andVideopartitionLessThanOrEqualTo(String value) {
+            addCriterion("videoPartition <=", value, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusIn(List<Integer> values) {
-            addCriterion("videoStatus in", values, "videostatus");
+        public Criteria andVideopartitionLike(String value) {
+            addCriterion("videoPartition like", value, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusNotIn(List<Integer> values) {
-            addCriterion("videoStatus not in", values, "videostatus");
+        public Criteria andVideopartitionNotLike(String value) {
+            addCriterion("videoPartition not like", value, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusBetween(Integer value1, Integer value2) {
-            addCriterion("videoStatus between", value1, value2, "videostatus");
+        public Criteria andVideopartitionIn(List<String> values) {
+            addCriterion("videoPartition in", values, "videopartition");
             return (Criteria) this;
         }
 
-        public Criteria andVideostatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("videoStatus not between", value1, value2, "videostatus");
+        public Criteria andVideopartitionNotIn(List<String> values) {
+            addCriterion("videoPartition not in", values, "videopartition");
+            return (Criteria) this;
+        }
+
+        public Criteria andVideopartitionBetween(String value1, String value2) {
+            addCriterion("videoPartition between", value1, value2, "videopartition");
+            return (Criteria) this;
+        }
+
+        public Criteria andVideopartitionNotBetween(String value1, String value2) {
+            addCriterion("videoPartition not between", value1, value2, "videopartition");
             return (Criteria) this;
         }
     }

@@ -1001,6 +1001,66 @@ public class OlderbaseExample {
             addCriterion("olderBranchId not between", value1, value2, "olderbranchid");
             return (Criteria) this;
         }
+
+        public Criteria andOldermaxpointIsNull() {
+            addCriterion("olderMaxPoint is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointIsNotNull() {
+            addCriterion("olderMaxPoint is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointEqualTo(Integer value) {
+            addCriterion("olderMaxPoint =", value, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointNotEqualTo(Integer value) {
+            addCriterion("olderMaxPoint <>", value, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointGreaterThan(Integer value) {
+            addCriterion("olderMaxPoint >", value, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointGreaterThanOrEqualTo(Integer value) {
+            addCriterion("olderMaxPoint >=", value, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointLessThan(Integer value) {
+            addCriterion("olderMaxPoint <", value, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointLessThanOrEqualTo(Integer value) {
+            addCriterion("olderMaxPoint <=", value, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointIn(List<Integer> values) {
+            addCriterion("olderMaxPoint in", values, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointNotIn(List<Integer> values) {
+            addCriterion("olderMaxPoint not in", values, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointBetween(Integer value1, Integer value2) {
+            addCriterion("olderMaxPoint between", value1, value2, "oldermaxpoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldermaxpointNotBetween(Integer value1, Integer value2) {
+            addCriterion("olderMaxPoint not between", value1, value2, "oldermaxpoint");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

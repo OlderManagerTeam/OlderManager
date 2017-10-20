@@ -1,26 +1,23 @@
-package com.sds.em.controller;
+ï»¿package com.sds.em.controller;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.sds.em.po.Message;
-import com.sds.em.po.Role;
-import com.sds.em.po.Staffbase;
 import com.sds.em.service.IndexService;
 
 /**
  * 
- * @author wenbowu ¹ØÓÚÔ±¹¤µÄcontroller
+ * @author wenbowu ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½controller
  */
 
 @Controller
@@ -31,78 +28,86 @@ public class IndexController {
 	IndexService indexService;
 
 	@RequestMapping(value = "signin")
-	public @ResponseBody Message sigin(@RequestBody String staffTel) {// ÑéÖ¤Ô±¹¤µç»°ºÅÂëÊÇ·ñ¿ÉÓÃ
+	public @ResponseBody Message sigin(@RequestBody String staffTel) {// ï¿½ï¿½Ö¤Ô±ï¿½ï¿½ï¿½ç»°ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 		return indexService.checkStaffName(staffTel);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "securities")
-	public @ResponseBody Message securities() {// ·µ»ØËùÓĞÎÊÌâÁĞ±í
+	public @ResponseBody Message securities() {// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
 		return indexService.returnSecurities();
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "login")
 	@ResponseBody
-	public String login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			@RequestBody Staffbase s) {
-	/*	ModelAndView modelAndView = new ModelAndView();
-
-		Message message = indexService.login(s.getStafftel(), s.getStaffpassword());
-
-		Staffbase staffbase = (Staffbase) message.getData();
-		int staffId = staffbase.getStaffid();
-		String staffName = staffbase.getStaffname();
-
-		session.setAttribute("staffId", staffId);
-		session.setAttribute("staffName", staffName);
-		modelAndView.addObject("message", message);
-
-		// cookie
-		Cookie cookie = new Cookie("cookieName", "cookie"); // ĞÂ½¨Cookie
-		cookie.setSecure(true);
-		cookie.setMaxAge(24 * 60 * 60);// ±£´æÒ»Ìì
-		response.addCookie(cookie); // Êä³öµ½¿Í»§¶Ë
-		modelAndView.setViewName("login.jsp");*/
-		return "{\"staffTel\":\"18212400001\",\"staffPassword\":\"123456wwb\"}";
+	public String login(HttpSession session, String tel, String password) {
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(tel, password);
+		try {
+			subject.login(token);
+		} catch (AuthenticationException e) {
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
+			e.printStackTrace();
+			return "failed";
+		}
+		/*
+		 * ModelAndView modelAndView = new ModelAndView();
+		 * 
+		 * Message message = indexService.login(s.getStafftel(),
+		 * s.getStaffpassword());
+		 * 
+		 * Staffbase staffbase = (Staffbase) message.getData(); int staffId =
+		 * staffbase.getStaffid(); String staffName = staffbase.getStaffname();
+		 * 
+		 * session.setAttribute("staffId", staffId);
+		 * session.setAttribute("staffName", staffName);
+		 * modelAndView.addObject("message", message);
+		 * 
+		 * // cookie Cookie cookie = new Cookie("cookieName", "cookie"); //
+		 * ï¿½Â½ï¿½Cookie cookie.setSecure(true); cookie.setMaxAge(24 * 60 * 60);//
+		 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ response.addCookie(cookie); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½
+		 * modelAndView.setViewName("login.jsp");
+		 */
+		return "æˆåŠŸç™»å½•";
 	}
 
 	/*
 	 * lu-10-14
 	 */
 
-	// ·µ»Ø¸öÈËÃÜ±£ÎÊÌâ
+	// ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½Ü±ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(method = RequestMethod.GET, value = "question")
 	public @ResponseBody Message question(@RequestBody String stafftel) {
 		return indexService.returnQuestion(stafftel);
 	}
 
-	// Ğ£ÑéÃÜ±£ÎÊÌâ´ğ°¸
+	// Ğ£ï¿½ï¿½ï¿½Ü±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(method = RequestMethod.POST, value = "answer")
 	public @ResponseBody Message answer(@RequestBody String securityanswer, @RequestBody int staffid) {
 		return indexService.checkSecurity(securityanswer, staffid);
 	}
 
-	// ĞŞ¸ÄÃÜÂë
+	// ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(method = RequestMethod.POST, value = "password")
-	public @ResponseBody Message password(@RequestBody String staffpassword,@RequestBody int staffid) {
+	public @ResponseBody Message password(@RequestBody String staffpassword, @RequestBody int staffid) {
 		return indexService.modifyPassword(staffpassword, staffid);
 	}
 
-	// ·µ»ØËùÓĞµÄ²¿ÃÅ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ĞµÄ²ï¿½ï¿½ï¿½
 	@RequestMapping(method = RequestMethod.GET, value = "departments")
 	public @ResponseBody Message departments() {
 		return indexService.allDepartments();
 	}
 
-	// ·µ»Øµ±Ç°²¿ÃÅËùÓĞÖ°Î»
+	// ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î»
 	@RequestMapping(method = RequestMethod.GET, value = "roles")
 	public @ResponseBody Message roles(@RequestBody int departmentid) {
 		return indexService.allRoles(departmentid);
 	}
-	
-	//ĞÂÎÅÁĞ±í²éÑ¯
-		@RequestMapping(method = RequestMethod.GET, value = "news")
-		public @ResponseBody Message news() {
-			return indexService.allNews();
-		}
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½ï¿½Ñ¯
+	@RequestMapping(method = RequestMethod.GET, value = "news")
+	public @ResponseBody Message news() {
+		return indexService.allNews();
+	}
 
 }

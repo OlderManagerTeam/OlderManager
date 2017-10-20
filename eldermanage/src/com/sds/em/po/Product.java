@@ -19,6 +19,8 @@ public class Product {
 
     private Date productupondate;
 
+    private Float productdiscountprice;
+
     public Integer getProductid() {
         return productid;
     }
@@ -81,5 +83,13 @@ public class Product {
 
     public void setProductupondate(Date productupondate) {
         this.productupondate = productupondate;
+    }
+
+    public Float getProductdiscountprice() {
+        return productdiscountprice;
+    }
+
+    public void setProductdiscountprice(Float productdiscountprice) {
+        this.productdiscountprice = productdiscountprice;
     }
 }

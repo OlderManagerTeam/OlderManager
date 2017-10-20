@@ -1,7 +1,6 @@
 package com.sds.em.service;
 
 import com.sds.em.po.Message;
-import com.sds.em.po.Role;
 import com.sds.em.po.Staffbase;
 
 public interface IndexService {
@@ -12,27 +11,27 @@ public interface IndexService {
 
 	public Message signIn(Staffbase staff);
 
-	public Message login(String staffTel, String staffPassword);// µÇÂ¼ÅĞ¶ÏÃÜÂë
+	public Message login(String staffTel, String staffPassword);// ï¿½ï¿½Â¼ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	// yan:10-13
 
 	public Message returnQuestion(String staffTel);
 
 	// lu:10-14
-	// Ğ£ÑéÃÜ±£ÎÊÌâ´ğ°¸
+	// Ğ£ï¿½ï¿½ï¿½Ü±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Message checkSecurity(String securityAnswer, int staffId);
 
-	// ĞŞ¸ÄÃÜÂë
+	// ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	public Message modifyPassword(String staffPassword, int staffId);
 
-	// ·µ»ØËùÓĞµÄ²¿ÃÅ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ĞµÄ²ï¿½ï¿½ï¿½
 
 	public Message allDepartments();
 	
-	//·µ»Øµ±Ç°²¿ÃÅËùÓĞÖ°Î»
+	//ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î»
 	
 	public Message allRoles(int departmentId);
-	//ĞÂÎÅÁĞ±í²éÑ¯
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½ï¿½Ñ¯
 	public Message allNews();
 }

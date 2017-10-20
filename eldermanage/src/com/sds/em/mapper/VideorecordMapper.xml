@@ -5,8 +5,7 @@
     <id column="vRecordId" property="vrecordid" jdbcType="INTEGER" />
     <result column="vRecordOlderId" property="vrecordolderid" jdbcType="INTEGER" />
     <result column="vRecordVideoId" property="vrecordvideoid" jdbcType="INTEGER" />
-    <result column="vRecordDate" property="vrecorddate" jdbcType="DATE" />
-    <result column="vRecordCurrentDate" property="vrecordcurrentdate" jdbcType="REAL" />
+    <result column="vRecordDate" property="vrecorddate" jdbcType="TIME" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    vRecordId, vRecordOlderId, vRecordVideoId, vRecordDate, vRecordCurrentDate
+    vRecordId, vRecordOlderId, vRecordVideoId, vRecordDate
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.VideorecordExample" >
     select
@@ -101,9 +100,9 @@
   </delete>
   <insert id="insert" parameterType="com.sds.em.po.Videorecord" >
     insert into videorecord (vRecordId, vRecordOlderId, vRecordVideoId, 
-      vRecordDate, vRecordCurrentDate)
+      vRecordDate)
     values (#{vrecordid,jdbcType=INTEGER}, #{vrecordolderid,jdbcType=INTEGER}, #{vrecordvideoid,jdbcType=INTEGER}, 
-      #{vrecorddate,jdbcType=DATE}, #{vrecordcurrentdate,jdbcType=REAL})
+      #{vrecorddate,jdbcType=TIME})
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Videorecord" >
     insert into videorecord
@@ -120,9 +119,6 @@
       <if test="vrecorddate != null" >
         vRecordDate,
       </if>
-      <if test="vrecordcurrentdate != null" >
-        vRecordCurrentDate,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="vrecordid != null" >
@@ -135,10 +131,7 @@
         #{vrecordvideoid,jdbcType=INTEGER},
       </if>
       <if test="vrecorddate != null" >
-        #{vrecorddate,jdbcType=DATE},
-      </if>
-      <if test="vrecordcurrentdate != null" >
-        #{vrecordcurrentdate,jdbcType=REAL},
+        #{vrecorddate,jdbcType=TIME},
       </if>
     </trim>
   </insert>
@@ -161,10 +154,7 @@
         vRecordVideoId = #{record.vrecordvideoid,jdbcType=INTEGER},
       </if>
       <if test="record.vrecorddate != null" >
-        vRecordDate = #{record.vrecorddate,jdbcType=DATE},
-      </if>
-      <if test="record.vrecordcurrentdate != null" >
-        vRecordCurrentDate = #{record.vrecordcurrentdate,jdbcType=REAL},
+        vRecordDate = #{record.vrecorddate,jdbcType=TIME},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -176,8 +166,7 @@
     set vRecordId = #{record.vrecordid,jdbcType=INTEGER},
       vRecordOlderId = #{record.vrecordolderid,jdbcType=INTEGER},
       vRecordVideoId = #{record.vrecordvideoid,jdbcType=INTEGER},
-      vRecordDate = #{record.vrecorddate,jdbcType=DATE},
-      vRecordCurrentDate = #{record.vrecordcurrentdate,jdbcType=REAL}
+      vRecordDate = #{record.vrecorddate,jdbcType=TIME}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -192,10 +181,7 @@
         vRecordVideoId = #{vrecordvideoid,jdbcType=INTEGER},
       </if>
       <if test="vrecorddate != null" >
-        vRecordDate = #{vrecorddate,jdbcType=DATE},
-      </if>
-      <if test="vrecordcurrentdate != null" >
-        vRecordCurrentDate = #{vrecordcurrentdate,jdbcType=REAL},
+        vRecordDate = #{vrecorddate,jdbcType=TIME},
       </if>
     </set>
     where vRecordId = #{vrecordid,jdbcType=INTEGER}
@@ -204,8 +190,7 @@
     update videorecord
     set vRecordOlderId = #{vrecordolderid,jdbcType=INTEGER},
       vRecordVideoId = #{vrecordvideoid,jdbcType=INTEGER},
-      vRecordDate = #{vrecorddate,jdbcType=DATE},
-      vRecordCurrentDate = #{vrecordcurrentdate,jdbcType=REAL}
+      vRecordDate = #{vrecorddate,jdbcType=TIME}
     where vRecordId = #{vrecordid,jdbcType=INTEGER}
   </update>
 </mapper>

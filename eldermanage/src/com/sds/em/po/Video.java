@@ -21,7 +21,7 @@ public class Video {
 
     private Integer videoheat;
 
-    private Integer videostatus;
+    private String videopartition;
 
     public Integer getVideoid() {
         return videoid;
@@ -95,11 +95,11 @@ public class Video {
         this.videoheat = videoheat;
     }
 
-    public Integer getVideostatus() {
-        return videostatus;
+    public String getVideopartition() {
+        return videopartition;
     }
 
-    public void setVideostatus(Integer videostatus) {
-        this.videostatus = videostatus;
+    public void setVideopartition(String videopartition) {
+        this.videopartition = videopartition == null ? null : videopartition.trim();
     }
 }

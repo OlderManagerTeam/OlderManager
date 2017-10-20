@@ -8,30 +8,37 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
 import com.sds.em.mapper.LecturerecordMapper;
+import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldertokenMapper;
 import com.sds.em.mapper.VideoMapper;
 import com.sds.em.mapper.VideorecordMapper;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.LectureExample;
 import com.sds.em.po.Lecturerecord;
-import com.sds.em.po.LecturerecordExample;
 import com.sds.em.po.Message;
+import com.sds.em.po.Olderbase;
+import com.sds.em.po.OlderbaseExample;
 import com.sds.em.po.Oldertoken;
 import com.sds.em.po.OldertokenExample;
 import com.sds.em.po.Video;
 import com.sds.em.po.VideoExample;
 import com.sds.em.po.VideoExample.Criteria;
 import com.sds.em.po.Videorecord;
-import com.sds.em.po.VideorecordExample;
 import com.sds.em.service.CourseService;
 
-public class CourseServiceImpl implements CourseService{
-	
+/**
+ * 
+ * @author ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-2017-10-17
+ *
+ */
+public class CourseServiceImpl implements CourseService {
+
 	@Autowired
 	VideoMapper videoMapper;
-	
+
 	@Autowired
 	VideorecordMapper videorecordMapper;
 	@Autowired
@@ -40,174 +47,117 @@ public class CourseServiceImpl implements CourseService{
 	LectureMapper lectureMapper;
 	@Autowired
 	LecturerecordMapper lecturerecordMapper;
-	
-	
-	//·µ»ØËùÓÐstatusÎª1µÄ¿Î³Ì  ·µ»Ø¿Î³ÌÁÐ±í
-	@Override   
+	@Autowired
+	BranchMapper branchMapper;
+	@Autowired
+	OlderbaseMapper olderbaseMapper;
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¿Î³ï¿½ ï¿½ï¿½ï¿½Ø¿Î³ï¿½ï¿½Ð±ï¿½
+	@Override
 	public Message allClasses() {
-		
+
 		VideoExample videoExample = new VideoExample();
 		Criteria videoCriteria = videoExample.createCriteria();
-		videoCriteria.andVideostatusEqualTo(1);
 		List<Video> videoList = videoMapper.selectByExample(videoExample);
-		List<JSONObject> jsonObjectList = new ArrayList<JSONObject>();//´æ·ÅjsonÊý×édu
-		
-		if(!videoList.isEmpty()){
-			
-			for(int i=0;i<videoList.size();i++){
-				try {
-					JSONObject jsonObject=new JSONObject();
-					jsonObject.put("videoId", videoList.get(i).getVideoid());
-					jsonObject.put("videoName", videoList.get(i).getVideoname());
-					jsonObject.put("videoIntro", videoList.get(i).getVideointro());
-					jsonObject.put("videoPicUrl", videoList.get(i).getVideopicurl());
-					jsonObject.put("videoTime", videoList.get(i).getVideotime());
-					jsonObject.put("videoHeat", videoList.get(i).getVideoheat());
-					jsonObjectList.add(jsonObject);
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}
-			return new Message(true,"·µ»Ø³É¹¦",jsonObjectList.toString());
-	    }
-		return new Message(false,"Êý¾Ý¿â´íÎó",null);
+		if (!videoList.isEmpty()) {
+			return new Message(true, "ï¿½ï¿½ï¿½Ø³É¹ï¿½", videoList);
+		}
 
-   }
-
-
-
-
-	//·µ»Ø¿Î³ÌÊÓÆµÏêÏ¸
-	@Override 
-	public Message classDetail(int videoId) {
-		
-		VideoExample videoExample = new VideoExample();
-		Criteria videoCriteria = videoExample.createCriteria();
-		videoCriteria.andVideoidEqualTo(videoId);
-		List<Video> videoList = videoMapper.selectByExample(videoExample);
-	    if(!videoList.isEmpty()){
-	    	JSONObject jsonObject = new JSONObject();
-			try {
-				jsonObject.put("videoName", videoList.get(0).getVideoname());
-				jsonObject.put("videoUrl", videoList.get(0).getVideopicurl());
-				jsonObject.put("videoPublishDate", videoList.get(0).getVideopublishdate());
-				jsonObject.put("videoDetail", videoList.get(0).getVideodetail());
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return new Message(true,"·µ»Ø³É¹¦",jsonObject.toString());
-	    }
-	    return new Message(false,"Êý¾Ý´íÎó",null);
+		return new Message(false, "ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½", null);
 
 	}
 
+	//
+	// //ï¿½ï¿½ï¿½Ø¿Î³ï¿½ï¿½ï¿½Æµï¿½ï¿½Ï¸
+	// @Override
+	// public Message classDetail(int videoId) {
+	//
+	// VideoExample videoExample = new VideoExample();
+	// Criteria videoCriteria = videoExample.createCriteria();
+	// videoCriteria.andVideoidEqualTo(videoId);
+	// List<Video> videoList = videoMapper.selectByExample(videoExample);
+	// if(!videoList.isEmpty()){
+	// JSONObject jsonObject = new JSONObject();
+	// try {
+	// jsonObject.put("videoName", videoList.get(0).getVideoname());
+	// jsonObject.put("videoUrl", videoList.get(0).getVideopicurl());
+	// jsonObject.put("videoPublishDate",
+	// videoList.get(0).getVideopublishdate());
+	// jsonObject.put("videoDetail", videoList.get(0).getVideodetail());
+	// } catch (JSONException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// return new Message(true,"ï¿½ï¿½ï¿½Ø³É¹ï¿½",videoList.toString());
+	// }
+	// return new Message(false,"ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½",null);
+	//
+	// }
+	//
 
-
-
-	//Ìí¼ÓÀÏÈË¿Î³Ì¹Û¿´¼ÇÂ¼
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿Î³Ì¹Û¿ï¿½ï¿½ï¿½Â¼
 	@Override
-	public Message classRecord(String olderToken, int videoId, Date vRecordDate, float vRecordCurrentDate) {
-		
+	public Message classRecord(String olderToken, int videoId, Date vRecordDate) {
+
 		OldertokenExample oldertokenExample = new OldertokenExample();
 		com.sds.em.po.OldertokenExample.Criteria olderTokenCriteria = oldertokenExample.createCriteria();
 		olderTokenCriteria.andOldertokenEqualTo(olderToken);
 		List<Oldertoken> olderTokenList = oldertokenMapper.selectByExample(oldertokenExample);
-		
-		//System.out.println("qqqqqqq"+olderTokenList.get(0));
-		int olderId = olderTokenList.get(0).getOlderid();
-		
 
-	//	VideorecordExample videorecordExample = new VideorecordExample();
+		// System.out.println("qqqqqqq"+olderTokenList.get(0));
+		int olderId = olderTokenList.get(0).getOlderid();
+
+		// VideorecordExample videorecordExample = new VideorecordExample();
 		Videorecord videorecord = new Videorecord();
 		videorecord.setVrecordvideoid(videoId);
 		videorecord.setVrecordolderid(olderId);
 		videorecord.setVrecorddate(vRecordDate);
-		videorecord.setVrecordcurrentdate(vRecordCurrentDate);
-		int flag=videorecordMapper.insert(videorecord);
-		if(flag == 1){
-			return new Message(true,"Ìí¼Ó³É¹¦",null);
+
+		int flag = videorecordMapper.insert(videorecord);
+		if (flag == 1) {
+			return new Message(true, "ï¿½ï¿½Ó³É¹ï¿½", null);
+		}
+
+		return new Message(false, "ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½", null);
+	}
+
+	// ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+	@Override
+	public Message currentLecture(int olderid,String olderbranchid) {
+
+		if(olderid != ' '){
+		     LectureExample lectureExample = new LectureExample();
+		     com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
+		    // lectureCriteria.andlectureb
+		     
 		}
 		
-		return new Message(false,"Êý¾Ý´íÎó",null);
+		return new Message(false,"ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½",null);
+
 	}
 
+	// ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½Î¼Ó½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½lectureeEnroll)
+	@Override
+	public Message joinLecture(int olderid, int lectureId) {
 
-
-
-	//·µ»Øµ±Ç°½²×ù
-	@Override  
-	public Message currentLecture() {
-		
-		LectureExample lectureExample = new LectureExample();
-		com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
-		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
-		List<JSONObject> lectureJsonList = new ArrayList<JSONObject>();
-		
-		if(!lectureList.isEmpty()){
-			for(int i = 0;i<lectureList.size();i++){
-				JSONObject jsonObject = new JSONObject();
-				try {
-					jsonObject.put("lectureId", lectureList.get(i).getLectureid());
-					jsonObject.put("lectureName", lectureList.get(i).getLecturename());
-					jsonObject.put("lectureIntro", lectureList.get(i).getLectureintro());
-					jsonObject.put("lectureTotal", lectureList.get(i).getLecturetotal());
-					jsonObject.put("lecturePublishDate", lectureList.get(i).getLecturepublishdate());
-					jsonObject.put("lectureEnroll", lectureList.get(i).getLectureenroll());
-					jsonObject.put("lectureAddress", lectureList.get(i).getLectureaddress());
-					lectureJsonList.add(jsonObject);
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			return new Message(true,"·µ»Ø³É¹¦",lectureJsonList.toString());
+		if(olderid != ' '){
+			
 		}
-		return new Message(false,"Êý¾Ý¿â´íÎó",null);
+		return new Message(false, "ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½", null);
+
 	}
 
-
-
-
-    //ÀÏÈË±¨Ãû²Î¼Ó½²×ù
+	//ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½Ð±ï¿½Êµï¿½ï¿½
 	@Override
-	public Message joinLecture(String olderToken, int lectureId) {
-		
-		OldertokenExample oldertokenExample = new OldertokenExample();
-		com.sds.em.po.OldertokenExample.Criteria oldertokenCriteria = oldertokenExample.createCriteria();
-		oldertokenCriteria.andOldertokenEqualTo(olderToken);
-		List<Oldertoken> olderTokenList = oldertokenMapper.selectByExample(oldertokenExample);
-		int olderId = olderTokenList.get(0).getOlderid();
-		
-		
-	//	LecturerecordExample lecturerecordExample = new LecturerecordExample();
-		Lecturerecord record = new Lecturerecord();
-		record.setLrecordolderid(olderId);
-		record.setLrecorddate(new Date());
-		record.setLrecordlectureid(lectureId);
-		int flag = lecturerecordMapper.insert(record);
-        if(flag == 1){
-        	return new Message(true,"³É¹¦±¨Ãû½²×ù",null);
-        }
-		return new Message(false,"Êý¾Ý¿â´íÎó",null);
-	}
-
-
-
-    //²é¿´µ±µØ»î¶¯
-	@Override
-	public Message localAction(String olderToken) {
-		
-		OldertokenExample oldertokenExample = new OldertokenExample();
-		com.sds.em.po.OldertokenExample.Criteria oldertokenCriteria = oldertokenExample.createCriteria();
-		oldertokenCriteria.andOldertokenEqualTo(olderToken);
-		List<Oldertoken> olderTokenList = oldertokenMapper.selectByExample(oldertokenExample);
-		int olderId = olderTokenList.get(0).getOlderid();
+	public Message videoHeatTop() {
+		int topnum =10;
 		
 		
 		
 		return null;
 	}
+
+	
+	
+
 }

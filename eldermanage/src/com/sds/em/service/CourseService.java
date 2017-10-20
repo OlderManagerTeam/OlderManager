@@ -4,17 +4,29 @@ import java.util.Date;
 
 import com.sds.em.po.Message;
 
+/**
+ * 
+ * @author ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-2017-10-17
+ *
+ */
 public interface CourseService {
-	//²éÑ¯ËùÓÐstatusÎª1µÄÊÓÆµ(·µ»Ø¿Î³ÌÁÐ±í)
+	// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Æµ(ï¿½ï¿½ï¿½Ø¿Î³ï¿½ï¿½Ð±ï¿½)
 	public Message allClasses();
-	//·µ»Ø¿Î³Ì£¨ÊÓÆµ£©ÏêÏ¸
-	public Message classDetail(int videoId);
-	//Ìí¼ÓÀÏÈË¹Û¿´¿Î³Ì¼ÇÂ¼
-	public Message classRecord(String olderToken,int videoId,Date vRecordDate,float vRecordCurrentDate);
-	//·µ»Øµ±Ç°½²×ù
-	public Message currentLecture();
-	//ÀÏÈË±¨Ãû½²×ù£¨Ìí¼Ó½²×ù¼ÇÂ¼±í£©
-	public Message joinLecture(String olderToken,int lectureId);
-	//²é¿´µ±µØ»î¶¯
-	public Message localAction(String olderToken);
+
+	// //ï¿½ï¿½ï¿½Ø¿Î³Ì£ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ï¸
+	// public Message classDetail(int videoId);
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¹Û¿ï¿½ï¿½Î³Ì¼ï¿½Â¼
+	public Message classRecord(String olderToken, int videoId, Date vRecordDate);
+
+	// ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+	public Message currentLecture(int olderid,String olderbranchid);
+
+	// ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½/ï¿½Þ¸ï¿½Ô¤Ô¼ï¿½ï¿½ï¿½ï¿½+1ï¿½ï¿½
+	public Message joinLecture(int olderid, int lectureId);
+
+  //ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½Ð±ï¿½Êµï¿½ï¿½
+   public Message videoHeatTop();
+	
+
 }

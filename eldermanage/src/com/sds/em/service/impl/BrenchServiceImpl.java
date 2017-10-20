@@ -18,6 +18,7 @@ import com.sds.em.mapper.OldersickMapper;
 import com.sds.em.mapper.OrderMapper;
 import com.sds.em.po.Action;
 import com.sds.em.po.ActionExample;
+import com.sds.em.po.Branch;
 import com.sds.em.po.BranchExample;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
@@ -176,5 +177,100 @@ public class BrenchServiceImpl implements BrenchService {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
+	}
+
+	@Override
+	public Message getBranchName(int staffid) throws Exception {
+		try {
+			BranchExample branchExample = new BranchExample();
+			com.sds.em.po.BranchExample.Criteria criteria = branchExample.createCriteria();
+			criteria.andBranchmanageridEqualTo(staffid);
+			List<Branch> branchList = branchMapper.selectByExample(branchExample);
+			if (!branchList.isEmpty()) {
+				return new Message(true, "返回成功", branchList.get(0).getBranchname());
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message getAllElder(int branchid) throws Exception {
+		try {
+			OlderbaseExample olderbaseExample = new OlderbaseExample();
+
+			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample.createCriteria();
+			criteria.andOlderbranchidEqualTo(branchid);
+
+			List<Olderbase> olderbasesList = olderbaseMapper.selectByExample(olderbaseExample);
+
+			if (!olderbasesList.isEmpty()) {
+				return new Message(true, "返回成功", olderbasesList);
+			} else {
+
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message deleteANElder(String oldertel) throws Exception {
+		try {
+			// 先找到所对应的olderId
+			OlderbaseExample olderbaseExample = new OlderbaseExample();
+			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample.createCriteria();
+			criteria.andOldertelEqualTo(oldertel);
+			List<Olderbase> olderbasesList = olderbaseMapper.selectByExample(olderbaseExample);
+			if (!olderbasesList.isEmpty()) {
+				// 将其中的分店设置为null
+				int flag = 0;
+				Olderbase olderbase = new Olderbase();
+				olderbase.setOlderid(olderbasesList.get(0).getOlderid());
+				olderbase.setOlderbranchid(null);
+				flag = olderbaseMapper.updateByPrimaryKeySelective(olderbase);
+				if (flag != 0) {
+					return new Message(true, "删除成功", null);
+				}
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+			return new Message(false, "数据库错误", null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message getElder(String oldertel) throws Exception {
+		try {
+			OlderbaseExample olderbaseExample = new OlderbaseExample();
+
+			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample.createCriteria();
+			criteria.andOldertelEqualTo(oldertel);
+
+			List<Olderbase> olderbaseList = olderbaseMapper.selectByExample(olderbaseExample);
+			if (!olderbaseList.isEmpty()) {
+				return new Message(true, "获取成功", olderbaseList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
 	}
 }

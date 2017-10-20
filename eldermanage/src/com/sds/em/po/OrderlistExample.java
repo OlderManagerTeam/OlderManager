@@ -344,63 +344,63 @@ public class OrderlistExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountIsNull() {
-            addCriterion("orderDiscount is null");
+        public Criteria andOrderdiscountpriceIsNull() {
+            addCriterion("orderDiscountPrice is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountIsNotNull() {
-            addCriterion("orderDiscount is not null");
+        public Criteria andOrderdiscountpriceIsNotNull() {
+            addCriterion("orderDiscountPrice is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountEqualTo(Float value) {
-            addCriterion("orderDiscount =", value, "orderdiscount");
+        public Criteria andOrderdiscountpriceEqualTo(Float value) {
+            addCriterion("orderDiscountPrice =", value, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountNotEqualTo(Float value) {
-            addCriterion("orderDiscount <>", value, "orderdiscount");
+        public Criteria andOrderdiscountpriceNotEqualTo(Float value) {
+            addCriterion("orderDiscountPrice <>", value, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountGreaterThan(Float value) {
-            addCriterion("orderDiscount >", value, "orderdiscount");
+        public Criteria andOrderdiscountpriceGreaterThan(Float value) {
+            addCriterion("orderDiscountPrice >", value, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountGreaterThanOrEqualTo(Float value) {
-            addCriterion("orderDiscount >=", value, "orderdiscount");
+        public Criteria andOrderdiscountpriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("orderDiscountPrice >=", value, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountLessThan(Float value) {
-            addCriterion("orderDiscount <", value, "orderdiscount");
+        public Criteria andOrderdiscountpriceLessThan(Float value) {
+            addCriterion("orderDiscountPrice <", value, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountLessThanOrEqualTo(Float value) {
-            addCriterion("orderDiscount <=", value, "orderdiscount");
+        public Criteria andOrderdiscountpriceLessThanOrEqualTo(Float value) {
+            addCriterion("orderDiscountPrice <=", value, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountIn(List<Float> values) {
-            addCriterion("orderDiscount in", values, "orderdiscount");
+        public Criteria andOrderdiscountpriceIn(List<Float> values) {
+            addCriterion("orderDiscountPrice in", values, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountNotIn(List<Float> values) {
-            addCriterion("orderDiscount not in", values, "orderdiscount");
+        public Criteria andOrderdiscountpriceNotIn(List<Float> values) {
+            addCriterion("orderDiscountPrice not in", values, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountBetween(Float value1, Float value2) {
-            addCriterion("orderDiscount between", value1, value2, "orderdiscount");
+        public Criteria andOrderdiscountpriceBetween(Float value1, Float value2) {
+            addCriterion("orderDiscountPrice between", value1, value2, "orderdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andOrderdiscountNotBetween(Float value1, Float value2) {
-            addCriterion("orderDiscount not between", value1, value2, "orderdiscount");
+        public Criteria andOrderdiscountpriceNotBetween(Float value1, Float value2) {
+            addCriterion("orderDiscountPrice not between", value1, value2, "orderdiscountprice");
             return (Criteria) this;
         }
     }
