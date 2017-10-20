@@ -15,7 +15,7 @@ import com.sds.em.mapper.BranchMapper;
 
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
-import com.sds.em.mapper.OrderMapper;
+import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.po.Action;
 import com.sds.em.po.ActionExample;
 import com.sds.em.po.Branch;
@@ -25,9 +25,9 @@ import com.sds.em.po.Olderbase;
 import com.sds.em.po.OlderbaseExample;
 import com.sds.em.po.Oldersick;
 import com.sds.em.po.OldersickExample;
-import com.sds.em.po.Order;
-import com.sds.em.po.OrderExample;
-import com.sds.em.po.OrderExample.Criteria;
+import com.sds.em.po.Orders;
+import com.sds.em.po.OrdersExample;
+import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
 
 public class BrenchServiceImpl implements BrenchService {
@@ -41,7 +41,7 @@ public class BrenchServiceImpl implements BrenchService {
 	ActionMapper actionMapper;
 
 	@Autowired
-	OrderMapper orderMapper;
+	OrdersMapper ordersMapper;
 
 	@Autowired
 	BranchMapper branchMapper;
@@ -98,12 +98,12 @@ public class BrenchServiceImpl implements BrenchService {
 	public Message olderRate(int olderId) throws Exception {
 		try {
 			List<JSONObject> jsonObjectList = new ArrayList();
-			OrderExample orderExample = new OrderExample();
-			Criteria criteria = orderExample.createCriteria();
+			OrdersExample ordersExample = new OrdersExample();
+			Criteria criteria = ordersExample.createCriteria();
 			criteria.andOrderolderidEqualTo(olderId);
-			List<Order> orderList = orderMapper.selectByExample(orderExample);
+			List<Orders> ordersList = ordersMapper.selectByExample(ordersExample);
 
-			for (Order o : orderList) {
+			for (Orders o : ordersList) {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("orderDate", o.getOrderdate());
 				jsonObject.put("orderTotal", o.getOrdertotal());
