@@ -333,10 +333,10 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message getOlderAllOrder(int olderid) throws Exception {
 		try {
-			OrderExample orderExample = new OrderExample();
+			OrdersExample orderExample = new OrdersExample();
 			Criteria criteria = orderExample.createCriteria();
 			criteria.andOrderolderidEqualTo(olderid);
-			List<Order> orderList = orderMapper.selectByExample(orderExample);
+			List<Orders> orderList = ordersMapper.selectByExample(orderExample);
 			if (!orderList.isEmpty()) {
 				return new Message(true, "·µ»Ø³É¹¦", orderList);
 			} else {
