@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.OrderMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Order" >
-    <id column="orderId" property="orderid" jdbcType="INTEGER" />
-    <result column="orderOlderId" property="orderolderid" jdbcType="INTEGER" />
-    <result column="orderDate" property="orderdate" jdbcType="TIME" />
-    <result column="orderStatus" property="orderstatus" jdbcType="VARCHAR" />
-    <result column="orderTotal" property="ordertotal" jdbcType="REAL" />
+<mapper namespace="com.sds.em.mapper.ActionrecordMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Actionrecord" >
+    <id column="ARecordId" property="arecordid" jdbcType="INTEGER" />
+    <result column="ARecordolderId" property="arecordolderid" jdbcType="INTEGER" />
+    <result column="ARecordActionId" property="arecordactionid" jdbcType="INTEGER" />
+    <result column="ARecordDate" property="arecorddate" jdbcType="TIME" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    orderId, orderOlderId, orderDate, orderStatus, orderTotal
+    ARecordId, ARecordolderId, ARecordActionId, ARecordDate
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.OrderExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ActionrecordExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from order
+    from actionrecord
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from order
-    where orderId = #{orderid,jdbcType=INTEGER}
+    from actionrecord
+    where ARecordId = #{arecordid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from order
-    where orderId = #{orderid,jdbcType=INTEGER}
+    delete from actionrecord
+    where ARecordId = #{arecordid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.OrderExample" >
-    delete from order
+  <delete id="deleteByExample" parameterType="com.sds.em.po.ActionrecordExample" >
+    delete from actionrecord
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Order" >
-    insert into order (orderId, orderOlderId, orderDate, 
-      orderStatus, orderTotal)
-    values (#{orderid,jdbcType=INTEGER}, #{orderolderid,jdbcType=INTEGER}, #{orderdate,jdbcType=TIME}, 
-      #{orderstatus,jdbcType=VARCHAR}, #{ordertotal,jdbcType=REAL})
+  <insert id="insert" parameterType="com.sds.em.po.Actionrecord" >
+    insert into actionrecord (ARecordId, ARecordolderId, ARecordActionId, 
+      ARecordDate)
+    values (#{arecordid,jdbcType=INTEGER}, #{arecordolderid,jdbcType=INTEGER}, #{arecordactionid,jdbcType=INTEGER}, 
+      #{arecorddate,jdbcType=TIME})
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Order" >
-    insert into order
+  <insert id="insertSelective" parameterType="com.sds.em.po.Actionrecord" >
+    insert into actionrecord
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="orderid != null" >
-        orderId,
+      <if test="arecordid != null" >
+        ARecordId,
       </if>
-      <if test="orderolderid != null" >
-        orderOlderId,
+      <if test="arecordolderid != null" >
+        ARecordolderId,
       </if>
-      <if test="orderdate != null" >
-        orderDate,
+      <if test="arecordactionid != null" >
+        ARecordActionId,
       </if>
-      <if test="orderstatus != null" >
-        orderStatus,
-      </if>
-      <if test="ordertotal != null" >
-        orderTotal,
+      <if test="arecorddate != null" >
+        ARecordDate,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="orderid != null" >
-        #{orderid,jdbcType=INTEGER},
+      <if test="arecordid != null" >
+        #{arecordid,jdbcType=INTEGER},
       </if>
-      <if test="orderolderid != null" >
-        #{orderolderid,jdbcType=INTEGER},
+      <if test="arecordolderid != null" >
+        #{arecordolderid,jdbcType=INTEGER},
       </if>
-      <if test="orderdate != null" >
-        #{orderdate,jdbcType=TIME},
+      <if test="arecordactionid != null" >
+        #{arecordactionid,jdbcType=INTEGER},
       </if>
-      <if test="orderstatus != null" >
-        #{orderstatus,jdbcType=VARCHAR},
-      </if>
-      <if test="ordertotal != null" >
-        #{ordertotal,jdbcType=REAL},
+      <if test="arecorddate != null" >
+        #{arecorddate,jdbcType=TIME},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.OrderExample" resultType="java.lang.Integer" >
-    select count(*) from order
+  <select id="countByExample" parameterType="com.sds.em.po.ActionrecordExample" resultType="java.lang.Integer" >
+    select count(*) from actionrecord
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update order
+    update actionrecord
     <set >
-      <if test="record.orderid != null" >
-        orderId = #{record.orderid,jdbcType=INTEGER},
+      <if test="record.arecordid != null" >
+        ARecordId = #{record.arecordid,jdbcType=INTEGER},
       </if>
-      <if test="record.orderolderid != null" >
-        orderOlderId = #{record.orderolderid,jdbcType=INTEGER},
+      <if test="record.arecordolderid != null" >
+        ARecordolderId = #{record.arecordolderid,jdbcType=INTEGER},
       </if>
-      <if test="record.orderdate != null" >
-        orderDate = #{record.orderdate,jdbcType=TIME},
+      <if test="record.arecordactionid != null" >
+        ARecordActionId = #{record.arecordactionid,jdbcType=INTEGER},
       </if>
-      <if test="record.orderstatus != null" >
-        orderStatus = #{record.orderstatus,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ordertotal != null" >
-        orderTotal = #{record.ordertotal,jdbcType=REAL},
+      <if test="record.arecorddate != null" >
+        ARecordDate = #{record.arecorddate,jdbcType=TIME},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -172,40 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update order
-    set orderId = #{record.orderid,jdbcType=INTEGER},
-      orderOlderId = #{record.orderolderid,jdbcType=INTEGER},
-      orderDate = #{record.orderdate,jdbcType=TIME},
-      orderStatus = #{record.orderstatus,jdbcType=VARCHAR},
-      orderTotal = #{record.ordertotal,jdbcType=REAL}
+    update actionrecord
+    set ARecordId = #{record.arecordid,jdbcType=INTEGER},
+      ARecordolderId = #{record.arecordolderid,jdbcType=INTEGER},
+      ARecordActionId = #{record.arecordactionid,jdbcType=INTEGER},
+      ARecordDate = #{record.arecorddate,jdbcType=TIME}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Order" >
-    update order
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Actionrecord" >
+    update actionrecord
     <set >
-      <if test="orderolderid != null" >
-        orderOlderId = #{orderolderid,jdbcType=INTEGER},
+      <if test="arecordolderid != null" >
+        ARecordolderId = #{arecordolderid,jdbcType=INTEGER},
       </if>
-      <if test="orderdate != null" >
-        orderDate = #{orderdate,jdbcType=TIME},
+      <if test="arecordactionid != null" >
+        ARecordActionId = #{arecordactionid,jdbcType=INTEGER},
       </if>
-      <if test="orderstatus != null" >
-        orderStatus = #{orderstatus,jdbcType=VARCHAR},
-      </if>
-      <if test="ordertotal != null" >
-        orderTotal = #{ordertotal,jdbcType=REAL},
+      <if test="arecorddate != null" >
+        ARecordDate = #{arecorddate,jdbcType=TIME},
       </if>
     </set>
-    where orderId = #{orderid,jdbcType=INTEGER}
+    where ARecordId = #{arecordid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Order" >
-    update order
-    set orderOlderId = #{orderolderid,jdbcType=INTEGER},
-      orderDate = #{orderdate,jdbcType=TIME},
-      orderStatus = #{orderstatus,jdbcType=VARCHAR},
-      orderTotal = #{ordertotal,jdbcType=REAL}
-    where orderId = #{orderid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Actionrecord" >
+    update actionrecord
+    set ARecordolderId = #{arecordolderid,jdbcType=INTEGER},
+      ARecordActionId = #{arecordactionid,jdbcType=INTEGER},
+      ARecordDate = #{arecorddate,jdbcType=TIME}
+    where ARecordId = #{arecordid,jdbcType=INTEGER}
   </update>
 </mapper>
