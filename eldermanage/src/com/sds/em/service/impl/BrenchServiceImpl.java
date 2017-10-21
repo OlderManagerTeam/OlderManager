@@ -10,16 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sds.em.mapper.ActionMapper;
 
 import com.sds.em.mapper.BranchMapper;
-
+import com.sds.em.mapper.LectureMapper;
 import com.sds.em.mapper.BranchMapper;
 
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
 import com.sds.em.mapper.OrdersMapper;
+import com.sds.em.mapper.VisitedMapper;
 import com.sds.em.po.Action;
 import com.sds.em.po.ActionExample;
 import com.sds.em.po.Branch;
 import com.sds.em.po.BranchExample;
+import com.sds.em.po.Lecture;
+import com.sds.em.po.LectureExample;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.OlderbaseExample;
@@ -27,13 +30,15 @@ import com.sds.em.po.Oldersick;
 import com.sds.em.po.OldersickExample;
 import com.sds.em.po.Orders;
 import com.sds.em.po.OrdersExample;
+import com.sds.em.po.Visited;
+import com.sds.em.po.VisitedExample;
 import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
 
 public class BrenchServiceImpl implements BrenchService {
 	@Autowired
-	OlderbaseMapper olderbaseMapper;
+	OlderbaseMapper oldersbaseMapper;
 
 	@Autowired
 	OldersickMapper oldersickMapper;
@@ -47,10 +52,16 @@ public class BrenchServiceImpl implements BrenchService {
 	@Autowired
 	BranchMapper branchMapper;
 
+	@Autowired
+	VisitedMapper visitedMapper;
+
+	@Autowired
+	LectureMapper lectureMapper;
+
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
 		try {
-			olderbaseMapper.insertOlderBase(olderbase);
+			oldersbaseMapper.insertOlderBase(olderbase);
 			if (olderbase.getOlderid() != null) {
 				return new Message(true, "基本信息录入成功", olderbase.getOlderid());
 			} else {
@@ -81,7 +92,7 @@ public class BrenchServiceImpl implements BrenchService {
 	public Message modifyOlder(Olderbase olderbase) {
 		try {
 			int flag = 0;
-			flag = olderbaseMapper.updateByPrimaryKeySelective(olderbase);
+			flag = oldersbaseMapper.updateByPrimaryKeySelective(olderbase);
 			if (flag != 0) {
 				return new Message(true, "基本信息修改成功", null);
 			} else {
@@ -111,7 +122,7 @@ public class BrenchServiceImpl implements BrenchService {
 				jsonObjectList.add(jsonObject);
 			}
 
-			Olderbase olderbase = olderbaseMapper.selectByPrimaryKey(olderId);
+			Olderbase olderbase = oldersbaseMapper.selectByPrimaryKey(olderId);
 
 			ActionExample actionExample = new ActionExample();
 			com.sds.em.po.ActionExample.Criteria criteria2 = actionExample.createCriteria();
@@ -208,7 +219,7 @@ public class BrenchServiceImpl implements BrenchService {
 			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample.createCriteria();
 			criteria.andOlderbranchidEqualTo(branchid);
 
-			List<Olderbase> olderbasesList = olderbaseMapper.selectByExample(olderbaseExample);
+			List<Olderbase> olderbasesList = oldersbaseMapper.selectByExample(olderbaseExample);
 			List<Integer> olderAgeList = new ArrayList<Integer>();
 			for (Olderbase o : olderbasesList) {
 				String olderAgeS = DateSimp.simpToSting(o.getOlderbirthday());
@@ -241,7 +252,7 @@ public class BrenchServiceImpl implements BrenchService {
 			OlderbaseExample olderbaseExample = new OlderbaseExample();
 			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample.createCriteria();
 			criteria.andOldertelEqualTo(oldertel);
-			List<Olderbase> olderbasesList = olderbaseMapper.selectByExample(olderbaseExample);
+			List<Olderbase> olderbasesList = oldersbaseMapper.selectByExample(olderbaseExample);
 
 			if (!olderbasesList.isEmpty()) {
 				// 将其中的分店设置为null
@@ -249,7 +260,7 @@ public class BrenchServiceImpl implements BrenchService {
 				Olderbase olderbase = new Olderbase();
 				olderbase.setOlderid(olderbasesList.get(0).getOlderid());
 				olderbase.setOlderbranchid(0);
-				flag = olderbaseMapper.updateByPrimaryKeySelective(olderbase);
+				flag = oldersbaseMapper.updateByPrimaryKeySelective(olderbase);
 				if (flag != 0) {
 					return new Message(true, "删除成功", null);
 				}
@@ -270,7 +281,7 @@ public class BrenchServiceImpl implements BrenchService {
 			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample.createCriteria();
 			criteria.andOldertelEqualTo(oldertel);
 
-			List<Olderbase> olderbaseList = olderbaseMapper.selectByExample(olderbaseExample);
+			List<Olderbase> olderbaseList = oldersbaseMapper.selectByExample(olderbaseExample);
 			if (!olderbaseList.isEmpty()) {
 				return new Message(true, "获取成功", olderbaseList);
 			} else {
@@ -346,6 +357,82 @@ public class BrenchServiceImpl implements BrenchService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message andOlderVisited(Visited visited) throws Exception {
+		try {
+			int flag = 0;
+			flag = visitedMapper.insert(visited);
+			if (flag != 0) {
+				return new Message(true, "添加成功", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message getOlderAllVisited(int olderid) throws Exception {
+		try {
+			VisitedExample visitedExample = new VisitedExample();
+
+			com.sds.em.po.VisitedExample.Criteria criteria = visitedExample.createCriteria();
+			criteria.andVisitedolderidEqualTo(olderid);
+			List<Visited> visitedList = visitedMapper.selectByExample(visitedExample);
+			if (!visitedList.isEmpty()) {
+				return new Message(true, "返回成功", visitedList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message addLecture(Lecture lecture) throws Exception {
+		try {
+			int flag = 0;
+			flag = lectureMapper.insert(lecture);
+			if (flag != 0) {
+				return new Message(true, "添加成功", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message getLecture(int branchid) throws Exception {
+		try {
+			LectureExample lectureExample = new LectureExample();
+			com.sds.em.po.LectureExample.Criteria criteria = lectureExample.createCriteria();
+			criteria.andLecturebranchidEqualTo(branchid);
+			
+			List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
+			if (!lectureList.isEmpty()) {
+				
+				return new Message(true, "返回成功", lectureList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+			
 		}
 	}
 }

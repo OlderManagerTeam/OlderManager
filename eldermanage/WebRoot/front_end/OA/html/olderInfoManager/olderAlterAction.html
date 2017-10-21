@@ -285,8 +285,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                	<!--活动录入时候需要的表单-->
-                                    <form class="form-horizontal" id="odlerInfoForm">
+                                	<!--活动修改时候需要的表单-->
+                                    <form class="form-horizontal" id="odlerAlterAction">
                                         <div class="form-group">
                                             <label for="alterActionStartDate" class="col-sm-3 control-label">修改活动时间：</label>
                                             <div class="col-sm-5">
@@ -368,7 +368,7 @@
    $(document).ready(function() {
     // Generate a simple captcha
     
-    $('#odlerInfoForm').bootstrapValidator({
+    $('#odlerAlterAction').bootstrapValidator({
 //        live: 'disabled',
         message: 'This value is not valid',
         feedbackIcons: {

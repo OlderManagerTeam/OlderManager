@@ -35,8 +35,8 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li>分店管理</li>
-                            <li class="active">老年人详细信息</li>
+                            <li>总店管理</li>
+                            <li class="active">分店列表</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -281,12 +281,12 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">老年人详细信息</div>
+                                        <div class="title"><a class="btn btn-primary btn-lg" href="../olderInfoManager/olderView.html" role="button">返回老人信息列表</a></div>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                	<!--老人信息录入时候需要的表单-->
-                                    <form class="form-horizontal" id="odlerInfoForm">
+                                <div class="card-body form-horizontal">
+                                	<!--老人详细信息-->
+                                	
                                         <div class="form-group">
                                             <label for="odlerName" class="col-sm-3 control-label">老人姓名：</label>
                                             <div class="col-sm-5">
@@ -302,57 +302,44 @@
                                         <div class="form-group">
                                             <label for="olderBirthday" class="col-sm-3 control-label">老人出生日期：</label>
                                             <div class="col-sm-5">
-                                               <span class="form-control" id="olderSex">1945-05-07</span>
+                                               <span class="form-control" id="olderBirthday">1945-05-07</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="odlerTel" class="col-sm-3 control-label">老人电话号码：</label>
                                             <div class="col-sm-5">
-                                                <span class="form-control" id="olderSex">15252349874</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="olderPassword" class="col-sm-3 control-label">老人账户密码：</label>
-                                            <div class="col-sm-5">
-                                                <span class="form-control" id="olderSex">123456</span>
+                                                <span class="form-control" id="odlerTel">15252349874</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="odlerAdress" class="col-sm-3 control-label">老人地址：</label>
                                             <div class="col-sm-5">
-                                                <span class="form-control" id="olderSex">贵州省贵阳市贵阳区</span>
+                                                <span class="form-control" id="odlerAdress">贵州省贵阳市贵阳区</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="olderSingleStatus" class="col-sm-3 control-label">老人独居状况：</label>
+                                            <label for="olderSingleStatus" class="col-sm-3 control-label">老人单身状况：</label>
                                             <div class="col-sm-5">
-                                                <span class="form-control" id="olderSex">独居</span>
+                                                <span class="form-control" id="olderSingleStatus">是</span>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="olderIDE" class="col-sm-3 control-label">修改老人身份证号：</label>
                                             <div class="col-sm-5">
-                                                <span class="form-control" id="olderSex">52022116602280990</span>
+                                                <span class="form-control" id="olderIDE">52022116602280990</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="odlerNation" class="col-sm-3 control-label">老人民族：</label>
                                             <div class="col-sm-5">
-                                                <span class="form-control" id="olderSex">汉族</span>
+                                                <span class="form-control" id="odlerNation">汉族</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="olderHeadUrl" class="col-sm-3 control-label">修改老人照片：</label>
                                             <div class="col-sm-5">
-                                                <span class="form-control" id="olderSex">男</span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="olderBranchId" class="col-sm-3 control-label">管理老人的分店：</label>
-                                            <div class="col-sm-5">
-                                                <span class="form-control" id="olderSex">贵阳分店</span>
+                                                <div><img src="../../img/textheadphoto.jpg"></div>
                                             </div>
                                         </div>
                                         <!--
@@ -369,10 +356,9 @@
                                         -->
                                         <div class="form-group">
                                             <div class="col-sm-offset-3 col-sm-5">
-                                                <a class="btn btn-primary btn-lg" href="../olderInfoManager/olderView.html" role="button">返回老年人客户列表</a>
+                                                <a class="btn btn-primary btn-lg" href="../olderInfoManager/olderAlter.html" role="button">修改信息</a>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

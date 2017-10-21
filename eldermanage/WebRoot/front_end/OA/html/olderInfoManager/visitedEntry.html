@@ -267,8 +267,8 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<!--老人信息录入时候需要的表单-->
-							<form class="form-horizontal" id="odlerInfoForm">
+							<!--老人回访记录录入时候需要的表单-->
+							<form class="form-horizontal" id="visitedEntry">
 								<div class="form-group">
 									<label for="visitedOlderId" class="col-sm-3 control-label">老人ID：</label>
 									<div class="col-sm-5">
@@ -362,7 +362,7 @@
 			$(document).ready(function() {
 				// Generate a simple captcha
 		
-				$('#odlerInfoForm').bootstrapValidator({
+				$('#visitedEntry').bootstrapValidator({
 					//        live: 'disabled',
 					message : 'This value is not valid',
 					feedbackIcons : {
