@@ -267,8 +267,8 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<!--老人信息录入时候需要的表单-->
-							<form class="form-horizontal" id="odlerInfoForm">
+							<!--修改讲座时需要的表单-->
+							<form class="form-horizontal" id="lectureAlter">
 								<div class="form-group">
 									<label for="lectureName" class="col-sm-3 control-label">修改讲座名称：</label>
 									<div class="col-sm-5">
@@ -279,15 +279,14 @@
 								<div class="form-group">
 									<label for="lectureIntro" class="col-sm-3 control-label">修改讲座简介：</label>
 									<div class="col-sm-5">
-										<textarea class="form-control" id="actionIntro" placeholder="修改讲座简介" 
+										<textarea class="form-control" id="lectureIntro" placeholder="修改讲座简介" 
 										style="height: 150px" name="intro"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="lectureEnroll" class="col-sm-3 control-label">修改讲座已预约人数：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureEnroll"
-											placeholder="修改讲座已预约人数" name="enroll">
+										<span class="form-control" id="lectureEnroll">例如：180</span>
 									</div>
 								</div>
 								<div class="form-group">
@@ -401,7 +400,7 @@
 			$(document).ready(function() {
 				// Generate a simple captcha
 		
-				$('#odlerInfoForm').bootstrapValidator({
+				$('#lectureAlter').bootstrapValidator({
 					//        live: 'disabled',
 					message : 'This value is not valid',
 					feedbackIcons : {
@@ -411,7 +410,6 @@
 						regexp : 'glyphicon glyphicon-ok-circle'
 					},
 					fields : {
-						//检验用户名
 						name : {
 							message : '姓名不能为空',
 							validators : {

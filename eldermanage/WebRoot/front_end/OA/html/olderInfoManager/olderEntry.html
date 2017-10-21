@@ -268,7 +268,7 @@
 						</div>
 						<div class="card-body">
 							<!--老人信息录入时候需要的表单-->
-							<form class="form-horizontal" id="odlerInfoForm">
+							<form class="form-horizontal" id="olderEntry">
 								<div class="form-group">
 									<label for="odlerName" class="col-sm-3 control-label">老人姓名：</label>
 									<div class="col-sm-5">
@@ -295,9 +295,9 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="odlerTel" class="col-sm-3 control-label">老人电话号码：</label>
+									<label for="olderTel" class="col-sm-3 control-label">老人电话号码：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="odlerTel"
+										<input type="text" class="form-control" id="olderTel"
 											placeholder="老人电话号码" name="Tel">
 									</div>
 								</div>
@@ -318,7 +318,7 @@
 								<div class="form-group">
 									<label for="olderAdress" class="col-sm-3 control-label">老人地址：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="odlerAdress"
+										<input type="text" class="form-control" id="olderAdress"
 											placeholder="老人地址" name="adderss">
 									</div>
 								</div>
@@ -341,9 +341,9 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="odlerNation" class="col-sm-3 control-label">老人民族：</label>
+									<label for="olderNation" class="col-sm-3 control-label">老人民族：</label>
 									<div class="col-sm-5">
-										<select id="odlerNation">
+										<select id="olderNation">
 											<optgroup label="名族">
 												<option value="">民族</option>
 												<option value="01">汉族</option>
@@ -491,14 +491,13 @@
 			$(document).ready(function() {
 				// Generate a simple captcha
 		
-				$('#odlerInfoForm').bootstrapValidator({
+				$('#olderEntry').bootstrapValidator({
 					//        live: 'disabled',
 					message : 'This value is not valid',
 					feedbackIcons : {
 						valid : 'glyphicon glyphicon-ok-circle',
 						invalid : 'glyphicon glyphicon-remove-circle',
 						validating : 'glyphicon glyphicon-refresh',
-						regexp : 'glyphicon glyphicon-ok-circle'
 					},
 					fields : {
 						//检验用户名
