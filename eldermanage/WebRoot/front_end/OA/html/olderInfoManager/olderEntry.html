@@ -270,7 +270,7 @@
 							<!--老人信息录入时候需要的表单-->
 							<form class="form-horizontal" id="olderEntry">
 								<div class="form-group">
-									<label for="odlerName" class="col-sm-3 control-label">老人姓名：</label>
+									<label for="olderName" class="col-sm-3 control-label">老人姓名：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="olderName"
 											placeholder="老人姓名" name="name">
@@ -615,15 +615,15 @@
 					oldersex :$("#olderSex").find("option:selected").text(),
 					olderpassword : $("#olderPassword").val(),
 					olderbirthday:$("#olderBirthday").val(),
-					oldertel : $("#odlerTel").val(),
+					oldertel : $("#olderTel").val(),
 					olderaddress : $("#olderAdress").val(),
 					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
 					olderide : $("#olderIDE").val(),
 					
-					oldernation : $("#odlerNation").find("option:selected").text(),
+					oldernation : $("#olderNation").find("option:selected").text(),
 					olderheadurl : $("#olderHeadUrl").val(),
 					olderpoint :$("#olderPoint").val(),
-					olderbranchid : $("#olderBranchId").val(), 
+					
 				}
 				$.ajax({
 				type: 'post',
