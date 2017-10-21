@@ -581,6 +581,126 @@ public class ActionExample {
             addCriterion("actionStatus not between", value1, value2, "actionstatus");
             return (Criteria) this;
         }
+
+        public Criteria andActionenrollIsNull() {
+            addCriterion("actionEnroll is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollIsNotNull() {
+            addCriterion("actionEnroll is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollEqualTo(Integer value) {
+            addCriterion("actionEnroll =", value, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollNotEqualTo(Integer value) {
+            addCriterion("actionEnroll <>", value, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollGreaterThan(Integer value) {
+            addCriterion("actionEnroll >", value, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollGreaterThanOrEqualTo(Integer value) {
+            addCriterion("actionEnroll >=", value, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollLessThan(Integer value) {
+            addCriterion("actionEnroll <", value, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollLessThanOrEqualTo(Integer value) {
+            addCriterion("actionEnroll <=", value, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollIn(List<Integer> values) {
+            addCriterion("actionEnroll in", values, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollNotIn(List<Integer> values) {
+            addCriterion("actionEnroll not in", values, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollBetween(Integer value1, Integer value2) {
+            addCriterion("actionEnroll between", value1, value2, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionenrollNotBetween(Integer value1, Integer value2) {
+            addCriterion("actionEnroll not between", value1, value2, "actionenroll");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalIsNull() {
+            addCriterion("actionTotal is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalIsNotNull() {
+            addCriterion("actionTotal is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalEqualTo(Integer value) {
+            addCriterion("actionTotal =", value, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalNotEqualTo(Integer value) {
+            addCriterion("actionTotal <>", value, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalGreaterThan(Integer value) {
+            addCriterion("actionTotal >", value, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalGreaterThanOrEqualTo(Integer value) {
+            addCriterion("actionTotal >=", value, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalLessThan(Integer value) {
+            addCriterion("actionTotal <", value, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalLessThanOrEqualTo(Integer value) {
+            addCriterion("actionTotal <=", value, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalIn(List<Integer> values) {
+            addCriterion("actionTotal in", values, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalNotIn(List<Integer> values) {
+            addCriterion("actionTotal not in", values, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalBetween(Integer value1, Integer value2) {
+            addCriterion("actionTotal between", value1, value2, "actiontotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiontotalNotBetween(Integer value1, Integer value2) {
+            addCriterion("actionTotal not between", value1, value2, "actiontotal");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

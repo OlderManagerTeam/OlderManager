@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Action;
+import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
+import com.sds.em.po.Visited;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
 
@@ -137,9 +139,38 @@ public class BrenchController {
 		return brenchManageService.deleteOlderSick(sickid);
 	}
 
-	// 查看本老人的订单信息
+	// 查看本老人的订单信息--测试成功
 	@RequestMapping(method = RequestMethod.GET, value = "elder/orders")
 	public @ResponseBody Message getOlderAllOrder(int olderid) throws Exception {
 		return brenchManageService.getOlderAllOrder(olderid);
 	}
+
+	// 给本老人添加回访记录
+	@RequestMapping(method = RequestMethod.POST, value = "elder/visited")
+	public @ResponseBody Message andOlderVisited(@RequestBody Visited visited, HttpSession session) throws Exception {
+		int staffid = (int) session.getAttribute("staffid");
+		visited.setVisitedassistantid(staffid);
+		return brenchManageService.andOlderVisited(visited);
+	}
+
+	// 查看本老人的所有回访记录信息
+	@RequestMapping(method = RequestMethod.GET, value = "elder/visited")
+	public @ResponseBody Message getOlderAllVisited( int olderid) throws Exception {
+		return brenchManageService.getOlderAllVisited(olderid);
+	}
+	
+	//添加讲座信息
+	@RequestMapping(method = RequestMethod.POST, value = "lecture")
+	public @ResponseBody Message addLecture( HttpSession session,@RequestBody Lecture lecture) throws Exception {
+		int branchid = (int) session.getAttribute("branchid");
+		lecture.setLecturebranchid(branchid);
+		return brenchManageService.addLecture( lecture);
+	}
+	//查看本分店的所有讲座信息
+	@RequestMapping(method = RequestMethod.GET, value = "lecture")
+	public @ResponseBody Message getLecture( HttpSession session ) throws Exception {
+		int branchid = (int) session.getAttribute("branchid");
+		return brenchManageService.getLecture(branchid);
+	}
+	
 }
