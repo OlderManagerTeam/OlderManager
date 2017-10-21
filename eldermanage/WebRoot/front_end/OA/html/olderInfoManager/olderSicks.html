@@ -274,7 +274,7 @@
                 <div class="side-body">
                     <div class="page-title">
                         <span class="title">老人病历信息录入</span>
-                        <div class="description">Olderman Basic Information Alter</div>
+                        <div class="description">Olderman Sick Information Alter</div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -285,8 +285,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                	<!--老人信息录入时候需要的表单-->
-                                    <form class="form-horizontal" id="odlerInfoForm">
+                                	<!--老人病历录入时候需要的表单-->
+                                    <form class="form-horizontal" id="olderSicks">
                                         <div class="form-group">
                                             <label for="sickInfo" class="col-sm-3 control-label">病因：</label>
                                             <div class="col-sm-5">
@@ -372,7 +372,7 @@
    $(document).ready(function() {
     // Generate a simple captcha
     
-    $('#odlerInfoForm').bootstrapValidator({
+    $('#olderSicks').bootstrapValidator({
 //        live: 'disabled',
         message: 'This value is not valid',
         feedbackIcons: {

@@ -1,9 +1,11 @@
 package com.sds.em.service;
 
 import com.sds.em.po.Action;
+import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
+import com.sds.em.po.Visited;
 
 public interface BrenchService {
 	// 老人基本信息的录入
@@ -24,26 +26,37 @@ public interface BrenchService {
 
 	// 修改活动
 	public Message modifyAction(Action action) throws Exception;
-	
-	//查询这个管理员所在的分店名
+
+	// 查询这个管理员所在的分店名
 	public Message getBranchName(int staffid) throws Exception;
-	
-	//查询本分店所有老人的基本信息
-	public Message getAllElder(int branchid)throws Exception;
-	
+
+	// 查询本分店所有老人的基本信息
+	public Message getAllElder(int branchid) throws Exception;
+
 	//// 删除某个老人的信息
 	public Message deleteANElder(String oldertel) throws Exception;
+
+	// 获取某个老人的信息
+	public Message getElder(String oldertel) throws Exception;
+
+	// 查看本老人的所有病历信息
+	public Message getOlderAllSick(int olderid) throws Exception;
+
+	// 删除一条老人病历信息
+	public Message deleteOlderSick(int sickid) throws Exception;
+
+	// 查看本老人的订单信息
+	public Message getOlderAllOrder(int olderid) throws Exception;
+
+	// 给本老人添加回访记录
+	public Message andOlderVisited(Visited visited) throws Exception;
+
+	// 查看本老人的所有回访记录信息
+	public Message getOlderAllVisited(int olderid) throws Exception;
 	
-	//获取某个老人的信息
-	public Message getElder(String oldertel)throws Exception;
+	//添加讲座信息
+	public Message addLecture(Lecture lecture)throws Exception;
 	
-	////查看本老人的所有病历信息
-	public Message getOlderAllSick(int olderid)throws Exception;
-	
-	//删除一条老人病历信息
-	public Message deleteOlderSick(int sickid)throws Exception;
-	
-	//查看本老人的订单信息
-	public Message getOlderAllOrder(int olderid)throws Exception;
-	
+	public Message getLecture(int branchid)throws Exception;
+
 }
