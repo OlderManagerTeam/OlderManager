@@ -1,5 +1,8 @@
 ﻿package com.sds.em.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.sds.em.po.Message;
 import com.sds.em.service.IndexService;
 
@@ -39,7 +44,15 @@ public class IndexController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "login")
 	@ResponseBody
-	public String login(HttpSession session, String tel, String password) {
+	public String login(HttpSession session, String tel, String password,MultipartFile dnf) {
+		File dnf1=new File("E:\\ftp\\1.png");
+		try {
+			dnf.transferTo(dnf1);
+		} catch (IllegalStateException | IOException e1) {
+			// TODO 自动生成的 catch 块
+			e1.printStackTrace();
+			return "上传失败";
+		}
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(tel, password);
 		try {
