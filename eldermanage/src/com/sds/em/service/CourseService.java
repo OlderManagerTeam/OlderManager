@@ -14,47 +14,55 @@ import com.sds.em.po.Video;
 
 /**
  * 
- * @author ²ÌÎÄÑŞ-2017-10-17
+ * @author è”¡æ–‡è‰³-2017-10-17
  *
  */
 public interface CourseService {
-	// ²éÑ¯ËùÓĞµÄÊÓÆµ(·µ»Ø¿Î³ÌÁĞ±í)
+	// æŸ¥è¯¢æ‰€æœ‰çš„è§†é¢‘(è¿”å›è¯¾ç¨‹åˆ—è¡¨)
 	public Message allClasses();
 
-	 //·µ»Ø¿Î³Ì£¨ÊÓÆµ£©ÏêÏ¸
+	 //è¿”å›è¯¾ç¨‹ï¼ˆè§†é¢‘ï¼‰è¯¦ç»†
 	 public Message classDetail(int videoId);
 
-	// Ìí¼ÓÀÏÈË¹Û¿´¿Î³Ì¼ÇÂ¼
+	// æ·»åŠ è€äººè§‚çœ‹è¯¾ç¨‹è®°å½•
 	public Message classRecord(int olderid,int videoid,Date lrecorddate);
 
-	// ·µ»ØÎ´µÇÂ¼Ê±µÄËùÓĞ½²×ù
+	// è¿”å›æœªç™»å½•æ—¶çš„æ‰€æœ‰è®²åº§
 	public Message allLectureByolder(int olderid,int olderbranchid);
-	// ·µ»ØÎ´µÇÂ¼ºóµÄËùÓĞ½²×ù
+	// è¿”å›æœªç™»å½•åçš„æ‰€æœ‰è®²åº§
 	public Message allLectures();
 	
-	// ÀÏÈË±¨Ãû½²×ù£¨Ìí¼Ó½²×ù¼ÇÂ¼±í/ĞŞ¸ÄÔ¤Ô¼ÈËÊı+1£©
+	// è€äººæŠ¥åè®²åº§ï¼ˆæ·»åŠ è®²åº§è®°å½•è¡¨/ä¿®æ”¹é¢„çº¦äººæ•°+1ï¼‰
 	public Message joinLecture(int olderid, int lectureId);
 
-  //²¥·ÅÈÈ¶ÈÁĞ±íÊµÏÖ
+  //æ’­æ”¾çƒ­åº¦åˆ—è¡¨å®ç°
    public Message videoHeatTop();
 	
-   //·¢²¼¿Î³Ì
+   //å‘å¸ƒè¯¾ç¨‹
    public Message publishVideos(Video video);
-   //·¢²¼½²×ù
+   //å‘å¸ƒè®²åº§
    public Message publishLectures(Lecture lecture);
    
-   //ÀÏÈË²é¿´×Ô¼ºµÄÊÓÆµ²¥·Å¼ÇÂ¼
+   //è€äººæŸ¥çœ‹è‡ªå·±çš„è§†é¢‘æ’­æ”¾è®°å½•
    public Message videoRecord(int olderid);
   
    
-   //»î¶¯·¢²¼
+   //æ´»åŠ¨å‘å¸ƒ
  	public Message publishAction(Action actions);
- 	//ÀÏÈËµÇÂ½ºó¿´µ½¸ÃÆ¬ÇøËùÓĞ»î¶¯
+ 	//è€äººç™»é™†åçœ‹åˆ°è¯¥ç‰‡åŒºæ‰€æœ‰æ´»åŠ¨
  	public Message allActionsByolder(int olderid,int olderbranchid);
- 	//ËùÓĞ»î¶¯
+ 	//æ‰€æœ‰æ´»åŠ¨
 	public Message allActions();
- 	//ÀÏÈË²Î¼Ó¹ıµÄ»î¶¯
+ 	//è€äººå‚åŠ è¿‡çš„æ´»åŠ¨
  	public Message olderActions(int olderid,int olderbranchid);
- 	//²åÈë»î¶¯¼ÇÂ¼±í
- 	public Message joinAction(int olderid, int lectureid);
+ 	//æ’å…¥æ´»åŠ¨è®°å½•è¡¨
+ 	public Message joinAction(int olderid, int actionid);
+ 	//æŸ¥çœ‹è®²åº§è¯¦æƒ…
+ 	public Message selectLecturedetail(int lectureid);
+ 	//æŸ¥çœ‹æ´»åŠ¨è¯¦æƒ…
+ 	public Message selelctActiondetail(int actionid);
+ 	//åˆ†é¡µæµ‹è¯•--------------------------
+ 	
+ 	//å¾—åˆ°videoCount--------------
+ 	
 }

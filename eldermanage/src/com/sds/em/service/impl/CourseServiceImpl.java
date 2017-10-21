@@ -1,6 +1,6 @@
 package com.sds.em.service.impl;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,10 +26,6 @@ import com.sds.em.po.LectureExample;
 import com.sds.em.po.Lecturerecord;
 import com.sds.em.po.LecturerecordExample;
 import com.sds.em.po.Message;
-import com.sds.em.po.Olderbase;
-import com.sds.em.po.OlderbaseExample;
-import com.sds.em.po.Oldertoken;
-import com.sds.em.po.OldertokenExample;
 import com.sds.em.po.Video;
 import com.sds.em.po.VideoExample;
 import com.sds.em.po.VideoExample.Criteria;
@@ -72,6 +68,7 @@ public class CourseServiceImpl implements CourseService {
 
 		VideoExample videoExample = new VideoExample();
 		Criteria videoCriteria = videoExample.createCriteria();
+		
 		List<Video> videoList = videoMapper.selectByExample(videoExample);
 		if (!videoList.isEmpty()) {
 			return new Message(true, "返回成功", videoList);
@@ -151,35 +148,6 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false,"数据错误",null);
 	}
 	
-//	@Override
-//	public Message allLectures(int olderid,int olderbranchid) {
-//
-////		 LectureExample lectureExample1 = new LectureExample();
-////	     com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample1.createCriteria();
-////	     
-////		if(olderid != ' '){
-////		    
-////		     lectureCriteria.andLecturebranchidEqualTo(olderbranchid);
-////		     List<Lecture> lectureList1 = lectureMapper.selectByExample(lectureExample1);
-////		     if(!lectureList1.isEmpty()){
-////		     
-////		    	 return new Message(true, "返回成功", lectureList1);
-////
-////		     }
-////		     else 
-////		    	 return new Message(false, "数据错误", null);
-////		}
-////		else {
-////			List<Lecture> lectureList2 = lectureMapper.selectByExample(lectureExample1);
-////		    if(!lectureList2.isEmpty()){
-////		     
-////	    	     return new Message(true, "返回成功", lectureList2);
-////         	  }
-////	        else 
-////	    	     return new Message(false, "数据错误", null);
-////		}
-//		
-//	}
 	
 	// 返回登录后的所有讲座
 	@Override
@@ -348,20 +316,69 @@ public class CourseServiceImpl implements CourseService {
 		}
 		
 		
-		return new Message(false,"数据错误",actionList);
+		return new Message(false,"数据错误",null);
 	}
 
 	//插入活动记录表
 	@Override
-	public Message joinAction(int olderid, int lectureid) {
+	public Message joinAction(int olderid, int actionid) {
+//		ActionrecordExample actionrecordExample = new ActionrecordExample();
+		Actionrecord actionRecord = new Actionrecord();
+		actionRecord.setArecordolderid(olderid);
+		actionRecord.setArecordactionid(actionid);
+		actionRecord.setArecorddate(new Date());
+		actionrecordMapper.insert(actionRecord);
 		
-		return null;
+		ActionExample actionExample = new ActionExample();
+		com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
+		actionCriteria.andActionidEqualTo(actionid);
+		List<Action> actionList = actionMapper.selectByExample(actionExample);
+		Action action = new Action();
+		action.setActionid(actionid);
+		action.setActionenroll(actionList.get(0).getActionenroll()+1);
+		int flag = actionMapper.updateByPrimaryKey(action);
+		if(flag == 1){
+			return new Message(true,"添加修改成功",null);
+		}
+		
+		return new Message(false,"添加失败",null);
+	}
+
+	//讲座详情
+	@Override
+	public Message selectLecturedetail(int lectureid) {
+		LectureExample lectureExample  = new LectureExample();
+		com.sds.em.po.LectureExample.Criteria lectureCruteria =lectureExample.createCriteria();
+		lectureCruteria.andLectureidEqualTo(lectureid);
+		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
+		if(! lectureList.isEmpty()){
+			return new Message(true,"返回成功",lectureList.get(0));
+		}
+		return new Message(false,"数据错误",null);
+	}
+
+	//活动详情
+	@Override
+	public Message selelctActiondetail(int actionid) {
+		ActionExample actionExample = new ActionExample();
+		com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
+		actionCriteria.andActionidEqualTo(actionid);
+		List<Action> actionList = actionMapper.selectByExample(actionExample);
+		if(!actionList.isEmpty()){
+			return new Message(true,"返回成功",actionList.get(0));
+		}
+		return new Message(false,"数据错误",null);
 	}
 
 
+	
 
-
-
+    //分页测试-------------------
+	
+	
+	
+	
+	//-------------------
 
 	
 

@@ -1,11 +1,15 @@
 package com.sds.em.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,10 +20,11 @@ import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Video;
 import com.sds.em.service.CourseService;
+import com.sds.em.util.Page;
 
 /**
  * 
- * @author ²ÌÎÄÑŞ-2017-10-17 ÀÏÈË½ÌÓıÏµÍ³controller
+ * @author è”¡æ–‡è‰³-2017-10-17 è€äººæ•™è‚²ç³»ç»Ÿcontroller
  *
  */
 @Controller
@@ -29,100 +34,112 @@ public class CourseController {
 	@Autowired
 	CourseService courseService;
 	
-	//·µ»ØËùÓĞ¿Î³Ì  ----Ğ´Íê
+	//è¿”å›æ‰€æœ‰è¯¾ç¨‹  ----å†™å®Œ
 	@RequestMapping(method=RequestMethod.GET, value = "classes")
-	public @ResponseBody Message classes(){//ËùÓĞµÄÊÓÆµ
+	public @ResponseBody Message classes(){//æ‰€æœ‰çš„è§†é¢‘
 		return courseService.allClasses();
 	}
 	
-	//·µ»Ø¿Î³Ì£¨ÊÓÆµ£©ÏêÏ¸  ----Ğ´Íê
+	//è¿”å›è¯¾ç¨‹ï¼ˆè§†é¢‘ï¼‰è¯¦ç»†  ----å†™å®Œ
 	@RequestMapping(method=RequestMethod.GET,value = "detail")
 	public @ResponseBody Message classDetail(int videoId){
 		return courseService.classDetail(videoId);
 	}
 	
-	//Ìí¼ÓÀÏÈË¹Û¿´¿Î³Ì£¨ÊÓÆµ£©¼ÇÂ¼±í       ----Ğ´Íê
+	//æ·»åŠ è€äººè§‚çœ‹è¯¾ç¨‹ï¼ˆè§†é¢‘ï¼‰è®°å½•è¡¨       ----å†™å®Œ
 	@RequestMapping(method =RequestMethod.POST,value = "record" )
 	public @ResponseBody Message insertRecord(HttpSession s,int videoid){
 		int olderid=(int) s.getAttribute("olderid");
 		return courseService.classRecord(olderid,videoid,new Date());
 	}
 	
-	//·µ»Øµ±Ç°½²×ù        ----Ğ´Íê
+	//è¿”å›å½“å‰è®²åº§        ----å†™å®Œ
 	@RequestMapping(method = RequestMethod.GET,value ="lecture")
 	public @ResponseBody Message currentLecture(HttpSession s){
 		
 		int olderid=(int) s.getAttribute("olderid");
 		int olderbranchid = (int) s.getAttribute("olderbranchid");
-		if(olderid != 0){//ÀÏÈËµÇÂ½ºó¿´µ½¸ÃÆ¬ÇøËùÓĞ½²×ù
+		if(olderid != 0){//è€äººç™»é™†åçœ‹åˆ°è¯¥ç‰‡åŒºæ‰€æœ‰è®²åº§
 			return courseService.allLectureByolder(olderid,olderbranchid);
 		}
-		return courseService.allLectures();//Î´µÇÂ¼·µ»ØËùÓĞ½²×ù
+		return courseService.allLectures();//æœªç™»å½•è¿”å›æ‰€æœ‰è®²åº§
 		
 	}
 	
 	 
-	//Ä³ÀÏÈË±¨Ãû½²×ù(²Î¼Ó½²×ù¡¢½«½²×ùÒÑÔ¤Ô¼ÈËÊıĞŞ¸Ä)   ----Ğ´Íê
+	//æŸè€äººæŠ¥åè®²åº§(å‚åŠ è®²åº§ã€å°†è®²åº§å·²é¢„çº¦äººæ•°ä¿®æ”¹)   ----å†™å®Œ
 	@RequestMapping(method = RequestMethod.POST,value="lecture/joinlectur")
 	public @ResponseBody Message insertlectureRecord(HttpSession s,int lectureid){
 		int olderid=(int) s.getAttribute("olderid");
 		return courseService.joinLecture(olderid, lectureid);
 	}
 	
-   //²¥·ÅÈÈ¶ÈÁĞ±íÊµÏÖ     ----Ğ´Íê Í¨¹ı
+   //æ’­æ”¾çƒ­åº¦åˆ—è¡¨å®ç°     ----å†™å®Œ é€šè¿‡
 	@RequestMapping(method = RequestMethod.GET,value="video/heat")
 	public @ResponseBody Message videoheat(){
 		return courseService.videoHeatTop();
 	}
 	
-	//·¢²¼¿Î³Ì
+	//å‘å¸ƒè¯¾ç¨‹
 	@RequestMapping(method = RequestMethod.POST,value = "video/publishment")
 	public @ResponseBody Message publish(@RequestBody Video video){
 		return courseService.publishVideos(video);
 	}
 	
 	
-	//·¢²¼½²×ù
+	//å‘å¸ƒè®²åº§
 	@RequestMapping(method=RequestMethod.POST,value="lecture/publishment")
 	public @ResponseBody Message publish(Lecture lecture){
 		return courseService.publishLectures(lecture);
 	}
 	
 	
-	//ÀÏÈË²é¿´×Ô¼ºµÄ¿Î³ÌÊÓÆµ²¥·Å¼ÇÂ¼   -----Ğ´Íê
+	//è€äººæŸ¥çœ‹è‡ªå·±çš„è¯¾ç¨‹è§†é¢‘æ’­æ”¾è®°å½•   -----å†™å®Œ
 	@RequestMapping(method = RequestMethod.GET,value= "video/videorecord")
 	public @ResponseBody Message videoRecord(HttpSession s){
 		int olderid = (int) s.getAttribute("olderid");
 		return courseService.videoRecord(olderid);
 	}
-	//»î¶¯·¢²¼
-	@RequestMapping(method = RequestMethod.POST,value= "action")
+	//æ´»åŠ¨å‘å¸ƒ
+	@RequestMapping(method = RequestMethod.POST,value= "actions")
 	public @ResponseBody Message publishAction(Action actions){
 		return courseService.publishAction(actions);
 	}
-	//²é¿´ËùÓĞ»î¶¯ ---Ğ´Íê
-	@RequestMapping(method= RequestMethod.GET,value="action/allactions")
+	//æŸ¥çœ‹æ‰€æœ‰æ´»åŠ¨ ---å†™å®Œ
+	@RequestMapping(method= RequestMethod.GET,value="actions/allactions")
 	public Message allActions(HttpSession s){
 		int olderid = (int) s.getAttribute("olderid");
 		int olderbranchid = (int) s.getAttribute("olderbranchid");
-		if(olderid != 0){//ÀÏÈËµÇÂ½ºó¿´µ½¸ÃÆ¬ÇøËùÓĞ»î¶¯
+		if(olderid != 0){//è€äººç™»é™†åçœ‹åˆ°è¯¥ç‰‡åŒºæ‰€æœ‰æ´»åŠ¨
 			return courseService.allActionsByolder(olderid,olderbranchid);
 		}
-		return courseService.allActions();//Î´µÇÂ¼·µ»ØËùÓĞ»î¶¯
+		return courseService.allActions();//æœªç™»å½•è¿”å›æ‰€æœ‰æ´»åŠ¨
 	}
-	//ÀÏÈËÒÑ±¨Ãû²Î¼Ó¹ı»î¶¯  ---Ğ´Íê
-	@RequestMapping(method= RequestMethod.GET,value="action/olderactions")
+	//è€äººæŸ¥çœ‹å·²æŠ¥åå‚åŠ è¿‡æ´»åŠ¨  ---å†™å®Œ
+	@RequestMapping(method= RequestMethod.GET,value="actions/olderactions")
 	public Message olderactions(HttpSession s){
 		int olderid = (int) s.getAttribute("olderid");
 		int olderbranchid = (int) s.getAttribute("olderbranchid");
 		return courseService.olderActions(olderid,olderbranchid);
 	}
-	//²åÈë»î¶¯¼ÇÂ¼±í£¨ÀÏÈË±¨Ãû²Î¼Ó»î¶¯£©
-	@RequestMapping(method = RequestMethod.POST,value="lecture/joinaction")
-	public @ResponseBody Message insertActionRecord(HttpSession s,int lectureid){
+	//æ’å…¥æ´»åŠ¨è®°å½•è¡¨ï¼ˆè€äººæŠ¥åå‚åŠ æ´»åŠ¨ï¼‰åŒæ—¶ä¿®æ”¹å·²æŠ¥åäººæ•°---å†™å®Œ
+	@RequestMapping(method = RequestMethod.POST,value="actions/joinaction")
+	public @ResponseBody Message insertActionRecord(HttpSession s,int actionid){
 		int olderid=(int) s.getAttribute("olderid");
-		return courseService.joinAction(olderid, lectureid);
+		return courseService.joinAction(olderid, actionid);
 	}
 	
-	//
+	//è®²åº§è¯¦æƒ…
+	@RequestMapping(method = RequestMethod.GET,value ="lecture/lecturedetail")
+	public @ResponseBody Message lecturedetail(int lectureid){
+		return courseService.selectLecturedetail(lectureid);
+	}
+	//æ´»åŠ¨è¯¦æƒ…
+	@RequestMapping(method = RequestMethod.GET,value="actions/actiondetail")
+	public @ResponseBody Message actiondetail(int actionid){
+		return courseService.selelctActiondetail(actionid);
+	}
+	
+	//åˆ†é¡µæµ‹è¯•---æŸ¥è¯¢æ‰€æœ‰video
+	
 }

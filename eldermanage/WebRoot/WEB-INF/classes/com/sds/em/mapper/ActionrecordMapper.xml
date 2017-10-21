@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sds.em.mapper.ActionrecordMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Actionrecord" >
+    <id column="ARecordId" property="arecordid" jdbcType="INTEGER" />
+    <result column="ARecordolderId" property="arecordolderid" jdbcType="INTEGER" />
+    <result column="ARecordActionId" property="arecordactionid" jdbcType="INTEGER" />
+    <result column="ARecordDate" property="arecorddate" jdbcType="TIME" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ARecordId, ARecordolderId, ARecordActionId, ARecordDate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ActionrecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from actionrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from actionrecord
+    where ARecordId = #{arecordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from actionrecord
+    where ARecordId = #{arecordid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.ActionrecordExample" >
+    delete from actionrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Actionrecord" >
+    insert into actionrecord (ARecordId, ARecordolderId, ARecordActionId, 
+      ARecordDate)
+    values (#{arecordid,jdbcType=INTEGER}, #{arecordolderid,jdbcType=INTEGER}, #{arecordactionid,jdbcType=INTEGER}, 
+      #{arecorddate,jdbcType=TIME})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Actionrecord" >
+    insert into actionrecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="arecordid != null" >
+        ARecordId,
+      </if>
+      <if test="arecordolderid != null" >
+        ARecordolderId,
+      </if>
+      <if test="arecordactionid != null" >
+        ARecordActionId,
+      </if>
+      <if test="arecorddate != null" >
+        ARecordDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="arecordid != null" >
+        #{arecordid,jdbcType=INTEGER},
+      </if>
+      <if test="arecordolderid != null" >
+        #{arecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="arecordactionid != null" >
+        #{arecordactionid,jdbcType=INTEGER},
+      </if>
+      <if test="arecorddate != null" >
+        #{arecorddate,jdbcType=TIME},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.ActionrecordExample" resultType="java.lang.Integer" >
+    select count(*) from actionrecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update actionrecord
+    <set >
+      <if test="record.arecordid != null" >
+        ARecordId = #{record.arecordid,jdbcType=INTEGER},
+      </if>
+      <if test="record.arecordolderid != null" >
+        ARecordolderId = #{record.arecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.arecordactionid != null" >
+        ARecordActionId = #{record.arecordactionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.arecorddate != null" >
+        ARecordDate = #{record.arecorddate,jdbcType=TIME},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update actionrecord
+    set ARecordId = #{record.arecordid,jdbcType=INTEGER},
+      ARecordolderId = #{record.arecordolderid,jdbcType=INTEGER},
+      ARecordActionId = #{record.arecordactionid,jdbcType=INTEGER},
+      ARecordDate = #{record.arecorddate,jdbcType=TIME}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Actionrecord" >
+    update actionrecord
+    <set >
+      <if test="arecordolderid != null" >
+        ARecordolderId = #{arecordolderid,jdbcType=INTEGER},
+      </if>
+      <if test="arecordactionid != null" >
+        ARecordActionId = #{arecordactionid,jdbcType=INTEGER},
+      </if>
+      <if test="arecorddate != null" >
+        ARecordDate = #{arecorddate,jdbcType=TIME},
+      </if>
+    </set>
+    where ARecordId = #{arecordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Actionrecord" >
+    update actionrecord
+    set ARecordolderId = #{arecordolderid,jdbcType=INTEGER},
+      ARecordActionId = #{arecordactionid,jdbcType=INTEGER},
+      ARecordDate = #{arecorddate,jdbcType=TIME}
+    where ARecordId = #{arecordid,jdbcType=INTEGER}
+  </update>
+</mapper>
