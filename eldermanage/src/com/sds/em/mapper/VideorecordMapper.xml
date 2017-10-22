@@ -193,4 +193,5 @@
       vRecordDate = #{vrecorddate,jdbcType=TIME}
     where vRecordId = #{vrecordid,jdbcType=INTEGER}
   </update>
+    
 </mapper>
