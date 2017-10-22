@@ -124,8 +124,8 @@ public class IndexController {
 
 	// �����б��ѯ
 	@RequestMapping(method = RequestMethod.GET, value = "news")
-	public @ResponseBody Message news() {
-		return indexService.allNews();
+	public @ResponseBody String news() {
+		return "乱码测试";
 	}
 
 	//AJAX上传文件测试
