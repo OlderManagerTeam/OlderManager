@@ -130,7 +130,7 @@ public class IndexController {
 
 	//AJAX上传文件测试
 	@RequestMapping(method = RequestMethod.POST, value = "upload")
-	public @ResponseBody Message upload(String username,MultipartFile img) {
+	public @ResponseBody Message upload(String username,MultipartFile img,String accountnum) {
 		int i = 0;
 		int j = 0;
 		

@@ -1,5 +1,7 @@
 package com.sds.em.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Action;
 import com.sds.em.po.Lecture;
@@ -39,28 +42,36 @@ public class BrenchController {
 
 	// 老人基本信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/info")
-	public @ResponseBody Message info(String oldername, String oldersex, String olderbirthday, String olderpassword,
-			String oldertel, String olderaddress, String oldersinglestatus, String olderide, String oldernation,
-			String olderheadurl, int olderbranchid) throws Exception {
+	public @ResponseBody Message info(HttpSession session, @RequestBody Olderbase olderbase, MultipartFile dnf)
+			throws Exception {
+		// int olderbranchid=session.getAttribute("branchid");
 
-		Olderbase olderbase = new Olderbase();
-		olderbase.setOlderaddress(olderaddress);
+/*		File dnf1 = new File("E:\\ftp\\1.png");
+		dnf.transferTo(dnf1);*/
 
-		Date date = DateSimp.simp(olderbirthday);
-
-		olderbase.setOlderbirthday(date);
-		olderbase.setOlderbranchid(olderbranchid);
-		olderbase.setOlderheadurl(olderheadurl);
-		olderbase.setOlderide(olderide);
-		olderbase.setOldername(oldername);
-		olderbase.setOldernation(oldernation);
-		olderbase.setOlderpassword(olderpassword);
-
+		olderbase.setOlderbranchid(1);
 		olderbase.setOlderpoint(0);
-		olderbase.setOldersex(oldersex);
-		olderbase.setOldersinglestatus(oldersinglestatus);
-		olderbase.setOldertel(oldertel);
 		olderbase.setOldermaxpoint(0);
+		// Olderbase olderbase = new Olderbase();
+		// olderbase.setOlderaddress(olderaddress);
+		//
+		// Date date = DateSimp.simp(olderbirthday);
+		//
+		// olderbase.setOlderbirthday(date);
+		//
+		// olderbase.setOlderbranchid(olderbranchid);
+		//
+		// olderbase.setOlderheadurl(olderheadurl);
+		// olderbase.setOlderide(olderide);
+		// olderbase.setOldername(oldername);
+		// olderbase.setOldernation(oldernation);
+		// olderbase.setOlderpassword(olderpassword);
+		//
+		// olderbase.setOlderpoint(0);
+		// olderbase.setOldersex(oldersex);
+		// olderbase.setOldersinglestatus(oldersinglestatus);
+		// olderbase.setOldertel(oldertel);
+		// olderbase.setOldermaxpoint(0);
 		return brenchManageService.addElderInfo(olderbase);
 
 	}
@@ -107,7 +118,8 @@ public class BrenchController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "elders/info")
 	public @ResponseBody Message allOlderByBranch(HttpSession session) throws Exception {
-		int branchid = (int) session.getAttribute("branchid");
+		//int branchid = (int) session.getAttribute("branchid");
+		int branchid=1;
 		return brenchManageService.getAllElder(branchid);
 	}
 
@@ -155,22 +167,23 @@ public class BrenchController {
 
 	// 查看本老人的所有回访记录信息
 	@RequestMapping(method = RequestMethod.GET, value = "elder/visited")
-	public @ResponseBody Message getOlderAllVisited( int olderid) throws Exception {
+	public @ResponseBody Message getOlderAllVisited(int olderid) throws Exception {
 		return brenchManageService.getOlderAllVisited(olderid);
 	}
-	
-	//添加讲座信息
+
+	// 添加讲座信息
 	@RequestMapping(method = RequestMethod.POST, value = "lecture")
-	public @ResponseBody Message addLecture( HttpSession session,@RequestBody Lecture lecture) throws Exception {
+	public @ResponseBody Message addLecture(HttpSession session, @RequestBody Lecture lecture) throws Exception {
 		int branchid = (int) session.getAttribute("branchid");
 		lecture.setLecturebranchid(branchid);
-		return brenchManageService.addLecture( lecture);
+		return brenchManageService.addLecture(lecture);
 	}
-	//查看本分店的所有讲座信息
+
+	// 查看本分店的所有讲座信息
 	@RequestMapping(method = RequestMethod.GET, value = "lecture")
-	public @ResponseBody Message getLecture( HttpSession session ) throws Exception {
+	public @ResponseBody Message getLecture(HttpSession session) throws Exception {
 		int branchid = (int) session.getAttribute("branchid");
 		return brenchManageService.getLecture(branchid);
 	}
-	
+
 }
