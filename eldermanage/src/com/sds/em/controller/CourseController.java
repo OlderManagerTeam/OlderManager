@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sds.em.po.Action;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Video;
@@ -47,22 +48,22 @@ public class CourseController {
 		return courseService.classRecord(olderid,videoid,new Date());
 	}
 	
-	//返回当前讲座      ----写完
+	//返回当前讲座        ----写完
 	@RequestMapping(method = RequestMethod.GET,value ="lecture")
 	public @ResponseBody Message currentLecture(HttpSession s){
-//		int olderid = 0;
-//		s.setAttribute("olderid", olderid);
 		
 		int olderid=(int) s.getAttribute("olderid");
 		int olderbranchid = (int) s.getAttribute("olderbranchid");
-		return courseService.currentLecture(olderid,olderbranchid);
+		if(olderid != 0){//老人登陆后看到该片区所有讲座
+			return courseService.allLectureByolder(olderid,olderbranchid);
+		}
+		return courseService.allLectures();//未登录返回所有讲座
+		
 	}
-	
-	
 	
 	 
 	//某老人报名讲座(参加讲座、将讲座已预约人数修改)   ----写完
-	@RequestMapping(method = RequestMethod.POST,value="lecture/join")
+	@RequestMapping(method = RequestMethod.POST,value="lecture/joinlectur")
 	public @ResponseBody Message insertlectureRecord(HttpSession s,int lectureid){
 		int olderid=(int) s.getAttribute("olderid");
 		return courseService.joinLecture(olderid, lectureid);
@@ -88,6 +89,40 @@ public class CourseController {
 	}
 	
 	
-	//老人查看自己的课程视频播放记录
+	//老人查看自己的课程视频播放记录   -----写完
+	@RequestMapping(method = RequestMethod.GET,value= "video/videorecord")
+	public @ResponseBody Message videoRecord(HttpSession s){
+		int olderid = (int) s.getAttribute("olderid");
+		return courseService.videoRecord(olderid);
+	}
+	//活动发布
+	@RequestMapping(method = RequestMethod.POST,value= "action")
+	public @ResponseBody Message publishAction(Action actions){
+		return courseService.publishAction(actions);
+	}
+	//查看所有活动 ---写完
+	@RequestMapping(method= RequestMethod.GET,value="action/allactions")
+	public Message allActions(HttpSession s){
+		int olderid = (int) s.getAttribute("olderid");
+		int olderbranchid = (int) s.getAttribute("olderbranchid");
+		if(olderid != 0){//老人登陆后看到该片区所有活动
+			return courseService.allActionsByolder(olderid,olderbranchid);
+		}
+		return courseService.allActions();//未登录返回所有活动
+	}
+	//老人已报名参加过活动  ---写完
+	@RequestMapping(method= RequestMethod.GET,value="action/olderactions")
+	public Message olderactions(HttpSession s){
+		int olderid = (int) s.getAttribute("olderid");
+		int olderbranchid = (int) s.getAttribute("olderbranchid");
+		return courseService.olderActions(olderid,olderbranchid);
+	}
+	//插入活动记录表（老人报名参加活动）
+	@RequestMapping(method = RequestMethod.POST,value="lecture/joinaction")
+	public @ResponseBody Message insertActionRecord(HttpSession s,int lectureid){
+		int olderid=(int) s.getAttribute("olderid");
+		return courseService.joinAction(olderid, lectureid);
+	}
 	
+	//
 }

@@ -128,4 +128,13 @@ public class IndexController {
 		return indexService.allNews();
 	}
 
+	//AJAX上传文件测试
+	@RequestMapping(method = RequestMethod.POST, value = "upload")
+	public @ResponseBody Message upload(String username,MultipartFile img) {
+		int i = 0;
+		int j = 0;
+		
+		int k=i+j;
+		return null;
+	}
 }
