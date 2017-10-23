@@ -192,6 +192,20 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="panel panel-default dropdown">
+			                      <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
+			                             <span class="icon  glyphicon glyphicon-user"></span>
+			                             <span class="title">总店管理</span>
+			                      </a> <!-- Dropdown level 1 -->
+				                  <div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					                     <div class="panel-body">
+						                       <ul class="nav navbar-nav">
+							                         <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							                         <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						                        </ul>
+					                     </div>
+				                   </div>
+			                </li>                            
                             <!--添加在左边导航栏-->
                             <li class="active panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-olderEntry">
@@ -311,7 +325,6 @@
                                                 <select id="actionStatus" style="width:80px">
 											        <optgroup label="活动状态">
 											          <option value="1">正在进行</option>
-											          <option value="0">已结束</option>
 											</optgroup>
 										</select>
                                             </div>
@@ -320,6 +333,12 @@
                                             <label for="actionIntro" class="col-sm-3 control-label">活动类容：</label>
                                             <div class="col-sm-5">
                                                 <textarea class="form-control" id="actionIntro" placeholder="活动类容" style="height: 300px"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="actionTotal" class="col-sm-3 control-label">活动最大人数：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="actionTotal" placeholder="活动最大人数" name="actiontotal">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -403,6 +422,17 @@
                     notEmpty: {
                         message: '举办地址不能为空'
                     },
+                }
+            },
+            actiontotal: {
+                validators: {
+                    notEmpty: {
+                        message: '举办地址不能为空'
+                    },
+                    regexp:{
+                        regexp:/^[0-9]+$/,
+                        message:'等级只能是数字'
+                    }
                 }
             },
         }

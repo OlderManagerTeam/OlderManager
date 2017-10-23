@@ -8,7 +8,7 @@
     <result column="actionIntro" property="actionintro" jdbcType="VARCHAR" />
     <result column="actionName" property="actionname" jdbcType="VARCHAR" />
     <result column="actionAddress" property="actionaddress" jdbcType="VARCHAR" />
-    <result column="actionStatus" property="actionstatus" jdbcType="INTEGER" />
+    <result column="actionStatus" property="actionstatus" jdbcType="VARCHAR" />
     <result column="actionEnroll" property="actionenroll" jdbcType="INTEGER" />
     <result column="actionTotal" property="actiontotal" jdbcType="INTEGER" />
   </resultMap>
@@ -111,7 +111,7 @@
       )
     values (#{actionid,jdbcType=INTEGER}, #{actionbranchid,jdbcType=INTEGER}, #{actionstartdate,jdbcType=DATE}, 
       #{actionintro,jdbcType=VARCHAR}, #{actionname,jdbcType=VARCHAR}, #{actionaddress,jdbcType=VARCHAR}, 
-      #{actionstatus,jdbcType=INTEGER}, #{actionenroll,jdbcType=INTEGER}, #{actiontotal,jdbcType=INTEGER}
+      #{actionstatus,jdbcType=VARCHAR}, #{actionenroll,jdbcType=INTEGER}, #{actiontotal,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Action" >
@@ -165,7 +165,7 @@
         #{actionaddress,jdbcType=VARCHAR},
       </if>
       <if test="actionstatus != null" >
-        #{actionstatus,jdbcType=INTEGER},
+        #{actionstatus,jdbcType=VARCHAR},
       </if>
       <if test="actionenroll != null" >
         #{actionenroll,jdbcType=INTEGER},
@@ -203,7 +203,7 @@
         actionAddress = #{record.actionaddress,jdbcType=VARCHAR},
       </if>
       <if test="record.actionstatus != null" >
-        actionStatus = #{record.actionstatus,jdbcType=INTEGER},
+        actionStatus = #{record.actionstatus,jdbcType=VARCHAR},
       </if>
       <if test="record.actionenroll != null" >
         actionEnroll = #{record.actionenroll,jdbcType=INTEGER},
@@ -224,7 +224,7 @@
       actionIntro = #{record.actionintro,jdbcType=VARCHAR},
       actionName = #{record.actionname,jdbcType=VARCHAR},
       actionAddress = #{record.actionaddress,jdbcType=VARCHAR},
-      actionStatus = #{record.actionstatus,jdbcType=INTEGER},
+      actionStatus = #{record.actionstatus,jdbcType=VARCHAR},
       actionEnroll = #{record.actionenroll,jdbcType=INTEGER},
       actionTotal = #{record.actiontotal,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -250,7 +250,7 @@
         actionAddress = #{actionaddress,jdbcType=VARCHAR},
       </if>
       <if test="actionstatus != null" >
-        actionStatus = #{actionstatus,jdbcType=INTEGER},
+        actionStatus = #{actionstatus,jdbcType=VARCHAR},
       </if>
       <if test="actionenroll != null" >
         actionEnroll = #{actionenroll,jdbcType=INTEGER},
@@ -268,7 +268,7 @@
       actionIntro = #{actionintro,jdbcType=VARCHAR},
       actionName = #{actionname,jdbcType=VARCHAR},
       actionAddress = #{actionaddress,jdbcType=VARCHAR},
-      actionStatus = #{actionstatus,jdbcType=INTEGER},
+      actionStatus = #{actionstatus,jdbcType=VARCHAR},
       actionEnroll = #{actionenroll,jdbcType=INTEGER},
       actionTotal = #{actiontotal,jdbcType=INTEGER}
     where actionId = #{actionid,jdbcType=INTEGER}
