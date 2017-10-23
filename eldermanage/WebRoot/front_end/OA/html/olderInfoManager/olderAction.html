@@ -273,7 +273,7 @@
 								<div class="form-group">
 									<label for="actionStartDate" class="col-sm-3 control-label">活动时间：</label>
 									<div class="col-sm-5">
-										<input type="date" class="form-control" id="actionStartDate"
+										<input type="date" class="form-control" id="actionStartDate" name="actionstartdate"
 											placeholder="活动时间">
 									</div>
 								</div>
@@ -306,7 +306,7 @@
 									<label for="actionIntro" class="col-sm-3 control-label">活动类容：</label>
 									<div class="col-sm-5">
 										<textarea class="form-control" id="actionIntro"
-											placeholder="活动类容" style="height: 300px"></textarea>
+											placeholder="活动类容" style="height: 300px" name="actionintro"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
@@ -409,12 +409,10 @@
 
 		<script type="text/javascript">
 			$("#actionsubmit").click(function() {
-				var form = new FormData(document.getElementById("olderAction"));
+			    var form = new FormData(document.getElementById("olderAction"));
 				form.append("actionstatus", $("#actionstatus option:selected").text());
-		
 				$.ajax({
 					type : 'post',
-					contentType : 'application/json',
 					url : "http://localhost:8080/eldermanage/v1/brench/action",
 					data : form,
 					processData : false,

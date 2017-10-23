@@ -99,7 +99,7 @@ public class BrenchController {
 
 	// 发布活动-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "action")
-	public @ResponseBody Message addAction(HttpSession session, @RequestBody Action action) throws Exception {
+	public @ResponseBody Message addAction(HttpSession session, Action action) throws Exception {
 		// int actionbranchid=session.getAttribute("branchid");
 		action.setActionbranchid(1);
 		action.setActionenroll(0);
