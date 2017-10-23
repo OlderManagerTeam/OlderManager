@@ -554,7 +554,7 @@
 									message : '密码只能是6到12位'
 								}
 							}
-						}, 
+						},
 						repassword : {
 							validators : {
 								//密码不能为空
@@ -606,12 +606,11 @@
 		<script type="text/javascript">
 			$("#entrysubmit").click(function() {
 				var form = new FormData(document.getElementById("olderEntry"));
-				form.append("oldersex",$("#oldersex option:selected").text());
+				form.append("oldersex", $("#oldersex option:selected").text());
 				form.append("oldersinglestatus", $("#oldersinglestatus option:selected").text());
 				form.append("oldernation", $("#oldernation option:selected").text());
 				$.ajax({
 					type : 'post',
-					contentType : 'application/json',
 					url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
 					data : form,
 					processData : false,
@@ -619,7 +618,7 @@
 					success : function(result) {
 						var resultdata = JSON.parse(result);
 						alert(resultdata.success);
-						
+		
 					},
 					error : function() {
 						alert('fail')
@@ -629,7 +628,6 @@
 			}
 			)
 		</script>
-
 </body>
 
 </html>
