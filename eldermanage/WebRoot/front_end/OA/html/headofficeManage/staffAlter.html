@@ -50,7 +50,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>总店管理</li>
-							<li class="active">分店修改</li>
+							<li class="active">补充员工信息</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -270,7 +270,7 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">添加分店</span>
+				<span class="title">补充员工信息</span>
 				<div class="description">Add Branch</div>
 			</div>
 			<div class="row">
@@ -278,45 +278,74 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="card-title">
-								<div class="title">添加分店</div>
+								<div class="title">补充员工信息</div>
 							</div>
 						</div>
 						<div class="card-body">
 							<!--添加分店时候需要的表单-->
 							<form class="form-horizontal" id="branchEntry">
 								<div class="form-group">
-									<label for="branchName" class="col-sm-3 control-label">修改分店名：</label>
+									<label for="staffName" class="col-sm-3 control-label">员工姓名：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchName"
-											placeholder="修改分店名" name="name">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：小张</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="branchPostCode" class="col-sm-3 control-label">修改分店邮编：</label>
+									<label for="staffSex" class="col-sm-3 control-label">员工性别：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchPostCode"
-											placeholder="修改分店邮编" name="PostCode">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：男</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="branchManagerId" class="col-sm-3 control-label">修改分店管理员：</label>
+									<label for="staffBirthday" class="col-sm-3 control-label">员工出生日期：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchManagerId"
-											placeholder="修改分店管理员" name="ManagerId">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：1990-10-10</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="branchAdress" class="col-sm-3 control-label">修改分店地址：</label>
+									<label for="staffiIDE" class="col-sm-3 control-label">员工身份证：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchAdress"
-											placeholder="修改分店地址" name="adderss">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：5202221199010100000</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="branchKPI" class="col-sm-3 control-label">修改分店管理员绩效：</label>
+									<label for="staffTel" class="col-sm-3 control-label">员工电话号：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchKPI"
-											placeholder="修改分店管理员绩效" name="KPI">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：18000000000</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffCode" class="col-sm-3 control-label">员工号：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="staffCode"
+											placeholder="员工号（管理员添加：员工号=邮编区号（6位）+部门号（2位）+员工编号（4位）部门号以0开头为总部）" name="KPI">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffImg" class="col-sm-3 control-label">员工头像：</label>
+									<div class="col-sm-5">
+										<img src="../../img/textheadphoto.jpg">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffDepartmentId" class="col-sm-3 control-label">员工部门号：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="staffDepartmentId"
+											placeholder="员工部门号（管理员添加）" name="KPI">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffPassword" class="col-sm-3 control-label">员工密码：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="staffPassword"
+											placeholder="员工密码" name="KPI">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffRoleId" class="col-sm-3 control-label">员工职位：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="staffRoleId"
+											placeholder="员工职位（管理员添加）" name="KPI">
 									</div>
 								</div>
 								<div class="form-group">
