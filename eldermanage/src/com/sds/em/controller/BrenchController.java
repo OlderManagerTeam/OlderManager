@@ -61,7 +61,7 @@ public class BrenchController {
 		Date date = DateSimp.simp(olderbirthday);
 
 		olderbase.setOlderbirthday(date);
-		
+
 		olderbase.setOlderbranchid(1);
 
 		olderbase.setOlderheadurl(dnf1.getAbsolutePath());
@@ -102,7 +102,10 @@ public class BrenchController {
 
 	// 发布活动-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "action")
-	public @ResponseBody Message addAction(@RequestBody Action action) throws Exception {
+	public @ResponseBody Message addAction(HttpSession session, @RequestBody Action action) throws Exception {
+		// int actionbranchid=session.getAttribute("branchid");
+		action.setActionbranchid(1);
+		action.setActionenroll(0);
 		return brenchManageService.publishAction(action);
 	}
 
