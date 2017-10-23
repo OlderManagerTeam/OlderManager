@@ -338,11 +338,11 @@
 						//data : JSON.stringify(data),
 						success : function(result) {
 							var resultdata = JSON.parse(result);
-							/* window.location.href="../olderInfoManager/olderView.html"; */
-							if (resultdata.success) {
-								window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
-							}
-							alert(resultdata.success);
+						//	/* window.location.href="../olderInfoManager/olderView.html"; */
+						//	if (resultdata.success) {
+						//		window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
+						//	}
+						//	alert(resultdata.success);
 						},
 						error : function() {
 							alert('fail')

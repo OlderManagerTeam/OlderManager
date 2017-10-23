@@ -273,7 +273,7 @@
 								<div class="form-group">
 									<label for="actionStartDate" class="col-sm-3 control-label">活动时间：</label>
 									<div class="col-sm-5">
-										<input type="date" class="form-control" id="actionStartDate" name="actionstartdate"
+										<input type="date" class="form-control" id="actionStartDate"
 											placeholder="活动时间">
 									</div>
 								</div>
@@ -294,7 +294,7 @@
 								<div class="form-group">
 									<label for="actionStatus" class="col-sm-3 control-label">活动状态：</label>
 									<div class="col-sm-5">
-										<select id="actionStatus" style="width:80px">
+										<select id="actionstatus" style="width:80px">
 											<optgroup label="活动状态">
 												<option value="1">正在进行</option>
 												<option value="0">已结束</option>
@@ -305,7 +305,7 @@
 								<div class="form-group">
 									<label for="actionIntro" class="col-sm-3 control-label">活动类容：</label>
 									<div class="col-sm-5">
-										<textarea class="form-control" id="actionIntro" name="actionenroll"
+										<textarea class="form-control" id="actionIntro"
 											placeholder="活动类容" style="height: 300px"></textarea>
 									</div>
 								</div>
@@ -385,14 +385,14 @@
 								}
 							}
 						},
-						Info : {
+						actionname : {
 							validators : {
 								notEmpty : {
 									message : '活动名称不能为空'
 								},
 							}
 						},
-						Address : {
+						actionaddress : {
 							validators : {
 								notEmpty : {
 									message : '举办地址不能为空'
@@ -410,8 +410,8 @@
 		<script type="text/javascript">
 			$("#actionsubmit").click(function() {
 				var form = new FormData(document.getElementById("olderAction"));
-				actionstatus : $("#actionStatus").find("option:selected").text();
-				form.append("actionstatus", actionstatus);
+				form.append("actionstatus", $("#actionstatus option:selected").text());
+		
 				$.ajax({
 					type : 'post',
 					contentType : 'application/json',

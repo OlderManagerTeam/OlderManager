@@ -501,7 +501,7 @@
 					},
 					fields : {
 						//检验用户名
-						name : {
+						oldername : {
 							message : '姓名不能为空',
 							validators : {
 								//验证名字是否为空
@@ -522,7 +522,7 @@
 							}
 						},
 						//检验用户名
-						IDE : {
+						olderide : {
 							validators : {
 								//身份证是否为空
 								notEmpty : {
@@ -536,7 +536,7 @@
 							}
 						},
 						//检验密码
-						password : {
+						olderpassword : {
 							validators : {
 								//密码不能为空
 								notEmpty : {
@@ -552,13 +552,9 @@
 									min : 6,
 									max : 12,
 									message : '密码只能是6到12位'
-								},
-								different : {
-									field : 'Tel',
-									message : '密码不能与电话相同'
 								}
 							}
-						},
+						}, 
 						repassword : {
 							validators : {
 								//密码不能为空
@@ -566,12 +562,12 @@
 									message : '密码不能为空'
 								},
 								identical : {
-									field : 'password',
+									field : 'olderpassword',
 									message : '两次密码不一致'
 								}
 							}
 						},
-						Tel : {
+						oldertel : {
 							validators : {
 								notEmpty : {
 									message : '电话不能为空'
@@ -582,7 +578,7 @@
 								}
 							}
 						},
-						adderss : {
+						olderaddress : {
 							validators : {
 								notEmpty : {
 									message : '地址不能为空'
@@ -593,7 +589,7 @@
 								}
 							}
 						},
-						single : {
+						oldersingle : {
 							enabled : false,
 							validators : {
 								message : '居住状况必须选择'
@@ -610,16 +606,9 @@
 		<script type="text/javascript">
 			$("#entrysubmit").click(function() {
 				var form = new FormData(document.getElementById("olderEntry"));
-				oldersex : $("#oldersex").find("option:selected").text();
-				oldersinglestatus:$("#oldersingleStatus").find("option:selected").text();
-				oldernation : $("#oldernation").find("option:selected").text();
-		
-				alert(oldersex + oldersinglestatus + oldernation);
-		
-				form.append("oldersex", "man");
-				form.append("oldersinglestatus", oldersinglestatus);
-				form.append("oldersinglestatus", oldersinglestatus);
-		
+				form.append("oldersex",$("#oldersex option:selected").text());
+				form.append("oldersinglestatus", $("#oldersinglestatus option:selected").text());
+				form.append("oldernation", $("#oldernation option:selected").text());
 				$.ajax({
 					type : 'post',
 					contentType : 'application/json',
@@ -630,8 +619,7 @@
 					success : function(result) {
 						var resultdata = JSON.parse(result);
 						alert(resultdata.success);
-						window.clearInterval(timer);
-						console.log("over..");
+						
 					},
 					error : function() {
 						alert('fail')
@@ -642,41 +630,6 @@
 			)
 		</script>
 
-		<!-- <script type="text/javascript">
-			$("#entrysubmit").click(function() {
-				var data = {
-					oldername : $("#olderName").val(),
-					oldersex : $("#olderSex").find("option:selected").text(),
-					olderpassword : $("#olderPassword").val(),
-					olderbirthday : $("#olderBirthday").val(),
-					oldertel : $("#olderTel").val(),
-					olderaddress : $("#olderAdress").val(),
-					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-					olderide : $("#olderIDE").val(),
-		
-					oldernation : $("#olderNation").find("option:selected").text(),
-					olderheadurl : $("#olderHeadUrl").val(),
-					olderpoint : $("#olderPoint").val(),
-				}
-				$.ajax({
-					type : 'post',
-					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
-					data : JSON.stringify(data),
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						var resultdata = JSON.parse(result)
-						alert(resultdata.success)
-					},
-					error : function() {
-						alert('fail')
-					}
-				})
-		
-			}
-			)
-		</script> -->
 </body>
 
 </html>

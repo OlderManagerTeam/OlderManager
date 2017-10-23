@@ -273,14 +273,14 @@
 									<label for="lectureName" class="col-sm-3 control-label">修改讲座名称：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="lectureName"
-											placeholder="修改讲座名称" name="name">
+											placeholder="修改讲座名称" name="lecturename">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="lectureIntro" class="col-sm-3 control-label">修改讲座简介：</label>
 									<div class="col-sm-5">
 										<textarea class="form-control" id="lectureIntro" placeholder="修改讲座简介" 
-										style="height: 150px" name="intro"></textarea>
+										style="height: 150px" name="lectureintro"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
@@ -293,20 +293,20 @@
 									<label for="lectureTotal" class="col-sm-3 control-label">修改讲座总人数：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="lectureTotal"
-											placeholder="修改讲座总人数" name="total">
+											placeholder="修改讲座总人数" name="lecturetotal">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="lecturePublishDate" class="col-sm-3 control-label">修改讲座发布日期：</label>
 									<div class="col-sm-5">
 										<input type="date" class="form-control" id="lecturePublishDate"
-											placeholder="修改讲座发布日期" name="publishdate">
+											placeholder="修改讲座发布日期" name="lecturepublishdate">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="lectureStatus" class="col-sm-3 control-label">修改讲座报名状态：</label>
 									<div class="col-sm-5">
-										<select id="lectureStatus" name="status">
+										<select id="lectureStatus" name="lecturestatus">
 											<optgroup label="修改讲座报名状态">
 											<option value="1">报名中</option>
 											<option value="0">结束</option>
@@ -318,7 +318,7 @@
 									<label for="lectureAddress" class="col-sm-3 control-label">修改讲座地址：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="lectureAddress"
-											placeholder="修改讲座地址" name="address">
+											placeholder="修改讲座地址" name="lectureaddress">
 									</div>
 								</div>
 								<div class="form-group">
@@ -410,7 +410,7 @@
 						regexp : 'glyphicon glyphicon-ok-circle'
 					},
 					fields : {
-						name : {
+						lecturename : {
 							message : '姓名不能为空',
 							validators : {
 								notEmpty : {
@@ -423,7 +423,7 @@
 								},
 							}
 						},
-						intro : {
+						lectureintro : {
 							validators : {
 								notEmpty : {
 									message : '简介不能为空'
@@ -435,7 +435,7 @@
 								},
 							}
 						},
-						enroll : {
+						lectureenroll : {
 							validators : {
 								notEmpty : {
 									message : '预约人数不能为空'
@@ -447,7 +447,7 @@
 								
 							}
 						},
-						total : {
+						lecturetotal : {
 							validators : {
 								notEmpty : {
 									message : '总人数不能为空'
@@ -459,7 +459,7 @@
 								
 							}
 						},
-						Tel : {
+						lecturetel : {
 							validators : {
 								notEmpty : {
 									message : '电话不能为空'
@@ -470,14 +470,14 @@
 								}
 							}
 						},
-						address : {
+						lectureaddress : {
 							validators : {
 								notEmpty : {
 									message : '地址不能为空'
 								}
 							}
 						},
-						status : {
+						lecturestatus : {
 							enabled : false,
 							validators : {
 								message : '居住状况必须选择'

@@ -8,7 +8,7 @@
     <result column="lectureEnroll" property="lectureenroll" jdbcType="INTEGER" />
     <result column="lectureTotal" property="lecturetotal" jdbcType="INTEGER" />
     <result column="lecturePublishDate" property="lecturepublishdate" jdbcType="DATE" />
-    <result column="lectureStatus" property="lecturestatus" jdbcType="INTEGER" />
+    <result column="lectureStatus" property="lecturestatus" jdbcType="VARCHAR" />
     <result column="lectureAddress" property="lectureaddress" jdbcType="VARCHAR" />
     <result column="lectureBranchId" property="lecturebranchid" jdbcType="INTEGER" />
   </resultMap>
@@ -111,7 +111,7 @@
       )
     values (#{lectureid,jdbcType=INTEGER}, #{lecturename,jdbcType=VARCHAR}, #{lectureintro,jdbcType=VARCHAR}, 
       #{lectureenroll,jdbcType=INTEGER}, #{lecturetotal,jdbcType=INTEGER}, #{lecturepublishdate,jdbcType=DATE}, 
-      #{lecturestatus,jdbcType=INTEGER}, #{lectureaddress,jdbcType=VARCHAR}, #{lecturebranchid,jdbcType=INTEGER}
+      #{lecturestatus,jdbcType=VARCHAR}, #{lectureaddress,jdbcType=VARCHAR}, #{lecturebranchid,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Lecture" >
@@ -165,7 +165,7 @@
         #{lecturepublishdate,jdbcType=DATE},
       </if>
       <if test="lecturestatus != null" >
-        #{lecturestatus,jdbcType=INTEGER},
+        #{lecturestatus,jdbcType=VARCHAR},
       </if>
       <if test="lectureaddress != null" >
         #{lectureaddress,jdbcType=VARCHAR},
@@ -203,7 +203,7 @@
         lecturePublishDate = #{record.lecturepublishdate,jdbcType=DATE},
       </if>
       <if test="record.lecturestatus != null" >
-        lectureStatus = #{record.lecturestatus,jdbcType=INTEGER},
+        lectureStatus = #{record.lecturestatus,jdbcType=VARCHAR},
       </if>
       <if test="record.lectureaddress != null" >
         lectureAddress = #{record.lectureaddress,jdbcType=VARCHAR},
@@ -224,7 +224,7 @@
       lectureEnroll = #{record.lectureenroll,jdbcType=INTEGER},
       lectureTotal = #{record.lecturetotal,jdbcType=INTEGER},
       lecturePublishDate = #{record.lecturepublishdate,jdbcType=DATE},
-      lectureStatus = #{record.lecturestatus,jdbcType=INTEGER},
+      lectureStatus = #{record.lecturestatus,jdbcType=VARCHAR},
       lectureAddress = #{record.lectureaddress,jdbcType=VARCHAR},
       lectureBranchId = #{record.lecturebranchid,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -250,7 +250,7 @@
         lecturePublishDate = #{lecturepublishdate,jdbcType=DATE},
       </if>
       <if test="lecturestatus != null" >
-        lectureStatus = #{lecturestatus,jdbcType=INTEGER},
+        lectureStatus = #{lecturestatus,jdbcType=VARCHAR},
       </if>
       <if test="lectureaddress != null" >
         lectureAddress = #{lectureaddress,jdbcType=VARCHAR},
@@ -268,7 +268,7 @@
       lectureEnroll = #{lectureenroll,jdbcType=INTEGER},
       lectureTotal = #{lecturetotal,jdbcType=INTEGER},
       lecturePublishDate = #{lecturepublishdate,jdbcType=DATE},
-      lectureStatus = #{lecturestatus,jdbcType=INTEGER},
+      lectureStatus = #{lecturestatus,jdbcType=VARCHAR},
       lectureAddress = #{lectureaddress,jdbcType=VARCHAR},
       lectureBranchId = #{lecturebranchid,jdbcType=INTEGER}
     where lectureId = #{lectureid,jdbcType=INTEGER}
