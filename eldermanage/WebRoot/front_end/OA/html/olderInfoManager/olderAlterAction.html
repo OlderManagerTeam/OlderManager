@@ -296,13 +296,13 @@
                                         <div class="form-group">
                                             <label for="alterActionName" class="col-sm-3 control-label">修改活动名称：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="alterActionName" placeholder="修改活动名称" name="Info">
+                                                <input type="text" class="form-control" id="alterActionName" placeholder="修改活动名称" name="alteractionname">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="alterActionAddress" class="col-sm-3 control-label">修改活动地址：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="alterActionAddress" placeholder="修改活动地址" name="Address">
+                                                <input type="text" class="form-control" id="alterActionAddress" placeholder="修改活动地址" name="alteractionaddress">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -378,7 +378,7 @@
             regexp:'glyphicon glyphicon-ok-circle'
         },
         fields: {
-            Status: {
+            alterActionStatus: {
                 message: '等级不能为空',
                 validators: {
                     notEmpty: {
@@ -390,7 +390,7 @@
                     }
                 }
             },
-            Info: {
+            alteractionname: {
                 validators: {
                     
                     notEmpty: {
@@ -398,7 +398,7 @@
                     },
                 }
             },
-            Address: {
+            alteractionaddress: {
                 validators: {
                     notEmpty: {
                         message: '举办地址不能为空'
