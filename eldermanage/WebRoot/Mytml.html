@@ -2,22 +2,22 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title></title>
-	<style>
-	.form{
-		display: block;
-		margin:0 auto;
-		width: 300px;
-		height: 180px;
-		padding: 5px;
-		margin: 5px;
-		border: 1px solid #ccc;
-		background: yellow;
-	}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<style>
+.form {
+	display: block;
+	margin: 0 auto;
+	width: 300px;
+	height: 180px;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid #ccc;
+	background: yellow;
+}
 </style>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
-<script type="text/javascript" >
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script><!-- 
+<script type="text/javascript">
 
 	/*$(function() {
 		$(".submit").click(function() {
@@ -27,37 +27,43 @@
 				},"json");
 		});
 	});*/
-	/*$(document).ready(function(){
-		$(".submit").click(function(){
-			$.get("http://127.0.0.1:8080/girls/",function(data,status){
-				alert("数据: " + data + "\n状态: " + status);
-			});
+/*$(document).ready(function(){
+	$(".submit").click(function(){
+		$.get("http://127.0.0.1:8080/girls/",function(data,status){
+			alert("数据: " + data + "\n状态: " + status);
 		});
-	});*/
+	});
+});*/
 
-	$(document).ready(function(){
-		$(".submit").click(function(){
+	$(document).ready(function() {
+		$(".submit").click(function() {
+			var fd = new FormData(document.getElementById("fileinfo"));
+			fd.append("CustomField", "This is some extra data");
 			$.ajax({
-				type:"post",
-				url:"http://localhost:8080/eldermanage/v1/index/staff/signin",
-				contentType:'application/json;charset=utf-8',
-				data:'{"staffTel":"1821240000","staffId":18}',
-				success:function(data,status){
-					alert(data + " " +status);
+				type : "post",
+				url : "http://localhost:8080/eldermanage/v1/index/staff/login",
+				contentType : false,
+				data : fd,
+				processData: false,
+				success : function(data, status) {
+					alert(data + " " + status);
 				},
-				error:function(){
+				error : function() {
 					alert("false");
 				}
 			});
 		});
 	});
-	
-</script>
+</script> -->
 </head>
 
 <body>
-	<input type="button" name="submit" id="submit" class="submit" value="获取">
-	<h1>获取</h1>
+	<form name="fileinfo" action="http://localhost:8080/eldermanage/v1/index/staff/login"></form>
+	<p>
+		dnf:<input type="file" name="dnf" id="dnf	">
+	</p>
+	<input type="submit" name="submit" id="submit" class="submit"
+		value="获取">
 </body>
 
 </html>

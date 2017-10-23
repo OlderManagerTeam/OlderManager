@@ -17,6 +17,10 @@ public class Action {
 
     private Integer actionstatus;
 
+    private Integer actionenroll;
+
+    private Integer actiontotal;
+
     public Integer getActionid() {
         return actionid;
     }
@@ -71,5 +75,21 @@ public class Action {
 
     public void setActionstatus(Integer actionstatus) {
         this.actionstatus = actionstatus;
+    }
+
+    public Integer getActionenroll() {
+        return actionenroll;
+    }
+
+    public void setActionenroll(Integer actionenroll) {
+        this.actionenroll = actionenroll;
+    }
+
+    public Integer getActiontotal() {
+        return actiontotal;
+    }
+
+    public void setActiontotal(Integer actiontotal) {
+        this.actiontotal = actiontotal;
     }
 }

@@ -296,13 +296,13 @@
                                         <div class="form-group">
                                             <label for="actionName" class="col-sm-3 control-label">活动名称：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="actionName" placeholder="活动名称" name="Info">
+                                                <input type="text" class="form-control" id="actionName" placeholder="活动名称" name="actionname">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="actionAddress" class="col-sm-3 control-label">活动地址：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="actionAddress" placeholder="活动地址" name="Address">
+                                                <input type="text" class="form-control" id="actionAddress" placeholder="活动地址" name="actionaddress">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -390,7 +390,7 @@
                     }
                 }
             },
-            Info: {
+            actionname: {
                 validators: {
                     
                     notEmpty: {
@@ -398,7 +398,7 @@
                     },
                 }
             },
-            Address: {
+            actionaddress: {
                 validators: {
                     notEmpty: {
                         message: '举办地址不能为空'

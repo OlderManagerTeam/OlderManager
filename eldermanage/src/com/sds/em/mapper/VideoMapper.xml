@@ -288,4 +288,5 @@
       videoPartition = #{videopartition,jdbcType=VARCHAR}
     where videoId = #{videoid,jdbcType=INTEGER}
   </update>
+  
 </mapper>

@@ -9,6 +9,8 @@
     <result column="actionName" property="actionname" jdbcType="VARCHAR" />
     <result column="actionAddress" property="actionaddress" jdbcType="VARCHAR" />
     <result column="actionStatus" property="actionstatus" jdbcType="INTEGER" />
+    <result column="actionEnroll" property="actionenroll" jdbcType="INTEGER" />
+    <result column="actionTotal" property="actiontotal" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List" >
     actionId, actionBranchId, actionStartDate, actionIntro, actionName, actionAddress, 
-    actionStatus
+    actionStatus, actionEnroll, actionTotal
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ActionExample" >
     select
@@ -105,10 +107,12 @@
   <insert id="insert" parameterType="com.sds.em.po.Action" >
     insert into action (actionId, actionBranchId, actionStartDate, 
       actionIntro, actionName, actionAddress, 
-      actionStatus)
+      actionStatus, actionEnroll, actionTotal
+      )
     values (#{actionid,jdbcType=INTEGER}, #{actionbranchid,jdbcType=INTEGER}, #{actionstartdate,jdbcType=DATE}, 
       #{actionintro,jdbcType=VARCHAR}, #{actionname,jdbcType=VARCHAR}, #{actionaddress,jdbcType=VARCHAR}, 
-      #{actionstatus,jdbcType=INTEGER})
+      #{actionstatus,jdbcType=INTEGER}, #{actionenroll,jdbcType=INTEGER}, #{actiontotal,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Action" >
     insert into action
@@ -134,6 +138,12 @@
       <if test="actionstatus != null" >
         actionStatus,
       </if>
+      <if test="actionenroll != null" >
+        actionEnroll,
+      </if>
+      <if test="actiontotal != null" >
+        actionTotal,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="actionid != null" >
@@ -156,6 +166,12 @@
       </if>
       <if test="actionstatus != null" >
         #{actionstatus,jdbcType=INTEGER},
+      </if>
+      <if test="actionenroll != null" >
+        #{actionenroll,jdbcType=INTEGER},
+      </if>
+      <if test="actiontotal != null" >
+        #{actiontotal,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -189,6 +205,12 @@
       <if test="record.actionstatus != null" >
         actionStatus = #{record.actionstatus,jdbcType=INTEGER},
       </if>
+      <if test="record.actionenroll != null" >
+        actionEnroll = #{record.actionenroll,jdbcType=INTEGER},
+      </if>
+      <if test="record.actiontotal != null" >
+        actionTotal = #{record.actiontotal,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -202,7 +224,9 @@
       actionIntro = #{record.actionintro,jdbcType=VARCHAR},
       actionName = #{record.actionname,jdbcType=VARCHAR},
       actionAddress = #{record.actionaddress,jdbcType=VARCHAR},
-      actionStatus = #{record.actionstatus,jdbcType=INTEGER}
+      actionStatus = #{record.actionstatus,jdbcType=INTEGER},
+      actionEnroll = #{record.actionenroll,jdbcType=INTEGER},
+      actionTotal = #{record.actiontotal,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -228,6 +252,12 @@
       <if test="actionstatus != null" >
         actionStatus = #{actionstatus,jdbcType=INTEGER},
       </if>
+      <if test="actionenroll != null" >
+        actionEnroll = #{actionenroll,jdbcType=INTEGER},
+      </if>
+      <if test="actiontotal != null" >
+        actionTotal = #{actiontotal,jdbcType=INTEGER},
+      </if>
     </set>
     where actionId = #{actionid,jdbcType=INTEGER}
   </update>
@@ -238,7 +268,9 @@
       actionIntro = #{actionintro,jdbcType=VARCHAR},
       actionName = #{actionname,jdbcType=VARCHAR},
       actionAddress = #{actionaddress,jdbcType=VARCHAR},
-      actionStatus = #{actionstatus,jdbcType=INTEGER}
+      actionStatus = #{actionstatus,jdbcType=INTEGER},
+      actionEnroll = #{actionenroll,jdbcType=INTEGER},
+      actionTotal = #{actiontotal,jdbcType=INTEGER}
     where actionId = #{actionid,jdbcType=INTEGER}
   </update>
 </mapper>
