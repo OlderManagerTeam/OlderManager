@@ -197,8 +197,8 @@
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
 							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
-                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
+							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
 				</div></li>
@@ -270,16 +270,16 @@
 							<!--老人信息录入时候需要的表单-->
 							<form class="form-horizontal" id="olderEntry">
 								<div class="form-group">
-									<label for="odlerName" class="col-sm-3 control-label">老人姓名：</label>
+									<label for="olderName" class="col-sm-3 control-label">老人姓名：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="olderName"
-											placeholder="老人姓名" name="name">
+											placeholder="老人姓名" name="oldername">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="olderSex" class="col-sm-3 control-label">老人性别：</label>
 									<div class="col-sm-5">
-										<select id="olderSex">
+										<select id="oldersex">
 											<optgroup label="性别">
 												<option value="male">男</option>
 												<option value="famale">女</option>
@@ -291,44 +291,44 @@
 									<label for="olderBirthday" class="col-sm-3 control-label">老人出生日期：</label>
 									<div class="col-sm-5">
 										<input type="date" class="form-control" id="olderBirthday"
-											placeholder="老人出生日期" name="dete">
+											placeholder="老人出生日期" name="olderbirthday">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="olderTel" class="col-sm-3 control-label">老人电话号码：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="olderTel"
-											placeholder="老人电话号码" name="Tel">
+											placeholder="老人电话号码" name="oldertel">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="olderPassword" class="col-sm-3 control-label">老人账户密码：</label>
 									<div class="col-sm-5">
 										<input type="password" class="form-control" id="olderPassword"
-											placeholder="老人账户密码" name="password">
+											placeholder="老人账户密码" name="olderpassword">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="reOlderPassword" class="col-sm-3 control-label">请重新输入密码：</label>
 									<div class="col-sm-5">
-										<input type="password" class="form-control" id="reOlderPassword"
-											placeholder="老人账户密码" name="repassword">
+										<input type="password" class="form-control"
+											id="reOlderPassword" placeholder="老人账户密码" name="repassword">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="olderAdress" class="col-sm-3 control-label">老人地址：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="olderAdress"
-											placeholder="老人地址" name="adderss">
+										<input type="text" class="form-control" id="olderAddress"
+											placeholder="老人地址" name="olderaddress">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="olderSingleStatus" class="col-sm-3 control-label">老人独居状况：</label>
 									<div class="col-sm-5">
-										<select id="olderSingleStatus" name="single">
+										<select id="oldersinglestatus">
 											<optgroup label="单身状况">
-											<option value="yes">是</option>
-											<option value="no">否</option>
+												<option value="yes">是</option>
+												<option value="no">否</option>
 											</optgroup>
 										</select>
 									</div>
@@ -337,13 +337,13 @@
 									<label for="olderIDE" class="col-sm-3 control-label">老人身份证号：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="olderIDE"
-											placeholder="老人身份证" name="IDE">
+											placeholder="老人身份证" name="olderide">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="olderNation" class="col-sm-3 control-label">老人民族：</label>
 									<div class="col-sm-5">
-										<select id="olderNation">
+										<select id="oldernation">
 											<optgroup label="名族">
 												<option value="">民族</option>
 												<option value="01">汉族</option>
@@ -407,15 +407,15 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="olderHeadUrl"  class="col-sm-3 control-label">老人照片：</label>
+									<label for="olderHeadUrl" class="col-sm-3 control-label">老人照片：</label>
 									<div class="col-sm-5">
-										<input type="file" id="file-3">
+										<input type="file" id="file-3" name="olderheadurl">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="olderBranchId" class="col-sm-3 control-label">管理老人的分店：</label>
 									<div class="col-sm-5">
-										<text class="form-control" id="olderBranchId" >例如：贵阳分店</text>
+										<text class="form-control" id="olderBranchId">例如：贵阳分店</text>
 									</div>
 								</div>
 								<!--
@@ -501,7 +501,7 @@
 					},
 					fields : {
 						//检验用户名
-						name : {
+						oldername : {
 							message : '姓名不能为空',
 							validators : {
 								//验证名字是否为空
@@ -522,7 +522,7 @@
 							}
 						},
 						//检验用户名
-						IDE : {
+						olderide : {
 							validators : {
 								//身份证是否为空
 								notEmpty : {
@@ -536,7 +536,7 @@
 							}
 						},
 						//检验密码
-						password : {
+						olderpassword : {
 							validators : {
 								//密码不能为空
 								notEmpty : {
@@ -553,10 +553,10 @@
 									max : 12,
 									message : '密码只能是6到12位'
 								},
-								different: {
-                                   field: 'Tel',
-                                   message: '密码不能与电话相同'
-                                }
+								different : {
+									field : 'Tel',
+									message : '密码不能与电话相同'
+								}
 							}
 						},
 						repassword : {
@@ -566,12 +566,12 @@
 									message : '密码不能为空'
 								},
 								identical : {
-									field : 'password',
+									field : 'olderpassword',
 									message : '两次密码不一致'
-								} 
+								}
 							}
 						},
-						Tel : {
+						oldertel : {
 							validators : {
 								notEmpty : {
 									message : '电话不能为空'
@@ -582,7 +582,7 @@
 								}
 							}
 						},
-						adderss : {
+						olderaddress : {
 							validators : {
 								notEmpty : {
 									message : '地址不能为空'
@@ -593,7 +593,7 @@
 								}
 							}
 						},
-						single : {
+						oldersingle : {
 							enabled : false,
 							validators : {
 								message : '居住状况必须选择'
@@ -609,41 +609,74 @@
 
 		<script type="text/javascript">
 			$("#entrysubmit").click(function() {
-			    var olderPoint=0
-				var data = {
-					oldername : $("#olderName").val(),
-					oldersex :$("#olderSex").find("option:selected").text(),
-					olderpassword : $("#olderPassword").val(),
-					olderbirthday:$("#olderBirthday").val(),
-					oldertel : $("#odlerTel").val(),
-					olderaddress : $("#olderAdress").val(),
-					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-					olderide : $("#olderIDE").val(),
-					
-					oldernation : $("#odlerNation").find("option:selected").text(),
-					olderheadurl : $("#olderHeadUrl").val(),
-					olderpoint :$("#olderPoint").val(),
-					olderbranchid : $("#olderBranchId").val(), 
-				}
+				var form = new FormData(document.getElementById("olderEntry"));
+				oldersex : $("#oldersex").find("option:selected").text();
+				oldersinglestatus:$("#oldersingleStatus").find("option:selected").text();
+				oldernation : $("#oldernation").find("option:selected").text();
+		
+				alert(oldersex + oldersinglestatus + oldernation);
+		
+				form.append("oldersex", "man");
+				form.append("oldersinglestatus", oldersinglestatus);
+				form.append("oldersinglestatus", oldersinglestatus);
+		
 				$.ajax({
-				type: 'post',
-				contentType:'application/json',
-				url: "http://localhost:8080/eldermanage/v1/brench/elder/info",
-				data: JSON.stringify(data),
-				success:function(result){
-					var resultdata = JSON.parse(result)
-					alert(resultdata.success)
-				},
-				error:function(){
-					alert('fail')
-				}
-			})
-				
+					type : 'post',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						var resultdata = JSON.parse(result);
+						alert(resultdata.success);
+						window.clearInterval(timer);
+						console.log("over..");
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
+		
 			}
 			)
 		</script>
+
+		<!-- <script type="text/javascript">
+			$("#entrysubmit").click(function() {
+				var data = {
+					oldername : $("#olderName").val(),
+					oldersex : $("#olderSex").find("option:selected").text(),
+					olderpassword : $("#olderPassword").val(),
+					olderbirthday : $("#olderBirthday").val(),
+					oldertel : $("#olderTel").val(),
+					olderaddress : $("#olderAdress").val(),
+					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
+					olderide : $("#olderIDE").val(),
 		
+					oldernation : $("#olderNation").find("option:selected").text(),
+					olderheadurl : $("#olderHeadUrl").val(),
+					olderpoint : $("#olderPoint").val(),
+				}
+				$.ajax({
+					type : 'post',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
+					data : JSON.stringify(data),
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						var resultdata = JSON.parse(result)
+						alert(resultdata.success)
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
 		
+			}
+			)
+		</script> -->
 </body>
 
 </html>

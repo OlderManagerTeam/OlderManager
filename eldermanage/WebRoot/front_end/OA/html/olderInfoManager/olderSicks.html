@@ -290,13 +290,13 @@
                                         <div class="form-group">
                                             <label for="sickInfo" class="col-sm-3 control-label">病因：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="sickInfo" placeholder="病因" name="Info">
+                                                <input type="text" class="form-control" id="sickInfo" placeholder="病因" name="sickinfo">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="sickDoctor" class="col-sm-3 control-label">看病医生：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="sickDoctor" placeholder="看病医生" name="Doctor">
+                                                <input type="text" class="form-control" id="sickDoctor" placeholder="看病医生" name="sickdoctor">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -308,7 +308,7 @@
                                         <div class="form-group">
                                             <label for="sickHospital" class="col-sm-3 control-label">看病医院：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="sickHospital" placeholder="看病医院" name="Hospital">
+                                                <input type="text" class="form-control" id="sickHospital" placeholder="看病医院" name="sickhospital">
                                             </div>
                                         </div>
 
@@ -383,7 +383,7 @@
         },
         fields: {
             //检验用户名
-            Doctor: {
+            sickdoctor: {
                 message: '姓名不能为空',
                 validators: {
                     //验证名字是否为空
@@ -393,7 +393,7 @@
                 }
             },
             
-            Info: {
+            sickinfo: {
                 validators: {
                     
                     notEmpty: {
@@ -401,7 +401,7 @@
                     },
                 }
             },
-            Hospital: {
+            sickhospital: {
                 validators: {
                     notEmpty: {
                         message: '医院不能为空'
