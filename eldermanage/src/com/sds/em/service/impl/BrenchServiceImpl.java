@@ -220,19 +220,21 @@ public class BrenchServiceImpl implements BrenchService {
 			criteria.andOlderbranchidEqualTo(branchid);
 
 			List<Olderbase> olderbasesList = oldersbaseMapper.selectByExample(olderbaseExample);
-			List<Integer> olderAgeList = new ArrayList<Integer>();
-			for (Olderbase o : olderbasesList) {
-				String olderAgeS = DateSimp.simpToSting(o.getOlderbirthday());
-				int olderAgeD = DateSimp.getAgeFromBirthTime(olderAgeS);
-				olderAgeList.add(olderAgeD);
-			}
-
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("olderbasesList", olderbasesList);
-			jsonObject.put("olderAgeList", olderAgeList);
 
 			if (!olderbasesList.isEmpty()) {
-				return new Message(true, "返回成功", jsonObject);
+				List<Integer> olderAgeList = new ArrayList<Integer>();
+				for (Olderbase o : olderbasesList) {
+					String olderAgeS = DateSimp.simpToSting(o.getOlderbirthday());
+					int olderAgeD = DateSimp.getAgeFromBirthTime(olderAgeS);
+					olderAgeList.add(olderAgeD);
+				}
+				List<JSONObject> jsonObjectList = new ArrayList();
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("olderbasesList", olderbasesList);
+				jsonObject.put("olderAgeList", olderAgeList);
+				
+				jsonObjectList.add(jsonObject);
+				return new Message(true, "返回成功", jsonObjectList.toString());
 			} else {
 
 				return new Message(false, "数据库错误", null);
@@ -420,10 +422,10 @@ public class BrenchServiceImpl implements BrenchService {
 			LectureExample lectureExample = new LectureExample();
 			com.sds.em.po.LectureExample.Criteria criteria = lectureExample.createCriteria();
 			criteria.andLecturebranchidEqualTo(branchid);
-			
+
 			List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
 			if (!lectureList.isEmpty()) {
-				
+
 				return new Message(true, "返回成功", lectureList);
 			} else {
 				return new Message(false, "数据库错误", null);
@@ -432,7 +434,7 @@ public class BrenchServiceImpl implements BrenchService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
-			
+
 		}
 	}
 }

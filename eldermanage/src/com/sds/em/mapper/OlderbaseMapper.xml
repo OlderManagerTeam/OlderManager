@@ -379,7 +379,7 @@
 		olderPassword, olderTel,
 		olderAddress, olderSingleStatus, olderIDE,
 		olderNation, olderHeadUrl, olderPoint,
-		olderBranchId)
+		olderBranchId,olderMaxPoint)
 		values
 		(#{oldername,jdbcType=VARCHAR}, #{oldersex,jdbcType=VARCHAR},
 		#{olderbirthday,jdbcType=DATE}, #{olderpassword,jdbcType=VARCHAR},
@@ -387,7 +387,7 @@
 		#{olderaddress,jdbcType=VARCHAR},
 		#{oldersinglestatus,jdbcType=VARCHAR}, #{olderide,jdbcType=VARCHAR},
 		#{oldernation,jdbcType=VARCHAR}, #{olderheadurl,jdbcType=VARCHAR},
-		#{olderpoint,jdbcType=INTEGER},
+		#{olderpoint,jdbcType=INTEGER}, #{oldermaxpoint,jdbcType=VARCHAR},
 		#{olderbranchid,jdbcType=INTEGER})
 	</insert>
 </mapper>
