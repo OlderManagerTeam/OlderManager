@@ -301,10 +301,7 @@
 										<th>操作</th>
 									</tr>
 								</tfoot>
-								<tbody>
-									<div id="olderView">
-									
-									</div>
+								<tbody id="olderlist">
 									<tr>
 										<td>Tiger Nixon</td>
 										<td>System Architect</td>
@@ -329,9 +326,9 @@
 											href="../olderInfoManager/olderAlter.html" role="button">修改</a>
 											<button class="btn btn-primary btn-xs">删除</button></td>
 									</tr>
-
 								</tbody>
 							</table>
+							<div id="olderView"></div>
 						</div>
 					</div>
 				</div>
@@ -351,48 +348,59 @@
 		<script type="text/javascript">
 			$(function() {
 				// 后台数据
-				const historyItem = [
+				const olderItem = [
 					{
-						time : "20170101",
-						title : "爱我中华"
+					    olderid:"1"
+						oldername : "老人1",
+						oldersex : "女"
+						olderage:"60"
+						oldertel:"1211132213"
+						oldersinglestatus:"单身"
+						oldermaxpoint:"200"
 					},
 					{
-						time : "20170202",
-						title : "爱我中华01"
+					    olderid:"2"
+						oldername : "老人2",
+						oldersex : "男"
+						olderage:"70"
+						oldertel:"1211132213"
+						oldersinglestatus:"单身"
+						oldermaxpoint:"200"
 					},
-					{
-						time : "20170101",
-						title : "爱我中华02"
-					}
+					
 				];
 				//创建并填充播放数据
-				const oUl = $("<ul>");
+				const oTr = $("<tr>");
 		
-				for (var i = historyItem.length - 1; i >= 0; i--) {
-					// let time = $('<span>').html(historyItem[i].time);
-					// let title = $('<span>').html(historyItem[i].title);
-					// let oLi = $('<li>').append(time).append(title);
-		
-					var oLi = `
-								<a>
-					    			<li>
-					    				<time>${historyItem[i].time}</time>
-					    				<span>${historyItem[i].title}</span>
-					    			</li>
-					    		</a>
+				for (var i = Item.length - 1; i >= 0; i--) {
+					var oTd = `
+								<td>Tiger Nixon</td>
+										<td>${olderItem[i].olderid}</td>
+										<td>${olderItem[i].oldername}</td>
+										<td>${olderItem[i].oldersex}</td>
+										<td>${olderItem[i].olderage}</td>
+										<td>${olderItem[i].oldertel}</td>
+										<td></td>
+										<td>${olderItem[i].oldersinglestatus}</td>
+										<td>${olderItem[i].oldermaxpoint}</td>
+										<td><a class="btn btn-primary btn-xs"
+											href="../olderInfoManager/orderView.html" role="button">查看老人订单</a></td>
+										<td><a class="btn btn-primary btn-xs"
+											href="../olderInfoManager/olderInfo.html" role="button">查看详细信息</a>
+										</td>
+										<td><a class="btn btn-primary btn-xs"
+											href="../olderInfoManager/olderSickView.html" role="button">查看病历</a>
+										</td>
+										<td><a class="btn btn-primary btn-xs"
+											href="../olderInfoManager/visitedView.html" role="button">查看回访记录</a>
+										</td>
+										<td><a class="btn btn-primary btn-xs"
+											href="../olderInfoManager/olderAlter.html" role="button">修改</a>
+											<button class="btn btn-primary btn-xs">删除</button></td>
 						`;
-		
-					// oUl.append(oLi);
-					$($(oLi)).appendTo(oUl);
+					$($(oTd)).appendTo(oTr);
 				}
-		
-				oUl.addClass('videohistorylist');
-				//oUl.removeClass("red");
-		
-				//oUl.css({ listStyleType: 'none', padding: 0});
-				// 存放播放历史容器
-				$('#"olderView"').append(oUl);
-			// alert($('#historyItem'));
+				$('#olderlist').append(oTr);
 			})
 		</script>
 		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
@@ -413,6 +421,42 @@
 		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
 		<!-- Javascript -->
 		<script type="text/javascript" src="../../js/app.js"></script>
+
+
+		<script type="text/javascript">
+			$("#entrysubmit").click(function() {
+				var olderPoint = 0
+				var data = {
+					oldername : $("#olderName").val(),
+					oldersex : $("#olderSex").find("option:selected").text(),
+					olderpassword : $("#olderPassword").val(),
+					olderbirthday : $("#olderBirthday").val(),
+					oldertel : $("#olderTel").val(),
+					olderaddress : $("#olderAdress").val(),
+					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
+					olderide : $("#olderIDE").val(),
+		
+					oldernation : $("#olderNation").find("option:selected").text(),
+					olderheadurl : $("#olderHeadUrl").val(),
+					olderpoint : $("#olderPoint").val(),
+				}
+				$.ajax({
+					type : 'post',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
+					data : JSON.stringify(data),
+					success : function(result) {
+						var resultdata = JSON.parse(result)
+						alert(resultdata.success)
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
+		
+			}
+			)
+		</script>
 </body>
 
 </html>
