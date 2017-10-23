@@ -3,6 +3,7 @@ package com.sds.em.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
@@ -47,24 +48,20 @@ public class BrenchController {
 			String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
-		File dnf1 = new File("E:\\ftp\\1.png");
+		String pic_path = "E:\\develop\\upload\\temp\\";
+		String picUrl = "http://localhost:8080/pic/";
+		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+		
+		File dnf1 = new File(pic_path + newFileName);
 		olderheadurl.transferTo(dnf1);
-		/*
-		 * olderbase.setOlderbranchid(1);
-		 * 
-		 * olderbase.setOlderpoint(0); olderbase.setOldermaxpoint(0);
-		 */
-
+		
 		Olderbase olderbase = new Olderbase();
 		olderbase.setOlderaddress(olderaddress);
-
 		Date date = DateSimp.simp(olderbirthday);
-
 		olderbase.setOlderbirthday(date);
-		
 		olderbase.setOlderbranchid(1);
-
-		olderbase.setOlderheadurl(dnf1.getAbsolutePath());
+		// http://localhost:8080/pic/1.jpg
+		olderbase.setOlderheadurl(picUrl + newFileName);
 
 		olderbase.setOlderide(olderide);
 		olderbase.setOldername(oldername);
@@ -102,7 +99,10 @@ public class BrenchController {
 
 	// 发布活动-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "action")
-	public @ResponseBody Message addAction(@RequestBody Action action) throws Exception {
+	public @ResponseBody Message addAction(HttpSession session,Action action) throws Exception {
+		// int actionbranchid=session.getAttribute("branchid");
+		action.setActionbranchid(1);
+		action.setActionenroll(0);
 		return brenchManageService.publishAction(action);
 	}
 
