@@ -15,7 +15,7 @@ public class Lecture {
 
     private Date lecturepublishdate;
 
-    private Integer lecturestatus;
+    private String lecturestatus;
 
     private String lectureaddress;
 
@@ -69,12 +69,12 @@ public class Lecture {
         this.lecturepublishdate = lecturepublishdate;
     }
 
-    public Integer getLecturestatus() {
+    public String getLecturestatus() {
         return lecturestatus;
     }
 
-    public void setLecturestatus(Integer lecturestatus) {
-        this.lecturestatus = lecturestatus;
+    public void setLecturestatus(String lecturestatus) {
+        this.lecturestatus = lecturestatus == null ? null : lecturestatus.trim();
     }
 
     public String getLectureaddress() {

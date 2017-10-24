@@ -50,7 +50,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>总店管理</li>
-							<li class="active">分店录入</li>
+							<li class="active">员工详细信息</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -271,53 +271,79 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">添加分店</span>
-				<div class="description">Add Branch</div>
+				<span class="title">员工详细信息</span>
+				<div class="description">Staffer Infomation</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
 							<div class="card-title">
-								<div class="title">添加分店</div>
+								<div class="title">员工详细信息</div>
 							</div>
 						</div>
 						<div class="card-body">
 							<!--添加分店时候需要的表单-->
 							<form class="form-horizontal" id="branchEntry">
 								<div class="form-group">
-									<label for="branchName" class="col-sm-3 control-label">分店名：</label>
+									<label for="staffName" class="col-sm-3 control-label">员工姓名：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchName"
-											placeholder="分店名" name="branchname">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：小张</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="branchPostCode" class="col-sm-3 control-label">分店邮编：</label>
+									<label for="staffSex" class="col-sm-3 control-label">员工性别：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchPostCode"
-											placeholder="分店邮编" name="branchpostcode">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：男</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="branchManagerId" class="col-sm-3 control-label">分店管理员：</label>
+									<label for="staffBirthday" class="col-sm-3 control-label">员工出生日期：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchManagerId"
-											placeholder="分店管理员" name="branchmanagerid">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：1990-10-10</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="branchAdress" class="col-sm-3 control-label">分店地址：</label>
+									<label for="staffiIDE" class="col-sm-3 control-label">员工身份证：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchAdress"
-											placeholder="分店地址" name="branchadderss">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：5202221199010100000</span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="branchKPI" class="col-sm-3 control-label">分店管理员绩效：</label>
+									<label for="staffTel" class="col-sm-3 control-label">员工电话号：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchKPI"
-											placeholder="分店管理员绩效" name="branchkpi">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：18000000000</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffCode" class="col-sm-3 control-label">员工号：</label>
+									<div class="col-sm-5">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：05500 01 0001</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffImg" class="col-sm-3 control-label">员工头像：</label>
+									<div class="col-sm-5">
+										<img src="../../img/textheadphoto.jpg">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffDepartmentId" class="col-sm-3 control-label">员工部门号：</label>
+									<div class="col-sm-5">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：01</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffPassword" class="col-sm-3 control-label">员工密码：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="staffPassword"
+											placeholder="员工密码" name="KPI">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffRoleId" class="col-sm-3 control-label">员工职位：</label>
+									<div class="col-sm-5">
+										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：新闻编辑人员</span>
 									</div>
 								</div>
 								<div class="form-group">
@@ -390,7 +416,7 @@
 						validating : 'glyphicon glyphicon-refresh',
 					},
 					fields : {
-						branchname : {
+						name : {
 							message : '姓名不能为空',
 							validators : {
 								notEmpty : {
@@ -407,21 +433,39 @@
 								},
 							}
 						},
-						branchpostcode : {
+						PostCode : {
 							validators : {
 								notEmpty : {
 									message : '邮编不能为空'
 								},
 							}
 						},
-						branchmanagerid : {
+						ManagerId : {
 							validators : {
 								notEmpty : {
 									message : '分店管理员不能为空'
 								},
 							}
 						},
-						branchadderss : {
+						repassword : {
+							validators : {
+								notEmpty : {
+									message : '密码不能为空'
+								},
+								identical : {
+									field : 'password',
+									message : '两次密码不一致'
+								} 
+							}
+						},
+						Tel : {
+							validators : {
+								notEmpty : {
+									message : '电话不能为空'
+								},
+							}
+						},
+						adderss : {
 							validators : {
 								notEmpty : {
 									message : '地址不能为空'
@@ -430,6 +474,12 @@
 									regexp : /^[\u4e00-\u9fa5]{2,4}省[\u4e00-\u9fa5]{2,6}市[\u4e00-\u9fa5]{2,6}县[\u4e00-\u9fa5]{0,20}$/,
 									message : '请输入正确的地址格式，格式为：XX省XX市XX县XXX'
 								}
+							}
+						},
+						single : {
+							enabled : false,
+							validators : {
+								message : '居住状况必须选择'
 							}
 						},
 					}

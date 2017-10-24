@@ -8,53 +8,53 @@ import com.sds.em.po.Oldersick;
 import com.sds.em.po.Visited;
 
 public interface BrenchService {
-	// ÀÏÈË»ù±¾ĞÅÏ¢µÄÂ¼Èë
+	// è€äººåŸºæœ¬ä¿¡æ¯çš„å½•å…¥
 	public Message addElderInfo(Olderbase olderbase) throws Exception;
 
-	// ÀÏÈË»ù±¾ĞÅÏ¢µÄĞŞ¸Ä
+	// è€äººåŸºæœ¬ä¿¡æ¯çš„ä¿®æ”¹
 	public Message modifyOlder(Olderbase olderbase) throws Exception;
 
-	// ÀÏÈË²¡ÀúĞÅÏ¢µÄÂ¼Èë
+	// è€äººç—…å†ä¿¡æ¯çš„å½•å…¥
 	public Message addSicks(Oldersick oldersick) throws Exception;
 
-	// ÀÏÈËÆÀ¼Û
+	// è€äººè¯„ä»·
 
 	public Message olderRate(int olderId) throws Exception;
 
-	// ·¢²¼»î¶¯
+	// å‘å¸ƒæ´»åŠ¨
 	public Message publishAction(Action action) throws Exception;
 
-	// ĞŞ¸Ä»î¶¯
+	// ä¿®æ”¹æ´»åŠ¨
 	public Message modifyAction(Action action) throws Exception;
 
-	// ²éÑ¯Õâ¸ö¹ÜÀíÔ±ËùÔÚµÄ·ÖµêÃû
+	// æŸ¥è¯¢è¿™ä¸ªç®¡ç†å‘˜æ‰€åœ¨çš„åˆ†åº—å
 	public Message getBranchName(int staffid) throws Exception;
 
-	// ²éÑ¯±¾·ÖµêËùÓĞÀÏÈËµÄ»ù±¾ĞÅÏ¢
+	// æŸ¥è¯¢æœ¬åˆ†åº—æ‰€æœ‰è€äººçš„åŸºæœ¬ä¿¡æ¯
 	public Message getAllElder(int branchid) throws Exception;
 
-	//// É¾³ıÄ³¸öÀÏÈËµÄĞÅÏ¢
+	//// åˆ é™¤æŸä¸ªè€äººçš„ä¿¡æ¯
 	public Message deleteANElder(String oldertel) throws Exception;
 
-	// »ñÈ¡Ä³¸öÀÏÈËµÄĞÅÏ¢
+	// è·å–æŸä¸ªè€äººçš„ä¿¡æ¯
 	public Message getElder(String oldertel) throws Exception;
 
-	// ²é¿´±¾ÀÏÈËµÄËùÓĞ²¡ÀúĞÅÏ¢
+	// æŸ¥çœ‹æœ¬è€äººçš„æ‰€æœ‰ç—…å†ä¿¡æ¯
 	public Message getOlderAllSick(int olderid) throws Exception;
 
-	// É¾³ıÒ»ÌõÀÏÈË²¡ÀúĞÅÏ¢
+	// åˆ é™¤ä¸€æ¡è€äººç—…å†ä¿¡æ¯
 	public Message deleteOlderSick(int sickid) throws Exception;
 
-	// ²é¿´±¾ÀÏÈËµÄ¶©µ¥ĞÅÏ¢
+	// æŸ¥çœ‹æœ¬è€äººçš„è®¢å•ä¿¡æ¯
 	public Message getOlderAllOrder(int olderid) throws Exception;
 
-	// ¸ø±¾ÀÏÈËÌí¼Ó»Ø·Ã¼ÇÂ¼
+	// ç»™æœ¬è€äººæ·»åŠ å›è®¿è®°å½•
 	public Message andOlderVisited(Visited visited) throws Exception;
 
-	// ²é¿´±¾ÀÏÈËµÄËùÓĞ»Ø·Ã¼ÇÂ¼ĞÅÏ¢
+	// æŸ¥çœ‹æœ¬è€äººçš„æ‰€æœ‰å›è®¿è®°å½•ä¿¡æ¯
 	public Message getOlderAllVisited(int olderid) throws Exception;
 	
-	//Ìí¼Ó½²×ùĞÅÏ¢
+	//æ·»åŠ è®²åº§ä¿¡æ¯
 	public Message addLecture(Lecture lecture)throws Exception;
 	
 	public Message getLecture(int branchid)throws Exception;

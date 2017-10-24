@@ -31,8 +31,8 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li>分店管理</li>
-                            <li class="active">老年人客户列表</li>
+                            <li>总店管理</li>
+                            <li class="active">员工列表</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -198,6 +198,7 @@
                                     <div class="panel-body">
                                          <ul class="nav navbar-nav">
                                             <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+                                            <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -284,7 +285,7 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">分店列表</span>
+                        <span class="title">员工列表</span>
                         <div class="description">Branch List</div>
                     </div>
                     <div class="row">
@@ -295,63 +296,62 @@
                                     <div class="card-title">
                                     <div class="title">列表</div>
                                     </div>
-                                    <div class="card-title  col-md-offset-10">
-                                         <div class="title"><a class="btn btn-primary btn-lg" href="../headofficeManage/branchEntry.html" role="button">添加分店</a></div>
-                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <table class="datatable table table-striped" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>序号</th>
-                                                <th>分店名</th>
-                                                <th>分店邮编</th>
-                                                <th>分店管理员</th>
-                                                <th>分店地址</th>
-                                                <th>分店管理员绩效</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
+                                                <th>员工姓名</th>
+                                                <th>员工性别</th>
+                                                <th>员工出生日期</th>
+                                                <th>员工身份证</th>
+                                                <th>员工电话号</th>
+                                                <th>员工号</th>
+                                                <th>员工头像</th>
+                                                <th>员工地址</th>
+                                                <th>员工部门号</th>
+                                                <th>员工职位</th>
+                                                <th>员工详细信息</th>
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>序号</th>
-                                                <th>分店名</th>
-                                                <th>分店邮编</th>
-                                                <th>分店管理员</th>
-                                                <th>分店地址</th>
-                                                <th>分店管理员绩效</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
+                                                <th>员工姓名</th>
+                                                <th>员工性别</th>
+                                                <th>员工出生日期</th>
+                                                <th>员工身份证</th>
+                                                <th>员工电话号</th>
+                                                <th>员工号</th>
+                                                <th>员工头像</th>
+                                                <th>员工地址</th>
+                                                <th>员工部门号</th>
+                                                <th>员工职位</th>
+                                                <th>员工详细信息</th>
                                                 <th>操作</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                         	<!--测试用数据-->
                                             <tr>
-                                                <td>branchId</td>
-                                                <td>branchName</td>
-                                                <td>branchPostCode</td>
-                                                <td>branchManagerId</td>
-                                                <td>branchAdress</td>
-                                                <td>branchKPI</td>
-                                                <td>Tiger Nixon</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>staffId</td>
+                                                <td>staffName</td>
+                                                <td>staffSex</td>
+                                                <td>staffBirthday</td>
+                                                <td>staffiIDE</td>
+                                                <td>staffTel</td>
+                                                <td>staffCode</td>
+                                                <td>staffImg</td>
+                                                <td>staffAddress</td>
+                                                <td>staffDepartmentId</td>
+                                                <td>staffRoleId</td>
                                                 <td>
-                                                	<a class="btn btn-primary btn-xs" href="../headofficeManage/branchAlter.html" role="button">修改</a>
+                                                	<a class="btn btn-primary btn-xs" href="../headofficeManage/staffInfo.html" role="button">查看详细信息</a>
+                                                </td>
+                                                <td>
+                                                	<a class="btn btn-primary btn-xs" href="../headofficeManage/staffAlter.html" role="button">修改</a>
                                                 	<button class="btn btn-primary btn-xs">删除</button>
                                                 </td>
                                             </tr>
@@ -367,9 +367,11 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td></td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-xs" href="../headofficeManage/branchAlter.html" role="button">修改</a>
+                                                	<a class="btn btn-primary btn-xs" href="../headofficeManage/staffInfo.html" role="button">查看详细信息</a>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-xs" href="../headofficeManage/staffAlter.html" role="button">修改</a>
                                                 	<button class="btn btn-primary btn-xs">删除</button>
                                                 </td>
                                             </tr>

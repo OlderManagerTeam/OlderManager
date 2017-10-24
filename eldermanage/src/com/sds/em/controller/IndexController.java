@@ -124,8 +124,17 @@ public class IndexController {
 
 	// �����б��ѯ
 	@RequestMapping(method = RequestMethod.GET, value = "news")
-	public @ResponseBody Message news() {
-		return indexService.allNews();
+	public @ResponseBody String news() {
+		return "乱码测试";
 	}
 
+	//AJAX上传文件测试
+	@RequestMapping(method = RequestMethod.POST, value = "upload")
+	public @ResponseBody Message upload(String username,MultipartFile img,String accountnum) {
+		int i = 0;
+		int j = 0;
+		
+		int k=i+j;
+		return null;
+	}
 }

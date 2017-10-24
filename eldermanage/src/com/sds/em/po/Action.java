@@ -15,7 +15,7 @@ public class Action {
 
     private String actionaddress;
 
-    private Integer actionstatus;
+    private String actionstatus;
 
     private Integer actionenroll;
 
@@ -69,12 +69,12 @@ public class Action {
         this.actionaddress = actionaddress == null ? null : actionaddress.trim();
     }
 
-    public Integer getActionstatus() {
+    public String getActionstatus() {
         return actionstatus;
     }
 
-    public void setActionstatus(Integer actionstatus) {
-        this.actionstatus = actionstatus;
+    public void setActionstatus(String actionstatus) {
+        this.actionstatus = actionstatus == null ? null : actionstatus.trim();
     }
 
     public Integer getActionenroll() {
