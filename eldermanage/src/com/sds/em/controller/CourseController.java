@@ -20,7 +20,6 @@ import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Video;
 import com.sds.em.service.CourseService;
-import com.sds.em.util.Page;
 
 /**
  * 
