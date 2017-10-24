@@ -420,8 +420,6 @@
 					success : function(result) {
 						var resultdata = JSON.parse(result);
 						alert(resultdata.success);
-						window.clearInterval(timer);
-						console.log("over..");
 					},
 					error : function() {
 						alert('fail')
