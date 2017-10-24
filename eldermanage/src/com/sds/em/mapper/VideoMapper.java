@@ -31,4 +31,6 @@ public interface VideoMapper {
     int updateByPrimaryKey(Video record);
     
     Video selectOlderVideoRecord(@Param("example") VideorecordExample example);
+    //分页测试-------------
+    public List<Video> findPages(@Param(value="startPos") Integer startPos,@Param(value="pageSize") Integer pageSize) throws Exception;
 }
