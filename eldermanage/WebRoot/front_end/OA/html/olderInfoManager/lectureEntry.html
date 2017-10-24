@@ -299,13 +299,6 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureEnroll" class="col-sm-3 control-label">讲座已预约人数：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureEnroll"
-											placeholder="讲座已预约人数" name="lectureenroll">
-									</div>
-								</div>
-								<div class="form-group">
 									<label for="lectureTotal" class="col-sm-3 control-label">讲座总人数：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="lectureTotal"
@@ -325,7 +318,6 @@
 										<select id="lectureStatus" name="lecturestatus">
 											<optgroup label="讲座报名状态">
 											<option value="1">报名中</option>
-											<option value="0">结束</option>
 											</optgroup>
 										</select>
 									</div>
@@ -450,18 +442,6 @@
 									max : 100,
 									message : '简介不能多余100字'
 								},
-							}
-						},
-						lectureenroll : {
-							validators : {
-								notEmpty : {
-									message : '预约人数不能为空'
-								},
-								regexp : {
-									regexp : /^[1-9]\d*|0$/,
-									message : '请输入整数'
-								},
-								
 							}
 						},
 						lecturetotal : {
