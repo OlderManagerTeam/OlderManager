@@ -231,10 +231,10 @@ public class BrenchServiceImpl implements BrenchService {
 				List<JSONObject> jsonObjectList = new ArrayList();
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("olderbasesList", olderbasesList);
-				jsonObject.put("olderAgeList", olderAgeList);
+				//jsonObject.put("olderAgeList", olderAgeList);
 				
 				jsonObjectList.add(jsonObject);
-				return new Message(true, "返回成功", jsonObjectList.toString());
+				return new Message(true, "返回成功", olderbasesList);
 			} else {
 
 				return new Message(false, "数据库错误", null);
