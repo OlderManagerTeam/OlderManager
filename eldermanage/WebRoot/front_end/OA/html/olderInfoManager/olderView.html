@@ -32,29 +32,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <link rel="stylesheet" type="text/css"
 	href="../../css/themes/flat-blue.css">
-	
-	<!-- Javascript Libs -->
-
-		
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
-
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-	
 </head>
 
 <body class="flat-blue">
@@ -366,6 +343,26 @@
 		</div>
 	</footer>
 	
+		<!-- Javascript Libs -->
+
+		
+		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/bootstrap-switch.min.js"></script>
+
+		<script type="text/javascript"
+			src="../../lib/js/jquery.matchHeight-min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+		<!-- Javascript -->
 		
 
 		<script type="text/javascript">
@@ -397,12 +394,11 @@
 		
 				for (var i = olderItem.length - 1; i >= 0; i--) {
 					var oTr = `<tr>
-									
 									<td>${olderItem[i].olderid}</td>
 									<td>${olderItem[i].oldername}</td>
 									<td>${olderItem[i].oldersex}</td>
 									<td>${olderItem[i].olderage}</td>
-									<td>${olderItem[i].oldertel}</td>
+									<td>d${olderItem[i].oldertel}</td>
 									<td></td>
 									<td>${olderItem[i].oldersinglestatus}</td>
 									<td>${olderItem[i].oldermaxpoint}</td>
@@ -427,7 +423,7 @@
 				// $('#olderlist').append(oTbody);
 			})
 		</script>
-
+		<script type="text/javascript" src="../../js/app.js"></script>
 		<script type="text/javascript">
 			$("#entrysubmit").click(function() {
 				var olderPoint = 0
