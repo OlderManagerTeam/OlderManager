@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>formdata.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script type="text/javascript">
+	function test() {
+		var form = new FormData(document.getElementById("tf"));
+		//             var req = new XMLHttpRequest();
+		//             req.open("post", "${pageContext.request.contextPath}/public/testupload", false);
+		//             req.send(form);
+		$.ajax({
+			url : "http://localhost:8080/eldermanage/v1/index/staff/login",
+			type : "post",
+			data : form,
+			processData : false,
+			contentType : false,
+			success : function(data) {
+				window.clearInterval(timer);
+				console.log("over..");
+			},
+			error : function(e) {
+				alert("错误！！");
+				window.clearInterval(timer);
+			}
+		});
+		get(); //此处为上传文件的进度条
+	}
+</script>
+</head>
+
+<body>
+	<form id="tf">
+		<input type="file" name="img" /> 
+		<input type="text" name="username" />
+		<input type="button" value="提" onclick="test();" />
+	</form>
+</body>
+</html>

@@ -1,6 +1,9 @@
 package com.sds.em.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Action;
 import com.sds.em.po.Lecture;
@@ -22,8 +26,8 @@ import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
 
 /*
- * ×÷Õß£ºÁõÂ¶
- * ÃèÊö£º·Öµê¹ÜÀíÏµÍ³µÄºóÌ¨Ïà¹Ø¹¦ÄÜ
+ * ä½œè€…ï¼šåˆ˜éœ²
+ * æè¿°ï¼šåˆ†åº—ç®¡ç†ç³»ç»Ÿçš„åå°ç›¸å…³åŠŸèƒ½
  * 
  * 
  * */
@@ -37,20 +41,28 @@ public class BrenchController {
 
 	// odermaxpoint;
 
-	// ÀÏÈË»ù±¾ĞÅÏ¢µÄÂ¼Èë-²âÊÔÍ¨¹ı
+	// è€äººåŸºæœ¬ä¿¡æ¯çš„å½•å…¥-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.POST, value = "elder/info")
-	public @ResponseBody Message info(String oldername, String oldersex, String olderbirthday, String olderpassword,
-			String oldertel, String olderaddress, String oldersinglestatus, String olderide, String oldernation,
-			String olderheadurl, int olderbranchid) throws Exception {
+	public @ResponseBody Message info(HttpSession session, String oldername, String oldersex, String olderbirthday,
+			String olderpassword, String oldertel, String olderaddress, String oldersinglestatus, String olderide,
+			String oldernation, MultipartFile olderheadurl) throws Exception {
+		// int olderbranchid=session.getAttribute("branchid");
 
+		String pic_path = "E:\\develop\\upload\\temp\\";
+		String picUrl = "http://localhost:8080/pic/";
+		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+		
+		File dnf1 = new File(pic_path + newFileName);
+		olderheadurl.transferTo(dnf1);
+		
 		Olderbase olderbase = new Olderbase();
 		olderbase.setOlderaddress(olderaddress);
-
 		Date date = DateSimp.simp(olderbirthday);
-
 		olderbase.setOlderbirthday(date);
-		olderbase.setOlderbranchid(olderbranchid);
-		olderbase.setOlderheadurl(olderheadurl);
+		olderbase.setOlderbranchid(1);
+		// http://localhost:8080/pic/1.jpg
+		olderbase.setOlderheadurl(picUrl + newFileName);
+
 		olderbase.setOlderide(olderide);
 		olderbase.setOldername(oldername);
 		olderbase.setOldernation(oldernation);
@@ -61,57 +73,74 @@ public class BrenchController {
 		olderbase.setOldersinglestatus(oldersinglestatus);
 		olderbase.setOldertel(oldertel);
 		olderbase.setOldermaxpoint(0);
+
 		return brenchManageService.addElderInfo(olderbase);
 
 	}
 
-	// ÀÏÈË»ù±¾ĞÅÏ¢µÄĞŞ¸Ä-²âÊÔÍ¨¹ı
+	// è€äººåŸºæœ¬ä¿¡æ¯çš„ä¿®æ”¹-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.PUT, value = "elder/info")
 	public @ResponseBody Message update(@RequestBody Olderbase olderbase) throws Exception {
 		return brenchManageService.modifyOlder(olderbase);
 	}
 
-	// ÀÏÈË²¡ÀúĞÅÏ¢µÄÂ¼Èë-²âÊÔÍ¨¹ı
+	// è€äººç—…å†ä¿¡æ¯çš„å½•å…¥-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
 	public @ResponseBody Message sicks(@RequestBody Oldersick oldersick) throws Exception {
 
 		return brenchManageService.addSicks(oldersick);
 	}
 
-	// ÀÏÈËÆÀ¼Û-Î´²âÊÔ
+	// è€äººè¯„ä»·-æœªæµ‹è¯•
 	@RequestMapping(method = RequestMethod.POST, value = "elder/rate")
 	public @ResponseBody Message rate(@RequestBody int olderid) throws Exception {
 		return brenchManageService.olderRate(olderid);
 	}
 
-	// ·¢²¼»î¶¯-²âÊÔÍ¨¹ı
+	// å‘å¸ƒæ´»åŠ¨-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.POST, value = "action")
-	public @ResponseBody Message addAction(@RequestBody Action action) throws Exception {
+	public @ResponseBody Message addAction(HttpSession session, String actionstartdate,
+			String actionintro,String actionname,String actionaddress,String actionstatus,String actiontotal) throws Exception {
+		// int actionbranchid=session.getAttribute("branchid");
+		Action action=new Action();
+		action.setActionaddress(actionaddress);;
+		action.setActionintro(actionintro);
+		action.setActionname(actionname);
+		
+		Date date = DateSimp.simp(actionstartdate);
+		action.setActionstartdate(date);
+		
+		action.setActionstatus(actionstatus);
+		
+		action.setActiontotal(100);
+		action.setActionbranchid(1);
+		action.setActionenroll(0);
 		return brenchManageService.publishAction(action);
 	}
 
-	// ĞŞ¸Ä»î¶¯-²âÊÔÍ¨¹ı
+	// ä¿®æ”¹æ´»åŠ¨-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.PUT, value = "action")
 	public @ResponseBody Message updateAction(@RequestBody Action action) throws Exception {
 		return brenchManageService.modifyAction(action);
 	}
 
-	// ²éÑ¯Õâ¸ö¹ÜÀíÔ±ËùÔÚµÄ·ÖµêÃû--²âÊÔÍ¨¹ı
+	// æŸ¥è¯¢è¿™ä¸ªç®¡ç†å‘˜æ‰€åœ¨çš„åˆ†åº—å--æµ‹è¯•é€šè¿‡
 
 	@RequestMapping(method = RequestMethod.GET, value = "branchname")
 	public @ResponseBody Message getBranchName(int staffid) throws Exception {
 		return brenchManageService.getBranchName(staffid);
 	}
 
-	// ²éÑ¯±¾·ÖµêËùÓĞÀÏÈËµÄ»ù±¾ĞÅÏ¢
+	// æŸ¥è¯¢æœ¬åˆ†åº—æ‰€æœ‰è€äººçš„åŸºæœ¬ä¿¡æ¯
 
 	@RequestMapping(method = RequestMethod.GET, value = "elders/info")
 	public @ResponseBody Message allOlderByBranch(HttpSession session) throws Exception {
-		int branchid = (int) session.getAttribute("branchid");
+		// int branchid = (int) session.getAttribute("branchid");
+		int branchid = 1;
 		return brenchManageService.getAllElder(branchid);
 	}
 
-	// É¾³ıÄ³¸öÀÏÈËµÄĞÅÏ¢--²âÊÔ³É¹¦
+	// åˆ é™¤æŸä¸ªè€äººçš„ä¿¡æ¯--æµ‹è¯•æˆåŠŸ
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "elder/info")
 	public @ResponseBody Message deleteOlder(@RequestBody String oldertel) throws Exception {
@@ -119,7 +148,7 @@ public class BrenchController {
 		return brenchManageService.deleteANElder(oldertel);
 	}
 
-	// »ñÈ¡Ä³¸öÀÏÈËµÄĞÅÏ¢--²âÊÔ³É¹¦
+	// è·å–æŸä¸ªè€äººçš„ä¿¡æ¯--æµ‹è¯•æˆåŠŸ
 
 	@RequestMapping(method = RequestMethod.GET, value = "elder/info")
 	public @ResponseBody Message getOlder(String oldertel) throws Exception {
@@ -127,25 +156,25 @@ public class BrenchController {
 		return brenchManageService.getElder(oldertel);
 	}
 
-	// ²é¿´±¾ÀÏÈËµÄËùÓĞ²¡ÀúĞÅÏ¢
+	// æŸ¥çœ‹æœ¬è€äººçš„æ‰€æœ‰ç—…å†ä¿¡æ¯
 	@RequestMapping(method = RequestMethod.GET, value = "elder/sicks")
 	public @ResponseBody Message getOlderAllSick(int olderid) throws Exception {
 		return brenchManageService.getOlderAllSick(olderid);
 	}
 
-	// É¾³ıÒ»ÌõÀÏÈË²¡ÀúĞÅÏ¢--²âÊÔ³É¹¦
+	// åˆ é™¤ä¸€æ¡è€äººç—…å†ä¿¡æ¯--æµ‹è¯•æˆåŠŸ
 	@RequestMapping(method = RequestMethod.DELETE, value = "elder/sick")
 	public @ResponseBody Message deleteOlderSick(int sickid) throws Exception {
 		return brenchManageService.deleteOlderSick(sickid);
 	}
 
-	// ²é¿´±¾ÀÏÈËµÄ¶©µ¥ĞÅÏ¢--²âÊÔ³É¹¦
+	// æŸ¥çœ‹æœ¬è€äººçš„è®¢å•ä¿¡æ¯--æµ‹è¯•æˆåŠŸ
 	@RequestMapping(method = RequestMethod.GET, value = "elder/orders")
 	public @ResponseBody Message getOlderAllOrder(int olderid) throws Exception {
 		return brenchManageService.getOlderAllOrder(olderid);
 	}
 
-	// ¸ø±¾ÀÏÈËÌí¼Ó»Ø·Ã¼ÇÂ¼
+	// ç»™æœ¬è€äººæ·»åŠ å›è®¿è®°å½•
 	@RequestMapping(method = RequestMethod.POST, value = "elder/visited")
 	public @ResponseBody Message andOlderVisited(@RequestBody Visited visited, HttpSession session) throws Exception {
 		int staffid = (int) session.getAttribute("staffid");
@@ -153,24 +182,25 @@ public class BrenchController {
 		return brenchManageService.andOlderVisited(visited);
 	}
 
-	// ²é¿´±¾ÀÏÈËµÄËùÓĞ»Ø·Ã¼ÇÂ¼ĞÅÏ¢
+	// æŸ¥çœ‹æœ¬è€äººçš„æ‰€æœ‰å›è®¿è®°å½•ä¿¡æ¯
 	@RequestMapping(method = RequestMethod.GET, value = "elder/visited")
-	public @ResponseBody Message getOlderAllVisited( int olderid) throws Exception {
+	public @ResponseBody Message getOlderAllVisited(int olderid) throws Exception {
 		return brenchManageService.getOlderAllVisited(olderid);
 	}
-	
-	//Ìí¼Ó½²×ùĞÅÏ¢
+
+	// æ·»åŠ è®²åº§ä¿¡æ¯
 	@RequestMapping(method = RequestMethod.POST, value = "lecture")
-	public @ResponseBody Message addLecture( HttpSession session,@RequestBody Lecture lecture) throws Exception {
+	public @ResponseBody Message addLecture(HttpSession session, @RequestBody Lecture lecture) throws Exception {
 		int branchid = (int) session.getAttribute("branchid");
 		lecture.setLecturebranchid(branchid);
-		return brenchManageService.addLecture( lecture);
+		return brenchManageService.addLecture(lecture);
 	}
-	//²é¿´±¾·ÖµêµÄËùÓĞ½²×ùĞÅÏ¢
+
+	// æŸ¥çœ‹æœ¬åˆ†åº—çš„æ‰€æœ‰è®²åº§ä¿¡æ¯
 	@RequestMapping(method = RequestMethod.GET, value = "lecture")
-	public @ResponseBody Message getLecture( HttpSession session ) throws Exception {
+	public @ResponseBody Message getLecture(HttpSession session) throws Exception {
 		int branchid = (int) session.getAttribute("branchid");
 		return brenchManageService.getLecture(branchid);
 	}
-	
+
 }

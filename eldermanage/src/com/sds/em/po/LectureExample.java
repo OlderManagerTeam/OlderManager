@@ -522,52 +522,62 @@ public class LectureExample {
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusEqualTo(Integer value) {
+        public Criteria andLecturestatusEqualTo(String value) {
             addCriterion("lectureStatus =", value, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusNotEqualTo(Integer value) {
+        public Criteria andLecturestatusNotEqualTo(String value) {
             addCriterion("lectureStatus <>", value, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusGreaterThan(Integer value) {
+        public Criteria andLecturestatusGreaterThan(String value) {
             addCriterion("lectureStatus >", value, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusGreaterThanOrEqualTo(Integer value) {
+        public Criteria andLecturestatusGreaterThanOrEqualTo(String value) {
             addCriterion("lectureStatus >=", value, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusLessThan(Integer value) {
+        public Criteria andLecturestatusLessThan(String value) {
             addCriterion("lectureStatus <", value, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusLessThanOrEqualTo(Integer value) {
+        public Criteria andLecturestatusLessThanOrEqualTo(String value) {
             addCriterion("lectureStatus <=", value, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusIn(List<Integer> values) {
+        public Criteria andLecturestatusLike(String value) {
+            addCriterion("lectureStatus like", value, "lecturestatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturestatusNotLike(String value) {
+            addCriterion("lectureStatus not like", value, "lecturestatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andLecturestatusIn(List<String> values) {
             addCriterion("lectureStatus in", values, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusNotIn(List<Integer> values) {
+        public Criteria andLecturestatusNotIn(List<String> values) {
             addCriterion("lectureStatus not in", values, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusBetween(Integer value1, Integer value2) {
+        public Criteria andLecturestatusBetween(String value1, String value2) {
             addCriterion("lectureStatus between", value1, value2, "lecturestatus");
             return (Criteria) this;
         }
 
-        public Criteria andLecturestatusNotBetween(Integer value1, Integer value2) {
+        public Criteria andLecturestatusNotBetween(String value1, String value2) {
             addCriterion("lectureStatus not between", value1, value2, "lecturestatus");
             return (Criteria) this;
         }

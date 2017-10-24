@@ -532,52 +532,62 @@ public class ActionExample {
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusEqualTo(Integer value) {
+        public Criteria andActionstatusEqualTo(String value) {
             addCriterion("actionStatus =", value, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusNotEqualTo(Integer value) {
+        public Criteria andActionstatusNotEqualTo(String value) {
             addCriterion("actionStatus <>", value, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusGreaterThan(Integer value) {
+        public Criteria andActionstatusGreaterThan(String value) {
             addCriterion("actionStatus >", value, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusGreaterThanOrEqualTo(Integer value) {
+        public Criteria andActionstatusGreaterThanOrEqualTo(String value) {
             addCriterion("actionStatus >=", value, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusLessThan(Integer value) {
+        public Criteria andActionstatusLessThan(String value) {
             addCriterion("actionStatus <", value, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusLessThanOrEqualTo(Integer value) {
+        public Criteria andActionstatusLessThanOrEqualTo(String value) {
             addCriterion("actionStatus <=", value, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusIn(List<Integer> values) {
+        public Criteria andActionstatusLike(String value) {
+            addCriterion("actionStatus like", value, "actionstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionstatusNotLike(String value) {
+            addCriterion("actionStatus not like", value, "actionstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andActionstatusIn(List<String> values) {
             addCriterion("actionStatus in", values, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusNotIn(List<Integer> values) {
+        public Criteria andActionstatusNotIn(List<String> values) {
             addCriterion("actionStatus not in", values, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusBetween(Integer value1, Integer value2) {
+        public Criteria andActionstatusBetween(String value1, String value2) {
             addCriterion("actionStatus between", value1, value2, "actionstatus");
             return (Criteria) this;
         }
 
-        public Criteria andActionstatusNotBetween(Integer value1, Integer value2) {
+        public Criteria andActionstatusNotBetween(String value1, String value2) {
             addCriterion("actionStatus not between", value1, value2, "actionstatus");
             return (Criteria) this;
         }
