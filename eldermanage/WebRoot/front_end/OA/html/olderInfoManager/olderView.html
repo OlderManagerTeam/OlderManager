@@ -34,7 +34,7 @@
 	href="../../css/themes/flat-blue.css">
 </head>
 
-<body class="flat-blue">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -302,30 +302,7 @@
 									</tr>
 								</tfoot>
 								<tbody id="olderlist">
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td>61</td>
-										<td>2011/04/25</td>
-										<td>$320,800</td>
-										<td>Tiger Nixon</td>
-										<td></td>
-										<td><a class="btn btn-primary btn-xs"
-											href="../olderInfoManager/orderView.html" role="button">查看老人订单</a></td>
-										<td><a class="btn btn-primary btn-xs"
-											href="../olderInfoManager/olderInfo.html" role="button">查看详细信息</a>
-										</td>
-										<td><a class="btn btn-primary btn-xs"
-											href="../olderInfoManager/olderSickView.html" role="button">查看病历</a>
-										</td>
-										<td><a class="btn btn-primary btn-xs"
-											href="../olderInfoManager/visitedView.html" role="button">查看回访记录</a>
-										</td>
-										<td><a class="btn btn-primary btn-xs"
-											href="../olderInfoManager/olderAlter.html" role="button">修改</a>
-											<button class="btn btn-primary btn-xs">删除</button></td>
-									</tr>
+									
 								</tbody>
 							</table>
 							<div id="olderView"></div>
@@ -342,88 +319,147 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
+
+	<!-- Javascript Libs -->
+
+
+	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/bootstrap-switch.min.js"></script>
+
+	<script type="text/javascript"
+		src="../../lib/js/jquery.matchHeight-min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+	<!-- Javascript -->
+
+
+	<script type="text/javascript">
+		$(function() {
+			// 后台数据
 	
-		<!-- Javascript Libs -->
-
-		
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
-
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-
-		<script type="text/javascript">
-			$(function() {
-				// 后台数据
-				const olderItem = [
-					{
-					    olderid:"1",
-						oldername : "老人1",
-						oldersex : "女",
-						olderage:"60",
-						oldertel:"1211132213",
-						oldersinglestatus:"单身",
-						oldermaxpoint:"200"
-					},
-					{
-					    olderid:"2",
-						oldername : "老人2",
-						oldersex : "男",
-						olderage:"70",
-						oldertel:"1211132213",
-						oldersinglestatus:"单身",
-						oldermaxpoint:"200"
-					},
-					
-				];
-				//创建并填充播放数据
-				const oTbody = $("<tbody>");
-		
-				for (var i = olderItem.length - 1; i >= 0; i--) {
-					var oTr = `<tr>
-									
-									<td>${olderItem[i].olderid}</td>
-									<td>${olderItem[i].oldername}</td>
-									<td>${olderItem[i].oldersex}</td>
-									<td>${olderItem[i].olderage}</td>
-									<td>${olderItem[i].oldertel}</td>
-									<td></td>
-									<td>${olderItem[i].oldersinglestatus}</td>
-									<td>${olderItem[i].oldermaxpoint}</td>
-									<td><a class="btn btn-primary btn-xs"
-										href="../olderInfoManager/orderView.html" role="button">查看老人订单</a></td>
-									<td><a class="btn btn-primary btn-xs"
-										href="../olderInfoManager/olderInfo.html" role="button">查看详细信息</a>
-									</td>
-									<td><a class="btn btn-primary btn-xs"
-										href="../olderInfoManager/olderSickView.html" role="button">查看病历</a>
-									</td>
-									<td><a class="btn btn-primary btn-xs"
-										href="../olderInfoManager/visitedView.html" role="button">查看回访记录</a>
-									</td>
-									<td><a class="btn btn-primary btn-xs"
-										href="../olderInfoManager/olderAlter.html" role="button">修改</a>
-										<button class="btn btn-primary btn-xs">删除</button></td>
-								</tr>
-						`;
-					$($(oTr)).appendTo('#olderlist');
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/brench/elders/info",
+				data : null,
+				success : function(result) {
+					const oTbody = $("<tbody>");
+					var olderItem = result.data;
+					for (var i = olderItem.length - 1; i >= 0; i--) {
+						var _date = olderItem[i].olderbirthday;
+						var date = new Date(_date);
+						if (date) {
+							var year = 1000 * 60 * 60 * 24 * 365;
+							var now = new Date();
+							var birthday = new Date(date);
+							var age = parseInt((now - birthday) / year);
+						}
+	
+						var oTr = `<tr>
+												<td>${olderItem[i].olderid}</td>
+												<td>${olderItem[i].oldername}</td>
+												<td>${olderItem[i].oldersex}</td>
+												<td>${age}</td>
+												<td>${olderItem[i].oldertel}</td>
+												<td></td>
+												<td>${olderItem[i].oldersinglestatus}</td>
+												<td>${olderItem[i].oldermaxpoint}</td>
+												<td><a class="btn btn-primary btn-xs"
+													href="../olderInfoManager/orderView.html?olderid="+"4" role="button">查看老人订单</a></td>
+												<td><a class="btn btn-primary btn-xs"
+													href="../olderInfoManager/olderInfo.html" role="button">查看详细信息</a>
+												</td>
+												<td><a class="btn btn-primary btn-xs"
+													href="../olderInfoManager/olderSickView.html" role="button">查看病历</a>
+												</td>
+												<td><a class="btn btn-primary btn-xs"
+													href="../olderInfoManager/visitedView.html" role="button">查看回访记录</a>
+												</td>
+												<td><a class="btn btn-primary btn-xs"
+													href="../olderInfoManager/olderAlter.html" role="button">修改</a>
+													<button class="btn btn-primary btn-xs">删除</button></td>
+											</tr>
+									`;
+						$($(oTr)).appendTo('#olderlist');
+					}
+	
+	
+	
+				},
+				error : function() {
+					alert('数据库错误')
 				}
-				// $('#olderlist').append(oTbody);
 			})
-		</script>
+			/* const olderItem = [
+				{
+					olderid : "1",
+					oldername : "老人1",
+					oldersex : "女",
+					olderage : "60",
+					oldertel : "1211132213",
+					oldersinglestatus : "单身",
+					oldermaxpoint : "200"
+				},
+				{
+					olderid : "2",
+					oldername : "老人2",
+					oldersex : "男",
+					olderage : "70",
+					oldertel : "1211132213",
+					oldersinglestatus : "单身",
+					oldermaxpoint : "200"
+				},
+	
+			];
+			//创建并填充播放数据
+			const oTbody = $("<tbody>");
+	
+			for (var i = olderItem.length - 1; i >= 0; i--) {
+				var oTr = `<tr>
+																			<td>${olderItem[i].olderid}</td>
+																			<td>${olderItem[i].oldername}</td>
+																			<td>${olderItem[i].oldersex}</td>
+																			<td>${olderItem[i].olderage}</td>
+																			<td>d${olderItem[i].oldertel}</td>
+																			<td></td>
+																			<td>${olderItem[i].oldersinglestatus}</td>
+																			<td>${olderItem[i].oldermaxpoint}</td>
+																			<td><a class="btn btn-primary btn-xs"
+																				href="../olderInfoManager/orderView.html" role="button">查看老人订单</a></td>
+																			<td><a class="btn btn-primary btn-xs"
+																				href="../olderInfoManager/olderInfo.html" role="button">查看详细信息</a>
+																			</td>
+																			<td><a class="btn btn-primary btn-xs"
+																				href="../olderInfoManager/olderSickView.html" role="button">查看病历</a>
+																			</td>
+																			<td><a class="btn btn-primary btn-xs"
+																				href="../olderInfoManager/visitedView.html" role="button">查看回访记录</a>
+																			</td>
+																			<td><a class="btn btn-primary btn-xs"
+																				href="../olderInfoManager/olderAlter.html" role="button">修改</a>
+																				<button class="btn btn-primary btn-xs">删除</button></td>
+																		</tr>
+																`;
+				$($(oTr)).appendTo('#olderlist');
+			} */
+		// $('#olderlist').append(oTbody);
+		})
+	</script>
+	
+	
+		function load() {
+		}
+	</script>
+	<script type="text/javascript" src="../../js/app.js"></script>
 </body>
 
 </html>

@@ -360,7 +360,7 @@
 												<option value="">民族</option>
 												<option value="01">汉族</option>
 												<option value="02">蒙古族</option>
-												<option value="回族">回族</option>
+												<option value="03">回族</option>
 												<option value="04">藏族</option>
 												<option value="05">维吾尔族</option>
 												<option value="06">彝族</option>
@@ -421,7 +421,7 @@
 								<div class="form-group">
 									<label for="olderHeadUrl" class="col-sm-3 control-label">老人照片：</label>
 									<div class="col-sm-5">
-										<input type="file" id="file-3" name="olderheadurl">
+										<input type="file" id="olderheadurl" name="olderheadurl">
 									</div>
 								</div>
 								<div class="form-group">
@@ -489,7 +489,7 @@
 		<script type="text/javascript"
 			src="../../lib/js/bootstrapValidator.min.js"></script>
 		<script>
-			$("#file-3").fileinput({
+			$("#olderheadurl").fileinput({
 				showUpload : false,
 				showCaption : false,
 				browseClass : "btn btn-primary btn-lg",
@@ -683,9 +683,6 @@
 					url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
 					data : null,
 					success : function(result) {
-						//result
-		
-						//alert(result.data.oldername);
 						var olderName = document.getElementById("olderName");
 						olderName.value = result.data.oldername;
 		
@@ -702,14 +699,23 @@
 						var olderAddress = document.getElementById("olderAddress");
 						olderAddress.value = result.data.olderaddress;
 		
+		
 						var olderIDE = document.getElementById("olderIDE");
 						olderIDE.value = result.data.olderide;
-						
-						document.getElementById("olderbirthday").value=result.data.olderbirthday;
-						/*  var olderBirthday = document.getElementById("olderBirthday");
-						olderBirthday.value = result.data.olderbirthday;
-		  */
 		
+						var date = new Date(result.data.olderbirthday);
+						var d = date.toISOString().slice(0, 10);
+						document.getElementById("olderbirthday").value = d;
+		
+						alert(result.data.oldersex);
+		
+						document.getElementById("oldernation").value = result.data.oldernation;
+						document.getElementById("oldersex").value = result.data.oldersex;
+						document.getElementById("oldersinglestatus ").value = result.data.oldersinglestatus;
+		
+						document.getElementById("olderheadurl").value = result.data.olderheadurl;
+		               $("#olderheadurl").filePlural.valueOf(result.data.olderheadurl);
+		              
 					},
 					error : function() {
 						alert('数据库错误')
