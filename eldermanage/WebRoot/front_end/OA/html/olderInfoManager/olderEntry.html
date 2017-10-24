@@ -189,20 +189,18 @@
 					</div>
 				</div></li>
 			<!--添加在左边导航栏-->
-            <li class="panel panel-default dropdown">
-			        <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			                 <span class="icon  glyphicon glyphicon-user"></span>
-			                 <span class="title">总店管理</span>
-			        </a> <!-- Dropdown level 1 -->
-			        <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					         <div class="panel-body">
-						           <ul class="nav navbar-nav">
-							              <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							              <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						           </ul>
-					         </div>
-				    </div>
-			</li>			
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
@@ -618,77 +616,30 @@
 		</script>
 
 		<script type="text/javascript">
-		
 			$("#entrysubmit").click(function() {
-				alert($("#oldernation option:selected").text());
 				var form = new FormData(document.getElementById("olderEntry"));
-				oldersex : $("#oldersex").find("select:first").text();
-				//oldersinglestatus:$("#oldersingleStatus").find("option:selected").text();
-				//oldernation : $("#oldernation").find("option:selected").text();
-		
-			//	alert(oldersex + oldersinglestatus + oldernation);
-		//
-				form.append("oldersex", $("#oldernation option:selected").text());
-				form.append("oldersinglestatus", oldersinglestatus);
-				form.append("oldersinglestatus", oldersinglestatus);
-		/* 
+				form.append("oldersex", $("#oldersex option:selected").text());
+				form.append("oldersinglestatus", $("#oldersinglestatus option:selected").text());
+				form.append("oldernation", $("#oldernation option:selected").text());
 				$.ajax({
 					type : 'post',
-					contentType : 'application/json',
 					url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
 					data : form,
 					processData : false,
 					contentType : false,
 					success : function(result) {
-						var resultdata = JSON.parse(result);
-						alert(resultdata.success);
-						window.clearInterval(timer);
-						console.log("over..");
+						//var resultdata = JSON.parse(result);
+						alert(result.success);
+		
 					},
 					error : function() {
 						alert('fail')
 					}
 				})
-		 */
+		
 			}
 			)
 		</script>
-
-		<!-- <script type="text/javascript">
-			$("#entrysubmit").click(function() {
-				var data = {
-					oldername : $("#olderName").val(),
-					oldersex : $("#olderSex").find("option:selected").text(),
-					olderpassword : $("#olderPassword").val(),
-					olderbirthday : $("#olderBirthday").val(),
-					oldertel : $("#olderTel").val(),
-					olderaddress : $("#olderAdress").val(),
-					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-					olderide : $("#olderIDE").val(),
-		
-					oldernation : $("#olderNation").find("option:selected").text(),
-					olderheadurl : $("#olderHeadUrl").val(),
-					olderpoint : $("#olderPoint").val(),
-				}
-				$.ajax({
-					type : 'post',
-					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
-					data : JSON.stringify(data),
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						var resultdata = JSON.parse(result)
-						alert(resultdata.success)
-					},
-					error : function() {
-						alert('fail')
-					}
-				})
-		
-			}
-			)
-		</script> -->
 </body>
 
 </html>
