@@ -189,18 +189,6 @@
 						</ul>
 					</div>
 				</div></li>
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
-					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						</ul>
-					</div>
-				</div></li>
 			<!--添加在左边导航栏-->
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
@@ -281,12 +269,12 @@
 						</div>
 						<div class="card-body">
 							<!--活动录入时候需要的表单-->
-							<form class="form-horizontal" id="odlerAction">
+							<form class="form-horizontal" id="olderAction">
 								<div class="form-group">
 									<label for="actionStartDate" class="col-sm-3 control-label">活动时间：</label>
 									<div class="col-sm-5">
 										<input type="date" class="form-control" id="actionStartDate"
-											placeholder="活动时间">
+											name="actionstartdate" placeholder="活动时间">
 									</div>
 								</div>
 								<div class="form-group">
@@ -306,7 +294,7 @@
 								<div class="form-group">
 									<label for="actionStatus" class="col-sm-3 control-label">活动状态：</label>
 									<div class="col-sm-5">
-										<select id="actionStatus" style="width:80px">
+										<select id="actionstatus" style="width:80px">
 											<optgroup label="活动状态">
 												<option value="1">正在进行</option>
 											</optgroup>
@@ -317,7 +305,7 @@
 									<label for="actionIntro" class="col-sm-3 control-label">活动类容：</label>
 									<div class="col-sm-5">
 										<textarea class="form-control" id="actionIntro"
-											placeholder="活动类容" style="height: 300px"></textarea>
+											placeholder="活动类容" style="height: 300px" name="actionintro"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
@@ -381,7 +369,7 @@
 			$(document).ready(function() {
 				// Generate a simple captcha
 		
-				$('#odlerAction').bootstrapValidator({
+				$('#olderAction').bootstrapValidator({
 					//        live: 'disabled',
 					message : 'This value is not valid',
 					feedbackIcons : {
@@ -417,17 +405,6 @@
 								},
 							}
 						},
-						actiontotal : {
-							validators : {
-								notEmpty : {
-									message : '举办地址不能为空'
-								},
-								regexp : {
-									regexp : /^[0-9]+$/,
-									message : '等级只能是数字'
-								}
-							}
-						},
 					}
 				});
 		
@@ -435,6 +412,7 @@
 		
 			});
 		</script>
+
 		<script type="text/javascript">
 			$("#actionsubmit").click(function() {
 				var form = new FormData(document.getElementById("olderAction"));
@@ -447,7 +425,9 @@
 					contentType : false,
 					success : function(result) {
 						//var resultdata = JSON.parse(result);
-						alert(result.success);
+						if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/actionView.html";
+						}
 					},
 					error : function() {
 						alert('fail')

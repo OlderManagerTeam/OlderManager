@@ -629,8 +629,10 @@
 					contentType : false,
 					success : function(result) {
 						//var resultdata = JSON.parse(result);
-						alert(result.success);
-		
+						 if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
+						} 
+						//alert(result.success)
 					},
 					error : function() {
 						alert('fail')
