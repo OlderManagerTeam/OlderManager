@@ -1,6 +1,7 @@
 package com.sds.em.service;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,7 +63,7 @@ public interface CourseService {
  	//查看活动详情
  	public Message selelctActiondetail(int actionid);
  	//分页测试--------------------------
- 	
- 	//得到videoCount--------------
+ 	Map<String,Object> selectByFy(Map<String,Object> param);
+
  	
 }

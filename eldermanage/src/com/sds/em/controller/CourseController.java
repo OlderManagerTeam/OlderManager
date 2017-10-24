@@ -2,7 +2,9 @@ package com.sds.em.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -141,5 +143,24 @@ public class CourseController {
 	}
 	
 	//分页测试---查询所有video
+	@RequestMapping(method = RequestMethod.GET,value="lecture/alllectures")
+	@ResponseBody
+	public  Map<String,Object> selectByFy(int pageSize,int pageNumber,String videopicurl,String videourl,String videoname,String videointro,String videodetail,Float videotime,Date videopublishdate,Integer videoheat,String videopartition){
 	
+		Map<String, Object> param=new HashMap<String, Object>();
+		int a=(pageNumber-1)*pageSize;
+		int b=pageSize;
+		param.put("a", a);
+		param.put("b", b);
+		param.put("videopicurl", videopicurl);
+		param.put("videourl", videourl);
+		param.put("videoname", videoname);
+		param.put("videointro", videointro);
+		param.put("videodetail", videodetail);
+		param.put("videotime", videotime);
+		param.put("videopublishdate", videopublishdate);
+		param.put("videoheat", videoheat);
+		param.put("videopartition", videopartition);
+		return courseService.selectByFy(param);
+	}
 }

@@ -2,7 +2,9 @@ package com.sds.em.service.impl;
 
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +34,7 @@ import com.sds.em.po.VideoExample.Criteria;
 import com.sds.em.po.Videorecord;
 import com.sds.em.po.VideorecordExample;
 import com.sds.em.service.CourseService;
+
 
 /**
  * 
@@ -370,10 +373,22 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false,"数据错误",null);
 	}
 
+	  //分页测试-------------------
+	@Override
+	public Map<String, Object> selectByFy(Map<String, Object> param) {
+		Map<String,Object> result = new HashMap<String,Object>();
+		int total=videoMapper.selectByFy(null).size();
+		List<Video> rows=videoMapper.selectByFy(param);
+		result.put("total",total);
+		result.put("rows",rows);
+		return result;
+		
+	}
+
 
 	
 
-    //分页测试-------------------
+  
 	
 	
 	
