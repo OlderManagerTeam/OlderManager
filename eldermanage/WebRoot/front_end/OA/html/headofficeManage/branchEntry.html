@@ -31,10 +31,8 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <link rel="stylesheet" type="text/css"
 	href="../../css/themes/flat-blue.css">
-<!--文件上传css文件-->
 <link href="../../lib/css/fileinput.css" media="all" rel="stylesheet"
 	type="text/css" />
-<!--验证css文件-->
 <link rel="stylesheet" type="text/css"
 	href="../../lib/css/bootstrapValidator.min.css">
 </head>
@@ -50,7 +48,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>总店管理</li>
-							<li class="active">分店录入</li>
+							<li class="active">添加分店</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -189,7 +187,6 @@
 					</div>
 				</div>
 			</li>
-			<!--在左边导航栏添加老人管理模块的导航-->
 			<li class="active panel panel-default dropdown">
 			<a data-toggle="collapse" href="#dropdown-headofficeManage"> 
 			   <span class="icon  glyphicon glyphicon-user"></span>
@@ -204,7 +201,6 @@
 					</div>
 				</div>
 			</li>
-			<!--添加在左边导航栏-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
@@ -283,13 +279,12 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<!--添加分店时候需要的表单-->
 							<form class="form-horizontal" id="branchEntry">
 								<div class="form-group">
-									<label for="branchName" class="col-sm-3 control-label">分店名：</label>
+									<label for="branchName" class="col-sm-3 control-label">分店名称：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="branchName"
-											placeholder="分店名" name="branchname">
+											placeholder="分店名称" name="branchname">
 									</div>
 								</div>
 								<div class="form-group">
@@ -336,7 +331,7 @@
 	<footer class="app-footer">
 		<div class="wrapper">
 			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+					class="fa fa-long-arrow-up"></i></a></span> 漏 2015 Copyright.
 		</div>
 	</footer>
 	<div>
@@ -359,11 +354,11 @@
 		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
 		<!-- Javascript -->
 		<script type="text/javascript" src="../../js/app.js"></script>
-		<!-- 文件上传 JS -->
+		<!-- 鏂囦欢涓婁紶 JS -->
 		<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
 		<script src="../../lib/js/fileinput_locale_zh.js"
 			type="text/javascript"></script>
-		<!--验证js文件-->
+		<!--楠岃瘉js鏂囦欢-->
 		<script type="text/javascript"
 			src="../../lib/js/bootstrapValidator.min.js"></script>
 		<script>
@@ -376,7 +371,7 @@
 			});
 		</script>
 
-		<!--表单验证-->
+		
 		<script type="text/javascript">
 			$(document).ready(function() {
 				// Generate a simple captcha
@@ -391,19 +386,19 @@
 					},
 					fields : {
 						branchname : {
-							message : '姓名不能为空',
+							message : '分店名称不能为空',
 							validators : {
 								notEmpty : {
-									message : '分店名不能为空'
+									message : '分店名称不能为空'
 								},
 								stringLength : {
 									min : 2,
 									max : 6,
-									message : '分店名只能2到6位汉字'
+									message : '分店名必须为2到6位'
 								},
 								regexp : {
 									regexp : /^[\u4e00-\u9fa5]+$/,
-									message : '分店名只能是中文'
+									message : '分店名必须为中文'
 								},
 							}
 						},
@@ -424,11 +419,11 @@
 						branchadderss : {
 							validators : {
 								notEmpty : {
-									message : '地址不能为空'
+									message : '分分店地址不能为空'
 								},
 								regexp : {
-									regexp : /^[\u4e00-\u9fa5]{2,4}省[\u4e00-\u9fa5]{2,6}市[\u4e00-\u9fa5]{2,6}县[\u4e00-\u9fa5]{0,20}$/,
-									message : '请输入正确的地址格式，格式为：XX省XX市XX县XXX'
+									regexp : /^[\u4e00-\u9fa5]{2,4}省\u4e00-\u9fa5]{2,6}市\u4e00-\u9fa5]{2,6}县\u4e00-\u9fa5]{0,20}$/,
+									message : '分店地址格式为：XX省XX市XX县XX'
 								}
 							}
 						},

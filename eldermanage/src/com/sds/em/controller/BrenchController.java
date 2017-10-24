@@ -99,8 +99,20 @@ public class BrenchController {
 
 	// 发布活动-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "action")
-	public @ResponseBody Message addAction(HttpSession session, Action action) throws Exception {
+	public @ResponseBody Message addAction(HttpSession session, String actionstartdate,
+			String actionintro,String actionname,String actionaddress,String actionstatus,String actiontotal) throws Exception {
 		// int actionbranchid=session.getAttribute("branchid");
+		Action action=new Action();
+		action.setActionaddress(actionaddress);;
+		action.setActionintro(actionintro);
+		action.setActionname(actionname);
+		
+		Date date = DateSimp.simp(actionstartdate);
+		action.setActionstartdate(date);
+		
+		action.setActionstatus(actionstatus);
+		
+		action.setActiontotal(100);
 		action.setActionbranchid(1);
 		action.setActionenroll(0);
 		return brenchManageService.publishAction(action);

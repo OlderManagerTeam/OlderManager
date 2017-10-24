@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>播放记录</title>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+
+	<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/default.css?t=227" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/htmlstyle.css" />
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="lib/handlebars/handlebars.min.js"></script>
+	<script type="text/javascript" src="lib/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="lib/amazeui/amazeui.min.js"></script>
+	<script type="text/javascript" src="lib/raty/jquery.raty.js"></script>
+	<script type="text/javascript" src="js/main.min.js?t=1"></script>
+	<style type="text/css">
+		
+	</style>
+
+
+</head>
+<body>
+	<header>
+	    <div class="header-top">
+	        <div class="width-center">
+	            <div class="header-title div-inline">
+	                <strong>孝和集团</strong>
+	                <span>XIAOHEJITUAN</span>
+	            </div>
+
+	            <div class="header-right">
+	                <span>全国咨询热线</span>
+	                <span>00-000-00000000</span>
+	            </div>
+
+
+
+	        </div>
+	    </div>
+	    <div class="header-nav">
+	        <button class="am-show-sm-only am-collapsed font f-btn" data-am-collapse="{target: '.header-nav'}">Menu <i
+	                class="am-icon-bars"></i></button>
+	        <nav>
+	        <ul class="header-nav-ul am-collapse am-in">
+	            <li class="on"><a href="index.html" name="index">网站首页</a></li>
+	            <li><a href="health_news.html" name="show">健康养生</a></li>
+	            <li><a href="product_list.html" name="course">讲座课程</a></li>
+	            <li><a href="shoppingindex.html" name="shopping">电子商务</a></li>
+	            <li><a href="about.html" name="about">关于我们</a></li>
+	            <li><a href="contact.html" name="message">联系我们</a>
+	                <div class="secondary-menu">
+
+	                    <ul><li><a href="message.html" class="message"></a></li></ul>
+	                </div>
+	            </li>
+	            <li style="float: right;"><a href="register.html" name="register">注册</a>
+	            <li style="float: right;"><a href="login.html" name="login">登录</a>
+	        </ul>
+	        </nav>
+	    </div>
+	</header>
+	
+	<div>
+	    <section class="article-content">
+	        <div class="article-protect-tab">
+	            <a href="videos.html"><span>健康视频</span></a>
+	            <a href="courses.html"><span>讲座</span></a>
+	            <a href="activities.html"><span>活动</span></a>
+	            <a href="video_history.html"><span>播放历史</span></a>
+	        </div>
+	    </section>
+
+	    <div style="height: 50px;"></div>
+
+	    <div style="margin-left: 20%;margin-right: 20%;">
+	    	<div style="font-size: 4rem;">播放历史</div>
+	    	<div id="historyItem">
+	    		
+	    	</div>
+	    </div>
+		    
+	</div>
+
+	<footer class="footer">
+	    <div class="footer-pc">
+	    <ul>
+	        <li><p>网站首页 | 健康养生 | 讲座课程 | 电子商务 | 关于我们 | 联系我们</p></li>
+	        <li><p>地址：江苏省南通市通州湾科创城</p></li>
+	        <li><P>电话：XXXX-XXXXXXX</P></li>
+	        <li><p>邮编：226000</p></li>
+	    </ul>
+	    </div>
+	</footer>
+	<script type="text/javascript">
+		$(function (){
+			// 后台数据
+			const historyItem = [
+				{
+					time: "20170101",
+					title: "爱我中华"
+				},
+				{
+					time: "20170202",
+					title: "爱我中华01"
+				},
+				{
+					time: "20170101",
+					title: "爱我中华02"
+				}
+			];
+			//创建并填充播放数据
+			const oUl = $("<ul>");
+		
+			for (var i = historyItem.length - 1; i >= 0; i--) {
+				// let time = $('<span>').html(historyItem[i].time);
+				// let title = $('<span>').html(historyItem[i].title);
+				// let oLi = $('<li>').append(time).append(title);
+				
+				var oLi = `
+						<a>
+			    			<li>
+			    				<time>${historyItem[i].time}</time>
+			    				<span>${historyItem[i].title}</span>
+			    			</li>
+			    		</a>
+				`;
+
+				// oUl.append(oLi);
+				$($(oLi)).appendTo(oUl);
+			}
+
+			oUl.addClass('videohistorylist');
+			//oUl.removeClass("red");
+
+			//oUl.css({ listStyleType: 'none', padding: 0});
+			// 存放播放历史容器
+			$('#historyItem').append(oUl);
+			// alert($('#historyItem'));
+		})
+	</script>
+</body>
+</html>
