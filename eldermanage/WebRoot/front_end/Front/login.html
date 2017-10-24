@@ -94,7 +94,10 @@
 							<p>未注册？ <a href="register.html">注册</a> | <a href="forgot.html">忘记密码？</a></p>
 						</div>
 						<div class="form-group">
-							<input type="submit" value="登陆" class="btn btn-primary" onclick="CheckLogin(true)">
+							<input type="submit" id="loginsubmit" value="登陆" class="btn btn-primary">
+						</div>
+						<div>
+							<input type="text" id="logincontent" value="123"/>
 						</div>
 					</form>
 					<!-- END Sign In Form -->
@@ -114,7 +117,29 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Main JS -->
 	<script src="js/login.js"></script>
-
+	<script type="text/javascript">
+		$("#loginsubmit").click(function(){
+			var data = {
+				stafftel: $("#tel").val(),
+				staffpassword: $("#password").val(),
+			}
+			
+			$.ajax({
+				type: 'post',
+				contentType:'application/json',
+				url: "http://localhost:8080/eldermanage/v1/index/staff/login/",
+				data: JSON.stringify(data),
+				success:function(result){
+					var resultdata = JSON.parse(result)
+					//alert(resultdata.staffPassword)
+					$("#logincontent").val(resultdata.staffPassword)
+				},
+				error:function(){
+					alert('fail')
+				}
+			})
+		})
+	</script>
 
 	</body>
 </html>
