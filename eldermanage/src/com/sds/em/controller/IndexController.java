@@ -129,12 +129,21 @@ public class IndexController {
 	}
 
 	//AJAX上传文件测试
-	@RequestMapping(method = RequestMethod.POST, value = "upload")
-	public @ResponseBody Message upload(String username,MultipartFile img,String accountnum) {
+	@RequestMapping(method = RequestMethod.PUT, value = "upload")
+	public @ResponseBody Message upload(String username,String accountnum) {
 		int i = 0;
 		int j = 0;
 		
 		int k=i+j;
 		return null;
 	}
+	
+/*	@RequestMapping(method = RequestMethod.PUT, value = "upload")
+	public @ResponseBody String put(String username) {
+		int i = 0;
+		int j = 0;
+		
+		int k=i+j;
+		return username;
+	}*/
 }
