@@ -34,6 +34,7 @@ import com.sds.em.po.Orders;
 import com.sds.em.po.OrdersExample;
 import com.sds.em.po.Visited;
 import com.sds.em.po.VisitedExample;
+import com.sds.em.pojo.ActionRecordOlderExtend;
 import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
@@ -247,15 +248,18 @@ public class BrenchServiceImpl implements BrenchService {
 
 			List<Actionrecord> actionRecordList = actionrecordMapper.selectByExample(actionrecordExample);
 
-			List<Olderbase>olderList=new ArrayList<Olderbase>();
+			List<ActionRecordOlderExtend> extend=new ArrayList<ActionRecordOlderExtend>();
 			
 			for(Actionrecord a:actionRecordList){
 				Olderbase olderbase=oldersbaseMapper.selectByPrimaryKey(a.getArecordolderid());
-				olderList.add(olderbase);
+				ActionRecordOlderExtend aroe=new ActionRecordOlderExtend();
+				aroe.setOlderbase(olderbase);
+				aroe.setArecorddate(a.getArecorddate());
+				extend.add(aroe);
 			}
 			
-			if (!olderList.isEmpty()) {
-				return new Message(true, "返回成功", olderList);
+			if (!extend.isEmpty()) {
+				return new Message(true, "返回成功", extend);
 			} else {
 				return new Message(false, "数据库错误", null);
 

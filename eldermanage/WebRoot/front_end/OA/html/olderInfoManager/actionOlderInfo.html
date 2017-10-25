@@ -247,7 +247,7 @@
 		<div class="side-body">
 			<div class="page-title">
 				<span class="title">老年人客户列表</span>
-				<div class="description">Olderman Client List</div>
+				<div class="description">Olderman Action List</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
@@ -255,14 +255,9 @@
 						<div class="card-header">
 
 							<div class="card-title">
-								<div class="title">列表</div>
+								<div class="title">本活动参加信息</div>
 							</div>
-							<div class="card-title  col-md-offset-10">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../olderInfoManager/olderEntry.html" role="button">添加老人</a>
-								</div>
-							</div>
+							
 						</div>
 						<div class="card-body">
 							<table class="datatable table table-striped" cellspacing="0"
@@ -270,34 +265,22 @@
 								<thead>
 									<tr>
 										<th>序号</th>
+										<th>申请参加时间</th>
 										<th>老人姓名</th>
 										<th>老人性别</th>
 										<th>老人年龄</th>
 										<th>老人电话号码</th>
-										<th></th>
-										<th>老人单身状况</th>
-										<th>老人最大积分</th>
-										<th>查看老人订单</th>
-										<th>查看详细信息</th>
-										<th>查看病历</th>
-										<th>查看回访记录</th>
 										<th>操作</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
 										<th>序号</th>
+										<th>申请参加时间</th>
 										<th>老人姓名</th>
 										<th>老人性别</th>
 										<th>老人年龄</th>
 										<th>老人电话号码</th>
-										<th></th>
-										<th>老人单身状况</th>
-										<th>老人最大积分</th>
-										<th>查看老人订单</th>
-										<th>查看详细信息</th>
-										<th>查看病历</th>
-										<th>查看回访记录</th>
 										<th>操作</th>
 									</tr>
 								</tfoot>
@@ -343,65 +326,65 @@
 
 
 	<script type="text/javascript">
-	UrlParm = function() { // url参数
-				var data,
-					index;
-				(function init() {
-					data = [];
-					index = {};
-					var u = window.location.search.substr(1);
-					if (u != '') {
-						var parms = decodeURIComponent(u).split('&');
-						for (var i = 0, len = parms.length; i < len; i++) {
-							if (parms[i] != '') {
-								var p = parms[i].split("=");
-								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
-									data.push([ '' ]);
-									index[p[0]] = data.length - 1;
-								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
-									data[0] = [ p[1] ];
-								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
-									data.push([ p[1] ]);
-									index[p[0]] = data.length - 1;
-								} else { // c=aaa
-									data[index[p[0]]].push(p[1]);
-								}
+		UrlParm = function() { // url参数
+			var data,
+				index;
+			(function init() {
+				data = [];
+				index = {};
+				var u = window.location.search.substr(1);
+				if (u != '') {
+					var parms = decodeURIComponent(u).split('&');
+					for (var i = 0, len = parms.length; i < len; i++) {
+						if (parms[i] != '') {
+							var p = parms[i].split("=");
+							if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+								data.push([ '' ]);
+								index[p[0]] = data.length - 1;
+							} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+								data[0] = [ p[1] ];
+							} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+								data.push([ p[1] ]);
+								index[p[0]] = data.length - 1;
+							} else { // c=aaa
+								data[index[p[0]]].push(p[1]);
 							}
 						}
 					}
-				})();
-				return {
-					// 获得参数,类似request.getParameter()
-					parm : function(o) { // o: 参数名或者参数次序
-						try {
-							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
-						} catch (e) {}
-					},
-					//获得参数组, 类似request.getParameterValues()
-					parmValues : function(o) { // o: 参数名或者参数次序
-						try {
-							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
-						} catch (e) {}
-					},
-					//是否含有parmName参数
-					hasParm : function(parmName) {
-						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
-					},
-					// 获得参数Map ,类似request.getParameterMap()
-					parmMap : function() {
-						var map = {};
-						try {
-							for (var p in index) {
-								map[p] = data[index[p]];
-							}
-						} catch (e) {}
-						return map;
-					}
 				}
-			}();
-			
-	function load() {
-		var actionid=UrlParm.parm("actionid");;
+			})();
+			return {
+				// 获得参数,类似request.getParameter()
+				parm : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+					} catch (e) {}
+				},
+				//获得参数组, 类似request.getParameterValues()
+				parmValues : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+					} catch (e) {}
+				},
+				//是否含有parmName参数
+				hasParm : function(parmName) {
+					return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+				},
+				// 获得参数Map ,类似request.getParameterMap()
+				parmMap : function() {
+					var map = {};
+					try {
+						for (var p in index) {
+							map[p] = data[index[p]];
+						}
+					} catch (e) {}
+					return map;
+				}
+			}
+		}();
+	
+		function load() {
+			var actionid = UrlParm.parm("actionid");
 			// 后台数据
 			$.ajax({
 				type : 'get',
@@ -413,7 +396,7 @@
 					const oTbody = $("<tbody>");
 					var olderItem = result.data;
 					for (var i = olderItem.length - 1; i >= 0; i--) {
-						var _date = olderItem[i].olderbirthday;
+						var _date = olderItem[i].olderbase.olderbirthday;
 						var date = new Date(_date);
 						if (date) {
 							var year = 1000 * 60 * 60 * 24 * 365;
@@ -422,40 +405,24 @@
 							var age = parseInt((now - birthday) / year);
 						}
 						var orderView = "../olderInfoManager/orderView.html?olderid=";
-						orderView = orderView + olderItem[i].olderid;
+						orderView = orderView + olderItem[i].olderbase.olderid;
 						var olderInfo = "../olderInfoManager/olderInfo.html?oldertel=";
-						olderInfo = olderInfo + olderItem[i].oldertel;
-						var olderSickView = "../olderInfoManager/olderSickView.html?olderid=";
-						olderSickView = olderSickView + olderItem[i].olderid;
-						var visitedView = "../olderInfoManager/visitedView.html?olderid=";
-						visitedView = visitedView + olderItem[i].olderid;
-						var olderAlter = "../olderInfoManager/olderAlter.html?olderid=";
-						olderAlter = olderAlter + olderItem[i].olderid;
+						olderInfo = olderInfo + olderItem[i].olderbase.oldertel;
 						var oTr = `<tr>
-														<td>${i + 1}</td>
-														<td>${olderItem[i].oldername}</td>
-														<td>${olderItem[i].oldersex}</td>
-														<td>${age}</td>
-														<td>${olderItem[i].oldertel}</td>
-														<td></td>
-														<td>${olderItem[i].oldersinglestatus}</td>
-														<td>${olderItem[i].oldermaxpoint}</td>
-														<td><a class="btn btn-primary btn-xs"
-															href=${orderView} role="button">查看老人订单</a></td>
-														<td><a class="btn btn-primary btn-xs"
-															href=${olderInfo} role="button">查看详细信息</a>
-														</td>
-														<td><a class="btn btn-primary btn-xs"
-															href=${olderSickView} role="button">查看病历</a>
-														</td>
-														<td><a class="btn btn-primary btn-xs"
-															href=${visitedView} role="button">查看回访记录</a>
-														</td>
-														<td><a class="btn btn-primary btn-xs"
-															href="../olderInfoManager/olderAlter.html?olderid=${olderItem[i].olderid}" role="button">修改</a>
-															<button class="btn btn-primary btn-xs" >删除</button></td>
-													</tr>
-											`;
+															<td>${i + 1}</td>
+															<td>${date.toLocaleDateString()}</td>
+															<td>${olderItem[i].olderbase.oldername}</td>
+															<td>${olderItem[i].olderbase.oldersex}</td>
+															<td>${age}</td>
+															<td>${olderItem[i].olderbase.oldertel}</td>
+															
+															<td><a class="btn btn-primary btn-xs"
+																href=${olderInfo} role="button">详细</a>
+																<a class="btn btn-primary btn-xs"
+																href="../olderInfoManager/olderAlter.html?olderid=${olderItem[i].olderid}" role="button">拒绝</a>
+																</td>
+														</tr>
+												`;
 						$($(oTr)).appendTo('#olderlist');
 					}
 	
@@ -468,9 +435,6 @@
 					alert('数据库错误')
 				}
 			);
-		})
-	
-		function load() {
 		}
 	</script>
 	<script type="text/javascript" src="../../js/app.js"></script>
