@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -468,8 +468,8 @@
 			}();
 		
 			function load() {
-				// var olderid = UrlParm.parm("olderid");
-				var oldertel = 18199999999;
+				var oldertel = UrlParm.parm("oldertel");
+				//var oldertel = 18199999999;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
@@ -478,37 +478,21 @@
 					success : function(result) {
 						var olderName = document.getElementById("oldername");
 						//olderName.value = result.data.oldername;
-						olderName.innerHTML =result.data.oldername;
-		              // alert("x1="+result.data.oldername); 
+						olderName.innerHTML = result.data.oldername;
+						// alert("x1="+result.data.oldername); 
 						var olderTel = document.getElementById("oldertel");
 						olderTel.innerHTML = result.data.oldertel;
-		
-		
 						var olderAddress = document.getElementById("olderaddress");
 						olderAddress.innerHTML = result.data.olderaddress;
-		
-		
 						var olderIDE = document.getElementById("olderide");
 						olderIDE.innerHTML = result.data.olderide;
-		
-		
 						var date = new Date(result.data.olderbirthday);
 						var d = date.toISOString().slice(0, 10);
 						document.getElementById("olderbirthday").innerHTML = d;
-		
-						alert(result.data.oldersinglestatus);
-		
 						document.getElementById("oldernation").innerHTML = result.data.oldernation;
 						document.getElementById("oldersex").innerHTML = result.data.oldersex;
 						document.getElementById("olderheadurl").src = result.data.olderheadurl;
-		
 						document.getElementById("oldersinglestatus").innerHTML = result.data.oldersinglestatus;
-		
-						/* 	document.getElementById("olderheadurl").value = result.data.olderheadurl;
-							$("#olderheadurl").filePlural.valueOf(result.data.olderheadurl);
-						 */
-						
-		
 					},
 					error : function() {
 						alert('数据库错误')

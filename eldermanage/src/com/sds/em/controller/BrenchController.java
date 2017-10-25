@@ -162,7 +162,7 @@ public class BrenchController {
 		return brenchManageService.getBranchName(staffid);
 	}
 
-	// 查询本分店所有老人的基本信息
+	// 查询本分店所有老人的基本信息-前端
 
 	@RequestMapping(method = RequestMethod.GET, value = "elders/info")
 	public @ResponseBody Message allOlderByBranch(HttpSession session) throws Exception {
@@ -179,7 +179,7 @@ public class BrenchController {
 		return brenchManageService.deleteANElder(oldertel);
 	}
 
-	// 获取某个老人的信息--测试成功
+	// 获取某个老人的信息--测试成功-前端-完全
 
 	@RequestMapping(method = RequestMethod.GET, value = "elder/info")
 	public @ResponseBody Message getOlder(String oldertel) throws Exception {
