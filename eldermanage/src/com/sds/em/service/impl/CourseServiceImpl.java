@@ -64,50 +64,29 @@ public class CourseServiceImpl implements CourseService {
 	ActionrecordMapper actionrecordMapper;
 
 
-//	// 查询所有的健康类视频(返回课程列表)
-//	@Override
-//	public Message allClassesByhealthy() {
-//
-//		VideoExample videoExample = new VideoExample();
-//		Criteria videoCriteria = videoExample.createCriteria();
-//		videoCriteria.andVideopartitionEqualTo("健康视频");
-//		List<Video> videoList = videoMapper.selectByExample(videoExample);
-//		if (!videoList.isEmpty()) {
-//			return new Message(true, "返回成功", videoList);
-//		}
-//
-//		return new Message(false, "数据错误", null);
-//	}
+
 	
 	// 查询所有的视频(返回课程列表)
+	
+	
 	@Override
 	public Message allClasses(String videopartition) {
+		List<Video> videoList  = null;
+//		VideoExample videoExample = new VideoExample();
+//		videoExample.setOrderByClause("videoid DESC,videoheat DESC");	
+//		Criteria videoCriteria = videoExample.createCriteria();
+//		videoCriteria.andVideopartitionEqualTo(videopartition);
+//		
+//		List<Video> videoList = videoMapper.selectByExample(videoExample);
+		videopartition="健康视频";
+	    if(videopartition.equals("健康视频")){
+	    	videoList =  videoMapper.select_video_healthy();
+	    }else if(videopartition.equals("讲座回放")){
+	    	videoList =  videoMapper.select_video_lecture();
+	    }
 		
-		VideoExample videoExample = new VideoExample();
-		Criteria videoCriteria = videoExample.createCriteria();
-		List<Video> videoList=null;
-		
-		if(videopartition=="健康视频"){
-			
-			videoCriteria.andVideopartitionEqualTo("健康视频");
-			List<Video> videoList1 = videoMapper.selectByExample(videoExample);
-			if(!videoList1.isEmpty()){
-				for(int i=0;i<videoList1.size();i++){
-					videoList.set(i, videoList1.get(videoList1.size()-1));
-				}
-			}
-			 
-		}else if(videopartition=="讲座回放"){
-			videoCriteria.andVideopartitionEqualTo("讲座回放");
-			 List<Video> videoList2 = videoMapper.selectByExample(videoExample);
-			 if(!videoList2.isEmpty()){
-					for(int i=0;i<videoList2.size();i++){
-						videoList.set(i, videoList2.get(videoList2.size()-1));
-					}
-				}
-		}
 		if (!videoList.isEmpty()) {
-			return new Message(true, "返回成功", videoList);
+			return new Message(true, "返回成功",videoList);
 		}
 
 		return new Message(false, "数据错误", null);
@@ -406,16 +385,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	  //分页测试-------------------
-	@Override
-	public Map<String, Object> selectByFy(Map<String, Object> param) {
-		Map<String,Object> result = new HashMap<String,Object>();
-		int total=videoMapper.selectByFy(null).size();
-		List<Video> rows=videoMapper.selectByFy(param);
-		result.put("total",total);
-		result.put("rows",rows);
-		return result;
-		
-	}
+	
 
 
 

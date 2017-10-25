@@ -289,16 +289,11 @@
     where videoId = #{videoid,jdbcType=INTEGER}
   </update>
    <!-- 自定义sql -->
- 	<select id="selectByFy" resultType="com.sds.em.po.Video" parameterType="Map">
-		SELECT *
-		FROM video
-		<if test="a!=null">
-			<where> 
-			    <if test="videoname!=null and videoname!=''">  videoname=#{videoname}</if>
-				<if test="videoheat!=null and videoheat!=''">AND  videoheat=#{videoheat}</if>
-				
-			</where>
-			LIMIT #{a},#{b}
-		</if>
+	<select id="select_video_healthy"  resultType="com.sds.em.po.Video" >
+	       SELECT * from video WHERE videopartition='健康视频' order by videoid desc;
 	</select>
+	<select id="select_video_lecture"  resultType="com.sds.em.po.Video" >
+	       SELECT * from video WHERE videopartition='讲座回放' order by videoid desc;
+	</select>
+	
 </mapper>
