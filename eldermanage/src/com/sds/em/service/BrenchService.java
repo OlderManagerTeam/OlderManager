@@ -32,6 +32,9 @@ public interface BrenchService {
 	
 	//查看活动的详情信息
 	public Message getAction(int actionid) throws Exception;
+	
+	//查找本活动参加的老人信息
+	public Message getActionOlder(int actionid)throws Exception;
 
 	// 查询这个管理员所在的分店名
 	public Message getBranchName(int staffid) throws Exception;

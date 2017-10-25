@@ -45,7 +45,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>分店管理</li>
-							<li class="active">老年人客户列表</li>
+							<li class="active">本活动参加老人</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -348,7 +348,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/brench/elders/info",
+				url : "http://localhost:8080/eldermanage/v1/brench/action/older/info",
 				data : null
 			}).then(
 				function(result) {

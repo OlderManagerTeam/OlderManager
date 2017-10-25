@@ -4,7 +4,10 @@ import com.sds.em.po.Video;
 import com.sds.em.po.VideoExample;
 import com.sds.em.po.VideorecordExample;
 
+
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface VideoMapper {
@@ -32,5 +35,5 @@ public interface VideoMapper {
     
     Video selectOlderVideoRecord(@Param("example") VideorecordExample example);
     //分页测试-------------
-    public List<Video> findPages(@Param(value="startPos") Integer startPos,@Param(value="pageSize") Integer pageSize) throws Exception;
+    List<Video> selectByFy(Map<String,Object> param);
 }

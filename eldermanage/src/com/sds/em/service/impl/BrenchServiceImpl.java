@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.ActionMapper;
-
+import com.sds.em.mapper.ActionrecordMapper;
 import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
 import com.sds.em.mapper.BranchMapper;
@@ -19,6 +19,8 @@ import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.mapper.VisitedMapper;
 import com.sds.em.po.Action;
 import com.sds.em.po.ActionExample;
+import com.sds.em.po.Actionrecord;
+import com.sds.em.po.ActionrecordExample;
 import com.sds.em.po.Branch;
 import com.sds.em.po.BranchExample;
 import com.sds.em.po.Lecture;
@@ -58,6 +60,9 @@ public class BrenchServiceImpl implements BrenchService {
 
 	@Autowired
 	LectureMapper lectureMapper;
+
+	@Autowired
+	ActionrecordMapper actionrecordMapper;
 
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
@@ -231,6 +236,37 @@ public class BrenchServiceImpl implements BrenchService {
 			return new Message(false, "数据库错误", null);
 
 		}
+	}
+
+	@Override
+	public Message getActionOlder(int actionid) throws Exception {
+		try {
+			ActionrecordExample actionrecordExample = new ActionrecordExample();
+			com.sds.em.po.ActionrecordExample.Criteria criteria = actionrecordExample.createCriteria();
+			criteria.andArecordactionidEqualTo(actionid);
+
+			List<Actionrecord> actionRecordList = actionrecordMapper.selectByExample(actionrecordExample);
+
+			List<Olderbase>olderList=new ArrayList<Olderbase>();
+			
+			for(Actionrecord a:actionRecordList){
+				Olderbase olderbase=oldersbaseMapper.selectByPrimaryKey(a.getArecordolderid());
+				olderList.add(olderbase);
+			}
+			
+			if (!olderList.isEmpty()) {
+				return new Message(true, "返回成功", olderList);
+			} else {
+				return new Message(false, "数据库错误", null);
+
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+
+		}
+
 	}
 
 	@Override

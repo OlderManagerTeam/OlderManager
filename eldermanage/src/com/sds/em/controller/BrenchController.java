@@ -192,6 +192,12 @@ public class BrenchController {
 	public @ResponseBody Message getAction(int actionid) throws Exception {
 		return brenchManageService.getAction(actionid);
 	}
+	
+	//查找本活动参加的老人信息
+	@RequestMapping(method = RequestMethod.GET, value = "action/older/info")
+	public @ResponseBody Message getActionOlder(int actionid) throws Exception {
+		return brenchManageService.getActionOlder(actionid);
+	}
 
 	// 查询这个管理员所在的分店名--测试通过
 
