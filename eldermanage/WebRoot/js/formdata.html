@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>formdata.html</title>
@@ -15,7 +15,6 @@
 		//             var req = new XMLHttpRequest();
 		//             req.open("post", "${pageContext.request.contextPath}/public/testupload", false);
 		//             req.send(form);
-		form.append("accountnum", 123456);
 		$.ajax({
 			url : "http://localhost:8080/eldermanage/v1/index/staff/upload",
 			type : "post",
@@ -31,13 +30,16 @@
 				window.clearInterval(timer);
 			}
 		});
+		get(); //此处为上传文件的进度条
 	}
 </script>
 </head>
 
 <body>
 	<form id="tf">
-		<input type="file" name="img" /> <input type="text" name="username" />
+		<input type="file" name="img" /> 
+		<input type="text" name="username" />
+		<input type="hidden" name="_method" value="put"/>
 		<input type="button" value="提" onclick="test();" />
 	</form>
 </body>
