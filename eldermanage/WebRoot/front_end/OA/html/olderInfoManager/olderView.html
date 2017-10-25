@@ -349,10 +349,9 @@
 				type : 'get',
 				contentType : 'application/json',
 				url : "http://localhost:8080/eldermanage/v1/brench/elders/info",
-				data : null
+				data : null,
 			}).then( 
 				function(result) {
-					const oTbody = $("<tbody>");
 					var olderItem = result.data;
 					for (var i = olderItem.length - 1; i >= 0; i--) {
 						var _date = olderItem[i].olderbirthday;
