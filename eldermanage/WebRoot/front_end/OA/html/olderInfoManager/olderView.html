@@ -454,39 +454,7 @@
 		// $('#olderlist').append(oTbody);
 		})
 	</script>
-	<script type="text/javascript">
-		$("#entrysubmit").click(function() {
-			var olderPoint = 0
-			var data = {
-				oldername : $("#olderName").val(),
-				oldersex : $("#olderSex").find("option:selected").text(),
-				olderpassword : $("#olderPassword").val(),
-				olderbirthday : $("#olderBirthday").val(),
-				oldertel : $("#olderTel").val(),
-				olderaddress : $("#olderAdress").val(),
-				oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-				olderide : $("#olderIDE").val(),
 	
-				oldernation : $("#olderNation").find("option:selected").text(),
-				olderheadurl : $("#olderHeadUrl").val(),
-				olderpoint : $("#olderPoint").val(),
-			}
-			$.ajax({
-				type : 'post',
-				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
-				data : JSON.stringify(data),
-				success : function(result) {
-					var resultdata = JSON.parse(result)
-					alert(resultdata.success)
-				},
-				error : function() {
-					alert('fail')
-				}
-			})
-	
-		}
-		)
 	
 		function load() {
 		}

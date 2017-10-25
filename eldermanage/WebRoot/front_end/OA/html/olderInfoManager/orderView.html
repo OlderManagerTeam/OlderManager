@@ -199,8 +199,6 @@
 				<div id="dropdown-olderView" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
-							<!-- 	<li><a href="../olderInfoManager/olderView.html" -->
-							<li><a id="submitolderview">老年人客户列表</a></li>
 							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
 							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
@@ -304,6 +302,7 @@
 
 								</tbody>
 							</table>
+							<div id="orderView"></div>
 						</div>
 					</div>
 				</div>
@@ -319,6 +318,7 @@
 	</footer>
 	<div>
 		<!-- Javascript Libs -->
+
 		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
@@ -337,30 +337,72 @@
 		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
 		<!-- Javascript -->
 		<script type="text/javascript" src="../../js/app.js"></script>
-
-
 		<script type="text/javascript">
-			$("#submitolderview").click(function() {
+			$(function() {
+				// 后台数据
+				var olderid = 14;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elders/info",
-					//data : JSON.stringify(data),
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/orders?olderid=" + olderid,
+					data : null,
 					success : function(result) {
-		
-						// window.location.href="../olderInfoManager/olderView.html"; */
-						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/olderView.html?result.data";
+						const oTbody = $("<tbody>");
+						var orderItem = result.data;
+						for (var i = orderItem.length - 1; i >= 0; i--) {
+							var _date = orderItem[i].orderdate;
+							var date = new Date(_date);
+							var oTr = `<tr>
+														<td>${orderItem[i].orderid}</td>
+														<td>${orderItem[i].date.toISOString().slice(0, 10)}</td>
+														<td>${orderItem[i].orderstatus}</td>
+														<td>${orderItem[i].ordertotal}</td>
+													</tr>
+											`;
+							$($(oTr)).appendTo('#orderView');
 						}
-					//alert(result.data);
 					},
 					error : function() {
-						alert('fail')
+						alert('数据库错误')
 					}
 				})
-			}
-			)
+			})
 		</script>
+
+	<!-- 	<script type="text/javascript">
+			$(function() {
+				// 后台数据
+				const orderItem = [
+					{
+						orderid : "1",
+						orderdate : "热水器",
+						orderstatus : "完成",
+						ordertotal : "60",
+					},
+					{
+						orderid : "2",
+						orderdate : "洗衣机",
+						orderstatus : "送货中",
+						ordertotal : "90",
+					},
+		
+				];
+				//创建并填充播放数据
+				const oTbody = $("<tbody>");
+		
+				for (var i = orderItem.length - 1; i >= 0; i--) {
+					var oTr = `<tr>
+													<td>${orderItem[i].orderid}</td>
+													<td>${orderItem[i].orderdate}</td>
+													<td>${orderItem[i].orderstatus}</td>
+													<td>${orderItem[i].ordertotal}</td>
+												</tr>
+										`;
+					$($(oTr)).appendTo('#orderView');
+				}
+			// $('#olderlist').append(oTbody);
+			})
+		</script> -->
 </body>
 
 </html>
