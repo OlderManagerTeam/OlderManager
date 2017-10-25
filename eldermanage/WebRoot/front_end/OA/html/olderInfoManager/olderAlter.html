@@ -39,7 +39,7 @@
 	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
-<body class="flat-blue" onload="load()">
+<body class="flat-blue">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -291,7 +291,7 @@
 								<div class="form-group">
 									<label for="olderSex" class="col-sm-3 control-label">老人性别：</label>
 									<div class="col-sm-5">
-										<select id="oldersex">
+										<select  id="oldersex">
 											<optgroup label="性别">
 												<option value="male">男</option>
 												<option value="famale">女</option>
@@ -356,9 +356,9 @@
 									<label for="olderNation" class="col-sm-3 control-label">老人民族：</label>
 									<div class="col-sm-5">
 										<select id="oldernation">
-											<optgroup label="名族">
-												<option value="">民族</option>
-												<option value="01">汉族</option>
+											<optgroup>
+												<option>民族</option>
+												<option value="汉族">汉族</option>
 												<option value="02">蒙古族</option>
 												<option value="03">回族</option>
 												<option value="04">藏族</option>
@@ -419,15 +419,17 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="olderHeadUrl" class="col-sm-3 control-label">老人照片：</label>
+									<label for="olderHeadUrl1" class="col-sm-3 control-label">老人照片：</label>
 									<div class="col-sm-5">
-										<input type="file" id="olderheadurl" name="olderheadurl">
+										<div>
+											<img src="" id="olderheadurl1">
+										</div>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="olderBranchId" class="col-sm-3 control-label">管理老人的分店：</label>
+									<label for="olderHeadUrl" class="col-sm-3 control-label">老人照片：</label>
 									<div class="col-sm-5">
-										<text class="form-control" id="olderBranchId">例如：贵阳分店</text>
+										<input type="file" id="olderheadurl" name="olderheadurl">
 									</div>
 								</div>
 								<!--
@@ -673,10 +675,41 @@
 					}
 				}
 			}();
+		</script>
+
+
+
+		<script type="text/javascript">
+			$("#altersubmit").click(function() {
+				var form = new FormData(document.getElementById("olderAlter"));
+				form.append("oldersex", $("#oldersex option:selected").text());
+				form.append("oldersinglestatus", $("#oldersinglestatus option:selected").text());
+				form.append("oldernation", $("#oldernation option:selected").text());
+				$.ajax({
+					type : 'post',
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/infoupdate",
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						//var resultdata = JSON.parse(result);
+						alert(result.success);
+						if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
+						}
+					//alert(result.success)
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
 		
-			function load() {
-				// var olderid = UrlParm.parm("olderid");
-				var oldertel = 18199999999;
+			}
+			)
+		</script>
+		<script type="text/javascript">
+			$(function() {
+				var oldertel = UrlParm.parm("oldertel");
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
@@ -703,14 +736,13 @@
 						var olderIDE = document.getElementById("olderIDE");
 						olderIDE.value = result.data.olderide;
 		
-						var date = new Date(result.data.olderbirthday);
+						var date = new Date(result.data.olderbirthday + 1000 * 60 * 60 * 8);
 						var d = date.toISOString().slice(0, 10);
 						document.getElementById("olderbirthday").value = d;
-		
-						alert(result.data.oldersex);
-		
-						document.getElementById("oldernation").value = result.data.oldernation;
-						document.getElementById("oldersex").value = result.data.oldersex;
+						document.getElementById("olderheadurl1").src = result.data.olderheadurl;
+						
+						document.getElementById("oldernation").title = result.data.oldernation;
+						document.getElementById("oldersex").text = result.data.oldersex;
 						document.getElementById("oldersinglestatus").value = result.data.oldersinglestatus;
 		
 						//document.getElementById("olderheadurl").src = result.data.olderheadurl;
@@ -720,37 +752,7 @@
 						alert('数据库错误')
 					}
 				})
-			}
-		</script>
-
-
-
-		<script type="text/javascript">
-			$("#altersubmit").click(function() {
-				var form = new FormData(document.getElementById("olderAlter"));
-				form.append("oldersex", $("#oldersex option:selected").text());
-				form.append("oldersinglestatus", $("#oldersinglestatus option:selected").text());
-				form.append("oldernation", $("#oldernation option:selected").text());
-				$.ajax({
-					type : 'put',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
-					data : form,
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						//var resultdata = JSON.parse(result);
-						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
-						}
-					//alert(result.success)
-					},
-					error : function() {
-						alert('fail')
-					}
-				})
-		
-			}
-			)
+			})
 		</script>
 </body>
 

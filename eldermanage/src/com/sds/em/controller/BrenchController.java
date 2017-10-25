@@ -79,9 +79,9 @@ public class BrenchController {
 	}
 
 	// 老人基本信息的修改-测试通过
-	@RequestMapping(method = RequestMethod.PUT, value = "elder/info")
+	@RequestMapping(method = RequestMethod.POST, value = "elder/infoupdate")
 	public @ResponseBody Message update(HttpSession session, String oldername, String oldersex, String olderbirthday,
-			String olderpassword, String oldertel, String olderaddress, String oldersinglestatus, String olderide,
+			String olderpassword, String repassword,String oldertel, String olderaddress, String oldersinglestatus, String olderide,
 			String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
