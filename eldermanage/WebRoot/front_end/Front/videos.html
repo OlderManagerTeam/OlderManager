@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/default.css?t=227" />
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/htmlstyle.css" />
+	<link rel="stylesheet" href="css/layui.css"  media="all">
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	
 	<script type="text/javascript" src="lib/handlebars/handlebars.min.js"></script>
@@ -22,6 +23,10 @@
 	<script type="text/javascript" src="lib/amazeui/amazeui.min.js"></script>
 	<script type="text/javascript" src="lib/raty/jquery.raty.js"></script>
 	<script type="text/javascript" src="js/main.min.js?t=1"></script>
+
+	<script src="js/layui.all.js" charset="utf-8"></script>
+	<script src="js/laypage.js" charset="utf-8"></script>
+
 	<style type="text/css">
 		
 	</style>
@@ -107,7 +112,7 @@
 	    			请选择要观看的视频类型:
 	    		</div>
 		    	<div style="float: left;">
-		    		<select class="form-control" style="width: 18rem;font-size: 2rem;height: 3rem">
+		    		<select class="form-control" style="width: 25rem;font-size: 2rem;height: 4rem">
 		    			<option>健康视频</option>
 		    			<option>讲座回放</option>
 		    		</select>
@@ -117,59 +122,20 @@
 
 	    	<div class="row">
 	    		<!-- 视屏列表 -->
-			   <div class="col-md-8 col-lg-9">
+			   <div class="col-md-8 col-lg-9" id="videolist">
 			   		
-			   		<div class="col-md-6 col-lg-4">
-			   		   <table id="videoList" border="1">
-			   		         <tr>
-			   		             <td>
-			   		             <a href="#">
-						    			<div>
-						    				<img src="images/banner.jpg" class="courseimg">
-						    			</div>
-						    			<div><p class="videotitlesize">
-						    				健康视频健康视频健康视频健康视频健康视频健康视</p></div>
-						    			<div><span class="videotimesize">视频时长:300min</span>
-						    				<span class="videovolume">播放量:1000</span>
-						    			</div>
-						    			<div style="height: 5rem;"></div>
-		    			       </a>
-		    			      </td>
-		    			   </tr>
-			   		   </table>
-			   		</div>
-			   		<div class="col-md-6 col-lg-4">
-			   		      <ul id="list"></ul> 
-			   		</div>
 			   </div>
 
 			   <!-- 推荐列表 -->
-			   <div class="col-md-4 col-lg-3">
+			    <div class="col-md-4 col-lg-3" id="heatlist">
 	    			<p class="hotvideotitle">热门视频</p>
-	    			<p class="hotvideo"><a href="#"><span>1.</span><span>如何干嘛了干嘛了干嘛了嘎嘛是公司的</span></a></p>
-	    			<p class="hotvideo"><a href="#"><span>2.</span><span>如何干嘛了干嘛了干嘛了嘎嘛是公司的</span></a></p>
-	    			<p class="hotvideo"><a href="#"><span>3.</span><span>如何干嘛了干嘛了干嘛了嘎嘛是公司的</span></a></p>
-	    			<p class="hotvideo"><a href="#"><span>4.</span><span>如何干嘛了干嘛了干嘛了嘎嘛是公司的</span></a></p>
-	    			<p class="hotvideo"><a href="#"><span>5.</span><span>如何干嘛了干嘛了干嘛了嘎嘛是公司的</span></a></p>
-	    			<p class="hotvideo"><a href="#"><span>6.</span><span>如何干嘛了干嘛了干嘛了嘎嘛是公司的</span></a></p>
-	    			<p class="hotvideo"><a href="#"><span>7.</span><span>如何干嘛了干嘛了干嘛了嘎嘛是公司的</span></a></p>
-	    			<p class="hotvideo"><a href="#"><span>8.</span><span>如何干嘛了干嘛了干嘛了嘎嘛是公司的</span></a></p>
+	    			
 		   		</div>
 
 			  
 			</div>
-			<!-- page  -->
-			<div style="margin-left: 29%;font-size: 2rem;">
-				<ul class="pagination">
-					<li><a href="#">首页</a></li>
-					<li><a href="#">上一页</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">/</a></li>
-					<li><a href="#">10</a></li>
-					<li><a href="#">下一页</a></li>
-					<li><a href="#">尾页</a></li>
-				</ul>
-			</div>
+			<!-- 分页  -->
+			<div id="demo5" style="margin-left: 30rem;"></div>
 
 	    </div>
 		    
@@ -186,31 +152,90 @@
 	    </ul>
 	    </div>
 	</footer>
-		
+
 	<script type="text/javascript">
-	
+		var resultDatas;
 		$.ajax({
-			type: 'get',
-			contentType: 'application/json',
+			type:'get',
+			contentType:'application/json',
 			url:"http://localhost:8080/eldermanage/v1/course/classes",
+			data:null,
 			success:function(result){
-				    alert(result.data);
-				      var videoList = "";
-				       if(result.data.length == 0){
-				            videoList += "<li>查找不到相关的事项!</li>";
-				       }else{
-				             for(var i = 0; i < result.data.length; i++ ) {
-			                          videoList += "<li><a href='javascript:void(0);'>"+
-                                            (i+1) + "." + result.data[i].videoname +
-                                        "</a></li>";
-                                       
-			                }
-				       }
-				        $('#list').html(list);
-				        
-         } 
-   
-  });   
+				//将服务器传来的字符串转换为JSON格式运用在html
+				//var resultdata = JSON.parse(result)
+				//返回success信息
+				//alert(result.success)
+				var data = result.data;
+				layui.use(['laypage', 'layer'], function(){
+					var laypage = layui.laypage
+					,layer = layui.layer;
+					laypage.render({
+					    elem: 'demo5'
+					    ,count: data.length
+					    ,limit: 12
+					    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+					    ,hash: 'fenye' //自定义hash值
+					    ,jump: function(obj){
+					      //模拟渲染
+					      document.getElementById('videolist').innerHTML = function(){
+					        var arr = []
+					        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+					        layui.each(thisData, function(index, item){
+					        	let datas =`
+									<div class="col-md-6 col-lg-4">
+						    			<a href="${item.videourl}">
+						    			<div>
+						    				<img src="images/banner.jpg" class="courseimg">
+						    			</div>
+						    			<div><p class="videotitlesize">${item.videoname}</p></div>
+						    			<div><span class="videotimesize">时长:${item.videotime}分钟</span>
+						    				<span class="videovolume">播放数:${item.videoheat}</span>
+						    			</div>
+						    			<div style="height: 5rem;"></div>
+						    			</a>
+							   		</div>
+								`;
+					        	arr.push(datas);
+					        });
+					        return arr.join('');
+					      }();
+					    }
+					});
+								
+				});
+				
+			},
+			error:function(){
+				alert('fail')
+			}
+		})
+
+		$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"http://localhost:8080/eldermanage/v1/course/video/heat",
+			data:null,
+			success:function(result){
+				//将服务器传来的字符串转换为JSON格式运用在html
+				//var resultdata = JSON.parse(result)
+				//返回success信息
+				//alert(result.success)
+
+				var heatdata = result.data;
+				
+				for(i = 0;i<=9;i++) {
+					var oP = `
+								<p class="hotvideo"><a href="#"><span>${i+1}.</span><span>${heatdata[i].videoname}</span></a></p>
+					`;
+
+					$($(oP)).appendTo('#heatlist');
+				}
+			},
+			error:function(){
+				alert('fail')
+			}
+		})
 	</script>
+
 </body>
 </html>
