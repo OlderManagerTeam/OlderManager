@@ -51,10 +51,10 @@ public class BrenchController {
 		String pic_path = "E:\\develop\\upload\\temp\\";
 		String picUrl = "http://localhost:8080/pic/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
-		
+
 		File dnf1 = new File(pic_path + newFileName);
 		olderheadurl.transferTo(dnf1);
-		
+
 		Olderbase olderbase = new Olderbase();
 		olderbase.setOlderaddress(olderaddress);
 		Date date = DateSimp.simp(olderbirthday);
@@ -79,19 +79,19 @@ public class BrenchController {
 	}
 
 	// 老人基本信息的修改-测试通过
-	@RequestMapping(method = RequestMethod.PUT, value = "elder/info")
+	@RequestMapping(method = RequestMethod.POST, value = "elder/infoupdate")
 	public @ResponseBody Message update(HttpSession session, String oldername, String oldersex, String olderbirthday,
-			String olderpassword, String oldertel, String olderaddress, String oldersinglestatus, String olderide,
+			String olderpassword, String repassword,String oldertel, String olderaddress, String oldersinglestatus, String olderide,
 			String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
 		String pic_path = "E:\\develop\\upload\\temp\\";
 		String picUrl = "http://localhost:8080/pic/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
-		
+
 		File dnf1 = new File(pic_path + newFileName);
 		olderheadurl.transferTo(dnf1);
-		
+
 		Olderbase olderbase = new Olderbase();
 		olderbase.setOlderaddress(olderaddress);
 		Date date = DateSimp.simp(olderbirthday);
@@ -130,29 +130,73 @@ public class BrenchController {
 
 	// 发布活动-测试通过-前端
 	@RequestMapping(method = RequestMethod.POST, value = "action")
-	public @ResponseBody Message addAction(HttpSession session, String actionstartdate,
-			String actionintro,String actionname,String actionaddress,String actionstatus,String actiontotal) throws Exception {
+	public @ResponseBody Message addAction(HttpSession session, String actionstartdate, String actionintro,
+			String actionname, String actionaddress, String actionstatus, String actiontotal) throws Exception {
 		// int actionbranchid=session.getAttribute("branchid");
-		Action action=new Action();
-		action.setActionaddress(actionaddress);;
+		Action action = new Action();
+		action.setActionaddress(actionaddress);
+		;
 		action.setActionintro(actionintro);
 		action.setActionname(actionname);
-		
+
 		Date date = DateSimp.simp(actionstartdate);
 		action.setActionstartdate(date);
-		
+
 		action.setActionstatus(actionstatus);
-		
+
 		action.setActiontotal(Integer.parseInt(actiontotal));
 		action.setActionbranchid(1);
 		action.setActionenroll(0);
 		return brenchManageService.publishAction(action);
 	}
 
-	// 修改活动-测试通过
-	@RequestMapping(method = RequestMethod.PUT, value = "action")
-	public @ResponseBody Message updateAction(@RequestBody Action action) throws Exception {
+	// 修改活动
+	@RequestMapping(method = RequestMethod.POST, value = "updateaction")
+	public @ResponseBody Message updateAction(HttpSession session,String actionid, String actionintro, String actionstartdate,
+			String actionname, String actionaddress, String actionstatus, String actiontotal) throws Exception {
+		// int actionbranchid=session.getAttribute("branchid");
+		Action action = new Action();
+		try {
+		    int a = Integer.parseInt(actionid);
+		    action.setActionid(a);
+		} catch (NumberFormatException e) {
+		    e.printStackTrace();
+		}
+		action.setActionaddress(actionaddress);
+		
+		action.setActionintro(actionintro);
+		action.setActionname(actionname);
+
+		Date date = DateSimp.simp(actionstartdate);
+		action.setActionstartdate(date);
+
+		action.setActionstatus(actionstatus);
+
+		action.setActiontotal(Integer.parseInt(actiontotal));
+		
+		action.setActionbranchid(1);
+		
 		return brenchManageService.modifyAction(action);
+	}
+
+	// 查看本店的所有活动信息
+	@RequestMapping(method = RequestMethod.GET, value = "allactions")
+	public @ResponseBody Message getAallActions(HttpSession session) throws Exception {
+		// int actionbranchid=session.getAttribute("branchid");
+		int actionbranchid = 1;
+		return brenchManageService.getAallActions(actionbranchid);
+	}
+
+	// 查看活动的详情信息
+	@RequestMapping(method = RequestMethod.GET, value = "action/info")
+	public @ResponseBody Message getAction(int actionid) throws Exception {
+		return brenchManageService.getAction(actionid);
+	}
+	
+	//查找本活动参加的老人信息
+	@RequestMapping(method = RequestMethod.GET, value = "action/older/info")
+	public @ResponseBody Message getActionOlder(int actionid) throws Exception {
+		return brenchManageService.getActionOlder(actionid);
 	}
 
 	// 查询这个管理员所在的分店名--测试通过
@@ -220,21 +264,22 @@ public class BrenchController {
 
 	// 添加讲座信息-前端
 	@RequestMapping(method = RequestMethod.POST, value = "lecture")
-	public @ResponseBody Message addLecture(HttpSession session, String lecturename,String lectureintro
-			,String lecturetotal,String lecturepublishdate,String lecturestatus,String lectureaddress
-			) throws Exception {
-		//int branchid = (int) session.getAttribute("branchid");
-		Lecture lecture=new Lecture();
-		lecture.setLectureaddress(lectureaddress);;
+	public @ResponseBody Message addLecture(HttpSession session, String lecturename, String lectureintro,
+			String lecturetotal, String lecturepublishdate, String lecturestatus, String lectureaddress)
+			throws Exception {
+		// int branchid = (int) session.getAttribute("branchid");
+		Lecture lecture = new Lecture();
+		lecture.setLectureaddress(lectureaddress);
+		;
 		lecture.setLectureintro(lectureintro);
 		lecture.setLecturename(lecturename);
 		Date date = DateSimp.simp(lecturepublishdate);
 
 		lecture.setLecturepublishdate(date);
 		lecture.setLecturestatus(lecturestatus);
-		
+
 		lecture.setLecturetotal(Integer.parseInt(lecturetotal));
-		
+
 		lecture.setLecturebranchid(1);
 		lecture.setLectureenroll(0);
 		return brenchManageService.addLecture(lecture);
@@ -246,9 +291,5 @@ public class BrenchController {
 		int branchid = (int) session.getAttribute("branchid");
 		return brenchManageService.getLecture(branchid);
 	}
-	
-
-	
 
 }
-

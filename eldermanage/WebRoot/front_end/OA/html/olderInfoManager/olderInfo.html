@@ -355,7 +355,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-5">
 									<a class="btn btn-primary btn-lg"
-										href="../olderInfoManager/olderAlter.html" role="button">修改信息</a>
+										href="../olderInfoManager/olderAlter.html" id="olderalter" role="button">修改信息</a>
 								</div>
 							</div>
 						</div>
@@ -486,8 +486,9 @@
 						olderAddress.innerHTML = result.data.olderaddress;
 						var olderIDE = document.getElementById("olderide");
 						olderIDE.innerHTML = result.data.olderide;
-						var date = new Date(result.data.olderbirthday);
+						var date = new Date(result.data.olderbirthday+1000*60*60*8);
 						var d = date.toISOString().slice(0, 10);
+						document.getElementById("olderalter").href = "../olderInfoManager/olderAlter.html?oldertel="+oldertel;
 						document.getElementById("olderbirthday").innerHTML = d;
 						document.getElementById("oldernation").innerHTML = result.data.oldernation;
 						document.getElementById("oldersex").innerHTML = result.data.oldersex;
