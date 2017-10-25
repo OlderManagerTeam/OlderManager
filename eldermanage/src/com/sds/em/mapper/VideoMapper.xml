@@ -289,9 +289,16 @@
     where videoId = #{videoid,jdbcType=INTEGER}
   </update>
    <!-- 自定义sql -->
-   <select id="findPages" resultType="com.sds.em.po.Video">   
-            select v.videoid,v.videopicurl,v.videourl,v.videoname,v.videointro,v.videodetail,v.videotime,v.videopublishdate,v.videoheat,v.videopartition
-            from video v   
-           limit #{startPos},#{pageSize} 
-   </select>
+ 	<select id="selectByFy" resultType="com.sds.em.po.Video" parameterType="Map">
+		SELECT *
+		FROM video
+		<if test="a!=null">
+			<where> 
+			    <if test="videoname!=null and videoname!=''">  videoname=#{videoname}</if>
+				<if test="videoheat!=null and videoheat!=''">AND  videoheat=#{videoheat}</if>
+				
+			</where>
+			LIMIT #{a},#{b}
+		</if>
+	</select>
 </mapper>
