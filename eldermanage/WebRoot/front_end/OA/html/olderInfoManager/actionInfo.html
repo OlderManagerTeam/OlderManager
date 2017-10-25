@@ -40,7 +40,7 @@
 	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
-<body class="flat-blue"  onload="load()">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -268,7 +268,7 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">老年人活动修改</span>
+				<span class="title">老年人活动详情</span>
 				<div class="description">Olderman Basic Information Alter</div>
 			</div>
 			<div class="row">
@@ -276,7 +276,7 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="card-title">
-								<div class="title">老年人活动修改</div>
+								<div class="title">老年人活动详情</div>
 							</div>
 						</div>
 						<div class="card-body">
@@ -284,62 +284,55 @@
 							<form class="form-horizontal" id="olderAlterAction">
 								<div class="form-group">
 									<label for="alterActionStartDate"
-										class="col-sm-3 control-label">修改活动时间：</label>
+										class="col-sm-3 control-label">活动时间：</label>
 									<div class="col-sm-5">
-									
-										<input type="date" class="form-control" id="actionstartdate" name="actionstartdate"
-											placeholder="修改活动时间">
+										<span class="form-control" id="actionstartdate"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="alterActionName" class="col-sm-3 control-label">修改活动名称：</label>
+									<label for="alterActionName" class="col-sm-3 control-label">活动名称：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="actionname"
-											placeholder="修改活动名称" name="actionname">
+										<span class="form-control" id="actionname"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="alterActionAddress" class="col-sm-3 control-label">修改活动地址：</label>
+									<label for="alterActionAddress" class="col-sm-3 control-label">活动地址：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="actionaddress"
-											placeholder="修改活动地址" name="actionaddress">
+										<span class="form-control" id="actionaddress"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="alterActionStatus" class="col-sm-3 control-label">修改活动状态：</label>
+									<label for="alterActionStatus" class="col-sm-3 control-label">活动状态：</label>
 									<div class="col-sm-5">
-										<select id="actionstatus" name="level" style="width:80px">
-											<optgroup label="活动状态">
-												<option value="1">正在进行</option>
-												<option value="0">已结束</option>
-											</optgroup>
-										</select>
+										<span class="form-control" id="actionstatus"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="alterActionIntro" class="col-sm-3 control-label">修改活动类容：</label>
+									<label for="alterActionIntro" class="col-sm-3 control-label">活动类容：</label>
 									<div class="col-sm-5">
 										<textarea class="form-control" id="actionintro"
-											placeholder="修改活动类容" style="height: 300px" name="actionintro"></textarea>
+											style="height: 300px"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="alterActionTotal" class="col-sm-3 control-label">已报名人数：</label>
-									<div class="col-sm-5">
+									<div class="col-sm-4">
 										<span class="form-control" id="actionenroll"></span>
+									</div>
+									<div class="col-sm-4">
+										<a role="button" class="btn btn-default" id="enrollolder">查看</a>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="alterActionTotal" class="col-sm-3 control-label">修改活动最大人数：</label>
+									<label for="alterActionTotal" class="col-sm-3 control-label">最大人数：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="actiontotal"
-											placeholder="修改活动最大人数" name="actiontotal">
+										<span class="form-control" id="actiontotal"></span>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
-										<button type="submit" class="btn btn-default"
-											id="altersubmit">修改活动</button>
+										<a role="button" class="btn btn-default" id="actionsubmit">修改活动</a>
+											
 									</div>
 								</div>
 							</form>
@@ -385,54 +378,6 @@
 			src="../../lib/js/bootstrapValidator.min.js"></script>
 		</script>
 
-		<!--表单验证-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				// Generate a simple captcha
-		
-				$('#olderAlterAction').bootstrapValidator({
-					//        live: 'disabled',
-					message : 'This value is not valid',
-					feedbackIcons : {
-						valid : 'glyphicon glyphicon-ok-circle',
-						invalid : 'glyphicon glyphicon-remove-circle',
-						validating : 'glyphicon glyphicon-refresh',
-						regexp : 'glyphicon glyphicon-ok-circle'
-					},
-					fields : {
-						actionstatus : {
-							message : '等级不能为空',
-							validators : {
-								notEmpty : {
-									message : '等级不能为空'
-								},
-								regexp : {
-									regexp : /^[1|2|3|4|5]{1}?$/,
-									message : '等级只能是1、2、3、4、5'
-								}
-							}
-						},
-						actionname : {
-							validators : {
-								notEmpty : {
-									message : '活动名称不能为空'
-								},
-							}
-						},
-						actionaddress : {
-							validators : {
-								notEmpty : {
-									message : '举办地址不能为空'
-								},
-							}
-						},
-					}
-				});
-		
-				// Validate the form manually
-		
-			});
-		</script>
 		<script type="text/javascript">
 			UrlParm = function() { // url参数
 				var data,
@@ -493,61 +438,34 @@
 		
 			function load() {
 				var actionid = UrlParm.parm("actionid");
+				//var actionid = 2;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
 					url : "http://localhost:8080/eldermanage/v1/brench/action/info?actionid=" + actionid,
 					data : null,
 					success : function(result) {
-					 
 						var date = new Date(result.data.actionstartdate);
 						var d = date.toISOString().slice(0, 10);
-						document.getElementById("actionstartdate").value = d;
+						document.getElementById("actionstartdate").innerHTML = d;
 						document.getElementById("actionintro").value = result.data.actionintro;
-						document.getElementById("actionname").value = result.data.actionname;
-						document.getElementById("actionaddress").value = result.data.actionaddress;
-						
-						document.getElementById("actionstatus").value = result.data.actionstatus;
-						
+						document.getElementById("actionname").innerHTML = result.data.actionname;
+						document.getElementById("actionaddress").innerHTML = result.data.actionaddress;
+						document.getElementById("actionstatus").innerHTML = result.data.actionstatus;
 						document.getElementById("actionenroll").innerHTML = result.data.actionenroll;
-						
-						document.getElementById("actiontotal").value = result.data.actiontotal;
-						
+						document.getElementById("actiontotal").innerHTML = result.data.actiontotal;
+		
+		
+						document.getElementById("actionsubmit").href = "../olderInfoManager/olderAlterAction.html?actionid=" + actionid;
+		
+		                document.getElementById("enrollolder").href = "../olderInfoManager/olderAlterAction.html?actionid=" + actionid;
+		
 					},
 					error : function() {
 						alert('数据库错误')
 					}
 				})
 			}
-		</script>
-		
-		
-		<script type="text/javascript">
-			$("#altersubmit").click(function() {
-				var form = new FormData(document.getElementById("olderAlterAction"));
-			     var actionid = UrlParm.parm("actionid");
-				form.append("actionid",actionid);
-				
-				form.append("actionstatus", $("#actionstatus option:selected").text());
-				$.ajax({
-					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/brench/updateaction",
-					data : form,
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						//var resultdata = JSON.parse(result);
-						//alert(result.success);
-						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/actionView.html";
-						}
-					},
-					error : function() {
-						alert('fail')
-					}
-				})
-			}
-			)
 		</script>
 </body>
 
