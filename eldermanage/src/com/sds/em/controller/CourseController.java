@@ -22,7 +22,6 @@ import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Video;
 import com.sds.em.service.CourseService;
-import com.sds.em.util.Page;
 
 /**
  * 
@@ -35,11 +34,10 @@ public class CourseController {
 
 	@Autowired
 	CourseService courseService;
-	
-	//返回所有课程  ----写完
+	// 查询所有视频(返回课程列表)----写完
 	@RequestMapping(method=RequestMethod.GET, value = "classes")
-	public @ResponseBody Message classes(){//所有的视频
-		return courseService.allClasses();
+	public @ResponseBody Message option(String videopartition){//所有的视频
+		return courseService.allClasses(videopartition);
 	}
 	
 	//返回课程（视频）详细  ----写完

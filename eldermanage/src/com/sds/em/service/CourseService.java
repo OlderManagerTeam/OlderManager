@@ -19,9 +19,9 @@ import com.sds.em.po.Video;
  *
  */
 public interface CourseService {
+	
 	// 查询所有的视频(返回课程列表)
-	public Message allClasses();
-
+	public Message allClasses(String videopartition);
 	 //返回课程（视频）详细
 	 public Message classDetail(int videoId);
 

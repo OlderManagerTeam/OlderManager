@@ -273,8 +273,8 @@
 								<div class="form-group">
 									<label for="actionStartDate" class="col-sm-3 control-label">活动时间：</label>
 									<div class="col-sm-5">
-										<input type="date" class="form-control" id="actionStartDate" name="actionstartdate"
-											placeholder="活动时间">
+										<input type="date" class="form-control" id="actionStartDate"
+											name="actionstartdate" placeholder="活动时间">
 									</div>
 								</div>
 								<div class="form-group">
@@ -297,7 +297,6 @@
 										<select id="actionstatus" style="width:80px">
 											<optgroup label="活动状态">
 												<option value="1">正在进行</option>
-												<option value="0">已结束</option>
 											</optgroup>
 										</select>
 									</div>
@@ -307,6 +306,13 @@
 									<div class="col-sm-5">
 										<textarea class="form-control" id="actionIntro"
 											placeholder="活动类容" style="height: 300px" name="actionintro"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="actionTotal" class="col-sm-3 control-label">活动最大人数：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="actionTotal"
+											placeholder="活动最大人数" name="actiontotal">
 									</div>
 								</div>
 								<div class="form-group">
@@ -363,7 +369,7 @@
 			$(document).ready(function() {
 				// Generate a simple captcha
 		
-				$('#odlerAction').bootstrapValidator({
+				$('#olderAction').bootstrapValidator({
 					//        live: 'disabled',
 					message : 'This value is not valid',
 					feedbackIcons : {
@@ -409,7 +415,7 @@
 
 		<script type="text/javascript">
 			$("#actionsubmit").click(function() {
-			    var form = new FormData(document.getElementById("olderAction"));
+				var form = new FormData(document.getElementById("olderAction"));
 				form.append("actionstatus", $("#actionstatus option:selected").text());
 				$.ajax({
 					type : 'post',
@@ -418,8 +424,10 @@
 					processData : false,
 					contentType : false,
 					success : function(result) {
-						var resultdata = JSON.parse(result);
-						alert(resultdata.success);
+						//var resultdata = JSON.parse(result);
+						if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/actionView.html";
+						}
 					},
 					error : function() {
 						alert('fail')

@@ -53,14 +53,4 @@
 	<!-- <mvc:resources location="/html/" mapping="/html/**" /> -->
 	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
 		<property name="prefix" value="/v1/" /> </bean> -->
-	<!-- 转换器 -->
-	<bean id="conversionService2"
-		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property name="converters">
-			<list>
-				<bean class="com.sds.em.convert.CustomDateConverter" />
-			</list>
-		</property>
-	</bean>
-
 </beans>
