@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -711,11 +711,10 @@
 		
 						document.getElementById("oldernation").value = result.data.oldernation;
 						document.getElementById("oldersex").value = result.data.oldersex;
-						document.getElementById("oldersinglestatus ").value = result.data.oldersinglestatus;
+						document.getElementById("oldersinglestatus").value = result.data.oldersinglestatus;
 		
-						document.getElementById("olderheadurl").value = result.data.olderheadurl;
-		               $("#olderheadurl").filePlural.valueOf(result.data.olderheadurl);
-		              
+						//document.getElementById("olderheadurl").src = result.data.olderheadurl;
+		
 					},
 					error : function() {
 						alert('数据库错误')
