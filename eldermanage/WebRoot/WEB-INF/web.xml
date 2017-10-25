@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>eldermanage</display-name>
 	<!-- restful请求实现 -->
-    <filter>
+<!--     <filter>
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
     </filter>
@@ -14,7 +14,7 @@
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
-    </filter-mapping>
+    </filter-mapping> -->
 	<!-- shiro拦截器 -->
 	<filter>
 		<filter-name>shiroFilter</filter-name>

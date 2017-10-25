@@ -129,7 +129,7 @@ public class IndexController {
 	}
 
 	//AJAX上传文件测试
-	@RequestMapping(method = RequestMethod.PUT, value = "upload")
+	@RequestMapping(method = RequestMethod.DELETE, value = "upload")
 	public @ResponseBody Message upload(String username,String accountnum) {
 		int i = 0;
 		int j = 0;
