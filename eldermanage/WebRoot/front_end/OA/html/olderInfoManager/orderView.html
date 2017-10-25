@@ -328,6 +328,7 @@
 		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
 		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
 		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+		<script type="text/javascript" src="../../js/app.js"></script>
 		<!-- Javascript -->
 		
 		<script type="text/javascript">
@@ -341,7 +342,7 @@
 				
 				}).then(
 					function(result) {
-						alert(result.success)
+						alert(result.data[0].orderid)
 						var orderItem = result.data
 						
 						for (var i = orderItem.length - 1; i >= 0; i--) {
@@ -349,7 +350,7 @@
 							var date = new Date(_date);
 							var oTr =  `<tr>
 											<td>${orderItem[i].orderid}</td>
-											<td>${orderItem[i].date.toISOString().slice(0, 10)}</td>
+											<td>${date.toISOString().slice(0, 10)}</td>
 											<td>${orderItem[i].orderstatus}</td>
 											<td>${orderItem[i].ordertotal}</td>
 										</tr>
@@ -369,7 +370,7 @@
 			})
 		</script>
 
-		<script type="text/javascript" src="../../js/app.js"></script>
+		
 </body>
 
 </html>
