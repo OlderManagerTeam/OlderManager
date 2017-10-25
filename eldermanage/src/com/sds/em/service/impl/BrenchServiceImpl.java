@@ -62,11 +62,11 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
 		try {
-			int flag=0;
-			String pwdMD5=Md5.MD5(olderbase.getOlderpassword());
+			int flag = 0;
+			String pwdMD5 = Md5.MD5(olderbase.getOlderpassword());
 			olderbase.setOlderpassword(pwdMD5);
-			flag=oldersbaseMapper.insert(olderbase);
-			if (flag!=0) {
+			flag = oldersbaseMapper.insert(olderbase);
+			if (flag != 0) {
 				return new Message(true, "基本信息录入成功", null);
 			} else {
 				return new Message(false, "基本信息录入失败", null);
@@ -196,6 +196,44 @@ public class BrenchServiceImpl implements BrenchService {
 	}
 
 	@Override
+	public Message getAallActions(int actionbranchid) throws Exception {
+		try {
+			ActionExample actionExample = new ActionExample();
+			com.sds.em.po.ActionExample.Criteria criteria = actionExample.createCriteria();
+			criteria.andActionbranchidEqualTo(actionbranchid);
+			List<Action> actionList = actionMapper.selectByExample(actionExample);
+			if (!actionList.isEmpty()) {
+				return new Message(true, "返回成功", actionList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+
+		}
+	}
+
+	@Override
+	public Message getAction(int actionid) throws Exception {
+		try {
+			Action action = actionMapper.selectByPrimaryKey(actionid);
+			if (action != null) {
+				return new Message(true, "返回成功", action);
+			} else {
+				return new Message(false, "数据库错误", null);
+
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+
+		}
+	}
+
+	@Override
 	public Message getBranchName(int staffid) throws Exception {
 		try {
 			BranchExample branchExample = new BranchExample();
@@ -235,8 +273,8 @@ public class BrenchServiceImpl implements BrenchService {
 				List<JSONObject> jsonObjectList = new ArrayList();
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("olderbasesList", olderbasesList);
-				//jsonObject.put("olderAgeList", olderAgeList);
-				
+				// jsonObject.put("olderAgeList", olderAgeList);
+
 				jsonObjectList.add(jsonObject);
 				return new Message(true, "返回成功", olderbasesList);
 			} else {
@@ -441,4 +479,5 @@ public class BrenchServiceImpl implements BrenchService {
 
 		}
 	}
+
 }
