@@ -15,7 +15,7 @@
 		//             req.open("post", "${pageContext.request.contextPath}/public/testupload", false);
 		//             req.send(form);
 		$.ajax({
-			url : "http://localhost:8080/eldermanage/v1/index/staff/login",
+			url : "http://localhost:8080/eldermanage/v1/brench/elder/info",
 			type : "post",
 			data : form,
 			processData : false,
@@ -39,6 +39,7 @@
 		<input type="file" name="img" /> 
 		<input type="text" name="username" />
 		<input type="button" value="提" onclick="test();" />
+		<input type="hidden" name="_method" value="PUT"/>
 	</form>
 </body>
 </html>

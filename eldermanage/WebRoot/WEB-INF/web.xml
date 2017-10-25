@@ -4,10 +4,17 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<display-name>eldermanage</display-name>
-	<!-- restful请求实现 <filter> <filter-name>hiddenHttpMethodFilter</filter-name> 
-		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class> 
-		</filter> <filter-mapping> <filter-name>hiddenHttpMethodFilter</filter-name> 
-		<url-pattern>/*</url-pattern> </filter-mapping> -->
+	<!-- restful请求实现 -->
+<!--     <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping> -->
 	<!-- shiro拦截器 -->
 	<filter>
 		<filter-name>shiroFilter</filter-name>
