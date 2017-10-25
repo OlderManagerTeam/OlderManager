@@ -291,15 +291,8 @@
 										<th>订单总价</th>
 									</tr>
 								</tfoot>
-								<tbody>
-									<!--测试用数据-->
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-
+								<tbody id="orderList">
+									
 								</tbody>
 							</table>
 							<div id="orderView"></div>
@@ -339,28 +332,29 @@
 		
 		<script type="text/javascript">
 			$(function() {
-				// 后台数据
+				//后台数据
 				var olderid = 14;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/orders?olderid=" + olderid,
-					data : null,
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/orders?"+window.location.href.split('?')[1]
+				
 				}).then(
 					function(result) {
-						const oTbody = $("<tbody>");
-						var orderItem = result.data;
+						alert(result.success)
+						var orderItem = result.data
+						
 						for (var i = orderItem.length - 1; i >= 0; i--) {
 							var _date = orderItem[i].orderdate;
 							var date = new Date(_date);
-							var oTr = `<tr>
-														<td>${orderItem[i].orderid}</td>
-														<td>${orderItem[i].date.toISOString().slice(0, 10)}</td>
-														<td>${orderItem[i].orderstatus}</td>
-														<td>${orderItem[i].ordertotal}</td>
-													</tr>
-											`;
-							$($(oTr)).appendTo('#orderView');
+							var oTr =  `<tr>
+											<td>${orderItem[i].orderid}</td>
+											<td>${orderItem[i].date.toISOString().slice(0, 10)}</td>
+											<td>${orderItem[i].orderstatus}</td>
+											<td>${orderItem[i].ordertotal}</td>
+										</tr>
+										`;
+							$($(oTr)).appendTo('#orderList');
 						}
 						//jQuery的Datatable数据渲染
 						$('.datatable').DataTable({
@@ -371,6 +365,7 @@
 						alert('数据库错误')
 					}
 				)
+
 			})
 		</script>
 
