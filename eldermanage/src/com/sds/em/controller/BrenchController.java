@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sds.em.po.Action;
 import com.sds.em.po.Lecture;
@@ -119,8 +120,8 @@ public class BrenchController {
 
 	// 老人病历信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
-	public @ResponseBody Message sicks(Oldersick oldersick) throws Exception {
-
+	public @ResponseBody Message sicks(Oldersick oldersick,String sickDate) throws Exception {
+		oldersick.setSickdate(DateSimp.simp(sickDate));
 		return brenchManageService.addSicks(oldersick);
 	}
 
@@ -240,9 +241,10 @@ public class BrenchController {
 	}
 
 	// 删除一条老人病历信息--测试成功
-	@RequestMapping(method = RequestMethod.DELETE, value = "elder/sick")
-	public @ResponseBody Message deleteOlderSick(int sickid) throws Exception {
-		return brenchManageService.deleteOlderSick(sickid);
+	@RequestMapping(method = RequestMethod.GET, value = "elder/deletesicks")
+	public String deleteOlderSick(int sickid) throws Exception {
+		brenchManageService.deleteOlderSick(sickid);
+		return "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/olderSickView";
 	}
 
 	// 查看本老人的订单信息--测试成功
@@ -253,8 +255,10 @@ public class BrenchController {
 
 	// 给本老人添加回访记录
 	@RequestMapping(method = RequestMethod.POST, value = "elder/visited")
-	public @ResponseBody Message andOlderVisited(@RequestBody Visited visited, HttpSession session) throws Exception {
-		int staffid = (int) session.getAttribute("staffid");
+	public @ResponseBody Message andOlderVisited(String publishDate,Visited visited, HttpSession session) throws Exception {
+		session.setAttribute("staffid", "1");
+		int staffid = Integer.valueOf((String) session.getAttribute("staffid"));
+		visited.setVisiteddate(DateSimp.simp(publishDate));
 		visited.setVisitedassistantid(staffid);
 		return brenchManageService.andOlderVisited(visited);
 	}
