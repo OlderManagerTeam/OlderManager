@@ -285,6 +285,7 @@
 										<th>序号</th>
 										<th>分店名</th>
 										<th>分店邮编</th>
+										<th>分店管理员员工号</th>
 										<th>分店管理员</th>
 										<th>分店地址</th>
 										<th>分店管理员绩效</th>
@@ -296,6 +297,7 @@
 										<th>序号</th>
 										<th>分店名</th>
 										<th>分店邮编</th>
+										<th>分店管理员员工号</th>
 										<th>分店管理员</th>
 										<th>分店地址</th>
 										<th>分店管理员绩效</th>
@@ -359,10 +361,11 @@
 																	<td>${i + 1}</td>
 																	<td>${branchItem[i].branch.branchname}</td>
 																	<td>${branchItem[i].branch.branchpostcode}</td>
-																	<td>${branchItem[i].staffname}</td>
+																	<td>${branchItem[i].staffbase.staffcode}</td>
+																	<td>${branchItem[i].staffbase.staffname}</td>
 																	<td>${branchItem[i].branch.branchadress}</td>
 																	<td>${branchItem[i].branch.branchkpi}</td>
-																	<td><a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/branchAlter.html?branchid=${branchItem[i].branchid}"
+																	<td><a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/branchAlter.html?branchid=${branchItem[i].branch.branchid}"
 																		 role="button">修改</a>
 																    </td>
 															</tr>

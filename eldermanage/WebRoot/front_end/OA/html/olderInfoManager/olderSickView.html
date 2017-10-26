@@ -274,7 +274,8 @@
 							<div class="card-title  col-md-offset-9">
 								<div class="title">
 									<a class="btn btn-primary btn-lg"
-										href="../olderInfoManager/olderSicks.html" role="button" id="addolderSick">添加病历</a>
+										href="../olderInfoManager/olderSicks.html" role="button"
+										id="addolderSick">添加病历</a>
 								</div>
 							</div>
 						</div>
@@ -399,7 +400,7 @@
 		<script type="text/javascript">
 			$(function() {
 				var olderid = UrlParm.parm("olderid");
-								document.getElementById("addolderSick").href = "../olderInfoManager/olderSicks.html?olderid=" + olderid;
+				document.getElementById("addolderSick").href = "../olderInfoManager/olderSicks.html?olderid=" + olderid;
 				// 后台数据
 				$.ajax({
 					type : 'get',
@@ -411,27 +412,27 @@
 						const oTbody = $("<tbody>");
 						var sicklist = result.data;
 						for (var i = sicklist.length - 1; i >= 0; i--) {
-						var sickdate=new Date(sicklist[i].sickdate+1000*60*60*8);
-						var oTr = `<tr>
-															<td>${i + 1}</td>
-															<td>${sicklist[i].sickinfo}</td>
-															<td>${sicklist[i].sickdoctor}</td>
-															<td>${sickdate.toLocaleDateString()}</td>
-															<td>${sicklist[i].sickhospital}</td>
-									
-															<td>${sicklist[i].sickadvice}</td>
-
-															<td><a class="btn btn-primary btn-xs"
-																href="http://localhost:8080/eldermanage/v1/brench/elder/deletesicks?sickolderid=${sicklist[i].sickid}" role="button">删除</a>
-															</td>
-														</tr>
-												`;
-						$($(oTr)).appendTo('#sicklist');
-					}
-	
-					$('.datatable').DataTable({
-						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
-					});
+							var sickdate = new Date(sicklist[i].sickdate + 1000 * 60 * 60 * 8);
+							var oTr = `<tr>
+																	<td>${i + 1}</td>
+																	<td>${sicklist[i].sickinfo}</td>
+																	<td>${sicklist[i].sickdoctor}</td>
+																	<td>${sickdate.toLocaleDateString()}</td>
+																	<td>${sicklist[i].sickhospital}</td>
+											
+																	<td>${sicklist[i].sickadvice}</td>
+		
+																	<td><a class="btn btn-primary btn-xs"
+																		href="http://localhost:8080/eldermanage/v1/brench/elder/deletesicks?sickid=${sicklist[i].sickid}" role="button">删除</a>
+																	</td>
+																</tr>
+														`;
+							$($(oTr)).appendTo('#sicklist');
+						}
+		
+						$('.datatable').DataTable({
+							"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+						});
 					},
 					function() {
 						alert('数据库错误')

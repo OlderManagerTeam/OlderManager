@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Branch;
 import com.sds.em.po.Message;
+import com.sds.em.pojo.BranchStaffBaseExtend;
+import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.service.HeadOfficeService;
 
 /*
@@ -21,33 +23,71 @@ import com.sds.em.service.HeadOfficeService;
 public class HeadOfficeController {
 	@Autowired
 	HeadOfficeService headOfficeService;
-	
-	//添加分店-所有完成
+
+	// 添加分店-所有完成
 	@RequestMapping(method = RequestMethod.POST, value = "branch")
 	public @ResponseBody Message addBranch(Branch branch) throws Exception {
 		return headOfficeService.addBranch(branch);
 	}
+
 	// 查询所有分店信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "allbranchs")
 	public @ResponseBody Message getAllBranch() throws Exception {
 		return headOfficeService.getAllBranch();
 	}
 
-	// 查看分店的详细信息
+	// 查看分店的详细信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "branch/info")
-	public @ResponseBody Message getBranch(int brachid) throws Exception {
-		return headOfficeService.getBranch(brachid);
+	public @ResponseBody Message getBranch(int branchid) throws Exception {
+		return headOfficeService.getBranch(branchid);
 	}
 
-	// 修改分店信息
+	// 修改分店信息-所有完成
 	@RequestMapping(method = RequestMethod.POST, value = "branch/info")
 	public @ResponseBody Message updateBranch(Branch branch) throws Exception {
 		return headOfficeService.updateBranch(branch);
 	}
 
-	// 返回所有员工
-	@RequestMapping(method = RequestMethod.GET, value = "allstaff")
+	// 判断输入的管理员员工号是否存在员工表中，然后返回员工信息
+	@RequestMapping(method = RequestMethod.GET, value = "branch/staff")
+	public @ResponseBody Message judgeStaffCode(String staffcode) throws Exception {
+		return headOfficeService.judgeStaffCode(staffcode);
+	}
+
+	// 返回所有员工信息--所有完成
+	@RequestMapping(method = RequestMethod.GET, value = "allstaffs")
 	public @ResponseBody Message getAllStaff() throws Exception {
 		return headOfficeService.getAllStaff();
 	}
+
+	// 显示一个员工的详细信息
+	@RequestMapping(method = RequestMethod.GET, value = "staff/info")
+	public @ResponseBody Message getStaff(int staffid) throws Exception {
+		return headOfficeService.getStaff(staffid);
+	}
+
+	// 返回所有的部门号
+	@RequestMapping(method = RequestMethod.GET, value = "alldepartmentid")
+	public @ResponseBody Message getAllDepartmentId() throws Exception {
+		return headOfficeService.getAllDepartmentId();
+	}
+
+	// 返回所有的职位编号
+	@RequestMapping(method = RequestMethod.GET, value = "allRoleid")
+	public @ResponseBody Message getAllRoleId() throws Exception {
+		return headOfficeService.getAllRoleId();
+	}
+
+	// 根据部门号返回部门名称
+	@RequestMapping(method = RequestMethod.GET, value = "department/info")
+	public @ResponseBody Message getDepartmentName(int departmentid) throws Exception {
+		return headOfficeService.getDepartmentName(departmentid);
+	}
+
+	// 重新分配部门和职位给员工，员工号要改变
+	@RequestMapping(method = RequestMethod.POST, value = "staff/info")
+	public @ResponseBody Message updateStaffD(StaffDepartmentRoleExtend extend) throws Exception {
+		return headOfficeService.updateStaffD(extend);
+	}
+
 }
