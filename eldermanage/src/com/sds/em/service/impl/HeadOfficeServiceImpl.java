@@ -22,6 +22,23 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 	StaffbaseMapper staffbaseMapper;
 
 	@Override
+	public Message addBranch(Branch branch) throws Exception {
+		try {
+			int flag=0;
+			flag=branchMapper.insert(branch);
+			if(flag!=0){
+				return new Message(true,"添加成功",null);
+			}else{
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+	
+	@Override
 	public Message getAllBranch() throws Exception {
 
 		try {
@@ -87,4 +104,6 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 			return new Message(false, "数据库错误", null);
 		}
 	}
+
+
 }
