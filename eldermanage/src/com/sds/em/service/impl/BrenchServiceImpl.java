@@ -11,7 +11,6 @@ import com.sds.em.mapper.ActionMapper;
 import com.sds.em.mapper.ActionrecordMapper;
 import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
-import com.sds.em.mapper.BranchMapper;
 
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
