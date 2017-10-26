@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.ActionMapper;
 import com.sds.em.mapper.ActionrecordMapper;
-import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
 import com.sds.em.mapper.LecturerecordMapper;
 import com.sds.em.mapper.OlderbaseMapper;
@@ -54,8 +53,6 @@ public class CourseServiceImpl implements CourseService {
 	LectureMapper lectureMapper;
 	@Autowired
 	LecturerecordMapper lecturerecordMapper;
-	@Autowired
-	BranchMapper branchMapper;
 	@Autowired
 	OlderbaseMapper olderbaseMapper;
 	@Autowired

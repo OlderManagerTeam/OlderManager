@@ -112,7 +112,7 @@
 	    			请选择要观看的视频类型:
 	    		</div>
 		    	<div style="float: left;">
-		    		<select class="form-control" id="hhh"  style="width: 25rem;font-size: 2rem;height: 4rem">
+		    		<select class="form-control" style="width: 25rem;font-size: 2rem;height: 4rem">
 		    			<option>健康视频</option>
 		    			<option>讲座回放</option>
 		    		</select>
@@ -154,15 +154,13 @@
 	</footer>
 
 	<script type="text/javascript">
-	var hhh=#{hhh}
 		var resultDatas;
 		$.ajax({
 			type:'get',
 			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/course/classes?hhh="+hhh,
+			url:"http://localhost:8080/eldermanage/v1/course/classes",
 			data:null,
 			success:function(result){
-				alert(result.data)
 				//将服务器传来的字符串转换为JSON格式运用在html
 				//var resultdata = JSON.parse(result)
 				//返回success信息
@@ -212,7 +210,7 @@
 			}
 		})
 
-	/* 	$.ajax({
+		$.ajax({
 			type:'get',
 			contentType:'application/json',
 			url:"http://localhost:8080/eldermanage/v1/course/video/heat",
@@ -236,7 +234,7 @@
 			error:function(){
 				alert('fail')
 			}
-		}) */
+		})
 	</script>
 
 </body>
