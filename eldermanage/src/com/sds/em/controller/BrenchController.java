@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Action;
+import com.sds.em.po.Branch;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
@@ -37,7 +38,7 @@ import com.sds.em.util.Uuid;
 @RequestMapping("v1/brench/")
 public class BrenchController {
 	@Autowired
-	BrenchService brenchManageService;
+	BrenchService brenchService;
 
 	// olderpoint;
 
@@ -76,7 +77,7 @@ public class BrenchController {
 		olderbase.setOldertel(oldertel);
 		olderbase.setOldermaxpoint(0);
 
-		return brenchManageService.addElderInfo(olderbase);
+		return brenchService.addElderInfo(olderbase);
 
 	}
 
@@ -87,7 +88,7 @@ public class BrenchController {
 			String olderide, String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
-		Olderbase olderbase1 = (Olderbase) brenchManageService.getElder(oldertel).getData();
+		Olderbase olderbase1 = (Olderbase) brenchService.getElder(oldertel).getData();
 		if (!olderheadurl.isEmpty()) {
 
 			String pic_path = "E:\\develop\\upload\\temp\\";
@@ -113,7 +114,7 @@ public class BrenchController {
 		olderbase.setOldersinglestatus(oldersinglestatus);
 		olderbase.setOldertel(oldertel);
 
-		return brenchManageService.modifyOlder(olderbase);
+		return brenchService.modifyOlder(olderbase);
 
 	}
 
@@ -121,13 +122,13 @@ public class BrenchController {
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
 	public @ResponseBody Message sicks(Oldersick oldersick) throws Exception {
 
-		return brenchManageService.addSicks(oldersick);
+		return brenchService.addSicks(oldersick);
 	}
 
 	// 老人评价-未测试
 	@RequestMapping(method = RequestMethod.POST, value = "elder/rate")
 	public @ResponseBody Message rate(@RequestBody int olderid) throws Exception {
-		return brenchManageService.olderRate(olderid);
+		return brenchService.olderRate(olderid);
 	}
 
 	// 发布活动-测试通过-所有完成
@@ -149,7 +150,7 @@ public class BrenchController {
 		action.setActiontotal(Integer.parseInt(actiontotal));
 		action.setActionbranchid(1);
 		action.setActionenroll(0);
-		return brenchManageService.publishAction(action);
+		return brenchService.publishAction(action);
 	}
 
 	// 修改活动-所有完成
@@ -179,7 +180,7 @@ public class BrenchController {
 
 		action.setActionbranchid(1);
 
-		return brenchManageService.modifyAction(action);
+		return brenchService.modifyAction(action);
 	}
 
 	// 查看本店的所有活动信息-所有完成
@@ -187,26 +188,26 @@ public class BrenchController {
 	public @ResponseBody Message getAallActions(HttpSession session) throws Exception {
 		// int actionbranchid=session.getAttribute("branchid");
 		int actionbranchid = 1;
-		return brenchManageService.getAallActions(actionbranchid);
+		return brenchService.getAallActions(actionbranchid);
 	}
 
 	// 查看活动的详情信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "action/info")
 	public @ResponseBody Message getAction(int actionid) throws Exception {
-		return brenchManageService.getAction(actionid);
+		return brenchService.getAction(actionid);
 	}
 
 	// 查找本活动参加的老人信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "action/older/info")
 	public @ResponseBody Message getActionOlder(int actionid) throws Exception {
-		return brenchManageService.getActionOlder(actionid);
+		return brenchService.getActionOlder(actionid);
 	}
 
 	// 查询这个管理员所在的分店名--测试通过
 
 	@RequestMapping(method = RequestMethod.GET, value = "branchname")
 	public @ResponseBody Message getBranchName(int staffid) throws Exception {
-		return brenchManageService.getBranchName(staffid);
+		return brenchService.getBranchName(staffid);
 	}
 
 	// 查询本分店所有老人的基本信息-前端-所有完成
@@ -215,7 +216,7 @@ public class BrenchController {
 	public @ResponseBody Message allOlderByBranch(HttpSession session) throws Exception {
 		// int branchid = (int) session.getAttribute("branchid");
 		int branchid = 1;
-		return brenchManageService.getAllElder(branchid);
+		return brenchService.getAllElder(branchid);
 	}
 
 	// 删除某个老人的信息--测试成功
@@ -223,32 +224,32 @@ public class BrenchController {
 	@RequestMapping(method = RequestMethod.DELETE, value = "elder/info")
 	public @ResponseBody Message deleteOlder(@RequestBody String oldertel) throws Exception {
 
-		return brenchManageService.deleteANElder(oldertel);
+		return brenchService.deleteANElder(oldertel);
 	}
 
 	// 获取某个老人的信息--测试成功-前端-所有完成
 
 	@RequestMapping(method = RequestMethod.GET, value = "elder/info")
 	public @ResponseBody Message getOlder(String oldertel) throws Exception {
-		return brenchManageService.getElder(oldertel);
+		return brenchService.getElder(oldertel);
 	}
 
 	// 查看本老人的所有病历信息
 	@RequestMapping(method = RequestMethod.GET, value = "elder/sicks")
 	public @ResponseBody Message getOlderAllSick(int olderid) throws Exception {
-		return brenchManageService.getOlderAllSick(olderid);
+		return brenchService.getOlderAllSick(olderid);
 	}
 
 	// 删除一条老人病历信息--测试成功
 	@RequestMapping(method = RequestMethod.DELETE, value = "elder/sick")
 	public @ResponseBody Message deleteOlderSick(int sickid) throws Exception {
-		return brenchManageService.deleteOlderSick(sickid);
+		return brenchService.deleteOlderSick(sickid);
 	}
 
 	// 查看本老人的订单信息--测试成功-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "elder/orders")
 	public @ResponseBody Message getOlderAllOrder(int olderid) throws Exception {
-		return brenchManageService.getOlderAllOrder(olderid);
+		return brenchService.getOlderAllOrder(olderid);
 	}
 
 	// 给本老人添加回访记录
@@ -256,13 +257,13 @@ public class BrenchController {
 	public @ResponseBody Message andOlderVisited(@RequestBody Visited visited, HttpSession session) throws Exception {
 		int staffid = (int) session.getAttribute("staffid");
 		visited.setVisitedassistantid(staffid);
-		return brenchManageService.andOlderVisited(visited);
+		return brenchService.andOlderVisited(visited);
 	}
 
 	// 查看本老人的所有回访记录信息
 	@RequestMapping(method = RequestMethod.GET, value = "elder/visited")
 	public @ResponseBody Message getOlderAllVisited(int olderid) throws Exception {
-		return brenchManageService.getOlderAllVisited(olderid);
+		return brenchService.getOlderAllVisited(olderid);
 	}
 
 	// 添加讲座信息-前端
@@ -285,7 +286,7 @@ public class BrenchController {
 
 		lecture.setLecturebranchid(1);
 		lecture.setLectureenroll(0);
-		return brenchManageService.addLecture(lecture);
+		return brenchService.addLecture(lecture);
 	}
 
 	// 查看本分店的所有讲座信息
@@ -293,25 +294,26 @@ public class BrenchController {
 	public @ResponseBody Message getAllLectures(HttpSession session) throws Exception {
 		// int branchid = (int) session.getAttribute("branchid");
 		int branchid = 1;
-		return brenchManageService.getAllLectures(branchid);
+		return brenchService.getAllLectures(branchid);
 	}
+
 	// 查看讲座的详细信息
 	@RequestMapping(method = RequestMethod.GET, value = "lecture/info")
 	public @ResponseBody Message getLecture(int lectureid) throws Exception {
-		return brenchManageService.getLecture(lectureid);
+		return brenchService.getLecture(lectureid);
 	}
-	
-	//修改讲座的状态
+
+	// 修改讲座的状态
 	@RequestMapping(method = RequestMethod.POST, value = "lecture/status")
 	public @ResponseBody Message updateStatus(int lectureid, String lecturestatus) throws Exception {
-		//	int id = Integer.parseInt(lectureid);s
-		return brenchManageService.updateStatus(lectureid,lecturestatus);
+		// int id = Integer.parseInt(lectureid);s
+		return brenchService.updateStatus(lectureid, lecturestatus);
 	}
-	//删除一条讲座信息
+
+	// 删除一条讲座信息
 	@RequestMapping(method = RequestMethod.GET, value = "lecture")
 	public @ResponseBody Message deleteLecture(int lectureid) throws Exception {
-		return brenchManageService.deleteLecture(lectureid);
+		return brenchService.deleteLecture(lectureid);
 	}
+
 }
-
-
