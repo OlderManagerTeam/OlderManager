@@ -1,6 +1,7 @@
 package com.sds.em.service;
 
 import com.sds.em.po.Action;
+import com.sds.em.po.Branch;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
@@ -71,10 +72,11 @@ public interface BrenchService {
 
 	// 查看讲座的详细信息
 	public Message getLecture(int lectureid) throws Exception;
-	
-	////修改讲座的状态
-	public Message updateStatus(int lectureid,String lecturestatus)throws Exception;
 
-	//删除一条讲座信息
-	public Message deleteLecture(int lectureid)throws Exception;
+	//// 修改讲座的状态
+	public Message updateStatus(int lectureid, String lecturestatus) throws Exception;
+
+	// 删除一条讲座信息
+	public Message deleteLecture(int lectureid) throws Exception;
+
 }

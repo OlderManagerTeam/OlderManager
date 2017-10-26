@@ -34,6 +34,9 @@ public interface VideoMapper {
     int updateByPrimaryKey(Video record);
     
     Video selectOlderVideoRecord(@Param("example") VideorecordExample example);
-    //分页测试-------------
-    List<Video> selectByFy(Map<String,Object> param);
+  
+    //
+    List<Video> select_video_healthy();
+    List<Video> select_video_lecture();
+    
 }

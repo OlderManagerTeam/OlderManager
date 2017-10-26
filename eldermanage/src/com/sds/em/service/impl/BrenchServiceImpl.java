@@ -11,11 +11,11 @@ import com.sds.em.mapper.ActionMapper;
 import com.sds.em.mapper.ActionrecordMapper;
 import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
-import com.sds.em.mapper.BranchMapper;
 
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
 import com.sds.em.mapper.OrdersMapper;
+import com.sds.em.mapper.StaffbaseMapper;
 import com.sds.em.mapper.VisitedMapper;
 import com.sds.em.po.Action;
 import com.sds.em.po.ActionExample;
@@ -35,6 +35,7 @@ import com.sds.em.po.OrdersExample;
 import com.sds.em.po.Visited;
 import com.sds.em.po.VisitedExample;
 import com.sds.em.pojo.ActionRecordOlderExtend;
+import com.sds.em.pojo.BranchStaffBaseExtend;
 import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
@@ -64,6 +65,7 @@ public class BrenchServiceImpl implements BrenchService {
 
 	@Autowired
 	ActionrecordMapper actionrecordMapper;
+	
 
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
@@ -86,12 +88,8 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message addSicks(Oldersick oldersick) {
 		try {
-			oldersickMapper.insertOlderSick(oldersick);
-			if (oldersick.getSickid() != null) {
-				return new Message(true, "病历信息录入成功", oldersick.getSickid());
-			} else {
-				return new Message(false, "病历信息录入失败", null);
-			}
+			oldersickMapper.insert(oldersick);
+			return new Message(true, "病历信息录入成功", oldersick.getSickid());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
@@ -519,7 +517,7 @@ public class BrenchServiceImpl implements BrenchService {
 
 		}
 	}
-	
+
 	@Override
 	public Message getLecture(int lectureid) throws Exception {
 
@@ -540,19 +538,19 @@ public class BrenchServiceImpl implements BrenchService {
 
 	@Override
 	public Message updateStatus(int lectureid, String lecturestatus) throws Exception {
-		
+
 		try {
-			LectureExample lectureExample=new LectureExample();
-			com.sds.em.po.LectureExample.Criteria criteria=lectureExample.createCriteria();
+			LectureExample lectureExample = new LectureExample();
+			com.sds.em.po.LectureExample.Criteria criteria = lectureExample.createCriteria();
 			criteria.andLectureidEqualTo(lectureid);
-			int flag=0;
-			Lecture lecture=new Lecture();
+			int flag = 0;
+			Lecture lecture = new Lecture();
 			lecture.setLecturestatus(lecturestatus);
-			flag=lectureMapper.updateByExampleSelective(lecture, lectureExample);
-		
-			if(flag!=0){
+			flag = lectureMapper.updateByExampleSelective(lecture, lectureExample);
+
+			if (flag != 0) {
 				return new Message(true, "修改成功", null);
-			}else{
+			} else {
 				return new Message(false, "数据库错误", null);
 			}
 		} catch (Exception e) {
@@ -565,11 +563,11 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message deleteLecture(int lectureid) throws Exception {
 		try {
-			int flag=0;
-			flag=lectureMapper.deleteByPrimaryKey(lectureid);
-			if(flag!=0){
+			int flag = 0;
+			flag = lectureMapper.deleteByPrimaryKey(lectureid);
+			if (flag != 0) {
 				return new Message(true, "删除成功", null);
-			}else{
+			} else {
 				return new Message(false, "数据库错误", null);
 			}
 		} catch (Exception e) {

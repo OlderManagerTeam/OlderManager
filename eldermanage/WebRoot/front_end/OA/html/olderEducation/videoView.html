@@ -34,7 +34,7 @@
 	href="../../css/themes/flat-blue.css">
 </head>
 
-<body class="flat-blue" onload="load()">
+<body class="flat-blue">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -44,8 +44,8 @@
 							<i class="fa fa-bars icon"></i>
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
-							<li>总店管理</li>
-							<li class="active">分店列表</li>
+							<li>老年人教育</li>
+							<li class="active">视频列表</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -131,17 +131,17 @@
 						<ul class="nav navbar-nav">
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">控制台</span>
-							</a></li>
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-element"> <span
-									class="icon fa fa-desktop"></span><span class="title">UI
-										Kits</span>
-							</a> <!-- 下拉列表 level 1 -->
-								<div id="dropdown-element" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul class="nav navbar-nav">
-											<li><a href="../ui-kits/grid.html">Grid</a></li>
-											<li><a href="../ui-kits/theming.html">主题</a></li></li>
+			              </a></li>
+			<li class="panel panel-default dropdown">
+			<a data-toggle="collapse" href="#dropdown-element"> 
+			        <span class="icon fa fa-desktop"></span>
+			        <span class="title">UI Kits</span>
+			</a> <!-- 下拉列表 level 1 -->
+			<div id="dropdown-element" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../ui-kits/grid.html">Grid</a></li>
+							<li><a href="../ui-kits/theming.html">主题</a></li></li>
 							<li><a href="../ui-kits/button.html">按钮</a></li>
 							<li><a href="../ui-kits/card.html">明信片</a></li>
 							<li><a href="../ui-kits/list.html">列表</a></li>
@@ -179,19 +179,20 @@
 						</ul>
 					</div>
 				</div></li>
-			<!--在左边导航栏添加老人管理模块的导航-->
-			<li class="active panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
-					class="icon  glyphicon glyphicon-user"></span><span class="title">总店管理</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						</ul>
-					</div>
-				</div></li>
+             <li class="panel panel-default dropdown">
+			     <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
+			         <span class="icon  glyphicon glyphicon-user"></span>
+			         <span class="title">总店管理</span>
+			     </a> <!-- Dropdown level 1 -->
+				 <div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					    <div class="panel-body">
+						      <ul class="nav navbar-nav">
+							       <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							       <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						      </ul>
+					    </div>
+				 </div>
+			</li> 
 			<!--在左边导航栏添加老人管理模块的导航-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderView"> <span
@@ -205,7 +206,20 @@
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
-				</div></li>
+				</div>
+			</li>
+			<li class="active panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-olderEducation"> <span
+					class="icon glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-olderEducation" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
 			<!-- 下拉列表-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#component-example"> <span
@@ -259,8 +273,8 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">分店列表</span>
-				<div class="description">Branch List</div>
+				<span class="title">视频列表</span>
+				<div class="description">Video List</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
@@ -273,7 +287,7 @@
 							<div class="card-title  col-md-offset-10">
 								<div class="title">
 									<a class="btn btn-primary btn-lg"
-										href="../headofficeManage/branchEntry.html" role="button">添加分店</a>
+										href="../olderEducation/videoEntry.html" role="button">添加视频</a>
 								</div>
 							</div>
 						</div>
@@ -282,30 +296,52 @@
 								width="100%">
 								<thead>
 									<tr>
-										<th>序号</th>
-										<th>分店名</th>
-										<th>分店邮编</th>
-										<th>分店管理员</th>
-										<th>分店地址</th>
-										<th>分店管理员绩效</th>
+										<th>视频序号</th>
+										<th>视频名称</th>
+										<th>视频缩略图</th>
+										<th>视频地址</th>
+										<th>视频简介</th>
+										<th>视频详细</th>
+										<th>视频时长</th>
+										<th>视频发布日期</th>
+										<th>视频热度</th>
+										<th>视频详细信息</th>
 										<th>操作</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>序号</th>
-										<th>分店名</th>
-										<th>分店邮编</th>
-										<th>分店管理员</th>
-										<th>分店地址</th>
-										<th>分店管理员绩效</th>
+										<th>视频序号</th>
+										<th>视频名称</th>
+										<th>视频缩略图</th>
+										<th>视频地址</th>
+										<th>视频简介</th>
+										<th>视频详细</th>
+										<th>视频时长</th>
+										<th>视频发布日期</th>
+										<th>视频热度</th>
+										<th>视频详细信息</th>
 										<th>操作</th>
 									</tr>
 								</tfoot>
-								<tbody id="branchList">
-
+								<tbody>
+									<tr>
+										<td>0001</td>
+										<td>中国太极文化</td>
+										<td>略</td>
+										<td>www.taiji.com</td>
+										<td>传扬中国太极文化精神</td>
+										<td></td>
+										<td>120分钟</td>
+										<td>2017-7-8</td>
+										<td>5</td>
+										<td><a class="btn btn-primary btn-xs" href="../olderEducation/videoInfo.html" role="button">视频详细信息</a></td>
+										<td><a class="btn btn-primary btn-xs" href="../olderEducation/videoAlter.html" role="button">修改</a>
+											<button class="btn btn-primary btn-xs">删除</button></td>
+									</tr>
 								</tbody>
 							</table>
+							<div id="olderView"></div>
 						</div>
 					</div>
 				</div>
@@ -319,8 +355,10 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
-	<div>
+	
 		<!-- Javascript Libs -->
+
+		
 		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
@@ -337,53 +375,9 @@
 		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
 		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
 		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<script type="text/javascript">
-			function load() {
-				// 后台数据
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/allbranchs",
-					data : null
-				}).then(
-					function(result) {
-						const oTbody = $("<tbody>");
-						var branchItem = result.data;
-						//alert(result.data);
-						for (var i = branchItem.length - 1; i >= 0; i--) {
-		
-		
-							/* 	var olderAlter = "../olderInfoManager/olderAlter.html?olderid=";
-								olderAlter = olderAlter + olderItem[i].olderid; */
-							var oTr = `<tr>
-																	<td>${i + 1}</td>
-																	<td>${branchItem[i].branch.branchname}</td>
-																	<td>${branchItem[i].branch.branchpostcode}</td>
-																	<td>${branchItem[i].staffname}</td>
-																	<td>${branchItem[i].branch.branchadress}</td>
-																	<td>${branchItem[i].branch.branchkpi}</td>
-																	<td><a class="btn btn-primary btn-xs"href="../headofficeManager/branchAlter.html?branchid=${branchItem[i].branchid}"
-																		 role="button">修改</a>
-																    </td>
-															</tr>
-														`;
-							$($(oTr)).appendTo('#branchList');
-						}
-		
-						$('.datatable').DataTable({
-							"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
-						});
-		
-					},
-					function() {
-						alert('数据库错误')
-					}
-				);
-			}
-			$(function() {})
-		</script>
 		<!-- Javascript -->
 		<script type="text/javascript" src="../../js/app.js"></script>
+
 </body>
 
 </html>
