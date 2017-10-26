@@ -26,6 +26,15 @@ public interface BrenchService {
 
 	// 修改活动
 	public Message modifyAction(Action action) throws Exception;
+	
+	//查看本店的所有活动信息
+	public Message getAallActions(int actionbranchid) throws Exception;
+	
+	//查看活动的详情信息
+	public Message getAction(int actionid) throws Exception;
+	
+	//查找本活动参加的老人信息
+	public Message getActionOlder(int actionid)throws Exception;
 
 	// 查询这个管理员所在的分店名
 	public Message getBranchName(int staffid) throws Exception;
@@ -57,6 +66,7 @@ public interface BrenchService {
 	//添加讲座信息
 	public Message addLecture(Lecture lecture)throws Exception;
 	
+	// 查看本分店的所有讲座信息
 	public Message getLecture(int branchid)throws Exception;
 
 }

@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.ActionMapper;
-
+import com.sds.em.mapper.ActionrecordMapper;
 import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
 import com.sds.em.mapper.BranchMapper;
@@ -19,6 +19,8 @@ import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.mapper.VisitedMapper;
 import com.sds.em.po.Action;
 import com.sds.em.po.ActionExample;
+import com.sds.em.po.Actionrecord;
+import com.sds.em.po.ActionrecordExample;
 import com.sds.em.po.Branch;
 import com.sds.em.po.BranchExample;
 import com.sds.em.po.Lecture;
@@ -32,6 +34,7 @@ import com.sds.em.po.Orders;
 import com.sds.em.po.OrdersExample;
 import com.sds.em.po.Visited;
 import com.sds.em.po.VisitedExample;
+import com.sds.em.pojo.ActionRecordOlderExtend;
 import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
@@ -59,14 +62,17 @@ public class BrenchServiceImpl implements BrenchService {
 	@Autowired
 	LectureMapper lectureMapper;
 
+	@Autowired
+	ActionrecordMapper actionrecordMapper;
+
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
 		try {
-			int flag=0;
-			String pwdMD5=Md5.MD5(olderbase.getOlderpassword());
+			int flag = 0;
+			String pwdMD5 = Md5.MD5(olderbase.getOlderpassword());
 			olderbase.setOlderpassword(pwdMD5);
-			flag=oldersbaseMapper.insert(olderbase);
-			if (flag!=0) {
+			flag = oldersbaseMapper.insert(olderbase);
+			if (flag != 0) {
 				return new Message(true, "基本信息录入成功", null);
 			} else {
 				return new Message(false, "基本信息录入失败", null);
@@ -196,6 +202,78 @@ public class BrenchServiceImpl implements BrenchService {
 	}
 
 	@Override
+	public Message getAallActions(int actionbranchid) throws Exception {
+		try {
+			ActionExample actionExample = new ActionExample();
+			com.sds.em.po.ActionExample.Criteria criteria = actionExample.createCriteria();
+			criteria.andActionbranchidEqualTo(actionbranchid);
+			List<Action> actionList = actionMapper.selectByExample(actionExample);
+			if (!actionList.isEmpty()) {
+				return new Message(true, "返回成功", actionList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+
+		}
+	}
+
+	@Override
+	public Message getAction(int actionid) throws Exception {
+		try {
+			Action action = actionMapper.selectByPrimaryKey(actionid);
+			if (action != null) {
+				return new Message(true, "返回成功", action);
+			} else {
+				return new Message(false, "数据库错误", null);
+
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+
+		}
+	}
+
+	@Override
+	public Message getActionOlder(int actionid) throws Exception {
+		try {
+			ActionrecordExample actionrecordExample = new ActionrecordExample();
+			com.sds.em.po.ActionrecordExample.Criteria criteria = actionrecordExample.createCriteria();
+			criteria.andArecordactionidEqualTo(actionid);
+
+			List<Actionrecord> actionRecordList = actionrecordMapper.selectByExample(actionrecordExample);
+
+			List<ActionRecordOlderExtend> extend=new ArrayList<ActionRecordOlderExtend>();
+			
+			for(Actionrecord a:actionRecordList){
+				Olderbase olderbase=oldersbaseMapper.selectByPrimaryKey(a.getArecordolderid());
+				ActionRecordOlderExtend aroe=new ActionRecordOlderExtend();
+				aroe.setOlderbase(olderbase);
+				aroe.setArecorddate(a.getArecorddate());
+				extend.add(aroe);
+			}
+			
+			if (!extend.isEmpty()) {
+				return new Message(true, "返回成功", extend);
+			} else {
+				return new Message(false, "数据库错误", null);
+
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+
+		}
+
+	}
+
+	@Override
 	public Message getBranchName(int staffid) throws Exception {
 		try {
 			BranchExample branchExample = new BranchExample();
@@ -235,8 +313,8 @@ public class BrenchServiceImpl implements BrenchService {
 				List<JSONObject> jsonObjectList = new ArrayList();
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("olderbasesList", olderbasesList);
-				//jsonObject.put("olderAgeList", olderAgeList);
-				
+				// jsonObject.put("olderAgeList", olderAgeList);
+
 				jsonObjectList.add(jsonObject);
 				return new Message(true, "返回成功", olderbasesList);
 			} else {
@@ -441,4 +519,5 @@ public class BrenchServiceImpl implements BrenchService {
 
 		}
 	}
+
 }
