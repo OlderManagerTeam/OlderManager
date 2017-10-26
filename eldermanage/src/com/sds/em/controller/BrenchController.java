@@ -1,13 +1,10 @@
 package com.sds.em.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
-import javax.xml.crypto.Data;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.sds.em.po.Action;
-import com.sds.em.po.Branch;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
@@ -26,7 +21,6 @@ import com.sds.em.po.Visited;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
 import com.sds.em.util.Md5;
-import com.sds.em.util.Uuid;
 
 /*
  * 作者：刘露
@@ -120,8 +114,8 @@ public class BrenchController {
 
 	// 老人病历信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
-	public @ResponseBody Message sicks(Oldersick oldersick) throws Exception {
-
+	public @ResponseBody Message sicks(Oldersick oldersick,String sickDate) throws Exception {
+		oldersick.setSickdate(DateSimp.simp(sickDate));
 		return brenchService.addSicks(oldersick);
 	}
 
@@ -254,9 +248,13 @@ public class BrenchController {
 
 	// 给本老人添加回访记录
 	@RequestMapping(method = RequestMethod.POST, value = "elder/visited")
-	public @ResponseBody Message andOlderVisited(@RequestBody Visited visited, HttpSession session) throws Exception {
-		int staffid = (int) session.getAttribute("staffid");
+	public @ResponseBody Message andOlderVisited(String publishDate,Visited visited, HttpSession session) throws Exception {
+		session.setAttribute("staffid", "1");
+		int staffid = Integer.valueOf((String) session.getAttribute("staffid"));
+		visited.setVisiteddate(DateSimp.simp(publishDate));
 		visited.setVisitedassistantid(staffid);
+		visited.setVisitedjudgestar(0);
+		visited.setVisitedjudgecontent("未评价");
 		return brenchService.andOlderVisited(visited);
 	}
 

@@ -144,7 +144,6 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Message allLectures() {
 		LectureExample lectureExample = new LectureExample();
-		com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
 		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
 		if (!lectureList.isEmpty()) {
 			return new Message(true, "返回成功", lectureList);
