@@ -2,7 +2,9 @@ package com.sds.em.service.impl;
 
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +35,7 @@ import com.sds.em.po.Videorecord;
 import com.sds.em.po.VideorecordExample;
 import com.sds.em.service.CourseService;
 
+
 /**
  * 
  * @author  蔡文艳-2017-10-17
@@ -60,22 +63,33 @@ public class CourseServiceImpl implements CourseService {
 	@Autowired
 	ActionrecordMapper actionrecordMapper;
 
-	
-	
-	// 返回所有课程
-	@Override
-	public Message allClasses() {
 
-		VideoExample videoExample = new VideoExample();
-		Criteria videoCriteria = videoExample.createCriteria();
+
+	
+	// 查询所有的视频(返回课程列表)
+	
+	
+	@Override
+	public Message allClasses(String videopartition) {
+		List<Video> videoList  = null;
+//		VideoExample videoExample = new VideoExample();
+//		videoExample.setOrderByClause("videoid DESC,videoheat DESC");	
+//		Criteria videoCriteria = videoExample.createCriteria();
+//		videoCriteria.andVideopartitionEqualTo(videopartition);
+//		
+//		List<Video> videoList = videoMapper.selectByExample(videoExample);
+		videopartition="健康视频";
+	    if(videopartition.equals("健康视频")){
+	    	videoList =  videoMapper.select_video_healthy();
+	    }else if(videopartition.equals("讲座回放")){
+	    	videoList =  videoMapper.select_video_lecture();
+	    }
 		
-		List<Video> videoList = videoMapper.selectByExample(videoExample);
 		if (!videoList.isEmpty()) {
-			return new Message(true, "返回成功", videoList);
+			return new Message(true, "返回成功",videoList);
 		}
 
 		return new Message(false, "数据错误", null);
-
 	}
 
 	
@@ -370,10 +384,12 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false,"数据错误",null);
 	}
 
-
+	  //分页测试-------------------
 	
 
-    //分页测试-------------------
+
+
+
 	
 	
 	

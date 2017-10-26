@@ -289,9 +289,11 @@
     where videoId = #{videoid,jdbcType=INTEGER}
   </update>
    <!-- 自定义sql -->
-   <select id="findPages" resultType="com.sds.em.po.Video">   
-            select v.videoid,v.videopicurl,v.videourl,v.videoname,v.videointro,v.videodetail,v.videotime,v.videopublishdate,v.videoheat,v.videopartition
-            from video v   
-           limit #{startPos},#{pageSize} 
-   </select>
+	<select id="select_video_healthy"  resultType="com.sds.em.po.Video" >
+	       SELECT * from video WHERE videopartition='健康视频' order by videoid desc;
+	</select>
+	<select id="select_video_lecture"  resultType="com.sds.em.po.Video" >
+	       SELECT * from video WHERE videopartition='讲座回放' order by videoid desc;
+	</select>
+	
 </mapper>
