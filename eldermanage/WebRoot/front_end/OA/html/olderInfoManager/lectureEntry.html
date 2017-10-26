@@ -480,7 +480,7 @@
 				form.append("lecturestatus", $("#lecturestatus option:selected").text());
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/brench/lecture",
+					url : "http://localhost:8080/eldermanage/v1/brench/lecture/info",
 					data : form,
 					processData : false,
 					contentType : false,

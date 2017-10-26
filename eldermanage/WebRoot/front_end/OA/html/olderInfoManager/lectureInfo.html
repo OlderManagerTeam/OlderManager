@@ -39,7 +39,7 @@
 	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
-<body class="flat-blue">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -50,7 +50,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>分店管理</li>
-							<li class="active">修改讲座</li>
+							<li class="active">讲座详情</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -188,21 +188,19 @@
 						</ul>
 					</div>
 				</div></li>
-				<li class="panel panel-default dropdown">
-			        <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			              <span class="icon  glyphicon glyphicon-user"></span>
-			               <span class="title">总店管理</span>
-			         </a> <!-- Dropdown level 1 -->
-				     <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					       <div class="panel-body">
-						          <ul class="nav navbar-nav">
-							             <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							             <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						          </ul>
-					       </div>
-				     </div>
-			 </li>
-			 
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
+
 			<!--添加在左边导航栏-->
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
@@ -212,8 +210,8 @@
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
 							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
-                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
+							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
 				</div></li>
@@ -270,7 +268,7 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">修改讲座</span>
+				<span class="title">讲座详情</span>
 				<div class="description">Lecture Alter</div>
 			</div>
 			<div class="row">
@@ -278,68 +276,67 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="card-title">
-								<div class="title">修改讲座</div>
+								<div class="title">讲座详情</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<!--修改讲座时需要的表单-->
-							<form class="form-horizontal" id="lectureAlter">
+							<form class="form-horizontal" id="lectureInfo">
 								<div class="form-group">
-									<label for="lectureName" class="col-sm-3 control-label">修改讲座名称：</label>
+									<label for="lectureName" class="col-sm-3 control-label">讲座名称：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureName"
-											placeholder="修改讲座名称" name="lecturename">
+										<span class="form-control" id="lecturename"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureIntro" class="col-sm-3 control-label">修改讲座简介：</label>
+									<label for="lectureIntro" class="col-sm-3 control-label">讲座简介：</label>
 									<div class="col-sm-5">
-										<textarea class="form-control" id="lectureIntro" placeholder="修改讲座简介" 
-										style="height: 150px" name="lectureintro"></textarea>
+										<textarea class="form-control" id="lectureintro"
+											style="height: 150px" name="lectureintro"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureEnroll" class="col-sm-3 control-label">修改讲座已预约人数：</label>
+									<label for="lectureEnroll" class="col-sm-3 control-label">讲座已预约人数：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="lectureEnroll">例如：180</span>
+										<span class="form-control" id="lectureenroll"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureTotal" class="col-sm-3 control-label">修改讲座总人数：</label>
+									<label for="lectureTotal" class="col-sm-3 control-label">讲座总人数：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureTotal"
-											placeholder="修改讲座总人数" name="lecturetotal">
+										<span class="form-control" id="lecturetotal"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lecturePublishDate" class="col-sm-3 control-label">修改讲座发布日期：</label>
+									<label for="lecturePublishDate" class="col-sm-3 control-label">讲座发布日期：</label>
 									<div class="col-sm-5">
-										<input type="date" class="form-control" id="lecturePublishDate"
-											placeholder="修改讲座发布日期" name="lecturepublishdate">
+										<span class="form-control" id="lecturepublishdate"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureStatus" class="col-sm-3 control-label">修改讲座报名状态：</label>
-									<div class="col-sm-5">
-										<select id="lectureStatus" name="lecturestatus">
+									<label for="lectureStatus" class="col-sm-3 control-label">讲座报名状态：</label>
+									<div class="col-sm-4">
+										<select id="lecturestatus">
 											<optgroup label="修改讲座报名状态">
-											<option value="1">报名中</option>
-											<option value="0">结束</option>
+												<option value="1">报名中</option>
+												<option value="0">结束</option>
+												<option value="2">取消</option>
 											</optgroup>
 										</select>
 									</div>
+									<div class="col-sm-4">
+										<a role="button" class="btn btn-default" id="status">修改状态</a>
+									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureAddress" class="col-sm-3 control-label">修改讲座地址：</label>
+									<label for="lectureAddress" class="col-sm-3 control-label">讲座地址：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureAddress"
-											placeholder="修改讲座地址" name="lectureaddress">
+										<span class="form-control" id="lectureaddress"></span>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="lectureBranchId" class="col-sm-3 control-label">发布讲座的的分店：</label>
 									<div class="col-sm-5">
-										<text class="form-control" id="lectureBranchId" >例如：贵阳分店</text>
+										<text class="form-control" id="lectureBranchId">例如：贵阳分店</text>
 									</div>
 								</div>
 								<!--
@@ -354,11 +351,7 @@
                                             </div>
                                         </div>
                                         -->
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-5">
-										<button type="button" class="btn btn-default" id="entrysubmit">修改</button>
-									</div>
-								</div>
+								
 							</form>
 						</div>
 					</div>
@@ -459,7 +452,6 @@
 									regexp : /^[1-9]\d*|0$/,
 									message : '请输入整数'
 								},
-								
 							}
 						},
 						lecturetotal : {
@@ -471,7 +463,6 @@
 									regexp : /^[1-9]\d*|0$/,
 									message : '请输入整数'
 								},
-								
 							}
 						},
 						lecturetel : {
@@ -506,43 +497,126 @@
 			});
 		</script>
 
+	
 		<script type="text/javascript">
-			$("#entrysubmit").click(function() {
-			    var olderPoint=0
-				var data = {
-					oldername : $("#olderName").val(),
-					oldersex :$("#olderSex").find("option:selected").text(),
-					olderpassword : $("#olderPassword").val(),
-					olderbirthday:$("#olderBirthday").val(),
-					oldertel : $("#odlerTel").val(),
-					olderaddress : $("#olderAdress").val(),
-					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-					olderide : $("#olderIDE").val(),
-					
-					oldernation : $("#odlerNation").find("option:selected").text(),
-					olderheadurl : $("#olderHeadUrl").val(),
-					olderpoint :$("#olderPoint").val(),
-					olderbranchid : $("#olderBranchId").val(), 
+			UrlParm = function() { // url参数
+				var data,
+					index;
+				(function init() {
+					data = [];
+					index = {};
+					var u = window.location.search.substr(1);
+					if (u != '') {
+						var parms = decodeURIComponent(u).split('&');
+						for (var i = 0, len = parms.length; i < len; i++) {
+							if (parms[i] != '') {
+								var p = parms[i].split("=");
+								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+									data.push([ '' ]);
+									index[p[0]] = data.length - 1;
+								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+									data[0] = [ p[1] ];
+								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+									data.push([ p[1] ]);
+									index[p[0]] = data.length - 1;
+								} else { // c=aaa
+									data[index[p[0]]].push(p[1]);
+								}
+							}
+						}
+					}
+				})();
+				return {
+					// 获得参数,类似request.getParameter()
+					parm : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+						} catch (e) {}
+					},
+					//获得参数组, 类似request.getParameterValues()
+					parmValues : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+						} catch (e) {}
+					},
+					//是否含有parmName参数
+					hasParm : function(parmName) {
+						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+					},
+					// 获得参数Map ,类似request.getParameterMap()
+					parmMap : function() {
+						var map = {};
+						try {
+							for (var p in index) {
+								map[p] = data[index[p]];
+							}
+						} catch (e) {}
+						return map;
+					}
 				}
+			}();
+		
+			function load() {
+				var lectureid = UrlParm.parm("lectureid");
 				$.ajax({
-				type: 'post',
-				contentType:'application/json',
-				url: "http://localhost:8080/eldermanage/v1/brench/elder/info",
-				data: JSON.stringify(data),
-				success:function(result){
-					var resultdata = JSON.parse(result)
-					alert(resultdata.success)
-				},
-				error:function(){
-					alert('fail')
-				}
-			})
-				
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/brench/lecture/info?lectureid=" + lectureid,
+					data : null,
+					success : function(result) {
+						var lecturename = document.getElementById("lecturename");
+						//olderName.value = result.data.oldername;
+						lecturename.innerHTML = result.data.lecturename;
+						// alert("x1="+result.data.oldername); 
+						var lectureintro = document.getElementById("lectureintro");
+						lectureintro.innerHTML = result.data.lectureintro;
+						var lectureenroll = document.getElementById("lectureenroll");
+						lectureenroll.innerHTML = result.data.lectureenroll;
+						var lecturetotal = document.getElementById("lecturetotal");
+						lecturetotal.innerHTML = result.data.lecturetotal;
+						var date = new Date(result.data.lecturepublishdate+1000*60*60*8);
+						var d = date.toISOString().slice(0, 10);
+						
+						document.getElementById("lecturepublishdate").innerHTML = d;
+						
+						document.getElementById("lecturestatus").value = result.data.lecturestatus;
+						document.getElementById("lectureaddress").innerHTML = result.data.lectureaddress;
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+			}
+		</script>
+		
+		<script type="text/javascript">
+			$("#status").click(function() {
+				var form = new FormData(document.getElementById("lectureInfo"));
+				 var lectureid = UrlParm.parm("lectureid");
+				form.append("lectureid", lectureid);
+				form.append("lecturestatus", $("#lecturestatus option:selected").text());
+		
+				$.ajax({
+					type : 'post',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/brench/lecture/status",
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						alert('修改成功')
+						if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
+						}
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
+		
 			}
 			)
 		</script>
-		
-		
 </body>
 
 </html>
