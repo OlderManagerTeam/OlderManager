@@ -35,6 +35,7 @@ import com.sds.em.po.VisitedExample;
 import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
+import com.sds.em.util.Md5;
 
 public class BrenchServiceImpl implements BrenchService {
 	@Autowired
@@ -61,9 +62,12 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
 		try {
-			oldersbaseMapper.insertOlderBase(olderbase);
-			if (olderbase.getOlderid() != null) {
-				return new Message(true, "基本信息录入成功", olderbase.getOlderid());
+			int flag=0;
+			String pwdMD5=Md5.MD5(olderbase.getOlderpassword());
+			olderbase.setOlderpassword(pwdMD5);
+			flag=oldersbaseMapper.insert(olderbase);
+			if (flag!=0) {
+				return new Message(true, "基本信息录入成功", null);
 			} else {
 				return new Message(false, "基本信息录入失败", null);
 			}
@@ -231,10 +235,10 @@ public class BrenchServiceImpl implements BrenchService {
 				List<JSONObject> jsonObjectList = new ArrayList();
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("olderbasesList", olderbasesList);
-				jsonObject.put("olderAgeList", olderAgeList);
+				//jsonObject.put("olderAgeList", olderAgeList);
 				
 				jsonObjectList.add(jsonObject);
-				return new Message(true, "返回成功", jsonObjectList.toString());
+				return new Message(true, "返回成功", olderbasesList);
 			} else {
 
 				return new Message(false, "数据库错误", null);
@@ -285,7 +289,7 @@ public class BrenchServiceImpl implements BrenchService {
 
 			List<Olderbase> olderbaseList = oldersbaseMapper.selectByExample(olderbaseExample);
 			if (!olderbaseList.isEmpty()) {
-				return new Message(true, "获取成功", olderbaseList);
+				return new Message(true, "获取成功", olderbaseList.get(0));
 			} else {
 				return new Message(false, "数据库错误", null);
 			}

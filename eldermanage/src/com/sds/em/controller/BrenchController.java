@@ -41,7 +41,7 @@ public class BrenchController {
 
 	// odermaxpoint;
 
-	// 老人基本信息的录入-测试通过
+	// 老人基本信息的录入-测试通过-前端
 	@RequestMapping(method = RequestMethod.POST, value = "elder/info")
 	public @ResponseBody Message info(HttpSession session, String oldername, String oldersex, String olderbirthday,
 			String olderpassword, String oldertel, String olderaddress, String oldersinglestatus, String olderide,
@@ -80,8 +80,39 @@ public class BrenchController {
 
 	// 老人基本信息的修改-测试通过
 	@RequestMapping(method = RequestMethod.PUT, value = "elder/info")
-	public @ResponseBody Message update(@RequestBody Olderbase olderbase) throws Exception {
+	public @ResponseBody Message update(HttpSession session, String oldername, String oldersex, String olderbirthday,
+			String olderpassword, String oldertel, String olderaddress, String oldersinglestatus, String olderide,
+			String oldernation, MultipartFile olderheadurl) throws Exception {
+		// int olderbranchid=session.getAttribute("branchid");
+
+		String pic_path = "E:\\develop\\upload\\temp\\";
+		String picUrl = "http://localhost:8080/pic/";
+		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+		
+		File dnf1 = new File(pic_path + newFileName);
+		olderheadurl.transferTo(dnf1);
+		
+		Olderbase olderbase = new Olderbase();
+		olderbase.setOlderaddress(olderaddress);
+		Date date = DateSimp.simp(olderbirthday);
+		olderbase.setOlderbirthday(date);
+		olderbase.setOlderbranchid(1);
+		// http://localhost:8080/pic/1.jpg
+		olderbase.setOlderheadurl(picUrl + newFileName);
+
+		olderbase.setOlderide(olderide);
+		olderbase.setOldername(oldername);
+		olderbase.setOldernation(oldernation);
+		olderbase.setOlderpassword(olderpassword);
+
+		olderbase.setOlderpoint(0);
+		olderbase.setOldersex(oldersex);
+		olderbase.setOldersinglestatus(oldersinglestatus);
+		olderbase.setOldertel(oldertel);
+		olderbase.setOldermaxpoint(0);
+
 		return brenchManageService.modifyOlder(olderbase);
+
 	}
 
 	// 老人病历信息的录入-测试通过
@@ -97,7 +128,7 @@ public class BrenchController {
 		return brenchManageService.olderRate(olderid);
 	}
 
-	// 发布活动-测试通过
+	// 发布活动-测试通过-前端
 	@RequestMapping(method = RequestMethod.POST, value = "action")
 	public @ResponseBody Message addAction(HttpSession session, String actionstartdate,
 			String actionintro,String actionname,String actionaddress,String actionstatus,String actiontotal) throws Exception {
@@ -112,7 +143,7 @@ public class BrenchController {
 		
 		action.setActionstatus(actionstatus);
 		
-		action.setActiontotal(100);
+		action.setActiontotal(Integer.parseInt(actiontotal));
 		action.setActionbranchid(1);
 		action.setActionenroll(0);
 		return brenchManageService.publishAction(action);
@@ -131,7 +162,7 @@ public class BrenchController {
 		return brenchManageService.getBranchName(staffid);
 	}
 
-	// 查询本分店所有老人的基本信息
+	// 查询本分店所有老人的基本信息-前端
 
 	@RequestMapping(method = RequestMethod.GET, value = "elders/info")
 	public @ResponseBody Message allOlderByBranch(HttpSession session) throws Exception {
@@ -148,11 +179,10 @@ public class BrenchController {
 		return brenchManageService.deleteANElder(oldertel);
 	}
 
-	// 获取某个老人的信息--测试成功
+	// 获取某个老人的信息--测试成功-前端-完全
 
 	@RequestMapping(method = RequestMethod.GET, value = "elder/info")
 	public @ResponseBody Message getOlder(String oldertel) throws Exception {
-
 		return brenchManageService.getElder(oldertel);
 	}
 
@@ -188,11 +218,25 @@ public class BrenchController {
 		return brenchManageService.getOlderAllVisited(olderid);
 	}
 
-	// 添加讲座信息
+	// 添加讲座信息-前端
 	@RequestMapping(method = RequestMethod.POST, value = "lecture")
-	public @ResponseBody Message addLecture(HttpSession session, @RequestBody Lecture lecture) throws Exception {
-		int branchid = (int) session.getAttribute("branchid");
-		lecture.setLecturebranchid(branchid);
+	public @ResponseBody Message addLecture(HttpSession session, String lecturename,String lectureintro
+			,String lecturetotal,String lecturepublishdate,String lecturestatus,String lectureaddress
+			) throws Exception {
+		//int branchid = (int) session.getAttribute("branchid");
+		Lecture lecture=new Lecture();
+		lecture.setLectureaddress(lectureaddress);;
+		lecture.setLectureintro(lectureintro);
+		lecture.setLecturename(lecturename);
+		Date date = DateSimp.simp(lecturepublishdate);
+
+		lecture.setLecturepublishdate(date);
+		lecture.setLecturestatus(lecturestatus);
+		
+		lecture.setLecturetotal(Integer.parseInt(lecturetotal));
+		
+		lecture.setLecturebranchid(1);
+		lecture.setLectureenroll(0);
 		return brenchManageService.addLecture(lecture);
 	}
 
@@ -202,5 +246,9 @@ public class BrenchController {
 		int branchid = (int) session.getAttribute("branchid");
 		return brenchManageService.getLecture(branchid);
 	}
+	
+
+	
 
 }
+
