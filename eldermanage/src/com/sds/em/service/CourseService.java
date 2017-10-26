@@ -63,7 +63,7 @@ public interface CourseService {
  	//查看活动详情
  	public Message selelctActiondetail(int actionid);
  	//分页测试--------------------------
- 	Map<String,Object> selectByFy(Map<String,Object> param);
+ 	
 
  	
 }

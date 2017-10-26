@@ -119,7 +119,7 @@ public class BrenchController {
 
 	// 老人病历信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
-	public @ResponseBody Message sicks(@RequestBody Oldersick oldersick) throws Exception {
+	public @ResponseBody Message sicks(Oldersick oldersick) throws Exception {
 
 		return brenchManageService.addSicks(oldersick);
 	}
@@ -194,6 +194,12 @@ public class BrenchController {
 	@RequestMapping(method = RequestMethod.GET, value = "action/info")
 	public @ResponseBody Message getAction(int actionid) throws Exception {
 		return brenchManageService.getAction(actionid);
+	}
+	
+	//查找本活动参加的老人信息
+	@RequestMapping(method = RequestMethod.GET, value = "action/older/info")
+	public @ResponseBody Message getActionOlder(int actionid) throws Exception {
+		return brenchManageService.getActionOlder(actionid);
 	}
 
 	// 查询这个管理员所在的分店名--测试通过
