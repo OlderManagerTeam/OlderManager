@@ -75,7 +75,7 @@ public class CourseServiceImpl implements CourseService {
 //		videoCriteria.andVideopartitionEqualTo(videopartition);
 //		
 //		List<Video> videoList = videoMapper.selectByExample(videoExample);
-		videopartition="健康视频";
+		//videopartition="健康视频";
 	    if(videopartition.equals("健康视频")){
 	    	videoList =  videoMapper.select_video_healthy();
 	    }else if(videopartition.equals("讲座回放")){
@@ -163,19 +163,23 @@ public class CourseServiceImpl implements CourseService {
 	// 返回登录后的所有讲座
 	@Override
 	public Message allLectureByolder(int olderid, int olderbranchid) {
-		LecturerecordExample lecturerecordExample = new LecturerecordExample();
-		com.sds.em.po.LecturerecordExample.Criteria lecturercord = lecturerecordExample.createCriteria();
-		lecturercord.andLrecordolderidEqualTo(olderbranchid);
-		List<Lecturerecord> recordList = lecturerecordMapper.selectByExample(lecturerecordExample);
-		List<Lecture> lectureList =null;
-		if(!recordList.isEmpty()){
-			for(int i =0 ;i<recordList.size();i++){
-				LectureExample lectureExample = new LectureExample();
-				 com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
-				 lectureCriteria.andLectureidEqualTo(recordList.get(i).getLrecordlectureid());
-				 List<Lecture> lecture = lectureMapper.selectByExample(lectureExample);
-				 lectureList.add(i, lecture.get(0));
-			}
+//		LecturerecordExample lecturerecordExample = new LecturerecordExample();
+//		com.sds.em.po.LecturerecordExample.Criteria lecturercord = lecturerecordExample.createCriteria();
+//		lecturercord.andLrecordolderidEqualTo(olderbranchid);
+//		List<Lecturerecord> recordList = lecturerecordMapper.selectByExample(lecturerecordExample);
+//		List<Lecture> lectureList =null;
+		LectureExample lectureExample = new LectureExample();
+		 com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
+		 lectureCriteria.andLecturebranchidEqualTo(olderbranchid);
+		 List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
+		
+		if(!lectureList.isEmpty()){
+//			for(int i =0 ;i<recordList.size();i++){
+//				LectureExample lectureExample = new LectureExample();
+//				 com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
+//				 lectureCriteria.andLectureidEqualTo(recordList.get(i).getLrecordlectureid());
+//				 List<Lecture> lecture = lectureMapper.selectByExample(lectureExample);
+//				 lectureList.add(i, lecture.get(0));
 			return new Message(true, "返回成功", lectureList);
 		}
 		return new Message(false, "数据错误", null);
