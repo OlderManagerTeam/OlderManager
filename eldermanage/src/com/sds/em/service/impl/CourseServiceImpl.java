@@ -75,7 +75,7 @@ public class CourseServiceImpl implements CourseService {
 //		videoCriteria.andVideopartitionEqualTo(videopartition);
 //		
 //		List<Video> videoList = videoMapper.selectByExample(videoExample);
-		videopartition="健康视频";
+		//videopartition="健康视频";
 	    if(videopartition.equals("健康视频")){
 	    	videoList =  videoMapper.select_video_healthy();
 	    }else if(videopartition.equals("讲座回放")){
