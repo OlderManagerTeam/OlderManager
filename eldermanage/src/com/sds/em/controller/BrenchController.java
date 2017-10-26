@@ -24,6 +24,8 @@ import com.sds.em.po.Oldersick;
 import com.sds.em.po.Visited;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
+import com.sds.em.util.Md5;
+import com.sds.em.util.Uuid;
 
 /*
  * 作者：刘露
@@ -81,35 +83,35 @@ public class BrenchController {
 	// 老人基本信息的修改-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/infoupdate")
 	public @ResponseBody Message update(HttpSession session, String oldername, String oldersex, String olderbirthday,
-			String olderpassword, String repassword,String oldertel, String olderaddress, String oldersinglestatus, String olderide,
-			String oldernation, MultipartFile olderheadurl) throws Exception {
+			String olderpassword, String repassword, String oldertel, String olderaddress, String oldersinglestatus,
+			String olderide, String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
-		String pic_path = "E:\\develop\\upload\\temp\\";
-		String picUrl = "http://localhost:8080/pic/";
-		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+		Olderbase olderbase1 = (Olderbase) brenchManageService.getElder(oldertel).getData();
+		if (!olderheadurl.isEmpty()) {
 
-		File dnf1 = new File(pic_path + newFileName);
-		olderheadurl.transferTo(dnf1);
+			String pic_path = "E:\\develop\\upload\\temp\\";
+			String i[] = olderbase1.getOlderheadurl().split("/");
+			File headurl = new File(pic_path + i[i.length - 1]);
+			olderheadurl.transferTo(headurl);
+		}
 
 		Olderbase olderbase = new Olderbase();
+		olderbase.setOlderid(olderbase1.getOlderid());
 		olderbase.setOlderaddress(olderaddress);
 		Date date = DateSimp.simp(olderbirthday);
 		olderbase.setOlderbirthday(date);
-		olderbase.setOlderbranchid(1);
-		// http://localhost:8080/pic/1.jpg
-		olderbase.setOlderheadurl(picUrl + newFileName);
 
 		olderbase.setOlderide(olderide);
 		olderbase.setOldername(oldername);
 		olderbase.setOldernation(oldernation);
-		olderbase.setOlderpassword(olderpassword);
-
-		olderbase.setOlderpoint(0);
+		if (!(repassword.isEmpty())) {
+			repassword = Md5.MD5(repassword);
+			olderbase.setOlderpassword(repassword);
+		}
 		olderbase.setOldersex(oldersex);
 		olderbase.setOldersinglestatus(oldersinglestatus);
 		olderbase.setOldertel(oldertel);
-		olderbase.setOldermaxpoint(0);
 
 		return brenchManageService.modifyOlder(olderbase);
 
@@ -152,18 +154,19 @@ public class BrenchController {
 
 	// 修改活动
 	@RequestMapping(method = RequestMethod.POST, value = "updateaction")
-	public @ResponseBody Message updateAction(HttpSession session,String actionid, String actionintro, String actionstartdate,
-			String actionname, String actionaddress, String actionstatus, String actiontotal) throws Exception {
+	public @ResponseBody Message updateAction(HttpSession session, String actionid, String actionintro,
+			String actionstartdate, String actionname, String actionaddress, String actionstatus, String actiontotal)
+			throws Exception {
 		// int actionbranchid=session.getAttribute("branchid");
 		Action action = new Action();
 		try {
-		    int a = Integer.parseInt(actionid);
-		    action.setActionid(a);
+			int a = Integer.parseInt(actionid);
+			action.setActionid(a);
 		} catch (NumberFormatException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
 		action.setActionaddress(actionaddress);
-		
+
 		action.setActionintro(actionintro);
 		action.setActionname(actionname);
 
@@ -173,9 +176,9 @@ public class BrenchController {
 		action.setActionstatus(actionstatus);
 
 		action.setActiontotal(Integer.parseInt(actiontotal));
-		
+
 		action.setActionbranchid(1);
-		
+
 		return brenchManageService.modifyAction(action);
 	}
 
