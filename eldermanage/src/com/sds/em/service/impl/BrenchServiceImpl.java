@@ -11,7 +11,6 @@ import com.sds.em.mapper.ActionMapper;
 import com.sds.em.mapper.ActionrecordMapper;
 import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
-import com.sds.em.mapper.BranchMapper;
 
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
@@ -86,12 +85,8 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message addSicks(Oldersick oldersick) {
 		try {
-			oldersickMapper.insertOlderSick(oldersick);
-			if (oldersick.getSickid() != null) {
-				return new Message(true, "病历信息录入成功", oldersick.getSickid());
-			} else {
-				return new Message(false, "病历信息录入失败", null);
-			}
+			oldersickMapper.insert(oldersick);
+			return new Message(true, "病历信息录入成功", oldersick.getSickid());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);

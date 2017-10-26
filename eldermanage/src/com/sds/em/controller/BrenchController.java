@@ -24,6 +24,8 @@ import com.sds.em.po.Oldersick;
 import com.sds.em.po.Visited;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
+import com.sds.em.util.Md5;
+import com.sds.em.util.Uuid;
 
 /*
  * 作者：刘露
@@ -85,31 +87,31 @@ public class BrenchController {
 			String olderide, String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
-		String pic_path = "E:\\develop\\upload\\temp\\";
-		String picUrl = "http://localhost:8080/pic/";
-		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+		Olderbase olderbase1 = (Olderbase) brenchManageService.getElder(oldertel).getData();
+		if (!olderheadurl.isEmpty()) {
 
-		File dnf1 = new File(pic_path + newFileName);
-		olderheadurl.transferTo(dnf1);
+			String pic_path = "E:\\develop\\upload\\temp\\";
+			String i[] = olderbase1.getOlderheadurl().split("/");
+			File headurl = new File(pic_path + i[i.length - 1]);
+			olderheadurl.transferTo(headurl);
+		}
 
 		Olderbase olderbase = new Olderbase();
+		olderbase.setOlderid(olderbase1.getOlderid());
 		olderbase.setOlderaddress(olderaddress);
 		Date date = DateSimp.simp(olderbirthday);
 		olderbase.setOlderbirthday(date);
-		olderbase.setOlderbranchid(1);
-		// http://localhost:8080/pic/1.jpg
-		olderbase.setOlderheadurl(picUrl + newFileName);
 
 		olderbase.setOlderide(olderide);
 		olderbase.setOldername(oldername);
 		olderbase.setOldernation(oldernation);
-		olderbase.setOlderpassword(olderpassword);
-
-		olderbase.setOlderpoint(0);
+		if (!(repassword.isEmpty())) {
+			repassword = Md5.MD5(repassword);
+			olderbase.setOlderpassword(repassword);
+		}
 		olderbase.setOldersex(oldersex);
 		olderbase.setOldersinglestatus(oldersinglestatus);
 		olderbase.setOldertel(oldertel);
-		olderbase.setOldermaxpoint(0);
 
 		return brenchManageService.modifyOlder(olderbase);
 
@@ -117,7 +119,7 @@ public class BrenchController {
 
 	// 老人病历信息的录入-测试通过
 	@RequestMapping(method = RequestMethod.POST, value = "elder/sicks")
-	public @ResponseBody Message sicks(@RequestBody Oldersick oldersick) throws Exception {
+	public @ResponseBody Message sicks(Oldersick oldersick) throws Exception {
 
 		return brenchManageService.addSicks(oldersick);
 	}
