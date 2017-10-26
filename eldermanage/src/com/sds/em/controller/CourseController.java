@@ -57,8 +57,8 @@ public class CourseController {
 	@RequestMapping(method = RequestMethod.GET,value ="lecture")
 	public @ResponseBody Message currentLecture(HttpSession s){
 		
-		int olderid=(int) s.getAttribute("olderid");
-		int olderbranchid = (int) s.getAttribute("olderbranchid");
+		int olderid=0;
+		int olderbranchid = 1;
 		if(olderid != 0){//老人登陆后看到该片区所有讲座
 			return courseService.allLectureByolder(olderid,olderbranchid);
 		}
