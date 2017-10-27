@@ -355,7 +355,7 @@
 						//alert(actionItem[0].actionname);
 						for (var i = lectureItem.length - 1; i >= 0; i--) {
 							var _date = lectureItem[i].lecturepublishdate;
-							var date = new Date(_date);
+							var date = new Date(_date+1000*60*60*8);
 	
 							/* 	var olderAlter = "../olderInfoManager/olderAlter.html?olderid=";
 								olderAlter = olderAlter + olderItem[i].olderid; */
@@ -369,7 +369,7 @@
 													<td><a class="btn btn-primary btn-xs"href="../olderInfoManager/lectureInfo.html?lectureid=${lectureItem[i].lectureid}"
 														 role="button">详情</a>
 									                    <a class="btn btn-primary btn-xs"
-												         role="button" onclick="http://localhost:8080/eldermanage/v1/brench/lecture?lectureid="+${lectureItem[i].lectureid}">删除记录</a>
+												         role="button" href="../olderInfoManager/lectureInfo.html?lectureid=${lectureItem[i].lectureid}">修改</a>
 												    </td>
 											</tr>
 										`;

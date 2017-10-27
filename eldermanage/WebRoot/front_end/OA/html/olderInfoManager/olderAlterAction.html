@@ -339,7 +339,7 @@
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
 										<button type="submit" class="btn btn-default"
-											id="altersubmit">修改活动</button>
+											id="altersubmit">提交修改</button>
 									</div>
 								</div>
 							</form>
@@ -500,7 +500,7 @@
 					data : null,
 					success : function(result) {
 					 
-						var date = new Date(result.data.actionstartdate);
+						var date = new Date(result.data.actionstartdate+1000*60*60*8);
 						var d = date.toISOString().slice(0, 10);
 						document.getElementById("actionstartdate").value = d;
 						document.getElementById("actionintro").value = result.data.actionintro;
