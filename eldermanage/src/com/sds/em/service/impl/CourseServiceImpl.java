@@ -146,23 +146,37 @@ public class CourseServiceImpl implements CourseService {
 	public Message allLectures() {
 		LectureExample lectureExample = new LectureExample();
 		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
+		
+		List<LectureExtend> lectureExtendList = new ArrayList<LectureExtend>();
 		if (!lectureList.isEmpty()) {
-			return new Message(true, "返回成功", lectureList);
+			for(Lecture  l: lectureList){
+				LectureExtend extend = new LectureExtend();
+				if (l.getLecturepublishdate() == null) {
+					extend.setLecture(l);
+					extend.setPublishDateStirng("未定");
+
+				} else {
+					extend.setPublishDateStirng("有值");
+				}
+				extend.setJoinStatus("QQ");
+				lectureExtendList.add(extend);
+			}
+			return new Message(true, "返回成功", lectureExtendList);
 		}
 		return new Message(false, "数据错误", null);
 	}
 
 	// 返回登录后的所有讲座
 	@Override
-	public Message allLectureByolder(int olderid, int olderbranchid) {
-
+	public Message allLectureByolder(int olderid) {
+     
 		// 判断该老人是否有参加讲座的记录（参加过的话，将改状态传至前端，更改已参加）
 		LecturerecordExample lecturerecordExample = new LecturerecordExample();
 		com.sds.em.po.LecturerecordExample.Criteria lecturercordCriteria = lecturerecordExample.createCriteria();
 		lecturercordCriteria.andLrecordolderidEqualTo(olderid);
 		// 得到老人参加过的讲座id
 		List<Lecturerecord> recordListByOlder = lecturerecordMapper.selectByExample(lecturerecordExample);
-		LectureExtend extend = new LectureExtend();
+		
 		List<LectureExtend> lectureExtendList = new ArrayList<LectureExtend>();
 		if (!recordListByOlder.isEmpty()) {//表明老人有参加的讲座
 			for (Lecturerecord l : recordListByOlder) {
@@ -172,6 +186,8 @@ public class CourseServiceImpl implements CourseService {
 				List<Lecture> lectureListTrue = lectureMapper.selectByExample(lectureExampleTrue);
 				if (!lectureListTrue.isEmpty()) {
 					for (Lecture e : lectureListTrue) {
+						LectureExtend extend = new LectureExtend();
+						System.out.println(e.getLectureid());
 						if (e.getLecturepublishdate() == null) {
 							extend.setLecture(e);
 							extend.setPublishDateStirng("未定");
@@ -184,15 +200,19 @@ public class CourseServiceImpl implements CourseService {
 					}
 
 				}
-                //查找老人参加过的讲座之外的lectureid
+				lectureExampleTrue.clear();
+				
+               //查找老人参加过的讲座之外的lectureid
 				LectureExample lectureExampleFalse = new LectureExample();
 				com.sds.em.po.LectureExample.Criteria lectureCriteriaFalse = lectureExampleFalse.createCriteria();
-				lectureCriteriaFalse.andLecturebranchidNotEqualTo(l.getLrecordlectureid());
+				lectureCriteriaFalse.andLectureidNotEqualTo(l.getLrecordlectureid());
 			    //老人没有参加过得讲座List
 				List<Lecture> lectureListFalse = lectureMapper.selectByExample(lectureExampleFalse);
 
 				if (!lectureListFalse.isEmpty()) {
 					for (Lecture e : lectureListFalse) {
+						LectureExtend extend = new LectureExtend();
+						System.out.println(e.getLectureid());
 						if (e.getLecturepublishdate() == null) {
 							extend.setLecture(e);
 							extend.setPublishDateStirng("未定");
