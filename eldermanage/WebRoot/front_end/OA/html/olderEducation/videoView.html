@@ -34,7 +34,7 @@
 	href="../../css/themes/flat-blue.css">
 </head>
 
-<body class="flat-blue">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -295,7 +295,6 @@
 										<th>视频序号</th>
 										<th>视频分类</th>
 										<th>视频名称</th>
-										<th>视频缩略图</th>
 										<th>视频时长</th>
 										<th>视频发布日期</th>
 										<th>视频热度</th>
@@ -307,18 +306,16 @@
 										<th>视频序号</th>
 										<th>视频分类</th>
 										<th>视频名称</th>
-										<th>视频缩略图</th>
 										<th>视频时长</th>
 										<th>视频发布日期</th>
 										<th>视频热度</th>
 										<th>操作</th>
 									</tr>
 								</tfoot>
-								<tbody>
+								<tbody id="videoList">
 
 								</tbody>
 							</table>
-							<div id="olderView"></div>
 						</div>
 					</div>
 				</div>
@@ -353,6 +350,55 @@
 	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
 	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
 	<!-- Javascript -->
+	<script type="text/javascript">
+		function load() {
+			// 后台数据
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/video/allvideos",
+				data : null
+			}).then(
+				function(result) {
+					const oTbody = $("<tbody>");
+					var videoItem = result.data;
+					//alert(result.data);
+					for (var i = videoItem.length - 1; i >= 0; i--) {
+	
+	
+						/* 	var olderAlter = "../olderInfoManager/olderAlter.html?olderid=";
+							olderAlter = olderAlter + olderItem[i].olderid; */
+						var _date = videoItem[i].videopublishdate;
+						var date = new Date(_date);
+						var oTr = `<tr>
+										<td>${i + 1}</td>
+										<td>${videoItem[i].videopartition}</td>
+										<td>${videoItem[i].videoname}</td>
+										<td>${videoItem[i].videotime}</td>
+										<td>${date.toISOString().slice(0, 10)}</td>
+										<td>${videoItem[i].videoheat}</td>
+												<td><a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoInfo.html?videoid=${videoItem[i].videoid}"
+													 role="button">详情</a>
+													 <a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoAlter.html?videoid=${videoItem[i].videoid}"
+													 role="button">修改</a>
+									    </td>
+									</tr>
+							`;
+						$($(oTr)).appendTo('#videoList');
+					}
+	
+					$('.datatable').DataTable({
+						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+					});
+	
+				},
+				function() {
+					alert('数据库错误')
+				}
+			);
+		}
+		$(function() {})
+	</script>
 	<script type="text/javascript" src="../../js/app.js"></script>
 
 </body>
