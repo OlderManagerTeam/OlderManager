@@ -3,7 +3,8 @@
 
 <head>
 <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="utf-8">
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
@@ -189,20 +190,18 @@
 					</div>
 				</div></li>
 			<!--添加在左边导航栏-->
-            <li class="panel panel-default dropdown">
-			        <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			                 <span class="icon  glyphicon glyphicon-user"></span>
-			                 <span class="title">总店管理</span>
-			        </a> <!-- Dropdown level 1 -->
-			        <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					         <div class="panel-body">
-						           <ul class="nav navbar-nav">
-							              <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							              <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						           </ul>
-					         </div>
-				    </div>
-			</li>
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
@@ -211,8 +210,8 @@
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
 							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
-                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
+							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
 				</div></li>
@@ -286,21 +285,22 @@
 								<div class="form-group">
 									<label for="visitedOlderId" class="col-sm-3 control-label">老人ID：</label>
 									<div class="col-sm-5">
-										<text class="form-control" id="visitedOlderId" >例如：001</text>
+										<text  class="form-control" id="visitedOlderId" name="visitedolderid"></text>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="visitedContent" class="col-sm-3 control-label">访问内容：</label>
 									<div class="col-sm-5">
-										<textarea class="form-control" id="visitedContent" placeholder="访问内容" 
-										style="height: 150px" name="visitedcontent"></textarea>
+										<textarea class="form-control" id="visitedContent"
+											placeholder="访问内容" style="height: 150px"
+											name="visitedcontent"></textarea>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="visitedDate" class="col-sm-3 control-label">访问日期：</label>
 									<div class="col-sm-5">
 										<input type="date" class="form-control" id="visitedDate"
-											placeholder="访问日期" name="publishdate">
+											placeholder="访问日期" name="publishDate">
 									</div>
 								</div>
 								<!--
@@ -327,7 +327,6 @@
 			</div>
 		</div>
 	</div>
-	</div>
 	<footer class="app-footer">
 		<div class="wrapper">
 			<span class="pull-right">2.1 <a href="#"><i
@@ -353,7 +352,7 @@
 		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
 		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
 		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
+
 		<!-- 文件上传 JS -->
 		<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
 		<script src="../../lib/js/fileinput_locale_zh.js"
@@ -400,44 +399,89 @@
 		
 			});
 		</script>
-
 		<script type="text/javascript">
+			UrlParm = function() { // url参数
+				var data,
+					index;
+				(function init() {
+					data = [];
+					index = {};
+					var u = window.location.search.substr(1);
+					if (u != '') {
+						var parms = decodeURIComponent(u).split('&');
+						for (var i = 0, len = parms.length; i < len; i++) {
+							if (parms[i] != '') {
+								var p = parms[i].split("=");
+								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+									data.push([ '' ]);
+									index[p[0]] = data.length - 1;
+								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+									data[0] = [ p[1] ];
+								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+									data.push([ p[1] ]);
+									index[p[0]] = data.length - 1;
+								} else { // c=aaa
+									data[index[p[0]]].push(p[1]);
+								}
+							}
+						}
+					}
+				})();
+				return {
+					// 获得参数,类似request.getParameter()
+					parm : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+						} catch (e) {}
+					},
+					//获得参数组, 类似request.getParameterValues()
+					parmValues : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+						} catch (e) {}
+					},
+					//是否含有parmName参数
+					hasParm : function(parmName) {
+						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+					},
+					// 获得参数Map ,类似request.getParameterMap()
+					parmMap : function() {
+						var map = {};
+						try {
+							for (var p in index) {
+								map[p] = data[index[p]];
+							}
+						} catch (e) {}
+						return map;
+					}
+				}
+			}();
+		</script>
+		<script type="text/javascript">
+			document.getElementById("visitedOlderId").innerHTML = UrlParm.parm("olderid");
 			$("#entrysubmit").click(function() {
-			    var olderPoint=0
-				var data = {
-					oldername : $("#olderName").val(),
-					oldersex :$("#olderSex").find("option:selected").text(),
-					olderpassword : $("#olderPassword").val(),
-					olderbirthday:$("#olderBirthday").val(),
-					oldertel : $("#odlerTel").val(),
-					olderaddress : $("#olderAdress").val(),
-					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-					olderide : $("#olderIDE").val(),
-					
-					oldernation : $("#odlerNation").find("option:selected").text(),
-					olderheadurl : $("#olderHeadUrl").val(),
-					olderpoint :$("#olderPoint").val(),
-					olderbranchid : $("#olderBranchId").val(), 
-				}
+				var form = new FormData(document.getElementById("visitedEntry"));
+				form.append("visitedolderid", UrlParm.parm("olderid"))
 				$.ajax({
-				type: 'post',
-				contentType:'application/json',
-				url: "http://localhost:8080/eldermanage/v1/brench/elder/info",
-				data: JSON.stringify(data),
-				success:function(result){
-					var resultdata = JSON.parse(result)
-					alert(resultdata.success)
-				},
-				error:function(){
-					alert('fail')
-				}
-			})
-				
+					type : 'post',
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/visited",
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/visitedView.html?olderid="+UrlParm.parm("olderid");
+						}
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
+		
 			}
 			)
 		</script>
-		
-		
+		<script type="text/javascript" src="../../js/app.js"></script>
 </body>
 
 </html>

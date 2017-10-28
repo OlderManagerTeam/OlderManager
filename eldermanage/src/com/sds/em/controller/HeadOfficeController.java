@@ -22,7 +22,12 @@ public class HeadOfficeController {
 	@Autowired
 	HeadOfficeService headOfficeService;
 	
-	// 查询所有分店信息
+	//添加分店-所有完成
+	@RequestMapping(method = RequestMethod.POST, value = "branch")
+	public @ResponseBody Message addBranch(Branch branch) throws Exception {
+		return headOfficeService.addBranch(branch);
+	}
+	// 查询所有分店信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "allbranchs")
 	public @ResponseBody Message getAllBranch() throws Exception {
 		return headOfficeService.getAllBranch();

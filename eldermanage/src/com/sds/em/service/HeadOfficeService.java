@@ -4,6 +4,9 @@ import com.sds.em.po.Branch;
 import com.sds.em.po.Message;
 
 public interface HeadOfficeService {
+	//添加分店
+	public Message addBranch(Branch branch) throws Exception;
+
 	// 查询所有分店信息
 	public Message getAllBranch() throws Exception;
 
