@@ -30,7 +30,7 @@ import com.sds.em.service.CourseService;
  */
 @Controller
 @RequestMapping("v1/course/")
-public class CourseController {
+public class CourseFrontController {
 
 	@Autowired
 	CourseService courseService;
@@ -57,12 +57,12 @@ public class CourseController {
 	@RequestMapping(method = RequestMethod.GET,value ="lecture")
 	public @ResponseBody Message currentLecture(HttpSession s){
 		
-		int olderid=(int) s.getAttribute("olderid");
-		int olderbranchid = (int) s.getAttribute("olderbranchid");
+		int olderid=0;
+	
 		if(olderid != 0){//老人登陆后看到该片区所有讲座
-			return courseService.allLectureByolder(olderid,olderbranchid);
-		}
-		return courseService.allLectures();//未登录返回所有讲座
+			return courseService.allLectureByolder(olderid);
+		}else
+		   return courseService.allLectures();//未登录返回所有讲座
 		
 	}
 	
@@ -107,9 +107,10 @@ public class CourseController {
 	}
 	//查看所有活动 ---写完
 	@RequestMapping(method= RequestMethod.GET,value="actions/allactions")
-	public Message allActions(HttpSession s){
-		int olderid = (int) s.getAttribute("olderid");
-		int olderbranchid = (int) s.getAttribute("olderbranchid");
+	public @ResponseBody Message allActions(HttpSession s){
+		
+		int olderid = 1;
+		int olderbranchid = 1;
 		if(olderid != 0){//老人登陆后看到该片区所有活动
 			return courseService.allActionsByolder(olderid,olderbranchid);
 		}

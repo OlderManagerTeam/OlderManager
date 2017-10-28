@@ -101,32 +101,8 @@
 	    	
 	    	<div style="height: 3rem;"></div>
 
-	    	<div class="row">
-	    		<div class="col-md-12 col-lg-12 course-background">
-		    		<div class="col-md-12 col-lg-12">
-		    			<div class="coursetitle">标题标题</div>
-		    			<div>
-		    				<textarea readonly="readonly" class="coursesize">对于骨质疏松，人们都是这样的认知：骨质疏松是老年病，与年轻人无关；骨质疏松？补钙就好了……一直以来，人们都陷入这样的误区，以至于骨质疏松的症状得不到缓解，为此，科普中国微平台独家专访武汉协和医院骨外科副主任医师田洪涛，为大家厘清关于骨厘清关于骨厘清关于骨厘清关于骨厘清关于骨厘清关于骨厘清关于骨厘清关于骨厘清关于骨人们都是这样的认知：人们都是这样的认知：人们都是这样的认知：对于骨质疏松，人们都是这样的认知：骨质疏松是老年病，与年轻人无关；骨质疏松？补钙就好了……一直以来，人们都陷入这样的误区，以至于骨质疏松的症状得不到缓解</textarea>
-		    			</div>
-		    		</div>
-
-		    		<div class="col-md-12 col-lg-12" style="height: 1rem;"></div>
-
-		    		<div class="col-md-6 col-lg-6">
-		    			<img src="images/banner.jpg" class="course-img">
-		    		</div>
-		    		<div class="col-md-6 col-lg-6">
-		    			
-	    				<div class="course-time">讲座时间:<span style="color: red;">2017-10-23</span></div>
-	    				<div class="course-address">讲座地点:<span style="color: red;">贵州大学</span></div>
-	    				<div class="course-order-people">已预约人数:<span style="color: red;">100</span></div>
-	    				<div class="course-need-people">讲座开启所需人数:<span style="color: red;">200</span></div>
-		    			<div class="course-status">讲座状态:<span style="color: red;">报名中...</span></div>
-		    			<div><a href="#"><button type="button" class="btn btn-primary btn-lg course-btn">参与报名</button></a></div>
-		    		</div>
-		    	</div>
-		    	<div class="col-md-12 col-lg-12" style="height: 5rem;"></div>
-
+	    	<div class="row" id="courselist">
+	    		
 	    	</div>
 
 	    </div>
@@ -148,7 +124,7 @@
 		$.ajax({
 			type:'get',
 			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/",
+			url:"http://localhost:8080/eldermanage/v1/course/lecture",
 			data:null,
 			success:function(result){
 				var coursedata = result.data
@@ -157,9 +133,9 @@
 					var oDiv=`
 							<div class="col-md-12 col-lg-12 course-background">
 					    		<div class="col-md-12 col-lg-12">
-					    			<div class="coursetitle">${coursedata[i].}</div>
+					    			<div class="coursetitle">${coursedata[i].lecture.lecturename}</div>
 					    			<div>
-					    				<textarea readonly="readonly" class="coursesize">${coursedata[i].}</textarea>
+					    				<textarea readonly="readonly" class="coursesize">${coursedata[i].lecture.lectureintro}</textarea>
 					    			</div>
 					    		</div>
 
@@ -170,16 +146,17 @@
 					    		</div>
 					    		<div class="col-md-6 col-lg-6">
 					    			
-				    				<div class="course-time">讲座时间:<span style="color: red;">${coursedata[i].}</span></div>
-				    				<div class="course-address">讲座地点:<span style="color: red;">${coursedata[i].}</span></div>
-				    				<div class="course-order-people">已预约人数:<span style="color: red;">${coursedata[i].}</span></div>
-				    				<div class="course-need-people">讲座开启所需人数:<span style="color: red;">${coursedata[i].}</span></div>
-					    			<div class="course-status">讲座状态:<span style="color: red;">${coursedata[i].}...</span></div>
+				    				<div class="course-time">讲座时间:<span style="color: red;">${coursedata[i].lecture.lecturepublishdate}</span></div>
+				    				<div class="course-address">讲座地点:<span style="color: red;">${coursedata[i].lecture.lectureaddress}</span></div>
+				    				<div class="course-order-people">已预约人数:<span style="color: red;">${coursedata[i].lecture.lectureenroll}</span></div>
+				    				<div class="course-need-people">讲座开启所需人数:<span style="color: red;">${coursedata[i].lecture.lecturetotal}</span></div>
+					    			<div class="course-status">讲座状态:<span style="color: red;">${coursedata[i].lecture.lecturestatus}...</span></div>
 					    			<div><a href="#"><button type="button" class="btn btn-primary btn-lg course-btn">参与报名</button></a></div>
 					    		</div>
 					    	</div>
 					    	<div class="col-md-12 col-lg-12" style="height: 5rem;"></div>
 					`;
+					$('#courselist').append($(oDiv));
 				}
 			},
 			error:function(){

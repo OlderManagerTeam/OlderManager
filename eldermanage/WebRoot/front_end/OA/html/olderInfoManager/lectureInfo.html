@@ -3,7 +3,8 @@
 
 <head>
 <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="utf-8">
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
@@ -39,7 +40,7 @@
 	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
-<body class="flat-blue">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -49,8 +50,8 @@
 							<i class="fa fa-bars icon"></i>
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
-							<li>总店管理</li>
-							<li class="active">补充员工信息</li>
+							<li>分店管理</li>
+							<li class="active">讲座详情</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -187,13 +188,10 @@
 
 						</ul>
 					</div>
-				</div>
-			</li>
-			<!--在左边导航栏添加老人管理模块的导航-->
-			<li class="active panel panel-default dropdown">
-			<a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			   <span class="icon  glyphicon glyphicon-user"></span>
-			   <span class="title">总店管理</span>
+				</div></li>
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -202,10 +200,10 @@
 							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
+
 			<!--添加在左边导航栏-->
-			<li class="panel panel-default dropdown"><a
+			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
 			</a> <!-- Dropdown level 1 -->
@@ -213,8 +211,8 @@
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
 							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
-                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
+							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
 				</div></li>
@@ -271,86 +269,85 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">补充员工信息</span>
-				<div class="description">Add Branch</div>
+				<span class="title">讲座详情</span>
+				<div class="description">Lecture Alter</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
 							<div class="card-title">
-								<div class="title">补充员工信息</div>
+								<div class="title">讲座详情</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<!--添加分店时候需要的表单-->
-							<form class="form-horizontal" id="branchEntry">
+							<form class="form-horizontal" id="lectureInfo">
 								<div class="form-group">
-									<label for="staffName" class="col-sm-3 control-label">员工姓名：</label>
+									<label for="lectureName" class="col-sm-3 control-label">讲座名称：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：小张</span>
+										<span class="form-control" id="lecturename"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffSex" class="col-sm-3 control-label">员工性别：</label>
+									<label for="lectureIntro" class="col-sm-3 control-label">讲座简介：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：男</span>
+										<textarea class="form-control" id="lectureintro"
+											style="height: 150px" name="lectureintro" readonly></textarea>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffBirthday" class="col-sm-3 control-label">员工出生日期：</label>
+									<label for="lectureEnroll" class="col-sm-3 control-label">讲座报名状态：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：1990-10-10</span>
+										<span class="form-control" id="lecturestatus"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffiIDE" class="col-sm-3 control-label">员工身份证：</label>
+									<label for="lectureTotal" class="col-sm-3 control-label">讲座总人数：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：5202221199010100000</span>
+										<span class="form-control" id="lecturetotal"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffTel" class="col-sm-3 control-label">员工电话号：</label>
+									<label for="lecturePublishDate" class="col-sm-3 control-label">讲座发布日期：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：18000000000</span>
+										<span class="form-control" id="lecturepublishdate"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffCode" class="col-sm-3 control-label">员工号：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffCode"
-											placeholder="员工号（管理员添加：员工号=邮编区号（6位）+部门号（2位）+员工编号（4位）部门号以0开头为总部）" name="staffcode">
+									<label for="lectureStatus" class="col-sm-3 control-label">讲座已预约人数：</label>
+									<div class="col-sm-4">
+										<span class="form-control" id="lectureenroll"></span>
+									</div>
+									<div class="col-sm-4">
+										<a role="button" class="btn btn-default" id="enrollolder">查看</a>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffImg" class="col-sm-3 control-label">员工头像：</label>
+									<label for="lectureAddress" class="col-sm-3 control-label">讲座地址：</label>
 									<div class="col-sm-5">
-										<img src="../../img/textheadphoto.jpg">
+										<span class="form-control" id="lectureaddress"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffDepartmentId" class="col-sm-3 control-label">员工部门号：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffDepartmentId"
-											placeholder="员工部门号（管理员添加）" name="staffdepartmentid">
+									<div class="col-sm-offset-3 col-sm-5">
+										<a role="button" class="btn btn-default" id="lecturesubmit">修改讲座</a>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="staffPassword" class="col-sm-3 control-label">员工密码：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffPassword"
-											placeholder="员工密码" name="KPI">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="staffRoleId" class="col-sm-3 control-label">员工职位：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffRoleId"
-											placeholder="员工职位（管理员添加）" name="staffroleid">
-									</div>
-								</div>
+
+								<!--
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                              <div class="checkbox3 checkbox-round checkbox-check checkbox-light">
+                                                <input type="checkbox" id="checkbox-10">
+                                                <label for="checkbox-10">
+                                                  Remember me
+                                                </label>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        -->
+
 							</form>
-						    </div>
 						</div>
 					</div>
 				</div>
@@ -406,43 +403,85 @@
 			$(document).ready(function() {
 				// Generate a simple captcha
 		
-				$('#branchEntry').bootstrapValidator({
+				$('#lectureAlter').bootstrapValidator({
 					//        live: 'disabled',
 					message : 'This value is not valid',
 					feedbackIcons : {
 						valid : 'glyphicon glyphicon-ok-circle',
 						invalid : 'glyphicon glyphicon-remove-circle',
 						validating : 'glyphicon glyphicon-refresh',
+						regexp : 'glyphicon glyphicon-ok-circle'
 					},
 					fields : {
-						staffcode : {
-							message : '员工工号不能为空',
+						lecturename : {
+							message : '姓名不能为空',
 							validators : {
 								notEmpty : {
-									message : '员工工号不能为空'
+									message : '名称不能为空'
 								},
-								regexp : {
-									regexp : /^[0-9]{12}$/,
-									message : '员工工号必须是12位数字'
+								stringLength : {
+									min : 1,
+									max : 25,
+									message : '名称不能高于25位'
 								},
 							}
 						},
-						staffdepartmentid : {
+						lectureintro : {
 							validators : {
 								notEmpty : {
-									message : '员工部门号不能为空'
+									message : '简介不能为空'
 								},
-								regexp : {
-									regexp : /^[0-9]{2}$/,
-									message : '员工部门工号两位数字'
+								stringLength : {
+									min : 1,
+									max : 100,
+									message : '简介不能多余100字'
 								},
 							}
 						},
-						staffroleid : {
+						lectureenroll : {
 							validators : {
 								notEmpty : {
-									message : '员工职位不能为空'
+									message : '预约人数不能为空'
 								},
+								regexp : {
+									regexp : /^[1-9]\d*|0$/,
+									message : '请输入整数'
+								},
+							}
+						},
+						lecturetotal : {
+							validators : {
+								notEmpty : {
+									message : '总人数不能为空'
+								},
+								regexp : {
+									regexp : /^[1-9]\d*|0$/,
+									message : '请输入整数'
+								},
+							}
+						},
+						lecturetel : {
+							validators : {
+								notEmpty : {
+									message : '电话不能为空'
+								},
+								regexp : {
+									regexp : /^1[3|5|8]{1}[0-9]{9}$/,
+									message : '请输入正确的电话号码格式,例如：187XXXXXXXX'
+								}
+							}
+						},
+						lectureaddress : {
+							validators : {
+								notEmpty : {
+									message : '地址不能为空'
+								}
+							}
+						},
+						lecturestatus : {
+							enabled : false,
+							validators : {
+								message : '居住状况必须选择'
 							}
 						},
 					}
@@ -453,43 +492,99 @@
 			});
 		</script>
 
+
 		<script type="text/javascript">
-			$("#entrysubmit").click(function() {
-			    var olderPoint=0
-				var data = {
-					oldername : $("#olderName").val(),
-					oldersex :$("#olderSex").find("option:selected").text(),
-					olderpassword : $("#olderPassword").val(),
-					olderbirthday:$("#olderBirthday").val(),
-					oldertel : $("#odlerTel").val(),
-					olderaddress : $("#olderAdress").val(),
-					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-					olderide : $("#olderIDE").val(),
-					
-					oldernation : $("#odlerNation").find("option:selected").text(),
-					olderheadurl : $("#olderHeadUrl").val(),
-					olderpoint :$("#olderPoint").val(),
-					olderbranchid : $("#olderBranchId").val(), 
+			UrlParm = function() { // url参数
+				var data,
+					index;
+				(function init() {
+					data = [];
+					index = {};
+					var u = window.location.search.substr(1);
+					if (u != '') {
+						var parms = decodeURIComponent(u).split('&');
+						for (var i = 0, len = parms.length; i < len; i++) {
+							if (parms[i] != '') {
+								var p = parms[i].split("=");
+								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+									data.push([ '' ]);
+									index[p[0]] = data.length - 1;
+								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+									data[0] = [ p[1] ];
+								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+									data.push([ p[1] ]);
+									index[p[0]] = data.length - 1;
+								} else { // c=aaa
+									data[index[p[0]]].push(p[1]);
+								}
+							}
+						}
+					}
+				})();
+				return {
+					// 获得参数,类似request.getParameter()
+					parm : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+						} catch (e) {}
+					},
+					//获得参数组, 类似request.getParameterValues()
+					parmValues : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+						} catch (e) {}
+					},
+					//是否含有parmName参数
+					hasParm : function(parmName) {
+						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+					},
+					// 获得参数Map ,类似request.getParameterMap()
+					parmMap : function() {
+						var map = {};
+						try {
+							for (var p in index) {
+								map[p] = data[index[p]];
+							}
+						} catch (e) {}
+						return map;
+					}
 				}
+			}();
+		
+			function load() {
+				var lectureid = UrlParm.parm("lectureid");
+				document.getElementById("lecturesubmit").href=""+lectureid;
+				document.getElementById("enrollolder").href=""+lectureid;
 				$.ajax({
-				type: 'post',
-				contentType:'application/json',
-				url: "http://localhost:8080/eldermanage/v1/brench/elder/info",
-				data: JSON.stringify(data),
-				success:function(result){
-					var resultdata = JSON.parse(result)
-					alert(resultdata.success)
-				},
-				error:function(){
-					alert('fail')
-				}
-			})
-				
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/brench/lecture/info?lectureid=" + lectureid,
+					data : null,
+					success : function(result) {
+						var lecturename = document.getElementById("lecturename");
+						//olderName.value = result.data.oldername;
+						lecturename.innerHTML = result.data.lecturename;
+						// alert("x1="+result.data.oldername); 
+						var lectureintro = document.getElementById("lectureintro");
+						lectureintro.innerHTML = result.data.lectureintro;
+						var lectureenroll = document.getElementById("lectureenroll");
+						lectureenroll.innerHTML = result.data.lectureenroll;
+						var lecturetotal = document.getElementById("lecturetotal");
+						lecturetotal.innerHTML = result.data.lecturetotal;
+						var date = new Date(result.data.lecturepublishdate + 1000 * 60 * 60 * 8);
+						var d = date.toISOString().slice(0, 10);
+		
+						document.getElementById("lecturepublishdate").innerHTML = d;
+		
+						document.getElementById("lecturestatus").innerHTML = result.data.lecturestatus;
+						document.getElementById("lectureaddress").innerHTML = result.data.lectureaddress;
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
 			}
-			)
 		</script>
-		
-		
 </body>
 
 </html>

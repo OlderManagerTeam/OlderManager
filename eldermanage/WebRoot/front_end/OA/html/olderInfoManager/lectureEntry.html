@@ -3,7 +3,8 @@
 
 <head>
 <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="utf-8">
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
@@ -327,12 +328,6 @@
 											placeholder="讲座地址" name="lectureaddress">
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="lectureBranchId" class="col-sm-3 control-label">发布讲座的的分店：</label>
-									<div class="col-sm-5">
-										<text class="form-control" id="lecturebranchid">例如：贵阳分店</text>
-									</div>
-								</div>
 								<!--
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
@@ -480,7 +475,7 @@
 				form.append("lecturestatus", $("#lecturestatus option:selected").text());
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/brench/lecture",
+					url : "http://localhost:8080/eldermanage/v1/brench/lecture/info",
 					data : form,
 					processData : false,
 					contentType : false,

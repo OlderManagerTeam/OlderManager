@@ -112,7 +112,7 @@
 	    			请选择要观看的视频类型:
 	    		</div>
 		    	<div style="float: left;">
-		    		<select class="form-control" id="hhh"  style="width: 25rem;font-size: 2rem;height: 4rem">
+		    		<select class="form-control" style="width: 25rem;font-size: 2rem;height: 4rem" id="videotype">
 		    			<option>健康视频</option>
 		    			<option>讲座回放</option>
 		    		</select>
@@ -136,7 +136,6 @@
 			</div>
 			<!-- 分页  -->
 			<div id="demo5" style="margin-left: 30rem;"></div>
-
 	    </div>
 		    
 		    
@@ -154,65 +153,40 @@
 	</footer>
 
 	<script type="text/javascript">
-	var hhh=#{hhh}
-		var resultDatas;
-		$.ajax({
-			type:'get',
-			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/course/classes?hhh="+hhh,
-			data:null,
-			success:function(result){
-				alert(result.data)
-				//将服务器传来的字符串转换为JSON格式运用在html
-				//var resultdata = JSON.parse(result)
-				//返回success信息
-				//alert(result.success)
-				var data = result.data;
-				layui.use(['laypage', 'layer'], function(){
-					var laypage = layui.laypage
-					,layer = layui.layer;
-					laypage.render({
-					    elem: 'demo5'
-					    ,count: data.length
-					    ,limit: 12
-					    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
-					    ,hash: 'fenye' //自定义hash值
-					    ,jump: function(obj){
-					      //模拟渲染
-					      document.getElementById('videolist').innerHTML = function(){
-					        var arr = []
-					        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
-					        layui.each(thisData, function(index, item){
-					        	let datas =`
-									<div class="col-md-6 col-lg-4">
-						    			<a href="${item.videourl}">
-						    			<div>
-						    				<img src="images/banner.jpg" class="courseimg">
-						    			</div>
-						    			<div><p class="videotitlesize">${item.videoname}</p></div>
-						    			<div><span class="videotimesize">时长:${item.videotime}分钟</span>
-						    				<span class="videovolume">播放数:${item.videoheat}</span>
-						    			</div>
-						    			<div style="height: 5rem;"></div>
-						    			</a>
-							   		</div>
-								`;
-					        	arr.push(datas);
-					        });
-					        return arr.join('');
-					      }();
-					    }
-					});
-								
-				});
-				
-			},
-			error:function(){
-				alert('fail')
-			}
-		})
+		var videopartition = $("#videotype").val();
+		videoType(videopartition);
+		$("#videotype").change(function (){
+			videoType($(this).val());
+		});
+		function videoType(type){
+			$.ajax({
+				type:'get',
+				contentType:'application/json',
+				url:"http://localhost:8080/eldermanage/v1/course/classes?videopartition="+type,
+				data:null,
+				success:function(result){
+					//将服务器传来的字符串转换为JSON格式运用在html
+					//var resultdata = JSON.parse(result)
+					//返回success信息
+					//alert(result.success)
+					var videodata = result.data;
+					if(  result.success === false){
+						$("#videolist").html('<img class="img-responsive" src="images/banner.jpg" />');
+						$("#demo5").hide();
+						return false;
+					} 
+					$("#demo5").show();
+					page(videodata, $("#demo5"));									
+					
+				},
+				error:function(){
+					alert('fail')
+				}
+			})
+		}
+		
 
-	/* 	$.ajax({
+		$.ajax({
 			type:'get',
 			contentType:'application/json',
 			url:"http://localhost:8080/eldermanage/v1/course/video/heat",
@@ -236,7 +210,48 @@
 			error:function(){
 				alert('fail')
 			}
-		}) */
+		})
+
+		//   分页
+		function page(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+						var laypage = layui.laypage
+						,layer = layui.layer;
+						laypage.render({
+						    elem: pageRoot
+						    ,count: videodata.length
+						    ,limit: 12  //每页个数
+						    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+						    ,hash: 'fenye' //自定义hash值
+						    ,jump: function(obj){
+						      //模拟渲染
+						      document.getElementById('videolist').innerHTML = function(){
+						        var arr = []
+						        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+						        layui.each(thisData, function(index, item){
+						        	let datas =`
+										<div class="col-md-6 col-lg-4">
+							    			<a href="${item.videourl}">
+							    			<div>
+							    				<img src="images/banner.jpg" class="courseimg">
+							    			</div>
+							    			<div><p class="videotitlesize">${item.videoname}</p></div>
+							    			<div><span class="videotimesize">时长:${item.videotime}分钟</span>
+							    				<span class="videovolume">播放数:${item.videoheat}</span>
+							    			</div>
+							    			<div style="height: 5rem;"></div>
+							    			</a>
+								   		</div>
+									`;
+						        	arr.push(datas);
+						        });
+						        return arr.join('');
+						      }();
+						    }
+						});
+									
+					});
+		}
 	</script>
 
 </body>

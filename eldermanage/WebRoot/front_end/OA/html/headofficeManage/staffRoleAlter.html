@@ -39,7 +39,7 @@
 	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
-<body class="flat-blue">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -49,8 +49,8 @@
 							<i class="fa fa-bars icon"></i>
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
-							<li>分店管理</li>
-							<li class="active">修改讲座</li>
+							<li>总店管理</li>
+							<li class="active">补充员工信息</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -188,23 +188,21 @@
 						</ul>
 					</div>
 				</div></li>
-				<li class="panel panel-default dropdown">
-			        <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			              <span class="icon  glyphicon glyphicon-user"></span>
-			               <span class="title">总店管理</span>
-			         </a> <!-- Dropdown level 1 -->
-				     <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					       <div class="panel-body">
-						          <ul class="nav navbar-nav">
-							             <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							             <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						          </ul>
-					       </div>
-				     </div>
-			 </li>
-			 
-			<!--添加在左边导航栏-->
+			<!--在左边导航栏添加老人管理模块的导航-->
 			<li class="active panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<!--添加在左边导航栏-->
+			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
 			</a> <!-- Dropdown level 1 -->
@@ -212,8 +210,8 @@
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
 							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
-                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
+							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
 				</div></li>
@@ -270,93 +268,84 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">修改讲座</span>
-				<div class="description">Lecture Alter</div>
+				<span class="title">补充员工信息</span>
+				<div class="description">Add Branch</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
 							<div class="card-title">
-								<div class="title">修改讲座</div>
+								<div class="title">补充员工信息</div>
 							</div>
 						</div>
 						<div class="card-body">
-							<!--修改讲座时需要的表单-->
-							<form class="form-horizontal" id="lectureAlter">
+							<!--添加分店时候需要的表单-->
+							<form class="form-horizontal" id="staffRoleAlter">
 								<div class="form-group">
-									<label for="lectureName" class="col-sm-3 control-label">修改讲座名称：</label>
+									<label for="staffImg" class="col-sm-3 control-label">员工头像：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureName"
-											placeholder="修改讲座名称" name="lecturename">
+										<img src="../../img/textheadphoto.jpg" id="staffimg">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureIntro" class="col-sm-3 control-label">修改讲座简介：</label>
+									<label for="staffName" class="col-sm-3 control-label">员工姓名：</label>
 									<div class="col-sm-5">
-										<textarea class="form-control" id="lectureIntro" placeholder="修改讲座简介" 
-										style="height: 150px" name="lectureintro"></textarea>
+										<span class="form-control" id="staffname"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureEnroll" class="col-sm-3 control-label">修改讲座已预约人数：</label>
+									<label for="staffSex" class="col-sm-3 control-label">员工性别：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="lectureEnroll">例如：180</span>
+										<span class="form-control" id="staffsex"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureTotal" class="col-sm-3 control-label">修改讲座总人数：</label>
+									<label for="staffDepartmentId" class="col-sm-3 control-label">部门号：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureTotal"
-											placeholder="修改讲座总人数" name="lecturetotal">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lecturePublishDate" class="col-sm-3 control-label">修改讲座发布日期：</label>
-									<div class="col-sm-5">
-										<input type="date" class="form-control" id="lecturePublishDate"
-											placeholder="修改讲座发布日期" name="lecturepublishdate">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lectureStatus" class="col-sm-3 control-label">修改讲座报名状态：</label>
-									<div class="col-sm-5">
-										<select id="lectureStatus" name="lecturestatus">
-											<optgroup label="修改讲座报名状态">
-											<option value="1">报名中</option>
-											<option value="0">结束</option>
+										<select id="staffdepartmentid" onclick="showDepartmentId()">
+											<optgroup label="部门号">
+												<option value="01">1</option>
 											</optgroup>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureAddress" class="col-sm-3 control-label">修改讲座地址：</label>
+									<label for="staffDepartmentId" class="col-sm-3 control-label">部门名称：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureAddress"
-											placeholder="修改讲座地址" name="lectureaddress">
+										<span class="form-control" id="departmentname"></span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="staffRoleId" class="col-sm-3 control-label">职位编号：</label>
+									<div class="col-sm-5">
+										<select id="roleid" onclick="showRoleId()">
+											<optgroup label="职位编号">
+												<option value="01">1</option>
+												<option value="02">2</option>
+											</optgroup>
+										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureBranchId" class="col-sm-3 control-label">发布讲座的的分店：</label>
+									<label for="staffRoleId" class="col-sm-3 control-label">员工职位：</label>
 									<div class="col-sm-5">
-										<text class="form-control" id="lectureBranchId" >例如：贵阳分店</text>
+										<input type="text" class="form-control" id="rolecontent"
+											placeholder="员工职位（管理员添加）" name="rolecontent">
 									</div>
 								</div>
-								<!--
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                              <div class="checkbox3 checkbox-round checkbox-check checkbox-light">
-                                                <input type="checkbox" id="checkbox-10">
-                                                <label for="checkbox-10">
-                                                  Remember me
-                                                </label>
-                                              </div>
-                                            </div>
-                                        </div>
-                                        -->
+								<div class="form-group">
+									<label for="staffCode" class="col-sm-3 control-label">员工号：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="staffcode"
+											placeholder="员工号（管理员添加：员工号=邮编区号（6位）+部门号（2位）+员工编号（4位）部门号以0开头为总部）"
+											name="staffcode">
+									</div>
+								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
-										<button type="button" class="btn btn-default" id="entrysubmit">修改</button>
+										<button type="button" class="btn btn-default" id="altersubmit">修改提交</button>
 									</div>
 								</div>
 							</form>
@@ -365,6 +354,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	</div>
 	<footer class="app-footer">
@@ -415,87 +405,43 @@
 			$(document).ready(function() {
 				// Generate a simple captcha
 		
-				$('#lectureAlter').bootstrapValidator({
+				$('#branchEntry').bootstrapValidator({
 					//        live: 'disabled',
 					message : 'This value is not valid',
 					feedbackIcons : {
 						valid : 'glyphicon glyphicon-ok-circle',
 						invalid : 'glyphicon glyphicon-remove-circle',
 						validating : 'glyphicon glyphicon-refresh',
-						regexp : 'glyphicon glyphicon-ok-circle'
 					},
 					fields : {
-						lecturename : {
-							message : '姓名不能为空',
+						staffcode : {
+							message : '员工工号不能为空',
 							validators : {
 								notEmpty : {
-									message : '名称不能为空'
-								},
-								stringLength : {
-									min : 1,
-									max : 25,
-									message : '名称不能高于25位'
-								},
-							}
-						},
-						lectureintro : {
-							validators : {
-								notEmpty : {
-									message : '简介不能为空'
-								},
-								stringLength : {
-									min : 1,
-									max : 100,
-									message : '简介不能多余100字'
-								},
-							}
-						},
-						lectureenroll : {
-							validators : {
-								notEmpty : {
-									message : '预约人数不能为空'
+									message : '员工工号不能为空'
 								},
 								regexp : {
-									regexp : /^[1-9]\d*|0$/,
-									message : '请输入整数'
+									regexp : /^[0-9]{12}$/,
+									message : '员工工号必须是12位数字'
 								},
-								
 							}
 						},
-						lecturetotal : {
+						staffdepartmentid : {
 							validators : {
 								notEmpty : {
-									message : '总人数不能为空'
+									message : '员工部门号不能为空'
 								},
 								regexp : {
-									regexp : /^[1-9]\d*|0$/,
-									message : '请输入整数'
+									regexp : /^[0-9]{2}$/,
+									message : '员工部门工号两位数字'
 								},
-								
 							}
 						},
-						lecturetel : {
+						staffroleid : {
 							validators : {
 								notEmpty : {
-									message : '电话不能为空'
+									message : '员工职位不能为空'
 								},
-								regexp : {
-									regexp : /^1[3|5|8]{1}[0-9]{9}$/,
-									message : '请输入正确的电话号码格式,例如：187XXXXXXXX'
-								}
-							}
-						},
-						lectureaddress : {
-							validators : {
-								notEmpty : {
-									message : '地址不能为空'
-								}
-							}
-						},
-						lecturestatus : {
-							enabled : false,
-							validators : {
-								message : '居住状况必须选择'
 							}
 						},
 					}
@@ -507,42 +453,172 @@
 		</script>
 
 		<script type="text/javascript">
-			$("#entrysubmit").click(function() {
-			    var olderPoint=0
-				var data = {
-					oldername : $("#olderName").val(),
-					oldersex :$("#olderSex").find("option:selected").text(),
-					olderpassword : $("#olderPassword").val(),
-					olderbirthday:$("#olderBirthday").val(),
-					oldertel : $("#odlerTel").val(),
-					olderaddress : $("#olderAdress").val(),
-					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-					olderide : $("#olderIDE").val(),
-					
-					oldernation : $("#odlerNation").find("option:selected").text(),
-					olderheadurl : $("#olderHeadUrl").val(),
-					olderpoint :$("#olderPoint").val(),
-					olderbranchid : $("#olderBranchId").val(), 
+			UrlParm = function() { // url参数
+				var data,
+					index;
+				(function init() {
+					data = [];
+					index = {};
+					var u = window.location.search.substr(1);
+					if (u != '') {
+						var parms = decodeURIComponent(u).split('&');
+						for (var i = 0, len = parms.length; i < len; i++) {
+							if (parms[i] != '') {
+								var p = parms[i].split("=");
+								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+									data.push([ '' ]);
+									index[p[0]] = data.length - 1;
+								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+									data[0] = [ p[1] ];
+								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+									data.push([ p[1] ]);
+									index[p[0]] = data.length - 1;
+								} else { // c=aaa
+									data[index[p[0]]].push(p[1]);
+								}
+							}
+						}
+					}
+				})();
+				return {
+					// 获得参数,类似request.getParameter()
+					parm : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+						} catch (e) {}
+					},
+					//获得参数组, 类似request.getParameterValues()
+					parmValues : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+						} catch (e) {}
+					},
+					//是否含有parmName参数
+					hasParm : function(parmName) {
+						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+					},
+					// 获得参数Map ,类似request.getParameterMap()
+					parmMap : function() {
+						var map = {};
+						try {
+							for (var p in index) {
+								map[p] = data[index[p]];
+							}
+						} catch (e) {}
+						return map;
+					}
 				}
+			}();
+		
+			function load() {
+				//var staffid = UrlParm.parm("staffid");
+				var staffid = 1;
+		
 				$.ajax({
-				type: 'post',
-				contentType:'application/json',
-				url: "http://localhost:8080/eldermanage/v1/brench/elder/info",
-				data: JSON.stringify(data),
-				success:function(result){
-					var resultdata = JSON.parse(result)
-					alert(resultdata.success)
-				},
-				error:function(){
-					alert('fail')
-				}
-			})
-				
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
+					data : null,
+					success : function(result) {
+						var staffimg = document.getElementById("staffimg");
+						staffimg.innerHTML = result.data.staffbase.staffimg;
+						var staffcode = document.getElementById("staffcode");
+						staffcode.value = result.data.staffbase.staffcode;
+						var staffname = document.getElementById("staffname");
+						staffname.innerHTML = result.data.staffbase.staffname;
+						var staffsex = document.getElementById("staffsex");
+						staffsex.innerHTML = result.data.staffbase.staffsex;
+		
+		
+						var departmentname = document.getElementById("departmentname");
+						departmentname.innerHTML = result.data.department.departmentname;
+		
+						var rolecontent = document.getElementById("rolecontent");
+						rolecontent.value = result.data.role.rolecontent;
+		
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+			}
+		</script>
+		<script type="text/javascript">
+			function showDepartmentId() {
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/alldepartmentid",
+					data : null,
+					success : function(result) {
+						var departmentIdItem = result.data;
+						//alert(result.data);
+						for (var i = departmentIdItem.length - 1; i >= 0; i--) {
+							
+							var staffdepartmentid = document.getElementById("staffdepartmentid");
+							var value=i + 1
+							var text=departmentIdItem[i].departmentid
+							var option = new Option(text, value);
+							staffdepartmentid.options.add(option);
+						}
+		
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+			}
+		</script>
+		
+	<script type="text/javascript">
+			function showRoleId() {
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/allRoleid",
+					data : null,
+					success : function(result) {
+						var roleIdItem = result.data;
+						//alert(result.data);
+						for (var i = roleIdItem.length - 1; i >= 0; i--) {
+							
+						
+						}
+		
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+			}
+		</script>
+
+		<script type="text/javascript">
+			$("#altersubmit").click(function() {
+				var form = new FormData(document.getElementById("staffRoleAlter"));
+				//var staffid = UrlParm.parm("staffid");
+				var staffid = 1;
+				form.append("staffid", staffid);
+				$.ajax({
+					type : 'post',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						//var resultdata = JSON.parse(result);
+						alert(result.information);
+						if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
+						}
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
 			}
 			)
 		</script>
-		
-		
 </body>
 
 </html>
