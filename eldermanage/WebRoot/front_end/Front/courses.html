@@ -133,9 +133,9 @@
 					var oDiv=`
 							<div class="col-md-12 col-lg-12 course-background">
 					    		<div class="col-md-12 col-lg-12">
-					    			<div class="coursetitle">${coursedata[i].lecturename}</div>
+					    			<div class="coursetitle">${coursedata[i].lecture.lecturename}</div>
 					    			<div>
-					    				<textarea readonly="readonly" class="coursesize">${coursedata[i].lectureintro}</textarea>
+					    				<textarea readonly="readonly" class="coursesize">${coursedata[i].lecture.lectureintro}</textarea>
 					    			</div>
 					    		</div>
 
@@ -146,11 +146,11 @@
 					    		</div>
 					    		<div class="col-md-6 col-lg-6">
 					    			
-				    				<div class="course-time">讲座时间:<span style="color: red;">${coursedata[i].lecturepublishdate}</span></div>
-				    				<div class="course-address">讲座地点:<span style="color: red;">${coursedata[i].lectureaddress}</span></div>
-				    				<div class="course-order-people">已预约人数:<span style="color: red;">${coursedata[i].lectureenroll}</span></div>
-				    				<div class="course-need-people">讲座开启所需人数:<span style="color: red;">${coursedata[i].lecturetotal}</span></div>
-					    			<div class="course-status">讲座状态:<span style="color: red;">${coursedata[i].lecturestatus}...</span></div>
+				    				<div class="course-time">讲座时间:<span style="color: red;">${coursedata[i].lecture.lecturepublishdate}</span></div>
+				    				<div class="course-address">讲座地点:<span style="color: red;">${coursedata[i].lecture.lectureaddress}</span></div>
+				    				<div class="course-order-people">已预约人数:<span style="color: red;">${coursedata[i].lecture.lectureenroll}</span></div>
+				    				<div class="course-need-people">讲座开启所需人数:<span style="color: red;">${coursedata[i].lecture.lecturetotal}</span></div>
+					    			<div class="course-status">讲座状态:<span style="color: red;">${coursedata[i].lecture.lecturestatus}...</span></div>
 					    			<div><a href="#"><button type="button" class="btn btn-primary btn-lg course-btn">参与报名</button></a></div>
 					    		</div>
 					    	</div>

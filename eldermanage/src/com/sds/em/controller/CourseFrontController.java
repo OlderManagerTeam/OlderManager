@@ -57,12 +57,12 @@ public class CourseFrontController {
 	@RequestMapping(method = RequestMethod.GET,value ="lecture")
 	public @ResponseBody Message currentLecture(HttpSession s){
 		
-		int olderid=1;
-		int olderbranchid = 1;
+		int olderid=0;
+	
 		if(olderid != 0){//老人登陆后看到该片区所有讲座
-			return courseService.allLectureByolder(olderid,olderbranchid);
-		}
-		return courseService.allLectures();//未登录返回所有讲座
+			return courseService.allLectureByolder(olderid);
+		}else
+		   return courseService.allLectures();//未登录返回所有讲座
 		
 	}
 	

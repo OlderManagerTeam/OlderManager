@@ -29,7 +29,7 @@ public interface CourseService {
 	public Message classRecord(int olderid,int videoid,Date lrecorddate);
 
 	// 返回未登录时的所有讲座
-	public Message allLectureByolder(int olderid,int olderbranchid);
+	public Message allLectureByolder(int olderid);
 	// 返回未登录后的所有讲座
 	public Message allLectures();
 	
