@@ -346,7 +346,7 @@
 								<div class="form-group">
 									<label for="videoPartition" class="col-sm-3 control-label">视频分类：</label>
 									<div class="col-sm-5">
-									<select id="videopartition">
+										<select id="videopartition">
 											<optgroup label="视频分类">
 												<option value="0">健康视频</option>
 												<option value="1">讲座回放</option>
@@ -356,7 +356,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
-										<button type="submit" class="btn btn-default" id="entrysubmit">确认提交</button>
+										<button type="button" class="btn btn-default" id="entrysubmit">确认提交</button>
 									</div>
 								</div>
 							</form>
@@ -410,7 +410,7 @@
 				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
 			});
 		</script>
-			<script>
+		<script>
 			$("#videourl").fileinput({
 				showUpload : false,
 				showCaption : false,
@@ -467,14 +467,14 @@
 								}
 							}
 						},
-					/* 	videotime : {
-							validators : {
-								notEmpty : {
-									message : '视频时长不能为空'
+						/* 	videotime : {
+								validators : {
+									notEmpty : {
+										message : '视频时长不能为空'
+									}
 								}
-							}
-						}, */
-					
+							}, */
+		
 						videopublishdate : {
 							validators : {
 								notEmpty : {
@@ -507,7 +507,7 @@
 			$("#entrysubmit").click(function() {
 				var form = new FormData(document.getElementById("videoEntry"));
 				form.append("videopartition", $("#videopartition option:selected").text());
-				
+		
 				$.ajax({
 					type : 'post',
 					url : "http://localhost:8080/eldermanage/v1/video/info",
@@ -515,11 +515,12 @@
 					processData : false,
 					contentType : false,
 					success : function(result) {
+						alert(result)
 						//var resultdata = JSON.parse(result);
-						 if (result.success) {
+						if (result.success) {
 							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoView.html";
-						} 
-						//alert(result.success)
+						}
+					//alert(result.success)
 					},
 					error : function() {
 						alert('fail')

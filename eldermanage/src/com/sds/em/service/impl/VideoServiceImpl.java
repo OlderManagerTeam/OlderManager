@@ -66,4 +66,22 @@ public class VideoServiceImpl implements VideoService {
 		}
 	}
 
+	@Override
+	public Message alter(Video video) throws Exception {
+		try {
+			int flag = 0;
+			flag = videoMapper.updateByPrimaryKeySelective(video);
+			if (flag != 0) {
+				return new Message(true, "修改成功", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
 }
