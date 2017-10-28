@@ -45,7 +45,7 @@ public class BrenchController {
 			String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
-		String pic_path = "E:\\develop\\upload\\temp\\pic\\olderPic";
+		String pic_path = "E:\\develop\\upload\\temp\\pic\\olderPic\\";
 		String picUrl = "http://localhost:8080/pic/olderPic/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
@@ -253,6 +253,8 @@ public class BrenchController {
 		int staffid = Integer.valueOf((String) session.getAttribute("staffid"));
 		visited.setVisiteddate(DateSimp.simp(publishDate));
 		visited.setVisitedassistantid(staffid);
+		visited.setVisitedjudgestar(0);
+		visited.setVisitedjudgecontent("未评价");
 		return brenchService.andOlderVisited(visited);
 	}
 
