@@ -1,5 +1,6 @@
 package com.sds.em.controller;
 
+import java.beans.Encoder;
 import java.io.File;
 import java.util.Date;
 import java.util.UUID;
@@ -51,7 +52,8 @@ public class VideoController {
 
 		File vid = new File(video_path + newVideoFileName);
 		videourl.transferTo(vid);
-
+		// 获取视频的时长
+		
 		Video video = new Video();
 		video.setVideodetail(videodetail);
 		video.setVideoheat(0);
