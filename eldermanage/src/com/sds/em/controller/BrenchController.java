@@ -45,8 +45,8 @@ public class BrenchController {
 			String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
-		String pic_path = "E:\\develop\\upload\\temp\\";
-		String picUrl = "http://localhost:8080/pic/";
+		String pic_path = "E:\\develop\\upload\\temp\\pic\\olderPic";
+		String picUrl = "http://localhost:8080/pic/olderPic/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
 		File dnf1 = new File(pic_path + newFileName);

@@ -32,6 +32,7 @@ import com.sds.em.po.VideoExample;
 import com.sds.em.po.VideoExample.Criteria;
 import com.sds.em.po.Videorecord;
 import com.sds.em.po.VideorecordExample;
+import com.sds.em.pojo.ActionExtend;
 import com.sds.em.pojo.LectureExtend;
 import com.sds.em.service.CourseService;
 
@@ -161,17 +162,14 @@ public class CourseServiceImpl implements CourseService {
 		lecturercordCriteria.andLrecordolderidEqualTo(olderid);
 		// 得到老人参加过的讲座id
 		List<Lecturerecord> recordListByOlder = lecturerecordMapper.selectByExample(lecturerecordExample);
-
 		LectureExtend extend = new LectureExtend();
 		List<LectureExtend> lectureExtendList = new ArrayList<LectureExtend>();
-
 		if (!recordListByOlder.isEmpty()) {//表明老人有参加的讲座
 			for (Lecturerecord l : recordListByOlder) {
 				LectureExample lectureExampleTrue = new LectureExample();
 				com.sds.em.po.LectureExample.Criteria lectureCriteriaTrue = lectureExampleTrue.createCriteria();
 				lectureCriteriaTrue.andLectureidEqualTo(l.getLrecordlectureid());
 				List<Lecture> lectureListTrue = lectureMapper.selectByExample(lectureExampleTrue);
-
 				if (!lectureListTrue.isEmpty()) {
 					for (Lecture e : lectureListTrue) {
 						if (e.getLecturepublishdate() == null) {
@@ -322,21 +320,66 @@ public class CourseServiceImpl implements CourseService {
 	// 老人登陆后看到该片区所有活动
 	@Override
 	public Message allActionsByolder(int olderid, int olderbranchid) {
-		ActionExample actionExample = new ActionExample();
-		com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
-		actionCriteria.andActionbranchidEqualTo(olderbranchid);
-		List<Action> actionList = actionMapper.selectByExample(actionExample);
-		if (!actionList.isEmpty()) {
-			return new Message(true, "返回成功", actionList);
-		}
+		ActionrecordExample actionrecordExample = new ActionrecordExample();
+		com.sds.em.po.ActionrecordExample.Criteria recordCriteria = actionrecordExample.createCriteria();
+		recordCriteria.andArecordolderidEqualTo(olderid);
+		//得到老人报名的活动
+		List<Actionrecord> recordListByolder = actionrecordMapper.selectByExample(actionrecordExample);
+		
+		ActionExtend actionExtend = new ActionExtend();
+		List<ActionExtend> actionExtendList = new  ArrayList<ActionExtend>();
+		
+		if(!recordListByolder.isEmpty()){//表明老人有参加的活动
+			for(Actionrecord a : recordListByolder){
+				ActionExample actionExampletrue = new ActionExample();
+				com.sds.em.po.ActionExample.Criteria actionCriteria = actionExampletrue.createCriteria();
+				actionCriteria.andActionidEqualTo(a.getArecordactionid());
+				List<Action> actiontrue = actionMapper.selectByExample(actionExampletrue);
+				
+				if (!actiontrue.isEmpty()) {
+					for (Action aa : actiontrue) {
+						if (aa.getActionstartdate() == null) {
+							actionExtend.setAction(aa);
+							actionExtend.setStartDate("未定");
+						} else {
+							actionExtend.setStartDate("有值");
+						}
+						actionExtend.setJionStatu("您已报名");
+						actionExtendList.add(actionExtend);
+					}
+				}
+				//老人无参加的活动
+				ActionExample actionExamplefalse = new ActionExample();
+				com.sds.em.po.ActionExample.Criteria criteriafalse = actionExamplefalse.createCriteria();
+				criteriafalse.andActionidNotEqualTo(a.getArecordid());
+				List<Action> actionFalse = actionMapper.selectByExample(actionExamplefalse);
+				if (!actionFalse.isEmpty()) {
+					for (Action aa : actionFalse) {
+						if (aa.getActionstartdate() == null) {
+							actionExtend.setAction(aa);
+							actionExtend.setStartDate("未定");
+
+						} else {
+							actionExtend.setStartDate("有值");
+						}
+						actionExtend.setJionStatu("您已报名");
+						actionExtendList.add(actionExtend);
+					}
+				}
+				if(!actionExtendList.isEmpty()){
+					return new Message(true, "返回成功", actionExtendList);
+				}else {
+					return new Message(false, "数据错误", null);
+				}
+			}
+		} 
 		return new Message(false, "数据错误", null);
 	}
 
-	// 所有活动
+	// 未登录时显示所有活动
 	@Override
 	public Message allActions() {
 		ActionExample actionExample = new ActionExample();
-		com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
 		List<Action> actionList = actionMapper.selectByExample(actionExample);
 		if (!actionList.isEmpty()) {
 			return new Message(true, "返回成功", actionList);
@@ -418,8 +461,6 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false, "数据错误", null);
 	}
 
-	// 分页测试-------------------
 
-	// -------------------
 
 }
