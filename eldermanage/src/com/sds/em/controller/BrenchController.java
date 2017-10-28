@@ -253,6 +253,8 @@ public class BrenchController {
 		int staffid = Integer.valueOf((String) session.getAttribute("staffid"));
 		visited.setVisiteddate(DateSimp.simp(publishDate));
 		visited.setVisitedassistantid(staffid);
+		visited.setVisitedjudgestar(0);
+		visited.setVisitedjudgecontent("未评价");
 		return brenchService.andOlderVisited(visited);
 	}
 
