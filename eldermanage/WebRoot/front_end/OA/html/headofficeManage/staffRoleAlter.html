@@ -39,7 +39,7 @@
 	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
-<body class="flat-blue">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -187,13 +187,11 @@
 
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<!--在左边导航栏添加老人管理模块的导航-->
-			<li class="active panel panel-default dropdown">
-			<a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			   <span class="icon  glyphicon glyphicon-user"></span>
-			   <span class="title">总店管理</span>
+			<li class="active panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -202,8 +200,7 @@
 							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<!--添加在左边导航栏-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
@@ -213,8 +210,8 @@
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
 							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
-                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
+							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
 				</div></li>
@@ -284,78 +281,80 @@
 						</div>
 						<div class="card-body">
 							<!--添加分店时候需要的表单-->
-							<form class="form-horizontal" id="branchEntry">
+							<form class="form-horizontal" id="staffRoleAlter">
+								<div class="form-group">
+									<label for="staffImg" class="col-sm-3 control-label">员工头像：</label>
+									<div class="col-sm-5">
+										<img src="../../img/textheadphoto.jpg" id="staffimg">
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="staffName" class="col-sm-3 control-label">员工姓名：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：小张</span>
+										<span class="form-control" id="staffname"></span>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffSex" class="col-sm-3 control-label">员工性别：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：男</span>
+										<span class="form-control" id="staffsex"></span>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffBirthday" class="col-sm-3 control-label">员工出生日期：</label>
+									<label for="staffDepartmentId" class="col-sm-3 control-label">部门号：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：1990-10-10</span>
+										<select id="staffdepartmentid" onclick="showDepartmentId()">
+											<optgroup label="部门号">
+												<option value="01">1</option>
+											</optgroup>
+										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffiIDE" class="col-sm-3 control-label">员工身份证：</label>
+									<label for="staffDepartmentId" class="col-sm-3 control-label">部门名称：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：5202221199010100000</span>
+										<span class="form-control" id="departmentname"></span>
 									</div>
 								</div>
+
 								<div class="form-group">
-									<label for="staffTel" class="col-sm-3 control-label">员工电话号：</label>
+									<label for="staffRoleId" class="col-sm-3 control-label">职位编号：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="odlerName">从数据库返回出来不能修改只能显示，例如：18000000000</span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="staffCode" class="col-sm-3 control-label">员工号：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffCode"
-											placeholder="员工号（管理员添加：员工号=邮编区号（6位）+部门号（2位）+员工编号（4位）部门号以0开头为总部）" name="staffcode">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="staffImg" class="col-sm-3 control-label">员工头像：</label>
-									<div class="col-sm-5">
-										<img src="../../img/textheadphoto.jpg">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="staffDepartmentId" class="col-sm-3 control-label">员工部门号：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffDepartmentId"
-											placeholder="员工部门号（管理员添加）" name="staffdepartmentid">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="staffPassword" class="col-sm-3 control-label">员工密码：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffPassword"
-											placeholder="员工密码" name="KPI">
+										<select id="roleid" onclick="showRoleId()">
+											<optgroup label="职位编号">
+												<option value="01">1</option>
+												<option value="02">2</option>
+											</optgroup>
+										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffRoleId" class="col-sm-3 control-label">员工职位：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffRoleId"
-											placeholder="员工职位（管理员添加）" name="staffroleid">
+										<input type="text" class="form-control" id="rolecontent"
+											placeholder="员工职位（管理员添加）" name="rolecontent">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffCode" class="col-sm-3 control-label">员工号：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="staffcode"
+											placeholder="员工号（管理员添加：员工号=邮编区号（6位）+部门号（2位）+员工编号（4位）部门号以0开头为总部）"
+											name="staffcode">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-5">
+										<button type="button" class="btn btn-default" id="altersubmit">修改提交</button>
 									</div>
 								</div>
 							</form>
-						    </div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	</div>
 	<footer class="app-footer">
@@ -454,42 +453,172 @@
 		</script>
 
 		<script type="text/javascript">
-			$("#entrysubmit").click(function() {
-			    var olderPoint=0
-				var data = {
-					oldername : $("#olderName").val(),
-					oldersex :$("#olderSex").find("option:selected").text(),
-					olderpassword : $("#olderPassword").val(),
-					olderbirthday:$("#olderBirthday").val(),
-					oldertel : $("#odlerTel").val(),
-					olderaddress : $("#olderAdress").val(),
-					oldersinglestatus : $("#olderSingleStatus").find("option:selected").text(),
-					olderide : $("#olderIDE").val(),
-					
-					oldernation : $("#odlerNation").find("option:selected").text(),
-					olderheadurl : $("#olderHeadUrl").val(),
-					olderpoint :$("#olderPoint").val(),
-					olderbranchid : $("#olderBranchId").val(), 
+			UrlParm = function() { // url参数
+				var data,
+					index;
+				(function init() {
+					data = [];
+					index = {};
+					var u = window.location.search.substr(1);
+					if (u != '') {
+						var parms = decodeURIComponent(u).split('&');
+						for (var i = 0, len = parms.length; i < len; i++) {
+							if (parms[i] != '') {
+								var p = parms[i].split("=");
+								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+									data.push([ '' ]);
+									index[p[0]] = data.length - 1;
+								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+									data[0] = [ p[1] ];
+								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+									data.push([ p[1] ]);
+									index[p[0]] = data.length - 1;
+								} else { // c=aaa
+									data[index[p[0]]].push(p[1]);
+								}
+							}
+						}
+					}
+				})();
+				return {
+					// 获得参数,类似request.getParameter()
+					parm : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+						} catch (e) {}
+					},
+					//获得参数组, 类似request.getParameterValues()
+					parmValues : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+						} catch (e) {}
+					},
+					//是否含有parmName参数
+					hasParm : function(parmName) {
+						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+					},
+					// 获得参数Map ,类似request.getParameterMap()
+					parmMap : function() {
+						var map = {};
+						try {
+							for (var p in index) {
+								map[p] = data[index[p]];
+							}
+						} catch (e) {}
+						return map;
+					}
 				}
+			}();
+		
+			function load() {
+				//var staffid = UrlParm.parm("staffid");
+				var staffid = 1;
+		
 				$.ajax({
-				type: 'post',
-				contentType:'application/json',
-				url: "http://localhost:8080/eldermanage/v1/brench/elder/info",
-				data: JSON.stringify(data),
-				success:function(result){
-					var resultdata = JSON.parse(result)
-					alert(resultdata.success)
-				},
-				error:function(){
-					alert('fail')
-				}
-			})
-				
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
+					data : null,
+					success : function(result) {
+						var staffimg = document.getElementById("staffimg");
+						staffimg.innerHTML = result.data.staffbase.staffimg;
+						var staffcode = document.getElementById("staffcode");
+						staffcode.value = result.data.staffbase.staffcode;
+						var staffname = document.getElementById("staffname");
+						staffname.innerHTML = result.data.staffbase.staffname;
+						var staffsex = document.getElementById("staffsex");
+						staffsex.innerHTML = result.data.staffbase.staffsex;
+		
+		
+						var departmentname = document.getElementById("departmentname");
+						departmentname.innerHTML = result.data.department.departmentname;
+		
+						var rolecontent = document.getElementById("rolecontent");
+						rolecontent.value = result.data.role.rolecontent;
+		
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+			}
+		</script>
+		<script type="text/javascript">
+			function showDepartmentId() {
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/alldepartmentid",
+					data : null,
+					success : function(result) {
+						var departmentIdItem = result.data;
+						//alert(result.data);
+						for (var i = departmentIdItem.length - 1; i >= 0; i--) {
+							
+							var staffdepartmentid = document.getElementById("staffdepartmentid");
+							var value=i + 1
+							var text=departmentIdItem[i].departmentid
+							var option = new Option(text, value);
+							staffdepartmentid.options.add(option);
+						}
+		
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+			}
+		</script>
+		
+	<script type="text/javascript">
+			function showRoleId() {
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/allRoleid",
+					data : null,
+					success : function(result) {
+						var roleIdItem = result.data;
+						//alert(result.data);
+						for (var i = roleIdItem.length - 1; i >= 0; i--) {
+							
+						
+						}
+		
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+			}
+		</script>
+
+		<script type="text/javascript">
+			$("#altersubmit").click(function() {
+				var form = new FormData(document.getElementById("staffRoleAlter"));
+				//var staffid = UrlParm.parm("staffid");
+				var staffid = 1;
+				form.append("staffid", staffid);
+				$.ajax({
+					type : 'post',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						//var resultdata = JSON.parse(result);
+						alert(result.information);
+						if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
+						}
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
 			}
 			)
 		</script>
-		
-		
 </body>
 
 </html>
