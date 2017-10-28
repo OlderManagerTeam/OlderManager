@@ -51,7 +51,7 @@ public interface CourseService {
    //活动发布
  	public Message publishAction(Action actions);
  	//老人登陆后看到该片区所有活动
- 	public Message allActionsByolder(int olderid,int olderbranchid);
+ 	public Message allActionsByolder(int olderid);
  	//所有活动
 	public Message allActions();
  	//老人参加过的活动
