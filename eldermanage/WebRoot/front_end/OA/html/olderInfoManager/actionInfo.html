@@ -311,7 +311,7 @@
 									<label for="alterActionIntro" class="col-sm-3 control-label">活动类容：</label>
 									<div class="col-sm-5">
 										<textarea class="form-control" id="actionintro"
-											style="height: 300px"></textarea>
+											style="height: 300px" readonly></textarea>
 									</div>
 								</div>
 								<div class="form-group">
@@ -445,7 +445,7 @@
 					url : "http://localhost:8080/eldermanage/v1/brench/action/info?actionid=" + actionid,
 					data : null,
 					success : function(result) {
-						var date = new Date(result.data.actionstartdate);
+						var date = new Date(result.data.actionstartdate+1000*60*60*8);
 						var d = date.toISOString().slice(0, 10);
 						document.getElementById("actionstartdate").innerHTML = d;
 						document.getElementById("actionintro").value = result.data.actionintro;

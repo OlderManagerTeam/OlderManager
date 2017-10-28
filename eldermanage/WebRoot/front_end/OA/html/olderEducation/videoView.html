@@ -131,17 +131,17 @@
 						<ul class="nav navbar-nav">
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">控制台</span>
-			              </a></li>
-			<li class="panel panel-default dropdown">
-			<a data-toggle="collapse" href="#dropdown-element"> 
-			        <span class="icon fa fa-desktop"></span>
-			        <span class="title">UI Kits</span>
-			</a> <!-- 下拉列表 level 1 -->
-			<div id="dropdown-element" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../ui-kits/grid.html">Grid</a></li>
-							<li><a href="../ui-kits/theming.html">主题</a></li></li>
+							</a></li>
+							<li class="panel panel-default dropdown"><a
+								data-toggle="collapse" href="#dropdown-element"> <span
+									class="icon fa fa-desktop"></span> <span class="title">UI
+										Kits</span>
+							</a> <!-- 下拉列表 level 1 -->
+								<div id="dropdown-element" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../ui-kits/grid.html">Grid</a></li>
+											<li><a href="../ui-kits/theming.html">主题</a></li></li>
 							<li><a href="../ui-kits/button.html">按钮</a></li>
 							<li><a href="../ui-kits/card.html">明信片</a></li>
 							<li><a href="../ui-kits/list.html">列表</a></li>
@@ -179,20 +179,18 @@
 						</ul>
 					</div>
 				</div></li>
-             <li class="panel panel-default dropdown">
-			     <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			         <span class="icon  glyphicon glyphicon-user"></span>
-			         <span class="title">总店管理</span>
-			     </a> <!-- Dropdown level 1 -->
-				 <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					    <div class="panel-body">
-						      <ul class="nav navbar-nav">
-							       <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							       <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						      </ul>
-					    </div>
-				 </div>
-			</li> 
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
 			<!--在左边导航栏添加老人管理模块的导航-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderView"> <span
@@ -206,8 +204,7 @@
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEducation"> <span
 					class="icon glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
@@ -218,8 +215,7 @@
 							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<!-- 下拉列表-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#component-example"> <span
@@ -297,48 +293,29 @@
 								<thead>
 									<tr>
 										<th>视频序号</th>
+										<th>视频分类</th>
 										<th>视频名称</th>
 										<th>视频缩略图</th>
-										<th>视频地址</th>
-										<th>视频简介</th>
-										<th>视频详细</th>
 										<th>视频时长</th>
 										<th>视频发布日期</th>
 										<th>视频热度</th>
-										<th>视频详细信息</th>
 										<th>操作</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
 										<th>视频序号</th>
+										<th>视频分类</th>
 										<th>视频名称</th>
 										<th>视频缩略图</th>
-										<th>视频地址</th>
-										<th>视频简介</th>
-										<th>视频详细</th>
 										<th>视频时长</th>
 										<th>视频发布日期</th>
 										<th>视频热度</th>
-										<th>视频详细信息</th>
 										<th>操作</th>
 									</tr>
 								</tfoot>
 								<tbody>
-									<tr>
-										<td>0001</td>
-										<td>中国太极文化</td>
-										<td>略</td>
-										<td>www.taiji.com</td>
-										<td>传扬中国太极文化精神</td>
-										<td></td>
-										<td>120分钟</td>
-										<td>2017-7-8</td>
-										<td>5</td>
-										<td><a class="btn btn-primary btn-xs" href="../olderEducation/videoInfo.html" role="button">视频详细信息</a></td>
-										<td><a class="btn btn-primary btn-xs" href="../olderEducation/videoAlter.html" role="button">修改</a>
-											<button class="btn btn-primary btn-xs">删除</button></td>
-									</tr>
+
 								</tbody>
 							</table>
 							<div id="olderView"></div>
@@ -355,28 +332,28 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
-	
-		<!-- Javascript Libs -->
 
-		
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
+	<!-- Javascript Libs -->
 
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
+
+	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/bootstrap-switch.min.js"></script>
+
+	<script type="text/javascript"
+		src="../../lib/js/jquery.matchHeight-min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+	<!-- Javascript -->
+	<script type="text/javascript" src="../../js/app.js"></script>
 
 </body>
 
