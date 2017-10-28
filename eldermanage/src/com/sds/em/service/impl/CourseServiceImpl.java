@@ -319,16 +319,14 @@ public class CourseServiceImpl implements CourseService {
 
 	// 老人登陆后看到该片区所有活动
 	@Override
-	public Message allActionsByolder(int olderid, int olderbranchid) {
+	public Message allActionsByolder(int olderid) {
 		ActionrecordExample actionrecordExample = new ActionrecordExample();
 		com.sds.em.po.ActionrecordExample.Criteria recordCriteria = actionrecordExample.createCriteria();
 		recordCriteria.andArecordolderidEqualTo(olderid);
 		//得到老人报名的活动
 		List<Actionrecord> recordListByolder = actionrecordMapper.selectByExample(actionrecordExample);
 		
-		ActionExtend actionExtend = new ActionExtend();
 		List<ActionExtend> actionExtendList = new  ArrayList<ActionExtend>();
-		
 		if(!recordListByolder.isEmpty()){//表明老人有参加的活动
 			for(Actionrecord a : recordListByolder){
 				ActionExample actionExampletrue = new ActionExample();
@@ -337,6 +335,7 @@ public class CourseServiceImpl implements CourseService {
 				List<Action> actiontrue = actionMapper.selectByExample(actionExampletrue);
 				
 				if (!actiontrue.isEmpty()) {
+					ActionExtend actionExtend = new ActionExtend();
 					for (Action aa : actiontrue) {
 						if (aa.getActionstartdate() == null) {
 							actionExtend.setAction(aa);
@@ -355,6 +354,7 @@ public class CourseServiceImpl implements CourseService {
 				List<Action> actionFalse = actionMapper.selectByExample(actionExamplefalse);
 				if (!actionFalse.isEmpty()) {
 					for (Action aa : actionFalse) {
+						ActionExtend actionExtend = new ActionExtend();
 						if (aa.getActionstartdate() == null) {
 							actionExtend.setAction(aa);
 							actionExtend.setStartDate("未定");

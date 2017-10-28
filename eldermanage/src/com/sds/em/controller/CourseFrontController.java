@@ -110,9 +110,9 @@ public class CourseFrontController {
 	public @ResponseBody Message allActions(HttpSession s){
 		
 		int olderid = 1;
-		int olderbranchid = 1;
+	
 		if(olderid != 0){//老人登陆后看到该片区所有活动
-			return courseService.allActionsByolder(olderid,olderbranchid);
+			return courseService.allActionsByolder(olderid);
 		}
 		return courseService.allActions();//未登录返回所有活动
 	}
