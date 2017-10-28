@@ -3,7 +3,8 @@
 
 <head>
 <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="utf-8">
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
@@ -291,13 +292,13 @@
 									<label for="lectureIntro" class="col-sm-3 control-label">讲座简介：</label>
 									<div class="col-sm-5">
 										<textarea class="form-control" id="lectureintro"
-											style="height: 150px" name="lectureintro"></textarea>
+											style="height: 150px" name="lectureintro" readonly></textarea>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureEnroll" class="col-sm-3 control-label">讲座已预约人数：</label>
+									<label for="lectureEnroll" class="col-sm-3 control-label">讲座报名状态：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="lectureenroll"></span>
+										<span class="form-control" id="lecturestatus"></span>
 									</div>
 								</div>
 								<div class="form-group">
@@ -313,18 +314,12 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureStatus" class="col-sm-3 control-label">讲座报名状态：</label>
+									<label for="lectureStatus" class="col-sm-3 control-label">讲座已预约人数：</label>
 									<div class="col-sm-4">
-										<select id="lecturestatus">
-											<optgroup label="修改讲座报名状态">
-												<option value="1">报名中</option>
-												<option value="0">结束</option>
-												<option value="2">取消</option>
-											</optgroup>
-										</select>
+										<span class="form-control" id="lectureenroll"></span>
 									</div>
 									<div class="col-sm-4">
-										<a role="button" class="btn btn-default" id="status">修改状态</a>
+										<a role="button" class="btn btn-default" id="enrollolder">查看</a>
 									</div>
 								</div>
 								<div class="form-group">
@@ -334,11 +329,11 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="lectureBranchId" class="col-sm-3 control-label">发布讲座的的分店：</label>
-									<div class="col-sm-5">
-										<text class="form-control" id="lectureBranchId">例如：贵阳分店</text>
+									<div class="col-sm-offset-3 col-sm-5">
+										<a role="button" class="btn btn-default" id="lecturesubmit">修改讲座</a>
 									</div>
 								</div>
+
 								<!--
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
@@ -351,7 +346,7 @@
                                             </div>
                                         </div>
                                         -->
-								
+
 							</form>
 						</div>
 					</div>
@@ -497,7 +492,7 @@
 			});
 		</script>
 
-	
+
 		<script type="text/javascript">
 			UrlParm = function() { // url参数
 				var data,
@@ -558,6 +553,8 @@
 		
 			function load() {
 				var lectureid = UrlParm.parm("lectureid");
+				document.getElementById("lecturesubmit").href=""+lectureid;
+				document.getElementById("enrollolder").href=""+lectureid;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
@@ -574,12 +571,12 @@
 						lectureenroll.innerHTML = result.data.lectureenroll;
 						var lecturetotal = document.getElementById("lecturetotal");
 						lecturetotal.innerHTML = result.data.lecturetotal;
-						var date = new Date(result.data.lecturepublishdate+1000*60*60*8);
+						var date = new Date(result.data.lecturepublishdate + 1000 * 60 * 60 * 8);
 						var d = date.toISOString().slice(0, 10);
-						
+		
 						document.getElementById("lecturepublishdate").innerHTML = d;
-						
-						document.getElementById("lecturestatus").value = result.data.lecturestatus;
+		
+						document.getElementById("lecturestatus").innerHTML = result.data.lecturestatus;
 						document.getElementById("lectureaddress").innerHTML = result.data.lectureaddress;
 					},
 					error : function() {
@@ -587,35 +584,6 @@
 					}
 				})
 			}
-		</script>
-		
-		<script type="text/javascript">
-			$("#status").click(function() {
-				var form = new FormData(document.getElementById("lectureInfo"));
-				 var lectureid = UrlParm.parm("lectureid");
-				form.append("lectureid", lectureid);
-				form.append("lecturestatus", $("#lecturestatus option:selected").text());
-		
-				$.ajax({
-					type : 'post',
-					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/lecture/status",
-					data : form,
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						alert('修改成功')
-						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
-						}
-					},
-					error : function() {
-						alert('fail')
-					}
-				})
-		
-			}
-			)
 		</script>
 </body>
 

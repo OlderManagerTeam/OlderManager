@@ -45,8 +45,8 @@ public class BrenchController {
 			String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
-		String pic_path = "E:\\develop\\upload\\temp\\";
-		String picUrl = "http://localhost:8080/pic/";
+		String pic_path = "E:\\develop\\upload\\temp\\pic\\olderPic\\";
+		String picUrl = "http://localhost:8080/pic/olderPic/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
 		File dnf1 = new File(pic_path + newFileName);
@@ -135,7 +135,7 @@ public class BrenchController {
 		;
 		action.setActionintro(actionintro);
 		action.setActionname(actionname);
-
+		action.setActionstatus("正在进行");
 		Date date = DateSimp.simp(actionstartdate);
 		action.setActionstartdate(date);
 
@@ -195,6 +195,12 @@ public class BrenchController {
 	@RequestMapping(method = RequestMethod.GET, value = "action/older/info")
 	public @ResponseBody Message getActionOlder(int actionid) throws Exception {
 		return brenchService.getActionOlder(actionid);
+	}
+	
+	// 查找本活动参加的老人信息-所有完成
+	@RequestMapping(method = RequestMethod.GET, value = "lecture/older/info")
+	public @ResponseBody Message getLectureOlder(int lectureid) throws Exception {
+		return brenchService.getActionOlder(lectureid);
 	}
 
 	// 查询这个管理员所在的分店名--测试通过
@@ -302,7 +308,7 @@ public class BrenchController {
 	}
 
 	// 修改讲座的状态
-	@RequestMapping(method = RequestMethod.POST, value = "lecture/status")
+	@RequestMapping(method = RequestMethod.POST, value = "lecture/updateinfo")
 	public @ResponseBody Message updateStatus(int lectureid, String lecturestatus) throws Exception {
 		// int id = Integer.parseInt(lectureid);s
 		return brenchService.updateStatus(lectureid, lecturestatus);
