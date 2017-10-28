@@ -335,12 +335,7 @@
 										<span class="form-control" id="videotime"></span>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="videoTime" class="col-sm-3 control-label">视频播放量：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="videoheat"></span>
-									</div>
-								</div>
+
 								<div class="form-group">
 									<label for="videoPublishDate" class="col-sm-3 control-label">视频发布日期：</label>
 									<div class="col-sm-5">
@@ -351,6 +346,17 @@
 									<label for="videoPartition" class="col-sm-3 control-label">视频属于那个分区：</label>
 									<div class="col-sm-5">
 										<span class="form-control" id="videopartition"></span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="videoTime" class="col-sm-3 control-label">视频播放量：</label>
+									<div class="col-sm-5">
+										<span class="form-control" id="videoheat"></span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-5">
+										<a role="button" class="btn btn-default" id="altersubmit">修改视频</a>
 									</div>
 								</div>
 							</form>
@@ -554,6 +560,8 @@
 		
 			function load() {
 				var videoid = UrlParm.parm("videoid");
+				document.getElementById("altersubmit").href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoAlter.html?videoid="+videoid;
+			
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
