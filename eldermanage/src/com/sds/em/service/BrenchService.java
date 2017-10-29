@@ -79,4 +79,7 @@ public interface BrenchService {
 	// 删除一条讲座信息
 	public Message deleteLecture(int lectureid) throws Exception;
 
+	//查找本活动参加的老人信息
+	public Message getLectureOlder(int lectureid) throws Exception;
+
 }

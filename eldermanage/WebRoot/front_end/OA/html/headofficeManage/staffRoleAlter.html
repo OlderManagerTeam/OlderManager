@@ -4,6 +4,7 @@
 <head>
 <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
@@ -37,6 +38,7 @@
 <!--验证css文件-->
 <link rel="stylesheet" type="text/css"
 	href="../../lib/css/bootstrapValidator.min.css">
+
 </head>
 
 <body class="flat-blue" onload="load()">
@@ -301,38 +303,35 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffDepartmentId" class="col-sm-3 control-label">部门号：</label>
+									<label for="staffDepartmentId" class="col-sm-3 control-label">部门名称：</label>
 									<div class="col-sm-5">
-										<select id="staffdepartmentid" onclick="showDepartmentId()">
-											<optgroup label="部门号">
-												<option value="01">1</option>
-											</optgroup>
+										<select id="staffdepartmentname">
+											
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffDepartmentId" class="col-sm-3 control-label">部门名称：</label>
+									<label for="staffDepartmentId" class="col-sm-3 control-label">部门号：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="departmentname"></span>
+										<span class="form-control" id="departmentid"></span>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="staffRoleId" class="col-sm-3 control-label">职位编号：</label>
+									<label for="staffRoleId" class="col-sm-3 control-label">员工职位：</label>
 									<div class="col-sm-5">
-										<select id="roleid" onclick="showRoleId()">
-											<optgroup label="职位编号">
-												<option value="01">1</option>
-												<option value="02">2</option>
-											</optgroup>
+										<select id="rolename">
+											<!-- <optgroup label="职位编号"> -->
+											
+											<!-- </optgroup> -->
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="staffRoleId" class="col-sm-3 control-label">员工职位：</label>
+									<label for="staffRoleId" class="col-sm-3 control-label">职位编号：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="rolecontent"
-											placeholder="员工职位（管理员添加）" name="rolecontent">
+										<input type="text" class="form-control" id="roleid"
+											placeholder="员工职位（管理员添加）" name="roleid">
 									</div>
 								</div>
 								<div class="form-group">
@@ -363,262 +362,328 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
-	<div>
-		<!-- Javascript Libs -->
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
 
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-		<!-- 文件上传 JS -->
-		<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
-		<script src="../../lib/js/fileinput_locale_zh.js"
-			type="text/javascript"></script>
-		<!--验证js文件-->
-		<script type="text/javascript"
-			src="../../lib/js/bootstrapValidator.min.js"></script>
-		<script>
-			$("#file-3").fileinput({
-				showUpload : false,
-				showCaption : false,
-				browseClass : "btn btn-primary btn-lg",
-				fileType : "any",
-				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
-			});
-		</script>
+	<!-- Javascript Libs -->
+	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/bootstrap-switch.min.js"></script>
 
-		<!--表单验证-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				// Generate a simple captcha
-		
-				$('#branchEntry').bootstrapValidator({
-					//        live: 'disabled',
-					message : 'This value is not valid',
-					feedbackIcons : {
-						valid : 'glyphicon glyphicon-ok-circle',
-						invalid : 'glyphicon glyphicon-remove-circle',
-						validating : 'glyphicon glyphicon-refresh',
+	<script type="text/javascript"
+		src="../../lib/js/jquery.matchHeight-min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+	<!-- Javascript -->
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<!-- 文件上传 JS -->
+	<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
+	<script src="../../lib/js/fileinput_locale_zh.js"
+		type="text/javascript"></script>
+	<!--验证js文件-->
+	<script type="text/javascript"
+		src="../../lib/js/bootstrapValidator.min.js"></script>
+	<script>
+		$("#file-3").fileinput({
+			showUpload : false,
+			showCaption : false,
+			browseClass : "btn btn-primary btn-lg",
+			fileType : "any",
+			previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
+		});
+	</script>
+
+	<!--表单验证-->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Generate a simple captcha
+	
+			$('#branchEntry').bootstrapValidator({
+				//        live: 'disabled',
+				message : 'This value is not valid',
+				feedbackIcons : {
+					valid : 'glyphicon glyphicon-ok-circle',
+					invalid : 'glyphicon glyphicon-remove-circle',
+					validating : 'glyphicon glyphicon-refresh',
+				},
+				fields : {
+					staffcode : {
+						message : '员工工号不能为空',
+						validators : {
+							notEmpty : {
+								message : '员工工号不能为空'
+							},
+							regexp : {
+								regexp : /^[0-9]{12}$/,
+								message : '员工工号必须是12位数字'
+							},
+						}
 					},
-					fields : {
-						staffcode : {
-							message : '员工工号不能为空',
-							validators : {
-								notEmpty : {
-									message : '员工工号不能为空'
-								},
-								regexp : {
-									regexp : /^[0-9]{12}$/,
-									message : '员工工号必须是12位数字'
-								},
-							}
-						},
-						staffdepartmentid : {
-							validators : {
-								notEmpty : {
-									message : '员工部门号不能为空'
-								},
-								regexp : {
-									regexp : /^[0-9]{2}$/,
-									message : '员工部门工号两位数字'
-								},
-							}
-						},
-						staffroleid : {
-							validators : {
-								notEmpty : {
-									message : '员工职位不能为空'
-								},
-							}
-						},
-					}
-				});
-		
-				// Validate the form manually
-		
+					staffdepartmentid : {
+						validators : {
+							notEmpty : {
+								message : '员工部门号不能为空'
+							},
+							regexp : {
+								regexp : /^[0-9]{2}$/,
+								message : '员工部门工号两位数字'
+							},
+						}
+					},
+					staffroleid : {
+						validators : {
+							notEmpty : {
+								message : '员工职位不能为空'
+							},
+						}
+					},
+				}
 			});
-		</script>
+	
+			// Validate the form manually
+	
+		});
+	</script>
 
-		<script type="text/javascript">
-			UrlParm = function() { // url参数
-				var data,
-					index;
-				(function init() {
-					data = [];
-					index = {};
-					var u = window.location.search.substr(1);
-					if (u != '') {
-						var parms = decodeURIComponent(u).split('&');
-						for (var i = 0, len = parms.length; i < len; i++) {
-							if (parms[i] != '') {
-								var p = parms[i].split("=");
-								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
-									data.push([ '' ]);
-									index[p[0]] = data.length - 1;
-								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
-									data[0] = [ p[1] ];
-								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
-									data.push([ p[1] ]);
-									index[p[0]] = data.length - 1;
-								} else { // c=aaa
-									data[index[p[0]]].push(p[1]);
-								}
+	<script type="text/javascript">
+		UrlParm = function() { // url参数
+			var data,
+				index;
+			(function init() {
+				data = [];
+				index = {};
+				var u = window.location.search.substr(1);
+				if (u != '') {
+					var parms = decodeURIComponent(u).split('&');
+					for (var i = 0, len = parms.length; i < len; i++) {
+						if (parms[i] != '') {
+							var p = parms[i].split("=");
+							if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+								data.push([ '' ]);
+								index[p[0]] = data.length - 1;
+							} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+								data[0] = [ p[1] ];
+							} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+								data.push([ p[1] ]);
+								index[p[0]] = data.length - 1;
+							} else { // c=aaa
+								data[index[p[0]]].push(p[1]);
 							}
 						}
-					}
-				})();
-				return {
-					// 获得参数,类似request.getParameter()
-					parm : function(o) { // o: 参数名或者参数次序
-						try {
-							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
-						} catch (e) {}
-					},
-					//获得参数组, 类似request.getParameterValues()
-					parmValues : function(o) { // o: 参数名或者参数次序
-						try {
-							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
-						} catch (e) {}
-					},
-					//是否含有parmName参数
-					hasParm : function(parmName) {
-						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
-					},
-					// 获得参数Map ,类似request.getParameterMap()
-					parmMap : function() {
-						var map = {};
-						try {
-							for (var p in index) {
-								map[p] = data[index[p]];
-							}
-						} catch (e) {}
-						return map;
 					}
 				}
-			}();
-		
-			function load() {
-				//var staffid = UrlParm.parm("staffid");
-				var staffid = 1;
-		
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
-					data : null,
-					success : function(result) {
-						var staffimg = document.getElementById("staffimg");
-						staffimg.innerHTML = result.data.staffbase.staffimg;
-						var staffcode = document.getElementById("staffcode");
-						staffcode.value = result.data.staffbase.staffcode;
-						var staffname = document.getElementById("staffname");
-						staffname.innerHTML = result.data.staffbase.staffname;
-						var staffsex = document.getElementById("staffsex");
-						staffsex.innerHTML = result.data.staffbase.staffsex;
-		
-		
-						var departmentname = document.getElementById("departmentname");
-						departmentname.innerHTML = result.data.department.departmentname;
-		
-						var rolecontent = document.getElementById("rolecontent");
-						rolecontent.value = result.data.role.rolecontent;
-		
-					},
-					error : function() {
-						alert('数据库错误')
-					}
-				})
-			}
-		</script>
-		<script type="text/javascript">
-			function showDepartmentId() {
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/alldepartmentid",
-					data : null,
-					success : function(result) {
-						var departmentIdItem = result.data;
-						//alert(result.data);
-						for (var i = departmentIdItem.length - 1; i >= 0; i--) {
-							
-							var staffdepartmentid = document.getElementById("staffdepartmentid");
-							var value=i + 1
-							var text=departmentIdItem[i].departmentid
-							var option = new Option(text, value);
-							staffdepartmentid.options.add(option);
+			})();
+			return {
+				// 获得参数,类似request.getParameter()
+				parm : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+					} catch (e) {}
+				},
+				//获得参数组, 类似request.getParameterValues()
+				parmValues : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+					} catch (e) {}
+				},
+				//是否含有parmName参数
+				hasParm : function(parmName) {
+					return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+				},
+				// 获得参数Map ,类似request.getParameterMap()
+				parmMap : function() {
+					var map = {};
+					try {
+						for (var p in index) {
+							map[p] = data[index[p]];
 						}
-		
-					},
-					error : function() {
-						alert('数据库错误')
-					}
-				})
+					} catch (e) {}
+					return map;
+				}
 			}
-		</script>
-		
-	<script type="text/javascript">
-			function showRoleId() {
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/allRoleid",
-					data : null,
-					success : function(result) {
-						var roleIdItem = result.data;
-						//alert(result.data);
-						for (var i = roleIdItem.length - 1; i >= 0; i--) {
-							
-						
-						}
-		
-					},
-					error : function() {
-						alert('数据库错误')
-					}
-				})
-			}
-		</script>
+		}();
+	
+		function load() {
+			//var staffid = UrlParm.parm("staffid");
+			var staffid = 1;
+	
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
+				data : null,
+				success : function(result) {
+					$('#staffimg').attr("value",result.data.staffbase.staffimg);
+					$('#staffname').html(result.data.staffbase.staffname);
+					$('#staffcode').attr("value",result.data.staffbase.staffcode);
+					$('#staffsex').html(result.data.staffbase.staffsex);
+					$('#departmentid').html(result.data.department.departmentid);
+					$('#roleid').attr("value",result.data.role.roleid);
 
-		<script type="text/javascript">
-			$("#altersubmit").click(function() {
-				var form = new FormData(document.getElementById("staffRoleAlter"));
-				//var staffid = UrlParm.parm("staffid");
-				var staffid = 1;
-				form.append("staffid", staffid);
-				$.ajax({
-					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
-					data : form,
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						//var resultdata = JSON.parse(result);
-						alert(result.information);
-						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
+					$("#select2-staffdepartmentname-container").text(result.data.department.departmentname);
+					for (var i = 0; i < $("#staffdepartmentname option").length; i++) {
+						if($($("#staffdepartmentname option")[i]).text() == result.data.department.departmentname){
+							$($("#staffdepartmentname option")[i]).attr('selected','selected');
 						}
-					},
-					error : function() {
-						alert('fail')
 					}
-				})
+
+					$("#select2-rolename-container").text(result.data.role.rolecontent);
+					for (var i = 0; i < $("#rolename option").length; i++) {
+						if($($("#rolename option")[i]).text() == result.data.role.rolecontent){
+							$($("#rolename option")[i]).attr('selected','selected');
+						}
+					}
+					// var staffimg = document.getElementById("staffimg");
+					// staffimg.innerHTML = result.data.staffbase.staffimg;
+					// var staffcode = document.getElementById("staffcode");
+					// staffcode.value = result.data.staffbase.staffcode;
+					// var staffname = document.getElementById("staffname");
+					// staffname.innerHTML = result.data.staffbase.staffname;
+					// var staffsex = document.getElementById("staffsex");
+					// staffsex.innerHTML = result.data.staffbase.staffsex;
+					// var departmentname = document.getElementById("departmentname");
+					// departmentname.innerHTML = result.data.department.departmentname;
+					// var rolecontent = document.getElementById("rolecontent");
+					// rolecontent.value = result.data.role.rolecontent;
+	
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+		}
+	</script>
+
+	<script type="text/javascript">
+		$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"http://localhost:8080/eldermanage/v1/headoffice/alldepartmentid",
+			data:null,
+			success:function(result){
+				var departmentdata = result.data
+				for(var i = departmentdata.length - 1;i>=0;i--){
+					var oOption = `
+						<option>${departmentdata[i].departmentname}</option>
+					`;
+					$('#staffdepartmentname').append(oOption);
+				}
+			},
+			error:function(){
+				alert('数据库错误')
 			}
-			)
-		</script>
+		})
+	</script>
+	
+	<script type="text/javascript">
+		$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"http://localhost:8080/eldermanage/v1/headoffice/allRoleid",
+			data:null,
+			success:function(result){
+				var roledata = result.data;
+				for(var i=roledata.length - 1;i>=0;i--){
+					var oOption = `
+						<option>${roledata[i].rolecontent}</option>
+					`;
+					$('#rolename').append(oOption);
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+	</script>
+
+	<script type="text/javascript">
+		$("#altersubmit").click(function() {
+			var form = new FormData(document.getElementById("staffRoleAlter"));
+			//var staffid = UrlParm.parm("staffid");
+			var staffid = 1;
+			form.append("staffid", staffid);
+			$.ajax({
+				type : 'post',
+				url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
+				data : form,
+				processData : false,
+				contentType : false,
+				success : function(result) {
+					//var resultdata = JSON.parse(result);
+					alert(result.information);
+					if (result.success) {
+						window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
+					}
+				},
+				error : function() {
+					alert('fail')
+				}
+			})
+		}
+		)
+	</script>
+
+	<script type="text/javascript">
+		$('#staffdepartmentname').change(function(){
+			chooseDepartment();
+		})
+		function chooseDepartment(){
+			$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"http://localhost:8080/eldermanage/v1/headoffice/alldepartmentid",
+			data:null,
+			success:function(result){
+				//alert($('#staffdepartmentname').val())
+				var departmentdata = result.data
+				for(var i = departmentdata.length - 1;i>=0;i--){
+					if(departmentdata[i].departmentname == $('#staffdepartmentname').val()) {
+						$('#departmentid').html(departmentdata[i].departmentid)
+					}
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+		}
+
+		$('#rolename').change(function(){
+			chooseRole();
+		})
+		function chooseRole(){
+			$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"http://localhost:8080/eldermanage/v1/headoffice/allRoleid",
+			data:null,
+			success:function(result){
+				//alert($('#rolename').val())
+				var roledata = result.data
+				for(var i = roledata.length - 1;i>=0;i--){
+					if(roledata[i].rolecontent == $('#rolename').val()) {
+						$('#roleid').attr("value",roledata[i].roleid)
+					}
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+		}
+	</script>
+
+	<script type="text/javascript">
+		$('select').select2();
+		$('#staffdepartmentname').next('span').width(200);
+		$('#rolename').next('span').width(200);
+	</script>
 </body>
 
 </html>
