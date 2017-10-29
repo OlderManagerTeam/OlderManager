@@ -343,6 +343,66 @@ public class ProductrateExample {
             addCriterion("rateStar not between", value1, value2, "ratestar");
             return (Criteria) this;
         }
+
+        public Criteria andRatebrowseIsNull() {
+            addCriterion("rateBrowse is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseIsNotNull() {
+            addCriterion("rateBrowse is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseEqualTo(Integer value) {
+            addCriterion("rateBrowse =", value, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseNotEqualTo(Integer value) {
+            addCriterion("rateBrowse <>", value, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseGreaterThan(Integer value) {
+            addCriterion("rateBrowse >", value, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rateBrowse >=", value, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseLessThan(Integer value) {
+            addCriterion("rateBrowse <", value, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseLessThanOrEqualTo(Integer value) {
+            addCriterion("rateBrowse <=", value, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseIn(List<Integer> values) {
+            addCriterion("rateBrowse in", values, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseNotIn(List<Integer> values) {
+            addCriterion("rateBrowse not in", values, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseBetween(Integer value1, Integer value2) {
+            addCriterion("rateBrowse between", value1, value2, "ratebrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatebrowseNotBetween(Integer value1, Integer value2) {
+            addCriterion("rateBrowse not between", value1, value2, "ratebrowse");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

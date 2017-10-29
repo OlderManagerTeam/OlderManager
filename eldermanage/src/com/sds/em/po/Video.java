@@ -15,7 +15,7 @@ public class Video {
 
     private String videodetail;
 
-    private Float videotime;
+    private String videotime;
 
     private Date videopublishdate;
 
@@ -71,12 +71,12 @@ public class Video {
         this.videodetail = videodetail == null ? null : videodetail.trim();
     }
 
-    public Float getVideotime() {
+    public String getVideotime() {
         return videotime;
     }
 
-    public void setVideotime(Float videotime) {
-        this.videotime = videotime;
+    public void setVideotime(String videotime) {
+        this.videotime = videotime == null ? null : videotime.trim();
     }
 
     public Date getVideopublishdate() {
