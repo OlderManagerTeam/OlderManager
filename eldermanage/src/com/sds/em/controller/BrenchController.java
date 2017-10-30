@@ -222,8 +222,7 @@ public class BrenchController {
 	// 删除某个老人的信息--测试成功
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "elder/info")
-	public @ResponseBody Message deleteOlder(@RequestBody String oldertel) throws Exception {
-
+	public @ResponseBody Message deleteOlder(String oldertel) throws Exception {
 		return brenchService.deleteANElder(oldertel);
 	}
 
@@ -320,4 +319,15 @@ public class BrenchController {
 		return brenchService.deleteLecture(lectureid);
 	}
 
+	//取消一个老人的活动参与
+	@RequestMapping(method = RequestMethod.GET, value = "actionrecorddelete")
+	public @ResponseBody Message deleteLecturejoin(int lectureid) throws Exception {
+		return brenchService.deleteLecture(lectureid);
+	}
+	
+	//取消一个老人的讲座参与
+	@RequestMapping(method = RequestMethod.DELETE, value = "lecturerecorddelete")
+	public @ResponseBody Message actionLecturejoin(int lectureid) throws Exception {
+		return brenchService.deleteLecture(lectureid);
+	}
 }
