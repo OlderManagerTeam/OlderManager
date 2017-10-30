@@ -293,13 +293,13 @@
 								<div class="form-group">
 									<label for="staffName" class="col-sm-3 control-label">员工姓名：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffname"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffname"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffSex" class="col-sm-3 control-label">员工性别：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffsex"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffsex"></input>
 									</div>
 								</div>
 								<div class="form-group">
@@ -313,7 +313,7 @@
 								<div class="form-group">
 									<label for="staffDepartmentId" class="col-sm-3 control-label">部门号：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="departmentid"></span>
+										<input type="text" readonly="readonly" class="form-control" id="departmentid"></input>
 									</div>
 								</div>
 
@@ -330,16 +330,15 @@
 								<div class="form-group">
 									<label for="staffRoleId" class="col-sm-3 control-label">职位编号：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="roleid"
+										<input type="text" readonly="readonly" class="form-control" id="roleid"
 											placeholder="员工职位（管理员添加）" name="roleid">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffCode" class="col-sm-3 control-label">员工号：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffcode"
-											placeholder="员工号（管理员添加：员工号=邮编区号（6位）+部门号（2位）+员工编号（4位）部门号以0开头为总部）"
-											name="staffcode">
+										<input type="text" readonly="readonly" class="form-control" id="staffcode"
+											placeholder="员工号=邮编区号(5位)+部门号(2位)+员工职位号(2位)部门号以0开头为总部+3位数" name="staffcode">
 									</div>
 								</div>
 								<div class="form-group">
@@ -520,10 +519,10 @@
 				data : null,
 				success : function(result) {
 					$('#staffimg').attr("value",result.data.staffbase.staffimg);
-					$('#staffname').html(result.data.staffbase.staffname);
-					$('#staffcode').attr("value",result.data.staffbase.staffcode);
-					$('#staffsex').html(result.data.staffbase.staffsex);
-					$('#departmentid').html(result.data.department.departmentid);
+					$('#staffname').val(result.data.staffbase.staffname);
+					//$('#staffcode').attr("value",result.data.staffbase.staffcode);
+					$('#staffsex').val(result.data.staffbase.staffsex);
+					$('#departmentid').val(result.data.department.departmentid);
 					$('#roleid').attr("value",result.data.role.roleid);
 
 					$("#select2-staffdepartmentname-container").text(result.data.department.departmentname);
@@ -539,19 +538,6 @@
 							$($("#rolename option")[i]).attr('selected','selected');
 						}
 					}
-					// var staffimg = document.getElementById("staffimg");
-					// staffimg.innerHTML = result.data.staffbase.staffimg;
-					// var staffcode = document.getElementById("staffcode");
-					// staffcode.value = result.data.staffbase.staffcode;
-					// var staffname = document.getElementById("staffname");
-					// staffname.innerHTML = result.data.staffbase.staffname;
-					// var staffsex = document.getElementById("staffsex");
-					// staffsex.innerHTML = result.data.staffbase.staffsex;
-					// var departmentname = document.getElementById("departmentname");
-					// departmentname.innerHTML = result.data.department.departmentname;
-					// var rolecontent = document.getElementById("rolecontent");
-					// rolecontent.value = result.data.role.rolecontent;
-	
 				},
 				error : function() {
 					alert('数据库错误')
@@ -644,7 +630,7 @@
 				var departmentdata = result.data
 				for(var i = departmentdata.length - 1;i>=0;i--){
 					if(departmentdata[i].departmentname == $('#staffdepartmentname').val()) {
-						$('#departmentid').html(departmentdata[i].departmentid)
+						$('#departmentid').val(departmentdata[i].departmentid)
 					}
 				}
 			},

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Branch;
 import com.sds.em.po.Message;
+import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.BranchStaffBaseExtend;
-import com.sds.em.pojo.DepNameRoleTentExtend;
 import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.service.HeadOfficeService;
 
@@ -116,12 +116,12 @@ public class HeadOfficeController {
 	}
 	
 	//返回该部门该职位的员工人数，好形成员工号
-	@RequestMapping(method = RequestMethod.POST, value = "staff/staffcode")
-	public @ResponseBody Message getStaffcodeCount(DepNameRoleTentExtend extend) throws Exception {
-		/*DepNameRoleTentExtend extend=new DepNameRoleTentExtend();
-		extend.setDepartmentname(departmentname);;
-		extend.setRolecontent(rolecontent);*/
-		return headOfficeService.getStaffcodeCount(extend);
+	@RequestMapping(method = RequestMethod.GET, value = "staff/staffcode")
+	public @ResponseBody Message getStaffcodeCount(String staffdepartmentid,String staffroleid) throws Exception {
+		Staffbase staffbase=new Staffbase();
+		staffbase.setStaffdepartmentid(Integer.parseInt(staffdepartmentid));
+		staffbase.setStaffroleid(Integer.parseInt(staffroleid));
+		return headOfficeService.getStaffcodeCount(staffbase);
 	}
 	
 }
