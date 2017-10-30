@@ -11,7 +11,7 @@ import com.sds.em.mapper.ActionMapper;
 import com.sds.em.mapper.ActionrecordMapper;
 import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
-
+import com.sds.em.mapper.LecturerecordMapper;
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
 import com.sds.em.mapper.OrdersMapper;
@@ -25,6 +25,9 @@ import com.sds.em.po.Branch;
 import com.sds.em.po.BranchExample;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.LectureExample;
+import com.sds.em.po.Lecturerecord;
+import com.sds.em.po.LecturerecordExample;
+import com.sds.em.po.LecturerecordExample.Criterion;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.OlderbaseExample;
@@ -42,6 +45,9 @@ import com.sds.em.util.DateSimp;
 import com.sds.em.util.Md5;
 
 public class BrenchServiceImpl implements BrenchService {
+	@Autowired
+	LecturerecordMapper lecturerecordMapper;
+	
 	@Autowired
 	OlderbaseMapper oldersbaseMapper;
 
@@ -268,6 +274,30 @@ public class BrenchServiceImpl implements BrenchService {
 			return new Message(false, "数据库错误", null);
 
 		}
+
+	}
+
+	@Override
+	public Message getLectureOlder(int lectureid) throws Exception {
+		return null;
+/*		try {
+			lecturerecordMapper
+			
+			
+			}
+
+			if (!extend.isEmpty()) {
+				return new Message(true, "返回成功", extend);
+			} else {
+				return new Message(false, "数据库错误", null);
+
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+
+		}*/
 
 	}
 
