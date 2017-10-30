@@ -65,7 +65,7 @@ public class VideoController {
 
 		Video video = new Video();
 		video.setVideodetail(videodetail);
-		video.setVideotime((float) ls);
+		video.setVideotime(String.valueOf(ls));
 		video.setVideoheat(0);
 		video.setVideointro(videointro);
 		video.setVideoname(videoname);

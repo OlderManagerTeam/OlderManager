@@ -283,6 +283,486 @@ public class ProductstoreExample {
             addCriterion("storeCount not between", value1, value2, "storecount");
             return (Criteria) this;
         }
+
+        public Criteria andStoredaybrowseIsNull() {
+            addCriterion("storeDayBrowse is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseIsNotNull() {
+            addCriterion("storeDayBrowse is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseEqualTo(Integer value) {
+            addCriterion("storeDayBrowse =", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseNotEqualTo(Integer value) {
+            addCriterion("storeDayBrowse <>", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseGreaterThan(Integer value) {
+            addCriterion("storeDayBrowse >", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeDayBrowse >=", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseLessThan(Integer value) {
+            addCriterion("storeDayBrowse <", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseLessThanOrEqualTo(Integer value) {
+            addCriterion("storeDayBrowse <=", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseIn(List<Integer> values) {
+            addCriterion("storeDayBrowse in", values, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseNotIn(List<Integer> values) {
+            addCriterion("storeDayBrowse not in", values, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseBetween(Integer value1, Integer value2) {
+            addCriterion("storeDayBrowse between", value1, value2, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeDayBrowse not between", value1, value2, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseIsNull() {
+            addCriterion("storeMonthBrowse is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseIsNotNull() {
+            addCriterion("storeMonthBrowse is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseEqualTo(Integer value) {
+            addCriterion("storeMonthBrowse =", value, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseNotEqualTo(Integer value) {
+            addCriterion("storeMonthBrowse <>", value, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseGreaterThan(Integer value) {
+            addCriterion("storeMonthBrowse >", value, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeMonthBrowse >=", value, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseLessThan(Integer value) {
+            addCriterion("storeMonthBrowse <", value, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseLessThanOrEqualTo(Integer value) {
+            addCriterion("storeMonthBrowse <=", value, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseIn(List<Integer> values) {
+            addCriterion("storeMonthBrowse in", values, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseNotIn(List<Integer> values) {
+            addCriterion("storeMonthBrowse not in", values, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseBetween(Integer value1, Integer value2) {
+            addCriterion("storeMonthBrowse between", value1, value2, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthbrowseNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeMonthBrowse not between", value1, value2, "storemonthbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseIsNull() {
+            addCriterion("storeYearBrowse is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseIsNotNull() {
+            addCriterion("storeYearBrowse is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseEqualTo(Integer value) {
+            addCriterion("storeYearBrowse =", value, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseNotEqualTo(Integer value) {
+            addCriterion("storeYearBrowse <>", value, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseGreaterThan(Integer value) {
+            addCriterion("storeYearBrowse >", value, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeYearBrowse >=", value, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseLessThan(Integer value) {
+            addCriterion("storeYearBrowse <", value, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseLessThanOrEqualTo(Integer value) {
+            addCriterion("storeYearBrowse <=", value, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseIn(List<Integer> values) {
+            addCriterion("storeYearBrowse in", values, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseNotIn(List<Integer> values) {
+            addCriterion("storeYearBrowse not in", values, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseBetween(Integer value1, Integer value2) {
+            addCriterion("storeYearBrowse between", value1, value2, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearbrowseNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeYearBrowse not between", value1, value2, "storeyearbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseIsNull() {
+            addCriterion("storeTotalBrowse is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseIsNotNull() {
+            addCriterion("storeTotalBrowse is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseEqualTo(Integer value) {
+            addCriterion("storeTotalBrowse =", value, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseNotEqualTo(Integer value) {
+            addCriterion("storeTotalBrowse <>", value, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseGreaterThan(Integer value) {
+            addCriterion("storeTotalBrowse >", value, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeTotalBrowse >=", value, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseLessThan(Integer value) {
+            addCriterion("storeTotalBrowse <", value, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseLessThanOrEqualTo(Integer value) {
+            addCriterion("storeTotalBrowse <=", value, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseIn(List<Integer> values) {
+            addCriterion("storeTotalBrowse in", values, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseNotIn(List<Integer> values) {
+            addCriterion("storeTotalBrowse not in", values, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseBetween(Integer value1, Integer value2) {
+            addCriterion("storeTotalBrowse between", value1, value2, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalbrowseNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeTotalBrowse not between", value1, value2, "storetotalbrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesIsNull() {
+            addCriterion("storeDaySales is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesIsNotNull() {
+            addCriterion("storeDaySales is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesEqualTo(Integer value) {
+            addCriterion("storeDaySales =", value, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesNotEqualTo(Integer value) {
+            addCriterion("storeDaySales <>", value, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesGreaterThan(Integer value) {
+            addCriterion("storeDaySales >", value, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeDaySales >=", value, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesLessThan(Integer value) {
+            addCriterion("storeDaySales <", value, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesLessThanOrEqualTo(Integer value) {
+            addCriterion("storeDaySales <=", value, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesIn(List<Integer> values) {
+            addCriterion("storeDaySales in", values, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesNotIn(List<Integer> values) {
+            addCriterion("storeDaySales not in", values, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesBetween(Integer value1, Integer value2) {
+            addCriterion("storeDaySales between", value1, value2, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaysalesNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeDaySales not between", value1, value2, "storedaysales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesIsNull() {
+            addCriterion("storeMonthSales is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesIsNotNull() {
+            addCriterion("storeMonthSales is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesEqualTo(Integer value) {
+            addCriterion("storeMonthSales =", value, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesNotEqualTo(Integer value) {
+            addCriterion("storeMonthSales <>", value, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesGreaterThan(Integer value) {
+            addCriterion("storeMonthSales >", value, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeMonthSales >=", value, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesLessThan(Integer value) {
+            addCriterion("storeMonthSales <", value, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesLessThanOrEqualTo(Integer value) {
+            addCriterion("storeMonthSales <=", value, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesIn(List<Integer> values) {
+            addCriterion("storeMonthSales in", values, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesNotIn(List<Integer> values) {
+            addCriterion("storeMonthSales not in", values, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesBetween(Integer value1, Integer value2) {
+            addCriterion("storeMonthSales between", value1, value2, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoremonthsalesNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeMonthSales not between", value1, value2, "storemonthsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesIsNull() {
+            addCriterion("storeYearSales is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesIsNotNull() {
+            addCriterion("storeYearSales is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesEqualTo(Integer value) {
+            addCriterion("storeYearSales =", value, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesNotEqualTo(Integer value) {
+            addCriterion("storeYearSales <>", value, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesGreaterThan(Integer value) {
+            addCriterion("storeYearSales >", value, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeYearSales >=", value, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesLessThan(Integer value) {
+            addCriterion("storeYearSales <", value, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesLessThanOrEqualTo(Integer value) {
+            addCriterion("storeYearSales <=", value, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesIn(List<Integer> values) {
+            addCriterion("storeYearSales in", values, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesNotIn(List<Integer> values) {
+            addCriterion("storeYearSales not in", values, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesBetween(Integer value1, Integer value2) {
+            addCriterion("storeYearSales between", value1, value2, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoreyearsalesNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeYearSales not between", value1, value2, "storeyearsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesIsNull() {
+            addCriterion("storeTotalSales is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesIsNotNull() {
+            addCriterion("storeTotalSales is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesEqualTo(Integer value) {
+            addCriterion("storeTotalSales =", value, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesNotEqualTo(Integer value) {
+            addCriterion("storeTotalSales <>", value, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesGreaterThan(Integer value) {
+            addCriterion("storeTotalSales >", value, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeTotalSales >=", value, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesLessThan(Integer value) {
+            addCriterion("storeTotalSales <", value, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesLessThanOrEqualTo(Integer value) {
+            addCriterion("storeTotalSales <=", value, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesIn(List<Integer> values) {
+            addCriterion("storeTotalSales in", values, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesNotIn(List<Integer> values) {
+            addCriterion("storeTotalSales not in", values, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesBetween(Integer value1, Integer value2) {
+            addCriterion("storeTotalSales between", value1, value2, "storetotalsales");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoretotalsalesNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeTotalSales not between", value1, value2, "storetotalsales");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
