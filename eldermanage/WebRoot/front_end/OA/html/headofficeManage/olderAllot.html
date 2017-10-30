@@ -50,8 +50,8 @@
 							<i class="fa fa-bars icon"></i>
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
-							<li>分店管理</li>
-							<li class="active">讲座详情</li>
+							<li>总店管理</li>
+							<li class="active">分店列表</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -189,6 +189,7 @@
 						</ul>
 					</div>
 				</div></li>
+			<!--添加在左边导航栏-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
 					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
@@ -201,8 +202,6 @@
 						</ul>
 					</div>
 				</div></li>
-
-			<!--添加在左边导航栏-->
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
@@ -269,85 +268,83 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">讲座详情</span>
-				<div class="description">Lecture Alter</div>
+				<span class="title">老年人详细信息</span>
+				<div class="description">Olderman Detailed Information</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="card-header">
 							<div class="card-title">
-								<div class="title">讲座详情</div>
+								<div class="title">
+									<a class="btn btn-primary btn-lg"
+										href="../olderInfoManager/olderView.html" role="button">返回老人信息列表</a>
+								</div>
 							</div>
 						</div>
-						<div class="card-body">
-							<form class="form-horizontal" id="lectureInfo">
-								<div class="form-group">
-									<label for="lectureName" class="col-sm-3 control-label">讲座名称：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="lecturename"></span>
+						<div class="card-body form-horizontal">
+							<!--老人详细信息-->
+							<div class="form-group">
+								<label for="olderHeadUrl" class="col-sm-3 control-label">老人照片：</label>
+								<div class="col-sm-5">
+									<div>
+										<img src="" id="olderheadurl">
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="lectureIntro" class="col-sm-3 control-label">讲座简介：</label>
-									<div class="col-sm-5">
-										<textarea class="form-control" id="lectureintro"
-											style="height: 150px" name="lectureintro" readonly></textarea>
-									</div>
+							</div>
+							<div class="form-group">
+								<label for="odlerName" class="col-sm-3 control-label">老人姓名：</label>
+								<div class="col-sm-5">
+									<span class="form-control" id="oldername"></span>
 								</div>
-								<div class="form-group">
-									<label for="lectureEnroll" class="col-sm-3 control-label">讲座报名状态：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="lecturestatus"></span>
-									</div>
+							</div>
+							<div class="form-group">
+								<label for="olderSex" class="col-sm-3 control-label">老人性别：</label>
+								<div class="col-sm-5">
+									<span class="form-control" id="oldersex"></span>
 								</div>
-								<div class="form-group">
-									<label for="lectureTotal" class="col-sm-3 control-label">讲座总人数：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="lecturetotal"></span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lecturePublishDate" class="col-sm-3 control-label">讲座发布日期：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="lecturepublishdate"></span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lectureStatus" class="col-sm-3 control-label">讲座已预约人数：</label>
-									<div class="col-sm-4">
-										<span class="form-control" id="lectureenroll"></span>
-									</div>
-									<div class="col-sm-4">
-										<a role="button" class="btn btn-default" id="enrollolder">查看</a>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lectureAddress" class="col-sm-3 control-label">讲座地址：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="lectureaddress"></span>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-5">
-										<a role="button" class="btn btn-default" id="lecturesubmit">修改讲座</a>
-									</div>
-								</div>
+							</div>
 
-								<!--
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                              <div class="checkbox3 checkbox-round checkbox-check checkbox-light">
-                                                <input type="checkbox" id="checkbox-10">
-                                                <label for="checkbox-10">
-                                                  Remember me
-                                                </label>
-                                              </div>
-                                            </div>
-                                        </div>
-                                        -->
-
-							</form>
+							<div class="form-group">
+								<label for="odlerTel" class="col-sm-3 control-label">老人电话号码：</label>
+								<div class="col-sm-5">
+									<span class="form-control" id="oldertel"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="odlerAdress" class="col-sm-3 control-label">老人地址：</label>
+								<div class="col-sm-5">
+									<span class="form-control" id="olderaddress"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="olderSingleStatus" class="col-sm-3 control-label">分店id</label>
+								<div class="col-sm-5">
+									<select id="olderbranchid">
+										<optgroup label="分店id">
+											<option value="yes">1</option>
+											<option value="no">2</option>
+										</optgroup>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="olderBranchId" class="col-sm-3 control-label">分店名称：</label>
+								<div class="col-sm-5">
+									<span class="form-control" id="branchname"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="olderBranchId" class="col-sm-3 control-label">分店管理员：</label>
+								<div class="col-sm-5">
+									<span class="form-control" id="branchmanagername"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-3 col-sm-5">
+									<a class="btn btn-primary btn-lg" id="olderallot" role="button">确认分配</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -388,6 +385,7 @@
 		<!--验证js文件-->
 		<script type="text/javascript"
 			src="../../lib/js/bootstrapValidator.min.js"></script>
+		</script>
 		<script>
 			$("#file-3").fileinput({
 				showUpload : false,
@@ -397,101 +395,6 @@
 				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
 			});
 		</script>
-
-		<!--表单验证-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				// Generate a simple captcha
-		
-				$('#lectureAlter').bootstrapValidator({
-					//        live: 'disabled',
-					message : 'This value is not valid',
-					feedbackIcons : {
-						valid : 'glyphicon glyphicon-ok-circle',
-						invalid : 'glyphicon glyphicon-remove-circle',
-						validating : 'glyphicon glyphicon-refresh',
-						regexp : 'glyphicon glyphicon-ok-circle'
-					},
-					fields : {
-						lecturename : {
-							message : '姓名不能为空',
-							validators : {
-								notEmpty : {
-									message : '名称不能为空'
-								},
-								stringLength : {
-									min : 1,
-									max : 25,
-									message : '名称不能高于25位'
-								},
-							}
-						},
-						lectureintro : {
-							validators : {
-								notEmpty : {
-									message : '简介不能为空'
-								},
-								stringLength : {
-									min : 1,
-									max : 100,
-									message : '简介不能多余100字'
-								},
-							}
-						},
-						lectureenroll : {
-							validators : {
-								notEmpty : {
-									message : '预约人数不能为空'
-								},
-								regexp : {
-									regexp : /^[1-9]\d*|0$/,
-									message : '请输入整数'
-								},
-							}
-						},
-						lecturetotal : {
-							validators : {
-								notEmpty : {
-									message : '总人数不能为空'
-								},
-								regexp : {
-									regexp : /^[1-9]\d*|0$/,
-									message : '请输入整数'
-								},
-							}
-						},
-						lecturetel : {
-							validators : {
-								notEmpty : {
-									message : '电话不能为空'
-								},
-								regexp : {
-									regexp : /^1[3|5|8]{1}[0-9]{9}$/,
-									message : '请输入正确的电话号码格式,例如：187XXXXXXXX'
-								}
-							}
-						},
-						lectureaddress : {
-							validators : {
-								notEmpty : {
-									message : '地址不能为空'
-								}
-							}
-						},
-						lecturestatus : {
-							enabled : false,
-							validators : {
-								message : '居住状况必须选择'
-							}
-						},
-					}
-				});
-		
-				// Validate the form manually
-		
-			});
-		</script>
-
 
 		<script type="text/javascript">
 			UrlParm = function() { // url参数
@@ -552,32 +455,25 @@
 			}();
 		
 			function load() {
-				var lectureid = UrlParm.parm("lectureid");
-				document.getElementById("lecturesubmit").href=""+lectureid;
-				document.getElementById("enrollolder").href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureOlderInfo.html?lectureid="+lectureid;
+				var oldertel = UrlParm.parm("oldertel");
+				//var oldertel = 18199999999;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/lecture/info?lectureid=" + lectureid,
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
 					data : null,
 					success : function(result) {
-						var lecturename = document.getElementById("lecturename");
+						var olderName = document.getElementById("oldername");
 						//olderName.value = result.data.oldername;
-						lecturename.innerHTML = result.data.lecturename;
+						olderName.innerHTML = result.data.oldername;
 						// alert("x1="+result.data.oldername); 
-						var lectureintro = document.getElementById("lectureintro");
-						lectureintro.innerHTML = result.data.lectureintro;
-						var lectureenroll = document.getElementById("lectureenroll");
-						lectureenroll.innerHTML = result.data.lectureenroll;
-						var lecturetotal = document.getElementById("lecturetotal");
-						lecturetotal.innerHTML = result.data.lecturetotal;
-						var date = new Date(result.data.lecturepublishdate + 1000 * 60 * 60 * 8);
-						var d = date.toISOString().slice(0, 10);
-		
-						document.getElementById("lecturepublishdate").innerHTML = d;
-		
-						document.getElementById("lecturestatus").innerHTML = result.data.lecturestatus;
-						document.getElementById("lectureaddress").innerHTML = result.data.lectureaddress;
+						var olderaddress = document.getElementById("olderaddress");
+						olderaddress.innerHTML = result.data.olderaddress;
+						var olderTel = document.getElementById("oldertel");
+						olderTel.innerHTML = result.data.oldertel;
+						
+						document.getElementById("oldersex").innerHTML = result.data.oldersex;
+						document.getElementById("olderheadurl").src = result.data.olderheadurl;
 					},
 					error : function() {
 						alert('数据库错误')
@@ -585,6 +481,31 @@
 				})
 			}
 		</script>
+			<script type="text/javascript">
+			$("#olderallot").click(function() {
+				var oldertel= UrlParm.parm("oldertel");
+				var branchid= $("#olderbranchid option:selected").text();
+				$.ajax({
+					type : 'post',
+					url : "http://localhost:8080/eldermanage/v1/headoffice/older/allot?oldertel="+oldertel+"&branchid="+branchid,
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						//var resultdata = JSON.parse(result);
+						//alert(result.success);
+						if (result.success) {
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/olderView.html";
+						}
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
+			}
+			)
+		</script>
+		<!--表单验证-->
 </body>
 
 </html>

@@ -2,21 +2,16 @@ package com.sds.em.pojo;
 
 import java.util.Date;
 
-import com.sds.em.po.Lecturerecord;
+import com.sds.em.po.Olderbase;
 
-public class LectureRecordExtend {
-	Lecturerecord lecturerecord;
-	Date lRecordDate;
-	public Lecturerecord getLecturerecord() {
-		return lecturerecord;
+public class LectureRecordExtend extends Olderbase{
+	 private Date lrecorddate;
+
+	public Date getLrecorddate() {
+		return lrecorddate;
 	}
-	public void setLecturerecord(Lecturerecord lecturerecord) {
-		this.lecturerecord = lecturerecord;
-	}
-	public Date getlRecordDate() {
-		return lRecordDate;
-	}
-	public void setlRecordDate(Date lRecordDate) {
-		this.lRecordDate = lRecordDate;
+
+	public void setLrecorddate(Date lrecorddate) {
+		this.lrecorddate = lrecorddate;
 	}
 }

@@ -90,4 +90,27 @@ public class HeadOfficeController {
 		return headOfficeService.updateStaffD(extend);
 	}
 
+	// 显示未分配的老人信息
+	@RequestMapping(method = RequestMethod.GET, value = "older/undis")
+	public @ResponseBody Message getOlder() throws Exception {
+		return headOfficeService.getOlder();
+	}
+
+	// 返回所有分店id
+	@RequestMapping(method = RequestMethod.GET, value = "allbranchid")
+	public @ResponseBody Message getAllBanchId() throws Exception {
+		return headOfficeService.getAllBanchId();
+	}
+
+	// 根据分店id返回分店名和管理员
+	@RequestMapping(method = RequestMethod.GET, value = "branch")
+	public @ResponseBody Message getBanch(int branchid) throws Exception {
+		return headOfficeService.getBanch(branchid);
+	}
+
+	// 分配老人给某个分店
+	@RequestMapping(method = RequestMethod.GET, value = "older/allot")
+	public @ResponseBody Message allotOlder(String oldertel, int branchid) throws Exception {
+		return headOfficeService.allotOlder(oldertel, branchid);
+	}
 }
