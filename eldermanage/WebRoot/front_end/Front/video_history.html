@@ -83,8 +83,10 @@
 
 	    <div style="margin-left: 20%;margin-right: 20%;">
 	    	<div style="font-size: 4rem;">播放历史</div>
-	    	<div id="historyItem">
-	    		
+	    	<div>
+	    		<ul id="historyList" class="videohistorylist">
+	    			
+	    		</ul>
 	    	</div>
 	    </div>
 		    
@@ -101,50 +103,28 @@
 	    </div>
 	</footer>
 	<script type="text/javascript">
-		$(function (){
-			// 后台数据
-			const historyItem = [
-				{
-					time: "20170101",
-					title: "爱我中华"
-				},
-				{
-					time: "20170202",
-					title: "爱我中华01"
-				},
-				{
-					time: "20170101",
-					title: "爱我中华02"
+		$.ajax({
+			type:'get',
+			contentype:'application/json',
+			url:"http://localhost:8080/eldermanage/v1/course/video/videorecord",
+			data:null,
+			success:function(result){
+				var recorddata = result.data
+				for(var i=recorddata.length-1;i>=0;i--){
+					var oLi=`
+							<a>
+								<li>
+									<time>${recorddata[i].vrecorddate}</time>
+									<span>${recorddata[i].video.videoname}</span>
+								</li>
+							</a>
+					`;
+					$('#historyList').append(oLi)
 				}
-			];
-			//创建并填充播放数据
-			const oUl = $("<ul>");
-		
-			for (var i = historyItem.length - 1; i >= 0; i--) {
-				// let time = $('<span>').html(historyItem[i].time);
-				// let title = $('<span>').html(historyItem[i].title);
-				// let oLi = $('<li>').append(time).append(title);
-				
-				var oLi = `
-						<a>
-			    			<li>
-			    				<time>${historyItem[i].time}</time>
-			    				<span>${historyItem[i].title}</span>
-			    			</li>
-			    		</a>
-				`;
-
-				// oUl.append(oLi);
-				$($(oLi)).appendTo(oUl);
+			},
+			error:function(){
+				alert('数据库错误')
 			}
-
-			oUl.addClass('videohistorylist');
-			//oUl.removeClass("red");
-
-			//oUl.css({ listStyleType: 'none', padding: 0});
-			// 存放播放历史容器
-			$('#historyItem').append(oUl);
-			// alert($('#historyItem'));
 		})
 	</script>
 </body>
