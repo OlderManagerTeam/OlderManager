@@ -8,7 +8,7 @@
     <result column="videoName" property="videoname" jdbcType="VARCHAR" />
     <result column="videoIntro" property="videointro" jdbcType="VARCHAR" />
     <result column="videoDetail" property="videodetail" jdbcType="VARCHAR" />
-    <result column="videoTime" property="videotime" jdbcType="REAL" />
+    <result column="videoTime" property="videotime" jdbcType="VARCHAR" />
     <result column="videoPublishDate" property="videopublishdate" jdbcType="DATE" />
     <result column="videoHeat" property="videoheat" jdbcType="INTEGER" />
     <result column="videoPartition" property="videopartition" jdbcType="VARCHAR" />
@@ -112,7 +112,7 @@
       videoPartition)
     values (#{videoid,jdbcType=INTEGER}, #{videopicurl,jdbcType=VARCHAR}, #{videourl,jdbcType=VARCHAR}, 
       #{videoname,jdbcType=VARCHAR}, #{videointro,jdbcType=VARCHAR}, #{videodetail,jdbcType=VARCHAR}, 
-      #{videotime,jdbcType=REAL}, #{videopublishdate,jdbcType=DATE}, #{videoheat,jdbcType=INTEGER}, 
+      #{videotime,jdbcType=VARCHAR}, #{videopublishdate,jdbcType=DATE}, #{videoheat,jdbcType=INTEGER}, 
       #{videopartition,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Video" >
@@ -169,7 +169,7 @@
         #{videodetail,jdbcType=VARCHAR},
       </if>
       <if test="videotime != null" >
-        #{videotime,jdbcType=REAL},
+        #{videotime,jdbcType=VARCHAR},
       </if>
       <if test="videopublishdate != null" >
         #{videopublishdate,jdbcType=DATE},
@@ -210,7 +210,7 @@
         videoDetail = #{record.videodetail,jdbcType=VARCHAR},
       </if>
       <if test="record.videotime != null" >
-        videoTime = #{record.videotime,jdbcType=REAL},
+        videoTime = #{record.videotime,jdbcType=VARCHAR},
       </if>
       <if test="record.videopublishdate != null" >
         videoPublishDate = #{record.videopublishdate,jdbcType=DATE},
@@ -234,7 +234,7 @@
       videoName = #{record.videoname,jdbcType=VARCHAR},
       videoIntro = #{record.videointro,jdbcType=VARCHAR},
       videoDetail = #{record.videodetail,jdbcType=VARCHAR},
-      videoTime = #{record.videotime,jdbcType=REAL},
+      videoTime = #{record.videotime,jdbcType=VARCHAR},
       videoPublishDate = #{record.videopublishdate,jdbcType=DATE},
       videoHeat = #{record.videoheat,jdbcType=INTEGER},
       videoPartition = #{record.videopartition,jdbcType=VARCHAR}
@@ -261,7 +261,7 @@
         videoDetail = #{videodetail,jdbcType=VARCHAR},
       </if>
       <if test="videotime != null" >
-        videoTime = #{videotime,jdbcType=REAL},
+        videoTime = #{videotime,jdbcType=VARCHAR},
       </if>
       <if test="videopublishdate != null" >
         videoPublishDate = #{videopublishdate,jdbcType=DATE},
@@ -282,18 +282,19 @@
       videoName = #{videoname,jdbcType=VARCHAR},
       videoIntro = #{videointro,jdbcType=VARCHAR},
       videoDetail = #{videodetail,jdbcType=VARCHAR},
-      videoTime = #{videotime,jdbcType=REAL},
+      videoTime = #{videotime,jdbcType=VARCHAR},
       videoPublishDate = #{videopublishdate,jdbcType=DATE},
       videoHeat = #{videoheat,jdbcType=INTEGER},
       videoPartition = #{videopartition,jdbcType=VARCHAR}
     where videoId = #{videoid,jdbcType=INTEGER}
   </update>
-   <!-- 自定义sql -->
+  
+     <!-- 自定义sql -->
 	<select id="select_video_healthy"  resultType="com.sds.em.po.Video" >
 	       SELECT * from video WHERE videopartition='健康视频' order by videoid desc;
 	</select>
 	<select id="select_video_lecture"  resultType="com.sds.em.po.Video" >
 	       SELECT * from video WHERE videopartition='讲座回放' order by videoid desc;
 	</select>
-	
+  
 </mapper>

@@ -9,6 +9,8 @@ public class Productrate {
 
     private Integer ratestar;
 
+    private Integer ratebrowse;
+
     public Integer getRateid() {
         return rateid;
     }
@@ -39,5 +41,13 @@ public class Productrate {
 
     public void setRatestar(Integer ratestar) {
         this.ratestar = ratestar;
+    }
+
+    public Integer getRatebrowse() {
+        return ratebrowse;
+    }
+
+    public void setRatebrowse(Integer ratebrowse) {
+        this.ratebrowse = ratebrowse;
     }
 }

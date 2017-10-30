@@ -5,26 +5,26 @@ import com.sds.em.po.Action;
 public class ActionExtend {
 	
 	private Action action;
-	private String jionStatu;
-	private String startDate;
+	private String jionStatuString;
+	private String startDateString;
 	public Action getAction() {
 		return action;
 	}
 	public void setAction(Action action) {
 		this.action = action;
 	}
-	public String getJionStatu() {
-		return jionStatu;
+	public String getJionStatuString() {
+		return jionStatuString;
 	}
-	public void setJionStatu(String jionStatu) {
-		this.jionStatu = jionStatu;
+	public void setJionStatuString(String jionStatuString) {
+		this.jionStatuString = jionStatuString;
 	}
-	public String getStartDate() {
-		return startDate;
+	public String getStartDateString() {
+		return startDateString;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setStartDateString(String startDateString) {
+		this.startDateString = startDateString;
 	}
-	
+
 
 }

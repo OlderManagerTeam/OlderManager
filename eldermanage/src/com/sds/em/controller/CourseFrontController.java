@@ -97,7 +97,7 @@ public class CourseFrontController {
 	//老人查看自己的课程视频播放记录   -----写完
 	@RequestMapping(method = RequestMethod.GET,value= "video/videorecord")
 	public @ResponseBody Message videoRecord(HttpSession s){
-		int olderid = (int) s.getAttribute("olderid");
+		int olderid =4;
 		return courseService.videoRecord(olderid);
 	}
 	//活动发布
@@ -109,10 +109,10 @@ public class CourseFrontController {
 	@RequestMapping(method= RequestMethod.GET,value="actions/allactions")
 	public @ResponseBody Message allActions(HttpSession s){
 		
-		int olderid = 1;
-		int olderbranchid = 1;
+		int olderid = 0;
+	
 		if(olderid != 0){//老人登陆后看到该片区所有活动
-			return courseService.allActionsByolder(olderid,olderbranchid);
+			return courseService.allActionsByolder(olderid);
 		}
 		return courseService.allActions();//未登录返回所有活动
 	}

@@ -34,6 +34,7 @@ import com.sds.em.po.Videorecord;
 import com.sds.em.po.VideorecordExample;
 import com.sds.em.pojo.ActionExtend;
 import com.sds.em.pojo.LectureExtend;
+import com.sds.em.pojo.VideoExtend;
 import com.sds.em.service.CourseService;
 
 /**
@@ -311,16 +312,24 @@ public class CourseServiceImpl implements CourseService {
 		videorecordCriteria.andVrecordolderidEqualTo(olderid);
 		// 得到记录表中所有老人的videoid
 		List<Videorecord> videorecordList = videorecordMapper.selectByExample(videorecordExample);
-		List<Video> videoList = null;
+		List<VideoExtend> videoExtendList = new ArrayList<VideoExtend>();
 		if (!videorecordList.isEmpty()) {
-			for (int i = 0; i < videorecordList.size(); i++) {
+			for(Videorecord v:videorecordList){
+				
 				VideoExample videoExample = new VideoExample();
 				Criteria videoCriteria = videoExample.createCriteria();
-				videoCriteria.andVideoidEqualTo(videorecordList.get(i).getVrecordvideoid());
+				videoCriteria.andVideoidEqualTo(v.getVrecordvideoid());
 				List<Video> video = videoMapper.selectByExample(videoExample);
-				videoList.add(i, video.get(0));
+				if(!video.isEmpty()){
+					for(Video vd:video){
+						VideoExtend videoE  = new VideoExtend();
+						videoE.setVideo(vd);
+						videoE.setVrecorddate(v.getVrecorddate());
+						videoExtendList.add(videoE);
+					}
+				}
 			}
-			return new Message(true, "返回成功", videoList);
+			return new Message(true, "返回成功", videoExtendList);
 		}
 
 		return new Message(false, "数据错误", null);
@@ -339,16 +348,14 @@ public class CourseServiceImpl implements CourseService {
 
 	// 老人登陆后看到该片区所有活动
 	@Override
-	public Message allActionsByolder(int olderid, int olderbranchid) {
+	public Message allActionsByolder(int olderid) {
 		ActionrecordExample actionrecordExample = new ActionrecordExample();
 		com.sds.em.po.ActionrecordExample.Criteria recordCriteria = actionrecordExample.createCriteria();
 		recordCriteria.andArecordolderidEqualTo(olderid);
 		//得到老人报名的活动
 		List<Actionrecord> recordListByolder = actionrecordMapper.selectByExample(actionrecordExample);
 		
-		ActionExtend actionExtend = new ActionExtend();
 		List<ActionExtend> actionExtendList = new  ArrayList<ActionExtend>();
-		
 		if(!recordListByolder.isEmpty()){//表明老人有参加的活动
 			for(Actionrecord a : recordListByolder){
 				ActionExample actionExampletrue = new ActionExample();
@@ -357,14 +364,15 @@ public class CourseServiceImpl implements CourseService {
 				List<Action> actiontrue = actionMapper.selectByExample(actionExampletrue);
 				
 				if (!actiontrue.isEmpty()) {
+					ActionExtend actionExtend = new ActionExtend();
 					for (Action aa : actiontrue) {
 						if (aa.getActionstartdate() == null) {
 							actionExtend.setAction(aa);
-							actionExtend.setStartDate("未定");
+							actionExtend.setStartDateString("未定");
 						} else {
-							actionExtend.setStartDate("有值");
+							actionExtend.setStartDateString("有值");
 						}
-						actionExtend.setJionStatu("您已报名");
+						actionExtend.setJionStatuString("您已报名");
 						actionExtendList.add(actionExtend);
 					}
 				}
@@ -375,14 +383,15 @@ public class CourseServiceImpl implements CourseService {
 				List<Action> actionFalse = actionMapper.selectByExample(actionExamplefalse);
 				if (!actionFalse.isEmpty()) {
 					for (Action aa : actionFalse) {
+						ActionExtend actionExtend = new ActionExtend();
 						if (aa.getActionstartdate() == null) {
 							actionExtend.setAction(aa);
-							actionExtend.setStartDate("未定");
+							actionExtend.setStartDateString("未定");
 
 						} else {
-							actionExtend.setStartDate("有值");
+							actionExtend.setStartDateString("有值");
 						}
-						actionExtend.setJionStatu("您已报名");
+						actionExtend.setJionStatuString("您已报名");
 						actionExtendList.add(actionExtend);
 					}
 				}
@@ -401,8 +410,23 @@ public class CourseServiceImpl implements CourseService {
 	public Message allActions() {
 		ActionExample actionExample = new ActionExample();
 		List<Action> actionList = actionMapper.selectByExample(actionExample);
+		
+		List<ActionExtend> actionExtendList = new ArrayList<ActionExtend>();
 		if (!actionList.isEmpty()) {
-			return new Message(true, "返回成功", actionList);
+			for(Action  a:actionList){
+				ActionExtend extend = new ActionExtend();
+				if (a.getActionstartdate() == null) {
+					extend.setAction(a);
+					extend.setStartDateString("未定");
+
+				} else {
+					extend.setStartDateString("有值");
+				}
+				extend.setJionStatuString("QQ");
+				actionExtendList.add(extend);
+			}
+			
+			return new Message(true, "返回成功", actionExtendList);
 		}
 		return new Message(false, "数据错误", null);
 	}
