@@ -557,8 +557,9 @@ public class BrenchServiceImpl implements BrenchService {
 	}
 
 	@Override
-	public Message deleteLecture(int lectureid) throws Exception {
+	public Message deletelecturejoin(int lectureid,int olderid) throws Exception {
 		try {
+			
 			int flag = 0;
 			flag = lectureMapper.deleteByPrimaryKey(lectureid);
 			if (flag != 0) {
