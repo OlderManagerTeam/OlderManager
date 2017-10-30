@@ -300,10 +300,10 @@
 								<div class="form-group">
 									<label for="branchManagerId" class="col-sm-3 control-label">修改分店管理员：</label>
 									<div class="col-sm-5">
-										<input type="text" type="hidden" id="branchmanagerid"
-											name="branchmanagerid"></input> <input type="text"
-											class="form-control" id="staffcode" placeholder="修改分店管理员员工号"
-											name="staffcode">
+										<input type="text" id="branchmanagerid"
+											name="branchmanagerid" style="display: none;"></input> 
+										<input type="text" class="form-control" id="staffcode" placeholder="修改分店管理员员工号"
+											name="staffcode" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -514,26 +514,34 @@
 					url : "http://localhost:8080/eldermanage/v1/headoffice/branch/info?branchid=" + branchid,
 					data : null,
 					success : function(result) {
-						var branchname = document.getElementById("branchname");
-						//olderName.value = result.data.oldername;
-						branchname.value = result.data.branch.branchname;
-						// alert("x1="+result.data.oldername); 
-						var branchpostcode = document.getElementById("branchpostcode");
-						branchpostcode.value = result.data.branch.branchpostcode;
-						var branchadress = document.getElementById("branchadress");
-						branchadress.value = result.data.branch.branchadress;
-						var branchkpi = document.getElementById("branchkpi");
-						branchkpi.value = result.data.branch.branchkpi;
+						$('#branchname').attr("value",result.data.branch.branchname);
+						$('#branchpostcode').attr("value",result.data.branch.branchpostcode);
+						$('#branchadress').attr("value",result.data.branch.branchadress);
+						$('#branchkpi').attr("value",result.data.branch.branchkpi);
+						$('#branchmanagerid').attr("value",result.data.staffbase.staffid);
+						$('#staffname').html(result.data.staffbase.staffname);
+						$('#staffcode').attr("value",result.data.staffbase.staffcode);
+
+						// var branchname = document.getElementById("branchname");
+						// //olderName.value = result.data.oldername;
+						// branchname.value = result.data.branch.branchname;
+						// // alert("x1="+result.data.oldername); 
+						// var branchpostcode = document.getElementById("branchpostcode");
+						// branchpostcode.value = result.data.branch.branchpostcode;
+						// var branchadress = document.getElementById("branchadress");
+						// branchadress.value = result.data.branch.branchadress;
+						// var branchkpi = document.getElementById("branchkpi");
+						// branchkpi.value = result.data.branch.branchkpi;
 		
-						var branchmanagerid = document.getElementById("branchmanagerid");
-						branchmanagerid.value = result.data.staffbase.staffid;
+						// var branchmanagerid = document.getElementById("branchmanagerid");
+						// branchmanagerid.value = result.data.staffbase.staffid;
 		
 		
-						var staffname = document.getElementById("staffname");
-						staffname.innerHTML = result.data.staffbase.staffname;
+						// var staffname = document.getElementById("staffname");
+						// staffname.innerHTML = result.data.staffbase.staffname;
 		
-						var staffcode = document.getElementById("staffcode");
-						staffcode.value = result.data.staffbase.staffcode;
+						// var staffcode = document.getElementById("staffcode");
+						// staffcode.value = result.data.staffbase.staffcode;
 		
 					},
 					error : function() {
@@ -565,8 +573,33 @@
 						alert('fail')
 					}
 				})
-			}
-			)
+			})
+
+			$("#staffcode").blur(function(){
+				//alert('abc')
+				var staffcode = $('#staffcode').val()
+
+				$.ajax({
+					type:'get',
+					contentType:'application/json',
+					url:"http://localhost:8080/eldermanage/v1/headoffice/branch/staff?staffcode="+staffcode,
+					data:staffcode,
+					success:function(result){
+						var staffinfo = result.data
+						if (result.success == true) {
+							$('#branchmanagerid').attr("value",result.data.staffid)
+							//alert(result.data.staffid)
+						}else {
+							alert('员工不存在!!!');
+							$('#staffcode').val("");
+							$('#branchmanagerid').val("");
+						}
+					},
+					error:function(){
+						alert('数据库错误')
+					}
+				})
+			})
 		</script>
 </body>
 

@@ -4,6 +4,7 @@
 <head>
 <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
@@ -294,7 +295,8 @@
 								<div class="form-group">
 									<label for="branchManagerId" class="col-sm-3 control-label">分店管理员员工号：</label>
 									<div class="col-sm-5">
-										<input type="text" type="hidden" id="branchManagerId" name="branchmanagerid"></input>
+										<input type="text" readonly="readonly" id="staffId" name="branchmanagerid" 
+										style="padding-left: 7px;display: none;"></input>
 										<input type="text" class="form-control" id="staffcode"
 											placeholder="分店管理员">
 									</div>
@@ -461,8 +463,33 @@
 						alert('fail')
 					}
 				})
-			}
-			)
+			})
+
+			$("#staffcode").blur(function(){
+				//alert('abc')
+				var staffcode = $('#staffcode').val()
+
+				$.ajax({
+					type:'get',
+					contentType:'application/json',
+					url:"http://localhost:8080/eldermanage/v1/headoffice/branch/staff?staffcode="+staffcode,
+					data:staffcode,
+					success:function(result){
+						var staffinfo = result.data
+						if (result.success == true) {
+							$('#staffId').attr("value",result.data.staffid)
+							//alert(result.data.staffid)
+						}else {
+							alert('员工不存在!!!');
+							$('#staffcode').val("");
+							$('#staffId').val("");
+						}
+					},
+					error:function(){
+						alert('数据库错误')
+					}
+				})
+			})
 		</script>
 </body>
 
