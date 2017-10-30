@@ -371,31 +371,33 @@
 						var olderAlter = "../olderInfoManager/olderAlter.html?oldertel=";
 						olderAlter = olderAlter + olderItem[i].oldertel;
 						var oTr = `<tr>
-															<td>${i + 1}</td>
-															<td>${olderItem[i].oldername}</td>
-															<td>${olderItem[i].oldersex}</td>
-															<td>${age}</td>
-															<td>${olderItem[i].oldertel}</td>
-									
-															<td>${olderItem[i].oldersinglestatus}</td>
-															<td>${olderItem[i].oldermaxpoint}</td>
-															<td><a class="btn btn-primary btn-xs"
-																href=${orderView} role="button">查看老人订单</a></td>
-															<td><a class="btn btn-primary btn-xs"
-																href=${olderInfo} role="button">查看详细信息</a>
-															</td>
-															<td><a class="btn btn-primary btn-xs"
-																href=${olderSickView} role="button">查看病历</a>
-															</td>
-															<td><a class="btn btn-primary btn-xs"
-																href=${visitedView} role="button">查看回访记录</a>
-															</td>
-															<td><a class="btn btn-primary btn-xs"
-																href=${olderAlter} role="button">修改</a>
-																<button class="btn btn-primary btn-xs" >删除</button></td>
-														</tr>
-												`;
+																	<td>${i + 1}</td>
+																	<td>${olderItem[i].oldername}</td>
+																	<td>${olderItem[i].oldersex}</td>
+																	<td>${age}</td>
+																	<td>${olderItem[i].oldertel}</td>
+											
+																	<td>${olderItem[i].oldersinglestatus}</td>
+																	<td>${olderItem[i].oldermaxpoint}</td>
+																	<td><a class="btn btn-primary btn-xs"
+																		href=${orderView} role="button">查看老人订单</a></td>
+																	<td><a class="btn btn-primary btn-xs"
+																		href=${olderInfo} role="button">查看详细信息</a>
+																	</td>
+																	<td><a class="btn btn-primary btn-xs"
+																		href=${olderSickView} role="button">查看病历</a>
+																	</td>
+																	<td><a class="btn btn-primary btn-xs"
+																		href=${visitedView} role="button">查看回访记录</a>
+																	</td>
+																	<td><a class="btn btn-primary btn-xs"
+																		href=${olderAlter} role="button">修改</a>
+																		 <a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${olderItem[i].oldertel}">删除</a>
+	
+																</tr>
+														`;
 						$($(oTr)).appendTo('#olderlist');
+	
 					}
 	
 					$('.datatable').DataTable({
@@ -406,7 +408,26 @@
 				function() {
 					alert('数据库错误')
 				}
-			);
+			)
+				.done(function() {
+					$("#olderlist .btn-delete").on('click', function(event) {
+						const r = confirm("您确定要删除么?");
+						if (r == true) {
+							const e = event || window.event;
+							e.preventDefault();
+							///let currentTr = $(this).parent().parent();
+				$.ajax({
+					type : 'delete',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + $(this).attr('data-id'),
+					data : null,
+					success : function() {
+						window.location.reload();
+					}
+				})
+						} else return false;
+					});
+				})
 		})
 	
 		function load() {

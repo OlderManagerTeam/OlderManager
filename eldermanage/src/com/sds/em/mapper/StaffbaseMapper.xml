@@ -320,4 +320,53 @@
       staffRoleId = #{staffroleid,jdbcType=INTEGER}
     where staffId = #{staffid,jdbcType=INTEGER}
   </update>
+  
+  <select id="queryALL" parameterType="cn.gzu.ssm.po.TaskCustom"
+		resultType="cn.gzu.ssm.po.TaskCustom">
+		SELECT
+		task.*,
+		role.roleName,
+		person.userName,
+		proj.projName,
+		finishstatus.finishstatusName,
+		request.requestName
+		from
+		task,person,teammate,role,proj,finishstatus,request
+		where
+		role.roleId=teammate.teamRoleId and
+		person.userId=task.taskUserId and
+		teammate.teamProjId=proj.projId and
+		task.taskProjId=proj.projId and
+		taskUserId=teamUserId and
+		finishstatus.finishstatusId=task.taskFinishstatusId
+		and
+		request.requestId=task.taskRequestId
+		and( projName like '%${taskdesp}%'
+		or
+		taskProjId like '%${taskdesp}%'
+		or
+		taskUserId like '%${taskdesp}%'
+		or
+		taskApiaddr like '%${taskdesp}%'
+		or
+		taskParameters like '%${taskdesp}%'
+		or
+		taskReturns like '%${taskdesp}%'
+		or
+		taskDesp like '%${taskdesp}%'
+		or
+		userName
+		like '%${taskdesp}%'
+		or taskId
+		like
+		'%${taskdesp}%')
+		<if test="taskuserid!=1">
+			<if test="taskuserid!=null">
+				and taskUserId = #{taskuserid}
+			</if>
+			<if test="taskprojid!=null">
+				and taskProjId = #{taskprojid}
+			</if>
+		</if>
+	</select>
 </mapper>

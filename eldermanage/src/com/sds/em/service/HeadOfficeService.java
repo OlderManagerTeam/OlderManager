@@ -3,6 +3,7 @@ package com.sds.em.service;
 import com.sds.em.po.Branch;
 import com.sds.em.po.Message;
 import com.sds.em.pojo.BranchStaffBaseExtend;
+import com.sds.em.pojo.DepNameRoleTentExtend;
 import com.sds.em.pojo.StaffDepartmentRoleExtend;
 
 public interface HeadOfficeService {
@@ -50,5 +51,10 @@ public interface HeadOfficeService {
 
 	// 分配老人给某个分店
 	public Message allotOlder(String oldertel, int branchid) throws Exception;
+	
+	
+	//返回该部门该职位的员工人数，好形成员工号
+	public Message getStaffcodeCount(DepNameRoleTentExtend extend) throws Exception;
+	
 
 }

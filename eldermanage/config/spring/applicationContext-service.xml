@@ -21,4 +21,7 @@
 	<bean id="HeadOfficeService" class="com.sds.em.service.impl.HeadOfficeServiceImpl" />
 	<bean id="VideoService" class="com.sds.em.service.impl.VideoServiceImpl" />
 	<bean id="PersonalCenterService" class="com.sds.em.service.impl.PersonalCenterServiceImpl" />
+	<bean id="OlderShopService" class="com.sds.em.service.impl.OlderShopServiceImpl" />
+	
+	
 </beans>
