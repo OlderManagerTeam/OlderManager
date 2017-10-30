@@ -45,8 +45,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>电子商务</li>
-							<li>订单总列表</li>
-							<li class="active">订单详细表</li>
+							<li class="active">商品团购表</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -132,17 +131,17 @@
 						<ul class="nav navbar-nav">
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">控制台</span>
-							</a></li>
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-element"> <span
-									class="icon fa fa-desktop"></span><span class="title">UI
-										Kits</span>
-							</a> <!-- 下拉列表 level 1 -->
-								<div id="dropdown-element" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul class="nav navbar-nav">
-											<li><a href="../ui-kits/grid.html">Grid</a></li>
-											<li><a href="../ui-kits/theming.html">主题</a></li></li>
+			              </a></li>
+			<li class="panel panel-default dropdown">
+			<a data-toggle="collapse" href="#dropdown-element"> 
+			        <span class="icon fa fa-desktop"></span>
+			        <span class="title">UI Kits</span>
+			</a> <!-- 下拉列表 level 1 -->
+			<div id="dropdown-element" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../ui-kits/grid.html">Grid</a></li>
+							<li><a href="../ui-kits/theming.html">主题</a></li></li>
 							<li><a href="../ui-kits/button.html">按钮</a></li>
 							<li><a href="../ui-kits/card.html">明信片</a></li>
 							<li><a href="../ui-kits/list.html">列表</a></li>
@@ -180,20 +179,21 @@
 						</ul>
 					</div>
 				</div></li>
+             <li class="panel panel-default dropdown">
+			     <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
+			         <span class="icon  glyphicon glyphicon-user"></span>
+			         <span class="title">总店管理</span>
+			     </a> <!-- Dropdown level 1 -->
+				 <div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					    <div class="panel-body">
+						      <ul class="nav navbar-nav">
+							       <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							       <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						      </ul>
+					    </div>
+				 </div>
+			</li> 
 			<!--在左边导航栏添加老人管理模块的导航-->
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
-					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						</ul>
-					</div>
-				</div>
-			</li>
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderView"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
@@ -235,7 +235,7 @@
 						</ul>
 					</div>
 				</div>
-			</li>
+			</li>			
 			<!-- 下拉列表-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#component-example"> <span
@@ -289,15 +289,16 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">订单详细表</span>
-				<div class="description">Order List</div>
+				<span class="title">商品团购表</span>
+				<div class="description">Product Group List</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="card">
-						<div class="card-header row">
+						<div class="card-header">
+
 							<div class="card-title">
-								<div class="title"><a class="btn btn-primary btn-lg" href="../olderShop/order.html" role="button">返回订单列表</a></div>
+								<div class="title">列表</div>
 							</div>
 						</div>
 						<div class="card-body">
@@ -305,46 +306,67 @@
 								width="100%">
 								<thead>
 									<tr>
-										<th>序号</th>
-										<th>订单编号</th>
-										<th>商品编号</th>
-										<th>商品数量</th>
-										<th>商品购买价格</th>
+										<th>团购编号</th>
+										<th>发起时间</th>
+										<th>开团时间</th>
+										<th>结束时间</th>
+										<th>团购商品</th>
+										<th>当前人数</th>
+										<th>总人数</th>
+										<th>团购价格</th>
+										<th>团购详情</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>序号</th>
-										<th>订单编号</th>
-										<th>商品编号</th>
-										<th>商品数量</th>
-										<th>商品购买价格</th>
+										<th>团购编号</th>
+										<th>发起时间</th>
+										<th>开团时间</th>
+										<th>结束时间</th>
+										<th>团购商品</th>
+										<th>当前人数</th>
+										<th>总人数</th>
+										<th>团购价格</th>
+										<th>团购详情</th>
 									</tr>
 								</tfoot>
-								<tbody id="orderList">
+								<tbody>
 									<tr>
-									    <td>1</td> 
-									    <td>001</td>
-									    <td>0012</td>
-									    <td>5</td>
-									    <td>20</td>
+										<td>团购ID</td>
+										<td>团购发起日期</td>
+										<td>开团日期</td>
+										<td>团购结束日期</td>
+										<td>团购商品</td>
+										<td>当前人数</td>
+										<td>总人数</td>
+										<td>商品团购价</td>
+										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
 									</tr>
 									<tr>
-									    <td>2</td> 
-									    <td>001</td>
-									    <td>0013</td>
-									    <td>1</td>
-									    <td>200</td>
+										<td>groupId</td>
+										<td>groupPublishDate</td>
+										<td>groupStartDate</td>
+										<td>groupFinishDate</td>
+										<td>groupProductId</td>
+										<td>groupPresentPeople</td>
+										<td>groupTotalPeople</td>
+										<td>goupDiscountPrice</td>
+										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
 									</tr>
 									<tr>
-									    <td>orderListId</td> 
-									    <td>orderListFId</td>
-									    <td>orderProductId</td>
-									    <td>orderProductCount</td>
-									    <td>orderDiscountPrice</td>
-									</tr>  
+										<td>例如：001</td>
+										<td>2017-10-10</td>
+										<td>2017-10-15</td>
+										<td>2017-10-20</td>
+										<td>脑白金</td>
+										<td>21</td>
+										<td>100</td>
+										<td>998</td>
+										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
+									</tr>
 								</tbody>
 							</table>
+							<div id="olderView"></div>
 						</div>
 					</div>
 				</div>
@@ -358,9 +380,10 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
-	<div>
+	
 		<!-- Javascript Libs -->
 
+		
 		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
@@ -377,12 +400,9 @@
 		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
 		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
 		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<script type="text/javascript" src="../../js/app.js"></script>
 		<!-- Javascript -->
-		
+		<script type="text/javascript" src="../../js/app.js"></script>
 
-
-		
 </body>
 
 </html>

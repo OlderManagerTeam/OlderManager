@@ -39,6 +39,7 @@ import com.sds.em.po.Visited;
 import com.sds.em.po.VisitedExample;
 import com.sds.em.pojo.ActionRecordOlderExtend;
 import com.sds.em.pojo.BranchStaffBaseExtend;
+import com.sds.em.pojo.LectureRecordExtend;
 import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
@@ -246,28 +247,7 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message getActionOlder(int actionid) throws Exception {
 		try {
-			ActionrecordExample actionrecordExample = new ActionrecordExample();
-			com.sds.em.po.ActionrecordExample.Criteria criteria = actionrecordExample.createCriteria();
-			criteria.andArecordactionidEqualTo(actionid);
-
-			List<Actionrecord> actionRecordList = actionrecordMapper.selectByExample(actionrecordExample);
-
-			List<ActionRecordOlderExtend> extend = new ArrayList<ActionRecordOlderExtend>();
-
-			for (Actionrecord a : actionRecordList) {
-				Olderbase olderbase = oldersbaseMapper.selectByPrimaryKey(a.getArecordolderid());
-				ActionRecordOlderExtend aroe = new ActionRecordOlderExtend();
-				aroe.setOlderbase(olderbase);
-				aroe.setArecorddate(a.getArecorddate());
-				extend.add(aroe);
-			}
-
-			if (!extend.isEmpty()) {
-				return new Message(true, "返回成功", extend);
-			} else {
-				return new Message(false, "数据库错误", null);
-
-			}
+			return new Message(true, "返回成功", actionrecordMapper.getactionRecordinfo(actionid));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -279,26 +259,12 @@ public class BrenchServiceImpl implements BrenchService {
 
 	@Override
 	public Message getLectureOlder(int lectureid) throws Exception {
-		return null;
-/*		try {
-			lecturerecordMapper
-			
-			
-			}
-
-			if (!extend.isEmpty()) {
-				return new Message(true, "返回成功", extend);
-			} else {
-				return new Message(false, "数据库错误", null);
-
-			}
+		try {
+			List<LectureRecordExtend> l=lecturerecordMapper.getlecturerecordinfo(lectureid);
+			return new Message(true, "返回成功", l);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
-
-		}*/
-
+		}
 	}
 
 	@Override

@@ -200,7 +200,7 @@ public class BrenchController {
 	// 查找本活动参加的老人信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "lecture/older/info")
 	public @ResponseBody Message getLectureOlder(int lectureid) throws Exception {
-		return brenchService.getActionOlder(lectureid);
+		return brenchService.getLectureOlder(lectureid);
 	}
 
 	// 查询这个管理员所在的分店名--测试通过
