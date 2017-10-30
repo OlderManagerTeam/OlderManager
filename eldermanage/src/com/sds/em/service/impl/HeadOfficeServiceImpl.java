@@ -24,7 +24,6 @@ import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
 import com.sds.em.po.StaffbaseExample.Criteria;
 import com.sds.em.pojo.BranchStaffBaseExtend;
-import com.sds.em.pojo.DepNameRoleTentExtend;
 import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.service.HeadOfficeService;
 
@@ -375,9 +374,9 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 	}
 
 	@Override
-	public Message getStaffcodeCount(DepNameRoleTentExtend extend) throws Exception {
+	public Message getStaffcodeCount(Staffbase staffbase) throws Exception {
 		int count=0;
-	    count=staffbaseMapper.getStaffcodeCount(extend).size();
+	    count=staffbaseMapper.getStaffcodeCount(staffbase).size();
 		return new Message(true, "返回成功", count);
 	}
 
