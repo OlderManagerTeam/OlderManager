@@ -414,19 +414,19 @@
 						for (var i = sicklist.length - 1; i >= 0; i--) {
 							var sickdate = new Date(sicklist[i].sickdate + 1000 * 60 * 60 * 8);
 							var oTr = `<tr>
-																	<td>${i + 1}</td>
-																	<td>${sicklist[i].sickinfo}</td>
-																	<td>${sicklist[i].sickdoctor}</td>
-																	<td>${sickdate.toLocaleDateString()}</td>
-																	<td>${sicklist[i].sickhospital}</td>
-											
-																	<td>${sicklist[i].sickadvice}</td>
-		
-																	<td><a class="btn btn-primary btn-xs"
-																		href="http://localhost:8080/eldermanage/v1/brench/elder/deletesicks?sickid=${sicklist[i].sickid}" role="button">删除</a>
-																	</td>
-																</tr>
-														`;
+																					<td>${i + 1}</td>
+																					<td>${sicklist[i].sickinfo}</td>
+																					<td>${sicklist[i].sickdoctor}</td>
+																					<td>${sickdate.toLocaleDateString()}</td>
+																					<td>${sicklist[i].sickhospital}</td>
+															
+																					<td>${sicklist[i].sickadvice}</td>
+						
+																					<td> 
+																					<a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${sicklist[i].sickid}">删除</a>
+																					</td>
+																				</tr>
+																		`;
 							$($(oTr)).appendTo('#sicklist');
 						}
 		
@@ -437,7 +437,26 @@
 					function() {
 						alert('数据库错误')
 					}
-				);
+				)
+					.done(function() {
+						$("#sicklist .btn-delete").on('click', function(event) {
+							const r = confirm("您确定要删除么?");
+							if (r == true) {
+								const e = event || window.event;
+								e.preventDefault();
+								///let currentTr = $(this).parent().parent();
+								$.ajax({
+									type : 'delete',
+									contentType : 'application/json',
+									url : "http://localhost:8080/eldermanage/v1/brench/elder/sick?sickid=" + $(this).attr('data-id'),
+									data : null,
+									success : function() {
+										window.location.reload();
+									}
+								})
+							} else return false;
+						});
+					})
 			})
 		
 			function load() {

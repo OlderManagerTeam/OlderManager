@@ -1,4 +1,4 @@
-package com.sds.em.service.impl;
+ï»¿package com.sds.em.service.impl;
 
 import java.util.List;
 
@@ -26,9 +26,9 @@ public class NewsServiceImpl implements NewsService {
 		int flag = 0;
 		flag = newsMapper.insert(news);
 		if (flag != 0) {
-			return new Message(true, "·¢²¼³É¹¦", null);
+			return new Message(true, "å‘å¸ƒæˆåŠŸ", null);
 		}
-		return new Message(false, "Êı¾İ¿â´íÎó", null);
+		return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 	}
 
 	@Override
@@ -40,14 +40,14 @@ public class NewsServiceImpl implements NewsService {
 			List<News> newsList = newsMapper.selectByExample(newsExample);
 			
 			if (!newsList.isEmpty()) {
-				return new Message(true, "³É¹¦·µ»Ø", newsList);
+				return new Message(true, "æˆåŠŸè¿”å›", newsList);
 			} else {
-				return new Message(false, "Êı¾İ¿â´íÎó", null);
+				return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 
 	}
@@ -62,14 +62,14 @@ public class NewsServiceImpl implements NewsService {
 				NewsCustom newsCustom=new NewsCustom();
 				newsCustom.setNews(news);
 				newsCustom.setNewsediter(newsediter);
-				return new Message(true, "³É¹¦·µ»Ø", newsCustom);
+				return new Message(true, "æˆåŠŸè¿”å›", newsCustom);
 			} else {
-				return new Message(false, "Êı¾İ¿â´íÎó", null);
+				return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 
@@ -79,14 +79,14 @@ public class NewsServiceImpl implements NewsService {
 			int flag = 0;
 			flag = newsMapper.deleteByPrimaryKey(newsId);
 			if (flag != 0) {
-				return new Message(true, "³É¹¦É¾³ı", null);
+				return new Message(true, "æˆåŠŸåˆ é™¤", null);
 			} else {
-				return new Message(false, "Êı¾İ¿â´íÎó", null);
+				return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 
