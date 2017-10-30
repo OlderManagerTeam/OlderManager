@@ -115,13 +115,11 @@ public class HeadOfficeController {
 		return headOfficeService.allotOlder(oldertel, branchid);
 	}
 	
-	//返回该部门该职位的员工人数，好形成员工号
+	//返回生成的员工号
 	@RequestMapping(method = RequestMethod.GET, value = "staff/staffcode")
-	public @ResponseBody Message getStaffcodeCount(String staffdepartmentid,String staffroleid) throws Exception {
-		Staffbase staffbase=new Staffbase();
-		staffbase.setStaffdepartmentid(Integer.parseInt(staffdepartmentid));
-		staffbase.setStaffroleid(Integer.parseInt(staffroleid));
-		return headOfficeService.getStaffcodeCount(staffbase);
+	public @ResponseBody Message getStaffcode(String staffdepartmentid,String staffroleid) throws Exception {
+
+		return headOfficeService.getStaffcode(staffdepartmentid,staffroleid);
 	}
 	
 }
