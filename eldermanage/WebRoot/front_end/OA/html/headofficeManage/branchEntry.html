@@ -304,7 +304,7 @@
 								<div class="form-group">
 									<label for="branchManagerId" class="col-sm-3 control-label">分店管理员姓名：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="branchmanagername"></span>
+										<input type="text" readonly="readonly" class="form-control" id="branchmanagername" placeholder="分店管理员姓名"></input>
 									</div>
 								</div>
 								<div class="form-group">
@@ -477,12 +477,14 @@
 					success:function(result){
 						var staffinfo = result.data
 						if (result.success == true) {
-							$('#staffId').attr("value",result.data.staffid)
+							$('#staffId').attr("value",result.data.staffid);
+							$('#branchmanagername').val(result.data.staffname);
 							//alert(result.data.staffid)
 						}else {
 							alert('员工不存在!!!');
 							$('#staffcode').val("");
 							$('#staffId').val("");
+							$('#branchmanagername').val("");
 						}
 					},
 					error:function(){
