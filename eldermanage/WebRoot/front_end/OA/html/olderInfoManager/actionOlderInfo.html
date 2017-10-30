@@ -410,20 +410,19 @@
 						var olderInfo = "../olderInfoManager/olderInfo.html?oldertel=";
 						olderInfo = olderInfo + olderItem[i].oldertel;
 						var oTr = `<tr>
-											<td>${i + 1}</td>
-											<td>${joindate.toLocaleDateString()}</td>
-											<td>${olderItem[i].oldername}</td>
-											<td>${olderItem[i].oldersex}</td>
-											<td>${age}</td>
-											<td>${olderItem[i].oldertel}</td>
-											
-											<td><a class="btn btn-primary btn-xs"
-												href=${olderInfo} role="button">详细</a>
-												<a class="btn btn-primary btn-xs"
-												 data-id="${olderItem[i].olderid}" role="button">取消</a>
-												</td>
-										</tr>
-														`;
+						<td>${i + 1}</td>
+						<td>${joindate.toLocaleDateString()}</td>
+						<td>${olderItem[i].oldername}</td>
+						<td>${olderItem[i].oldersex}</td>
+						<td>${age}</td>
+						<td>${olderItem[i].oldertel}</td>
+						
+						<td><a class="btn btn-primary btn-xs"
+							href=${olderInfo} role="button">详细</a>
+							<a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${olderItem[i].olderid}">取消</a>
+							</td>
+					</tr>
+									`;
 						$($(oTr)).appendTo('#olderlist');
 					}
 	
@@ -446,7 +445,7 @@
 							$.ajax({
 								type : 'delete',
 								contentType : 'application/json',
-								url : "http://localhost:8080/eldermanage/v1/brench/elder/info?olderid=" + $(this).attr('data-id')+"olderid=",
+								url : "http://localhost:8080/eldermanage/v1/brench/action/older?olderid=" + $(this).attr('data-id') + "&actionid="+UrlParm.parm("actionid"),
 								data : null,
 								success : function() {
 									window.location.reload();

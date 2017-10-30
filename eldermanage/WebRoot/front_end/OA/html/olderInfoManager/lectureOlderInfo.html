@@ -419,8 +419,8 @@
 															
 															<td><a class="btn btn-primary btn-xs"
 																href=${olderInfo} role="button">详细</a>
-																<a class="btn btn-primary btn-xs"
-																data-id="${olderItem[i].olderid}" role="button">拒绝</a>
+																<a class="btn btn-primary btn-xs btn-delete"
+																data-id="${LectureRecordExtend[i].olderid}" role="button">取消</a>
 																</td>
 														</tr>
 												`;
@@ -435,7 +435,26 @@
 				function() {
 					alert('数据库错误')
 				}
-			);
+			)
+							.done(function() {
+					$("#olderlist .btn-delete").on('click', function(event) {
+						const r = confirm("您确定要删除么?");
+						if (r == true) {
+							const e = event || window.event;
+							e.preventDefault();
+							///let currentTr = $(this).parent().parent();
+				$.ajax({
+	type : 'delete',
+	contentType : 'application/json',
+	url : "http://localhost:8080/eldermanage/v1/brench/lecture/older?olderid="+ $(this).attr('data-id')+"&lectureid="+UrlParm.parm("lectureid"),
+	data : null,
+	success : function() {
+		window.location.reload();
+	}
+				})
+						} else return false;
+					});
+				})
 		}
 	</script>
 	<script type="text/javascript" src="../../js/app.js"></script>
