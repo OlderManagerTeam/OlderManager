@@ -336,9 +336,8 @@
 		where staffId = #{staffid,jdbcType=INTEGER}
 	</update>
 
-	<select id="getStaffcodeCount" parameterType="com.sds.em.pojo.DepNameRoleTentExtend"
+	<select id="getStaffcodeCount" parameterType="com.sds.em.po.Staffbase"
 		resultType="com.sds.em.po.Staffbase">
-		select staffbase.* from staffbase,department,role WHERE departmentName like
-		'%${departmentname}%' and roleContent like '%${rolecontent}%'
+		select staffbase.* from staffbase WHERE staffdepartmentid=#{staffdepartmentid} and staffroleid=#{staffroleid}
 	</select>
 </mapper>
