@@ -37,7 +37,7 @@
                         <ol class="breadcrumb navbar-breadcrumb">
                             <li>电子商务</li>
                             <li>商品列表</li>
-                            <li class="active">添加新商品</li>
+                            <li class="active">修改商品</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -94,7 +94,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
-                                    <img src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+                                    <img src="../../img/textheadphoto.jpg" class="profile-img">
                                 </li>
                                 <li>
                                     <div class="profile-info">
@@ -314,8 +314,8 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">添加新商品</span>
-                        <div class="description">New Product Entry</div>
+                        <span class="title">修改商品</span>
+                        <div class="description">Product Alter</div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -327,26 +327,26 @@
                                 </div>
                                 <div class="card-body">
                                 	<!--添加视频-->
-                                    <form class="form-horizontal" id="productEntry">
+                                    <form class="form-horizontal" id="productAlter">
                                         <div class="form-group">
-                                            <label for="productName" class="col-sm-3 control-label">商品名称：</label>
+                                            <label for="productname" class="col-sm-3 control-label">修改商品名称：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="productName" placeholder="商品名称" name="productname">
+                                                <input type="text" class="form-control" id="productname" placeholder="修改商品名称" name="productname">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="productprice" class="col-sm-3 control-label">商品价格：</label>
+                                            <label for="productprice" class="col-sm-3 control-label">修改商品价格：</label>
                                             <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="productprice" placeholder="商品价格" name="productprice">
+                                                <input type="text" class="form-control" id="productprice" placeholder="修改商品价格" name="productprice">
                                             </div>
                                             <div class="col-sm-1">
                                                 <label for="productprice" class="control-label">单位：元</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="producttypenumber" class="col-sm-3 control-label">商品类型：</label>
+                                            <label for="producttypenumber" class="col-sm-3 control-label">修改商品类型：</label>
                                             <div class="col-sm-5">
-                                                 <select id="producttypenumber">
+                                                <select id="producttypenumber">
 											           <optgroup class="active" label="商品类型">
 												                <option value="1">食物</option>
 												                <option value="2">服饰</option>
@@ -363,37 +363,43 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="productimg" class="col-sm-3 control-label">商品图片：</label>
+                                            <label for="olderProductImg" class="col-sm-3 control-label">商品原图片：</label>
                                             <div class="col-sm-5">
-                                                <input type="file" id="productimg" name="productimg" >
+                                                <div><img src="../../img/textheadphoto.jpg"></div>
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
+                                            <label for="productImg" class="col-sm-3 control-label">修改商品图片：</label>
+                                            <div class="col-sm-5">
+                                                <input type="file" id="productImg" name="productimg" >
                                             </div>
                                         </div>  
                                         <div class="form-group">
-                                            <label for="productinfo" class="col-sm-3 control-label">商品信息：</label>
+                                            <label for="productinfo" class="col-sm-3 control-label">修改商品信息：</label>
                                             <div class="col-sm-5">
                                                 <textarea class="form-control" id="productinfo"
-											            placeholder="商品信息" style="height: 200px" name="productinfo"></textarea>
+											            placeholder="修改商品信息" style="height: 200px" name="productinfo"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="productweight" class="col-sm-3 control-label">商品重量：</label>
+                                            <label for="productweight" class="col-sm-3 control-label">修改商品重量：</label>
                                             <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="productweight" placeholder="商品重量" name="productweight">
+                                                <input type="text" class="form-control" id="productweight" placeholder="修改商品重量" name="productweight">
                                             </div>
                                             <div class="col-sm-1">
                                                 <label for="productweight" class="control-label">单位：kg</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="productupondate" class="col-sm-3 control-label">商品上架日期：</label>
+                                            <label for="productupondate" class="col-sm-3 control-label">修改商品上架日期：</label>
                                             <div class="col-sm-5">
-                                                <input type="date" class="form-control" id="productupondate" placeholder="商品上架日期" name="productupondate">
+                                                <input type="date" class="form-control" id="productupondate" placeholder="修改商品上架日期" name="productupondate">
                                             </div>
                                         </div> 
                                         <div class="form-group">
-                                            <label for="productdiscountprice" class="col-sm-3 control-label">商品折扣价：</label>
+                                            <label for="productdiscountprice" class="col-sm-3 control-label">修改商品折扣价：</label>
                                             <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="productdiscountprice" placeholder="商品折扣价" name="productdiscountprice">
+                                                <input type="text" class="form-control" id="productdiscountprice" placeholder="修改商品折扣价" name="productdiscountprice">
                                             </div>
                                             <div class="col-sm-1">
                                                 <label for="productdiscountprice" class="control-label">单位：元</label>
@@ -401,7 +407,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-sm-offset-3 col-sm-5">
-                                                <button type="submit" class="btn btn-default">确认提交</button>
+                                                <button type="submit" class="btn btn-default">确认修改</button>
                                             </div>
                                         </div>
                                     </form>
@@ -453,7 +459,7 @@
    $(document).ready(function() {
     // Generate a simple captcha
     
-    $('#productEntry').bootstrapValidator({
+    $('#productAlter').bootstrapValidator({
 //        live: 'disabled',
         message: '请正确填写',
         feedbackIcons: {

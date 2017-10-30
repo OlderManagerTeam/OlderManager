@@ -37,7 +37,7 @@
                         <ol class="breadcrumb navbar-breadcrumb">
                             <li>电子商务</li>
                             <li>商品列表</li>
-                            <li class="active">添加新商品</li>
+                            <li class="active">商品信息</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -314,8 +314,8 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">添加新商品</span>
-                        <div class="description">New Product Entry</div>
+                        <span class="title">商品信息</span>
+                        <div class="description">Product Infomation</div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -331,13 +331,13 @@
                                         <div class="form-group">
                                             <label for="productName" class="col-sm-3 control-label">商品名称：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="productName" placeholder="商品名称" name="productname">
+                                                <span class="form-control" id="videoName">从数据库读出显示，例如：茶具</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="productprice" class="col-sm-3 control-label">商品价格：</label>
                                             <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="productprice" placeholder="商品价格" name="productprice">
+                                                <span class="form-control" id="videoName">从数据库读出显示，例如：300</span>
                                             </div>
                                             <div class="col-sm-1">
                                                 <label for="productprice" class="control-label">单位：元</label>
@@ -346,39 +346,27 @@
                                         <div class="form-group">
                                             <label for="producttypenumber" class="col-sm-3 control-label">商品类型：</label>
                                             <div class="col-sm-5">
-                                                 <select id="producttypenumber">
-											           <optgroup class="active" label="商品类型">
-												                <option value="1">食物</option>
-												                <option value="2">服饰</option>
-												                <option value="3">图书</option>
-												                <option value="4">生活日用品</option>
-												                <option value="5">娱乐器具</option>
-												                <option value="6">运动器材</option>
-												                <option value="7">医药保健品</option>
-												                <option value="8">电子产品</option>
-												                <option value="9">医疗器材</option>
-												                <option value="10">家具器材</option>
-											           </optgroup>
-										         </select>
+                                                <span class="form-control" id="videoName">从数据库读出显示，例如：生活用品</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="productimg" class="col-sm-3 control-label">商品图片：</label>
                                             <div class="col-sm-5">
-                                                <input type="file" id="productimg" name="productimg" >
+                                                <div>
+										              <img src="../../img/textheadphoto.jpg" id="olderVideoPicUrl">
+									            </div>
                                             </div>
                                         </div>  
                                         <div class="form-group">
                                             <label for="productinfo" class="col-sm-3 control-label">商品信息：</label>
                                             <div class="col-sm-5">
-                                                <textarea class="form-control" id="productinfo"
-											            placeholder="商品信息" style="height: 200px" name="productinfo"></textarea>
+                                                <span class="form-control" id="videoName">从数据库读出显示，例如：喝茶用的</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="productweight" class="col-sm-3 control-label">商品重量：</label>
                                             <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="productweight" placeholder="商品重量" name="productweight">
+                                                <span class="form-control" id="videoName">从数据库读出显示，例如：0.3</span>
                                             </div>
                                             <div class="col-sm-1">
                                                 <label for="productweight" class="control-label">单位：kg</label>
@@ -387,13 +375,13 @@
                                         <div class="form-group">
                                             <label for="productupondate" class="col-sm-3 control-label">商品上架日期：</label>
                                             <div class="col-sm-5">
-                                                <input type="date" class="form-control" id="productupondate" placeholder="商品上架日期" name="productupondate">
+                                                <span class="form-control" id="videoName">从数据库读出显示，例如：2017-10-10</span>
                                             </div>
                                         </div> 
                                         <div class="form-group">
                                             <label for="productdiscountprice" class="col-sm-3 control-label">商品折扣价：</label>
                                             <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="productdiscountprice" placeholder="商品折扣价" name="productdiscountprice">
+                                                <span class="form-control" id="videoName">从数据库读出显示，例如：300</span>
                                             </div>
                                             <div class="col-sm-1">
                                                 <label for="productdiscountprice" class="control-label">单位：元</label>
@@ -439,104 +427,8 @@
             <!--验证js文件-->
             <script type="text/javascript" src="../../lib/js/bootstrapValidator.min.js"></script>
             </script>
-    <script>
-    $("#productImg").fileinput({
-        showUpload: false,
-        showCaption: false,
-        browseClass: "btn btn-primary btn-lg",
-        fileType: "any",
-        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
-    });
-    </script>
-    <!--表单验证-->
-    <script type="text/javascript">
-   $(document).ready(function() {
-    // Generate a simple captcha
-    
-    $('#productEntry').bootstrapValidator({
-//        live: 'disabled',
-        message: '请正确填写',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok-circle',
-            invalid: 'glyphicon glyphicon-remove-circle',
-            validating: 'glyphicon glyphicon-refresh',
-            regexp:'glyphicon glyphicon-ok-circle'
-        },
-        fields: {
-            productname: {
-                message: '姓名不能为空',
-                validators: {
-                    notEmpty: {
-                        message: '商品名字不能为空'
-                    }
-                }
-            },
-            productprice: {
-                validators: {
-                    notEmpty: {
-                        message: '价格不能为空'
-                    },
-                    regexp: {
-                        regexp: /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/ ,
-                        message:'价格只能是数字，可以带两位小数'
-                    }
-                }
-            },
-            producttypenumber: {
-                validators: {
-                    notEmpty: {
-                        message: '商品类型ID不能为空'
-                    }
-                }
-            },
-            productinfo:{
-                validators:{
-                    notEmpty:{
-                        message:'商品详情不能为空'
-                    }
-                }
-            }, 
-            productweight:{
-                validators:{
-                    notEmpty:{
-                        message:'商品重量不能为空'
-                    },
-                    regexp: {
-                        regexp: /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/ ,
-                        message:'重量只能是数字，可以带两位小数'
-                    }
-                }
-            },
-            productupondate: {
-                validators: {
-                    notEmpty:{
-                        message:'日期不能为空'
-                    },
-                    date: {
-                        format: 'YYYY-MM-DD',
-                        message:'请输入正确的日期格式'
-                    }
-                }
-            },
-            productDiscountPrice:{
-                validators:{
-                    notEmpty:{
-                        message:'商品折扣价不能为空'
-                    },
-                    regexp: {
-                        regexp: /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/ ,
-                        message:'价格只能是数字，可以带两位小数'
-                    }
-                }
-            },
-        }
-    });
 
-    // Validate the form manually
-    
-});
-        
-    </script>
+
 </body>
 
 </html>
