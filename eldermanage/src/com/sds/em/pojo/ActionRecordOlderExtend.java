@@ -4,19 +4,8 @@ import java.util.Date;
 
 import com.sds.em.po.Olderbase;
 
-public class ActionRecordOlderExtend {
-	
-	private Olderbase olderbase;
-	
+public class ActionRecordOlderExtend extends Olderbase{
 	private Date arecorddate;
-
-	public Olderbase getOlderbase() {
-		return olderbase;
-	}
-
-	public void setOlderbase(Olderbase olderbase) {
-		this.olderbase = olderbase;
-	}
 
 	public Date getArecorddate() {
 		return arecorddate;
@@ -25,7 +14,4 @@ public class ActionRecordOlderExtend {
 	public void setArecorddate(Date arecorddate) {
 		this.arecorddate = arecorddate;
 	}
-
-	
-
 }

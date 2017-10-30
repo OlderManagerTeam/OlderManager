@@ -34,7 +34,7 @@
 	href="../../css/themes/flat-blue.css">
 </head>
 
-<body class="flat-blue">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -44,8 +44,8 @@
 							<i class="fa fa-bars icon"></i>
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
-							<li>电子商务</li>
-							<li class="active">商品列表</li>
+							<li>分店管理</li>
+							<li class="active">老年人客户列表</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -131,17 +131,17 @@
 						<ul class="nav navbar-nav">
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">控制台</span>
-			              </a></li>
-			<li class="panel panel-default dropdown">
-			<a data-toggle="collapse" href="#dropdown-element"> 
-			        <span class="icon fa fa-desktop"></span>
-			        <span class="title">UI Kits</span>
-			</a> <!-- 下拉列表 level 1 -->
-			<div id="dropdown-element" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../ui-kits/grid.html">Grid</a></li>
-							<li><a href="../ui-kits/theming.html">主题</a></li></li>
+							</a></li>
+							<li class="panel panel-default dropdown"><a
+								data-toggle="collapse" href="#dropdown-element"> <span
+									class="icon fa fa-desktop"></span><span class="title">UI
+										Kits</span>
+							</a> <!-- 下拉列表 level 1 -->
+								<div id="dropdown-element" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../ui-kits/grid.html">Grid</a></li>
+											<li><a href="../ui-kits/theming.html">主题</a></li></li>
 							<li><a href="../ui-kits/button.html">按钮</a></li>
 							<li><a href="../ui-kits/card.html">明信片</a></li>
 							<li><a href="../ui-kits/list.html">列表</a></li>
@@ -179,22 +179,8 @@
 						</ul>
 					</div>
 				</div></li>
-             <li class="panel panel-default dropdown">
-			     <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			         <span class="icon  glyphicon glyphicon-user"></span>
-			         <span class="title">总店管理</span>
-			     </a> <!-- Dropdown level 1 -->
-				 <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					    <div class="panel-body">
-						      <ul class="nav navbar-nav">
-							       <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							       <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						      </ul>
-					    </div>
-				 </div>
-			</li> 
 			<!--在左边导航栏添加老人管理模块的导航-->
-			<li class="panel panel-default dropdown"><a
+			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderView"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
 			</a> <!-- Dropdown level 1 -->
@@ -206,36 +192,7 @@
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-olderEducation"> <span
-					class="icon glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-olderEducation" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
-						</ul>
-					</div>
-				</div>
-			</li>
-			<li class="active panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-olderShop"> <span
-					class="icon glyphicon glyphicon-shopping-cart"></span><span class="title">电子商务</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-olderShop" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../olderShop/productView.html">商品列表</a></li>
-							<li><a href="../olderShop/order.html">订单总列表</a></li>
-							<li><a href="../olderShop/productStore.html">库存列表</a></li>
-							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
-							<li><a href="../olderShop/productRate.html">商品评价列列表</a></li>
-						</ul>
-					</div>
-				</div>
-			</li>			
+				</div></li>
 			<!-- 下拉列表-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#component-example"> <span
@@ -289,8 +246,8 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">商品列表</span>
-				<div class="description">Product List</div>
+				<span class="title">未分配老人列表</span>
+				<div class="description">Olderman Client List</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
@@ -300,50 +257,38 @@
 							<div class="card-title">
 								<div class="title">列表</div>
 							</div>
-							<div class="card-title  col-md-offset-10">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productEntry.html" role="button">添加新商品</a>
-								</div>
-							</div>
 						</div>
 						<div class="card-body">
 							<table class="datatable table table-striped" cellspacing="0"
 								width="100%">
 								<thead>
 									<tr>
-										<th>商品ID</th>
-										<th>商品名称</th>
-										<th>商品价格</th>
-										<th>商品类型</th>
-										<th>商品信息</th>
+										<th>序号</th>
+										<th>老人姓名</th>
+										<th>老人性别</th>
+										<th>老人年龄</th>
+										<th>老人电话号码</th>
+										<th>老人单身状况</th>
+										<th>老人最大积分</th>
 										<th>操作</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>商品ID</th>
-										<th>商品名称</th>
-										<th>商品价格</th>
-										<th>商品类型ID</th>
-										<th>商品信息</th>
+										<th>序号</th>
+										<th>老人姓名</th>
+										<th>老人性别</th>
+										<th>老人年龄</th>
+										<th>老人电话号码</th>
+										<th>老人单身状况</th>
+										<th>老人最大积分</th>
 										<th>操作</th>
 									</tr>
 								</tfoot>
-								<tbody>
-									<tr>
-										<td>01</td>
-										<td>脑白金</td>
-										<td>998</td>
-										<td>1</td>
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/productInfo.html" role="button">商品信息</a></td>
-										
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/productAlter.html" role="button">修改</a>
-											<button class="btn btn-primary btn-xs">删除</button></td>
-									</tr>
+								<tbody id="olderlist">
+
 								</tbody>
 							</table>
-							<div id="olderView"></div>
 						</div>
 					</div>
 				</div>
@@ -357,29 +302,84 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
+
+	<!-- Javascript Libs -->
+
+
+	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/bootstrap-switch.min.js"></script>
+
+	<script type="text/javascript"
+		src="../../lib/js/jquery.matchHeight-min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+	<!-- Javascript -->
+
+
+	<script type="text/javascript">
+		$(function() {
+			// 后台数据
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/headoffice/older/undis",
+				data : null
+			}).then(
+				function(result) {
+					const oTbody = $("<tbody>");
+					var olderItem = result.data;
+					for (var i = olderItem.length - 1; i >= 0; i--) {
+						var _date = olderItem[i].olderbirthday;
+						var date = new Date(_date);
+						if (date) {
+							var year = 1000 * 60 * 60 * 24 * 365;
+							var now = new Date();
+							var birthday = new Date(date);
+							var age = parseInt((now - birthday) / year);
+						}
+					  var olderAlter = "../headofficeManage/olderAllot.html?oldertel=";
+						olderAlter = olderAlter + olderItem[i].oldertel;
+						var oTr = `<tr>
+															<td>${i + 1}</td>
+															<td>${olderItem[i].oldername}</td>
+															<td>${olderItem[i].oldersex}</td>
+															<td>${age}</td>
+															<td>${olderItem[i].oldertel}</td>
+									
+															<td>${olderItem[i].oldersinglestatus}</td>
+															<td>${olderItem[i].oldermaxpoint}</td>
+															<td><a class="btn btn-primary btn-xs"
+																href=${olderAlter} role="button">分配</a>
+															</td>
+														</tr>
+												`;
+						$($(oTr)).appendTo('#olderlist');
+					}
 	
-		<!-- Javascript Libs -->
-
-		
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
-
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-
+					$('.datatable').DataTable({
+						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+					});
+	
+				},
+				function() {
+					alert('数据库错误')
+				}
+			);
+		})
+	
+		function load() {
+		}
+	</script>
+	<script type="text/javascript" src="../../js/app.js"></script>
 </body>
 
 </html>

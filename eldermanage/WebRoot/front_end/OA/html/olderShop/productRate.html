@@ -45,7 +45,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>电子商务</li>
-							<li class="active">商品列表</li>
+							<li class="active">商品评价表</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -289,8 +289,8 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">商品列表</span>
-				<div class="description">Product List</div>
+				<span class="title">商品评价</span>
+				<div class="description">Product Rate</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
@@ -300,46 +300,49 @@
 							<div class="card-title">
 								<div class="title">列表</div>
 							</div>
-							<div class="card-title  col-md-offset-10">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productEntry.html" role="button">添加新商品</a>
-								</div>
-							</div>
 						</div>
 						<div class="card-body">
 							<table class="datatable table table-striped" cellspacing="0"
 								width="100%">
 								<thead>
 									<tr>
-										<th>商品ID</th>
-										<th>商品名称</th>
-										<th>商品价格</th>
-										<th>商品类型</th>
-										<th>商品信息</th>
-										<th>操作</th>
+										<th>序号</th>
+										<th>评价者</th>
+										<th>商品名字</th>
+										<th>评价等级</th>
+										<th>浏览商品次数</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>商品ID</th>
-										<th>商品名称</th>
-										<th>商品价格</th>
-										<th>商品类型ID</th>
-										<th>商品信息</th>
-										<th>操作</th>
+										<th>序号</th>
+										<th>评价者</th>
+										<th>商品名字</th>
+										<th>评价等级</th>
+										<th>浏览商品次数</th>
 									</tr>
 								</tfoot>
 								<tbody>
 									<tr>
-										<td>01</td>
+										<td>评价唯一编号</td>
+										<td>老人编号</td>
+										<td>商品编号</td>
+										<td>给出的评价等级</td>
+										<td>老人浏览商品次数</td>
+									</tr>
+									<tr>
+										<td>rateId</td>
+										<td>rateOlderId</td>
+										<td>rateProductId</td>
+										<td>rateStar</td>
+										<td>rateBrowse</td>
+									</tr>
+									<tr>
+										<td>例如：001</td>
+										<td>药老</td>
 										<td>脑白金</td>
-										<td>998</td>
-										<td>1</td>
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/productInfo.html" role="button">商品信息</a></td>
-										
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/productAlter.html" role="button">修改</a>
-											<button class="btn btn-primary btn-xs">删除</button></td>
+										<td>5</td>
+										<td>18</td>
 									</tr>
 								</tbody>
 							</table>
