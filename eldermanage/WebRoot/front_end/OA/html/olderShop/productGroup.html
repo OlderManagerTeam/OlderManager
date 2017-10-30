@@ -45,7 +45,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>电子商务</li>
-							<li class="active">商品列表</li>
+							<li class="active">商品团购表</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -289,8 +289,8 @@
 	<div class="container-fluid">
 		<div class="side-body">
 			<div class="page-title">
-				<span class="title">商品列表</span>
-				<div class="description">Product List</div>
+				<span class="title">商品团购表</span>
+				<div class="description">Product Group List</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
@@ -300,46 +300,69 @@
 							<div class="card-title">
 								<div class="title">列表</div>
 							</div>
-							<div class="card-title  col-md-offset-10">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productEntry.html" role="button">添加新商品</a>
-								</div>
-							</div>
 						</div>
 						<div class="card-body">
 							<table class="datatable table table-striped" cellspacing="0"
 								width="100%">
 								<thead>
 									<tr>
-										<th>商品ID</th>
-										<th>商品名称</th>
-										<th>商品价格</th>
-										<th>商品类型</th>
-										<th>商品信息</th>
-										<th>操作</th>
+										<th>团购编号</th>
+										<th>发起时间</th>
+										<th>开团时间</th>
+										<th>结束时间</th>
+										<th>团购商品</th>
+										<th>当前人数</th>
+										<th>总人数</th>
+										<th>团购价格</th>
+										<th>团购详情</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
-										<th>商品ID</th>
-										<th>商品名称</th>
-										<th>商品价格</th>
-										<th>商品类型ID</th>
-										<th>商品信息</th>
-										<th>操作</th>
+										<th>团购编号</th>
+										<th>发起时间</th>
+										<th>开团时间</th>
+										<th>结束时间</th>
+										<th>团购商品</th>
+										<th>当前人数</th>
+										<th>总人数</th>
+										<th>团购价格</th>
+										<th>团购详情</th>
 									</tr>
 								</tfoot>
 								<tbody>
 									<tr>
-										<td>01</td>
+										<td>团购ID</td>
+										<td>团购发起日期</td>
+										<td>开团日期</td>
+										<td>团购结束日期</td>
+										<td>团购商品</td>
+										<td>当前人数</td>
+										<td>总人数</td>
+										<td>商品团购价</td>
+										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
+									</tr>
+									<tr>
+										<td>groupId</td>
+										<td>groupPublishDate</td>
+										<td>groupStartDate</td>
+										<td>groupFinishDate</td>
+										<td>groupProductId</td>
+										<td>groupPresentPeople</td>
+										<td>groupTotalPeople</td>
+										<td>goupDiscountPrice</td>
+										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
+									</tr>
+									<tr>
+										<td>例如：001</td>
+										<td>2017-10-10</td>
+										<td>2017-10-15</td>
+										<td>2017-10-20</td>
 										<td>脑白金</td>
+										<td>21</td>
+										<td>100</td>
 										<td>998</td>
-										<td>1</td>
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/productInfo.html" role="button">商品信息</a></td>
-										
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/productAlter.html" role="button">修改</a>
-											<button class="btn btn-primary btn-xs">删除</button></td>
+										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
 									</tr>
 								</tbody>
 							</table>

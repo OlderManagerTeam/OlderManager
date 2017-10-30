@@ -396,7 +396,8 @@
 					const oTbody = $("<tbody>");
 					var olderItem = result.data;
 					for (var i = olderItem.length - 1; i >= 0; i--) {
-						var _date = olderItem[i].olderbase.olderbirthday;
+					var joindate=new Date(olderItem[i].arecorddate+1000*60*60*8);
+						var _date = olderItem[i].olderbirthday;
 						var date = new Date(_date);
 						if (date) {
 							var year = 1000 * 60 * 60 * 24 * 365;
@@ -405,16 +406,16 @@
 							var age = parseInt((now - birthday) / year);
 						}
 						var orderView = "../olderInfoManager/orderView.html?olderid=";
-						orderView = orderView + olderItem[i].olderbase.olderid;
+						orderView = orderView + olderItem[i].olderid;
 						var olderInfo = "../olderInfoManager/olderInfo.html?oldertel=";
-						olderInfo = olderInfo + olderItem[i].olderbase.oldertel;
+						olderInfo = olderInfo + olderItem[i].oldertel;
 						var oTr = `<tr>
 															<td>${i + 1}</td>
-															<td>${date.toLocaleDateString()}</td>
-															<td>${olderItem[i].olderbase.oldername}</td>
-															<td>${olderItem[i].olderbase.oldersex}</td>
+															<td>${joindate.toLocaleDateString()}</td>
+															<td>${olderItem[i].oldername}</td>
+															<td>${olderItem[i].oldersex}</td>
 															<td>${age}</td>
-															<td>${olderItem[i].olderbase.oldertel}</td>
+															<td>${olderItem[i].oldertel}</td>
 															
 															<td><a class="btn btn-primary btn-xs"
 																href=${olderInfo} role="button">详细</a>
