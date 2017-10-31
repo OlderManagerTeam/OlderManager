@@ -549,9 +549,9 @@
 					alert('数据库错误')
 				}
 			})
-			.done(function (){
-				updateStaffCode();
-			});
+			// .done(function (){
+			// 	updateStaffCode();
+			// });
 		}
 	</script>
 
@@ -597,29 +597,44 @@
 
 	<script type="text/javascript">
 		$("#altersubmit").click(function() {
-			var form = new FormData(document.getElementById("staffRoleAlter"));
-			//var staffid = UrlParm.parm("staffid");
-			var staffid = 1;
-			form.append("staffid", staffid);
 			$.ajax({
-				type : 'post',
-				url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
-				data : form,
-				processData : false,
-				contentType : false,
-				success : function(result) {
-					//var resultdata = JSON.parse(result);
-					alert(result.information);
-					if (result.success) {
-						window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
-					}
+				type:'get',
+				contentType:'application/json',
+				url:"http://localhost:8080/eldermanage/v1/headoffice/staff/staffcode",
+				data:"staffdepartmentid="+$('#departmentid').val()+"&staffroleid="+$('#roleid').val(),
+				success:function(result){
+					// alert(result.data)
+					$("#staffcode").val($('#departmentid').val()+$('#roleid').val()+result.data);
 				},
-				error : function() {
-					alert('fail')
+				error:function(){
+					alert('数据库错误')
 				}
 			})
-		}
-		)
+
+			// var form = new FormData(document.getElementById("staffRoleAlter"));
+			// //var staffid = UrlParm.parm("staffid");
+			// var staffid = 1;
+			// form.append("staffid", staffid);
+			// console.log("===========================");
+			// console.log(form);
+			// $.ajax({
+			// 	type : 'post',
+			// 	url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
+			// 	data : form,
+			// 	processData : false,
+			// 	contentType : false,
+			// 	success : function(result) {
+			// 		//var resultdata = JSON.parse(result);
+			// 		alert(result.information);
+			// 		if (result.success) {
+			// 			window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
+			// 		}
+			// 	},
+			// 	error : function() {
+			// 		alert('fail')
+			// 	}
+			// })
+		})
 	</script>
 
 	<script type="text/javascript">
