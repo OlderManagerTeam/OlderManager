@@ -13,35 +13,36 @@ import com.sds.em.po.News;
 import com.sds.em.po.Olderbase;
 import com.sds.em.service.NewsService;
 /*
+ * ä½œè€…ï¼šåˆ˜éœ²
+ * æè¿°ï¼šå¥åº·å…»èº«-æ–°é—»ç®¡ç†ç³»ç»Ÿçš„åå°ç›¸å…³åŠŸèƒ½
  * 
- * ÁõÂ¶-2017-10-16
  * 
- */
+ * */
 @Controller
-@RequestMapping("v1/")
-public class GlobalController {
+@RequestMapping("v1/news/")
+public class NewsController {
 	@Autowired
 	NewsService newsService;
 
-	// ·¢²¼ĞÂÎÅ--²âÊÔÍ¨¹ı
+	// å‘å¸ƒæ–°é—»--æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.POST, value = "news/publish")
 	public @ResponseBody Message publish(@RequestBody News news) throws Exception {
 		return newsService.publishNews(news);
 	}
 
-	// ²é¿´ÒÑ·¢²¼ĞÂÎÅ--²âÊÔÍ¨¹ı
+	// æŸ¥çœ‹å·²å‘å¸ƒæ–°é—»--æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.GET, value = "news/published")
 	public @ResponseBody Message published(String newstype) throws Exception {
 		return newsService.publishedNews(newstype);
 	}
 
-	// ²é¿´ĞÂÎÅÏêÇé--²âÊÔÍ¨¹ı
+	// æŸ¥çœ‹æ–°é—»è¯¦æƒ…--æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.GET, value = "news/detail")
 	public @ResponseBody Message detail( int newsid) throws Exception {
 		return newsService.newsDetail(newsid);
 	}
 
-	// É¾³ıĞÂÎÅ-²âÊÔÍ¨¹ı
+	// åˆ é™¤æ–°é—»-æµ‹è¯•é€šè¿‡
 	@RequestMapping(method = RequestMethod.DELETE, value = "news/{newsid}")
 	public @ResponseBody Message delete(@RequestBody int newsid) throws Exception {
 		return newsService.deleteNews(newsid);

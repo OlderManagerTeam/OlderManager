@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Lecturerecord;
 import com.sds.em.po.LecturerecordExample;
+import com.sds.em.pojo.LectureRecordExtend;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,7 @@ public interface LecturerecordMapper {
     int updateByPrimaryKeySelective(Lecturerecord record);
 
     int updateByPrimaryKey(Lecturerecord record);
+    
+    //wuwenbo,参训讲座记录并返回老人信息
+    List<LectureRecordExtend> getlecturerecordinfo(int lectureid);
 }

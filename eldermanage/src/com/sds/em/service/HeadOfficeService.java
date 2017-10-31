@@ -2,6 +2,7 @@ package com.sds.em.service;
 
 import com.sds.em.po.Branch;
 import com.sds.em.po.Message;
+import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.BranchStaffBaseExtend;
 import com.sds.em.pojo.StaffDepartmentRoleExtend;
 
@@ -33,11 +34,27 @@ public interface HeadOfficeService {
 	// 返回所有的部门号
 	public Message getAllDepartmentId() throws Exception;
 
-	//返回所有的职位编号
+	// 返回所有的职位编号
 	public Message getAllRoleId() throws Exception;
 
 	// 根据部门号返回部门名称
 	public Message getDepartmentName(int departmentid) throws Exception;
 
+	// 显示未分配的老人信息
+	public Message getOlder() throws Exception;
+
+	// 返回所有分店id
+	public Message getAllBanchId() throws Exception;
+
+	// 根据分店id返回分店名和管理员
+	public Message getBanch(int branchid) throws Exception;
+
+	// 分配老人给某个分店
+	public Message allotOlder(String oldertel, int branchid) throws Exception;
 	
+	
+	//返回该部门该职位的员工人数，好形成员工号
+	public Message getStaffcodeCount(Staffbase staffbase) throws Exception;
+	
+
 }

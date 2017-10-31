@@ -9,6 +9,7 @@
     <result column="sickDate" property="sickdate" jdbcType="DATE" />
     <result column="sickAdvice" property="sickadvice" jdbcType="VARCHAR" />
     <result column="sickHospital" property="sickhospital" jdbcType="VARCHAR" />
+    <result column="sickType" property="sicktype" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    sickId, sickOlderId, sickInfo, sickDoctor, sickDate, sickAdvice, sickHospital
+    sickId, sickOlderId, sickInfo, sickDoctor, sickDate, sickAdvice, sickHospital, sickType
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.OldersickExample" >
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.sds.em.po.Oldersick" >
     insert into oldersick (sickId, sickOlderId, sickInfo, 
       sickDoctor, sickDate, sickAdvice, 
-      sickHospital)
+      sickHospital, sickType)
     values (#{sickid,jdbcType=INTEGER}, #{sickolderid,jdbcType=INTEGER}, #{sickinfo,jdbcType=VARCHAR}, 
       #{sickdoctor,jdbcType=VARCHAR}, #{sickdate,jdbcType=DATE}, #{sickadvice,jdbcType=VARCHAR}, 
-      #{sickhospital,jdbcType=VARCHAR})
+      #{sickhospital,jdbcType=VARCHAR}, #{sicktype,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Oldersick" >
     insert into oldersick
@@ -133,6 +134,9 @@
       <if test="sickhospital != null" >
         sickHospital,
       </if>
+      <if test="sicktype != null" >
+        sickType,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="sickid != null" >
@@ -155,6 +159,9 @@
       </if>
       <if test="sickhospital != null" >
         #{sickhospital,jdbcType=VARCHAR},
+      </if>
+      <if test="sicktype != null" >
+        #{sicktype,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.sickhospital != null" >
         sickHospital = #{record.sickhospital,jdbcType=VARCHAR},
       </if>
+      <if test="record.sicktype != null" >
+        sickType = #{record.sicktype,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       sickDoctor = #{record.sickdoctor,jdbcType=VARCHAR},
       sickDate = #{record.sickdate,jdbcType=DATE},
       sickAdvice = #{record.sickadvice,jdbcType=VARCHAR},
-      sickHospital = #{record.sickhospital,jdbcType=VARCHAR}
+      sickHospital = #{record.sickhospital,jdbcType=VARCHAR},
+      sickType = #{record.sicktype,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="sickhospital != null" >
         sickHospital = #{sickhospital,jdbcType=VARCHAR},
       </if>
+      <if test="sicktype != null" >
+        sickType = #{sicktype,jdbcType=VARCHAR},
+      </if>
     </set>
     where sickId = #{sickid,jdbcType=INTEGER}
   </update>
@@ -237,22 +251,8 @@
       sickDoctor = #{sickdoctor,jdbcType=VARCHAR},
       sickDate = #{sickdate,jdbcType=DATE},
       sickAdvice = #{sickadvice,jdbcType=VARCHAR},
-      sickHospital = #{sickhospital,jdbcType=VARCHAR}
+      sickHospital = #{sickhospital,jdbcType=VARCHAR},
+      sickType = #{sicktype,jdbcType=VARCHAR}
     where sickId = #{sickid,jdbcType=INTEGER}
   </update>
-
-<!-- lu 2017-10-12 id -->
-	<insert id="insertOlderSick" parameterType="com.sds.em.po.Oldersick">
-		<selectKey keyProperty="sickid" order="AFTER" resultType="java.lang.Integer">
-			SELECT
-			LAST_INSERT_ID()
-		</selectKey>
-		insert into oldersick (sickOlderId, sickInfo,
-		sickDoctor, sickDate, sickAdvice
-		)
-		values (#{sickolderid,jdbcType=INTEGER}, #{sickinfo,jdbcType=VARCHAR},
-		#{sickdoctor,jdbcType=VARCHAR}, #{sickdate,jdbcType=DATE},
-		#{sickadvice,jdbcType=VARCHAR}
-		)
-	</insert>
 </mapper>

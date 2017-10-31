@@ -11,7 +11,7 @@ import com.sds.em.mapper.ActionMapper;
 import com.sds.em.mapper.ActionrecordMapper;
 import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.LectureMapper;
-
+import com.sds.em.mapper.LecturerecordMapper;
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OldersickMapper;
 import com.sds.em.mapper.OrdersMapper;
@@ -25,6 +25,9 @@ import com.sds.em.po.Branch;
 import com.sds.em.po.BranchExample;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.LectureExample;
+import com.sds.em.po.Lecturerecord;
+import com.sds.em.po.LecturerecordExample;
+import com.sds.em.po.LecturerecordExample.Criterion;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.OlderbaseExample;
@@ -36,12 +39,16 @@ import com.sds.em.po.Visited;
 import com.sds.em.po.VisitedExample;
 import com.sds.em.pojo.ActionRecordOlderExtend;
 import com.sds.em.pojo.BranchStaffBaseExtend;
+import com.sds.em.pojo.LectureRecordExtend;
 import com.sds.em.po.OrdersExample.Criteria;
 import com.sds.em.service.BrenchService;
 import com.sds.em.util.DateSimp;
 import com.sds.em.util.Md5;
 
 public class BrenchServiceImpl implements BrenchService {
+	@Autowired
+	LecturerecordMapper lecturerecordMapper;
+	
 	@Autowired
 	OlderbaseMapper oldersbaseMapper;
 
@@ -240,28 +247,7 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message getActionOlder(int actionid) throws Exception {
 		try {
-			ActionrecordExample actionrecordExample = new ActionrecordExample();
-			com.sds.em.po.ActionrecordExample.Criteria criteria = actionrecordExample.createCriteria();
-			criteria.andArecordactionidEqualTo(actionid);
-
-			List<Actionrecord> actionRecordList = actionrecordMapper.selectByExample(actionrecordExample);
-
-			List<ActionRecordOlderExtend> extend = new ArrayList<ActionRecordOlderExtend>();
-
-			for (Actionrecord a : actionRecordList) {
-				Olderbase olderbase = oldersbaseMapper.selectByPrimaryKey(a.getArecordolderid());
-				ActionRecordOlderExtend aroe = new ActionRecordOlderExtend();
-				aroe.setOlderbase(olderbase);
-				aroe.setArecorddate(a.getArecorddate());
-				extend.add(aroe);
-			}
-
-			if (!extend.isEmpty()) {
-				return new Message(true, "返回成功", extend);
-			} else {
-				return new Message(false, "数据库错误", null);
-
-			}
+			return new Message(true, "返回成功", actionrecordMapper.getactionRecordinfo(actionid));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -269,6 +255,16 @@ public class BrenchServiceImpl implements BrenchService {
 
 		}
 
+	}
+
+	@Override
+	public Message getLectureOlder(int lectureid) throws Exception {
+		try {
+			List<LectureRecordExtend> l=lecturerecordMapper.getlecturerecordinfo(lectureid);
+			return new Message(true, "返回成功", l);
+		} catch (Exception e) {
+			return new Message(false, "数据库错误", null);
+		}
 	}
 
 	@Override
@@ -561,8 +557,9 @@ public class BrenchServiceImpl implements BrenchService {
 	}
 
 	@Override
-	public Message deleteLecture(int lectureid) throws Exception {
+	public Message deletelecturejoin(int lectureid,int olderid) throws Exception {
 		try {
+			
 			int flag = 0;
 			flag = lectureMapper.deleteByPrimaryKey(lectureid);
 			if (flag != 0) {
