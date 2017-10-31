@@ -1,17 +1,31 @@
-<!DOCTYPE html>
-<html>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
-<head>
-<title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
 	rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900'
 	rel='stylesheet' type='text/css'>
-<!-- CSS Libs -->
+	<!-- CSS Libs -->
 <link rel="stylesheet" type="text/css"
 	href="../../lib/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
@@ -32,18 +46,19 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <link rel="stylesheet" type="text/css"
 	href="../../css/themes/flat-blue.css">
-
+	
 <script type="text/javascript" src="../../js/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#newscontent > .w-e-text-container").height(800);
 	})
 </script>
-
-</head>
-
-<body class="flat-blue">
-	<div class="app-container">
+	
+	
+  </head>
+  
+  <body class="flat-blue">
+      <div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
 				<div class="container-fluid">
@@ -61,12 +76,10 @@
 						</button>
 					</div>
 					<ul class="nav navbar-nav navbar-right">
-						<button type="button"
-							class="navbar-right-expand-toggle pull-right visible-xs">
+						<button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
 							<i class="fa fa-times icon"></i>
 						</button>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"><i
+						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
 								class="fa fa-comments-o"></i></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="title">Notification <span
@@ -379,6 +392,5 @@
 			)
 		</script>
 		<script type="text/javascript" src="../../js/app.js"></script>
-</body>
-
+  </body>
 </html>
