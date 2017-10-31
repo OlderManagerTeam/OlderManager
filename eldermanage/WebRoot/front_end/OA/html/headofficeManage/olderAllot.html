@@ -295,49 +295,47 @@
 							<div class="form-group">
 								<label for="odlerName" class="col-sm-3 control-label">老人姓名：</label>
 								<div class="col-sm-5">
-									<span class="form-control" id="oldername"></span>
+									<input type="text" readonly="readonly" class="form-control" id="oldername"></input>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="olderSex" class="col-sm-3 control-label">老人性别：</label>
 								<div class="col-sm-5">
-									<span class="form-control" id="oldersex"></span>
+									<input type="text" readonly="readonly" class="form-control" id="oldersex"></input>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="odlerTel" class="col-sm-3 control-label">老人电话号码：</label>
 								<div class="col-sm-5">
-									<span class="form-control" id="oldertel"></span>
+									<input type="text" readonly="readonly" class="form-control" id="oldertel"></input>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="odlerAdress" class="col-sm-3 control-label">老人地址：</label>
 								<div class="col-sm-5">
-									<span class="form-control" id="olderaddress"></span>
+									<input type="text" readonly="readonly" class="form-control" id="olderaddress"></input>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="olderSingleStatus" class="col-sm-3 control-label">分店id</label>
 								<div class="col-sm-5">
-									<select id="olderbranchid">
-										<optgroup label="分店id">
-											<option value="yes">1</option>
-											<option value="no">2</option>
-										</optgroup>
-									</select>
+									<input type="text" readonly="readonly" class="form-control" name="olderbranchid" 
+										id="olderbranchid" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="olderBranchId" class="col-sm-3 control-label">分店名称：</label>
 								<div class="col-sm-5">
-									<span class="form-control" id="branchname"></span>
+									<select id="branchname">
+										<option>请选择</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="olderBranchId" class="col-sm-3 control-label">分店管理员：</label>
 								<div class="col-sm-5">
-									<span class="form-control" id="branchmanagername"></span>
+									<input type="text" readonly="readonly" class="form-control" id="branchmanagername"></input>
 								</div>
 							</div>
 							<div class="form-group">
@@ -463,16 +461,12 @@
 					url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
 					data : null,
 					success : function(result) {
-						var olderName = document.getElementById("oldername");
-						//olderName.value = result.data.oldername;
-						olderName.innerHTML = result.data.oldername;
-						// alert("x1="+result.data.oldername); 
-						var olderaddress = document.getElementById("olderaddress");
-						olderaddress.innerHTML = result.data.olderaddress;
-						var olderTel = document.getElementById("oldertel");
-						olderTel.innerHTML = result.data.oldertel;
-						
-						document.getElementById("oldersex").innerHTML = result.data.oldersex;
+						$('#oldername').val(result.data.oldername);
+						$('#olderaddress').val(result.data.olderaddress);
+						$('#oldertel').val(result.data.oldertel);
+						$('#oldersex').val(result.data.oldersex);
+						$('#olderbranchid').val(result.data.olderbranchid);
+
 						document.getElementById("olderheadurl").src = result.data.olderheadurl;
 					},
 					error : function() {
@@ -481,7 +475,8 @@
 				})
 			}
 		</script>
-			<script type="text/javascript">
+
+		<script type="text/javascript">
 			$("#olderallot").click(function() {
 				var oldertel= UrlParm.parm("oldertel");
 				var branchid= $("#olderbranchid option:selected").text();
@@ -502,8 +497,52 @@
 						alert('fail')
 					}
 				})
-			}
-			)
+			})
+		</script>
+
+		<script type="text/javascript">
+			$.ajax({
+				type:'get',
+				contentType:'application/json',
+				url:"http://localhost:8080/eldermanage/v1/headoffice/allbranchid",
+				data:null,
+				success:function(result){
+					var branchdata = result.data;
+					for(var i=0;i<=branchdata.length-1;i++){
+						var oOption = `
+							<option>${branchdata[i].branchname}</option>
+						`;
+						$('#branchname').append(oOption);
+					}
+
+					$('#branchname').change(function(){
+						for(var i=0;i<=branchdata.length-1;i++){
+							if($('#select2-branchname-container').text() == branchdata[i].branchname){
+								$('#olderbranchid').val(branchdata[i].branchid);
+							}
+						}
+
+						$.ajax({
+							type:'get',
+							contentType:'application/json',
+							url:"http://localhost:8080/eldermanage/v1/headoffice/branch",
+							data:"branchid="+$('#olderbranchid').val(),
+							success:function(result){
+								var branchmanagerdata = result.data
+								$('#branchmanagername').val(branchmanagerdata.staffbase.staffname)
+							},
+							error:function(){
+								alert('数据库错误')
+							}
+						})
+					})
+				}
+			})
+		</script>
+
+		<script type="text/javascript">
+			$('select').select2();
+			$('#branchname').next('span').width(200);
 		</script>
 		<!--表单验证-->
 </body>
