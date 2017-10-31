@@ -193,4 +193,11 @@
       ARecordDate = #{arecorddate,jdbcType=TIME}
     where ARecordId = #{arecordid,jdbcType=INTEGER}
   </update>
+  
+<!--   wuwenbo,获取活动信息以及老人信息 -->
+	<select id="getactionRecordinfo" parameterType="int"
+		resultType="com.sds.em.pojo.ActionRecordOlderExtend">
+		SELECT * from olderbase as o INNER JOIN actionrecord as a on
+		o.olderId=a.ARecordolderId WHERE a.ARecordActionId=#{value}
+	</select>
 </mapper>

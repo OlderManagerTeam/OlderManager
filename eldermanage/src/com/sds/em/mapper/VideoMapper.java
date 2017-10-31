@@ -2,12 +2,7 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Video;
 import com.sds.em.po.VideoExample;
-import com.sds.em.po.VideorecordExample;
-
-
 import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface VideoMapper {
@@ -33,10 +28,7 @@ public interface VideoMapper {
 
     int updateByPrimaryKey(Video record);
     
-    Video selectOlderVideoRecord(@Param("example") VideorecordExample example);
-  
-    //
     List<Video> select_video_healthy();
-    List<Video> select_video_lecture();
     
+    List<Video> select_video_lecture();
 }

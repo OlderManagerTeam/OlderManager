@@ -257,7 +257,7 @@
 							<div class="card-title">
 								<div class="title">本活动参加信息</div>
 							</div>
-							
+
 						</div>
 						<div class="card-body">
 							<table class="datatable table table-striped" cellspacing="0"
@@ -389,14 +389,15 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/brench/action/older/info?actionid="+actionid,
+				url : "http://localhost:8080/eldermanage/v1/brench/action/older/info?actionid=" + actionid,
 				data : null
 			}).then(
 				function(result) {
 					const oTbody = $("<tbody>");
 					var olderItem = result.data;
 					for (var i = olderItem.length - 1; i >= 0; i--) {
-						var _date = olderItem[i].olderbase.olderbirthday;
+						var joindate = new Date(olderItem[i].arecorddate + 1000 * 60 * 60 * 8);
+						var _date = olderItem[i].olderbirthday;
 						var date = new Date(_date);
 						if (date) {
 							var year = 1000 * 60 * 60 * 24 * 365;
@@ -405,24 +406,24 @@
 							var age = parseInt((now - birthday) / year);
 						}
 						var orderView = "../olderInfoManager/orderView.html?olderid=";
-						orderView = orderView + olderItem[i].olderbase.olderid;
+						orderView = orderView + olderItem[i].olderid;
 						var olderInfo = "../olderInfoManager/olderInfo.html?oldertel=";
-						olderInfo = olderInfo + olderItem[i].olderbase.oldertel;
+						olderInfo = olderInfo + olderItem[i].oldertel;
 						var oTr = `<tr>
-															<td>${i + 1}</td>
-															<td>${date.toLocaleDateString()}</td>
-															<td>${olderItem[i].olderbase.oldername}</td>
-															<td>${olderItem[i].olderbase.oldersex}</td>
-															<td>${age}</td>
-															<td>${olderItem[i].olderbase.oldertel}</td>
-															
-															<td><a class="btn btn-primary btn-xs"
-																href=${olderInfo} role="button">详细</a>
-																<a class="btn btn-primary btn-xs"
-																href="../olderInfoManager/olderAlter.html?olderid=${olderItem[i].olderid}" role="button">拒绝</a>
-																</td>
-														</tr>
-												`;
+											<td>${i + 1}</td>
+											<td>${joindate.toLocaleDateString()}</td>
+											<td>${olderItem[i].oldername}</td>
+											<td>${olderItem[i].oldersex}</td>
+											<td>${age}</td>
+											<td>${olderItem[i].oldertel}</td>
+											
+											<td><a class="btn btn-primary btn-xs"
+												href=${olderInfo} role="button">详细</a>
+												<a class="btn btn-primary btn-xs"
+												 data-id="${olderItem[i].olderid}" role="button">取消</a>
+												</td>
+										</tr>
+														`;
 						$($(oTr)).appendTo('#olderlist');
 					}
 	
@@ -434,7 +435,26 @@
 				function() {
 					alert('数据库错误')
 				}
-			);
+			)
+				.done(function() {
+					$("#olderlist .btn-delete").on('click', function(event) {
+						const r = confirm("您确定要删除么?");
+						if (r == true) {
+							const e = event || window.event;
+							e.preventDefault();
+							///let currentTr = $(this).parent().parent();
+							$.ajax({
+								type : 'delete',
+								contentType : 'application/json',
+								url : "http://localhost:8080/eldermanage/v1/brench/elder/info?olderid=" + $(this).attr('data-id')+"olderid=",
+								data : null,
+								success : function() {
+									window.location.reload();
+								}
+							})
+						} else return false;
+					});
+				})
 		}
 	</script>
 	<script type="text/javascript" src="../../js/app.js"></script>

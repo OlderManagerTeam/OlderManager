@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.DepartmentMapper;
+import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.RoleMapper;
 import com.sds.em.mapper.StaffbaseMapper;
 import com.sds.em.po.Branch;
@@ -14,6 +15,8 @@ import com.sds.em.po.BranchExample;
 import com.sds.em.po.Department;
 import com.sds.em.po.DepartmentExample;
 import com.sds.em.po.Message;
+import com.sds.em.po.Olderbase;
+import com.sds.em.po.OlderbaseExample;
 import com.sds.em.po.Role;
 import com.sds.em.po.RoleExample;
 import com.sds.em.po.RoleExample.Criterion;
@@ -36,6 +39,9 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 
 	@Autowired
 	RoleMapper roleMapper;
+
+	@Autowired
+	OlderbaseMapper olderbaseMapper;
 
 	@Override
 	public Message addBranch(Branch branch) throws Exception {
@@ -276,6 +282,102 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 			return new Message(false, "数据库错误", null);
 		}
 
+	}
+
+	@Override
+	public Message getOlder() throws Exception {
+		try {
+			OlderbaseExample olderbaseExample = new OlderbaseExample();
+			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample.createCriteria();
+			criteria.andOlderbranchidEqualTo(0);
+			List<Olderbase> olderList = olderbaseMapper.selectByExample(olderbaseExample);
+			if (!olderList.isEmpty()) {
+				return new Message(true, "返回成功", olderList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message getAllBanchId() throws Exception {
+		try {
+			BranchExample branchExample = new BranchExample();
+			com.sds.em.po.BranchExample.Criteria criteria = branchExample.createCriteria();
+
+			List<Branch> branch = branchMapper.selectByExample(branchExample);
+			if (branch != null) {
+				return new Message(true, "返回成功", branch);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message getBanch(int branchid) throws Exception {
+		try {
+			Branch branch = branchMapper.selectByPrimaryKey(branchid);
+			Staffbase staffbase = staffbaseMapper.selectByPrimaryKey(branch.getBranchmanagerid());
+			BranchStaffBaseExtend extend = new BranchStaffBaseExtend();
+			extend.setBranch(branch);
+			extend.setStaffbase(staffbase);
+
+			if (extend != null) {
+				return new Message(true, "返回成功", extend);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message allotOlder(String oldertel, int branchid) throws Exception {
+		try {
+			OlderbaseExample olderbaseExample1 = new OlderbaseExample();
+			com.sds.em.po.OlderbaseExample.Criteria criteria = olderbaseExample1.createCriteria();
+			criteria.andOldertelEqualTo(oldertel);
+
+			Olderbase older = olderbaseMapper.selectByExample(olderbaseExample1).get(0);
+			older.setOlderbranchid(branchid);
+
+			OlderbaseExample olderbaseExample2 = new OlderbaseExample();
+			com.sds.em.po.OlderbaseExample.Criteria criteria2 = olderbaseExample2.createCriteria();
+			criteria.andOlderidEqualTo(older.getOlderid());
+
+			int flag = 0;
+
+			flag = olderbaseMapper.updateByExampleSelective(older, olderbaseExample2);
+			if (flag != 0) {
+				return new Message(true, "修改成功", null);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message getStaffcodeCount(Staffbase staffbase) throws Exception {
+		int count=0;
+	    count=staffbaseMapper.getStaffcodeCount(staffbase).size();
+		return new Message(true, "返回成功", count);
 	}
 
 }

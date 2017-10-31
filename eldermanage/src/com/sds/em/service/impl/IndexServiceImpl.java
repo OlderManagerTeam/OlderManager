@@ -1,4 +1,4 @@
-package com.sds.em.service.impl;
+ï»¿package com.sds.em.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,42 +58,42 @@ public class IndexServiceImpl implements IndexService {
 	NewsMapper newsMapper;
 
 	@Override
-	public Message checkStaffName(String staffTel) {// ÑéÖ¤Ô±¹¤µç»°ºÅÂëÊÇ·ñ¿ÉÓÃ
+	public Message checkStaffName(String staffTel) {// éªŒè¯å‘˜å·¥ç”µè¯å·ç æ˜¯å¦å¯ç”¨
 		try {
 			StaffbaseExample sexample = new StaffbaseExample();
 			Criteria scriteria = sexample.createCriteria();
 			scriteria.andStafftelEqualTo(staffTel);
 			if (staffbaseMapper.selectByExample(sexample).isEmpty())
-				return m = new Message(true, "¿ÉÓÃÊÖ»úºÅÂë", null);
-			return m = new Message(false, "ºÅÂëÒÑ×¢²á", null);
+				return m = new Message(true, "å¯ç”¨æ‰‹æœºå·ç ", null);
+			return m = new Message(false, "å·ç å·²æ³¨å†Œ", null);
 		} catch (Exception e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
-			return m = new Message(false, "Êı¾İ¿â´íÎó", null);
+			return m = new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 
 	}
 
 	@Override
-	public Message returnSecurities() {// ·µ»ØËùÓĞÎÊÌâÁĞ±í
+	public Message returnSecurities() {// è¿”å›æ‰€æœ‰é—®é¢˜åˆ—è¡¨
 		try {
 			QuestionExample qExample = new QuestionExample();
 			com.sds.em.po.QuestionExample.Criteria qCriteria = qExample.createCriteria();
 			qCriteria.andQuestioncontentIsNotNull();
 			List<Question> l = questionMapper.selectByExample(qExample);
 			if (l.isEmpty())
-				return new Message(false, "ÎŞ¿ÉÓÃ¼ÇÂ¼", null);
-			return new Message(true, "·µ»Ø³É¹¦", l);
+				return new Message(false, "æ— å¯ç”¨è®°å½•", null);
+			return new Message(true, "è¿”å›æˆåŠŸ", l);
 		} catch (Exception e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
-			return m = new Message(false, "Êı¾İ¿â´íÎó", null);
+			return m = new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 
 	@Override
 	public Message signIn(Staffbase staff) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		return null;
 	}
 
@@ -112,24 +112,24 @@ public class IndexServiceImpl implements IndexService {
 				if (stafftoken != null) {
 					if (!staffTel.equals(staffbase.getStafftel())
 							|| !Md5.MD5(staffPassword).equals(staffbase.getStaffpassword())) {
-						return new Message(false, "µÇÂ¼Ê§°Ü", null);
+						return new Message(false, "ç™»å½•å¤±è´¥", null);
 					} else {
 
 						stafftoken.setStaffid(staffbase.getStaffid());
 						stafftoken.setStafftoken(Uuid.getUUID32());
 						stafftokenMapper.insert(stafftoken);
 
-						return new Message(true, "µÇÂ¼³É¹¦", staffbase);
+						return new Message(true, "ç™»å½•æˆåŠŸ", staffbase);
 
 					}
 				} else {
-					return new Message(false, "ÒÑÔÚÒìµØµÇÂ¼,µÇÂ¼Ê§°Ü", null);
+					return new Message(false, "å·²åœ¨å¼‚åœ°ç™»å½•,ç™»å½•å¤±è´¥", null);
 				}
 			}
 		} catch (Exception e) {
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
-		return new Message(false, "Êı¾İ¿â´íÎó", null);
+		return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 	}
 
 	
@@ -166,14 +166,14 @@ public class IndexServiceImpl implements IndexService {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				return new Message(true, "·µ»Ø³É¹¦", jsonObject.toString());
+				return new Message(true, "è¿”å›æˆåŠŸ", jsonObject.toString());
 			} else {
-				return new Message(false, "ÄúÊäÈëµÄºÅÂë²»´æÔÚ", null);
+				return new Message(false, "æ‚¨è¾“å…¥çš„å·ç ä¸å­˜åœ¨", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 	}
 
@@ -185,14 +185,14 @@ public class IndexServiceImpl implements IndexService {
 			criteria2.andSecuritystaffidEqualTo(staffId);
 			List<Security> securityList = securityMapper.selectByExample(securityExample);
 			if (securityAnswer.equals(securityList.get(0).getSecurityanswer())) {
-				return new Message(true, ",È·ÈÏÓÃ»§", null);
+				return new Message(true, ",ç¡®è®¤ç”¨æˆ·", null);
 			} else {
-				return new Message(false, ",ÓÃ»§Ğ£ÑéÊ§°Ü", null);
+				return new Message(false, ",ç”¨æˆ·æ ¡éªŒå¤±è´¥", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 
 	}
@@ -208,14 +208,14 @@ public class IndexServiceImpl implements IndexService {
 			int flag = 0;
 			flag = staffbaseMapper.updateByPrimaryKeySelective(staffbase);
 			if (flag != 0) {
-				return new Message(true, ",³É¹¦ĞŞ¸ÄÃÜÂë", null);
+				return new Message(true, ",æˆåŠŸä¿®æ”¹å¯†ç ", null);
 			} else {
-				return new Message(false, "Êı¾İ¿â´íÎó", null);
+				return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 
 	}
@@ -242,11 +242,11 @@ public class IndexServiceImpl implements IndexService {
 				}
 				jsonObjectList.add(jsonObject);
 			}
-			return new Message(true, "·µ»Ø³É¹¦", jsonObjectList.toString());
+			return new Message(true, "è¿”å›æˆåŠŸ", jsonObjectList.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 
 	}
@@ -291,11 +291,11 @@ public class IndexServiceImpl implements IndexService {
 				jsonObjectList.add(jsonObject);
 			}
 
-			return new Message(true, "»ñÈ¡³É¹¦", jsonObjectList.toString());
+			return new Message(true, "è·å–æˆåŠŸ", jsonObjectList.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Message(false, "Êı¾İ¿â´íÎó", null);
+			return new Message(false, "æ•°æ®åº“é”™è¯¯", null);
 		}
 
 	}

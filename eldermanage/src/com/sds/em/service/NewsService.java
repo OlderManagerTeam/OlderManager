@@ -1,4 +1,4 @@
-package com.sds.em.service;
+﻿package com.sds.em.service;
 
 import com.sds.em.po.Message;
 import com.sds.em.po.News;
@@ -7,18 +7,18 @@ import com.sds.em.po.News;
  * ��¶
  */
 public interface NewsService {
-	// ��������
+	// 发布新闻
 	public Message publishNews(News news);
 
-	// �鿴�ѷ�������
+	// 查看已发布新闻
 	public Message publishedNews(String newsType);
 
-	// �鿴��������
+	// 查看新闻详情
 	public Message newsDetail(int newsId);
 
-	// ɾ������
+	// 删除新闻
 	public Message deleteNews(int newsId);
 	
-	//���˵�¼
+	//老人登录
 	public Message olderLogin(String olderTel,String olderPassword);
 }

@@ -2,6 +2,7 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +28,7 @@ public interface StaffbaseMapper {
     int updateByPrimaryKeySelective(Staffbase record);
 
     int updateByPrimaryKey(Staffbase record);
+    
+    //	//返回该部门该职位的员工人数，好形成员工号
+    public List<Staffbase> getStaffcodeCount(Staffbase staffbase);
 }

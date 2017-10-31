@@ -12,6 +12,7 @@ public interface VideoService {
 
 	// 显示一个视频的详细信息
 	public Message getVideo(int videoid) throws Exception;
+	
 	// 修改视频信息
 	public Message alter(Video video) throws Exception;
 }

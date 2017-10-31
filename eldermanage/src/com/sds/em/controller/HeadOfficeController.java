@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Branch;
 import com.sds.em.po.Message;
+import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.BranchStaffBaseExtend;
 import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.service.HeadOfficeService;
@@ -90,4 +91,37 @@ public class HeadOfficeController {
 		return headOfficeService.updateStaffD(extend);
 	}
 
+	// 显示未分配的老人信息
+	@RequestMapping(method = RequestMethod.GET, value = "older/undis")
+	public @ResponseBody Message getOlder() throws Exception {
+		return headOfficeService.getOlder();
+	}
+
+	// 返回所有分店id
+	@RequestMapping(method = RequestMethod.GET, value = "allbranchid")
+	public @ResponseBody Message getAllBanchId() throws Exception {
+		return headOfficeService.getAllBanchId();
+	}
+
+	// 根据分店id返回分店名和管理员
+	@RequestMapping(method = RequestMethod.GET, value = "branch")
+	public @ResponseBody Message getBanch(int branchid) throws Exception {
+		return headOfficeService.getBanch(branchid);
+	}
+
+	// 分配老人给某个分店
+	@RequestMapping(method = RequestMethod.GET, value = "older/allot")
+	public @ResponseBody Message allotOlder(String oldertel, int branchid) throws Exception {
+		return headOfficeService.allotOlder(oldertel, branchid);
+	}
+	
+	//返回该部门该职位的员工人数，好形成员工号
+	@RequestMapping(method = RequestMethod.GET, value = "staff/staffcode")
+	public @ResponseBody Message getStaffcodeCount(String staffdepartmentid,String staffroleid) throws Exception {
+		Staffbase staffbase=new Staffbase();
+		staffbase.setStaffdepartmentid(Integer.parseInt(staffdepartmentid));
+		staffbase.setStaffroleid(Integer.parseInt(staffroleid));
+		return headOfficeService.getStaffcodeCount(staffbase);
+	}
+	
 }

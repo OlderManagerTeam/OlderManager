@@ -4,6 +4,7 @@
 <head>
 <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
@@ -286,56 +287,56 @@
 								<div class="form-group">
 									<label for="staffCode" class="col-sm-3 control-label">员工工号：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffcode"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffcode"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffName" class="col-sm-3 control-label">员工姓名：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffname"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffname"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffSex" class="col-sm-3 control-label">员工性别：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffsex"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffsex"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffBirthday" class="col-sm-3 control-label">员工出生日期：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffbirthday"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffbirthday"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffIDE" class="col-sm-3 control-label">员工身份证：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffiide"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffiide"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffTel" class="col-sm-3 control-label">员工电话：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="stafftel"></span>
+										<input type="text" readonly="readonly" class="form-control" id="stafftel"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="rolecontent" class="col-sm-3 control-label">员工职位</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="rolecontent"></span>
+										<input type="text" readonly="readonly" class="form-control" id="rolecontent"></input>
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="staffDepartmentId" class="col-sm-3 control-label">员工部门号：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffdepartmentid"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffdepartmentid"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffDepartmentId" class="col-sm-3 control-label">员工部门名称：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="departmentname"></span>
+										<input type="text" readonly="readonly" class="form-control" id="departmentname"></input>
 									</div>
 								</div>
 
@@ -457,37 +458,19 @@
 					url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
 					data : null,
 					success : function(result) {
-						var staffimg = document.getElementById("staffimg");
-						staffimg.innerHTML = result.data.staffbase.staffimg;
-						var staffcode = document.getElementById("staffcode");
-						staffcode.innerHTML = result.data.staffbase.staffcode;
-						var staffname = document.getElementById("staffname");
-						staffname.innerHTML = result.data.staffbase.staffname;
-						var staffsex = document.getElementById("staffsex");
-						staffsex.innerHTML = result.data.staffbase.staffsex;
-		
+						$('#staffimg').val(result.data.staffbase.staffimg);
+						$('#staffcode').val(result.data.staffbase.staffcode);
+						$('#staffname').val(result.data.staffbase.staffname);
+						$('#staffsex').val(result.data.staffbase.staffsex);
+						$('#staffiide').val(result.data.staffbase.staffiide);
+						$('#stafftel').val(result.data.staffbase.stafftel);
+						$('#staffdepartmentid').val(result.data.staffbase.staffdepartmentid);
+						$('#departmentname').val(result.data.department.departmentname);
+						$('#rolecontent').val(result.data.role.rolecontent);
 						var date = new Date(result.data.staffbase.staffbirthday + 1000 * 60 * 60 * 8);
 						var d = date.toISOString().slice(0, 10);
-						staffbirthday.innerHTML = d;
-		
-		
-						var staffiide = document.getElementById("staffiide");
-						staffiide.innerHTML = result.data.staffbase.staffiide;
-		
-						var stafftel = document.getElementById("stafftel");
-						stafftel.innerHTML = result.data.staffbase.stafftel;
-		
-		
-		
-						var staffdepartmentid = document.getElementById("staffdepartmentid");
-						staffdepartmentid.innerHTML = result.data.staffbase.staffdepartmentid;
-		
-						var departmentname = document.getElementById("departmentname");
-						departmentname.innerHTML = result.data.department.departmentname;
-		
-						var rolecontent = document.getElementById("rolecontent");
-						rolecontent.innerHTML = result.data.role.rolecontent;
-		
+						//staffbirthday.innerHTML = d;
+						$('#staffbirthday').val(d);
 					},
 					error : function() {
 						alert('数据库错误')

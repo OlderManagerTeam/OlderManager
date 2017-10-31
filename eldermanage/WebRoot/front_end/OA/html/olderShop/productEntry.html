@@ -2,508 +2,539 @@
 <html>
 
 <head>
-    <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-    <!-- CSS Libs -->
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap-switch.min.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/checkbox3.min.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/dataTables.bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/css/select2.min.css">
-    <!-- CSS App -->
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/themes/flat-blue.css">
-    <!--文件上传css文件-->
-    <link href="../../lib/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
-    <!--验证css文件-->
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootstrapValidator.min.css">
+<title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="utf-8">
+<!-- Fonts -->
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900'
+	rel='stylesheet' type='text/css'>
+<!-- CSS Libs -->
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/animate.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/bootstrap-switch.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/checkbox3.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/select2.min.css">
+<!-- CSS App -->
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/themes/flat-blue.css">
+<!--文件上传css文件-->
+<link href="../../lib/css/fileinput.css" media="all" rel="stylesheet"
+	type="text/css" />
+<!--验证css文件-->
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
 <body class="flat-blue">
-    <div class="app-container">
-        <div class="row content-container">
-            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-expand-toggle">
-                            <i class="fa fa-bars icon"></i>
-                        </button>
-                        <ol class="breadcrumb navbar-breadcrumb">
-                            <li>电子商务</li>
-                            <li class="active">添加新商品</li>
-                        </ol>
-                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                            <i class="fa fa-th icon"></i>
-                        </button>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                            <i class="fa fa-times icon"></i>
-                        </button>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
-                            <ul class="dropdown-menu animated fadeInDown">
-                                <li class="title">
-                                    Notification <span class="badge pull-right">0</span>
-                                </li>
-                                <li class="message">
-                                    No new notification
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown danger">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
-                            <ul class="dropdown-menu danger  animated fadeInDown">
-                                <li class="title">
-                                    Notification <span class="badge pull-right">4</span>
-                                </li>
-                                <li>
-                                    <ul class="list-group notifications">
-                                        <a href="#">
-                                            <li class="list-group-item">
-                                                <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li class="list-group-item">
-                                                <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li class="list-group-item">
-                                                <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li class="list-group-item message">
-                                                view all
-                                            </li>
-                                        </a>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
-                            <ul class="dropdown-menu animated fadeInDown">
-                                <li class="profile-img">
-                                    <img src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
-                                </li>
-                                <li>
-                                    <div class="profile-info">
-                                        <h4 class="username">Emily Hart</h4>
-                                        <p>emily_hart@email.com</p>
-                                        <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="side-menu sidebar-inverse">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="side-menu-container">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">
-                                <div class="icon fa fa-paper-plane"></div>
-                                <div class="title">Flat Admin V.2</div>
-                            </a>
-                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
-                                <i class="fa fa-times icon"></i>
-                            </button>
-                        </div>
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="../index.html">
-                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon fa fa-desktop"></span><span class="title">UI Kits</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-element" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../ui-kits/grid.html">Grid</a></li>
-                                            <li><a href="../ui-kits/theming.html">Theming</a></li>
-                                            </li>
-                                            <li><a href="../ui-kits/button.html">Buttons</a>
-                                            </li>
-                                            <li><a href="../ui-kits/card.html">Cards</a>
-                                            </li>
-                                            <li><a href="../ui-kits/list.html">Lists</a>
-                                            </li>
-                                            <li><a href="../ui-kits/modal.html">Modals</a>
-                                            </li>
-                                            <li><a href="../ui-kits/alert.html">Alerts & Toasts</a>
-                                            </li>
-                                            <li><a href="../ui-kits/panel.html">Panels</a>
-                                            </li>
-                                            <li><a href="../ui-kits/loader.html">Loaders</a>
-                                            </li>
-                                            <li><a href="../ui-kits/step.html">Tabs & Steps</a>
-                                            </li>
-                                            <li><a href="../ui-kits/other.html">Other</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">Table</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-table" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../table/table.html">Table</a>
-                                            </li>
-                                            <li><a href="../table/datatable.html">Datatable</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-form" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../form/ui-kits.html">Form UI Kits</a>
-                                            </li>
+	<div class="app-container">
+		<div class="row content-container">
+			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-expand-toggle">
+							<i class="fa fa-bars icon"></i>
+						</button>
+						<ol class="breadcrumb navbar-breadcrumb">
+							<li>电子商务</li>
+							<li>商品列表</li>
+							<li class="active">添加新商品</li>
+						</ol>
+						<button type="button"
+							class="navbar-right-expand-toggle pull-right visible-xs">
+							<i class="fa fa-th icon"></i>
+						</button>
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+						<button type="button"
+							class="navbar-right-expand-toggle pull-right visible-xs">
+							<i class="fa fa-times icon"></i>
+						</button>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-expanded="false"><i
+								class="fa fa-comments-o"></i></a>
+							<ul class="dropdown-menu animated fadeInDown">
+								<li class="title">Notification <span
+									class="badge pull-right">0</span>
+								</li>
+								<li class="message">No new notification</li>
+							</ul></li>
+						<li class="dropdown danger"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
+							<ul class="dropdown-menu danger  animated fadeInDown">
+								<li class="title">Notification <span
+									class="badge pull-right">4</span>
+								</li>
+								<li>
+									<ul class="list-group notifications">
+										<a href="#">
+											<li class="list-group-item"><span class="badge">1</span>
+												<i class="fa fa-exclamation-circle icon"></i> new
+												registration</li>
+										</a>
+										<a href="#">
+											<li class="list-group-item"><span class="badge success">1</span>
+												<i class="fa fa-check icon"></i> new orders</li>
+										</a>
+										<a href="#">
+											<li class="list-group-item"><span class="badge danger">2</span>
+												<i class="fa fa-comments icon"></i> customers messages</li>
+										</a>
+										<a href="#">
+											<li class="list-group-item message">view all</li>
+										</a>
+									</ul>
+								</li>
+							</ul></li>
+						<li class="dropdown profile"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-expanded="false">Emily Hart <span class="caret"></span></a>
+							<ul class="dropdown-menu animated fadeInDown">
+								<li class="profile-img"><img
+									src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg"
+									class="profile-img"></li>
+								<li>
+									<div class="profile-info">
+										<h4 class="username">Emily Hart</h4>
+										<p>emily_hart@email.com</p>
+										<div class="btn-group margin-bottom-2x" role="group">
+											<button type="button" class="btn btn-default">
+												<i class="fa fa-user"></i> Profile
+											</button>
+											<button type="button" class="btn btn-default">
+												<i class="fa fa-sign-out"></i> Logout
+											</button>
+										</div>
+									</div>
+								</li>
+							</ul></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="side-menu sidebar-inverse">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="side-menu-container">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="#">
+								<div class="icon fa fa-paper-plane"></div>
+								<div class="title">Flat Admin V.2</div>
+							</a>
+							<button type="button"
+								class="navbar-expand-toggle pull-right visible-xs">
+								<i class="fa fa-times icon"></i>
+							</button>
+						</div>
+						<ul class="nav navbar-nav">
+							<li><a href="../index.html"> <span
+									class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+							</a></li>
+							<li class="panel panel-default dropdown"><a
+								data-toggle="collapse" href="#dropdown-element"> <span
+									class="icon fa fa-desktop"></span><span class="title">UI
+										Kits</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-element" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../ui-kits/grid.html">Grid</a></li>
+											<li><a href="../ui-kits/theming.html">Theming</a></li></li>
+							<li><a href="../ui-kits/button.html">Buttons</a></li>
+							<li><a href="../ui-kits/card.html">Cards</a></li>
+							<li><a href="../ui-kits/list.html">Lists</a></li>
+							<li><a href="../ui-kits/modal.html">Modals</a></li>
+							<li><a href="../ui-kits/alert.html">Alerts & Toasts</a></li>
+							<li><a href="../ui-kits/panel.html">Panels</a></li>
+							<li><a href="../ui-kits/loader.html">Loaders</a></li>
+							<li><a href="../ui-kits/step.html">Tabs & Steps</a></li>
+							<li><a href="../ui-kits/other.html">Other</a></li>
+						</ul>
+					</div>
+			</div>
+			</li>
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-table"> <span
+					class="icon fa fa-table"></span><span class="title">Table</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-table" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../table/table.html">Table</a></li>
+							<li><a href="../table/datatable.html">Datatable</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-form"> <span
+					class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-form" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../form/ui-kits.html">Form UI Kits</a></li>
 
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="panel panel-default dropdown">
-			                      <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			                             <span class="icon  glyphicon glyphicon-user"></span>
-			                             <span class="title">总店管理</span>
-			                      </a> <!-- Dropdown level 1 -->
-				                  <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					                     <div class="panel-body">
-						                       <ul class="nav navbar-nav">
-							                         <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							                         <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						                        </ul>
-					                     </div>
-				                   </div>
-			                </li>                            
-                            <!--添加在左边导航栏-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-olderEntry">
-                                    <span class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-olderEntry" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-                                            <li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
-                                            <li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="active panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-olderEducation">
-                                    <span class="icon  glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-olderEducation" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../olderEducation/videoView.html">视频列表</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>                            
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="component-example" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../components/pricing-table.html">Pricing Table</a>
-                                            </li>
-                                            <li><a href="../components/chartjs.html">Chart.JS</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-example">
-                                    <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-example" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../pages/login.html">Login</a>
-                                            </li>
-                                            <li><a href="../pages/index.html">Landing Page</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-icon">
-                                    <span class="icon fa fa-archive"></span><span class="title">Icons</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-icon" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../icons/glyphicons.html">Glyphicons</a>
-                                            </li>
-                                            <li><a href="../icons/font-awesome.html">Font Awesomes</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="../license.html">
-                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </nav>
-            </div>
-            <!-- Main Content -->
-            <div class="container-fluid">
-                <div class="side-body">
-                    <div class="page-title">
-                        <span class="title">添加新商品</span>
-                        <div class="description">New Product Entry</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="card-title">
-                                        <div class="title"><a class="btn btn-primary btn-lg" href="../olderShop/productView.html" role="button">返回商品列表</a></div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                	<!--添加视频-->
-                                    <form class="form-horizontal" id="productEntry">
-                                        <div class="form-group">
-                                            <label for="videoName" class="col-sm-3 control-label">商品名称：</label>
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="videoName" placeholder="商品名称" name="videoname">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="videoPicUrl" class="col-sm-3 control-label">视频缩略图：</label>
-                                            <div class="col-sm-5">
-                                                <input type="file" id="videoPicUrl" name="videopicurl" >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="videoUrl" class="col-sm-3 control-label">商品价格：</label>
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="videoUrl" placeholder="商品价格" name="videourl">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="videoIntro" class="col-sm-3 control-label">商品类型ID：</label>
-                                            <div class="col-sm-5">
-                                                <textarea class="form-control" id="videoIntro"
-											            placeholder="商品类型ID" style="height: 100px" name="videointro"></textarea>
-                                            </div>
-                                        </div>  
-                                        <div class="form-group">
-                                            <label for="videoDetail" class="col-sm-3 control-label">视频详细：</label>
-                                            <div class="col-sm-5">
-                                                <textarea class="form-control" id="videoDetail"
-											            placeholder="视频详细" style="height: 200px" name="videodetail"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="videoTime" class="col-sm-3 control-label">视频时长：</label>
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="videoTime" placeholder="视频时长" name="videotime">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="videoPublishDate" class="col-sm-3 control-label">视频发布日期：</label>
-                                            <div class="col-sm-5">
-                                                <input type="date" class="form-control" id="videoPublishDate" placeholder="视频发布日期" name="videopublishdate">
-                                            </div>
-                                        </div> 
-                                        <div class="form-group">
-                                            <label for="videoPartition" class="col-sm-3 control-label">视频属于那个分区：</label>
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="videoPartition" placeholder="视频属于那个分区" name="videopartition">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-3 col-sm-5">
-                                                <button type="submit" class="btn btn-default">确认提交</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="app-footer">
-            <div class="wrapper">
-                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-            </div>
-        </footer>
-        <div>
-            <!-- Javascript Libs -->
-            <script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-            <script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-            <script type="text/javascript" src="../../lib/js/bootstrap-switch.min.js"></script>
+						</ul>
+					</div>
+				</div></li>
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<!--添加在左边导航栏-->
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-olderEntry"> <span
+					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-olderEntry" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
+							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-olderEducation"> <span
+					class="icon  glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-olderEducation" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<li class="active panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-olderShop"> <span
+					class="icon glyphicon glyphicon-shopping-cart"></span><span
+					class="title">电子商务</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-olderShop" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../olderShop/productView.html">商品列表</a></li>
+							<li><a href="../olderShop/order.html">订单总列表</a></li>
+							<li><a href="../olderShop/productStore.html">库存列表</a></li>
+							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
+							<li><a href="../olderShop/productRate.html">商品评价列列表</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<!-- Dropdown-->
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#component-example"> <span
+					class="icon fa fa-cubes"></span><span class="title">Components</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="component-example" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../components/pricing-table.html">Pricing
+									Table</a></li>
+							<li><a href="../components/chartjs.html">Chart.JS</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<!-- Dropdown-->
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-example"> <span
+					class="icon fa fa-slack"></span><span class="title">Page
+						Example</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-example" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../pages/login.html">Login</a></li>
+							<li><a href="../pages/index.html">Landing Page</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<!-- Dropdown-->
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-icon"> <span
+					class="icon fa fa-archive"></span><span class="title">Icons</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-icon" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../icons/glyphicons.html">Glyphicons</a></li>
+							<li><a href="../icons/font-awesome.html">Font Awesomes</a></li>
+						</ul>
+					</div>
+				</div></li>
+			<li><a href="../license.html"> <span
+					class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
+			</a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+		</nav>
+	</div>
+	<!-- Main Content -->
+	<div class="container-fluid">
+		<div class="side-body">
+			<div class="page-title">
+				<span class="title">添加新商品</span>
+				<div class="description">New Product Entry</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title">
+								<div class="title">
+									<a class="btn btn-primary btn-lg"
+										href="../olderShop/productView.html" role="button">返回商品列表</a>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<!--添加视频-->
+							<form class="form-horizontal" id="productEntry">
+								<div class="form-group">
+									<label for="productName" class="col-sm-3 control-label">商品名称：</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="productName"
+											placeholder="商品名称" name="productname">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="productprice" class="col-sm-3 control-label">商品价格：</label>
+									<div class="col-sm-2">
+										<input type="text" class="form-control" id="productprice"
+											placeholder="商品价格" name="productprice">
+									</div>
+									<div class="col-sm-1">
+										<label for="productprice" class="control-label">单位：元</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="producttypenumber" class="col-sm-3 control-label">商品类型：</label>
+									<div class="col-sm-5">
+										<select id="producttypenumber">
+											<optgroup class="active" label="商品类型">
+												<option value="1">食物</option>
+												<option value="2">服饰</option>
+												<option value="3">图书</option>
+												<option value="4">生活日用品</option>
+												<option value="5">娱乐器具</option>
+												<option value="6">运动器材</option>
+												<option value="7">医药保健品</option>
+												<option value="8">电子产品</option>
+												<option value="9">医疗器材</option>
+												<option value="10">家具器材</option>
+											</optgroup>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="productimg" class="col-sm-3 control-label">商品图片：</label>
+									<div class="col-sm-5">
+										<input type="file" id="productimg" name="productimg">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="productinfo" class="col-sm-3 control-label">商品信息：</label>
+									<div class="col-sm-5">
+										<textarea class="form-control" id="productinfo"
+											placeholder="商品信息" style="height: 200px" name="productinfo"></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="productweight" class="col-sm-3 control-label">商品重量：</label>
+									<div class="col-sm-2">
+										<input type="text" class="form-control" id="productweight"
+											placeholder="商品重量" name="productweight">
+									</div>
+									<div class="col-sm-1">
+										<label for="productweight" class="control-label">单位：kg</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="productupondate" class="col-sm-3 control-label">商品上架日期：</label>
+									<div class="col-sm-5">
+										<input type="date" class="form-control" id="productupondate"
+											placeholder="商品上架日期" name="productupondate">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="productdiscountprice"
+										class="col-sm-3 control-label">商品折扣价：</label>
+									<div class="col-sm-2">
+										<input type="text" class="form-control"
+											id="productdiscountprice" placeholder="商品折扣价"
+											name="productdiscountprice">
+									</div>
+									<div class="col-sm-1">
+										<label for="productdiscountprice" class="control-label">单位：元</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-5">
+										<button type="submit" class="btn btn-default">确认提交</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<footer class="app-footer">
+		<div class="wrapper">
+			<span class="pull-right">2.1 <a href="#"><i
+					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+		</div>
+	</footer>
+	<div>
+		<!-- Javascript Libs -->
+		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/bootstrap-switch.min.js"></script>
 
-            <script type="text/javascript" src="../../lib/js/jquery.matchHeight-min.js"></script>
-            <script type="text/javascript" src="../../lib/js/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" src="../../lib/js/dataTables.bootstrap.min.js"></script>
-            <script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-            <script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-            <script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-            <script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-            <!-- Javascript -->
-            <script type="text/javascript" src="../../js/app.js"></script>
-            <!-- 文件上传 JS -->
-            <script src="../../lib/js/fileinput.js" type="text/javascript"></script>
-            <script src="../../lib/js/fileinput_locale_zh.js" type="text/javascript"></script>
-            <!--验证js文件-->
-            <script type="text/javascript" src="../../lib/js/bootstrapValidator.min.js"></script>
-            </script>
-    <script>
-    $("#videoPicUrl").fileinput({
-        showUpload: false,
-        showCaption: false,
-        browseClass: "btn btn-primary btn-lg",
-        fileType: "any",
-        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
-    });
-    </script>
-    <!--表单验证-->
-    <script type="text/javascript">
-   $(document).ready(function() {
-    // Generate a simple captcha
-    
-    $('#productEntry').bootstrapValidator({
-//        live: 'disabled',
-        message: '请正确填写',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok-circle',
-            invalid: 'glyphicon glyphicon-remove-circle',
-            validating: 'glyphicon glyphicon-refresh',
-            regexp:'glyphicon glyphicon-ok-circle'
-        },
-        fields: {
-            videoname: {
-                message: '姓名不能为空',
-                validators: {
-                    notEmpty: {
-                        message: '视频名字不能为空'
-                    }
-                }
-            },
-            videourl: {
-                validators: {
-                    notEmpty: {
-                        message: '视频地址不能为空'
-                    },
-                    regexp: {
-                        regexp: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/ ,
-                        message:'请输入正确的身份证格式'
-                    }
-                }
-            },
-            videointro: {
-                validators: {
-                    notEmpty: {
-                        message: '视频简介不能为空'
-                    }
-                }
-            },
-            videodetail:{
-                validators:{
-                    notEmpty:{
-                        message:'视频详细不能为空'
-                    }
-                }
-            }, 
-            videotime:{
-                validators:{
-                    notEmpty:{
-                        message:'视频时长不能为空'
-                    }
-                }
-            },
-            videopartition:{
-                validators:{
-                    notEmpty:{
-                        message:'视频发布地区不能为空'
-                    }
-                }
-            },
-            videopublishdate:{
-                validators:{
-                    notEmpty:{
-                        message:'视频发布地区不能为空'
-                    }
-                }
-            },
-            videopublishdate: {
-                validators: {
-                    date: {
-                        format: 'YYYY-MM-DD'
-                    }
-                }
-            },
-            videopicurl:{
-                validators:{
-                    notEmpty:{
-                        message:'视频缩略图不能为空'
-                    }
-                }
-            },
-        }
-    });
-
-    // Validate the form manually
-    
-});
-        
-    </script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.matchHeight-min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+		<!-- Javascript -->
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<!-- 文件上传 JS -->
+		<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
+		<script src="../../lib/js/fileinput_locale_zh.js"
+			type="text/javascript"></script>
+		<!--验证js文件-->
+		<script type="text/javascript"
+			src="../../lib/js/bootstrapValidator.min.js"></script>
+		</script>
+		<script>
+			$("#productimg").fileinput({
+				showUpload : false,
+				showCaption : false,
+				browseClass : "btn btn-primary btn-lg",
+				fileType : "any",
+				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
+			});
+		</script>
+		<!--表单验证-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				// Generate a simple captcha
+		
+				$('#productEntry').bootstrapValidator({
+					//        live: 'disabled',
+					message : '请正确填写',
+					feedbackIcons : {
+						valid : 'glyphicon glyphicon-ok-circle',
+						invalid : 'glyphicon glyphicon-remove-circle',
+						validating : 'glyphicon glyphicon-refresh',
+						regexp : 'glyphicon glyphicon-ok-circle'
+					},
+					fields : {
+						productname : {
+							message : '姓名不能为空',
+							validators : {
+								notEmpty : {
+									message : '商品名字不能为空'
+								}
+							}
+						},
+						productprice : {
+							validators : {
+								notEmpty : {
+									message : '价格不能为空'
+								},
+								regexp : {
+									regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+									message : '价格只能是数字，可以带两位小数'
+								}
+							}
+						},
+						producttypenumber : {
+							validators : {
+								notEmpty : {
+									message : '商品类型ID不能为空'
+								}
+							}
+						},
+						productinfo : {
+							validators : {
+								notEmpty : {
+									message : '商品详情不能为空'
+								}
+							}
+						},
+						productweight : {
+							validators : {
+								notEmpty : {
+									message : '商品重量不能为空'
+								},
+								regexp : {
+									regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+									message : '重量只能是数字，可以带两位小数'
+								}
+							}
+						},
+						productupondate : {
+							validators : {
+								notEmpty : {
+									message : '日期不能为空'
+								},
+								date : {
+									format : 'YYYY-MM-DD',
+									message : '请输入正确的日期格式'
+								}
+							}
+						},
+						productDiscountPrice : {
+							validators : {
+								notEmpty : {
+									message : '商品折扣价不能为空'
+								},
+								regexp : {
+									regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+									message : '价格只能是数字，可以带两位小数'
+								}
+							}
+						},
+					}
+				});
+		
+				// Validate the form manually
+		
+			});
+		</script>
 </body>
 
 </html>

@@ -200,7 +200,7 @@ public class BrenchController {
 	// 查找本活动参加的老人信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "lecture/older/info")
 	public @ResponseBody Message getLectureOlder(int lectureid) throws Exception {
-		return brenchService.getActionOlder(lectureid);
+		return brenchService.getLectureOlder(lectureid);
 	}
 
 	// 查询这个管理员所在的分店名--测试通过
@@ -222,8 +222,7 @@ public class BrenchController {
 	// 删除某个老人的信息--测试成功
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "elder/info")
-	public @ResponseBody Message deleteOlder(@RequestBody String oldertel) throws Exception {
-
+	public @ResponseBody Message deleteOlder(String oldertel) throws Exception {
 		return brenchService.deleteANElder(oldertel);
 	}
 
@@ -314,10 +313,21 @@ public class BrenchController {
 		return brenchService.updateStatus(lectureid, lecturestatus);
 	}
 
-	// 删除一条讲座信息
+/*	// 删除一条讲座信息(这个controller可能取消)
 	@RequestMapping(method = RequestMethod.GET, value = "lecture")
 	public @ResponseBody Message deleteLecture(int lectureid) throws Exception {
 		return brenchService.deleteLecture(lectureid);
 	}
 
+	//取消一个老人的活动参与
+	@RequestMapping(method = RequestMethod.DELETE, value = "actionrecorddelete")
+	public @ResponseBody Message deleteLecturejoin(int lectureid) throws Exception {
+		return brenchService.deleteLecture(lectureid);
+	}*/
+	
+	//取消一个老人的讲座参与
+	@RequestMapping(method = RequestMethod.DELETE, value = "lecture/older")
+	public @ResponseBody Message deletelecturejoin(int lectureid,int olderid) throws Exception {
+		return brenchService.deletelecturejoin(lectureid,olderid);
+	}
 }

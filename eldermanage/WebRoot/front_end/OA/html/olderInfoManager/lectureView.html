@@ -5,20 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"
 	charset="utf-8">
 <!-- Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900'
+	rel='stylesheet' type='text/css'>
 <!-- CSS Libs -->
-<link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../../lib/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="../../lib/css/animate.min.css">
-<link rel="stylesheet" type="text/css" href="../../lib/css/bootstrap-switch.min.css">
-<link rel="stylesheet" type="text/css" href="../../lib/css/checkbox3.min.css">
-<link rel="stylesheet" type="text/css" href="../../lib/css/jquery.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="../../lib/css/dataTables.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../lib/css/select2.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/animate.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/bootstrap-switch.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/checkbox3.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css"
+	href="../../lib/css/select2.min.css">
 <!-- CSS App -->
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
-<link rel="stylesheet" type="text/css" href="../../css/themes/flat-blue.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/themes/flat-blue.css">
 </head>
 
 <body class="flat-blue" onload="load()">
@@ -264,7 +276,8 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<table class="datatable table table-striped" cellspacing="0" width="100%">
+							<table class="datatable table table-striped" cellspacing="0"
+								width="100%">
 								<thead>
 									<tr>
 										<th>序号</th>
@@ -335,60 +348,66 @@
 					url : "http://localhost:8080/eldermanage/v1/brench/alllectures",
 					data : null
 				})
-				.then(
-					function(result) {
-						var lectureItem = result.data;
-						//alert(actionItem[0].actionname);
-						for (var i=lectureItem.length - 1; i >= 0; i--) {
-							var _date = lectureItem[i].lecturepublishdate;
-							var date = new Date(_date);
-	
-							var oTr = `<tr>
-											<td>${i+1}</td>
-											<td>${date.toISOString().slice(0, 10)}</td>
-											<td>${lectureItem[i].lecturename}</td>
-											<td>${lectureItem[i].lecturetotal}</td>
-											<td>${lectureItem[i].lectureenroll}</td>
-											<td>${lectureItem[i].lecturestatus}</td>
-											<td><a class="btn btn-primary btn-xs" href="../olderInfoManager/lectureInfo.html?lectureid=${lectureItem[i].lectureid}" role="button">详情</a>
-							                    <a class="btn btn-primary btn-xs btn-delete" role="button" href="http://localhost:8080/eldermanage/v1/brench/lecture?lectureid=${lectureItem[i].lectureid}" data-id="${lectureItem[i].lectureid}">删除记录</a>
-										    </td>
-										</tr>
-							`;
-							$(oTr).appendTo('#lectureList');
-						}
-						$('.datatable').DataTable({
-							"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
-						});
+					.then(
+						function(result) {
+							var lectureItem = result.data;
+							//alert(actionItem[0].actionname);
+							for (var i = lectureItem.length - 1; i >= 0; i--) {
+								var _date = lectureItem[i].lecturepublishdate;
+								var date = new Date(_date);
 		
-					},
-					function() {
-						alert('数据库错误')
-					}
+								var oTr = `<tr>
+																		<td>${i + 1}</td>
+																		<td>${date.toISOString().slice(0, 10)}</td>
+																		<td>${lectureItem[i].lecturename}</td>
+																		<td>${lectureItem[i].lecturetotal}</td>
+																		<td>${lectureItem[i].lectureenroll}</td>
+																		<td>${lectureItem[i].lecturestatus}</td>
+																		<td><a class="btn btn-primary btn-xs" href="../olderInfoManager/lectureInfo.html?lectureid=${lectureItem[i].lectureid}" role="button">详情</a>
+														                    <a class="btn btn-primary btn-xs btn-delete" role="button" href="http://localhost:8080/eldermanage/v1/brench/lecture?lectureid=${lectureItem[i].lectureid}" data-id="${lectureItem[i].lectureid}">删除记录</a>
+																	    </td>
+																	</tr>
+															`;
+								$(oTr).appendTo('#lectureList');
+							}
+							$('.datatable').DataTable({
+								"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+							});
+		
+						},
+						function() {
+							alert('数据库错误')
+						}
 				)
-				.done(function (){
-						$("#lectureList .btn-delete").on('click', function (event){
+					.done(function() {
+						$("#lectureList .btn-delete").on('click', function(event) {
 							const r = confirm("您确定要删除么?");
-							if(r == true){
+							if (r == true) {
 								const e = event || window.event;
 								e.preventDefault();
 								///let currentTr = $(this).parent().parent();
-								$.get(
-									'http://localhost:8080/eldermanage/v1/brench/lecture?lectureid='+$(this).attr('data-id'),
-									 function (result){
-									 	if(result.success === true){
-									 	//	currentTr.remove();
-									 	window.location.reload();
-									 	}
-									 }
-								)
-							}else return false;
+								/* 								$.get(
+																	'http://localhost:8080/eldermanage/v1/brench/lecture?lectureid='+$(this).attr('data-id'),
+																	 function (result){
+																	 	if(result.success === true){
+																	 	//	currentTr.remove();
+																	 	window.location.reload();
+																	 	}
+																	 }
+																) */
+								$.ajax({
+									type : 'delete',
+									contentType : 'application/json',
+									url : "http://localhost:8080/eldermanage/v1/brench/lecturerecorddelete?lectureid=" + $(this).attr('data-id'),
+									data : null,
+									success:function(){
+										window.location.reload();
+									}
+								})
+							} else return false;
 						});
-				})
-			}	
-				
-			
-			
+					})
+			}
 		</script>
 		<script type="text/javascript" src="../../js/app.js"></script>
 </body>

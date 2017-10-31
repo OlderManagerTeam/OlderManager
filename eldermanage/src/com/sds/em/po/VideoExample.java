@@ -552,52 +552,62 @@ public class VideoExample {
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeEqualTo(Float value) {
+        public Criteria andVideotimeEqualTo(String value) {
             addCriterion("videoTime =", value, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeNotEqualTo(Float value) {
+        public Criteria andVideotimeNotEqualTo(String value) {
             addCriterion("videoTime <>", value, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeGreaterThan(Float value) {
+        public Criteria andVideotimeGreaterThan(String value) {
             addCriterion("videoTime >", value, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeGreaterThanOrEqualTo(Float value) {
+        public Criteria andVideotimeGreaterThanOrEqualTo(String value) {
             addCriterion("videoTime >=", value, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeLessThan(Float value) {
+        public Criteria andVideotimeLessThan(String value) {
             addCriterion("videoTime <", value, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeLessThanOrEqualTo(Float value) {
+        public Criteria andVideotimeLessThanOrEqualTo(String value) {
             addCriterion("videoTime <=", value, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeIn(List<Float> values) {
+        public Criteria andVideotimeLike(String value) {
+            addCriterion("videoTime like", value, "videotime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVideotimeNotLike(String value) {
+            addCriterion("videoTime not like", value, "videotime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVideotimeIn(List<String> values) {
             addCriterion("videoTime in", values, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeNotIn(List<Float> values) {
+        public Criteria andVideotimeNotIn(List<String> values) {
             addCriterion("videoTime not in", values, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeBetween(Float value1, Float value2) {
+        public Criteria andVideotimeBetween(String value1, String value2) {
             addCriterion("videoTime between", value1, value2, "videotime");
             return (Criteria) this;
         }
 
-        public Criteria andVideotimeNotBetween(Float value1, Float value2) {
+        public Criteria andVideotimeNotBetween(String value1, String value2) {
             addCriterion("videoTime not between", value1, value2, "videotime");
             return (Criteria) this;
         }
