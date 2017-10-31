@@ -24,7 +24,7 @@ import com.sds.em.po.Video;
 import com.sds.em.service.CourseService;
 
 /**
- * 
+ * “健康讲座”模块
  * @author 蔡文艳-2017-10-17 老人教育系统controller
  *
  */
@@ -34,7 +34,7 @@ public class CourseFrontController {
 
 	@Autowired
 	CourseService courseService;
-	// 查询所有视频(返回课程列表)----写完
+	// 查询所有视频(返回课程列表)----写完--测试过
 	@RequestMapping(method=RequestMethod.GET, value = "classes")
 	public @ResponseBody Message option(String videopartition){//所有的视频
 		return courseService.allClasses(videopartition);
@@ -49,11 +49,13 @@ public class CourseFrontController {
 	//添加老人观看课程（视频）记录表       ----写完
 	@RequestMapping(method =RequestMethod.POST,value = "record" )
 	public @ResponseBody Message insertRecord(HttpSession s,int videoid){
-		int olderid=(int) s.getAttribute("olderid");
+//		int olderid=(int) s.getAttribute("olderid");
+		int olderid=1;
+//		int videoid=4;
 		return courseService.classRecord(olderid,videoid,new Date());
 	}
 	
-	//返回当前讲座        ----写完
+	//返回当前讲座        ----写完--测试过
 	@RequestMapping(method = RequestMethod.GET,value ="lecture")
 	public @ResponseBody Message currentLecture(HttpSession s){
 		
@@ -74,7 +76,7 @@ public class CourseFrontController {
 		return courseService.joinLecture(olderid, lectureid);
 	}
 	
-   //播放热度列表实现     ----写完 通过
+   //播放热度列表实现     ----写完 通过--测试过
 	@RequestMapping(method = RequestMethod.GET,value="video/heat")
 	public @ResponseBody Message videoheat(){
 		return courseService.videoHeatTop();
@@ -94,7 +96,7 @@ public class CourseFrontController {
 	}
 	
 	
-	//老人查看自己的课程视频播放记录   -----写完
+	//老人查看自己的课程视频播放记录   -----写完--测试过
 	@RequestMapping(method = RequestMethod.GET,value= "video/videorecord")
 	public @ResponseBody Message videoRecord(HttpSession s){
 		int olderid =4;
@@ -105,7 +107,7 @@ public class CourseFrontController {
 	public @ResponseBody Message publishAction(Action actions){
 		return courseService.publishAction(actions);
 	}
-	//查看所有活动 ---写完
+	//查看所有活动 ---写完--测试过
 	@RequestMapping(method= RequestMethod.GET,value="actions/allactions")
 	public @ResponseBody Message allActions(HttpSession s){
 		

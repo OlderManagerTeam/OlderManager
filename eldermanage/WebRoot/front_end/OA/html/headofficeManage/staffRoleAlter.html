@@ -132,7 +132,7 @@
 						<div class="navbar-header">
 							<a class="navbar-brand" href="#">
 								<div class="icon fa fa-paper-plane"></div>
-								<div class="title">Flat Admin V.2</div>
+								<div class="title">孝和集团操作台</div>
 							</a>
 							<button type="button"
 								class="navbar-expand-toggle pull-right visible-xs">
@@ -143,57 +143,11 @@
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
 							</a></li>
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-element"> <span
-									class="icon fa fa-desktop"></span><span class="title">UI
-										Kits</span>
-							</a> <!-- Dropdown level 1 -->
-								<div id="dropdown-element" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul class="nav navbar-nav">
-											<li><a href="../ui-kits/grid.html">Grid</a></li>
-											<li><a href="../ui-kits/theming.html">Theming</a></li></li>
-							<li><a href="../ui-kits/button.html">Buttons</a></li>
-							<li><a href="../ui-kits/card.html">Cards</a></li>
-							<li><a href="../ui-kits/list.html">Lists</a></li>
-							<li><a href="../ui-kits/modal.html">Modals</a></li>
-							<li><a href="../ui-kits/alert.html">Alerts & Toasts</a></li>
-							<li><a href="../ui-kits/panel.html">Panels</a></li>
-							<li><a href="../ui-kits/loader.html">Loaders</a></li>
-							<li><a href="../ui-kits/step.html">Tabs & Steps</a></li>
-							<li><a href="../ui-kits/other.html">Other</a></li>
-						</ul>
-					</div>
-			</div>
-			</li>
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-table"> <span
-					class="icon fa fa-table"></span><span class="title">Table</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-table" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../table/table.html">Table</a></li>
-							<li><a href="../table/datatable.html">Datatable</a></li>
-						</ul>
-					</div>
-				</div></li>
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-form"> <span
-					class="icon fa fa-file-text-o"></span><span class="title">Form</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-form" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../form/ui-kits.html">Form UI Kits</a></li>
-
-						</ul>
-					</div>
-				</div></li>
-			<!--在左边导航栏添加老人管理模块的导航-->
+							
+			<!-- 总店管理 -->	
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
-					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+					class="icon fa fa-user"></span> <span class="title">总店管理</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -203,10 +157,10 @@
 						</ul>
 					</div>
 				</div></li>
-			<!--添加在左边导航栏-->
+			<!--分店管理-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
-					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
+					class="icon  fa fa-group"></span><span class="title">分店管理</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-olderEntry" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -217,44 +171,57 @@
 						</ul>
 					</div>
 				</div></li>
-			<!-- Dropdown-->
+			<!-- 新闻 -->	
 			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#component-example"> <span
-					class="icon fa fa-cubes"></span><span class="title">Components</span>
+				data-toggle="collapse" href="#dropdown-newsRelease"> <span
+					class="icon glyphicon glyphicon-globe"></span><span class="title">新闻发布</span>
 			</a> <!-- Dropdown level 1 -->
-				<div id="component-example" class="panel-collapse collapse">
+				<div id="dropdown-newsRelease" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
-							<li><a href="../components/pricing-table.html">Pricing
-									Table</a></li>
-							<li><a href="../components/chartjs.html">Chart.JS</a></li>
+							<li><a href="../newsRelease/newsView.html">新闻列表</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<!-- 老年人教育 -->
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-olderEducation"> <span
+					class="icon  glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-olderEducation" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
 						</ul>
 					</div>
 				</div></li>
-			<!-- Dropdown-->
+			<!-- 电子商务 -->
 			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-example"> <span
-					class="icon fa fa-slack"></span><span class="title">Page
-						Example</span>
+				data-toggle="collapse" href="#dropdown-personalCenter"> <span
+					class="icon glyphicon glyphicon-shopping-cart"></span><span
+					class="title">电子商务</span>
 			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-example" class="panel-collapse collapse">
+				<div id="dropdown-personalCenter" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
-							<li><a href="../pages/login.html">Login</a></li>
-							<li><a href="../pages/index.html">Landing Page</a></li>
+							<li><a href="../olderShop/typeLable.html">分类查看商品</a></li>
+							<li><a href="../olderShop/order.html">订单总列表</a></li>
+							<li><a href="../olderShop/productStore.html">库存列表</a></li>
+							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
 						</ul>
 					</div>
 				</div></li>
-			<!-- Dropdown-->
+			<!-- 员工信息中心 -->
 			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-icon"> <span
-					class="icon fa fa-archive"></span><span class="title">Icons</span>
+				data-toggle="collapse" href="#dropdown-olderShop"> <span
+					class="icon glyphicon glyphicon-sunglasses"></span><span
+					class="title">个人信息中心</span>
 			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-icon" class="panel-collapse collapse">
+				<div id="dropdown-olderShop" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
-							<li><a href="../icons/glyphicons.html">Glyphicons</a></li>
-							<li><a href="../icons/font-awesome.html">Font Awesomes</a></li>
+							<li><a href="../personalCenter/personalCenter.html">个人信息</a></li>
 						</ul>
 					</div>
 				</div></li>
@@ -293,13 +260,13 @@
 								<div class="form-group">
 									<label for="staffName" class="col-sm-3 control-label">员工姓名：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffname"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffname"></input>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffSex" class="col-sm-3 control-label">员工性别：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffsex"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffsex"></input>
 									</div>
 								</div>
 								<div class="form-group">
@@ -313,7 +280,7 @@
 								<div class="form-group">
 									<label for="staffDepartmentId" class="col-sm-3 control-label">部门号：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="departmentid"></span>
+										<input type="text" readonly="readonly" class="form-control" id="departmentid"></input>
 									</div>
 								</div>
 
@@ -330,21 +297,26 @@
 								<div class="form-group">
 									<label for="staffRoleId" class="col-sm-3 control-label">职位编号：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="roleid"
+										<input type="text" readonly="readonly" class="form-control" id="roleid"
 											placeholder="员工职位（管理员添加）" name="roleid">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="staffCode" class="col-sm-3 control-label">员工号：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="staffcode"
-											placeholder="员工号（管理员添加：员工号=邮编区号（6位）+部门号（2位）+员工编号（4位）部门号以0开头为总部）"
-											name="staffcode">
+										<input type="text" readonly="readonly" class="form-control" id="staffcode"
+											placeholder="员工号=部门号(2位)+员工职位号(2位)+3位数" name="staffcode">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="staffCode" class="col-sm-3 control-label"></label>
+									<div class="col-sm-5" style="background-color: white;border: 0px;color: red;">
+										*员工号 = 部门号(2位) + 员工职位号(2位) + 3位数
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
-										<button type="button" class="btn btn-default" id="altersubmit">修改提交</button>
+										<button type="button" class="btn btn-primary btn-lg" id="altersubmit">提交修改</button>
 									</div>
 								</div>
 							</form>
@@ -520,10 +492,10 @@
 				data : null,
 				success : function(result) {
 					$('#staffimg').attr("value",result.data.staffbase.staffimg);
-					$('#staffname').html(result.data.staffbase.staffname);
-					$('#staffcode').attr("value",result.data.staffbase.staffcode);
-					$('#staffsex').html(result.data.staffbase.staffsex);
-					$('#departmentid').html(result.data.department.departmentid);
+					$('#staffname').val(result.data.staffbase.staffname);
+					//$('#staffcode').attr("value",result.data.staffbase.staffcode);
+					$('#staffsex').val(result.data.staffbase.staffsex);
+					$('#departmentid').val(result.data.department.departmentid);
 					$('#roleid').attr("value",result.data.role.roleid);
 
 					$("#select2-staffdepartmentname-container").text(result.data.department.departmentname);
@@ -539,24 +511,14 @@
 							$($("#rolename option")[i]).attr('selected','selected');
 						}
 					}
-					// var staffimg = document.getElementById("staffimg");
-					// staffimg.innerHTML = result.data.staffbase.staffimg;
-					// var staffcode = document.getElementById("staffcode");
-					// staffcode.value = result.data.staffbase.staffcode;
-					// var staffname = document.getElementById("staffname");
-					// staffname.innerHTML = result.data.staffbase.staffname;
-					// var staffsex = document.getElementById("staffsex");
-					// staffsex.innerHTML = result.data.staffbase.staffsex;
-					// var departmentname = document.getElementById("departmentname");
-					// departmentname.innerHTML = result.data.department.departmentname;
-					// var rolecontent = document.getElementById("rolecontent");
-					// rolecontent.value = result.data.role.rolecontent;
-	
 				},
 				error : function() {
 					alert('数据库错误')
 				}
 			})
+			// .done(function (){
+			// 	updateStaffCode();
+			// });
 		}
 	</script>
 
@@ -570,7 +532,7 @@
 				var departmentdata = result.data
 				for(var i = departmentdata.length - 1;i>=0;i--){
 					var oOption = `
-						<option>${departmentdata[i].departmentname}</option>
+						<option value="${departmentdata[i].departmentid}">${departmentdata[i].departmentname}</option>
 					`;
 					$('#staffdepartmentname').append(oOption);
 				}
@@ -579,9 +541,7 @@
 				alert('数据库错误')
 			}
 		})
-	</script>
-	
-	<script type="text/javascript">
+
 		$.ajax({
 			type:'get',
 			contentType:'application/json',
@@ -591,7 +551,7 @@
 				var roledata = result.data;
 				for(var i=roledata.length - 1;i>=0;i--){
 					var oOption = `
-						<option>${roledata[i].rolecontent}</option>
+						<option value="${roledata[i].roleid}">${roledata[i].rolecontent}</option>
 					`;
 					$('#rolename').append(oOption);
 				}
@@ -604,79 +564,73 @@
 
 	<script type="text/javascript">
 		$("#altersubmit").click(function() {
-			var form = new FormData(document.getElementById("staffRoleAlter"));
-			//var staffid = UrlParm.parm("staffid");
-			var staffid = 1;
-			form.append("staffid", staffid);
 			$.ajax({
-				type : 'post',
-				url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
-				data : form,
-				processData : false,
-				contentType : false,
-				success : function(result) {
-					//var resultdata = JSON.parse(result);
-					alert(result.information);
-					if (result.success) {
-						window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
-					}
+				type:'get',
+				contentType:'application/json',
+				url:"http://localhost:8080/eldermanage/v1/headoffice/staff/staffcode",
+				data:"staffdepartmentid="+$('#departmentid').val()+"&staffroleid="+$('#roleid').val(),
+				success:function(result){
+					// alert(result.data)
+					$("#staffcode").val($('#departmentid').val()+$('#roleid').val()+result.data);
 				},
-				error : function() {
-					alert('fail')
+				error:function(){
+					alert('数据库错误')
 				}
 			})
-		}
-		)
+
+			// var form = new FormData(document.getElementById("staffRoleAlter"));
+			// //var staffid = UrlParm.parm("staffid");
+			// var staffid = 1;
+			// form.append("staffid", staffid);
+			// console.log("===========================");
+			// console.log(form);
+			// $.ajax({
+			// 	type : 'post',
+			// 	url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
+			// 	data : form,
+			// 	processData : false,
+			// 	contentType : false,
+			// 	success : function(result) {
+			// 		//var resultdata = JSON.parse(result);
+			// 		alert(result.information);
+			// 		if (result.success) {
+			// 			window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
+			// 		}
+			// 	},
+			// 	error : function() {
+			// 		alert('fail')
+			// 	}
+			// })
+		})
 	</script>
 
 	<script type="text/javascript">
 		$('#staffdepartmentname').change(function(){
-			chooseDepartment();
+			
+			$('#departmentid').val($(this).val());
+			
 		})
-		function chooseDepartment(){
-			$.ajax({
-			type:'get',
-			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/headoffice/alldepartmentid",
-			data:null,
-			success:function(result){
-				//alert($('#staffdepartmentname').val())
-				var departmentdata = result.data
-				for(var i = departmentdata.length - 1;i>=0;i--){
-					if(departmentdata[i].departmentname == $('#staffdepartmentname').val()) {
-						$('#departmentid').html(departmentdata[i].departmentid)
-					}
-				}
-			},
-			error:function(){
-				alert('数据库错误')
-			}
-		})
-		}
 
-		$('#rolename').change(function(){
-			chooseRole();
+		$('#rolename,staffdepartmentname').change(function(){
+			$('#roleid').val($(this).val());
 		})
-		function chooseRole(){
-			$.ajax({
-			type:'get',
-			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/headoffice/allRoleid",
-			data:null,
-			success:function(result){
-				//alert($('#rolename').val())
-				var roledata = result.data
-				for(var i = roledata.length - 1;i>=0;i--){
-					if(roledata[i].rolecontent == $('#rolename').val()) {
-						$('#roleid').attr("value",roledata[i].roleid)
-					}
-				}
-			},
-			error:function(){
-				alert('数据库错误')
-			}
-		})
-		}
+
+		// function updateStaffCode(){
+		// 	$.ajax({
+		// 			type:'get',
+		// 			contentType:'application/json',
+		// 			url:"http://localhost:8080/eldermanage/v1/headoffice/staff/staffcode",
+		// 			data:"staffdepartmentid="+$('#departmentid').val()+"&staffroleid="+$('#roleid').val(),
+		// 			success:function(result){
+		// 				// alert(result.data)
+		// 				$("#staffcode").val($('#departmentid').val()+$('#roleid').val()+result.data);
+		// 			},
+		// 			error:function(){
+		// 				alert('数据库错误')
+		// 			}
+		// 		})
+		// }
+		
 	</script>
 
 	<script type="text/javascript">

@@ -51,6 +51,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>分店管理</li>
+							<li>老年人讲座列表</li>
 							<li class="active">讲座修改</li>
 						</ol>
 						<button type="button"
@@ -131,7 +132,7 @@
 						<div class="navbar-header">
 							<a class="navbar-brand" href="#">
 								<div class="icon fa fa-paper-plane"></div>
-								<div class="title">Flat Admin V.2</div>
+								<div class="title">孝和集团操作台</div>
 							</a>
 							<button type="button"
 								class="navbar-expand-toggle pull-right visible-xs">
@@ -142,56 +143,11 @@
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
 							</a></li>
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-element"> <span
-									class="icon fa fa-desktop"></span><span class="title">UI
-										Kits</span>
-							</a> <!-- Dropdown level 1 -->
-								<div id="dropdown-element" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul class="nav navbar-nav">
-											<li><a href="../ui-kits/grid.html">Grid</a></li>
-											<li><a href="../ui-kits/theming.html">Theming</a></li></li>
-							<li><a href="../ui-kits/button.html">Buttons</a></li>
-							<li><a href="../ui-kits/card.html">Cards</a></li>
-							<li><a href="../ui-kits/list.html">Lists</a></li>
-							<li><a href="../ui-kits/modal.html">Modals</a></li>
-							<li><a href="../ui-kits/alert.html">Alerts & Toasts</a></li>
-							<li><a href="../ui-kits/panel.html">Panels</a></li>
-							<li><a href="../ui-kits/loader.html">Loaders</a></li>
-							<li><a href="../ui-kits/step.html">Tabs & Steps</a></li>
-							<li><a href="../ui-kits/other.html">Other</a></li>
-						</ul>
-					</div>
-			</div>
-			</li>
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-table"> <span
-					class="icon fa fa-table"></span><span class="title">Table</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-table" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../table/table.html">Table</a></li>
-							<li><a href="../table/datatable.html">Datatable</a></li>
-						</ul>
-					</div>
-				</div></li>
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-form"> <span
-					class="icon fa fa-file-text-o"></span><span class="title">Form</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-form" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../form/ui-kits.html">Form UI Kits</a></li>
-
-						</ul>
-					</div>
-				</div></li>
+							
+			<!-- 总店管理 -->	
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
-					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+					class="icon fa fa-user"></span> <span class="title">总店管理</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -201,58 +157,71 @@
 						</ul>
 					</div>
 				</div></li>
-			<!--添加在左边导航栏-->
+			<!--分店管理-->
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEntry"> <span
-					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
+					class="icon  fa fa-group"></span><span class="title">分店管理</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-olderEntry" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
 							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-							<li><a href="../olderInfoManager/lectureView.html">老年人活动列表</a></li>
+							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
 				</div></li>
-			<!-- Dropdown-->
+			<!-- 新闻 -->	
 			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#component-example"> <span
-					class="icon fa fa-cubes"></span><span class="title">Components</span>
+				data-toggle="collapse" href="#dropdown-newsRelease"> <span
+					class="icon glyphicon glyphicon-globe"></span><span class="title">新闻发布</span>
 			</a> <!-- Dropdown level 1 -->
-				<div id="component-example" class="panel-collapse collapse">
+				<div id="dropdown-newsRelease" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
-							<li><a href="../components/pricing-table.html">Pricing
-									Table</a></li>
-							<li><a href="../components/chartjs.html">Chart.JS</a></li>
+							<li><a href="../newsRelease/newsView.html">新闻列表</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<!-- 老年人教育 -->
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-olderEducation"> <span
+					class="icon  glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-olderEducation" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
 						</ul>
 					</div>
 				</div></li>
-			<!-- Dropdown-->
+			<!-- 电子商务 -->
 			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-example"> <span
-					class="icon fa fa-slack"></span><span class="title">Page
-						Example</span>
+				data-toggle="collapse" href="#dropdown-personalCenter"> <span
+					class="icon glyphicon glyphicon-shopping-cart"></span><span
+					class="title">电子商务</span>
 			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-example" class="panel-collapse collapse">
+				<div id="dropdown-personalCenter" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
-							<li><a href="../pages/login.html">Login</a></li>
-							<li><a href="../pages/index.html">Landing Page</a></li>
+							<li><a href="../olderShop/typeLable.html">分类查看商品</a></li>
+							<li><a href="../olderShop/order.html">订单总列表</a></li>
+							<li><a href="../olderShop/productStore.html">库存列表</a></li>
+							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
 						</ul>
 					</div>
 				</div></li>
-			<!-- Dropdown-->
+			<!-- 员工信息中心 -->
 			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-icon"> <span
-					class="icon fa fa-archive"></span><span class="title">Icons</span>
+				data-toggle="collapse" href="#dropdown-olderShop"> <span
+					class="icon glyphicon glyphicon-sunglasses"></span><span
+					class="title">个人信息中心</span>
 			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-icon" class="panel-collapse collapse">
+				<div id="dropdown-olderShop" class="panel-collapse collapse">
 					<div class="panel-body">
 						<ul class="nav navbar-nav">
-							<li><a href="../icons/glyphicons.html">Glyphicons</a></li>
-							<li><a href="../icons/font-awesome.html">Font Awesomes</a></li>
+							<li><a href="../personalCenter/personalCenter.html">个人信息</a></li>
 						</ul>
 					</div>
 				</div></li>
@@ -387,7 +356,7 @@
 		</script>
 
 		<!--表单验证-->
-		<!-- 	<script type="text/javascript">
+		<script type="text/javascript">
 			$(document).ready(function() {
 				// Generate a simple captcha
 		
@@ -427,13 +396,49 @@
 								},
 							}
 						},
+						level : {
+							validators : {
+								notEmpty : {
+									message : '不能为空'
+								},
+							}
+						},
+						lectureintro : {
+							validators : {
+								notEmpty : {
+									message : '不能为空'
+								},
+							}
+						},
+						lecturetotal : {
+							validators : {
+								notEmpty : {
+									message : '不能为空'
+								},
+								regexp : {
+									regexp : /^[0-9]*$/,
+									message : '请输入整数'
+								}
+							}
+						},
+						lecturePublishDate : {
+							validators : {
+								notEmpty : {
+									message : '日期不能为空'
+								},
+								date : {
+									format : 'YYYY-MM-DD',
+									message : '请输入正确的日期格式'
+								}
+							}
+						},
 					}
 				});
 		
 				// Validate the form manually
 		
 			});
-		</script> -->
+		</script>
 		<script type="text/javascript">
 			UrlParm = function() { // url参数
 				var data,
@@ -527,8 +532,8 @@
 							document.getElementById("lectureintro").value = result.data.lectureintro;
 							document.getElementById("lecturename").value = result.data.lecturename;
 							document.getElementById("lectureaddress").value = result.data.lectureaddress;
-		
-							document.getElementById("lecturestatus").value = result.data.lecturestatus;
+							document.getElementById("select2-lecturestatus-container").innerHTML = result.data.lecturestatus;
+							document.getElementById("select2-lecturestatus-container").title = result.data.lecturestatus;
 							document.getElementById("lecturestatus").text = result.data.lecturestatus;
 							document.getElementById("lectureenroll").innerHTML = result.data.lectureenroll;
 							document.getElementById("lecturetotal").value = result.data.lecturetotal;
@@ -543,8 +548,7 @@
 				var form = new FormData(document.getElementById("olderAlterLecture"));
 				var lectureid = UrlParm.parm("lectureid");
 				form.append("lectureid", lectureid);
-		
-				form.append("lecturestatus", $("#lecturestatus option:selected").text());
+				form.append("lecturestatus", document.getElementById("select2-lecturestatus-container").title);
 				$.ajax({
 					type : 'post',
 					url : "http://localhost:8080/eldermanage/v1/brench/lecture/updateinfo",
