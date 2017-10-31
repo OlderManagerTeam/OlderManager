@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sds.em.po.Message;
 import com.sds.em.pojo.UpLoadFile;
 
 import net.sf.json.JSONObject;
@@ -61,5 +64,12 @@ public class imgContrller {
 		return upLoadFile;
 	}
 
+	// 老人评价-未测试
+	@RequestMapping(method = RequestMethod.POST, value = "test")
+	public @ResponseBody String test(String text) throws Exception {
+		
+		String message = "{\"data\":[\"e:\\a\\b\\c.txt\"],\"error\":0}";
+		return message;
+	}
 
 }
