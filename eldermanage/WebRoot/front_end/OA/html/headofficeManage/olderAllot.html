@@ -328,8 +328,7 @@
 								<label for="olderBranchId" class="col-sm-3 control-label">分店名称：</label>
 								<div class="col-sm-5">
 									<select id="branchname">
-										<option>1</option>
-										<option>2</option>
+										<option>请选择</option>
 									</select>
 								</div>
 							</div>
@@ -466,6 +465,7 @@
 						$('#olderaddress').val(result.data.olderaddress);
 						$('#oldertel').val(result.data.oldertel);
 						$('#oldersex').val(result.data.oldersex);
+						$('#olderbranchid').val(result.data.olderbranchid);
 
 						document.getElementById("olderheadurl").src = result.data.olderheadurl;
 					},
@@ -475,7 +475,8 @@
 				})
 			}
 		</script>
-			<script type="text/javascript">
+
+		<script type="text/javascript">
 			$("#olderallot").click(function() {
 				var oldertel= UrlParm.parm("oldertel");
 				var branchid= $("#olderbranchid option:selected").text();
@@ -496,8 +497,52 @@
 						alert('fail')
 					}
 				})
-			}
-			)
+			})
+		</script>
+
+		<script type="text/javascript">
+			$.ajax({
+				type:'get',
+				contentType:'application/json',
+				url:"http://localhost:8080/eldermanage/v1/headoffice/allbranchid",
+				data:null,
+				success:function(result){
+					var branchdata = result.data;
+					for(var i=0;i<=branchdata.length-1;i++){
+						var oOption = `
+							<option>${branchdata[i].branchname}</option>
+						`;
+						$('#branchname').append(oOption);
+					}
+
+					$('#branchname').change(function(){
+						for(var i=0;i<=branchdata.length-1;i++){
+							if($('#select2-branchname-container').text() == branchdata[i].branchname){
+								$('#olderbranchid').val(branchdata[i].branchid);
+							}
+						}
+
+						$.ajax({
+							type:'get',
+							contentType:'application/json',
+							url:"http://localhost:8080/eldermanage/v1/headoffice/branch",
+							data:"branchid="+$('#olderbranchid').val(),
+							success:function(result){
+								var branchmanagerdata = result.data
+								$('#branchmanagername').val(branchmanagerdata.staffbase.staffname)
+							},
+							error:function(){
+								alert('数据库错误')
+							}
+						})
+					})
+				}
+			})
+		</script>
+
+		<script type="text/javascript">
+			$('select').select2();
+			$('#branchname').next('span').width(200);
 		</script>
 		<!--表单验证-->
 </body>
