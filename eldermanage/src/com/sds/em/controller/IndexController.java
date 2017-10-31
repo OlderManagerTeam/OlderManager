@@ -119,4 +119,7 @@ public class IndexController {
 		int k=i+j;
 		return username;
 	}*/
+	
+	//首页新闻
+	
 }

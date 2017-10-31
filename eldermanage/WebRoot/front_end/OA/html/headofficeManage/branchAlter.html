@@ -309,7 +309,7 @@
 								<div class="form-group">
 									<label for="branchManagerId" class="col-sm-3 control-label">分店管理员姓名：</label>
 									<div class="col-sm-5">
-										<span class="form-control" id="staffname"></span>
+										<input type="text" readonly="readonly" class="form-control" id="staffname"></input>
 									</div>
 								</div>
 								<div class="form-group">
@@ -519,30 +519,8 @@
 						$('#branchadress').attr("value",result.data.branch.branchadress);
 						$('#branchkpi').attr("value",result.data.branch.branchkpi);
 						$('#branchmanagerid').attr("value",result.data.staffbase.staffid);
-						$('#staffname').html(result.data.staffbase.staffname);
+						$('#staffname').val(result.data.staffbase.staffname);
 						$('#staffcode').attr("value",result.data.staffbase.staffcode);
-
-						// var branchname = document.getElementById("branchname");
-						// //olderName.value = result.data.oldername;
-						// branchname.value = result.data.branch.branchname;
-						// // alert("x1="+result.data.oldername); 
-						// var branchpostcode = document.getElementById("branchpostcode");
-						// branchpostcode.value = result.data.branch.branchpostcode;
-						// var branchadress = document.getElementById("branchadress");
-						// branchadress.value = result.data.branch.branchadress;
-						// var branchkpi = document.getElementById("branchkpi");
-						// branchkpi.value = result.data.branch.branchkpi;
-		
-						// var branchmanagerid = document.getElementById("branchmanagerid");
-						// branchmanagerid.value = result.data.staffbase.staffid;
-		
-		
-						// var staffname = document.getElementById("staffname");
-						// staffname.innerHTML = result.data.staffbase.staffname;
-		
-						// var staffcode = document.getElementById("staffcode");
-						// staffcode.value = result.data.staffbase.staffcode;
-		
 					},
 					error : function() {
 						alert('数据库错误')
@@ -588,11 +566,13 @@
 						var staffinfo = result.data
 						if (result.success == true) {
 							$('#branchmanagerid').attr("value",result.data.staffid)
+							$('#staffname').val(result.data.staffname)
 							//alert(result.data.staffid)
 						}else {
 							alert('员工不存在!!!');
 							$('#staffcode').val("");
 							$('#branchmanagerid').val("");
+							$('#staffname').val("");
 						}
 					},
 					error:function(){

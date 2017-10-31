@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Branch;
 import com.sds.em.po.Message;
+import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.BranchStaffBaseExtend;
 import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.service.HeadOfficeService;
@@ -113,4 +114,12 @@ public class HeadOfficeController {
 	public @ResponseBody Message allotOlder(String oldertel, int branchid) throws Exception {
 		return headOfficeService.allotOlder(oldertel, branchid);
 	}
+	
+	//返回生成的员工号
+	@RequestMapping(method = RequestMethod.GET, value = "staff/staffcode")
+	public @ResponseBody Message getStaffcode(String staffdepartmentid,String staffroleid) throws Exception {
+
+		return headOfficeService.getStaffcode(staffdepartmentid,staffroleid);
+	}
+	
 }
