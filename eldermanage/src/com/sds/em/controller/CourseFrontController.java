@@ -24,7 +24,7 @@ import com.sds.em.po.Video;
 import com.sds.em.service.CourseService;
 
 /**
- * 
+ * “健康讲座”模块
  * @author 蔡文艳-2017-10-17 老人教育系统controller
  *
  */
@@ -48,10 +48,10 @@ public class CourseFrontController {
 	
 	//添加老人观看课程（视频）记录表       ----写完
 	@RequestMapping(method =RequestMethod.POST,value = "record" )
-	public @ResponseBody Message insertRecord(HttpSession s,int olderid){
+	public @ResponseBody Message insertRecord(HttpSession s,int videoid){
 //		int olderid=(int) s.getAttribute("olderid");
-//		int olderid=1;
-		int videoid=4;
+		int olderid=1;
+//		int videoid=4;
 		return courseService.classRecord(olderid,videoid,new Date());
 	}
 	
