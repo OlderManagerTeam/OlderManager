@@ -591,6 +591,76 @@ public class OldersickExample {
             addCriterion("sickHospital not between", value1, value2, "sickhospital");
             return (Criteria) this;
         }
+
+        public Criteria andSicktypeIsNull() {
+            addCriterion("sickType is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeIsNotNull() {
+            addCriterion("sickType is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeEqualTo(String value) {
+            addCriterion("sickType =", value, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeNotEqualTo(String value) {
+            addCriterion("sickType <>", value, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeGreaterThan(String value) {
+            addCriterion("sickType >", value, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeGreaterThanOrEqualTo(String value) {
+            addCriterion("sickType >=", value, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeLessThan(String value) {
+            addCriterion("sickType <", value, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeLessThanOrEqualTo(String value) {
+            addCriterion("sickType <=", value, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeLike(String value) {
+            addCriterion("sickType like", value, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeNotLike(String value) {
+            addCriterion("sickType not like", value, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeIn(List<String> values) {
+            addCriterion("sickType in", values, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeNotIn(List<String> values) {
+            addCriterion("sickType not in", values, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeBetween(String value1, String value2) {
+            addCriterion("sickType between", value1, value2, "sicktype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSicktypeNotBetween(String value1, String value2) {
+            addCriterion("sickType not between", value1, value2, "sicktype");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

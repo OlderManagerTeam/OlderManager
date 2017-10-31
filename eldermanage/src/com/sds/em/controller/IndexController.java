@@ -62,35 +62,8 @@ public class IndexController {
 			e.printStackTrace();
 			return "failed";
 		}
-		
-		
-		
-		
-		
-		/*
-		 * ModelAndView modelAndView = new ModelAndView();
-		 * 
-		 * Message message = indexService.login(s.getStafftel(),
-		 * s.getStaffpassword());
-		 * 
-		 * Staffbase staffbase = (Staffbase) message.getData(); int staffId =
-		 * staffbase.getStaffid(); String staffName = staffbase.getStaffname();
-		 * 
-		 * session.setAttribute("staffId", staffId);
-		 * session.setAttribute("staffName", staffName);
-		 * modelAndView.addObject("message", message);
-		 * 
-		 * // cookie Cookie cookie = new Cookie("cookieName", "cookie"); //
-		 * �½�Cookie cookie.setSecure(true); cookie.setMaxAge(24 * 60 * 60);//
-		 * ����һ�� response.addCookie(cookie); // ������ͻ���
-		 * modelAndView.setViewName("login.jsp");
-		 */
 		return "成功登录";
 	}
-
-	/*
-	 * lu-10-14
-	 */
 
 	// ���ظ����ܱ�����
 	@RequestMapping(method = RequestMethod.GET, value = "question")
@@ -146,4 +119,7 @@ public class IndexController {
 		int k=i+j;
 		return username;
 	}*/
+	
+	//首页新闻
+	
 }

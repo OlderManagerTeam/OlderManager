@@ -373,4 +373,11 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 
 	}
 
+	@Override
+	public Message getStaffcodeCount(Staffbase staffbase) throws Exception {
+		int count=0;
+	    count=staffbaseMapper.getStaffcodeCount(staffbase).size();
+		return new Message(true, "返回成功", count);
+	}
+
 }

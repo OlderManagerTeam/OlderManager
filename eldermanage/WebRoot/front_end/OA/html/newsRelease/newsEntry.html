@@ -346,21 +346,21 @@
                                 	<!--添加视频-->
                                     <form class="form-horizontal" id="newsEntry">
                                         <div class="form-group">
-                                            <label for="productName" class="col-sm-3 control-label">新闻标题：</label>
+                                            <label for="newstitle" class="col-sm-3 control-label">新闻标题：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="productName" placeholder="新闻标题" name="productname">
+                                                <input type="text" class="form-control" id="newstitle" placeholder="新闻标题" name="newstitle">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="productprice" class="col-sm-3 control-label">编辑者：</label>
+                                            <label for="newseditorid" class="col-sm-3 control-label">编辑者：</label>
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" id="productprice" placeholder="编辑者" name="productprice">
+                                                <input type="text" class="form-control" id="newseditorid" placeholder="编辑者" name="newseditorid">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="producttypenumber" class="col-sm-3 control-label">新闻类型：</label>
+                                            <label for="newstype" class="col-sm-3 control-label">新闻类型：</label>
                                             <div class="col-sm-5">
-                                                 <select id="producttypenumber">
+                                                 <select id="newstype" name="newstype" class="form-control" style="width:150px">
 											           <optgroup class="active" label="新闻类型">
 												                <option value="1">聚焦医疗</option>
 												                <option value="2">饮食药膳</option>
@@ -370,40 +370,28 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="productimg" class="col-sm-3 control-label">商品图片：</label>
+                                            <label for="newsimg" class="col-sm-3 control-label">新闻缩略图片：</label>
                                             <div class="col-sm-5">
-                                                <input type="file" id="productimg" name="productimg" >
+                                                <input type="file" id="newsimg" name="newsimg" >
                                             </div>
                                         </div>  
                                         <div class="form-group">
-                                            <label for="productinfo" class="col-sm-3 control-label">商品信息：</label>
+                                            <label for="newsissueddate" class="col-sm-3 control-label">新闻发布日期：</label>
                                             <div class="col-sm-5">
-                                                <textarea class="form-control" id="productinfo"
-											            placeholder="商品信息" style="height: 200px" name="productinfo"></textarea>
+                                                <input type="date" class="form-control" id="newsissueddate" placeholder="编辑者" name="newsissueddate">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="productweight" class="col-sm-3 control-label">商品重量：</label>
-                                            <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="productweight" placeholder="商品重量" name="productweight">
-                                            </div>
-                                            <div class="col-sm-1">
-                                                <label for="productweight" class="control-label">单位：kg</label>
+                                            <label for="newsintro" class="col-sm-3 control-label">新闻简介：</label>
+                                            <div class="col-sm-5">
+                                                <textarea class="form-control" id="newsintro"
+											            placeholder="新闻简介" style="height: 100px" name="newsintro"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="productupondate" class="col-sm-3 control-label">商品上架日期：</label>
+                                            <label for="productupondate" class="col-sm-3 control-label">内容：</label>
                                             <div class="col-sm-5">
-                                                <input type="date" class="form-control" id="productupondate" placeholder="商品上架日期" name="productupondate">
-                                            </div>
-                                        </div> 
-                                        <div class="form-group">
-                                            <label for="productdiscountprice" class="col-sm-3 control-label">商品折扣价：</label>
-                                            <div class="col-sm-2">
-                                                <input type="text" class="form-control" id="productdiscountprice" placeholder="商品折扣价" name="productdiscountprice">
-                                            </div>
-                                            <div class="col-sm-1">
-                                                <label for="productdiscountprice" class="control-label">单位：元</label>
+                                               <div id="newscontent" name="newscontent"></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -447,7 +435,7 @@
             <script type="text/javascript" src="../../lib/js/bootstrapValidator.min.js"></script>
             </script>
     <script>
-    $("#productimg").fileinput({
+    $("#newsimg").fileinput({
         showUpload: false,
         showCaption: false,
         browseClass: "btn btn-primary btn-lg",
@@ -470,51 +458,40 @@
             regexp:'glyphicon glyphicon-ok-circle'
         },
         fields: {
-            productname: {
-                message: '姓名不能为空',
+            newstitle: {
+                message: '新闻不能为空',
                 validators: {
                     notEmpty: {
-                        message: '商品名字不能为空'
+                        message: '新闻标题不能为空'
                     }
                 }
             },
-            productprice: {
+            newseditorid: {
                 validators: {
                     notEmpty: {
-                        message: '价格不能为空'
+                        message: '编辑者不能为空'
                     },
-                    regexp: {
-                        regexp: /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/ ,
-                        message:'价格只能是数字，可以带两位小数'
-                    }
                 }
             },
-            producttypenumber: {
+            newstype: {
                 validators: {
                     notEmpty: {
-                        message: '商品类型ID不能为空'
+                        message: '新闻类型不能为空'
                     }
                 }
             },
-            productinfo:{
+            newsimg:{
                 validators:{
                     notEmpty:{
-                        message:'商品详情不能为空'
+                        message:'新闻缩略图不能为空'
                     }
                 }
             }, 
-            productweight:{
+            newscontent:{
                 validators:{
-                    notEmpty:{
-                        message:'商品重量不能为空'
-                    },
-                    regexp: {
-                        regexp: /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/ ,
-                        message:'重量只能是数字，可以带两位小数'
-                    }
                 }
             },
-            productupondate: {
+            newsissueddate: {
                 validators: {
                     notEmpty:{
                         message:'日期不能为空'
@@ -525,15 +502,11 @@
                     }
                 }
             },
-            productDiscountPrice:{
+            newsintro:{
                 validators:{
                     notEmpty:{
-                        message:'商品折扣价不能为空'
+                        message:'新闻简介不能为空'
                     },
-                    regexp: {
-                        regexp: /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/ ,
-                        message:'价格只能是数字，可以带两位小数'
-                    }
                 }
             },
         }
@@ -544,6 +517,14 @@
 });
         
     </script>
+    <!-- 富文本编辑器 -->
+    <script type="text/javascript" src="../../js/wangEditor.min.js"></script>
+	<script type="text/javascript">
+		var E = window.wangEditor
+		var newscontent = new E('#newscontent')
+		newscontent.customConfig.uploadImgShowBase64 = true
+		newscontent.create()
+	</script>
 </body>
 
 </html>
