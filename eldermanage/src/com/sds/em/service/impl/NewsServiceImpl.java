@@ -24,7 +24,7 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public Message publishNews(News news) {
 		int flag = 0;
-		flag = newsMapper.insert(news);
+		flag = newsMapper.insertSelective(news);
 		if (flag != 0) {
 			return new Message(true, "发布成功", null);
 		}
