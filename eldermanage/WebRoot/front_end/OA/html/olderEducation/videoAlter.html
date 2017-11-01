@@ -569,8 +569,8 @@
 		
 			function load() {
 				var videoid = UrlParm.parm("videoid");
-				
-			//var videoid = 1;
+		
+				//var videoid = 1;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
@@ -599,18 +599,18 @@
 			}
 		</script>
 		<script type="text/javascript">
-			$("#entrysubmit").click(function() {
+			$("#altersubmit").click(function() {
 				var form = new FormData(document.getElementById("videoEntry"));
 				form.append("videopartition", $("#videopartition option:selected").text());
-		
+				form.append("videoid", UrlParm.parm("videoid"));
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/video/info",
+					url : "http://localhost:8080/eldermanage/v1/video/updatevideo",
 					data : form,
 					processData : false,
 					contentType : false,
 					success : function(result) {
-						alert(result)
+						//alert(result)
 						//var resultdata = JSON.parse(result);
 						if (result.success) {
 							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoView.html";

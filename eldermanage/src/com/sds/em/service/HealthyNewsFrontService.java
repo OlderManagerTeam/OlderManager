@@ -1,4 +1,4 @@
-package com.sds.em.service;
+/*package com.sds.em.service;
 
 import com.sds.em.po.Message;
 
@@ -8,3 +8,4 @@ public interface HealthyNewsFrontService {
 	//显示所有登录后的新闻
 	public Message getAllHealthyNewsByOlder(int olderid);
 }
+*/

@@ -553,7 +553,7 @@
 		
 			function load() {
 				var lectureid = UrlParm.parm("lectureid");
-				document.getElementById("lecturesubmit").href=""+lectureid;
+				document.getElementById("lecturesubmit").href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
 				document.getElementById("enrollolder").href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureOlderInfo.html?lectureid="+lectureid;
 				$.ajax({
 					type : 'get',

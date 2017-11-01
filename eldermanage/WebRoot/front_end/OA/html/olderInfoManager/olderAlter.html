@@ -743,6 +743,7 @@
 						document.getElementById("olderheadurl1").src = result.data.olderheadurl;
 		
 						document.getElementById("oldernation").value = result.data.oldernation;
+					//	$("#oldersinglestatus").find("option[value='否*']").attr("selected",true);
 						document.getElementById("select2-oldersex-container").innerHTML = result.data.oldersex;
 						document.getElementById("select2-oldersex-container").title = result.data.oldersex;
 						document.getElementById("oldersinglestatus").value = result.data.oldersinglestatus;
@@ -759,6 +760,10 @@
 		</script>
 		<!-- Javascript -->
 		<script type="text/javascript" src="../../js/app.js"></script>
+		<script type="text/javascript">
+			$('select').select2();
+			$('#branchname').next('span').width(200);
+		</script>
 </body>
 
 </html>

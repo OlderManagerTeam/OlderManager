@@ -53,8 +53,8 @@ public interface HeadOfficeService {
 	public Message allotOlder(String oldertel, int branchid) throws Exception;
 	
 	
-	//返回该部门该职位的员工人数，好形成员工号
-	public Message getStaffcodeCount(Staffbase staffbase) throws Exception;
+	//返回生成的员工号
+	public Message getStaffcode(String staffdepartmentid,String staffroleid) throws Exception;
 	
 
 }

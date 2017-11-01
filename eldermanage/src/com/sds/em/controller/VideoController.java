@@ -40,32 +40,11 @@ public class VideoController {
 			String videopublishdate, String videopartition, MultipartFile videopicurl, MultipartFile videourl)
 			throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
-		// 缩略图
-		String pic_path = "E:\\develop\\upload\\temp\\pic\\videoPic\\";
-		String picUrl = "http://localhost:8080/pic/videoPic/";
-		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
-		File pic = new File(pic_path + newFileName);
-		videopicurl.transferTo(pic);
-		// 视频
-		String video_path = "E:\\develop\\upload\\temp\\video\\";
-		String videoUrl = "http://localhost:8080/video/";
-		String newVideoFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".mp4";
-
-		File vid = new File(video_path + newVideoFileName);
-		videourl.transferTo(vid);
-		// 获取视频的时长
-
-		File source = new File(video_path);
-		Encoder encoder = new Encoder();
-
-		MultimediaInfo m = encoder.getInfo(source);
-		long ls = m.getDuration();
-		//System.out.println("此视频时长为:" + ls / 60000 + "分" + (ls) / 1000 + "秒！");
 
 		Video video = new Video();
 		video.setVideodetail(videodetail);
-		video.setVideotime(String.valueOf(ls));
+
 		video.setVideoheat(0);
 		video.setVideointro(videointro);
 		video.setVideoname(videoname);
@@ -73,9 +52,29 @@ public class VideoController {
 		Date date = DateSimp.simp(videopublishdate);
 		video.setVideopublishdate(date);
 
+		String pic_path = "E:\\oldermanageresource\\videoimg\\";
+		String picUrl = "http://localhost:8080/videoimg/";
+		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+		// 缩略图
+		File pic = new File(pic_path + newFileName);
+		videopicurl.transferTo(pic);
+		// 视频
+		String video_path = "E:\\oldermanageresource\\videourl\\";
+		String videoUrl =  "http://localhost:8080/videourl/";
+		String newVideoFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".mp4";
+
+		File vid = new File(video_path + newVideoFileName);
+		videourl.transferTo(vid);
+		// 获取视频的时长
+		Encoder encoder = new Encoder();
+
+		MultimediaInfo m = encoder.getInfo(vid);
+		long ls = m.getDuration();
+		// System.out.println("此视频时长为:" + ls / 60000 + "分" + (ls) / 1000 +
+		// "秒！");
+		video.setVideotime(ls / 60000 + "分钟");
 		video.setVideopicurl(picUrl + newFileName);
 		video.setVideourl(videoUrl + newVideoFileName);
-
 		return videoService.entry(video);
 
 	}
@@ -103,35 +102,57 @@ public class VideoController {
 			MultipartFile videourl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 		// 缩略图
-		String pic_path = "E:\\develop\\upload\\temp\\pic\\videoPic\\";
-		String picUrl = "http://localhost:8080/pic/videoPic/";
+		Video video=(Video) videoService.getVideo(videoid).getData();
+		if(!videopicurl.isEmpty()){
+			String picname[]=video.getVideopicurl().split("/");
+			String pic_path = "E:\\oldermanageresource\\videoimg\\";
+			File videopic=new File(pic_path+picname[picname.length-1]);
+			if(videopic.exists())
+				videopic.delete();
+		}
+		String pic_path = "E:\\oldermanageresource\\videoimg\\";
+		String picUrl = "http://localhost:8080/videoimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
 		File pic = new File(pic_path + newFileName);
 		videopicurl.transferTo(pic);
 		// 视频
-		String video_path = "E:\\develop\\upload\\temp\\video\\";
-		String videoUrl = "http://localhost:8080/video/";
+		if(!videourl.isEmpty()){
+			String picname[]=video.getVideourl().split("/");
+			String videoUrl = "E:\\oldermanageresource\\videourl\\";
+			File video1=new File(videoUrl+picname[picname.length-1]);
+			if(video1.exists())
+				video1.delete();
+		}
+		
+		String video_path = "E:\\oldermanageresource\\videourl\\";
+		String videoUrl =  "http://localhost:8080/videourl/";
 		String newVideoFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".mp4";
 
 		File vid = new File(video_path + newVideoFileName);
 		videourl.transferTo(vid);
+		Video videonew = new Video();
 		// 获取视频的时长
+		Encoder encoder = new Encoder();
 
-		Video video = new Video();
-		video.setVideoid(videoid);
-		video.setVideodetail(videodetail);
-		video.setVideoheat(0);
-		video.setVideointro(videointro);
-		video.setVideoname(videoname);
-		video.setVideopartition(videopartition);
+		MultimediaInfo m = encoder.getInfo(vid);
+		long ls = m.getDuration();
+		// System.out.println("此视频时长为:" + ls / 60000 + "分" + (ls) / 1000 +
+		// "秒！");
+		videonew.setVideotime(ls / 60000 + "分钟");
+		
+		videonew.setVideoid(videoid);
+		videonew.setVideodetail(videodetail);
+		videonew.setVideointro(videointro);
+		videonew.setVideoname(videoname);
+		videonew.setVideopartition(videopartition);
 		Date date = DateSimp.simp(videopublishdate);
-		video.setVideopublishdate(date);
+		videonew.setVideopublishdate(date);
 
-		video.setVideopicurl(picUrl + newFileName);
-		video.setVideourl(videoUrl + newVideoFileName);
+		videonew.setVideopicurl(picUrl + newFileName);
+		videonew.setVideourl(videoUrl + newVideoFileName);
 
-		return videoService.alter(video);
+		return videoService.alter(videonew);
 
 	}
 

@@ -371,19 +371,19 @@
 						var _date = videoItem[i].videopublishdate;
 						var date = new Date(_date);
 						var oTr = `<tr>
-										<td>${i + 1}</td>
-										<td>${videoItem[i].videopartition}</td>
-										<td>${videoItem[i].videoname}</td>
-										<td>${videoItem[i].videotime}</td>
-										<td>${date.toISOString().slice(0, 10)}</td>
-										<td>${videoItem[i].videoheat}</td>
-												<td><a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoInfo.html?videoid=${videoItem[i].videoid}"
-													 role="button">详情</a>
-													 <a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoAlter.html?videoid=${videoItem[i].videoid}"
-													 role="button">修改</a>
-									    </td>
-									</tr>
-							`;
+											<td>${i + 1}</td>
+											<td>${videoItem[i].videopartition}</td>
+											<td>${videoItem[i].videoname}</td>
+											<td>${videoItem[i].videotime}</td>
+											<td>${date.toISOString().slice(0, 10)}</td>
+											<td>${videoItem[i].videoheat}</td>
+													<td><a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoInfo.html?videoid=${videoItem[i].videoid}"
+														 role="button">详情</a>
+														 <a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoAlter.html?videoid=${videoItem[i].videoid}"
+														 role="button">修改</a>
+										    </td>
+										</tr>
+								`;
 						$($(oTr)).appendTo('#videoList');
 					}
 	
@@ -400,6 +400,10 @@
 		$(function() {})
 	</script>
 	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript">
+		$('select').select2();
+		$('#branchname').next('span').width(200);
+	</script>
 
 </body>
 
