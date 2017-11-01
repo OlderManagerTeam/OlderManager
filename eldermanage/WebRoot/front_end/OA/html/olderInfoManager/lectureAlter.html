@@ -527,8 +527,8 @@
 							document.getElementById("lectureintro").value = result.data.lectureintro;
 							document.getElementById("lecturename").value = result.data.lecturename;
 							document.getElementById("lectureaddress").value = result.data.lectureaddress;
-		
-							document.getElementById("lecturestatus").value = result.data.lecturestatus;
+							document.getElementById("select2-lecturestatus-container").innerHTML = result.data.lecturestatus;
+							document.getElementById("select2-lecturestatus-container").title = result.data.lecturestatus;
 							document.getElementById("lecturestatus").text = result.data.lecturestatus;
 							document.getElementById("lectureenroll").innerHTML = result.data.lectureenroll;
 							document.getElementById("lecturetotal").value = result.data.lecturetotal;
@@ -543,8 +543,7 @@
 				var form = new FormData(document.getElementById("olderAlterLecture"));
 				var lectureid = UrlParm.parm("lectureid");
 				form.append("lectureid", lectureid);
-		
-				form.append("lecturestatus", $("#lecturestatus option:selected").text());
+				form.append("lecturestatus", document.getElementById("select2-lecturestatus-container").title);
 				$.ajax({
 					type : 'post',
 					url : "http://localhost:8080/eldermanage/v1/brench/lecture/updateinfo",

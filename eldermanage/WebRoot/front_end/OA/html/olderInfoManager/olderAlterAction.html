@@ -40,7 +40,7 @@
 	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
-<body class="flat-blue"  onload="load()">
+<body class="flat-blue" onload="load()">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -286,9 +286,9 @@
 									<label for="alterActionStartDate"
 										class="col-sm-3 control-label">修改活动时间：</label>
 									<div class="col-sm-5">
-									
-										<input type="date" class="form-control" id="actionstartdate" name="actionstartdate"
-											placeholder="修改活动时间">
+
+										<input type="date" class="form-control" id="actionstartdate"
+											name="actionstartdate" placeholder="修改活动时间">
 									</div>
 								</div>
 								<div class="form-group">
@@ -339,8 +339,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
-										<button type="submit" class="btn btn-default"
-											id="altersubmit">提交修改</button>
+										<button type="submit" class="btn btn-default" id="altersubmit">提交修改</button>
 									</div>
 								</div>
 							</form>
@@ -500,20 +499,20 @@
 					url : "http://localhost:8080/eldermanage/v1/brench/action/info?actionid=" + actionid,
 					data : null,
 					success : function(result) {
-					 
-						var date = new Date(result.data.actionstartdate+1000*60*60*8);
+		
+						var date = new Date(result.data.actionstartdate + 1000 * 60 * 60 * 8);
 						var d = date.toISOString().slice(0, 10);
 						document.getElementById("actionstartdate").value = d;
 						document.getElementById("actionintro").value = result.data.actionintro;
 						document.getElementById("actionname").value = result.data.actionname;
 						document.getElementById("actionaddress").value = result.data.actionaddress;
-						
-						document.getElementById("actionstatus").value = result.data.actionstatus;
-						
+						document.getElementById("select2-actionstatus-container").title = result.data.actionstatus;
+						document.getElementById("select2-actionstatus-container").innerHTML = result.data.actionstatus;
+		
 						document.getElementById("actionenroll").innerHTML = result.data.actionenroll;
-						
+		
 						document.getElementById("actiontotal").value = result.data.actiontotal;
-						
+		
 					},
 					error : function() {
 						alert('数据库错误')
@@ -521,14 +520,14 @@
 				})
 			}
 		</script>
-		
-		
+
+
 		<script type="text/javascript">
 			$("#altersubmit").click(function() {
 				var form = new FormData(document.getElementById("olderAlterAction"));
-			     var actionid = UrlParm.parm("actionid");
-				form.append("actionid",actionid);
-				
+				var actionid = UrlParm.parm("actionid");
+				form.append("actionid", actionid);
+		
 				form.append("actionstatus", $("#actionstatus option:selected").text());
 				$.ajax({
 					type : 'post',
@@ -551,10 +550,10 @@
 			)
 		</script>
 		<script type="text/javascript">
-		$('select').select2();
-		$('#staffdepartmentname').next('span').width(200);
-		$('#rolename').next('span').width(200);
-	</script>
+			$('select').select2();
+			$('#staffdepartmentname').next('span').width(200);
+			$('#rolename').next('span').width(200);
+		</script>
 </body>
 
 </html>

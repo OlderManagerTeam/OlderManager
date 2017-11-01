@@ -589,8 +589,8 @@
 						document.getElementById("videotime").value = result.data.videotime;
 						document.getElementById("videoheat").innerHTML = result.data.videoheat;
 						document.getElementById("videopartition").value = result.data.videopartition;
-		
-		
+						document.getElementById("select2-videopartition-container").title = result.data.videopartition;
+						document.getElementById("select2-videopartition-container").innerHTML = result.data.videopartition;
 					},
 					error : function() {
 						alert('数据库错误')
@@ -601,7 +601,7 @@
 		<script type="text/javascript">
 			$("#altersubmit").click(function() {
 				var form = new FormData(document.getElementById("videoEntry"));
-				form.append("videopartition", $("#videopartition option:selected").text());
+				form.append("videopartition", document.getElementById("select2-videopartition-container").title);
 				form.append("videoid", UrlParm.parm("videoid"));
 				$.ajax({
 					type : 'post',
@@ -624,6 +624,9 @@
 		
 			}
 			)
+		</script>
+		<script type="text/javascript">
+			$('select').select2();
 		</script>
 </body>
 
