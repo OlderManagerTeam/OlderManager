@@ -1,5 +1,6 @@
 ﻿package com.sds.em.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.sds.em.po.Message;
 import com.sds.em.po.News;
 import com.sds.em.po.NewsExample;
 import com.sds.em.po.NewsExample.Criteria;
-import com.sds.em.pojo.NewsCustom;
+import com.sds.em.pojo.NewsEditerExtend;
 import com.sds.em.pojo.StaffbaseCustom;
 import com.sds.em.service.NewsService;
 
@@ -32,15 +33,23 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public Message publishedNews(String newsType) {
+	public Message publishedNews() {
 		try {
 			NewsExample newsExample = new NewsExample();
 			Criteria criteria = newsExample.createCriteria();
-			criteria.andNewstypeEqualTo(newsType);
 			List<News> newsList = newsMapper.selectByExample(newsExample);
+			List<NewsEditerExtend> extendList=new ArrayList<NewsEditerExtend>();
 			
-			if (!newsList.isEmpty()) {
-				return new Message(true, "成功返回", newsList);
+			for(News n:newsList){
+				NewsEditerExtend extend=new NewsEditerExtend();
+				String editer=staffbaseMapper.selectByPrimaryKey(n.getNewseditorid()).getStaffname();
+				extend.setNews(n);
+				extend.setNewsediter(editer);
+				extendList.add(extend);
+			}
+		
+			if (!extendList.isEmpty()) {
+				return new Message(true, "成功返回", extendList);
 			} else {
 				return new Message(false, "数据库错误", null);
 			}
@@ -59,7 +68,7 @@ public class NewsServiceImpl implements NewsService {
 			if (news != null) {
 				
 				String newsediter=staffbaseMapper.selectByPrimaryKey(news.getNewseditorid()).getStaffname();
-				NewsCustom newsCustom=new NewsCustom();
+				NewsEditerExtend newsCustom=new NewsEditerExtend();
 				newsCustom.setNews(news);
 				newsCustom.setNewsediter(newsediter);
 				return new Message(true, "成功返回", newsCustom);
