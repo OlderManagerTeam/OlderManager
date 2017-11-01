@@ -3,7 +3,8 @@
 
 <head>
     <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="utf-8">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
@@ -35,9 +36,8 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li>新闻发布</li>
-                            <li>新闻列表</li>
-                            <li class="active">新闻详情</li>
+                            <li>电子商务</li>
+                            <li>分类查看商品</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -195,7 +195,7 @@
                             </li>
                             <li class="panel panel-default dropdown">
 			                      <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			                             <span class="icon  fa fa-user"></span>
+			                             <span class="icon  glyphicon glyphicon-user"></span>
 			                             <span class="title">总店管理</span>
 			                      </a> <!-- Dropdown level 1 -->
 				                  <div id="dropdown-headofficeManage" class="panel-collapse collapse">
@@ -210,7 +210,7 @@
                             <!--添加在左边导航栏-->
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-olderEntry">
-                                    <span class="icon  fa fa-group"></span><span class="title">分店管理</span>
+                                    <span class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-olderEntry" class="panel-collapse collapse">
@@ -223,20 +223,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="active panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-newsRelease">
-                                    <span class="icon glyphicon glyphicon-globe"></span><span class="title">分店管理</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-newsRelease" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../newsRelease/newsView.html">新闻列表</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>                           
-                               
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-olderEducation">
                                     <span class="icon  glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
@@ -250,18 +236,17 @@
                                     </div>
                                 </div>
                             </li>  
-			               <li class="panel panel-default dropdown">
+			               <li class="active panel panel-default dropdown">
 			                    <a data-toggle="collapse" href="#dropdown-olderShop">
                                     <span class="icon glyphicon glyphicon-shopping-cart"></span><span class="title">电子商务</span>
 			                    </a> <!-- Dropdown level 1 -->
 				                <div id="dropdown-olderShop" class="panel-collapse collapse">
 					                <div class="panel-body">
 						                <ul class="nav navbar-nav">
-							                <li><a href="../olderShop/productView.html">商品列表</a></li>
+							                <li><a href="../olderShop/typeLable.html">分类查看商品</a></li>
 							                <li><a href="../olderShop/order.html">订单总列表</a></li>
 							                <li><a href="../olderShop/productStore.html">库存列表</a></li>
 							                <li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
-							                <li><a href="../olderShop/productRate.html">商品评价列列表</a></li>
 						                </ul>
 					                </div>
 				                </div>
@@ -331,64 +316,132 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">新闻详情</span>
-                        <div class="description">News Infomation</div>
+                        <span class="title">分类查看商品</span>
+                        <div class="description">Product Type</div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title"><a class="btn btn-primary btn-lg" href="../newsRelease/newsView.html" role="button">返回新闻列表</a></div>
+                                        <div class="title">分类</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                 	<!--添加视频-->
-                                    <div class="form-horizontal" id="newsEntry">
+                                    <div class="form-horizontal" id="productEntry">
                                         <div class="form-group">
-                                            <label for="newstitle" class="col-sm-3 control-label">新闻标题：</label>
-                                            <div class="col-sm-5">
-                                                <span class="form-control" id="oldername">例如：螃蟹的吃法</span>
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=1">
+                                                    <div class="card blue summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-glass fa-3x">&nbsp&nbsp&nbsp&nbsp食物饮品</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=2">
+                                                    <div class="card blue summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-inbox fa-3x">&nbsp&nbsp&nbsp&nbsp衣物服饰</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
+                                        <div class="form-group"></div>
                                         <div class="form-group">
-                                            <label for="newseditorid" class="col-sm-3 control-label">编辑者：</label>
-                                            <div class="col-sm-5">
-                                                <span class="form-control" id="oldername">例如：小张</span>
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=3">
+                                                    <div class="card green summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-book fa-3x">&nbsp&nbsp&nbsp&nbsp文学艺术</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=4">
+                                                    <div class="card green summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-cutlery fa-3x">&nbsp&nbsp&nbsp&nbsp生活用品</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
+                                        <div class="form-group"></div>
                                         <div class="form-group">
-                                            <label for="newstype" class="col-sm-3 control-label">新闻类型：</label>
-                                            <div class="col-sm-5">
-                                                 <span class="form-control" id="oldername">例如：聚焦饮食</span>
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=5">
+                                                    <div class="card yellow summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-binoculars fa-3x">&nbsp&nbsp&nbsp&nbsp娱乐器具</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=6">
+                                                    <div class="card yellow summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-soccer-ball-o fa-3x">&nbsp&nbsp&nbsp&nbsp运动器材</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
+                                        <div class="form-group"></div>
                                         <div class="form-group">
-                                            <label for="newsimg" class="col-sm-3 control-label">新闻缩略图片：</label>
-                                            <div class="col-sm-5">
-                                                <div>
-										             <img src="../../img/textheadphoto.jpg" id="olderheadurl">
-									            </div>
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=7">
+                                                    <div class="card BlueViolet summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-heart fa-3x">&nbsp&nbsp&nbsp&nbsp医药保健品</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
-                                        </div>  
-                                        <div class="form-group">
-                                            <label for="newsissueddate" class="col-sm-3 control-label">新闻发布日期：</label>
-                                            <div class="col-sm-5">
-                                                <span class="form-control" id="newsissueddate">例如”2017-10-10</span>
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=8">
+                                                    <div class="card blueViolet summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-inbox fa-3x">&nbsp&nbsp&nbsp&nbsp电子产品</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
+                                        <div class="form-group"></div>  
                                         <div class="form-group">
-                                            <label for="newsintro" class="col-sm-3 control-label">新闻简介：</label>
-                                            <div class="col-sm-5">
-                                                <textarea class="form-control" id="newsintro"
-                                                          style="height: 100px" name="newsintro">例如：简介</textarea>
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=9">
+                                                    <div class="card red summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-stethoscope fa-3x">&nbsp&nbsp&nbsp&nbsp医疗器材</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="productupondate" class="col-sm-3 control-label">内容：</label>
-                                            <div class="col-sm-5">
-                                               <textarea class="form-control" id="productupondate"
-											             style="height: 200px" name="productupondate">例如：内容</textarea>
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-3" >
+                                                <a href="../olderShop/productView.html?producttypenumber=10">
+                                                    <div class="card red summary-inline">
+                                                        <div class="card-body">
+                                                            <i class="icon fa fa-home fa-3x">&nbsp&nbsp&nbsp&nbsp家具器材</i>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -420,12 +473,7 @@
             <script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
             <!-- Javascript -->
             <script type="text/javascript" src="../../js/app.js"></script>
-            <!-- 文件上传 JS -->
-            <script src="../../lib/js/fileinput.js" type="text/javascript"></script>
-            <script src="../../lib/js/fileinput_locale_zh.js" type="text/javascript"></script>
-            <!--验证js文件-->
-            <script type="text/javascript" src="../../lib/js/bootstrapValidator.min.js"></script>
-            </script>
+            
 
 
 </body>

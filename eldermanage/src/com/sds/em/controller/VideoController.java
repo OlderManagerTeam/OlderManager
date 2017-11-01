@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Message;
-import com.sds.em.po.Olderbase;
 import com.sds.em.po.Video;
 import com.sds.em.service.VideoService;
 import com.sds.em.util.DateSimp;

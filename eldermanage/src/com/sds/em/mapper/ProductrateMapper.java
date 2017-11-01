@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductrateExample;
+import com.sds.em.pojo.ProductrateExtend;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,6 @@ public interface ProductrateMapper {
     int updateByPrimaryKeySelective(Productrate record);
 
     int updateByPrimaryKey(Productrate record);
+    
+    List<ProductrateExtend> getproductrate(int productid);
 }
