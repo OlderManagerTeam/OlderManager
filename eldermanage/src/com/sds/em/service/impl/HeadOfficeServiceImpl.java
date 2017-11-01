@@ -373,11 +373,48 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.sds.em.service.HeadOfficeService#getStaffcode(java.lang.String,
+	 * java.lang.String)
+	 */
 	@Override
-	public Message getStaffcodeCount(Staffbase staffbase) throws Exception {
-		int count=0;
-	    count=staffbaseMapper.getStaffcodeCount(staffbase).size();
-		return new Message(true, "返回成功", count);
+	public Message getStaffcode(String staffdepartmentid, String staffroleid) throws Exception {
+
+		String departmentid = null;
+		switch (staffdepartmentid.length()) {
+		case 1: {
+			departmentid = "0" + staffdepartmentid;
+			break;
+		}
+		}
+
+		String roleid = null;
+		switch (staffroleid.length()) {
+		case 1: {
+			roleid = "0" + staffroleid;
+			break;
+		}
+		}
+		Staffbase staffbase = new Staffbase();
+		staffbase.setStaffdepartmentid(Integer.parseInt(staffdepartmentid));
+		staffbase.setStaffroleid(Integer.parseInt(staffroleid));
+		int count = 0;
+		count = staffbaseMapper.getStaffcodeCount(staffbase).size();
+		String staffcode = null;
+		switch (count) {
+		case 1: {
+			staffcode = "00" + count;
+			break;
+		}
+		case 2: {
+			staffcode = "0" + count;
+			break;
+		}
+		}
+
+		return new Message(true, "返回成功", departmentid + roleid + staffcode);
 	}
 
 }

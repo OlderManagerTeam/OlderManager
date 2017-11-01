@@ -48,7 +48,7 @@ import com.sds.em.util.Md5;
 public class BrenchServiceImpl implements BrenchService {
 	@Autowired
 	LecturerecordMapper lecturerecordMapper;
-	
+
 	@Autowired
 	OlderbaseMapper oldersbaseMapper;
 
@@ -72,7 +72,6 @@ public class BrenchServiceImpl implements BrenchService {
 
 	@Autowired
 	ActionrecordMapper actionrecordMapper;
-	
 
 	@Override
 	public Message addElderInfo(Olderbase olderbase) throws Exception {
@@ -260,7 +259,7 @@ public class BrenchServiceImpl implements BrenchService {
 	@Override
 	public Message getLectureOlder(int lectureid) throws Exception {
 		try {
-			List<LectureRecordExtend> l=lecturerecordMapper.getlecturerecordinfo(lectureid);
+			List<LectureRecordExtend> l = lecturerecordMapper.getlecturerecordinfo(lectureid);
 			return new Message(true, "返回成功", l);
 		} catch (Exception e) {
 			return new Message(false, "数据库错误", null);
@@ -533,15 +532,13 @@ public class BrenchServiceImpl implements BrenchService {
 	}
 
 	@Override
-	public Message updateStatus(int lectureid, String lecturestatus) throws Exception {
+	public Message updateStatus(Lecture lecture) throws Exception {
 
 		try {
 			LectureExample lectureExample = new LectureExample();
 			com.sds.em.po.LectureExample.Criteria criteria = lectureExample.createCriteria();
-			criteria.andLectureidEqualTo(lectureid);
+			criteria.andLectureidEqualTo(lecture.getLectureid());
 			int flag = 0;
-			Lecture lecture = new Lecture();
-			lecture.setLecturestatus(lecturestatus);
 			flag = lectureMapper.updateByExampleSelective(lecture, lectureExample);
 
 			if (flag != 0) {
@@ -557,16 +554,31 @@ public class BrenchServiceImpl implements BrenchService {
 	}
 
 	@Override
-	public Message deletelecturejoin(int lectureid,int olderid) throws Exception {
+	public Message deletelecturejoin(int lectureid, int olderid) throws Exception {
 		try {
-			
-			int flag = 0;
-			flag = lectureMapper.deleteByPrimaryKey(lectureid);
-			if (flag != 0) {
-				return new Message(true, "删除成功", null);
-			} else {
-				return new Message(false, "数据库错误", null);
-			}
+			LecturerecordExample lecturerecordExample = new LecturerecordExample();
+			com.sds.em.po.LecturerecordExample.Criteria lCriteria = lecturerecordExample.createCriteria();
+			lCriteria.andLrecordlectureidEqualTo(lectureid);
+			lCriteria.andLrecordolderidEqualTo(olderid);
+			lecturerecordMapper.deleteByExample(lecturerecordExample);
+			return new Message(true, "删除成功", null);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message deleteactionjoin(int actionid, int olderid) {
+		try {
+			ActionrecordExample actionrecordExample = new ActionrecordExample();
+			com.sds.em.po.ActionrecordExample.Criteria lCriteria = actionrecordExample.createCriteria();
+			lCriteria.andArecordactionidEqualTo(actionid);
+			lCriteria.andArecordolderidEqualTo(olderid);
+			actionrecordMapper.deleteByExample(actionrecordExample);
+			return new Message(true, "删除成功", null);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

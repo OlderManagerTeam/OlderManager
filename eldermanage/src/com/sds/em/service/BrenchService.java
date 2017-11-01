@@ -74,12 +74,15 @@ public interface BrenchService {
 	public Message getLecture(int lectureid) throws Exception;
 
 	//// 修改讲座的状态
-	public Message updateStatus(int lectureid, String lecturestatus) throws Exception;
+	public Message updateStatus(Lecture lecture) throws Exception;
 
 	// 删除一条老人参加讲座信息
 	public Message deletelecturejoin(int lectureid,int olderid) throws Exception;
 
 	//查找本活动参加的老人信息
 	public Message getLectureOlder(int lectureid) throws Exception;
+	
+	// 删除一条老人参加活动信息
+	public Message deleteactionjoin(int actionid, int olderid);
 
 }

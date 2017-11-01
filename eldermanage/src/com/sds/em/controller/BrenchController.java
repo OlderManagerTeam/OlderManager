@@ -45,8 +45,8 @@ public class BrenchController {
 			String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
 
-		String pic_path = "E:\\develop\\upload\\temp\\pic\\olderPic\\";
-		String picUrl = "http://localhost:8080/pic/olderPic/";
+		String pic_path = "E:\\oldermanageresource\\olderimg\\";
+		String picUrl = "http://localhost:8080/olderimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
 		File dnf1 = new File(pic_path + newFileName);
@@ -81,22 +81,26 @@ public class BrenchController {
 			String olderpassword, String repassword, String oldertel, String olderaddress, String oldersinglestatus,
 			String olderide, String oldernation, MultipartFile olderheadurl) throws Exception {
 		// int olderbranchid=session.getAttribute("branchid");
-
 		Olderbase olderbase1 = (Olderbase) brenchService.getElder(oldertel).getData();
 		if (!olderheadurl.isEmpty()) {
-
-			String pic_path = "E:\\develop\\upload\\temp\\";
+			String pic_path = "E:\\oldermanageresource\\olderimg\\";
 			String i[] = olderbase1.getOlderheadurl().split("/");
 			File headurl = new File(pic_path + i[i.length - 1]);
-			olderheadurl.transferTo(headurl);
+			if(headurl.exists())
+				headurl.delete();
 		}
+		String pic_path = "E:\\oldermanageresource\\olderimg\\";
+		String picUrl = "http://localhost:8080/olderimg/";
+		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
+		File dnf1 = new File(pic_path + newFileName);
+		olderheadurl.transferTo(dnf1);
 		Olderbase olderbase = new Olderbase();
 		olderbase.setOlderid(olderbase1.getOlderid());
 		olderbase.setOlderaddress(olderaddress);
 		Date date = DateSimp.simp(olderbirthday);
 		olderbase.setOlderbirthday(date);
-
+		olderbase.setOlderheadurl(picUrl + newFileName);
 		olderbase.setOlderide(olderide);
 		olderbase.setOldername(oldername);
 		olderbase.setOldernation(oldernation);
@@ -306,11 +310,12 @@ public class BrenchController {
 		return brenchService.getLecture(lectureid);
 	}
 
-	// 修改讲座的状态
+	// 修改讲座信息
 	@RequestMapping(method = RequestMethod.POST, value = "lecture/updateinfo")
-	public @ResponseBody Message updateStatus(int lectureid, String lecturestatus) throws Exception {
+	public @ResponseBody Message updateStatus(Lecture lecture,String lecturePublishDate) throws Exception {
 		// int id = Integer.parseInt(lectureid);s
-		return brenchService.updateStatus(lectureid, lecturestatus);
+		//lecture.setLecturepublishdate(DateSimp.simp(lecturePublishDate));
+		return brenchService.updateStatus(lecture);
 	}
 
 /*	// 删除一条讲座信息(这个controller可能取消)
@@ -329,5 +334,11 @@ public class BrenchController {
 	@RequestMapping(method = RequestMethod.DELETE, value = "lecture/older")
 	public @ResponseBody Message deletelecturejoin(int lectureid,int olderid) throws Exception {
 		return brenchService.deletelecturejoin(lectureid,olderid);
+	}
+	
+	//取消一个老人的活动参与
+	@RequestMapping(method = RequestMethod.DELETE, value = "action/older")
+	public @ResponseBody Message deleteactionjoin(int actionid,int olderid) throws Exception {
+		return brenchService.deleteactionjoin(actionid,olderid);
 	}
 }
