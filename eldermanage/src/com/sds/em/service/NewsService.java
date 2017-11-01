@@ -11,7 +11,7 @@ public interface NewsService {
 	public Message publishNews(News news);
 
 	// 查看已发布新闻
-	public Message publishedNews(String newsType);
+	public Message publishedNews();
 
 	// 查看新闻详情
 	public Message newsDetail(int newsId);

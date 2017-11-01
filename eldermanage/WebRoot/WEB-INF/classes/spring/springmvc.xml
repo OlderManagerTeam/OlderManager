@@ -18,7 +18,7 @@
 		<property name="messageConverters">
 			<list>
 				<bean
-					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 				<bean
 					class="org.springframework.http.converter.StringHttpMessageConverter">
 					<property name="supportedMediaTypes">
@@ -37,7 +37,7 @@
 		<property name="defaultEncoding" value="UTF-8"></property>
 		<property name="maxInMemorySize" value="10240000"></property>
 		<property name="maxUploadSize">
-			<value>5242880</value>
+			<value>524288000</value>
 		</property>
 	</bean>
 	<!-- 文件上传 -->
