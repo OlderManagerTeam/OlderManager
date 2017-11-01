@@ -24,15 +24,15 @@ import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping("v1/common")
-public class imgContrller {
+public class NewsPicContrller {
 	@RequestMapping("/uploadImg")
 	
 	public @ResponseBody UpLoadFile uploadImg(MultipartFile file, HttpServletRequest request) {
 		UpLoadFile upLoadFile = new UpLoadFile();
 
 		List<String> list = new ArrayList<String>();
-		String pic_path = "E:\\develop\\upload\\temp\\pic\\newsPic\\";
-		String picUrl = "http://localhost:8080/pic/";
+		String pic_path = "E:\\oldermanageresource\\newspic\\";
+		String picUrl = "http://localhost:8080/newspic/";
 		// String path =
 		// request.getSession().getServletContext().getRealPath(realPath);
 
@@ -40,7 +40,7 @@ public class imgContrller {
 		String pix = name.substring(name.lastIndexOf("."));
 		String fileName = new Date().getTime() + pix;
 
-		list.add(pic_path + fileName);
+		list.add(picUrl + fileName);
 		upLoadFile.setData(list);
 		File file1 = new File(pic_path + fileName);
 		if (!file1.exists()) {
@@ -58,18 +58,9 @@ public class imgContrller {
 		}
 
 		//String data = "{data:['" + list + "']}";
-		JSONObject jsonObject=JSONObject.fromObject(upLoadFile);
+		//JSONObject jsonObject=JSONObject.fromObject(upLoadFile);
 		
-		System.out.println("AAAAAAAAAAAAAAAA"+jsonObject.toString());
+		//System.out.println("AAAAAAAAAAAAAAAA"+jsonObject.toString());
 		return upLoadFile;
 	}
-
-	// 老人评价-未测试
-	@RequestMapping(method = RequestMethod.POST, value = "test")
-	public @ResponseBody String test(String text) throws Exception {
-		
-		String message = "{\"data\":[\"e:\\a\\b\\c.txt\"],\"error\":0}";
-		return message;
-	}
-
 }

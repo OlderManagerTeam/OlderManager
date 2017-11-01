@@ -2,7 +2,7 @@ package com.sds.em.pojo;
 
 import com.sds.em.po.News;
 
-public class NewsCustom {
+public class NewsEditerExtend {
 
 	private News news;
 
