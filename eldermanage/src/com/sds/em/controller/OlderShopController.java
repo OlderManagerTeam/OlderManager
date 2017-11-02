@@ -29,35 +29,6 @@ public class OlderShopController {
 	@Autowired
 	OlderShopService olderShopService;
 
-	/*
-	 * //wuwenbo,添加商品
-	 * 
-	 * @RequestMapping(method = RequestMethod.POST, value = "product/info")
-	 * public @ResponseBody Message addProduct(String productname, String
-	 * productprice, String producttypenumber, String productinfo, MultipartFile
-	 * productimg, String productweight, String productupondate, String
-	 * productdiscountprice) throws Exception {
-	 * 
-	 * String pic_path = "E:\\develop\\upload\\temp\\pic\\productPic\\"; String
-	 * picUrl = "http://localhost:8080/pic/productPic/"; String newFileName =
-	 * UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
-	 * 
-	 * File dnf1 = new File(pic_path + newFileName);
-	 * productimg.transferTo(dnf1);
-	 * 
-	 * Date date = DateSimp.simp(productupondate);
-	 * 
-	 * Product product = new Product(); product.setProductimg(picUrl +
-	 * newFileName); product.setProductupondate(date);
-	 * 
-	 * product.setProductdiscountprice(Float.valueOf(productdiscountprice));
-	 * product.setProductinfo(productinfo); product.setProductname(productname);
-	 * product.setProductprice(Float.valueOf(productprice));
-	 * product.setProductdiscountprice(Float.valueOf(productdiscountprice));
-	 * product.setProducttypenumber(Integer.valueOf(producttypenumber));
-	 * product.setProductweight(Float.valueOf(productweight)); return
-	 * olderShopService.addProduct(product); }
-	 */
 	// wuwenbo,按类别查看商品
 	@RequestMapping(method = RequestMethod.GET, value = "productlist")
 	public @ResponseBody Message viewproductlist(int producttypenumber) throws Exception {
@@ -87,13 +58,75 @@ public class OlderShopController {
 			File productimg = new File(pic_path + newFileName);
 			productImg.transferTo(productimg);
 		}
-		product.setProductimg(picUrl+pic_path);
+		product.setProductimg(picUrl+newFileName);
 		Date date = new Date();
 		if(!productUpondate.isEmpty()){
 			date = DateSimp.simp(productUpondate);
 		}
 		product.setProductupondate(date);
 		return olderShopService.product(product);
+	}
+	
+	// wuwenbo,修改商品信息
+	@RequestMapping(method = RequestMethod.POST, value = "product/infoupdate")
+	public @ResponseBody Message alterproduct(Product product, MultipartFile productImg, String productUpondate)
+			throws Exception {
+		String pic_path = "E:\\oldermanageresource\\productimg\\";
+		String picUrl = "http://localhost:8080/productimg/";
+		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+		Product productold=(Product) olderShopService.getproductinfo(product.getProductid()).getData();
+		String[] productoldsplit=productold.getProductimg().split("/");
+		String productoldname= productoldsplit[productoldsplit.length-1];
+		
+		if (!productImg.isEmpty()) {
+			File oldproductimg=new File(pic_path+productoldname);
+			if(oldproductimg.exists())
+				oldproductimg.delete();
+			File productimg = new File(pic_path + newFileName);
+			productImg.transferTo(productimg);
+			product.setProductimg(picUrl+newFileName);
+		}
+		Date date = new Date();
+		if(!productUpondate.isEmpty()){
+			date = DateSimp.simp(productUpondate);
+		}
+		product.setProductupondate(date);
+		return olderShopService.productalter(product);
+	}
+	
+	// wuwenbo,删除商品信息
+	@RequestMapping(method = RequestMethod.DELETE, value = "product/info")
+	public @ResponseBody Message deleteproduct(int productid){
+		return olderShopService.productdelete(productid);
+	}
 
+	//wuwenbo,查看订单列表
+	@RequestMapping(method = RequestMethod.GET, value = "orders")
+	public @ResponseBody Message getorders(){
+		return olderShopService.getorders();
+	}
+	
+	//wuwenbo,查看订单评价列表
+	@RequestMapping(method = RequestMethod.GET, value = "orders/rate")
+	public @ResponseBody Message getordersrate(int ordersid){
+		return olderShopService.getordersrate(ordersid);
+	}
+	
+	//wuwenbo,删除订单
+	@RequestMapping(method = RequestMethod.DELETE, value = "order")
+	public @ResponseBody Message deleteorder(int ordersid){
+		return olderShopService.deleteorder(ordersid);
+	}
+	
+	//wuwenbo,确认订单
+	@RequestMapping(method = RequestMethod.POST, value = "order")
+	public @ResponseBody Message orderok(int ordersid){
+		return olderShopService.orderok(ordersid);
+	}
+	
+	//wuwenbo,取消订单
+	@RequestMapping(method = RequestMethod.POST, value = "ordercancel")
+	public @ResponseBody Message ordercancel(int ordersid){
+		return olderShopService.ordercancel(ordersid);
 	}
 }
