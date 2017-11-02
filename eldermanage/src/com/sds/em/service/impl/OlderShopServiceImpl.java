@@ -68,7 +68,7 @@ public class OlderShopServiceImpl implements OlderShopService {
 	public Message getproductrate(int productid) {
 		try {
 			productrateCriteria = productrateExample.createCriteria();
-			productrateCriteria.andRateproductidEqualTo(productid);
+		//	productrateCriteria.andRateproductidEqualTo(productid);
 			List<ProductrateExtend> productratelist = productrateMapper.getproductrate(productid);
 			return new Message(true, "返回成功", productratelist);
 		} catch (Exception e) {
