@@ -22,7 +22,9 @@
 	<bean id="VideoService" class="com.sds.em.service.impl.VideoServiceImpl" />
 	<bean id="PersonalCenterService" class="com.sds.em.service.impl.PersonalCenterServiceImpl" />
 	<bean id="OlderShopService" class="com.sds.em.service.impl.OlderShopServiceImpl" />
-	<!-- <bean id="HealthyNewsFrontService" class="com.sds.em.service.impl.HealthyNewsFrontImpl"></bean> -->
+    <bean id="ShopViewFrontService" class="com.sds.em.service.impl.ShopViewFrontServiceImpl" />
+	
+    <!-- <bean id="HealthyNewsFrontService" class="com.sds.em.service.impl.HealthyNewsFrontImpl"/> -->
 	
 	
 </beans>
