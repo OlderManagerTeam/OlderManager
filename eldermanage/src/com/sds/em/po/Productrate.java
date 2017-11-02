@@ -5,11 +5,11 @@ public class Productrate {
 
     private Integer rateolderid;
 
-    private Integer rateproductid;
+    private Integer rateorderid;
 
     private Integer ratestar;
 
-    private Integer ratebrowse;
+    private String ratecontent;
 
     public Integer getRateid() {
         return rateid;
@@ -27,12 +27,12 @@ public class Productrate {
         this.rateolderid = rateolderid;
     }
 
-    public Integer getRateproductid() {
-        return rateproductid;
+    public Integer getRateorderid() {
+        return rateorderid;
     }
 
-    public void setRateproductid(Integer rateproductid) {
-        this.rateproductid = rateproductid;
+    public void setRateorderid(Integer rateorderid) {
+        this.rateorderid = rateorderid;
     }
 
     public Integer getRatestar() {
@@ -43,11 +43,11 @@ public class Productrate {
         this.ratestar = ratestar;
     }
 
-    public Integer getRatebrowse() {
-        return ratebrowse;
+    public String getRatecontent() {
+        return ratecontent;
     }
 
-    public void setRatebrowse(Integer ratebrowse) {
-        this.ratebrowse = ratebrowse;
+    public void setRatecontent(String ratecontent) {
+        this.ratecontent = ratecontent == null ? null : ratecontent.trim();
     }
 }

@@ -701,6 +701,66 @@ public class ProductExample {
             addCriterion("productDiscountPrice not between", value1, value2, "productdiscountprice");
             return (Criteria) this;
         }
+
+        public Criteria andTypetwotypeidIsNull() {
+            addCriterion("typeTwoTypeId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidIsNotNull() {
+            addCriterion("typeTwoTypeId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidEqualTo(Integer value) {
+            addCriterion("typeTwoTypeId =", value, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidNotEqualTo(Integer value) {
+            addCriterion("typeTwoTypeId <>", value, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidGreaterThan(Integer value) {
+            addCriterion("typeTwoTypeId >", value, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("typeTwoTypeId >=", value, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidLessThan(Integer value) {
+            addCriterion("typeTwoTypeId <", value, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidLessThanOrEqualTo(Integer value) {
+            addCriterion("typeTwoTypeId <=", value, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidIn(List<Integer> values) {
+            addCriterion("typeTwoTypeId in", values, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidNotIn(List<Integer> values) {
+            addCriterion("typeTwoTypeId not in", values, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidBetween(Integer value1, Integer value2) {
+            addCriterion("typeTwoTypeId between", value1, value2, "typetwotypeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypetwotypeidNotBetween(Integer value1, Integer value2) {
+            addCriterion("typeTwoTypeId not between", value1, value2, "typetwotypeid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

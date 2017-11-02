@@ -21,6 +21,8 @@ public class Product {
 
     private Float productdiscountprice;
 
+    private Integer typetwotypeid;
+
     public Integer getProductid() {
         return productid;
     }
@@ -91,5 +93,13 @@ public class Product {
 
     public void setProductdiscountprice(Float productdiscountprice) {
         this.productdiscountprice = productdiscountprice;
+    }
+
+    public Integer getTypetwotypeid() {
+        return typetwotypeid;
+    }
+
+    public void setTypetwotypeid(Integer typetwotypeid) {
+        this.typetwotypeid = typetwotypeid;
     }
 }

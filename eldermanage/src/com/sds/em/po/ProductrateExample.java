@@ -224,63 +224,63 @@ public class ProductrateExample {
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidIsNull() {
-            addCriterion("rateProductId is null");
+        public Criteria andRateorderidIsNull() {
+            addCriterion("rateOrderId is null");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidIsNotNull() {
-            addCriterion("rateProductId is not null");
+        public Criteria andRateorderidIsNotNull() {
+            addCriterion("rateOrderId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidEqualTo(Integer value) {
-            addCriterion("rateProductId =", value, "rateproductid");
+        public Criteria andRateorderidEqualTo(Integer value) {
+            addCriterion("rateOrderId =", value, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidNotEqualTo(Integer value) {
-            addCriterion("rateProductId <>", value, "rateproductid");
+        public Criteria andRateorderidNotEqualTo(Integer value) {
+            addCriterion("rateOrderId <>", value, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidGreaterThan(Integer value) {
-            addCriterion("rateProductId >", value, "rateproductid");
+        public Criteria andRateorderidGreaterThan(Integer value) {
+            addCriterion("rateOrderId >", value, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("rateProductId >=", value, "rateproductid");
+        public Criteria andRateorderidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rateOrderId >=", value, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidLessThan(Integer value) {
-            addCriterion("rateProductId <", value, "rateproductid");
+        public Criteria andRateorderidLessThan(Integer value) {
+            addCriterion("rateOrderId <", value, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidLessThanOrEqualTo(Integer value) {
-            addCriterion("rateProductId <=", value, "rateproductid");
+        public Criteria andRateorderidLessThanOrEqualTo(Integer value) {
+            addCriterion("rateOrderId <=", value, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidIn(List<Integer> values) {
-            addCriterion("rateProductId in", values, "rateproductid");
+        public Criteria andRateorderidIn(List<Integer> values) {
+            addCriterion("rateOrderId in", values, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidNotIn(List<Integer> values) {
-            addCriterion("rateProductId not in", values, "rateproductid");
+        public Criteria andRateorderidNotIn(List<Integer> values) {
+            addCriterion("rateOrderId not in", values, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidBetween(Integer value1, Integer value2) {
-            addCriterion("rateProductId between", value1, value2, "rateproductid");
+        public Criteria andRateorderidBetween(Integer value1, Integer value2) {
+            addCriterion("rateOrderId between", value1, value2, "rateorderid");
             return (Criteria) this;
         }
 
-        public Criteria andRateproductidNotBetween(Integer value1, Integer value2) {
-            addCriterion("rateProductId not between", value1, value2, "rateproductid");
+        public Criteria andRateorderidNotBetween(Integer value1, Integer value2) {
+            addCriterion("rateOrderId not between", value1, value2, "rateorderid");
             return (Criteria) this;
         }
 
@@ -344,63 +344,73 @@ public class ProductrateExample {
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseIsNull() {
-            addCriterion("rateBrowse is null");
+        public Criteria andRatecontentIsNull() {
+            addCriterion("ratecontent is null");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseIsNotNull() {
-            addCriterion("rateBrowse is not null");
+        public Criteria andRatecontentIsNotNull() {
+            addCriterion("ratecontent is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseEqualTo(Integer value) {
-            addCriterion("rateBrowse =", value, "ratebrowse");
+        public Criteria andRatecontentEqualTo(String value) {
+            addCriterion("ratecontent =", value, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseNotEqualTo(Integer value) {
-            addCriterion("rateBrowse <>", value, "ratebrowse");
+        public Criteria andRatecontentNotEqualTo(String value) {
+            addCriterion("ratecontent <>", value, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseGreaterThan(Integer value) {
-            addCriterion("rateBrowse >", value, "ratebrowse");
+        public Criteria andRatecontentGreaterThan(String value) {
+            addCriterion("ratecontent >", value, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseGreaterThanOrEqualTo(Integer value) {
-            addCriterion("rateBrowse >=", value, "ratebrowse");
+        public Criteria andRatecontentGreaterThanOrEqualTo(String value) {
+            addCriterion("ratecontent >=", value, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseLessThan(Integer value) {
-            addCriterion("rateBrowse <", value, "ratebrowse");
+        public Criteria andRatecontentLessThan(String value) {
+            addCriterion("ratecontent <", value, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseLessThanOrEqualTo(Integer value) {
-            addCriterion("rateBrowse <=", value, "ratebrowse");
+        public Criteria andRatecontentLessThanOrEqualTo(String value) {
+            addCriterion("ratecontent <=", value, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseIn(List<Integer> values) {
-            addCriterion("rateBrowse in", values, "ratebrowse");
+        public Criteria andRatecontentLike(String value) {
+            addCriterion("ratecontent like", value, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseNotIn(List<Integer> values) {
-            addCriterion("rateBrowse not in", values, "ratebrowse");
+        public Criteria andRatecontentNotLike(String value) {
+            addCriterion("ratecontent not like", value, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseBetween(Integer value1, Integer value2) {
-            addCriterion("rateBrowse between", value1, value2, "ratebrowse");
+        public Criteria andRatecontentIn(List<String> values) {
+            addCriterion("ratecontent in", values, "ratecontent");
             return (Criteria) this;
         }
 
-        public Criteria andRatebrowseNotBetween(Integer value1, Integer value2) {
-            addCriterion("rateBrowse not between", value1, value2, "ratebrowse");
+        public Criteria andRatecontentNotIn(List<String> values) {
+            addCriterion("ratecontent not in", values, "ratecontent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatecontentBetween(String value1, String value2) {
+            addCriterion("ratecontent between", value1, value2, "ratecontent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatecontentNotBetween(String value1, String value2) {
+            addCriterion("ratecontent not between", value1, value2, "ratecontent");
             return (Criteria) this;
         }
     }
