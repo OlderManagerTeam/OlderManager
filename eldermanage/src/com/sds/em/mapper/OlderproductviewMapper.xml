@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.ProductrateMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Productrate" >
-    <id column="rateId" property="rateid" jdbcType="INTEGER" />
-    <result column="rateOlderId" property="rateolderid" jdbcType="INTEGER" />
-    <result column="rateProductId" property="rateproductid" jdbcType="INTEGER" />
-    <result column="rateStar" property="ratestar" jdbcType="INTEGER" />
-    <result column="rateBrowse" property="ratebrowse" jdbcType="INTEGER" />
+<mapper namespace="com.sds.em.mapper.OlderproductviewMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Olderproductview" >
+    <id column="productviewID" property="productviewid" jdbcType="INTEGER" />
+    <result column="pviewproductID" property="pviewproductid" jdbcType="INTEGER" />
+    <result column="pviewolderid" property="pviewolderid" jdbcType="INTEGER" />
+    <result column="pviewocount" property="pviewocount" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    rateId, rateOlderId, rateProductId, rateStar, rateBrowse
+    productviewID, pviewproductID, pviewolderid, pviewocount
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ProductrateExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.OlderproductviewExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from productrate
+    from olderproductview
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from productrate
-    where rateId = #{rateid,jdbcType=INTEGER}
+    from olderproductview
+    where productviewID = #{productviewid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from productrate
-    where rateId = #{rateid,jdbcType=INTEGER}
+    delete from olderproductview
+    where productviewID = #{productviewid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.ProductrateExample" >
-    delete from productrate
+  <delete id="deleteByExample" parameterType="com.sds.em.po.OlderproductviewExample" >
+    delete from olderproductview
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Productrate" >
-    insert into productrate (rateId, rateOlderId, rateProductId, 
-      rateStar, rateBrowse)
-    values (#{rateid,jdbcType=INTEGER}, #{rateolderid,jdbcType=INTEGER}, #{rateproductid,jdbcType=INTEGER}, 
-      #{ratestar,jdbcType=INTEGER}, #{ratebrowse,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.sds.em.po.Olderproductview" >
+    insert into olderproductview (productviewID, pviewproductID, pviewolderid, 
+      pviewocount)
+    values (#{productviewid,jdbcType=INTEGER}, #{pviewproductid,jdbcType=INTEGER}, #{pviewolderid,jdbcType=INTEGER}, 
+      #{pviewocount,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Productrate" >
-    insert into productrate
+  <insert id="insertSelective" parameterType="com.sds.em.po.Olderproductview" >
+    insert into olderproductview
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="rateid != null" >
-        rateId,
+      <if test="productviewid != null" >
+        productviewID,
       </if>
-      <if test="rateolderid != null" >
-        rateOlderId,
+      <if test="pviewproductid != null" >
+        pviewproductID,
       </if>
-      <if test="rateproductid != null" >
-        rateProductId,
+      <if test="pviewolderid != null" >
+        pviewolderid,
       </if>
-      <if test="ratestar != null" >
-        rateStar,
-      </if>
-      <if test="ratebrowse != null" >
-        rateBrowse,
+      <if test="pviewocount != null" >
+        pviewocount,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="rateid != null" >
-        #{rateid,jdbcType=INTEGER},
+      <if test="productviewid != null" >
+        #{productviewid,jdbcType=INTEGER},
       </if>
-      <if test="rateolderid != null" >
-        #{rateolderid,jdbcType=INTEGER},
+      <if test="pviewproductid != null" >
+        #{pviewproductid,jdbcType=INTEGER},
       </if>
-      <if test="rateproductid != null" >
-        #{rateproductid,jdbcType=INTEGER},
+      <if test="pviewolderid != null" >
+        #{pviewolderid,jdbcType=INTEGER},
       </if>
-      <if test="ratestar != null" >
-        #{ratestar,jdbcType=INTEGER},
-      </if>
-      <if test="ratebrowse != null" >
-        #{ratebrowse,jdbcType=INTEGER},
+      <if test="pviewocount != null" >
+        #{pviewocount,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.ProductrateExample" resultType="java.lang.Integer" >
-    select count(*) from productrate
+  <select id="countByExample" parameterType="com.sds.em.po.OlderproductviewExample" resultType="java.lang.Integer" >
+    select count(*) from olderproductview
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update productrate
+    update olderproductview
     <set >
-      <if test="record.rateid != null" >
-        rateId = #{record.rateid,jdbcType=INTEGER},
+      <if test="record.productviewid != null" >
+        productviewID = #{record.productviewid,jdbcType=INTEGER},
       </if>
-      <if test="record.rateolderid != null" >
-        rateOlderId = #{record.rateolderid,jdbcType=INTEGER},
+      <if test="record.pviewproductid != null" >
+        pviewproductID = #{record.pviewproductid,jdbcType=INTEGER},
       </if>
-      <if test="record.rateproductid != null" >
-        rateProductId = #{record.rateproductid,jdbcType=INTEGER},
+      <if test="record.pviewolderid != null" >
+        pviewolderid = #{record.pviewolderid,jdbcType=INTEGER},
       </if>
-      <if test="record.ratestar != null" >
-        rateStar = #{record.ratestar,jdbcType=INTEGER},
-      </if>
-      <if test="record.ratebrowse != null" >
-        rateBrowse = #{record.ratebrowse,jdbcType=INTEGER},
+      <if test="record.pviewocount != null" >
+        pviewocount = #{record.pviewocount,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -172,40 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update productrate
-    set rateId = #{record.rateid,jdbcType=INTEGER},
-      rateOlderId = #{record.rateolderid,jdbcType=INTEGER},
-      rateProductId = #{record.rateproductid,jdbcType=INTEGER},
-      rateStar = #{record.ratestar,jdbcType=INTEGER},
-      rateBrowse = #{record.ratebrowse,jdbcType=INTEGER}
+    update olderproductview
+    set productviewID = #{record.productviewid,jdbcType=INTEGER},
+      pviewproductID = #{record.pviewproductid,jdbcType=INTEGER},
+      pviewolderid = #{record.pviewolderid,jdbcType=INTEGER},
+      pviewocount = #{record.pviewocount,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Productrate" >
-    update productrate
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Olderproductview" >
+    update olderproductview
     <set >
-      <if test="rateolderid != null" >
-        rateOlderId = #{rateolderid,jdbcType=INTEGER},
+      <if test="pviewproductid != null" >
+        pviewproductID = #{pviewproductid,jdbcType=INTEGER},
       </if>
-      <if test="rateproductid != null" >
-        rateProductId = #{rateproductid,jdbcType=INTEGER},
+      <if test="pviewolderid != null" >
+        pviewolderid = #{pviewolderid,jdbcType=INTEGER},
       </if>
-      <if test="ratestar != null" >
-        rateStar = #{ratestar,jdbcType=INTEGER},
-      </if>
-      <if test="ratebrowse != null" >
-        rateBrowse = #{ratebrowse,jdbcType=INTEGER},
+      <if test="pviewocount != null" >
+        pviewocount = #{pviewocount,jdbcType=INTEGER},
       </if>
     </set>
-    where rateId = #{rateid,jdbcType=INTEGER}
+    where productviewID = #{productviewid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productrate" >
-    update productrate
-    set rateOlderId = #{rateolderid,jdbcType=INTEGER},
-      rateProductId = #{rateproductid,jdbcType=INTEGER},
-      rateStar = #{ratestar,jdbcType=INTEGER},
-      rateBrowse = #{ratebrowse,jdbcType=INTEGER}
-    where rateId = #{rateid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Olderproductview" >
+    update olderproductview
+    set pviewproductID = #{pviewproductid,jdbcType=INTEGER},
+      pviewolderid = #{pviewolderid,jdbcType=INTEGER},
+      pviewocount = #{pviewocount,jdbcType=INTEGER}
+    where productviewID = #{productviewid,jdbcType=INTEGER}
   </update>
 </mapper>
