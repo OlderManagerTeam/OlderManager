@@ -191,8 +191,7 @@
 							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderView"> <span
 					class="icon  glyphicon glyphicon-user"></span><span class="title">分店管理</span>
@@ -205,8 +204,7 @@
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEducation"> <span
 					class="icon glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
@@ -217,11 +215,11 @@
 							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderShop"> <span
-					class="icon glyphicon glyphicon-shopping-cart"></span><span class="title">电子商务</span>
+					class="icon glyphicon glyphicon-shopping-cart"></span><span
+					class="title">电子商务</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-olderShop" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -232,8 +230,7 @@
 							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<!-- 下拉列表-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#component-example"> <span
@@ -307,8 +304,10 @@
 										<th>购买人</th>
 										<th>订单生成日期</th>
 										<th>订单情况</th>
+										<th>订单操作</th>
 										<th>查看订单详细</th>
 										<th>订单总价</th>
+										<th>取消</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -317,27 +316,13 @@
 										<th>购买人</th>
 										<th>订单生成日期</th>
 										<th>订单情况</th>
+										<th>订单操作</th>
 										<th>查看订单详细</th>
 										<th>订单总价</th>
+										<th>取消</th>
 									</tr>
 								</tfoot>
 								<tbody id="orderList">
-									<tr>
-									    <td>001</td> 
-									    <td>药老</td>
-									    <td>2017-10-10</td>
-									    <td>送货中</td>
-									    <td><a class="btn btn-primary btn-xs" href="../olderShop/orderList.html" role="button">订单详细</a></td>
-									    <td>998.10</td>
-									</tr>
-									<tr>
-									    <td>orderId</td> 
-									    <td>orderOlderId</td>
-									    <td>orderDate</td>
-									    <td>orderStatus</td>
-									    <td><a class="btn btn-primary btn-xs" href="../olderShop/orderList.html" role="button">订单详细</a></td>
-									    <td>orderTotal</td>
-									</tr>  
 								</tbody>
 							</table>
 						</div>
@@ -374,10 +359,127 @@
 		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
 		<script type="text/javascript" src="../../js/app.js"></script>
 		<!-- Javascript -->
-		
 
 
+
+		<script type="text/javascript">
+			$(function() {
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "http://localhost:8080/eldermanage/v1/oldershop/orders",
+					data : null
+				}).then(
+					function(result) {
+						orderItem = result.data;
+						for (var i = orderItem.length - 1; i >= 0; i--) {
+							var _date = orderItem[i].orderdate;
+							var date = new Date(_date);
+							if (orderItem[i].orderstatus == "送货中") {
+								var oTr = `<tr>
+																									<td>${orderItem[i].orderid}</td>
+																									<td>${orderItem[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${orderItem[i].oldertel}">详细</a></td>
+																									<td>${date.toLocaleDateString()}${date.toLocaleTimeString()}</td>
+																									<td>${orderItem[i].orderstatus}</td>
+																									<td> <a class="btn btn-primary btn-xs btn-ok" role="button" data-id="${orderItem[i].orderid}">确认到货</a></td>
+																									<td>${orderItem[i].ordertotal}</td>
+																									<td>${orderItem[i].ordertotal}元</td>
+																									<td><a class="btn btn-primary btn-xs btn-cancel" role="button" data-id="${orderItem[i].orderid}">取消</a> </td>
+																								</tr>
+																								`;
+								$($(oTr)).appendTo('#orderList');
+							} else if (orderItem[i].orderstatus == "已成交") {
+								var oTr = `<tr>
+																									<td>${orderItem[i].orderid}</td>
+																									<td>${orderItem[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${orderItem[i].oldertel}">详细</a></td>
+																									<td>${date.toLocaleDateString()}${date.toLocaleTimeString()}</td>
+																									<td>${orderItem[i].orderstatus}</td>
+																									<td> <a class="btn btn-primary btn-xs btn-ok" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/ordersRate.html?orderid=${orderItem[i].orderid}">查看评价</a></td>
+																									<td>${orderItem[i].ordertotal}</td>
+																									<td>${orderItem[i].ordertotal}元</td>
+																									<td>不能取消</td>
+																								</tr>
+																								`;
+								$($(oTr)).appendTo('#orderList');
+							} else if (orderItem[i].orderstatus == "已取消") {
+								var oTr = `<tr>
+																									<td>${orderItem[i].orderid}</td>
+																									<td>${orderItem[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${orderItem[i].oldertel}">详细</a></td>
+																									<td>${date.toLocaleDateString()}${date.toLocaleTimeString()}</td>
+																									<td>${orderItem[i].orderstatus}</td>
+																									<td> 无操作</td>
+																									<td>${orderItem[i].ordertotal}</td>
+																									<td>${orderItem[i].ordertotal}元</td>
+																									<td><a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${orderItem[i].orderid}">删除</a></td>
+																								</tr>
+																								`;
+								$($(oTr)).appendTo('#orderList');
+							}
+						}
+						$('.datatable').DataTable({
+							"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+						});
+					},
+					function() {
+						alert('数据库错误')
+					}
+				)
+					.done(function() {
+						$("#orderList .btn-delete").on('click', function(event) {
+							const r = confirm("您确定要删除这条订单么?");
+							if (r == true) {
+								const e = event || window.event;
+								e.preventDefault();
+								$.ajax({
+									type : 'delete',
+									contentType : 'application/json',
+									url : "http://localhost:8080/eldermanage/v1/oldershop/order?ordersid=" + $(this).attr('data-id'),
+									data : null,
+									success : function() {
+										window.location.reload();
+									}
+								})
 		
+							} else return false;
+						});
+						$("#orderList .btn-ok").on('click', function(event) {
+							const r = confirm("您确定订单已成交吗?");
+							if (r == true) {
+								const e = event || window.event;
+								e.preventDefault();
+								$.ajax({
+									type : 'post',
+									contentType : 'application/json',
+									url : "http://localhost:8080/eldermanage/v1/oldershop/order?ordersid=" + $(this).attr('data-id'),
+									data : null,
+									success : function() {
+										window.location.reload();
+									}
+								})
+		
+							} else return false;
+						});
+						$("#orderList .btn-cancel").on('click', function(event) {
+							const r = confirm("您确定要取消这条订单么?");
+							if (r == true) {
+								const e = event || window.event;
+								e.preventDefault();
+								$.ajax({
+									type : 'post',
+									contentType : 'application/json',
+									url : "http://localhost:8080/eldermanage/v1/oldershop/ordercancel?ordersid=" + $(this).attr('data-id'),
+									data : null,
+									success : function() {
+										window.location.reload();
+									}
+								})
+		
+							} else return false;
+						});
+					}
+				)
+			})
+		</script>
 </body>
 
 </html>

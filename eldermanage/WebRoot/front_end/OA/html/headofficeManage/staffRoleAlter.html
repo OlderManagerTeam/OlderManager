@@ -571,7 +571,7 @@
 				data:"staffdepartmentid="+$('#departmentid').val()+"&staffroleid="+$('#roleid').val(),
 				success:function(result){
 					// alert(result.data)
-					$("#staffcode").val($('#departmentid').val()+$('#roleid').val()+result.data);
+					$("#staffcode").val(result.data);
 				},
 				error:function(){
 					alert('数据库错误')
