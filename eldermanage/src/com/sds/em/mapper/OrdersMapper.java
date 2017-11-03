@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Orders;
 import com.sds.em.po.OrdersExample;
+import com.sds.em.pojo.OrdersExtend;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,6 @@ public interface OrdersMapper {
     int updateByPrimaryKeySelective(Orders record);
 
     int updateByPrimaryKey(Orders record);
+
+	List<OrdersExtend> getorders();
 }

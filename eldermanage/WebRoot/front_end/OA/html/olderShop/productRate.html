@@ -297,7 +297,7 @@
 							<div class="card-title">
 								<div class="title">
 									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productView.html" role="button" id="return">返回商品列表</a>
+										href="../olderShop/productView.html?producttypenumber=1" role="button" id="return">返回商品列表</a>
 								</div>
 							</div>
 						</div>
@@ -310,7 +310,7 @@
 										<th>评价者</th>
 										<th>商品名字</th>
 										<th>评价等级</th>
-										<th>浏览商品次数</th>
+										<th>评价内容</th>
 									</tr>
 								</thead>
 								<tfoot>
@@ -319,11 +319,11 @@
 										<th>评价者</th>
 										<th>商品名字</th>
 										<th>评价等级</th>
-										<th>浏览商品次数</th>
+										<th>评价内容</th>
 									</tr>
 								</tfoot>
 								<tbody id="ratelist">
-									
+
 								</tbody>
 							</table>
 							<div></div>
@@ -431,16 +431,17 @@
 			})
 				.then(function(result) {
 					var productrate = result.data;
-					document.getElementById("return").href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber="+productrate[0].producttypenumber;
+					if (productrate[0].producttypenumber != null)
+						document.getElementById("return").href = "http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + productrate[0].producttypenumber;
 					for (var i = productrate.length - 1; i >= 0; i--) {
 						var oTr = `<tr>
-										<td>${i + 1}</td>
-										<td>${productrate[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${productrate[0].oldertel}">详细</a></td>
-										<td>${productrate[i].productname}</td>
-										<td>${productrate[i].ratestar}星</td>
-										<td>${productrate[i].ratebrowse}</td>
-									</tr>
-							`;
+											<td>${i + 1}</td>
+											<td>${productrate[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${productrate[0].oldertel}">详细</a></td>
+											<td>${productrate[i].productname}</td>
+											<td>${productrate[i].ratestar}星</td>
+											<td>${productrate[i].ratecontent}</td>
+										</tr>
+								`;
 						$($(oTr)).appendTo('#ratelist');
 	
 					}
