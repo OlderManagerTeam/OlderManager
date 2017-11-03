@@ -239,4 +239,21 @@
 		INNER JOIN olderbase on olderbase.olderId=pr.rateOlderId
 		where o.orderId=#{value}
 	</select>
+	
+	<!-- lu -->
+
+	<select id="getProductRateInfo" parameterType="int"
+		resultType="com.sds.em.po.Productrate">
+		select productrate.* from product
+		INNER JOIN orderlist ON
+		product.productId=orderlist.orderProductId
+		INNER JOIN orders ON
+		orders.orderId=orderlist.orderListFId
+		INNER JOIN productrate ON
+		productrate.rateOrderId=orders.orderId
+		INNER JOIN olderbase ON
+		productrate.rateOlderId=olderbase.olderId
+		WHERE
+		product.productId=#{value}
+	</select> 
 </mapper>

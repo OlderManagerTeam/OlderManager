@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Olderproductview;
 import com.sds.em.po.OlderproductviewExample;
+import com.sds.em.po.Product;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,7 @@ public interface OlderproductviewMapper {
     int updateByPrimaryKeySelective(Olderproductview record);
 
     int updateByPrimaryKey(Olderproductview record);
+    
+	// 老人以登录时，根据老人浏览表 降序排序显示
+    public List<Product> repeatedOlderView(int olderid);
 }
