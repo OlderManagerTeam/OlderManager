@@ -12,8 +12,6 @@ import com.sds.em.po.Message;
 import com.sds.em.service.HealthyNewsFrontService;
 
 
- *  进入“健康养生”模块
- 
 @Controller
 @RequestMapping("v1/healthynews")
 public class HealthyNewsFrontController {
