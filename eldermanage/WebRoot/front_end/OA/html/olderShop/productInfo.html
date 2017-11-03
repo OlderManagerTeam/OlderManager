@@ -306,7 +306,7 @@
 							<div class="card-title">
 								<div class="title">
 									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productView.html" role="button" id="return">返回商品列表</a>
+										href="../olderShop/productView.html?producttypenumber=1" role="button" id="return">返回商品列表</a>
 								</div>
 							</div>
 						</div>
@@ -491,10 +491,11 @@
 						document.getElementById("productimg").src = productinfo.productimg;
 						document.getElementById("productinfo").innerHTML = productinfo.productinfo;
 						document.getElementById("productweight").innerHTML = productinfo.productweight;
-						var productupondate=new Date(productinfo.productupondate);
+						var productupondate = new Date(productinfo.productupondate);
 						document.getElementById("productupondate").innerHTML = productupondate.toLocaleDateString();
 						document.getElementById("productdiscountprice").innerHTML = productinfo.productdiscountprice;
-						document.getElementById("return").href = "../olderShop/productView.html?producttypenumber="+productinfo.producttypenumber;
+						if (productinfo.producttypenumber != null)
+							document.getElementById("return").href = "../olderShop/productView.html?producttypenumber=" + productinfo.producttypenumber;
 					})
 			}
 		</script>

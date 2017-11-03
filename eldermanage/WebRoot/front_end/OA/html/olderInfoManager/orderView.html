@@ -370,7 +370,7 @@
 						orderItem=result.data;
 						for (var i = orderItem.length - 1; i >= 0; i--) {
 							var _date = orderItem[i].orderdate;
-							var date = new Date(_date);
+							var date = new Date(_date*1000);
 							var oTr =  `<tr>
 											<td>${orderItem[i].orderid}</td>
 											<td>${date.toISOString().slice(0, 10)}</td>
