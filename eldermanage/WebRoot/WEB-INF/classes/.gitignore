@@ -1,7 +1,12 @@
 /com/
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /log4j.properties
 /mybatis/
 >>>>>>> 66c1bd51c003f911555a865913f24d566691bb10
+=======
+/log4j.properties
+/mybatis/
+>>>>>>> d93e43669d1cf66eed2dcda7f8f61b40ddc2dec4
 /spring/
