@@ -370,6 +370,13 @@
 											placeholder="修改商品信息" style="height: 200px" name="productinfo"></textarea>
 									</div>
 								</div>
+								<!-- 商品展示图 -->
+								<div class="form-group">
+									<label for="productimg" class="col-sm-3 control-label">商品展示图：</label>
+									<div class="col-sm-5">
+										<input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="productweight" class="col-sm-3 control-label">修改商品重量：</label>
 									<div class="col-sm-2">
@@ -455,6 +462,17 @@
 				fileType : "any",
 				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
 			});
+	$("#file-1").fileinput({
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+	});
 		</script>
 		<!--表单验证-->
 		<script type="text/javascript">
