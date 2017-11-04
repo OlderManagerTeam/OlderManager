@@ -19,4 +19,5 @@ public interface OlderShopService {
 	public Message ordercancel(int ordersid);
 	public Message getproductstore();
 	public Message addproductstore(int productid, int productcount);
+	public Message getproductgroup();
 }

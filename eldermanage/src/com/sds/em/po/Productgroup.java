@@ -17,7 +17,9 @@ public class Productgroup {
 
     private Integer grouptotalpeople;
 
-    private Float goupdiscountprice;
+    private Float groupdiscountprice;
+
+    private String groupstatus;
 
     public Integer getGroupid() {
         return groupid;
@@ -75,11 +77,19 @@ public class Productgroup {
         this.grouptotalpeople = grouptotalpeople;
     }
 
-    public Float getGoupdiscountprice() {
-        return goupdiscountprice;
+    public Float getGroupdiscountprice() {
+        return groupdiscountprice;
     }
 
-    public void setGoupdiscountprice(Float goupdiscountprice) {
-        this.goupdiscountprice = goupdiscountprice;
+    public void setGroupdiscountprice(Float groupdiscountprice) {
+        this.groupdiscountprice = groupdiscountprice;
+    }
+
+    public String getGroupstatus() {
+        return groupstatus;
+    }
+
+    public void setGroupstatus(String groupstatus) {
+        this.groupstatus = groupstatus == null ? null : groupstatus.trim();
     }
 }
