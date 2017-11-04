@@ -1,2157 +1,3014 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>首页</title>
+	<title>首页</title>
 
-		<link href="css/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="css/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+	<link href="css/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet"
+		type="text/css" />
+	<link href="css/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet"
+		type="text/css" />
 
-		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
 
-		<link href="css/hmstyle.css" rel="stylesheet" type="text/css" />
-		<script src="css/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
-		<script src="css/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+	<link href="css/hmstyle.css" rel="stylesheet" type="text/css" />
+	<script src="css/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+	<script src="css/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+</head>
 
-	</head>
-
-	<body>
-		<div class="hmtop">
-			<!--顶部导航条 -->
-			<div class="am-container header">
-				<ul class="message-l">
-					<div class="topMessage">
-						<div class="menu-hd">
-							<a href="login.html" target="_top" class="h">亲，请登录</a>
-							<a href="register.html" target="_top">免费注册</a>
-						</div>
+<body onload="load()">
+	<div class="hmtop">
+		<!--顶部导航条 -->
+		<div class="am-container header">
+			<ul class="message-l">
+				<div class="topMessage">
+					<div class="menu-hd">
+						<a href="login.html" target="_top" class="h">亲，请登录</a> <a
+							href="register.html" target="_top">免费注册</a>
 					</div>
-				</ul>
-				<ul class="message-r">
-					<div class="topMessage home">
-						<div class="menu-hd"><a href="shoppingindex.html" target="_top" class="h">商城首页</a></div>
-					</div>
-					<div class="topMessage my-shangcheng">
-						<div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-					</div>
-					<div class="topMessage mini-cart">
-						<div class="menu-hd"><a id="mc-menu-hd" href="#" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-					</div>
-					
-				</ul>
 				</div>
-
-				<!--悬浮搜索框-->
-
-				<div class="nav white">
-					<div class="logo"><img src="images/product/logo.png" /></div>
-					<div class="logoBig">
-						<li><img src="images/product/shoplogo.png" /></li>
+			</ul>
+			<ul class="message-r">
+				<div class="topMessage home">
+					<div class="menu-hd">
+						<a href="shoppingindex.html" target="_top" class="h">商城首页</a>
 					</div>
-
-					<div class="search-bar pr">
-						<a name="index_none_header_sysc" href="#"></a>
-						<form>
-							<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-							<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-						</form>
+				</div>
+				<div class="topMessage my-shangcheng">
+					<div class="menu-hd MyShangcheng">
+						<a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
+					</div>
+				</div>
+				<div class="topMessage mini-cart">
+					<div class="menu-hd">
+						<a id="mc-menu-hd" href="#" target="_top"><i
+							class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong
+							id="J_MiniCartNum" class="h">0</strong></a>
 					</div>
 				</div>
 
-				<div class="clear"></div>
+			</ul>
+		</div>
+
+		<!--悬浮搜索框-->
+
+		<div class="nav white">
+			<div class="logo">
+				<img src="images/product/logo.png" />
 			</div>
-			<div class="banner">
-                      <!--轮播 -->
-						<div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
-							<ul class="am-slides">
-								<li class="banner1"><a href="introduction.html"><img src="images/product/ad1.jpg" /></a></li>
-								<li class="banner2"><a><img src="images/product/ad2.jpg" /></a></li>
-								<li class="banner3"><a><img src="images/product/ad3.jpg" /></a></li>
-								<li class="banner4"><a><img src="images/product/ad4.jpg" /></a></li>
+			<div class="logoBig">
+				<li><img src="images/product/shoplogo.png" /></li>
+			</div>
 
+			<div class="search-bar pr">
+				<a name="index_none_header_sysc" href="#"></a>
+				<form>
+					<input id="searchInput" name="index_none_header_sysc" type="text"
+						placeholder="搜索" autocomplete="off"> <input
+						id="ai-topsearch" class="submit am-btn" value="搜索" index="1"
+						type="submit">
+				</form>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+	<div class="banner">
+		<!--轮播 -->
+		<div class="am-slider am-slider-default scoll" data-am-flexslider
+			id="demo-slider-0">
+			<ul class="am-slides">
+				<li class="banner1"><a href="introduction.html"><img
+						src="images/product/ad1.jpg" /></a></li>
+				<li class="banner2"><a><img src="images/product/ad2.jpg" /></a></li>
+				<li class="banner3"><a><img src="images/product/ad3.jpg" /></a></li>
+				<li class="banner4"><a><img src="images/product/ad4.jpg" /></a></li>
+
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="shopNav">
+		<div class="slideall">
+
+			<div class="long-title">
+				<span class="all-goods">全部分类</span>
+			</div>
+			<div class="nav-cont">
+				<ul>
+					<li class="index"><a href="shoppingindex.html">首页</a></li>
+					<li class="qc"><a href="#">团购</a></li>
+				</ul>
+
+			</div>
+
+			<!--侧边导航 -->
+			<div id="nav" class="navfull">
+				<div class="area clearfix">
+					<div class="category-content" id="guide_2">
+
+						<div class="category">
+							<ul class="category-list" id="js_climit_li">
+								<li class="appliance js_toggle relative first">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/cloth.png"></i><a
+												class="ml-22" title="衣物服饰">衣物服饰</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="上衣">上衣</span>
+															</dt>
+															<dd>
+																<a title="夹克" href="#"><span>夹克</span></a>
+															</dd>
+															<dd>
+																<a title="皮衣" href="#"><span>皮衣</span></a>
+															</dd>
+															<dd>
+																<a title="皮草" href="#"><span>皮草</span></a>
+															</dd>
+															<dd>
+																<a title="毛呢外套" href="#"><span>毛呢外套</span></a>
+															</dd>
+															<dd>
+																<a title="风衣" href="#"><span>风衣</span></a>
+															</dd>
+															<dd>
+																<a title="西装" href="#"><span>西装</span></a>
+															</dd>
+															<dd>
+																<a title="棉服" href="#"><span>棉服</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="裤子">裤子</span>
+															</dt>
+															<dd>
+																<a title="休闲裤" href="#"><span>休闲裤</span></a>
+															</dd>
+															<dd>
+																<a title="牛仔裤" href="#"><span>牛仔裤</span></a>
+															</dd>
+															<dd>
+																<a title="打底裤" href="#"><span>打底裤</span></a>
+															</dd>
+															<dd>
+																<a title="棉裤" href="#"><span>棉裤</span></a>
+															</dd>
+															<dd>
+																<a title="喇叭裤" href="#"><span>喇叭裤</span></a>
+															</dd>
+
+														</dl>
+
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a rel="nofollow" title="呵官方旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span class="red">呵官方旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="格瑞旗舰店" target="_blank" href="#"
+																	rel="nofollow"><span>格瑞旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="飞彦大厂直供" target="_blank"
+																	href="#" rel="nofollow"><span class="red">飞彦大厂直供</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="红e·艾菲妮" target="_blank"
+																	href="#" rel="nofollow"><span>红e·艾菲妮</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="本真旗舰店" target="_blank" href="#"
+																	rel="nofollow"><span class="red">本真旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="杭派女装批发网" target="_blank"
+																	href="#" rel="nofollow"><span class="red">杭派女装批发网</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/cookies.png"></i><a
+												class="ml-22" title="食物">食物饮品</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="饼干">饼干</span>
+															</dt>
+															<dd>
+																<a title="曲奇饼干" href="#"><span>曲奇饼干</span></a>
+															</dd>
+															<dd>
+																<a title="威化饼干" href="#"><span>威化饼干</span></a>
+															</dd>
+															<dd>
+																<a title="消化饼干" href="#"><span>消化饼干</span></a>
+															</dd>
+															<dd>
+																<a title="燕麦饼干" href="#"><span>燕麦饼干</span></a>
+															</dd>
+															<dd>
+																<a title="薄脆饼干" href="#"><span>薄脆饼干</span></a>
+															</dd>
+															<dd>
+																<a title="夹心饼干" href="#"><span>夹心饼干</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="坚果">坚果</span>
+															</dt>
+															<dd>
+																<a title="核桃" href="#"><span>核桃</span></a>
+															</dd>
+															<dd>
+																<a title="夏威夷果" href="#"><span>夏威夷果</span></a>
+															</dd>
+															<dd>
+																<a title="瑞碧根果" href="#"><span>碧根果</span></a>
+															</dd>
+															<dd>
+																<a title="腰果" href="#"><span>腰果</span></a>
+															</dd>
+															<dd>
+																<a title="开心果" href="#"><span>开心果</span></a>
+															</dd>
+															<dd>
+																<a title="瓜子" href="#"><span>瓜子</span></a>
+															</dd>
+															<dd>
+																<a title="花生" href="#"><span>花生</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="饮品">饮品</span>
+															</dt>
+															<dd>
+																<a title="红茶" href="#"><span>红茶</span></a>
+															</dd>
+															<dd>
+																<a title="绿茶" href="#"><span>绿茶</span></a>
+															</dd>
+															<dd>
+																<a title="乌龙茶" href="#"><span>乌龙茶</span></a>
+															</dd>
+															<dd>
+																<a title="咖啡" href="#"><span>咖啡</span></a>
+															</dd>
+															<dd>
+																<a title="饮料" href="#"><span>饮料</span></a>
+															</dd>
+															<dd>
+																<a title="乳制品" href="#"><span>乳制品</span></a>
+															</dd>
+															<dd>
+																<a title="冲饮" href="#"><span>冲饮</span></a>
+															</dd>
+
+														</dl>
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a rel="nofollow" title="YYKCLOT" target="_blank"
+																	href="#" rel="nofollow"><span class="red">YYKCLOT</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="池氏品牌男装" target="_blank"
+																	href="#" rel="nofollow"><span class="red">池氏品牌男装</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="男装日志" target="_blank" href="#"
+																	rel="nofollow"><span>男装日志</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="索比诺官方旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>索比诺官方旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="onTTno傲徒" target="_blank"
+																	href="#" rel="nofollow"><span class="red">onTTno傲徒</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="玛狮路男装旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>玛狮路男装旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="劳威特品牌男装" target="_blank"
+																	href="#" rel="nofollow"><span>劳威特品牌男装</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="卡斯郎世家批发城" target="_blank"
+																	href="#" rel="nofollow"><span class="red">卡斯郎世家批发城</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/life.png"></i><a
+												class="ml-22" title="生活用品">生活用品</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="卫生纸">卫生纸</span>
+															</dt>
+															<dd>
+																<a title="卷纸" href="#"><span>卷纸</span></a>
+															</dd>
+															<dd>
+																<a title="抽纸" href="#"><span>抽纸</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="牙刷">牙刷</span>
+															</dt>
+															<dd>
+																<a title="卷纸" href="#"><span>电动牙刷</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="毛巾">毛巾</span>
+															</dt>
+															<dd>
+																<a title="方巾" href="#"><span>方巾</span></a>
+															</dd>
+															<dd>
+																<a title="运动毛巾" href="#"><span>运动毛巾</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="洗发露">洗发露</span>
+															</dt>
+															<dd>
+																<a title="去屑" href="#"><span>去屑</span></a>
+															</dd>
+															<dd>
+																<a title="垂顺" href="#"><span>垂顺</span></a>
+															</dd>
+															<dd>
+																<a title="乌发" href="#"><span>乌发</span></a>
+															</dd>
+														</dl>
+
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a rel="nofollow" title="花颜巧语 " target="_blank" href="#"
+																	rel="nofollow"><span class="red">花颜巧语 </span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="糖衣小屋" target="_blank" href="#"
+																	rel="nofollow"><span>糖衣小屋</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="卡拉迪克  " target="_blank"
+																	href="#" rel="nofollow"><span class="red">卡拉迪克
+																</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="暖春童话 " target="_blank" href="#"
+																	rel="nofollow"><span>暖春童话 </span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="华盛童装批发行 " target="_blank"
+																	href="#" rel="nofollow"><span>华盛童装批发行 </span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="奈仕华童装旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>奈仕华童装旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="斑蒂尼BONDYNI" target="_blank"
+																	href="#" rel="nofollow"><span class="red">斑蒂尼BONDYNI</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="猫儿朵朵 " target="_blank" href="#"
+																	rel="nofollow"><span>猫儿朵朵 </span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="童衣阁" target="_blank" href="#"
+																	rel="nofollow"><span class="red">童衣阁</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/art.png"></i><a
+												class="ml-22" title="文学艺术">文学艺术</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="瑜伽">瑜伽</span>
+															</dt>
+															<dd>
+																<a title="瑜伽球" href="#"><span>瑜伽球</span></a>
+															</dd>
+															<dd>
+																<a title="瑜伽带" href="#"><span>瑜伽带</span></a>
+															</dd>
+															<dd>
+																<a title="瑜伽带" href="#"><span>瑜伽垫</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="书籍">书籍</span>
+															</dt>
+															<dd>
+																<a title="哲理" href="#"><span>哲理</span></a>
+															</dd>
+															<dd>
+																<a title="法律" href="#"><span>法律</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="茶具">茶具</span>
+															</dt>
+															<dd>
+																<a title="茶盘" href="#"><span>茶盘</span></a>
+															</dd>
+															<dd>
+																<a title="茶壶" href="#"><span>茶壶</span></a>
+															</dd>
+															<dd>
+																<a title="紫砂茶具" href="#"><span>紫砂茶具</span></a>
+															</dd>
+															<dd>
+																<a title="陶瓷" href="#"><span>陶瓷</span></a>
+															</dd>
+
+														</dl>
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a rel="nofollow" title="歌芙品牌旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span class="red">歌芙品牌旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="爱丝蓝内衣厂" target="_blank"
+																	href="#" rel="nofollow"><span>爱丝蓝内衣厂</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="香港优蓓尔防辐射" target="_blank"
+																	href="#" rel="nofollow"><span>香港优蓓尔防辐射</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="蓉莉娜内衣批发" target="_blank"
+																	href="#" rel="nofollow"><span>蓉莉娜内衣批发</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/amuse.png"></i><a
+												class="ml-22" title="娱乐器具">娱乐器具</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="钢琴">钢琴</span>
+															</dt>
+															<dd>
+																<a title="立式钢琴" href="#"><span>立式钢琴</span></a>
+															</dd>
+															<dd>
+																<a title="三角钢琴" href="#"><span>三角钢琴</span></a>
+															</dd>
+														</dl>
+
+														<dl class="dl-sort">
+															<dt>
+																<span title="口琴">口琴</span>
+															</dt>
+															<dd>
+																<a title="初学者口琴" href="#"><span>初学者口琴</span></a>
+															</dd>
+															<dd>
+																<a title="电声口琴" href="#"><span>电声口琴</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="口琴">葫芦丝</span>
+															</dt>
+															<dd>
+																<a title="葫芦挂件" href="#"><span>葫芦挂件</span></a>
+															</dd>
+															<dd>
+																<a title="红木葫芦丝" href="#"><span>红木葫芦丝</span></a>
+															</dd>
+														</dl>
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a rel="nofollow" title="呵呵嘿官方旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span class="red">呵呵嘿官方旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="格瑞旗舰店" target="_blank" href="#"
+																	rel="nofollow"><span>格瑞旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="飞彦大厂直供" target="_blank"
+																	href="#" rel="nofollow"><span class="red">飞彦大厂直供</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="红e·艾菲妮" target="_blank"
+																	href="#" rel="nofollow"><span>红e·艾菲妮</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="本真旗舰店" target="_blank" href="#"
+																	rel="nofollow"><span class="red">本真旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="杭派女装批发网" target="_blank"
+																	href="#" rel="nofollow"><span class="red">杭派女装批发网</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="华伊阁旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>华伊阁旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="独家折扣旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>独家折扣旗舰店</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/active.png"></i><a
+												class="ml-22" title="运动器材">运动器材</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="户外">户外</span>
+															</dt>
+															<dd>
+																<a title="帐篷" href="#"><span>帐篷</span></a>
+															</dd>
+															<dd>
+																<a title="鱼竿" href="#"><span>鱼竿</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="游泳">游泳</span>
+															</dt>
+															<dd>
+																<a title="泳衣" href="#"><span>泳衣</span></a>
+															</dd>
+															<dd>
+																<a title="泳帽" href="#"><span>泳帽</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="跑步">跑步</span>
+															</dt>
+															<dd>
+																<a title="跑步机" href="#"><span>跑步机</span></a>
+															</dd>
+															<dd>
+																<a title="计时器" href="#"><span>电子计时器</span></a>
+															</dd>
+														</dl>
+
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a rel="nofollow" title="YYKCLOT" target="_blank"
+																	href="#" rel="nofollow"><span class="red">YYKCLOT</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="池氏品牌男装" target="_blank"
+																	href="#" rel="nofollow"><span class="red">池氏品牌男装</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="男装日志" target="_blank" href="#"
+																	rel="nofollow"><span>男装日志</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="索比诺官方旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>索比诺官方旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="onTTno傲徒" target="_blank"
+																	href="#" rel="nofollow"><span class="red">onTTno傲徒</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="卡斯郎世家批发城" target="_blank"
+																	href="#" rel="nofollow"><span class="red">卡斯郎世家批发城</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/medic.png"></i><a
+												class="ml-22" title="医药保健品">医药保健品</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="口服液">口服液</span>
+															</dt>
+															<dd>
+																<a title="葡萄糖" href="#"><span>葡萄糖</span></a>
+															</dd>
+															<dd>
+																<a title="乳果糖溶液" href="#"><span>乳果糖溶液</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="片剂">片剂</span>
+															</dt>
+															<dd>
+																<a title="钙片" href="#"><span>钙片</span></a>
+															</dd>
+															<dd>
+																<a title="奶片" href="#"><span>奶片</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="冲剂">冲剂</span>
+															</dt>
+															<dd>
+																<a title="孢子粉" href="#"><span>孢子粉</span></a>
+															</dd>
+															<dd>
+																<a title="奶粉" href="#"><span>奶粉</span></a>
+															</dd>
+														</dl>
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a rel="nofollow" title="花颜巧语 " target="_blank" href="#"
+																	rel="nofollow"><span class="red">花颜巧语 </span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="糖衣小屋" target="_blank" href="#"
+																	rel="nofollow"><span>糖衣小屋</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="卡拉迪克  " target="_blank"
+																	href="#" rel="nofollow"><span class="red">卡拉迪克
+																</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="暖春童话 " target="_blank" href="#"
+																	rel="nofollow"><span>暖春童话 </span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="华盛童装批发行 " target="_blank"
+																	href="#" rel="nofollow"><span>华盛童装批发行 </span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="奈仕华童装旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>奈仕华童装旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="斑蒂尼BONDYNI" target="_blank"
+																	href="#" rel="nofollow"><span class="red">斑蒂尼BONDYNI</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="童衣阁" target="_blank" href="#"
+																	rel="nofollow"><span class="red">童衣阁</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/yiliaoqicai.png"></i><a
+												class="ml-22" title="医疗器材">医疗器材</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="保健按摩">保健按摩</span>
+															</dt>
+															<dd>
+																<a title="按摩贴" href="#"><span>按摩贴</span></a>
+															</dd>
+															<dd>
+																<a title="按摩椅" href="#"><span>按摩椅</span></a>
+															</dd>
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="火罐">火罐</span>
+															</dt>
+															<dd>
+																<a title="真空拔火罐" href="#"><span>真空拔火罐</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="康复">康复</span>
+															</dt>
+															<dd>
+																<a title="坐垫" href="#"><span>坐垫</span></a>
+															</dd>
+															<dd>
+																<a title="走步机" href="#"><span>走步机</span></a>
+															</dd>
+														</dl>
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a rel="nofollow" title="歌芙品牌旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span class="red">歌芙品牌旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="爱丝蓝内衣厂" target="_blank"
+																	href="#" rel="nofollow"><span>爱丝蓝内衣厂</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="炫点服饰" target="_blank" href="#"
+																	rel="nofollow"><span>炫点服饰</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="雪茵美内衣厂批发" target="_blank"
+																	href="#" rel="nofollow"><span>雪茵美内衣厂批发</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="金钻夫人" target="_blank" href="#"
+																	rel="nofollow"><span>金钻夫人</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="伊美莎内衣" target="_blank" href="#"
+																	rel="nofollow"><span class="red">伊美莎内衣</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="粉客内衣旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>粉客内衣旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="泽芳行旗舰店" target="_blank"
+																	href="#" rel="nofollow"><span>泽芳行旗舰店</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="彩婷" target="_blank" href="#"
+																	rel="nofollow"><span class="red">彩婷</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="黛兰希" target="_blank" href="#"
+																	rel="nofollow"><span>黛兰希</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="香港优蓓尔防辐射" target="_blank"
+																	href="#" rel="nofollow"><span>香港优蓓尔防辐射</span></a>
+															</dd>
+															<dd>
+																<a rel="nofollow" title="蓉莉娜内衣批发" target="_blank"
+																	href="#" rel="nofollow"><span>蓉莉娜内衣批发</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/tea.png"></i><a
+												class="ml-22" title="家具器材">家具器材</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="客厅">客厅</span>
+															</dt>
+															<dd>
+																<a title="沙发" href="#"><span>沙发</span></a>
+															</dd>
+															<dd>
+																<a title="茶几" href="#"><span>茶几</span></a>
+															</dd>
+															<dd>
+																<a title="垃圾桶" href="#"><span>电视柜</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="餐厅">餐厅</span>
+															</dt>
+															<dd>
+																<a title="饭桌" href="#"><span>饭桌</span></a>
+															</dd>
+															<dd>
+																<a title="椅子" href="#"><span>椅子</span></a>
+															</dd>
+															<dd>
+																<a title="餐具" href="#"><span>餐具</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="厨房">厨房</span>
+															</dt>
+															<dd>
+																<a title="锅" href="#"><span>锅</span></a>
+															</dd>
+															<dd>
+																<a title="盆" href="#"><span>盆</span></a>
+															</dd>
+															<dd>
+																<a title="抽油烟机" href="#"><span>抽油烟机</span></a>
+															</dd>
+
+														</dl>
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a title="今生只围你" target="_blank" href="#" rel="nofollow"><span>今生只围你</span></a>
+															</dd>
+															<dd>
+																<a title="忆佳人" target="_blank" href="#" rel="nofollow"><span
+																	class="red">忆佳人</span></a>
+															</dd>
+															<dd>
+																<a title="斐洱普斯" target="_blank" href="#" rel="nofollow"><span
+																	class="red">斐洱普斯</span></a>
+															</dd>
+															<dd>
+																<a title="聚百坊" target="_blank" href="#" rel="nofollow"><span
+																	class="red">聚百坊</span></a>
+															</dd>
+															<dd>
+																<a title="朵朵棉织直营店" target="_blank" href="#"
+																	rel="nofollow"><span>朵朵棉织直营店</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <b class="arrow"></b>
+								</li>
+								<li class="appliance js_toggle relative last">
+									<div class="category-info">
+										<h3 class="category-name b-category-name">
+											<i><img src="images/product/elect.png"></i><a
+												class="ml-22" title="电子产品">电子产品</a>
+										</h3>
+										<em>&gt;</em>
+									</div>
+									<div class="menu-item menu-in top">
+										<div class="area-in">
+											<div class="area-bg">
+												<div class="menu-srot">
+													<div class="sort-side">
+														<dl class="dl-sort">
+															<dt>
+																<span title="相机摄像">相机摄像</span>
+															</dt>
+															<dd>
+																<a title="单反相机" href="#"><span>单反相机</span></a>
+															</dd>
+															<dd>
+																<a title="相机脚架" href="#"><span>相机脚架</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="老人手机">老人手机</span>
+															</dt>
+															<dd>
+																<a title="小米6" href="#"><span>小米6</span></a>
+															</dd>
+															<dd>
+																<a title="华为mate" href="#"><span>华为mate</span></a>
+															</dd>
+
+														</dl>
+														<dl class="dl-sort">
+															<dt>
+																<span title="影音智能">影音智能</span>
+															</dt>
+															<dd>
+																<a title="蓝牙音响" href="#"><span>蓝牙音响</span></a>
+															</dd>
+															<dd>
+																<a title="话筒" href="#"><span>话筒</span></a>
+															</dd>
+															<dd>
+																<a title="数字电视机顶盒" href="#"><span>数字电视机顶盒</span></a>
+															</dd>
+														</dl>
+													</div>
+													<div class="brand-side">
+														<dl class="dl-sort">
+															<dt>
+																<span>实力商家</span>
+															</dt>
+															<dd>
+																<a title="琳琅鞋业" target="_blank" href="#" rel="nofollow"><span>琳琅鞋业</span></a>
+															</dd>
+															<dd>
+																<a title="宏利鞋业" target="_blank" href="#" rel="nofollow"><span>宏利鞋业</span></a>
+															</dd>
+															<dd>
+																<a title="比爱靓点鞋业" target="_blank" href="#"
+																	rel="nofollow"><span>比爱靓点鞋业</span></a>
+															</dd>
+															<dd>
+																<a title="浪人怪怪" target="_blank" href="#" rel="nofollow"><span>浪人怪怪</span></a>
+															</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</li>
 							</ul>
 						</div>
-						<div class="clear"></div>	
-			</div>
-			<div class="shopNav">
-				<div class="slideall">
+					</div>
 
-					   <div class="long-title"><span class="all-goods">全部分类</span></div>
-					   <div class="nav-cont">
-							<ul>
-								<li class="index"><a href="shoppingindex.html">首页</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
+				</div>
+			</div>
+
+			<!--轮播 -->
+			<script type="text/javascript">
+				(function() {
+					$('.am-slider').flexslider();
+				});
+				$(document).ready(function() {
+					$("li").hover(function() {
+						$(".category-content .category-list li.first .menu-in").css("display", "none");
+						$(".category-content .category-list li.first").removeClass("hover");
+						$(this).addClass("hover");
+						$(this).children("div.menu-in").css("display", "block")
+					}, function() {
+						$(this).removeClass("hover")
+						$(this).children("div.menu-in").css("display", "none")
+					});
+				})
+			</script>
+
+
+			<!--小导航 -->
+			<div class="am-g am-g-fixed smallnav">
+				<div class="am-u-sm-3">
+					<a href="sort.html"><img src="images/product/navsmall.jpg" />
+						<div class="title">商品分类</div> </a>
+				</div>
+				<div class="am-u-sm-3">
+					<a href="#"><img src="images/product/huismall.jpg" />
+						<div class="title">大聚惠</div> </a>
+				</div>
+				<div class="am-u-sm-3">
+					<a href="#"><img src="images/product/mansmall.jpg" />
+						<div class="title">个人中心</div> </a>
+				</div>
+				<div class="am-u-sm-3">
+					<a href="#"><img src="images/product/moneysmall.jpg" />
+						<div class="title">投资理财</div> </a>
+				</div>
+			</div>
+
+			<!--走马灯 -->
+
+
+			<div class="clear"></div>
+		</div>
+		<script type="text/javascript">
+			if ($(window).width() < 640) {
+				function autoScroll(obj) {
+					$(obj).find("ul").animate({
+						marginTop : "-39px"
+					}, 500, function() {
+						$(this).css({
+							marginTop : "0px"
+						}).find("li:first").appendTo(this);
+					})
+				}
+				$(function() {
+					setInterval('autoScroll(".demo")', 3000);
+				})
+			}
+		</script>
+	</div>
+	<div class="shopMainbg">
+		<div class="shopMain" id="shopmain">
+
+			<!--今日推荐 -->
+
+			<div class="am-g am-g-fixed recommendation">
+				<div class="clock am-u-sm-3">
+					<img src="images/product/2017.png "></img>
+					<p>
+						今日<br>推荐 
+					</p>
+				</div>
+				<div class="am-u-sm-4 am-u-lg-3 ">
+					<div class="info ">
+						<h3 id="todayProductName1"></h3>
+						<h4 id="todayProductInfo1"></h4>
+					</div>
+					<div class="recommendationMain one">
+						<img src="" id="todayProductImg1"></img>
+					</div>
+				</div>
+				<div class="am-u-sm-4 am-u-lg-3 ">
+					<div class="info ">
+						<h3 id="todayProductName2"></h3>
+						<h4 id="todayProductInfo2"></h4>
+					</div>
+					<div class="recommendationMain two">
+						<img src="" id="todayProductImg2"></img>
+					</div>
+				</div>
+				<div class="am-u-sm-4 am-u-lg-3 ">
+					<div class="info ">
+						<h3 id="todayProductName3"></h3>
+						<h4 id="todayProductInfo3"></h4>
+					</div>
+					<div class="recommendationMain three ">
+						<img src="" id="todayProductImg3"></img>
+					</div>
+				</div>
+
+			</div>
+			<div class="clear "></div>
+			<!--热门活动 -->
+
+			<div class="am-container activity ">
+				<div class="shopTitle ">
+					<h4>活动</h4>
+					<h3>每期活动 优惠享不停</h3>
+					<span class="more "> <a href="# ">全部活动<i
+							class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+					</span>
+				</div>
+
+				<div class="am-g am-g-fixed ">
+					<div class="am-u-sm-3 ">
+						<div class="icon-sale one "></div>
+						<h4>最新团购</h4>
+						<div class="activityMain ">
+							<img src="images/product/activity_group_1_bg.bmp "></img>
+						</div>
+						<div class="info ">
+							<h3>春节送礼优选</h3>
+						</div>
+					</div>
+
+					<div class="am-u-sm-3 ">
+						<div class="icon-sale two "></div>
+						<h4>即将截止</h4>
+						<div class="activityMain ">
+							<img src="images/product/activity2.jpg "></img>
+						</div>
+						<div class="info ">
+							<h3>春节送礼优选</h3>
+						</div>
+					</div>
+
+					<div class="am-u-sm-3 ">
+						<div class="icon-sale three "></div>
+						<h4>特惠</h4>
+						<div class="activityMain ">
+							<img src="images/product/activity_3_bg.png "></img>
+						</div>
+						<div class="info ">
+							<h3>春节送礼优选</h3>
+						</div>
+					</div>
+
+					<div class="am-u-sm-3 last ">
+						<div class="icon-sale "></div>
+						<h4>超值</h4>
+						<div class="activityMain ">
+							<img src="images/product/activity.jpg "></img>
+						</div>
+						<div class="info ">
+							<h3>春节送礼优选</h3>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="clear "></div>
+
+			<!--衣物服饰-->
+			<div id="f1">
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>衣物服饰</h4>
+						<h3>实价优惠，保证满意品质</h3>
+						<div class="today-brands ">
+							<a href="# ">棉衣</a> <a href="# ">棉鞋</a> <a href="# ">外套</a> <a
+								href="# ">内衣</a>
+						</div>
+						<span class="more "> <a href="# ">更多服饰<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+
+				<div class="am-g am-g-fixed floodFive ">
+
+					<div class="am-u-sm-5 am-u-md-3 text-one list">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">上衣</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">裤子</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">毛衣</b></span></a> <a
+								class="outer" href="#"><span class="inner"><b
+									class="text">外套</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">内衣</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">鞋子</b></span></a>
+						</div>
+						<a href="# "> <img src="images/product/cloth_logo.jpg " />
+							<div class="outer-con ">
+								<div class="title ">给最爱的你</div>
+								<div class="sub-title ">含外国进口</div>
+							</div>
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+					<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type1productName1"></div>
+							<div class="sub-title " id="type1productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type1productImg1" /></a>
+					</div>
+
+					<div class="am-u-md-2 am-u-lg-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title " id="type1productName2"></div>
+							<div class="sub-title " id="type1productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type1productImg2" /></a>
+					</div>
+					<div class="am-u-md-2 am-u-lg-2 text-three big">
+						<div class="outer-con ">
+							<div class="title " id="type1productName3"></div>
+							<div class="sub-title " id="type1productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type1productImg3" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
+						<div class="outer-con ">
+							<div class="title " id="type1productName4"></div>
+							<div class="sub-title " id="type1productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type1productImg4" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
+						<div class="outer-con ">
+							<div class="title " id="type1productName5"></div>
+							<div class="sub-title " id="type1productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type1productImg5" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
+						<div class="outer-con ">
+							<div class="title " id="type1productName6"></div>
+							<div class="sub-title " id="type1productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type1productImg6" /></a>
+					</div>
+				</div>
+
+				<div class="clear "></div>
+			</div>
+
+			<div id="f2">
+				<!--食物饮品-->
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>食物饮品</h4>
+						<h3>酥酥脆脆，回味无穷</h3>
+						<div class="today-brands ">
+							<a href="# ">蛋糕</a> <a href="# ">饼干</a> <a href="# ">坚果</a> <a
+								href="# ">饮品</a> <a href="# ">水果</a> <a href="# ">甜点</a>
+						</div>
+						<span class="more "> <a href="# ">更多美味<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+				<div class="am-g am-g-fixed floodFour">
+					<div class="am-u-sm-5 am-u-md-4 text-one list ">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">蛋糕</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">饼干</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">坚果</b></span></a> <a
+								class="outer" href="#"><span class="inner"><b
+									class="text">饮品</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">水果</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">甜点</b></span></a>
+						</div>
+						<a href="# ">
+							<div class="outer-con ">
+								<div class="title ">零食大礼包开抢啦！</div>
+								<div class="sub-title ">含外国进口</div>
+							</div> <img src="images/product/act1.png " />
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two sug">
+						<div class="outer-con ">
+							<div class="title " id="type2productName1"></div>
+							<div class="sub-title " id="type2productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type2productImg1" /></a>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type2productName2"></div>
+							<div class="sub-title " id="type2productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type2productImg2" /></a>
+					</div>
+
+
+					<div class="am-u-sm-3 am-u-md-2 text-three big">
+						<div class="outer-con ">
+							<div class="title " id="type2productName3"></div>
+							<div class="sub-title " id="type2productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type2productImg3" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title " id="type2productName4"></div>
+							<div class="sub-title " id="type2productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type2productImg4" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three ">
+						<div class="outer-con ">
+							<div class="title " id="type2productName5"></div>
+							<div class="sub-title " id="type2productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type2productImg5" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three last big ">
+						<div class="outer-con ">
+							<div class="title " id="type2productName6"></div>
+							<div class="sub-title " id="type2productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type2productImg6" /></a>
+					</div>
+
+				</div>
+				<div class="clear "></div>
+			</div>
+
+			<!--生活用品-->
+			<div id="f3">
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>生活用品</h4>
+						<h3>呵护您和家人的健康</h3>
+						<div class="today-brands ">
+							<a href="# ">洗发露</a> <a href="# ">沐浴露</a> <a href="# ">卫生纸 </a> <a
+								href="# ">毛巾</a> <a href="# ">盆</a> <a href="# ">牙刷</a>
+						</div>
+						<span class="more "> <a href="# ">更多个护<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+
+				<div class="am-g am-g-fixed floodFive ">
+
+					<div class="am-u-sm-5 am-u-md-3 text-one list">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">洗发露</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">卫生纸</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">毛巾</b></span></a> <a
+								class="outer" href="#"><span class="inner"><b
+									class="text">盆</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">沐浴露</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">牙刷</b></span></a>
+						</div>
+						<a href="# "> <img src="images/product/life_logo.jpg " />
+							<div class="outer-con ">
+								<div class="title ">平价个护等你来</div>
+								<div class="sub-title ">含外国进口</div>
+							</div>
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+					
+					<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type3productName1"></div>
+							<div class="sub-title "  id="type3productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type3productImg1"/></a>
+					</div>
+
+					<div class="am-u-md-2 am-u-lg-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title " id="type3productName2"></div>
+							<div class="sub-title "  id="type3productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type3productImg2"/></a>
+					</div>
+					<div class="am-u-md-2 am-u-lg-2 text-three big">
+						<div class="outer-con ">
+							<div class="title "id="type3productName3"></div>
+							<div class="sub-title "  id="type3productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type3productImg3" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
+						<div class="outer-con ">
+							<div class="title "id="type3productName4"></div>
+							<div class="sub-title "  id="type3productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type3productImg4" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
+						<div class="outer-con ">
+							<div class="title " id="type3productName5"></div>
+							<div class="sub-title "  id="type3productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type3productImg5" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
+						<div class="outer-con ">
+							<div class="title " id="type3productName6"></div>
+							<div class="sub-title "  id="type3productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type3productImg6"/></a>
+					</div>
+				</div>
+				<div class="clear "></div>
+			</div>
+
+			<div id="f4">
+				<!--文学艺术-->
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>文学艺术</h4>
+						<h3>文房四宝，皆聚华夏风采</h3>
+						<div class="today-brands ">
+							<a href="# "></a> <a href="# ">文具</a> <a href="# ">绘画</a> <a
+								href="# ">书籍</a> <a href="# ">瑜伽</a>
+						</div>
+						<span class="more "> <a href="# ">更多...<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+				<div class="am-g am-g-fixed floodFour">
+					<div class="am-u-sm-5 am-u-md-4 text-one list ">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">文具</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">绘画</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">书籍</b></span></a> <a
+								class="outer" href="#"><span class="inner"><b
+									class="text">瑜伽</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">茶具</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">表演</b></span></a>
+						</div>
+						<a href="# ">
+							<div class="outer-con ">
+								<div class="title ">陶冶个人情操</div>
+								<div class="sub-title ">含外国进口</div>
+							</div> <img src="images/product/art_logo.jpg " />
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two sug">
+						<div class="outer-con ">
+							<div class="title " id="type4productName1"></div>
+							<div class="sub-title " id="type4productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type4productImg1" /></a>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type4productName2"></div>
+							<div class="sub-title "  id="type4productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type4productImg2" /></a>
+					</div>
+
+
+					<div class="am-u-sm-3 am-u-md-2 text-three big">
+						<div class="outer-con ">
+							<div class="title " id="type4productName3"></div>
+							<div class="sub-title "  id="type4productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type4productImg3" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title " id="type4productName4"></div>
+							<div class="sub-title "  id="type4productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type4productImg4" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three ">
+						<div class="outer-con ">
+							<div class="title " id="type4productName5"></div>
+							<div class="sub-title "  id="type4productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type4productImg5" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three last big ">
+						<div class="outer-con ">
+							<div class="title "id="type4productName6"></div>
+							<div class="sub-title "  id="type4productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type4productImg6" /></a>
+					</div>
+
+				</div>
+				<div class="clear "></div>
+			</div>
+
+			<!--娱乐器具-->
+			<div id="f5">
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>娱乐器具</h4>
+						<h3>经常笑一笑，越活越年轻</h3>
+						<div class="today-brands ">
+							<a href="# ">钢琴</a> <a href="# ">剪纸</a> <a href="# ">小提琴 </a> <a
+								href="# ">口琴</a>
+						</div>
+						<span class="more "> <a href="# ">更多...<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+
+				<div class="am-g am-g-fixed floodFive ">
+
+					<div class="am-u-sm-5 am-u-md-3 text-one list">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">钢琴</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">剪纸</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">小提琴</b></span></a>
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">口琴</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">葫芦丝</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">吉他</b></span></a>
+						</div>
+						<a href="# "> <img src="images/product/amuse_logo.jpg " />
+							<div class="outer-con ">
+								<div class="title ">有好玩的，有教程哟</div>
+								<div class="sub-title ">含外国进口</div>
+							</div>
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+					<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type5productName1"></div>
+							<div class="sub-title " id="type5productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=" "  id="type5productImg1" /></a>
+					</div>
+
+					<div class="am-u-md-2 am-u-lg-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title "  id="type5productName2"></div>
+							<div class="sub-title " id="type5productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type5productImg2" /></a>
+					</div>
+					<div class="am-u-md-2 am-u-lg-2 text-three big">
+						<div class="outer-con ">
+							<div class="title "  id="type5productName3"></div>
+							<div class="sub-title " id="type5productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type5productImg3" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
+						<div class="outer-con ">
+							<div class="title "  id="type5productName4"></div>
+							<div class="sub-title " id="type5productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type5productImg4" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
+						<div class="outer-con ">
+							<div class="title "  id="type5productName5"></div>
+							<div class="sub-title " id="type5productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type5productImg5" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
+						<div class="outer-con ">
+							<div class="title "  id="type5productName6"></div>
+							<div class="sub-title " id="type5productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type5productImg6" /></a>
+					</div>
+				</div>
+				<div class="clear "></div>
+			</div>
+
+			<div id="f6">
+				<!--运动器材-->
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>运动器材</h4>
+						<h3>活动筋骨，让自己动起来</h3>
+						<div class="today-brands ">
+							<a href="# ">跑步</a> <a href="# ">游泳</a> <a href="# ">篮球 </a> <a
+								href="# ">乒乓球</a>
+						</div>
+						<span class="more "> <a href="# ">更多...<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+				<div class="am-g am-g-fixed floodFour">
+					<div class="am-u-sm-5 am-u-md-4 text-one list ">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">跑步</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">游泳</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">篮球</b></span></a> <a
+								class="outer" href="#"><span class="inner"><b
+									class="text">乒乓球</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">羽毛球</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">户外</b></span></a>
+						</div>
+						<a href="# ">
+							<div class="outer-con ">
+								<div class="title ">开抢啦！</div>
+								<div class="sub-title ">含外国进口</div>
+							</div> <img src="images/product/active_logo.jpg " />
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two sug">
+						<div class="outer-con ">
+							<div class="title " id="type6productName1"></div>
+							<div class="sub-title " id="type6productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type6productImg1"/></a>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type6productName2"></div>
+							<div class="sub-title " id="type6productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type6productImg2" /></a>
+					</div>
+
+
+					<div class="am-u-sm-3 am-u-md-2 text-three big">
+						<div class="outer-con ">
+							<div class="title " id="type6productName3"></div>
+							<div class="sub-title " id="type6productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type6productImg3" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title " id="type6productName4"></div>
+							<div class="sub-title " id="type6productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type6productImg4" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three ">
+						<div class="outer-con ">
+							<div class="title " id="type6productName5"></div>
+							<div class="sub-title " id="type6productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type6productImg5" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three last big ">
+						<div class="outer-con ">
+							<div class="title " id="type6productName6"></div>
+							<div class="sub-title " id="type6productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type6productImg6" /></a>
+					</div>
+
+				</div>
+				<div class="clear "></div>
+			</div>
+
+			<!--家具器材-->
+			<div id="f7">
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>家具器材</h4>
+						<h3>正牌家具家纺任你购</h3>
+						<div class="today-brands ">
+							<a href="# ">客厅家具</a> <a href="# ">餐厅家具</a> <a href="# ">厨房家具
+							</a> <a href="# ">卧室</a>
+						</div>
+						<span class="more "> <a href="# ">更多...<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+
+				<div class="am-g am-g-fixed floodFive ">
+
+					<div class="am-u-sm-5 am-u-md-3 text-one list">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">客厅家具</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">餐厅家具</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">厨房家具</b></span></a>
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">卧室家具</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">卫生间</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">书房办公</b></span></a>
+						</div>
+						<a href="# "> <img src="images/product/furniture_logo.jpg " />
+							<div class="outer-con ">
+								<div class="title ">新进家具包你满意</div>
+								<div class="sub-title ">含外国进口</div>
+							</div>
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+					<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type7productName1"></div>
+							<div class="sub-title "  id="type7productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type7productImg1"  /></a>
+					</div>
+
+					<div class="am-u-md-2 am-u-lg-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title " id="type7productName2"></div>
+							<div class="sub-title " id="type7productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type7productImg2" /></a>
+					</div>
+					<div class="am-u-md-2 am-u-lg-2 text-three big">
+						<div class="outer-con ">
+							<div class="title " id="type7productName3"></div>
+							<div class="sub-title "  id="type7productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type7productImg3" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
+						<div class="outer-con ">
+							<div class="title " id="type7productName4"></div>
+							<div class="sub-title " id="type7productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type7productImg4" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
+						<div class="outer-con ">
+							<div class="title " id="type7productName5"></div>
+							<div class="sub-title "  id="type7productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type7productImg5" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
+						<div class="outer-con ">
+							<div class="title " id="type7productName6"></div>
+							<div class="sub-title "  id="type7productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type7productImg6" /></a>
+					</div>
+				</div>
+
+				<div class="clear "></div>
+			</div>
+
+			<div id="f8">
+				<!--电子产品-->
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>电子产品</h4>
+						<h3>生活升级，你也要“升级”</h3>
+						<div class="today-brands ">
+							<a href="# ">相机摄像</a> <a href="# ">老人手机</a> <a href="# ">智能影音</a>
+
+						</div>
+						<span class="more "> <a href="# ">更多...<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+				<div class="am-g am-g-fixed floodFour">
+					<div class="am-u-sm-5 am-u-md-4 text-one list ">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">生活厨电</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">相机摄像</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">影音智能</b></span></a>
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">老人电脑</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">个护健康</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">老人手机</b></span></a>
+						</div>
+						<a href="# ">
+							<div class="outer-con ">
+								<div class="title ">开抢啦！</div>
+								<div class="sub-title ">含外国进口</div>
+							</div> <img src="images/product/elect_logo.jpg " />
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two sug">
+						<div class="outer-con ">
+							<div class="title "id="type8productName1"></div>
+							<div class="sub-title " id="type8productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type8productImg1"  /></a>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type8productName2"></div>
+							<div class="sub-title " id="type8productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type8productImg2" /></a>
+					</div>
+
+
+					<div class="am-u-sm-3 am-u-md-2 text-three big">
+						<div class="outer-con ">
+							<div class="title " id="type8productName3"></div>
+							<div class="sub-title " id="type8productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type8productImg3" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title " id="type8productName4"></div>
+							<div class="sub-title " id="type8productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type8productImg4"/></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three ">
+						<div class="outer-con ">
+							<div class="title "id="type8productName5"></div>
+							<div class="sub-title "id="type8productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type8productImg5" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three last big ">
+						<div class="outer-con ">
+							<div class="title " id="type8productName6"></div>
+							<div class="sub-title " id="type8productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type8productImg6" /></a>
+					</div>
+
+				</div>
+				<div class="clear "></div>
+			</div>
+
+			<!--医疗保健品-->
+			<div id="f9">
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>医疗保健品</h4>
+						<h3>给你最贴心的关爱</h3>
+						<div class="today-brands ">
+							<a href="# ">口服液</a> <a href="# ">粉剂</a> <a href="# ">冲剂 </a> <a
+								href="# ">丸剂</a> <a href="# ">片剂</a>
+						</div>
+						<span class="more "> <a href="# ">更多...<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+
+				<div class="am-g am-g-fixed floodFive ">
+
+					<div class="am-u-sm-5 am-u-md-3 text-one list">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">口服液</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">粉剂</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">钙片</b></span></a> <a
+								class="outer" href="#"><span class="inner"><b
+									class="text">冲剂</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">丸剂</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">颗粒</b></span></a>
+						</div>
+						<a href="# "> <img src="images/product/medic_logo.jpg " />
+							<div class="outer-con ">
+								<div class="title ">在家安心</div>
+								<div class="sub-title ">含外国进口</div>
+							</div>
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+					<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
+						<div class="outer-con ">
+							<div class="title " id="type9productName1"></div>
+							<div class="sub-title "id="type9productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=" "id="type9productImg1" /></a>
+					</div>
+
+					<div class="am-u-md-2 am-u-lg-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title "id="type9productName2"></div>
+							<div class="sub-title "id="type9productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type9productImg2" /></a>
+					</div>
+					<div class="am-u-md-2 am-u-lg-2 text-three big">
+						<div class="outer-con ">
+							<div class="title " id="type9productName3">小优布丁</div>
+							<div class="sub-title "id="type9productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src="" id="type9productImg3" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
+						<div class="outer-con ">
+							<div class="title " id="type9productName4"></div>
+							<div class="sub-title "id="type9productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type9productImg4" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
+						<div class="outer-con ">
+							<div class="title "id="type9productName5"></div>
+							<div class="sub-title "id="type9productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type9productImg5" /></a>
+					</div>
+					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
+						<div class="outer-con ">
+							<div class="title " id="type9productName6"></div>
+							<div class="sub-title "id="type9productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type9productImg6" /></a>
+					</div>
+				</div>
+
+				<div class="clear "></div>
+			</div>
+
+			<div id="f10">
+				<!--医疗器材-->
+				<div class="am-container ">
+					<div class="shopTitle ">
+						<h4>医疗器材</h4>
+						<h3>小毛病不进医院也可以在家检查</h3>
+						<div class="today-brands ">
+							<a href="# ">康复</a> <a href="# ">保健按摩</a> <a href="# ">防风湿器 </a>
+							<a href="# ">电理疗</a>
+
+						</div>
+						<span class="more "> <a href="# ">更多...<i
+								class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+						</span>
+					</div>
+				</div>
+				<div class="am-g am-g-fixed floodFour">
+					<div class="am-u-sm-5 am-u-md-4 text-one list ">
+						<div class="word">
+							<a class="outer" href="#"><span class="inner"><b
+									class="text">防风湿器</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">康复</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">火罐</b></span></a> <a
+								class="outer" href="#"><span class="inner"><b
+									class="text">保健按摩</b></span></a> <a class="outer" href="#"><span
+								class="inner"><b class="text">电理疗</b></span></a> <a class="outer"
+								href="#"><span class="inner"><b class="text">吊环</b></span></a>
+						</div>
+						<a href="# ">
+							<div class="outer-con ">
+								<div class="title ">开抢啦！</div>
+								<div class="sub-title ">含外国进口</div>
+							</div> <img src="images/product/ylqc_logo.jpg" />
+						</a>
+						<div class="triangle-topright"></div>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two sug">
+						<div class="outer-con ">
+							<div class="title " id="type10productName1"></div>
+							<div class="sub-title "id="type10productPrice1"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type10productImg1" /></a>
+					</div>
+
+					<div class="am-u-sm-7 am-u-md-4 text-two">
+						<div class="outer-con ">
+							<div class="title "id="type10productName2"></div>
+							<div class="sub-title "id="type10productPrice2"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type10productImg2"  /></a>
+					</div>
+
+
+					<div class="am-u-sm-3 am-u-md-2 text-three big">
+						<div class="outer-con ">
+							<div class="title "id="type10productName3"></div>
+							<div class="sub-title "id="type10productPrice3"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type10productImg3" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three sug">
+						<div class="outer-con ">
+							<div class="title "id="type10productName4"></div>
+							<div class="sub-title "id="type10productPrice4"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type10productImg4" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three ">
+						<div class="outer-con ">
+							<div class="title "id="type10productName5"></div>
+							<div class="sub-title " id="type10productPrice5"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type10productImg5" /></a>
+					</div>
+
+					<div class="am-u-sm-3 am-u-md-2 text-three last big ">
+						<div class="outer-con ">
+							<div class="title "id="type10productName6"></div>
+							<div class="sub-title " id="type10productPrice6"></div>
+							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
+						</div>
+						<a href="# "><img src=""id="type10productImg6" /></a>
+					</div>
+
+				</div>
+				<div class="clear "></div>
+			</div>
+
+
+			<div class="footer ">
+				<div class="footer-hd ">
+					<p>
+						<a href="# ">孝和集团</a> <b>|</b> <a href="# ">商城首页</a> <b>|</b> <a
+							href="# "></a> <b>|</b> <a href="# "></a>
+					</p>
+				</div>
+				<div class="footer-bd ">
+					<p>
+						<a href="index.html ">关于孝和</a> <a href="# "></a> <a
+							href="contact.html">联系我们</a> <a href="# "></a> <em>©
+							2017-2025 oldermanage.com 更关注老年人 - Collect from 孝和集团</em>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	<!--引导-->
+	<div class="navCir">
+		<li class="active"><a href="home1.html"><i
+				class="am-icon-home "></i>首页</a></li>
+		<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
+		<li><a href="shopcart.html"><i
+				class="am-icon-shopping-basket"></i>购物车</a></li>
+		<li><a href="../person/index.html"><i class="am-icon-user"></i>我的</a></li>
+	</div>
+
+	<!--菜单 -->
+	<div class=tip>
+		<div id="sidebar">
+			<div id="wrap">
+				<div id="prof" class="item ">
+					<a href="# "> <span class="setting "></span>
+					</a>
+					<div class="ibar_login_box status_login ">
+						<div class="avatar_box ">
+							<p class="avatar_imgbox ">
+								<img src="images/product/no-img_mid_.jpg " />
+							</p>
+							<ul class="user_info ">
+								<li>用户名：sl1903</li>
+								<li>级&nbsp;别：普通会员</li>
 							</ul>
-						   
 						</div>
-		        				
-						<!--侧边导航 -->
-						<div id="nav" class="navfull">
-							<div class="area clearfix">
-								<div class="category-content" id="guide_2">
-									
-									<div class="category">
-										<ul class="category-list" id="js_climit_li">
-											<li class="appliance js_toggle relative first">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/cloth.png"></i><a class="ml-22" title="衣物服饰">衣物服饰</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="上衣">上衣</span></dt>
-																		<dd><a title="夹克" href="#"><span>夹克</span></a></dd>
-																		<dd><a title="皮衣" href="#"><span>皮衣</span></a></dd>
-																		<dd><a title="皮草" href="#"><span>皮草</span></a></dd>
-																		<dd><a title="毛呢外套" href="#"><span>毛呢外套</span></a></dd>
-																		<dd><a title="风衣" href="#"><span>风衣</span></a></dd>
-																		<dd><a title="西装" href="#"><span>西装</span></a></dd>
-																		<dd><a title="棉服" href="#"><span>棉服</span></a></dd>
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="裤子">裤子</span></dt>
-																		<dd><a title="休闲裤" href="#"><span>休闲裤</span></a></dd>
-																		<dd><a title="牛仔裤" href="#"><span>牛仔裤</span></a></dd>
-																		<dd><a title="打底裤" href="#"><span>打底裤</span></a></dd>
-																		<dd><a title="棉裤" href="#"><span>棉裤</span></a></dd>
-																		<dd><a title="喇叭裤" href="#"><span>喇叭裤</span></a></dd>
-																		
-																	</dl>
-
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="呵官方旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >呵官方旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="格瑞旗舰店" target="_blank" href="#" rel="nofollow"><span >格瑞旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="飞彦大厂直供" target="_blank" href="#" rel="nofollow"><span  class="red" >飞彦大厂直供</span></a></dd>
-																		<dd><a rel="nofollow" title="红e·艾菲妮" target="_blank" href="#" rel="nofollow"><span >红e·艾菲妮</span></a></dd>
-																		<dd><a rel="nofollow" title="本真旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >本真旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="杭派女装批发网" target="_blank" href="#" rel="nofollow"><span  class="red" >杭派女装批发网</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											<b class="arrow"></b>	
-											</li>
-											<li class="appliance js_toggle relative">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/cookies.png"></i><a class="ml-22" title="食物">食物饮品</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="饼干">饼干</span></dt>
-																		<dd><a title="曲奇饼干" href="#"><span>曲奇饼干</span></a></dd>
-																		<dd><a title="威化饼干" href="#"><span>威化饼干</span></a></dd>
-																		<dd><a title="消化饼干" href="#"><span>消化饼干</span></a></dd>
-																		<dd><a title="燕麦饼干" href="#"><span>燕麦饼干</span></a></dd>
-																		<dd><a title="薄脆饼干" href="#"><span>薄脆饼干</span></a></dd>
-																		<dd><a title="夹心饼干" href="#"><span>夹心饼干</span></a></dd>
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="坚果">坚果</span></dt>
-																		<dd><a title="核桃" href="#"><span>核桃</span></a></dd>
-																		<dd><a title="夏威夷果" href="#"><span>夏威夷果</span></a></dd>
-																		<dd><a title="瑞碧根果" href="#"><span>碧根果</span></a></dd>
-																		<dd><a title="腰果" href="#"><span>腰果</span></a></dd>
-																		<dd><a title="开心果" href="#"><span>开心果</span></a></dd>
-																		<dd><a title="瓜子" href="#"><span>瓜子</span></a></dd>
-																		<dd><a title="花生" href="#"><span>花生</span></a></dd>
-																		
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="饮品">饮品</span></dt>
-																		<dd><a title="红茶" href="#"><span>红茶</span></a></dd>
-																		<dd><a title="绿茶" href="#"><span>绿茶</span></a></dd>
-																		<dd><a title="乌龙茶" href="#"><span>乌龙茶</span></a></dd>
-																		<dd><a title="咖啡" href="#"><span>咖啡</span></a></dd>
-																		<dd><a title="饮料" href="#"><span>饮料</span></a></dd>
-																		<dd><a title="乳制品" href="#"><span>乳制品</span></a></dd>
-																		<dd><a title="冲饮" href="#"><span>冲饮</span></a></dd>
-																	
-																	</dl>
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="YYKCLOT" target="_blank" href="#" rel="nofollow"><span  class ="red" >YYKCLOT</span></a></dd>
-																		<dd><a rel="nofollow" title="池氏品牌男装" target="_blank" href="#" rel="nofollow"><span  class ="red" >池氏品牌男装</span></a></dd>
-																		<dd><a rel="nofollow" title="男装日志" target="_blank" href="#" rel="nofollow"><span >男装日志</span></a></dd>
-																		<dd><a rel="nofollow" title="索比诺官方旗舰店" target="_blank" href="#" rel="nofollow"><span >索比诺官方旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="onTTno傲徒" target="_blank" href="#" rel="nofollow"><span  class ="red" >onTTno傲徒</span></a></dd>
-																		<dd><a rel="nofollow" title="玛狮路男装旗舰店" target="_blank" href="#" rel="nofollow"><span >玛狮路男装旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="劳威特品牌男装" target="_blank" href="#" rel="nofollow"><span >劳威特品牌男装</span></a></dd>
-																		<dd><a rel="nofollow" title="卡斯郎世家批发城" target="_blank" href="#" rel="nofollow"><span  class ="red" >卡斯郎世家批发城</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-                                             <b class="arrow"></b>
-											</li>
-											<li class="appliance js_toggle relative">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/life.png"></i><a class="ml-22" title="生活用品">生活用品</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="卫生纸">卫生纸</span></dt>
-																		<dd><a title="卷纸" href="#"><span>卷纸</span></a></dd>
-																		<dd><a title="抽纸" href="#"><span>抽纸</span></a></dd>
-																		
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="牙刷">牙刷</span></dt>
-																		<dd><a title="卷纸" href="#"><span>电动牙刷</span></a></dd>
-																		
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="毛巾">毛巾</span></dt>
-																		<dd><a title="方巾" href="#"><span>方巾</span></a></dd>
-																		<dd><a title="运动毛巾" href="#"><span>运动毛巾</span></a></dd>
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="洗发露">洗发露</span></dt>
-																		<dd><a title="去屑" href="#"><span>去屑</span></a></dd>
-																		<dd><a title="垂顺" href="#"><span>垂顺</span></a></dd>
-																		<dd><a title="乌发" href="#"><span>乌发</span></a></dd>
-																	</dl>
-																
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="花颜巧语 " target="_blank" href="#" rel="nofollow"><span  class="red" >花颜巧语 </span></a></dd>
-																		<dd><a rel="nofollow" title="糖衣小屋" target="_blank" href="#" rel="nofollow"><span >糖衣小屋</span></a></dd>
-																		<dd><a rel="nofollow" title="卡拉迪克  " target="_blank" href="#" rel="nofollow"><span  class="red" >卡拉迪克  </span></a></dd>
-																		<dd><a rel="nofollow" title="暖春童话 " target="_blank" href="#" rel="nofollow"><span >暖春童话 </span></a></dd>
-																		<dd><a rel="nofollow" title="华盛童装批发行 " target="_blank" href="#" rel="nofollow"><span >华盛童装批发行 </span></a></dd>
-																		<dd><a rel="nofollow" title="奈仕华童装旗舰店" target="_blank" href="#" rel="nofollow"><span >奈仕华童装旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="斑蒂尼BONDYNI" target="_blank" href="#" rel="nofollow"><span  class="red" >斑蒂尼BONDYNI</span></a></dd>
-																		<dd><a rel="nofollow" title="猫儿朵朵 " target="_blank" href="#" rel="nofollow"><span >猫儿朵朵 </span></a></dd>
-																		<dd><a rel="nofollow" title="童衣阁" target="_blank" href="#" rel="nofollow"><span  class="red" >童衣阁</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-                                            <b class="arrow"></b>
-											</li>
-											<li class="appliance js_toggle relative">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/art.png"></i><a class="ml-22" title="文学艺术">文学艺术</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="瑜伽">瑜伽</span></dt>
-																		<dd><a title="瑜伽球" href="#"><span>瑜伽球</span></a></dd>
-																		<dd><a title="瑜伽带" href="#"><span>瑜伽带</span></a></dd>
-																		<dd><a title="瑜伽带" href="#"><span>瑜伽垫</span></a></dd>
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="书籍">书籍</span></dt>
-																		<dd><a title="哲理" href="#"><span>哲理</span></a></dd>
-																		<dd><a title="法律" href="#"><span>法律</span></a></dd>
-																		
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="茶具">茶具</span></dt>
-																		<dd><a title="茶盘" href="#"><span>茶盘</span></a></dd>
-																		<dd><a title="茶壶" href="#"><span>茶壶</span></a></dd>
-																		<dd><a title="紫砂茶具" href="#"><span>紫砂茶具</span></a></dd>
-																		<dd><a title="陶瓷" href="#"><span>陶瓷</span></a></dd>
-																		
-																	</dl>
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="歌芙品牌旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >歌芙品牌旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="爱丝蓝内衣厂" target="_blank" href="#" rel="nofollow"><span >爱丝蓝内衣厂</span></a></dd>
-																		<dd><a rel="nofollow" title="香港优蓓尔防辐射" target="_blank" href="#" rel="nofollow"><span >香港优蓓尔防辐射</span></a></dd>
-																		<dd><a rel="nofollow" title="蓉莉娜内衣批发" target="_blank" href="#" rel="nofollow"><span >蓉莉娜内衣批发</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-                                             <b class="arrow"></b>
-											</li>
-											<li class="appliance js_toggle relative">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/amuse.png"></i><a class="ml-22" title="娱乐器具">娱乐器具</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="钢琴">钢琴</span></dt>
-																		<dd><a title="立式钢琴" href="#"><span>立式钢琴</span></a></dd>
-																		<dd><a title="三角钢琴" href="#"><span>三角钢琴</span></a></dd>
-																	</dl>
-																	
-																	<dl class="dl-sort">
-																		<dt><span title="口琴">口琴</span></dt>					<dd><a title="初学者口琴" href="#"><span>初学者口琴</span></a></dd>
-																		<dd><a title="电声口琴" href="#"><span>电声口琴</span></a></dd>														
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="口琴">葫芦丝</span></dt>					<dd><a title="葫芦挂件" href="#"><span>葫芦挂件</span></a></dd>
-																		<dd><a title="红木葫芦丝" href="#"><span>红木葫芦丝</span></a></dd>														
-																	</dl>
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="呵呵嘿官方旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >呵呵嘿官方旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="格瑞旗舰店" target="_blank" href="#" rel="nofollow"><span >格瑞旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="飞彦大厂直供" target="_blank" href="#" rel="nofollow"><span  class="red" >飞彦大厂直供</span></a></dd>
-																		<dd><a rel="nofollow" title="红e·艾菲妮" target="_blank" href="#" rel="nofollow"><span >红e·艾菲妮</span></a></dd>
-																		<dd><a rel="nofollow" title="本真旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >本真旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="杭派女装批发网" target="_blank" href="#" rel="nofollow"><span  class="red" >杭派女装批发网</span></a></dd>
-																		<dd><a rel="nofollow" title="华伊阁旗舰店" target="_blank" href="#" rel="nofollow"><span >华伊阁旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="独家折扣旗舰店" target="_blank" href="#" rel="nofollow"><span >独家折扣旗舰店</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<b class="arrow"></b>
-											</li>
-											<li class="appliance js_toggle relative">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/active.png"></i><a class="ml-22" title="运动器材">运动器材</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="户外">户外</span></dt>
-																		<dd><a title="帐篷" href="#"><span>帐篷</span></a></dd>
-																		<dd><a title="鱼竿" href="#"><span>鱼竿</span></a></dd>	
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="游泳">游泳</span></dt>
-																		<dd><a title="泳衣" href="#"><span>泳衣</span></a></dd>
-																		<dd><a title="泳帽" href="#"><span>泳帽</span></a></dd>	
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="跑步">跑步</span></dt>
-																		<dd><a title="跑步机" href="#"><span>跑步机</span></a></dd>
-																		<dd><a title="计时器" href="#"><span>电子计时器</span></a></dd>	
-																	</dl>
-																
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="YYKCLOT" target="_blank" href="#" rel="nofollow"><span  class ="red" >YYKCLOT</span></a></dd>
-																		<dd><a rel="nofollow" title="池氏品牌男装" target="_blank" href="#" rel="nofollow"><span  class ="red" >池氏品牌男装</span></a></dd>
-																		<dd><a rel="nofollow" title="男装日志" target="_blank" href="#" rel="nofollow"><span >男装日志</span></a></dd>
-																		<dd><a rel="nofollow" title="索比诺官方旗舰店" target="_blank" href="#" rel="nofollow"><span >索比诺官方旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="onTTno傲徒" target="_blank" href="#" rel="nofollow"><span  class ="red" >onTTno傲徒</span></a></dd>
-																		<dd><a rel="nofollow" title="卡斯郎世家批发城" target="_blank" href="#" rel="nofollow"><span  class ="red" >卡斯郎世家批发城</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-                                            <b class="arrow"></b>
-											</li>
-											<li class="appliance js_toggle relative">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/medic.png"></i><a class="ml-22" title="医药保健品">医药保健品</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="口服液">口服液</span></dt>
-																		<dd><a title="葡萄糖" href="#"><span>葡萄糖</span></a></dd>
-																		<dd><a title="乳果糖溶液" href="#"><span>乳果糖溶液</span></a></dd>	
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="片剂">片剂</span></dt>					<dd><a title="钙片" href="#"><span>钙片</span></a></dd>
-																		<dd><a title="奶片" href="#"><span>奶片</span></a></dd>											
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="冲剂">冲剂</span></dt>
-																		<dd><a title="孢子粉" href="#"><span>孢子粉</span></a></dd>
-																		<dd><a title="奶粉" href="#"><span>奶粉</span></a></dd>	
-																	</dl>
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="花颜巧语 " target="_blank" href="#" rel="nofollow"><span  class="red" >花颜巧语 </span></a></dd>
-																		<dd><a rel="nofollow" title="糖衣小屋" target="_blank" href="#" rel="nofollow"><span >糖衣小屋</span></a></dd>
-																		<dd><a rel="nofollow" title="卡拉迪克  " target="_blank" href="#" rel="nofollow"><span  class="red" >卡拉迪克  </span></a></dd>
-																		<dd><a rel="nofollow" title="暖春童话 " target="_blank" href="#" rel="nofollow"><span >暖春童话 </span></a></dd>
-																		<dd><a rel="nofollow" title="华盛童装批发行 " target="_blank" href="#" rel="nofollow"><span >华盛童装批发行 </span></a></dd>
-																		<dd><a rel="nofollow" title="奈仕华童装旗舰店" target="_blank" href="#" rel="nofollow"><span >奈仕华童装旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="斑蒂尼BONDYNI" target="_blank" href="#" rel="nofollow"><span  class="red" >斑蒂尼BONDYNI</span></a></dd>
-																		<dd><a rel="nofollow" title="童衣阁" target="_blank" href="#" rel="nofollow"><span  class="red" >童衣阁</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<b class="arrow"></b>
-											</li>
-											<li class="appliance js_toggle relative">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/yiliaoqicai.png"></i><a class="ml-22" title="医疗器材">医疗器材</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="保健按摩">保健按摩</span></dt>
-																		<dd><a title="按摩贴" href="#"><span>按摩贴</span></a></dd>
-																		<dd><a title="按摩椅" href="#"><span>按摩椅</span></a></dd>
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="火罐">火罐</span></dt>
-																		<dd><a title="真空拔火罐" href="#"><span>真空拔火罐</span></a></dd>
-																		
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="康复">康复</span></dt>
-																		<dd><a title="坐垫" href="#"><span>坐垫</span></a></dd>
-																		<dd><a title="走步机" href="#"><span>走步机</span></a></dd>
-																	</dl>
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a rel="nofollow" title="歌芙品牌旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >歌芙品牌旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="爱丝蓝内衣厂" target="_blank" href="#" rel="nofollow"><span >爱丝蓝内衣厂</span></a></dd>
-																		<dd><a rel="nofollow" title="炫点服饰" target="_blank" href="#" rel="nofollow"><span >炫点服饰</span></a></dd>
-																		<dd><a rel="nofollow" title="雪茵美内衣厂批发" target="_blank" href="#" rel="nofollow"><span >雪茵美内衣厂批发</span></a></dd>
-																		<dd><a rel="nofollow" title="金钻夫人" target="_blank" href="#" rel="nofollow"><span >金钻夫人</span></a></dd>
-																		<dd><a rel="nofollow" title="伊美莎内衣" target="_blank" href="#" rel="nofollow"><span  class="red" >伊美莎内衣</span></a></dd>
-																		<dd><a rel="nofollow" title="粉客内衣旗舰店" target="_blank" href="#" rel="nofollow"><span >粉客内衣旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="泽芳行旗舰店" target="_blank" href="#" rel="nofollow"><span >泽芳行旗舰店</span></a></dd>
-																		<dd><a rel="nofollow" title="彩婷" target="_blank" href="#" rel="nofollow"><span  class="red" >彩婷</span></a></dd>
-																		<dd><a rel="nofollow" title="黛兰希" target="_blank" href="#" rel="nofollow"><span >黛兰希</span></a></dd>
-																		<dd><a rel="nofollow" title="香港优蓓尔防辐射" target="_blank" href="#" rel="nofollow"><span >香港优蓓尔防辐射</span></a></dd>
-																		<dd><a rel="nofollow" title="蓉莉娜内衣批发" target="_blank" href="#" rel="nofollow"><span >蓉莉娜内衣批发</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-                                             <b class="arrow"></b>
-											</li>
-											<li class="appliance js_toggle relative">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/tea.png"></i><a class="ml-22" title="家具器材">家具器材</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="客厅">客厅</span></dt>
-																		<dd><a title="沙发" href="#"><span>沙发</span></a></dd>
-																		<dd><a title="茶几" href="#"><span>茶几</span></a></dd>
-																		<dd><a title="垃圾桶" href="#"><span>电视柜</span></a></dd>
-																		
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="餐厅">餐厅</span></dt>
-																		<dd><a title="饭桌" href="#"><span>饭桌</span></a></dd>
-																		<dd><a title="椅子" href="#"><span>椅子</span></a></dd>
-																		<dd><a title="餐具" href="#"><span>餐具</span></a></dd>
-																	
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="厨房">厨房</span></dt>
-																		<dd><a title="锅" href="#"><span>锅</span></a></dd>
-																		<dd><a title="盆" href="#"><span>盆</span></a></dd>
-																		<dd><a title="抽油烟机" href="#"><span>抽油烟机</span></a></dd>
-																		
-																	</dl>
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a title="今生只围你" target="_blank" href="#" rel="nofollow"><span >今生只围你</span></a></dd>
-																		<dd><a title="忆佳人" target="_blank" href="#" rel="nofollow"><span  class="red" >忆佳人</span></a></dd>
-																		<dd><a title="斐洱普斯" target="_blank" href="#" rel="nofollow"><span  class="red" >斐洱普斯</span></a></dd>
-																		<dd><a title="聚百坊" target="_blank" href="#" rel="nofollow"><span  class="red" >聚百坊</span></a></dd>
-																		<dd><a title="朵朵棉织直营店" target="_blank" href="#" rel="nofollow"><span >朵朵棉织直营店</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<b class="arrow"></b>
-											</li>
-											<li class="appliance js_toggle relative last">
-												<div class="category-info">
-													<h3 class="category-name b-category-name"><i><img src="images/product/elect.png"></i><a class="ml-22" title="电子产品">电子产品</a></h3>
-													<em>&gt;</em></div>
-												<div class="menu-item menu-in top">
-													<div class="area-in">
-														<div class="area-bg">
-															<div class="menu-srot">
-																<div class="sort-side">
-																	<dl class="dl-sort">
-																		<dt><span title="相机摄像">相机摄像</span></dt>
-																	    <dd><a title="单反相机" href="#"><span>单反相机</span></a></dd>
-																		<dd><a title="相机脚架" href="#"><span>相机脚架</span></a></dd>
-																		
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="老人手机">老人手机</span></dt>
-																		<dd><a title="小米6" href="#"><span>小米6</span></a></dd>
-																		<dd><a title="华为mate" href="#"><span>华为mate</span></a></dd>
-																		
-																	</dl>
-																	<dl class="dl-sort">
-																		<dt><span title="影音智能">影音智能</span></dt>
-																		<dd><a title="蓝牙音响" href="#"><span>蓝牙音响</span></a></dd>
-																		<dd><a title="话筒" href="#"><span>话筒</span></a></dd>
-																		<dd><a title="数字电视机顶盒" href="#"><span>数字电视机顶盒</span></a></dd>
-																	</dl>
-																</div>
-																<div class="brand-side">
-																	<dl class="dl-sort"><dt><span>实力商家</span></dt>
-																		<dd><a title="琳琅鞋业" target="_blank" href="#" rel="nofollow"><span >琳琅鞋业</span></a></dd>
-																		<dd><a title="宏利鞋业" target="_blank" href="#" rel="nofollow"><span >宏利鞋业</span></a></dd>
-																		<dd><a title="比爱靓点鞋业" target="_blank" href="#" rel="nofollow"><span >比爱靓点鞋业</span></a></dd>
-																		<dd><a title="浪人怪怪" target="_blank" href="#" rel="nofollow"><span >浪人怪怪</span></a></dd>
-																	</dl>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-
-											</li>
-										</ul>
-									</div>
-								</div>
-
-							</div>
+						<div class="login_btnbox ">
+							<a href="# " class="login_order ">我的订单</a> <a href="# "
+								class="login_favorite ">我的收藏</a>
 						</div>
-						
-						<!--轮播 -->
-						<script type="text/javascript">
-							(function() {
-								$('.am-slider').flexslider();
-							});
-							$(document).ready(function() {
-								$("li").hover(function() {
-									$(".category-content .category-list li.first .menu-in").css("display", "none");
-									$(".category-content .category-list li.first").removeClass("hover");
-									$(this).addClass("hover");
-									$(this).children("div.menu-in").css("display", "block")
-								}, function() {
-									$(this).removeClass("hover")
-									$(this).children("div.menu-in").css("display", "none")
-								});
-							})
-						</script>
-
-
-					<!--小导航 -->
-					<div class="am-g am-g-fixed smallnav">
-						<div class="am-u-sm-3">
-							<a href="sort.html"><img src="images/product/navsmall.jpg" />
-								<div class="title">商品分类</div>
-							</a>
-						</div>
-						<div class="am-u-sm-3">
-							<a href="#"><img src="images/product/huismall.jpg" />
-								<div class="title">大聚惠</div>
-							</a>
-						</div>
-						<div class="am-u-sm-3">
-							<a href="#"><img src="images/product/mansmall.jpg" />
-								<div class="title">个人中心</div>
-							</a>
-						</div>
-						<div class="am-u-sm-3">
-							<a href="#"><img src="images/product/moneysmall.jpg" />
-								<div class="title">投资理财</div>
-							</a>
-						</div>
+						<i class="icon_arrow_white "></i>
 					</div>
-
-					<!--走马灯 -->
-
-				
-					<div class="clear"></div>
-				</div>
-				<script type="text/javascript">
-					if ($(window).width() < 640) {
-						function autoScroll(obj) {
-							$(obj).find("ul").animate({
-								marginTop: "-39px"
-							}, 500, function() {
-								$(this).css({
-									marginTop: "0px"
-								}).find("li:first").appendTo(this);
-							})
-						}
-						$(function() {
-							setInterval('autoScroll(".demo")', 3000);
-						})
-					}
-				</script>
-			</div>
-			<div class="shopMainbg">
-				<div class="shopMain" id="shopmain">
-
-					<!--今日推荐 -->
-
-					<div class="am-g am-g-fixed recommendation">
-						<div class="clock am-u-sm-3">
-							<img src="images/product/2017.png "></img>
-							<p>今日<br>推荐</p>
-						</div>
-						<div class="am-u-sm-4 am-u-lg-3 ">
-							<div class="info ">
-								<h3>真的有鱼</h3>
-								<h4>福利篇</h4>
-							</div>
-							<div class="recommendationMain one">
-								<img src="images/product/tj.png "></img>
-							</div>
-						</div>						
-						<div class="am-u-sm-4 am-u-lg-3 ">
-							<div class="info ">
-								<h3>滋补保健</h3>
-								<h4>给您最好的调理</h4>
-							</div>
-							<div class="recommendationMain two">
-								<img src="images/product/m_2.jpg "></img>
-							</div>
-						</div>
-						<div class="am-u-sm-4 am-u-lg-3 ">
-							<div class="info ">
-								<h3>御寒大衣</h3>
-								<h4>给你关爱</h4>
-							</div>
-							<div class="recommendationMain three ">
-								<img src="images/product/cloth/m_1.jpg "></img>
-							</div>
-						</div>
-
-					</div>
-					<div class="clear "></div>
-					<!--热门活动 -->
-
-					<div class="am-container activity ">
-						<div class="shopTitle ">
-							<h4>活动</h4>
-							<h3>每期活动 优惠享不停 </h3>
-							<span class="more ">
-                               <a href="# ">全部活动<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					
-					  <div class="am-g am-g-fixed ">
-						<div class="am-u-sm-3 ">
-							<div class="icon-sale one "></div>	
-								<h4>最新团购</h4>							
-							<div class="activityMain ">
-								<img src="images/product/activity_group_1_bg.bmp "></img>
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>														
-						</div>
-						
-						<div class="am-u-sm-3 ">
-						  <div class="icon-sale two "></div>	
-							<h4>即将截止</h4>
-							<div class="activityMain ">
-								<img src="images/product/activity2.jpg "></img>
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>								
-							</div>							
-						</div>						
-						
-						<div class="am-u-sm-3 ">
-							<div class="icon-sale three "></div>
-							<h4>特惠</h4>
-							<div class="activityMain ">
-								<img src="images/product/activity_3_bg.png "></img>
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>							
-						</div>						
-
-						<div class="am-u-sm-3 last ">
-							<div class="icon-sale "></div>
-							<h4>超值</h4>
-							<div class="activityMain ">
-								<img src="images/product/activity.jpg "></img>
-							</div>
-							<div class="info ">
-								<h3>春节送礼优选</h3>
-							</div>													
-						</div>
-
-					  </div>
-                   </div>
-					<div class="clear "></div>
-
-					<!--衣物服饰-->
-					<div id="f1">
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>衣物服饰</h4>
-							<h3>实价优惠，保证满意品质</h3>
-							<div class="today-brands ">
-								<a href="# ">棉衣</a>
-								<a href="# ">棉鞋</a>
-								<a href="# ">外套</a>
-								<a href="# ">内衣</a>
-							</div>
-							<span class="more ">
-                                 <a href="# ">更多服饰<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					
-					<div class="am-g am-g-fixed floodFive ">
-												
-						<div class="am-u-sm-5 am-u-md-3 text-one list">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">上衣</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">裤子</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">毛衣</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">外套</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">内衣</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">鞋子</b></span></a>									
-							</div>						
-							<a href="# ">
-								<img src="images/product/cloth_logo.jpg " />
-								<div class="outer-con ">
-									<div class="title ">
-										给最爱的你
-									</div>
-									<div class="sub-title ">
-										含外国进口
-									</div>
-								</div>
-							</a>
-							<div class="triangle-topright"></div>	
-						</div>
-						<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/1.jpg " /></a>						
-						</div>
-						
-						<div class="am-u-md-2 am-u-lg-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/2.jpg" /></a>
-						</div>
-						<div class="am-u-md-2 am-u-lg-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>			
-						<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/3.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/4.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>							
-					</div>
-
-					<div class="clear "></div>
-					</div>
-
-                    <div id="f2">
-					<!--食物饮品-->
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>食物饮品</h4>
-							<h3>酥酥脆脆，回味无穷</h3>
-							<div class="today-brands ">
-								<a href="# ">蛋糕</a>
-								<a href="# ">饼干</a>
-								<a href="# ">坚果</a>
-								<a href="# ">饮品</a>
-								<a href="# ">水果</a>
-								<a href="# ">甜点</a>
-							</div>
-							<span class="more ">
-                                <a href="# ">更多美味<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					<div class="am-g am-g-fixed floodFour">
-						<div class="am-u-sm-5 am-u-md-4 text-one list ">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">蛋糕</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">饼干</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">坚果</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">饮品</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">水果</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">甜点</b></span></a>									
-							</div>
-							<a href="# ">
-								<div class="outer-con ">
-									<div class="title ">
-									零食大礼包开抢啦！
-									</div>	
-									<div class="sub-title ">
-										含外国进口
-									</div>																
-								</div>
-                                  <img src="images/product/act1.png " />								
-							</a>
-							<div class="triangle-topright"></div>						
-						</div>
-						
-							<div class="am-u-sm-7 am-u-md-4 text-two sug">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>									
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/6.jpg" /></a>
-							</div>
-
-							<div class="am-u-sm-7 am-u-md-4 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/7.jpg" /></a>
-							</div>
-
-
-						<div class="am-u-sm-3 am-u-md-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/9.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/8.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-					</div>
-                 <div class="clear "></div>                 
-                 </div>				
-
-					<!--生活用品-->
-					<div id="f3">
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>生活用品</h4>
-							<h3>呵护您和家人的健康</h3>
-							<div class="today-brands ">
-								<a href="# ">洗发露</a>
-								<a href="# ">沐浴露</a>
-								<a href="# ">卫生纸 </a>
-								<a href="# ">毛巾</a>
-								<a href="# ">盆</a>
-								<a href="# ">牙刷</a>
-							</div>
-							<span class="more ">
-                                 <a href="# ">更多个护<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					
-					<div class="am-g am-g-fixed floodFive ">
-												
-						<div class="am-u-sm-5 am-u-md-3 text-one list">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">洗发露</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">卫生纸</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">毛巾</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">盆</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">沐浴露</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">牙刷</b></span></a>									
-							</div>						
-							<a href="# ">
-								<img src="images/product/life_logo.jpg " />
-								<div class="outer-con ">
-									<div class="title ">
-										平价个护等你来
-									</div>	
-									<div class="sub-title ">
-										含外国进口
-									</div>								
-								</div>
-							</a>
-							<div class="triangle-topright"></div>	
-						</div>
-						<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/1.jpg " /></a>						
-						</div>
-						
-						<div class="am-u-md-2 am-u-lg-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/2.jpg" /></a>
-						</div>
-						<div class="am-u-md-2 am-u-lg-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>			
-						<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/3.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/4.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>							
-					</div>
-					<div class="clear "></div>
-					</div>
-
-                    <div id="f4">
-					<!--文学艺术-->
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>文学艺术</h4>
-							<h3>文房四宝，皆聚华夏风采</h3>
-							<div class="today-brands ">
-								<a href="# "></a>
-								<a href="# ">文具</a>
-								<a href="# ">绘画</a>
-								<a href="# ">书籍</a>
-								<a href="# ">瑜伽</a>
-							</div>
-							<span class="more ">
-                                <a href="# ">更多...<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					<div class="am-g am-g-fixed floodFour">
-						<div class="am-u-sm-5 am-u-md-4 text-one list ">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">文具</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">绘画</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">书籍</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">瑜伽</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">茶具</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">表演</b></span></a>									
-							</div>
-							<a href="# ">
-								<div class="outer-con ">
-									<div class="title ">
-									    陶冶个人情操
-									</div>
-									<div class="sub-title ">
-										含外国进口
-									</div>								
-								</div>
-                                  <img src="images/product/art_logo.jpg " />								
-							</a>
-							<div class="triangle-topright"></div>						
-						</div>
-						
-							<div class="am-u-sm-7 am-u-md-4 text-two sug">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>									
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/6.jpg" /></a>
-							</div>
-
-							<div class="am-u-sm-7 am-u-md-4 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/7.jpg" /></a>
-							</div>
-
-
-						<div class="am-u-sm-3 am-u-md-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/9.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/8.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-					</div>
-                 <div class="clear "></div>                 
-                 </div>	
-                 
-					<!--娱乐器具-->
-					<div id="f5">
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>娱乐器具</h4>
-							<h3>经常笑一笑，越活越年轻</h3>
-							<div class="today-brands ">
-								<a href="# ">钢琴</a>
-								<a href="# ">剪纸</a>
-								<a href="# ">小提琴 </a>
-								<a href="# ">口琴</a>
-							</div>
-							<span class="more ">
-                                 <a href="# ">更多...<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					
-					<div class="am-g am-g-fixed floodFive ">
-												
-						<div class="am-u-sm-5 am-u-md-3 text-one list">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">钢琴</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">剪纸</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">小提琴</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">口琴</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">葫芦丝</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">吉他</b></span></a>									
-							</div>					
-							<a href="# ">
-								<img src="images/product/amuse_logo.jpg " />
-								<div class="outer-con ">
-									<div class="title ">
-										有好玩的，有教程哟
-									</div>	
-									<div class="sub-title ">
-										含外国进口
-									</div>								
-								</div>
-							</a>
-							<div class="triangle-topright"></div>	
-						</div>
-						<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/1.jpg " /></a>						
-						</div>
-						
-						<div class="am-u-md-2 am-u-lg-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/2.jpg" /></a>
-						</div>
-						<div class="am-u-md-2 am-u-lg-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>			
-						<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/3.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/4.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>							
-					</div>
-					<div class="clear "></div>
-					</div>
-
-                    <div id="f6">
-					<!--运动器材-->
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>运动器材</h4>
-							<h3>活动筋骨，让自己动起来</h3>
-							<div class="today-brands ">
-								<a href="# ">跑步</a>
-								<a href="# ">游泳</a>
-								<a href="# ">篮球 </a>
-								<a href="# ">乒乓球</a>
-							</div>
-							<span class="more ">
-                                <a href="# ">更多...<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					<div class="am-g am-g-fixed floodFour">
-						<div class="am-u-sm-5 am-u-md-4 text-one list ">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">跑步</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">游泳</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">篮球</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">乒乓球</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">羽毛球</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">户外</b></span></a>									
-							</div>
-							<a href="# ">
-								<div class="outer-con ">
-									<div class="title ">
-									开抢啦！
-									</div>
-									<div class="sub-title ">
-										含外国进口
-									</div>									
-								</div>
-                                  <img src="images/product/active_logo.jpg " />								
-							</a>
-							<div class="triangle-topright"></div>						
-						</div>
-						
-							<div class="am-u-sm-7 am-u-md-4 text-two sug">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>									
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/6.jpg" /></a>
-							</div>
-
-							<div class="am-u-sm-7 am-u-md-4 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/7.jpg" /></a>
-							</div>
-
-
-						<div class="am-u-sm-3 am-u-md-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/9.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-							</div>
-							<a href="# "><img src="images/product/8.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-					</div>
-                 <div class="clear "></div>                 
-                 </div>	
-                 
-					<!--家具器材-->
-					<div id="f7">
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>家具器材</h4>
-							<h3>正牌家具家纺任你购</h3>
-							<div class="today-brands ">
-								<a href="# ">客厅家具</a>
-								<a href="# ">餐厅家具</a>
-								<a href="# ">厨房家具 </a>
-								<a href="# ">卧室</a>						
-							</div>
-							<span class="more ">
-                                 <a href="# ">更多...<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					
-					<div class="am-g am-g-fixed floodFive ">
-												
-						<div class="am-u-sm-5 am-u-md-3 text-one list">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">客厅家具</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">餐厅家具</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">厨房家具</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">卧室家具</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">卫生间</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">书房办公</b></span></a>									
-							</div>						
-							<a href="# ">
-								<img src="images/product/furniture_logo.jpg " />
-								<div class="outer-con ">
-									<div class="title ">
-										新进家具包你满意
-									</div>	
-									<div class="sub-title ">
-										含外国进口
-									</div>							
-								</div>
-							</a>
-							<div class="triangle-topright"></div>	
-						</div>
-						<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/1.jpg " /></a>						
-						</div>
-						
-						<div class="am-u-md-2 am-u-lg-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/2.jpg" /></a>
-						</div>
-						<div class="am-u-md-2 am-u-lg-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>			
-						<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/3.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/4.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>							
-					</div>
-
-					<div class="clear "></div>
-					</div>
-
-                    <div id="f8">
-					<!--电子产品-->
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>电子产品</h4>
-							<h3>生活升级，你也要“升级”</h3>
-							<div class="today-brands ">
-								<a href="# ">相机摄像</a>
-								<a href="# ">老人手机</a>
-								<a href="# ">智能影音</a>
-								
-							</div>
-							<span class="more ">
-                                <a href="# ">更多...<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					<div class="am-g am-g-fixed floodFour">
-						<div class="am-u-sm-5 am-u-md-4 text-one list ">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">生活厨电</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">相机摄像</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">影音智能</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">老人电脑</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">个护健康</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">老人手机</b></span></a>									
-							</div>
-							<a href="# ">
-								<div class="outer-con ">
-									<div class="title ">
-									  开抢啦！
-									</div>	
-									<div class="sub-title ">
-										含外国进口
-									</div>																	
-								</div>
-                                  <img src="images/product/elect_logo.jpg " />								
-							</a>
-							<div class="triangle-topright"></div>						
-						</div>
-						
-							<div class="am-u-sm-7 am-u-md-4 text-two sug">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>									
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/6.jpg" /></a>
-							</div>
-
-							<div class="am-u-sm-7 am-u-md-4 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/7.jpg" /></a>
-							</div>
-
-
-						<div class="am-u-sm-3 am-u-md-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/9.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/8.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-					</div>
-                 <div class="clear "></div>                 
-                 </div>				
-
-					<!--医疗保健品-->
-					<div id="f9">
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>医疗保健品</h4>
-							<h3>给你最贴心的关爱</h3>
-							<div class="today-brands ">
-								<a href="# ">口服液</a>
-								<a href="# ">粉剂</a>
-								<a href="# ">冲剂 </a>
-								<a href="# ">丸剂</a>
-								<a href="# ">片剂</a>
-							</div>
-							<span class="more ">
-                                 <a href="# ">更多...<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					
-					<div class="am-g am-g-fixed floodFive ">
-												
-						<div class="am-u-sm-5 am-u-md-3 text-one list">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">口服液</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">粉剂</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">钙片</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">冲剂</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">丸剂</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">颗粒</b></span></a>									
-							</div>							
-							<a href="# ">
-								<img src="images/product/medic_logo.jpg " />
-								<div class="outer-con ">
-									<div class="title ">
-										在家安心
-									</div>
-									<div class="sub-title ">
-										含外国进口
-									</div>
-								</div>
-							</a>
-							<div class="triangle-topright"></div>	
-						</div>
-						<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/1.jpg " /></a>						
-						</div>
-						
-						<div class="am-u-md-2 am-u-lg-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/2.jpg" /></a>
-						</div>
-						<div class="am-u-md-2 am-u-lg-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>			
-						<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>								
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/3.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/4.jpg" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/5.jpg" /></a>
-						</div>							
-					</div>
-
-					<div class="clear "></div>
-					</div>
-
-                    <div id="f10">
-					<!--医疗器材-->
-					<div class="am-container ">
-						<div class="shopTitle ">
-							<h4>医疗器材</h4>
-							<h3>小毛病不进医院也可以在家检查</h3>
-							<div class="today-brands ">
-								<a href="# ">康复</a>
-								<a href="# ">保健按摩</a>
-								<a href="# ">防风湿器 </a>
-								<a href="# ">电理疗</a>
-								
-							</div>
-							<span class="more ">
-                                <a href="# ">更多...<i class="am-icon-angle-right" style="padding-left:10px ;" ></i></a>
-                            </span>
-						</div>
-					</div>
-					<div class="am-g am-g-fixed floodFour">
-						<div class="am-u-sm-5 am-u-md-4 text-one list ">
-							<div class="word">
-								<a class="outer" href="#"><span class="inner"><b class="text">防风湿器</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">康复</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">火罐</b></span></a>	
-								<a class="outer" href="#"><span class="inner"><b class="text">保健按摩</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">电理疗</b></span></a>
-								<a class="outer" href="#"><span class="inner"><b class="text">吊环</b></span></a>										
-							</div>
-							<a href="# ">
-								<div class="outer-con ">
-									<div class="title ">
-									开抢啦！
-									</div>	
-									<div class="sub-title ">
-										含外国进口
-									</div>																
-								</div>
-                                  <img src="images/product/ylqc_logo.jpg" />								
-							</a>
-							<div class="triangle-topright"></div>						
-						</div>
-						
-							<div class="am-u-sm-7 am-u-md-4 text-two sug">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>									
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/6.jpg" /></a>
-							</div>
-
-							<div class="am-u-sm-7 am-u-md-4 text-two">
-								<div class="outer-con ">
-									<div class="title ">
-										雪之恋和风大福
-									</div>
-									<div class="sub-title ">
-										¥13.8
-									</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-								</div>
-								<a href="# "><img src="images/product/7.jpg" /></a>
-							</div>
-
-
-						<div class="am-u-sm-3 am-u-md-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/9.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/8.jpg" /></a>
-						</div>
-
-						<div class="am-u-sm-3 am-u-md-2 text-three last big ">
-							<div class="outer-con ">
-								<div class="title ">
-									小优布丁
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="images/product/10.jpg" /></a>
-						</div>
-
-					</div>
-                 <div class="clear "></div>                 
-                 </div>				
-
-
-					<div class="footer ">
-						<div class="footer-hd ">
-							<p>
-								<a href="# ">孝和集团</a>
-								<b>|</b>
-								<a href="# ">商城首页</a>
-								<b>|</b>
-								<a href="# "></a>
-								<b>|</b>
-								<a href="# "></a>
-							</p>
-						</div>
-						<div class="footer-bd ">
-							<p>
-								<a href="index.html ">关于孝和</a>
-								<a href="# "></a>
-								<a href="contact.html">联系我们</a>
-								<a href="# "></a>
-								<em>© 2017-2025 oldermanage.com 更关注老年人 - Collect from 孝和集团</em>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-		<!--引导-->
-		<div class="navCir">
-			<li class="active"><a href="home1.html"><i class="am-icon-home "></i>首页</a></li>
-			<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
-			<li><a href="../person/index.html"><i class="am-icon-user"></i>我的</a></li>					
-		</div>
-
-		<!--菜单 -->
-		<div class=tip>
-			<div id="sidebar">
-				<div id="wrap">
-					<div id="prof" class="item ">
-						<a href="# ">
-							<span class="setting "></span>
-						</a>
-						<div class="ibar_login_box status_login ">
-							<div class="avatar_box ">
-								<p class="avatar_imgbox "><img src="images/product/no-img_mid_.jpg " /></p>
-								<ul class="user_info ">
-									<li>用户名：sl1903</li>
-									<li>级&nbsp;别：普通会员</li>
-								</ul>
-							</div>
-							<div class="login_btnbox ">
-								<a href="# " class="login_order ">我的订单</a>
-								<a href="# " class="login_favorite ">我的收藏</a>
-							</div>
-							<i class="icon_arrow_white "></i>
-						</div>
-
-					</div>
-					<div id="shopCart " class="item ">
-						<a href="# ">
-							<span class="message "></span>
-						</a>
-						<p>
-							购物车
-						</p>
-						<p class="cart_num ">0</p>
-					</div>
-					<div id="asset " class="item ">
-						<a href="# ">
-							<span class="view "></span>
-						</a>
-						<div class="mp_tooltip ">
-							我的资产
-							<i class="icon_arrow_right_black "></i>
-						</div>
-					</div>
-
-					<div id="foot " class="item ">
-						<a href="# ">
-							<span class="zuji "></span>
-						</a>
-						<div class="mp_tooltip ">
-							我的足迹
-							<i class="icon_arrow_right_black "></i>
-						</div>
-					</div>
-
-					<div id="brand " class="item ">
-						<a href="#">
-							<span class="wdsc "><img src="images/product/wdsc.png " /></span>
-						</a>
-						<div class="mp_tooltip ">
-							我的收藏
-							<i class="icon_arrow_right_black "></i>
-						</div>
-					</div>
-
-					<div id="broadcast " class="item ">
-						<a href="# ">
-							<span class="chongzhi "><img src="images/product/chongzhi.png " /></span>
-						</a>
-						<div class="mp_tooltip ">
-							我要充值
-							<i class="icon_arrow_right_black "></i>
-						</div>
-					</div>
-
-					<div class="quick_toggle ">
-						<li class="qtitem ">
-							<a href="# "><span class="kfzx "></span></a>
-							<div class="mp_tooltip ">客服中心<i class="icon_arrow_right_black "></i></div>
-						</li>
-						<!--二维码 -->
-						<li class="qtitem ">
-							<a href="#none "><span class="mpbtn_qrcode "></span></a>
-							<div class="mp_qrcode " style="display:none; "><img src="images/product/weixin_code_145.png " /><i class="icon_arrow_white "></i></div>
-						</li>
-						<li class="qtitem ">
-							<a href="#top " class="return_top "><span class="top "></span></a>
-						</li>
-					</div>
-
-					<!--回到顶部 -->
-					<div id="quick_links_pop " class="quick_links_pop hide "></div>
 
 				</div>
-
-			</div>
-			<div id="prof-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					我
-				</div>
-			</div>
-			<div id="shopCart-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					购物车
-				</div>
-			</div>
-			<div id="asset-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					资产
-				</div>
-
-				<div class="ia-head-list ">
-					<a href="# " target="_blank " class="pl ">
-						<div class="num ">0</div>
-						<div class="text ">优惠券</div>
+				<div id="shopCart " class="item ">
+					<a href="# "> <span class="message "></span>
 					</a>
-					<a href="# " target="_blank " class="pl ">
-						<div class="num ">0</div>
-						<div class="text ">红包</div>
+					<p>购物车</p>
+					<p class="cart_num ">0</p>
+				</div>
+				<div id="asset " class="item ">
+					<a href="# "> <span class="view "></span>
 					</a>
-					<a href="# " target="_blank " class="pl money ">
-						<div class="num ">￥0</div>
-						<div class="text ">余额</div>
-					</a>
+					<div class="mp_tooltip ">
+						我的资产 <i class="icon_arrow_right_black "></i>
+					</div>
 				</div>
 
+				<div id="foot " class="item ">
+					<a href="# "> <span class="zuji "></span>
+					</a>
+					<div class="mp_tooltip ">
+						我的足迹 <i class="icon_arrow_right_black "></i>
+					</div>
+				</div>
+
+				<div id="brand " class="item ">
+					<a href="#"> <span class="wdsc "><img
+							src="images/product/wdsc.png " /></span>
+					</a>
+					<div class="mp_tooltip ">
+						我的收藏 <i class="icon_arrow_right_black "></i>
+					</div>
+				</div>
+
+				<div id="broadcast " class="item ">
+					<a href="# "> <span class="chongzhi "><img
+							src="images/product/chongzhi.png " /></span>
+					</a>
+					<div class="mp_tooltip ">
+						我要充值 <i class="icon_arrow_right_black "></i>
+					</div>
+				</div>
+
+				<div class="quick_toggle ">
+					<li class="qtitem "><a href="# "><span class="kfzx "></span></a>
+						<div class="mp_tooltip ">
+							客服中心<i class="icon_arrow_right_black "></i>
+						</div></li>
+					<!--二维码 -->
+					<li class="qtitem "><a href="#none "><span
+							class="mpbtn_qrcode "></span></a>
+						<div class="mp_qrcode " style="display:none; ">
+							<img src="images/product/weixin_code_145.png " /><i
+								class="icon_arrow_white "></i>
+						</div></li>
+					<li class="qtitem "><a href="#top " class="return_top "><span
+							class="top "></span></a></li>
+				</div>
+
+				<!--回到顶部 -->
+				<div id="quick_links_pop " class="quick_links_pop hide "></div>
+
 			</div>
-			<div id="foot-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					足迹
-				</div>
-			</div>
-			<div id="brand-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					收藏
-				</div>
-			</div>
-			<div id="broadcast-content " class="nav-content ">
-				<div class="nav-con-close ">
-					<i class="am-icon-angle-right am-icon-fw "></i>
-				</div>
-				<div>
-					充值
-				</div>
-			</div>
+
 		</div>
-		<!-- <script>
+		<div id="prof-content " class="nav-content ">
+			<div class="nav-con-close ">
+				<i class="am-icon-angle-right am-icon-fw "></i>
+			</div>
+			<div>我</div>
+		</div>
+		<div id="shopCart-content " class="nav-content ">
+			<div class="nav-con-close ">
+				<i class="am-icon-angle-right am-icon-fw "></i>
+			</div>
+			<div>购物车</div>
+		</div>
+		<div id="asset-content " class="nav-content ">
+			<div class="nav-con-close ">
+				<i class="am-icon-angle-right am-icon-fw "></i>
+			</div>
+			<div>资产</div>
+
+			<div class="ia-head-list ">
+				<a href="# " target="_blank " class="pl ">
+					<div class="num ">0</div>
+					<div class="text ">优惠券</div>
+				</a> <a href="# " target="_blank " class="pl ">
+					<div class="num ">0</div>
+					<div class="text ">红包</div>
+				</a> <a href="# " target="_blank " class="pl money ">
+					<div class="num ">￥0</div>
+					<div class="text ">余额</div>
+				</a>
+			</div>
+
+		</div>
+		<div id="foot-content " class="nav-content ">
+			<div class="nav-con-close ">
+				<i class="am-icon-angle-right am-icon-fw "></i>
+			</div>
+			<div>足迹</div>
+		</div>
+		<div id="brand-content " class="nav-content ">
+			<div class="nav-con-close ">
+				<i class="am-icon-angle-right am-icon-fw "></i>
+			</div>
+			<div>收藏</div>
+		</div>
+		<div id="broadcast-content " class="nav-content ">
+			<div class="nav-con-close ">
+				<i class="am-icon-angle-right am-icon-fw "></i>
+			</div>
+			<div>充值</div>
+		</div>
+	</div>
+	<!-- <script>
 			window.jQuery || document.write('<script src="basic/js/jquery.min.js "></script>');
 		</script> -->
-		<script type="text/javascript " src="basic/js/quick_links.js"></script>
-	</body>
+	<script type="text/javascript " src="basic/js/quick_links.js"></script>
+
+	<script type="text/javascript">
+		function load() {
+			//	document.getElementById("altersubmit").href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoAlter.html?videoid="+videoid;
+	
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/today/recommend",
+				data : null,
+				success : function(result) {
+	
+					var todayList = result.data;
+					document.getElementById("todayProductName1").innerHTML = todayList[0].productname;
+					document.getElementById("todayProductInfo1").innerHTML = todayList[0].productinfo;
+					document.getElementById("todayProductImg1").src = todayList[0].productimg;
+	
+					$(todayProductImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("todayProductName2").innerHTML = todayList[1].productname;
+					document.getElementById("todayProductInfo2").innerHTML = todayList[1].productinfo;
+					document.getElementById("todayProductImg2").src = todayList[1].productimg;
+	
+					$(todayProductImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+					document.getElementById("todayProductName3").innerHTML = todayList[2].productname;
+					document.getElementById("todayProductInfo3").innerHTML = todayList[2].productinfo;
+					document.getElementById("todayProductImg3").src = todayList[2].productimg;
+					$(todayProductImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			//衣服服饰推荐
+			var typecontent1 = "衣物服饰";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent1,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type1productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type1productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type1productImg1").src = type1List[0].productimg;
+	
+					$(type1productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type1productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type1productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type1productImg2").src = type1List[1].productimg;
+	
+					$(type1productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type1productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type1productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type1productImg3").src = type1List[2].productimg;
+	
+					$(type1productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type1productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type1productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type1productImg4").src = type1List[3].productimg;
+	
+					$(type1productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type1productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type1productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type1productImg5").src = type1List[4].productimg;
+	
+					$(type1productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type1productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type1productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type1productImg6").src = type1List[5].productimg;
+	
+					$(type1productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+	
+			//食物饮品推荐
+			var typecontent2 = "食物饮品";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent2,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type2productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type2productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type2productImg1").src = type1List[0].productimg;
+	
+					$(type2productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type2productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type2productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type2productImg2").src = type1List[1].productimg;
+	
+					$(type2productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type2productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type2productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type2productImg3").src = type1List[2].productimg;
+	
+					$(type2productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type2productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type2productPrice4").innerHTML ="￥"+ type1List[3].productprice;
+					document.getElementById("type2productImg4").src = type1List[3].productimg;
+	
+					$(type2productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type2productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type2productPrice5").innerHTML ="￥"+ type1List[4].productprice;
+					document.getElementById("type2productImg5").src = type1List[4].productimg;
+	
+					$(type2productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type2productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type2productPrice6").innerHTML = "￥"+type1List[5].productprice;
+					document.getElementById("type2productImg6").src = type1List[5].productimg;
+	
+					$(type1productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+	
+	
+			//生活用品推荐
+			var typecontent3 = "生活用品";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent3,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type3productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type3productPrice1").innerHTML ="￥"+ type1List[0].productprice;
+					document.getElementById("type3productImg1").src = type1List[0].productimg;
+	
+					$(type3productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type3productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type3productPrice2").innerHTML = "￥"+type1List[1].productprice;
+					document.getElementById("type3productImg2").src = type1List[1].productimg;
+	
+					$(type3productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type3productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type3productPrice3").innerHTML ="￥"+ type1List[2].productprice;
+					document.getElementById("type3productImg3").src = type1List[2].productimg;
+	
+					$(type3productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type3productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type3productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type3productImg4").src = type1List[3].productimg;
+	
+					$(type3productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type3productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type3productPrice5").innerHTML ="￥"+ type1List[4].productprice;
+					document.getElementById("type3productImg5").src = type1List[4].productimg;
+	
+					$(type3productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type3productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type3productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type3productImg6").src = type1List[5].productimg;
+	
+					$(type3productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			
+			//文学艺术推荐
+			var typecontent4 = "文学艺术";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent4,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type4productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type4productPrice1").innerHTML ="￥"+ type1List[0].productprice;
+					document.getElementById("type4productImg1").src = type1List[0].productimg;
+	
+					$(type4productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type4productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type4productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type4productImg2").src = type1List[1].productimg;
+	
+					$(type4productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type4productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type4productPrice3").innerHTML ="￥"+ type1List[2].productprice;
+					document.getElementById("type4productImg3").src = type1List[2].productimg;
+	
+					$(type4productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type4productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type4productPrice4").innerHTML ="￥"+ type1List[3].productprice;
+					document.getElementById("type4productImg4").src = type1List[3].productimg;
+	
+					$(type4productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type4productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type4productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type4productImg5").src = type1List[4].productimg;
+	
+					$(type4productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type4productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type4productPrice6").innerHTML = "￥"+type1List[5].productprice;
+					document.getElementById("type4productImg6").src = type1List[5].productimg;
+	
+					$(type4productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			
+			//娱乐器具推荐
+			var typecontent5 = "娱乐器具";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent5,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type5productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type5productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type5productImg1").src = type1List[0].productimg;
+	
+					$(type5productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type5productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type5productPrice2").innerHTML = "￥"+type1List[1].productprice;
+					document.getElementById("type5productImg2").src = type1List[1].productimg;
+	
+					$(type5productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type5productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type5productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type5productImg3").src = type1List[2].productimg;
+	
+					$(type5productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type5productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type5productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type5productImg4").src = type1List[3].productimg;
+	
+					$(type5productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type5productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type5productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type5productImg5").src = type1List[4].productimg;
+	
+					$(type5productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type5productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type5productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type5productImg6").src = type1List[5].productimg;
+	
+					$(type5productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			
+			//运动器材推荐
+			var typecontent6 = "运动器材";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent6,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type6productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type6productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type6productImg1").src = type1List[0].productimg;
+	
+					$(type6productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type6productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type6productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type6productImg2").src = type1List[1].productimg;
+	
+					$(type6productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type6productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type6productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type6productImg3").src = type1List[2].productimg;
+	
+					$(type6productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type6productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type6productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type6productImg4").src = type1List[3].productimg;
+	
+					$(type6productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type6productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type6productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type6productImg5").src = type1List[4].productimg;
+	
+					$(type5productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type6productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type6productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type6productImg6").src = type1List[5].productimg;
+	
+					$(type6productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			
+			//家具器材推荐
+			var typecontent7 = "家具器材";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent7,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type7productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type7productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type7productImg1").src = type1List[0].productimg;
+	
+					$(type7productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type7productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type7productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type7productImg2").src = type1List[1].productimg;
+	
+					$(type7productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type7productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type7productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type7productImg3").src = type1List[2].productimg;
+	
+					$(type7productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type7productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type7productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type7productImg4").src = type1List[3].productimg;
+	
+					$(type7productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type7productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type7productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type7productImg5").src = type1List[4].productimg;
+	
+					$(type7productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type7productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type7productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type7productImg6").src = type1List[5].productimg;
+	
+					$(type7productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			
+			//电子产品推荐
+			var typecontent8 = "电子产品";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent8,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type8productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type8productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type8productImg1").src = type1List[0].productimg;
+	
+					$(type8productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type8productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type8productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type8productImg2").src = type1List[1].productimg;
+	
+					$(type8productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type8productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type8productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type8productImg3").src = type1List[2].productimg;
+	
+					$(type8productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type8productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type8productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type8productImg4").src = type1List[3].productimg;
+	
+					$(type8productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type8productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type8productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type8productImg5").src = type1List[4].productimg;
+	
+					$(type8productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type8productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type8productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type8productImg6").src = type1List[5].productimg;
+	
+					$(type8productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			
+			
+			//医药保健推荐
+			var typecontent9 = "医药保健";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent9,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type9productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type9productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type9productImg1").src = type1List[0].productimg;
+	
+					$(type9productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type9productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type9productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type9productImg2").src = type1List[1].productimg;
+	
+					$(type9productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type9productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type9productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type9productImg3").src = type1List[2].productimg;
+	
+					$(type9productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type9productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type9productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type9productImg4").src = type1List[3].productimg;
+	
+					$(type9productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type9productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type9productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type9productImg5").src = type1List[4].productimg;
+	
+					$(type9productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type9productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type9productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type9productImg6").src = type1List[5].productimg;
+	
+					$(type9productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			
+			
+			//医疗器材推荐
+			var typecontent10 = "医疗器材";
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent10,
+				data : null,
+				success : function(result) {
+	
+					var type1List = result.data;
+	
+	
+					document.getElementById("type10productName1").innerHTML = type1List[0].productname;
+					document.getElementById("type10productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type10productImg1").src = type1List[0].productimg;
+	
+					$(type10productImg1).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+					})
+	
+					document.getElementById("type10productName2").innerHTML = type1List[1].productname;
+					document.getElementById("type10productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type10productImg2").src = type1List[1].productimg;
+	
+					$(type8productImg2).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+					})
+					document.getElementById("type10productName3").innerHTML = type1List[2].productname;
+					document.getElementById("type10productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type10productImg3").src = type1List[2].productimg;
+	
+					$(type10productImg3).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+					})
+					document.getElementById("type10productName4").innerHTML = type1List[3].productname;
+					document.getElementById("type10productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type10productImg4").src = type1List[3].productimg;
+	
+					$(type10productImg4).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+					})
+					document.getElementById("type10productName5").innerHTML = type1List[4].productname;
+					document.getElementById("type10productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type10productImg5").src = type1List[4].productimg;
+	
+					$(type10productImg5).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+					})
+					document.getElementById("type10productName6").innerHTML = type1List[5].productname;
+					document.getElementById("type10productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type10productImg6").src = type1List[5].productimg;
+	
+					$(type10productImg6).on('click', function() {
+						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+					})
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+		}
+	</script>
+</body>
 
 </html>

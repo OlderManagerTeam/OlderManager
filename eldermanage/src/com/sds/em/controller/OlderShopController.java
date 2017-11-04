@@ -129,4 +129,16 @@ public class OlderShopController {
 	public @ResponseBody Message ordercancel(int ordersid){
 		return olderShopService.ordercancel(ordersid);
 	}
+	
+	//wuwenbo,查看库存
+	@RequestMapping(method = RequestMethod.GET, value = "productstore")
+	public @ResponseBody Message getproductstore(){
+		return olderShopService.getproductstore();
+	}
+	
+	//wuwenbo,修改商品库存
+	@RequestMapping(method = RequestMethod.POST, value = "productstore")
+	public @ResponseBody Message addproductstore(int productid,int productcount){
+		return olderShopService.addproductstore(productid,productcount);
+	}
 }
