@@ -306,7 +306,8 @@
 							<div class="card-title">
 								<div class="title">
 									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productView.html" role="button">返回商品列表</a>
+										href="../olderShop/productView.html?producttypenumber=1"
+										role="button" id="return">返回商品列表</a>
 								</div>
 							</div>
 						</div>
@@ -362,6 +363,13 @@
 											placeholder="商品信息" style="height: 200px" name="productinfo"></textarea>
 									</div>
 								</div>
+								<!-- 商品展示图 -->
+								<div class="form-group">
+									<label for="productimg" class="col-sm-3 control-label">商品展示图：</label>
+									<div class="col-sm-5">
+										<input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+									</div>
+								</div>
 								<div class="form-group">
 									<label for="productweight" class="col-sm-3 control-label">商品重量：</label>
 									<div class="col-sm-2">
@@ -393,7 +401,8 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
-										<button type="button" class="btn btn-default" id="productentrysubmit">确认提交</button>
+										<button type="button" class="btn btn-default"
+											id="productentrysubmit">确认提交</button>
 									</div>
 								</div>
 							</form>
@@ -446,6 +455,17 @@
 				fileType : "any",
 				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
 			});
+			$("#file-1").fileinput({
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+	});
 		</script>
 		<!--表单验证-->
 		<script type="text/javascript">
@@ -536,9 +556,69 @@
 			});
 		</script>
 		<script type="text/javascript">
+			UrlParm = function() { // url参数
+				var data,
+					index;
+				(function init() {
+					data = [];
+					index = {};
+					var u = window.location.search.substr(1);
+					if (u != '') {
+						var parms = decodeURIComponent(u).split('&');
+						for (var i = 0, len = parms.length; i < len; i++) {
+							if (parms[i] != '') {
+								var p = parms[i].split("=");
+								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+									data.push([ '' ]);
+									index[p[0]] = data.length - 1;
+								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+									data[0] = [ p[1] ];
+								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+									data.push([ p[1] ]);
+									index[p[0]] = data.length - 1;
+								} else { // c=aaa
+									data[index[p[0]]].push(p[1]);
+								}
+							}
+						}
+					}
+				})();
+				return {
+					// 获得参数,类似request.getParameter()
+					parm : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+						} catch (e) {}
+					},
+					//获得参数组, 类似request.getParameterValues()
+					parmValues : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+						} catch (e) {}
+					},
+					//是否含有parmName参数
+					hasParm : function(parmName) {
+						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+					},
+					// 获得参数Map ,类似request.getParameterMap()
+					parmMap : function() {
+						var map = {};
+						try {
+							for (var p in index) {
+								map[p] = data[index[p]];
+							}
+						} catch (e) {}
+						return map;
+					}
+				}
+			}();
+		</script>
+		<script type="text/javascript">
+			document.getElementById("return").href = "../olderShop/productView.html?producttypenumber=" + UrlParm.parm("producttypenumber"),
+			document.getElementById("productEntry")
 			$("#productentrysubmit").click(function() {
 				var form = new FormData(document.getElementById("productEntry"));
-				var producttypenumber=$("#producttypenumber").val()
+				var producttypenumber = $("#producttypenumber").val()
 				form.append("producttypenumber", producttypenumber);
 				$.ajax({
 					type : 'post',
@@ -549,7 +629,7 @@
 					success : function(result) {
 						//var resultdata = JSON.parse(result);
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber="+producttypenumber;
+							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + producttypenumber;
 						}
 					//alert(result.success)
 					},
@@ -560,6 +640,9 @@
 		
 			}
 			)
+		</script>
+		<script type="text/javascript">
+			$('select').select2();
 		</script>
 </body>
 

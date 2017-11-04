@@ -321,30 +321,34 @@
 								</div>
 								<div class="form-group">
 									<label for="groupstartdate" class="col-sm-3 control-label">开团时间：</label>
-									<div class="col-sm-5">
+									<div class="col-sm-2">
 										<input type="date" class="form-control" id="groupstartdate"
 											placeholder="开团时间" name="groupstartdate">
+									</div>
+									<!-- 精确到小时 -->
+									<div class="col-sm-2">
+										<input type="time" class="form-control" id="groupstarttime"
+											placeholder="开团时间" name="groupstarttime">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="groupfinishdate" class="col-sm-3 control-label">结束时间：</label>
 									<div class="col-sm-5">
-										<input type="date" class="form-control" id="groupfinishdate"
+										<input type="text" class="form-control" id="groupfinishdate"
 											placeholder="结束时间" name="groupfinishdate">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="groupproductid" class="col-sm-3 control-label">团购商品：</label>
+									<label for="groupproductid" class="col-sm-3 control-label">团购商品id：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="groupproductid"
 											placeholder="团购商品" name="groupproductid">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="grouppresentpeople" class="col-sm-3 control-label">当前人数：</label>
+									<label for="grouppresentpeople" class="col-sm-3 control-label">团购商品名称：</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="grouppresentpeople"
-											placeholder="当前人数" name="grouppresentpeople">
+										<span class="form-control" id="grouppresentpeople">通过上面输入的id查出商品名称</span>
 									</div>
 								</div>
 								<div class="form-group">
@@ -494,9 +498,9 @@
 								notEmpty : {
 									message : '日期不能为空'
 								},
-								date : {
-									format : 'YYYY-MM-DD',
-									message : '请输入正确的日期格式'
+								regexp : {
+									regexp : /^[0-9]*$/,
+									message : '人数只能是数字'
 								}
 							}
 						},

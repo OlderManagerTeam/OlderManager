@@ -221,10 +221,23 @@
 	<!-- wuwenbo,查询商品评价 -->
 	<select id="getproductrate" parameterType="int"
 		resultType="com.sds.em.pojo.ProductrateExtend">
-		select * from productrate as pr join product as p on
-		p.productId=pr.rateProductId INNER JOIN olderbase as o on
-		o.olderId=pr.rateOlderId
-		where pr.rateProductId=#{value}
+		SELECT * from productrate as pr INNER JOIN orderlist as ol on
+		pr.rateOrderId=ol.orderListId
+		INNER JOIN orders as o on o.orderId=ol.orderListFId INNER JOIN product as p
+		on p.productId=ol.orderProductId
+		INNER JOIN olderbase on olderbase.olderId=pr.rateOlderId
+		where p.productId=#{value}
+	</select>
+	
+		<!-- wuwenbo,查询订单评价 -->
+	<select id="getorderrate" parameterType="int"
+		resultType="com.sds.em.pojo.ProductrateExtend">
+		SELECT * from productrate as pr INNER JOIN orderlist as ol on
+		pr.rateOrderId=ol.orderListId
+		INNER JOIN orders as o on o.orderId=ol.orderListFId INNER JOIN product as p
+		on p.productId=ol.orderProductId
+		INNER JOIN olderbase on olderbase.olderId=pr.rateOlderId
+		where o.orderId=#{value}
 	</select>
 	
 	<!-- lu -->

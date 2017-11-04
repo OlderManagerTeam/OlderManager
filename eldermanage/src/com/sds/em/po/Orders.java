@@ -13,6 +13,8 @@ public class Orders {
 
     private Float ordertotal;
 
+    private Float ordertakepoint;
+
     public Integer getOrderid() {
         return orderid;
     }
@@ -51,5 +53,13 @@ public class Orders {
 
     public void setOrdertotal(Float ordertotal) {
         this.ordertotal = ordertotal;
+    }
+
+    public Float getOrdertakepoint() {
+        return ordertakepoint;
+    }
+
+    public void setOrdertakepoint(Float ordertakepoint) {
+        this.ordertakepoint = ordertakepoint;
     }
 }
