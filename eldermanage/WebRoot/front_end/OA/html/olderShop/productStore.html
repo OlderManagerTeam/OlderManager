@@ -131,17 +131,17 @@
 						<ul class="nav navbar-nav">
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">控制台</span>
-			              </a></li>
-			<li class="panel panel-default dropdown">
-			<a data-toggle="collapse" href="#dropdown-element"> 
-			        <span class="icon fa fa-desktop"></span>
-			        <span class="title">UI Kits</span>
-			</a> <!-- 下拉列表 level 1 -->
-			<div id="dropdown-element" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../ui-kits/grid.html">Grid</a></li>
-							<li><a href="../ui-kits/theming.html">主题</a></li></li>
+							</a></li>
+							<li class="panel panel-default dropdown"><a
+								data-toggle="collapse" href="#dropdown-element"> <span
+									class="icon fa fa-desktop"></span> <span class="title">UI
+										Kits</span>
+							</a> <!-- 下拉列表 level 1 -->
+								<div id="dropdown-element" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../ui-kits/grid.html">Grid</a></li>
+											<li><a href="../ui-kits/theming.html">主题</a></li></li>
 							<li><a href="../ui-kits/button.html">按钮</a></li>
 							<li><a href="../ui-kits/card.html">明信片</a></li>
 							<li><a href="../ui-kits/list.html">列表</a></li>
@@ -179,20 +179,18 @@
 						</ul>
 					</div>
 				</div></li>
-             <li class="panel panel-default dropdown">
-			     <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			         <span class="icon  glyphicon glyphicon-user"></span>
-			         <span class="title">总店管理</span>
-			     </a> <!-- Dropdown level 1 -->
-				 <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					    <div class="panel-body">
-						      <ul class="nav navbar-nav">
-							       <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							       <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						      </ul>
-					    </div>
-				 </div>
-			</li> 
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
 			<!--在左边导航栏添加老人管理模块的导航-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderView"> <span
@@ -206,8 +204,7 @@
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEducation"> <span
 					class="icon glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
@@ -218,11 +215,11 @@
 							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderShop"> <span
-					class="icon glyphicon glyphicon-shopping-cart"></span><span class="title">电子商务</span>
+					class="icon glyphicon glyphicon-shopping-cart"></span><span
+					class="title">电子商务</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-olderShop" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -233,8 +230,7 @@
 							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>			
+				</div></li>
 			<!-- 下拉列表-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#component-example"> <span
@@ -307,6 +303,8 @@
 									<tr>
 										<th>库存序号</th>
 										<th>商品名称</th>
+										<th>商品编号</th>
+										<th>商品详细</th>
 										<th>库存数量</th>
 										<th>日浏览量</th>
 										<th>月浏览量</th>
@@ -322,6 +320,7 @@
 									<tr>
 										<th>库存序号</th>
 										<th>商品名称</th>
+										<th>商品编号</th>
 										<th>库存数量</th>
 										<th>日浏览量</th>
 										<th>月浏览量</th>
@@ -333,49 +332,10 @@
 										<th>总销量</th>
 									</tr>
 								</tfoot>
-								<tbody>
-									<tr>
-										<td>商品库存唯一标识</td>
-										<td>商品Id</td>
-										<td>商品库存数量</td>
-										<td>商品日浏览量</td>
-										<td>商品月浏览量</td>
-										<td>商品年浏览量</td>
-										<td>商品总浏览量</td>
-										<td>商品日销量</td>
-										<td>商品月销量</td>
-										<td>商品年销量</td>
-										<td>商品总销量</td>
-									</tr>
-									<tr>
-										<td>storeId</td>
-										<td>storeProductId</td>
-										<td>storeCount</td>
-										<td>storeDayBrowse</td>
-										<td>storeMonthBrowse</td>
-										<td>storeYearBrowse</td>
-										<td>storeTotalBrowse</td>
-										<td>storeDaySales</td>
-										<td>storeMonthSales</td>
-										<td>storeYearSales</td>
-										<td>storeTotalSales</td>
-									</tr>
-									<tr>
-										<td>例如：001</td>
-										<td>脑白金</td>
-										<td>800000</td>
-										<td>50</td>
-										<td>1500</td>
-										<td>17000</td>
-										<td>500000</td>
-										<td>32</td>
-										<td>957</td>
-										<td>1305</td>
-										<td>26000</td>
-									</tr>
+								<tbody id="productstoreview">
+
 								</tbody>
 							</table>
-							<div id="olderView"></div>
 						</div>
 					</div>
 				</div>
@@ -389,29 +349,82 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
+
+	<!-- Javascript Libs -->
+
+
+	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/bootstrap-switch.min.js"></script>
+
+	<script type="text/javascript"
+		src="../../lib/js/jquery.matchHeight-min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+	<!-- Javascript -->
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/oldershop/productstore",
+				data : null
+			}).then(
+				function(result) {
+					productstore = result.data;
+					for (var i = productstore.length - 1; i >= 0; i--) {
+						var oTr = `<tr>
+									<td>${i + 1}</td>
+									<td>${productstore[i].productname}</td>
+									<td>${productstore[i].storeproductid}</td>
+									<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productstore[i].storeproductid}">商品详细</a></td>
+									<td>${productstore[i].storecount}  <a class="btn btn-primary btn-storeadd" role="button">修改库存</a></td>
+									<td>${productstore[i].storedaybrowse}</td>
+									<td>${productstore[i].storemonthbrowse}</td>
+									<td>${productstore[i].storeyearbrowse}</td>
+									<td>${productstore[i].storetotalbrowse}</td>
+									<td>${productstore[i].storedaysales}</td>
+									<td>${productstore[i].storemonthsales}</td>
+									<td>${productstore[i].storeyearsales}</td>
+									<td>${productstore[i].storetotalsales}</td>
+								</tr>
+								`;
+						$($(oTr)).appendTo('#productstoreview');
+					}
+					$('.datatable').DataTable({
+						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+					});
+				})
+				.done(
+					$("#orderList .btn-storeadd").on('click', function(event) {
+						const r = confirm("您确定要修改商品库存么?");
+						if (r == true) {
+							const e = event || window.event;
+							e.preventDefault();
+							$.ajax({
+								type : 'post',
+								contentType : 'application/json',
+								url : "http://localhost:8080/eldermanage/v1/oldershop/ordercancel?ordersid=" + $(this).attr('data-id'),
+								data : null,
+								success : function() {
+									window.location.reload();
+								}
+							})
 	
-		<!-- Javascript Libs -->
-
-		
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
-
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-
+						} else return false;
+					})
+			)
+		})
+	</script>
 </body>
 
 </html>

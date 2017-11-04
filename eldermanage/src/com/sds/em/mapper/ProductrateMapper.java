@@ -31,6 +31,9 @@ public interface ProductrateMapper {
 
 	int updateByPrimaryKey(Productrate record);
 
+    
+    //wuwenbo，得到订单评价
+    List<ProductrateExtend> getorderrate(int orderid);
 	// wuwenbo，得到商品评价
 	List<ProductrateExtend> getproductrate(int productid);
 
