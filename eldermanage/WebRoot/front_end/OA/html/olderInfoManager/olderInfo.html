@@ -441,7 +441,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
+					url : "/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
 					data : null,
 					success : function(result) {
 						var olderName = document.getElementById("oldername");

@@ -365,4 +365,16 @@ public class OlderShopServiceImpl implements OlderShopService {
 			return new Message(false, "数据库错误", null);
 		}
 	}
+
+	@Override
+	//添加团购
+	public Message addproductgroup(Productgroup productgroup) {
+		try {
+		productgroupMapper.insertSelective(productgroup);
+		return new Message(true, "添加成功", null);
+	} catch (Exception e) {
+		e.printStackTrace();
+		return new Message(false, "数据库错误", null);
+	}
+	}
 }

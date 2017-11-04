@@ -424,7 +424,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/oldershop/orders/orderlist?orderid=" + UrlParm.parm("orderid"),
+					url : "/eldermanage/v1/oldershop/orders/orderlist?orderid=" + UrlParm.parm("orderid"),
 					data : null
 				}).then(
 					function(result) {
@@ -436,7 +436,7 @@
 									<td>${orderlist[i].orderlistfid}</td>
 									<td>${orderlist[i].orderproductid}</td>
 									<td>${orderlist[i].productname}</td>
-	<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${orderlist[i].orderproductid}">商品详细</a></td>
+	<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${orderlist[i].orderproductid}">商品详细</a></td>
 									<td>${orderlist[i].orderproductcount}</td>
 									<td>${orderlist[i].orderdiscountprice}</td>
 																`;

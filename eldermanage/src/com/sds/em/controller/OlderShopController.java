@@ -1,7 +1,10 @@
 package com.sds.em.controller;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sds.em.po.Message;
 import com.sds.em.po.Oldersick;
 import com.sds.em.po.Product;
+import com.sds.em.po.Productgroup;
 import com.sds.em.service.OlderShopService;
 import com.sds.em.util.DateSimp;
 
@@ -52,7 +56,7 @@ public class OlderShopController {
 	public @ResponseBody Message entryproduct(Product product, MultipartFile productImg, String productUpondate)
 			throws Exception {
 		String pic_path = "E:\\oldermanageresource\\productimg\\";
-		String picUrl = "http://localhost:8080/productimg/";
+		String picUrl = "/productimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 		if (!productImg.isEmpty()) {
 			File productimg = new File(pic_path + newFileName);
@@ -72,7 +76,7 @@ public class OlderShopController {
 	public @ResponseBody Message alterproduct(Product product, MultipartFile productImg, String productUpondate)
 			throws Exception {
 		String pic_path = "E:\\oldermanageresource\\productimg\\";
-		String picUrl = "http://localhost:8080/productimg/";
+		String picUrl = "/productimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 		Product productold=(Product) olderShopService.getproductinfo(product.getProductid()).getData();
 		String[] productoldsplit=productold.getProductimg().split("/");
@@ -170,5 +174,39 @@ public class OlderShopController {
 	@RequestMapping(method = RequestMethod.GET, value = "orders/orderlist")
 	public @ResponseBody Message getorderlist(int orderid){
 		return olderShopService.getorderlist(orderid);
+	}
+	
+	//wuwenbo,发起新团购
+	@RequestMapping(method = RequestMethod.POST, value = "productgroup/info")
+	public @ResponseBody Message addproductgroup(String grouppublishDate,String groupstartDate
+			,String groupstarttime,String groupfinishDate,Productgroup productgroup){
+		if(grouppublishDate!="")
+			productgroup.setGrouppublishdate(new Date());
+		Date groupstartdate=new Date();
+		if(grouppublishDate!=""){
+			try {
+				groupstartdate= DateSimp.simp(groupstartDate);
+			} catch (ParseException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+			if(groupstarttime!=""){
+				SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm");
+				try {
+					groupstartdate=sdf.parse(groupstartDate+" "+groupstarttime);
+				} catch (ParseException e) {
+					// TODO 自动生成的 catch 块
+					e.printStackTrace();
+				}
+				}
+			productgroup.setGroupstartdate(groupstartdate);
+		/*	if(Long)*/
+/*			groupstartdate.setTime(groupstartdate.getTime()+);*/
+			productgroup.setGroupfinishdate(groupstartdate);
+			}
+		
+		productgroup.setGroupstatus("未开始");
+		productgroup.setGrouppresentpeople(0);
+		return olderShopService.addproductgroup(productgroup);
 	}
 }

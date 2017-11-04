@@ -502,7 +502,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/lecture/info?lectureid=" + lectureid,
+					url : "/eldermanage/v1/brench/lecture/info?lectureid=" + lectureid,
 					data : null,
 				/* 	success : function(result) {
 					 
@@ -551,7 +551,7 @@
 				form.append("lecturestatus", document.getElementById("select2-lecturestatus-container").title);
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/brench/lecture/updateinfo",
+					url : "/eldermanage/v1/brench/lecture/updateinfo",
 					data : form,
 					processData : false,
 					contentType : false,
@@ -559,7 +559,7 @@
 										//var resultdata = JSON.parse(result);
 										//alert(result.success);
 										if (result.success) {
-											window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
+											window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
 										}
 									},
 									error : function() {
@@ -567,7 +567,7 @@
 									} */
 				}).then(
 					function(result) {
-						window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
+						window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
 					}
 				)
 			}

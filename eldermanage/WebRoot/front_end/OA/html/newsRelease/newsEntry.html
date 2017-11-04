@@ -446,7 +446,7 @@
 			//newscontent.customConfig.debug = true;
 			//newscontent.customConfig.uploadImgShowBase64 = true
 			//newscontent.customConfig.debug=true;
-			newscontent.customConfig.uploadImgServer = 'http://localhost:8080/eldermanage/v1/common/uploadImg';
+			newscontent.customConfig.uploadImgServer = '/eldermanage/v1/common/uploadImg';
 			newscontent.customConfig.uploadFileName = 'file';
 			/* 	newscontent.customConfig.uploadImgHeaders = {
 					'Accept' : 'multipart/form-data'
@@ -464,7 +464,7 @@
 				//alert(newscontent.txt.html());
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/news/publish",
+					url : "/eldermanage/v1/news/publish",
 					data : form,
 					processData : false,
 					contentType : false,
@@ -472,7 +472,7 @@
 						//var resultdata = JSON.parse(result);
 						alert(result.information)
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/newsRelease/newsView.html";
+							window.location.href = "/eldermanage/front_end/OA/html/newsRelease/newsView.html";
 						}
 					
 					},

@@ -46,7 +46,7 @@ public class NewsController {
 		int staffid = 1;
 
 		String pic_path = "E:\\oldermanageresource\\newsimg\\";
-		String picUrl = "http://localhost:8080/newsimg/";
+		String picUrl = "/newsimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
 		File dnf1 = new File(pic_path + newFileName);

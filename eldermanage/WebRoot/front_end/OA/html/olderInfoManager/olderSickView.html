@@ -373,7 +373,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/sicks?olderid=" + olderid,
+					url : "/eldermanage/v1/brench/elder/sicks?olderid=" + olderid,
 					data : null
 				}).then(
 					function(result) {
@@ -416,7 +416,7 @@
 								$.ajax({
 									type : 'delete',
 									contentType : 'application/json',
-									url : "http://localhost:8080/eldermanage/v1/brench/elder/sick?sickid=" + $(this).attr('data-id'),
+									url : "/eldermanage/v1/brench/elder/sick?sickid=" + $(this).attr('data-id'),
 									data : null,
 									success : function() {
 										window.location.reload();
