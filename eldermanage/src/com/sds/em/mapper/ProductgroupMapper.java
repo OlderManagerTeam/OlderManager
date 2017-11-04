@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Productgroup;
 import com.sds.em.po.ProductgroupExample;
+import com.sds.em.pojo.ProductgroupExtend;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,6 @@ public interface ProductgroupMapper {
     int updateByPrimaryKeySelective(Productgroup record);
 
     int updateByPrimaryKey(Productgroup record);
+//wuwenbo,获取团购表
+	List<ProductgroupExtend> getproductgroup();
 }

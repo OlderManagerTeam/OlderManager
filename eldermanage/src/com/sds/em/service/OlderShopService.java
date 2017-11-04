@@ -20,4 +20,8 @@ public interface OlderShopService {
 	public Message getproductstore();
 	public Message addproductstore(int productid, int productcount);
 	public Message getproductgroup();
+	public Message deleteproductgroup(int groupid);
+	public Message ordersproductgroup(int groupid);
+	public Message productgroupjoin(int groupid);
+	public Message getorderlist(int orderid);
 }

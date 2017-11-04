@@ -143,8 +143,32 @@ public class OlderShopController {
 	}
 	
 	//wuwenbo,查看团购表
-	@RequestMapping(method = RequestMethod.POST, value = "productgroup")
+	@RequestMapping(method = RequestMethod.GET, value = "productgroup")
 	public @ResponseBody Message getproductgroup(){
 		return olderShopService.getproductgroup();
+	}
+	
+	//wuwenbo,取消或删除团购
+	@RequestMapping(method = RequestMethod.DELETE, value = "productgroup")
+	public @ResponseBody Message deleteproductgroup(int groupid){
+		return olderShopService.deleteproductgroup(groupid);
+	}
+	
+	//wuwenbo,结束并生成订单
+	@RequestMapping(method = RequestMethod.POST, value = "productgroup/orders")
+	public @ResponseBody Message ordersproductgroup(int groupid){
+		return olderShopService.ordersproductgroup(groupid);
+	}
+	
+	//wuwenbo,查看团购参加者
+	@RequestMapping(method = RequestMethod.GET, value = "productgroup/join")
+	public @ResponseBody Message productgroupjoin(int groupid){
+		return olderShopService.productgroupjoin(groupid);
+	}
+	
+	//wuwenbo,参看订单详情
+	@RequestMapping(method = RequestMethod.GET, value = "orders/orderlist")
+	public @ResponseBody Message getorderlist(int orderid){
+		return olderShopService.getorderlist(orderid);
 	}
 }

@@ -273,4 +273,10 @@
       groupStatus = #{groupstatus,jdbcType=VARCHAR}
     where groupId = #{groupid,jdbcType=INTEGER}
   </update>
+  
+<!--   wuwenbo，获取团购列表 -->
+<select id="getproductgroup" resultType="com.sds.em.pojo.ProductgroupExtend">
+SELECT * from productgroup as pg INNER JOIN product as p on p.productId=pg.groupProductId
+
+</select>
 </mapper>

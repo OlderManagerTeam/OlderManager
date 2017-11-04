@@ -349,10 +349,25 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
-
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="myModalLabel">修改库存数量</h4>
+	            </div>
+	            <div class="modal-body">
+	            	<input type="text" name="" id="currentCount">
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	                <button type="button" class="btn btn-primary" id="countBtn">保存</button>
+	            </div>
+	        </div><!-- /.modal-content -->
+	    </div><!-- /.modal -->
+	</div>
 	<!-- Javascript Libs -->
-
-
 	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
 	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
@@ -387,7 +402,7 @@
 									<td>${productstore[i].productname}</td>
 									<td>${productstore[i].storeproductid}</td>
 									<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productstore[i].storeproductid}">商品详细</a></td>
-									<td>${productstore[i].storecount}  <a class="btn btn-primary btn-storeadd" role="button">修改库存</a></td>
+									<td><span>${productstore[i].storecount}</span>  <a class="btn btn-primary btn-storeadd" role="button" onclick="updateStore(this)" dataId="${productstore[i].storeproductid}" data-toggle="modal" data-target="#myModal">修改库存</a></td>
 									<td>${productstore[i].storedaybrowse}</td>
 									<td>${productstore[i].storemonthbrowse}</td>
 									<td>${productstore[i].storeyearbrowse}</td>
@@ -398,32 +413,38 @@
 									<td>${productstore[i].storetotalsales}</td>
 								</tr>
 								`;
+								// 
 						$($(oTr)).appendTo('#productstoreview');
 					}
 					$('.datatable').DataTable({
 						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
 					});
 				})
-				.done(
-					$("#orderList .btn-storeadd").on('click', function(event) {
-						const r = confirm("您确定要修改商品库存么?");
-						if (r == true) {
-							const e = event || window.event;
-							e.preventDefault();
-							$.ajax({
-								type : 'post',
-								contentType : 'application/json',
-								url : "http://localhost:8080/eldermanage/v1/oldershop/ordercancel?ordersid=" + $(this).attr('data-id'),
-								data : null,
-								success : function() {
-									window.location.reload();
-								}
-							})
-	
-						} else return false;
-					})
-			)
 		})
+		function updateStore(obj){
+				$("#currentCount").val($(obj).prev().text());
+				$("#countBtn").click(function (){
+					$.ajax({
+						type : 'post',
+						contentType : 'application/json',
+						url : "http://localhost:8080/eldermanage/v1/oldershop/productstore?productid="+$(obj).attr('dataId')+"&productcount="+$("#currentCount").val(),
+						data: null,
+					}).then(
+						function (){
+							alert("修改成功")
+							$(obj).prev().text($("#currentCount").val())
+						},
+						function (){
+							alert("保存失败");
+						}
+					).always(function (){
+						$('#myModal').modal('hide')
+					})
+					//done fail when
+				});
+				
+
+		}
 	</script>
 </body>
 
