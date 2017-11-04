@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
@@ -20,7 +20,7 @@
 
 	<body>
 
-		<!--顶部导航条 -->
+       <!--顶部导航条 -->
 		<div class="am-container header">
 			<ul class="message-l">
 				<div class="topMessage">
@@ -43,7 +43,7 @@
 				
 			</ul>
 			</div>
-     二级标签搜索页面设计
+
 			<!--悬浮搜索框-->
 
 			<div class="nav white">
@@ -66,12 +66,13 @@
            <div class="search">
 			<div class="search-list">
 			<div class="nav-table">
-					   <div class="long-title"><span class="all-goods">全部分类</span></div>
+					   <div class="long-title"><span class="all-goods">全部</span></div>
 					   <div class="nav-cont">
 							<ul>
-								<li class="index"><a href="shoppingindex.html">首页</a></li>
+								<li class="index"><a href="#">首页</a></li>
                                 <li class="qc"><a href="#">团购</a></li>
-							</ul>						  
+
+							</ul>
 						</div>
 			</div>
 			
@@ -79,27 +80,147 @@
 					<div class="am-g am-g-fixed">
 						<div class="am-u-sm-12 am-u-md-12">
 	                  	<div class="theme-popover">														
-							<div class="searchAbout">
-								
-							</div>
 							<ul class="select">
 								<p class="title font-normal">
 									<span class="fl">松子</span>
 									<span class="total fl">搜索到<strong class="num">997</strong>件相关商品</span>
 								</p>
 								<div class="clear"></div>
-								<li class="select-result">
-									<dl>
-										<dt>已选</dt>
-										<dd class="select-no"></dd>
-										<p class="eliminateCriteria">清除</p>
+								<li class="select-list" >
+									<dl id="select2">
+										<dt class="am-badge am-round">种类</dt>
+										<dd class="select-all selected"><a href="#">全部</a></dd>
+										<div class="dd-conent" id="em" >
+											
+											<div >
+											<dd id="newsitem_1" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"><a href="#">衣物服饰</a></dd>
+											<dd id="newsitem_2" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"><a href="#">食物饮品</a></dd>
+											<dd id="newsitem_3" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">生活用品</a></dd>
+											<dd id="newsitem_4" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">文学艺术</a></dd>
+											<dd id="newsitem_5" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">娱乐器具</a></dd>
+											<dd id="newsitem_6" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">运动器材</a></dd>
+											<dd id="newsitem_7" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">医药保健</a></dd>
+											<dd id="newsitem_8" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">医疗器材</a></dd>
+											<dd id="newsitem_9" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">家具器材</a></dd>
+											<dd id="newsitem_10" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">电子产品</a></dd>
+
+											</div>
+										</div>
 									</dl>
 								</li>
-								<div class="clear"></div>
-					        
+								<li class="select-list">
+									<dl id="select3">
+										<dt class="am-badge am-round">选购热点</dt>
+										<dd class="select-all selected"><a href="#">全部</a></dd>
+										<div class="dd-conent" id="h_em_1">
+											
+											<dd ><a href="#">上衣</a></dd>
+											<dd><a href="#">裤子</a></dd>
+											<dd><a href="#">毛衣</a></dd>
+											<dd><a href="#">外套</a></dd>
+											<dd><a href="#">内衣</a></dd>
+											<dd><a href="#">鞋子</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_2"  style="display:none;">
+											<dd><a href="#">蛋糕</a></dd>
+											<dd><a href="#">饼干</a></dd>
+											<dd><a href="#">坚果</a></dd>
+											<dd><a href="#">饮品</a></dd>
+											<dd><a href="#">水果</a></dd>
+											<dd><a href="#">甜点</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_3"  style="display:none;">
+											<dd ><a href="#">洗发露</a></dd>
+											<dd><a href="#">卫生纸</a></dd>
+											<dd><a href="#">毛巾</a></dd>
+											<dd><a href="#">盆</a></dd>
+											<dd><a href="#">沐浴露</a></dd>
+											<dd><a href="#">牙刷</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_4"  style="display:none;">
+											<dd ><a href="#">文具</a></dd>
+											<dd><a href="#">绘画</a></dd>
+											<dd><a href="#">书籍</a></dd>
+											<dd><a href="#">瑜伽</a></dd>
+											<dd><a href="#">茶具</a></dd>
+											<dd><a href="#">表演</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_5"  style="display:none;">
+											<dd ><a href="#">钢琴</a></dd>
+											<dd><a href="#">剪纸</a></dd>
+											<dd><a href="#">小提琴</a></dd>
+											<dd><a href="#">口琴</a></dd>
+											<dd><a href="#">葫芦丝</a></dd>
+											<dd><a href="#">吉他</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_6"  style="display:none;">
+											<dd ><a href="#">跑步</a></dd>
+											<dd><a href="#">游泳</a></dd>
+											<dd><a href="#">篮球</a></dd>
+											<dd><a href="#">乒乓球</a></dd>
+											<dd><a href="#">羽毛球</a></dd>
+											<dd><a href="#">户外</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_7"  style="display:none;">
+											<dd ><a href="#">口服液</a></dd>
+											<dd><a href="#">粉剂</a></dd>
+											<dd><a href="#">片剂</a></dd>
+											<dd><a href="#">冲剂</a></dd>
+											<dd><a href="#">丸剂</a></dd>
+											<dd><a href="#">颗粒</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_8"  style="display:none;">
+											<dd ><a href="#">防风湿器</a></dd>
+											<dd><a href="#">康复</a></dd>
+											<dd><a href="#">吊环</a></dd>
+											<dd><a href="#">保健按摩</a></dd>
+											<dd><a href="#">电理疗</a></dd>
+											<dd><a href="#">火罐</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_9"  style="display:none;">
+											<dd ><a href="#">客厅家具</a></dd>
+											<dd><a href="#">餐厅家具</a></dd>
+											<dd><a href="#">厨房家具</a></dd>
+											<dd><a href="#">卫生间</a></dd>
+											<dd><a href="#">卧室家具</a></dd>
+											<dd><a href="#">书房办公</a></dd>
+										</div>
+										<div class="dd-conent" id="h_em_10"  style="display:none;">
+											<dd ><a href="#">生活厨电</a></dd>
+											<dd><a href="#">相机摄像</a></dd>
+											<dd><a href="#">影音智能</a></dd>
+											<dd><a href="#">老人电脑</a></dd>
+											<dd><a href="#">个护健康</a></dd>
+											<dd><a href="#">老人手机</a></dd>
+										</div>
+
+									</dl>
+								</li>
 							</ul>
+							
 							<div class="clear"></div>
                         </div>
+                        <script>
+							//????????????????
+								function showitem1(obj,itemdl,setvalid,idcount,objcss){
+								var fodinfo=document.getElementById(itemdl).getElementsByTagName("dd");
+								var ii = 0;
+								for(var i=0;i<fodinfo.length;i++){
+									if(obj==fodinfo[i]){
+										fodinfo[i].className=objcss+(i+1)+'2';
+										ii=i+1;
+										document.getElementById(setvalid+ii).style.display="";
+									}
+									else{
+										fodinfo[i].className=objcss+(i+1)+'1';
+										ii=i+1;
+										document.getElementById(setvalid+ii).style.display="none";
+									}
+								}
+							}
+							//????????????????
+						</script>
+                        <!--内容-->
 							<div class="search-content">
 								<div class="sort">
 									<li class="first"><a title="综合">综合排序</a></li>
@@ -279,53 +400,7 @@
 									</li>
 								</ul>
 							</div>
-							<div class="search-side">
-
-								<div class="side-title">
-									经典搭配
-								</div>
-
-								<li>
-									<div class="i-pic check">
-										<img src="images/product/cp.jpg" />
-										<p class="check-title">萨拉米 1+1小鸡腿</p>
-										<p class="price fl">
-											<b>¥</b>
-											<strong>29.90</strong>
-										</p>
-										<p class="number fl">
-											销量<span>1110</span>
-										</p>
-									</div>
-								</li>
-								<li>
-									<div class="i-pic check">
-										<img src="images/product/cp2.jpg" />
-										<p class="check-title">ZEK 原味海苔</p>
-										<p class="price fl">
-											<b>¥</b>
-											<strong>8.90</strong>
-										</p>
-										<p class="number fl">
-											销量<span>1110</span>
-										</p>
-									</div>
-								</li>
-								<li>
-									<div class="i-pic check">
-										<img src="images/product/cp.jpg" />
-										<p class="check-title">萨拉米 1+1小鸡腿</p>
-										<p class="price fl">
-											<b>¥</b>
-											<strong>29.90</strong>
-										</p>
-										<p class="number fl">
-											销量<span>1110</span>
-										</p>
-									</div>
-								</li>
-
-							</div>
+							
 							<div class="clear"></div>
 							<!--分页 -->
 							<ul class="am-pagination am-pagination-right">
@@ -343,23 +418,22 @@
 					<div class="footer">
 						<div class="footer-hd">
 							<p>
-								<a href="# ">孝和集团</a>
+								<a href="#">恒望科技</a>
 								<b>|</b>
-								<a href="# ">商城首页</a>
+								<a href="#">商城首页</a>
 								<b>|</b>
-								<a href="# "></a>
+								<a href="#">支付宝</a>
 								<b>|</b>
-								<a href="# "></a>
+								<a href="#">物流</a>
 							</p>
 						</div>
 						<div class="footer-bd">
 							<p>
 								<a href="#">关于恒望</a>
-									<a href="index.html ">关于孝和</a>
-								<a href="# "></a>
-								<a href="contact.html">联系我们</a>
-								<a href="# "></a>
-								<em>© 2017-2025 oldermanage.com 更关注老年人 - Collect from 孝和集团</em>
+								<a href="#">合作伙伴</a>
+								<a href="#">联系我们</a>
+								<a href="#">网站地图</a>
+								<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
 							</p>
 						</div>
 					</div>

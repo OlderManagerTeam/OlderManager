@@ -261,8 +261,8 @@
 									<div class="col-sm-5">
 										<select id="oldersex" name="oldersex">
 											<optgroup label="性别">
-												<option value="male">男</option>
-												<option value="famale">女</option>
+												<option value="">男</option>
+												<option value="">女</option>
 											</optgroup>
 										</select>
 									</div>
@@ -691,6 +691,7 @@
 			$("#altersubmit").click(function() {
 				var form = new FormData(document.getElementById("olderAlter"));
 				form.append("oldersex", document.getElementById("select2-oldersex-container").title);
+				var sex=document.getElementById("select2-oldersex-container").title;
 				form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
 				form.append("oldernation", document.getElementById("select2-oldernation-container").title);
 				$.ajax({

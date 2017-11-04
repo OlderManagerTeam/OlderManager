@@ -3,13 +3,14 @@
 <mapper namespace="com.sds.em.mapper.ProductgroupMapper" >
   <resultMap id="BaseResultMap" type="com.sds.em.po.Productgroup" >
     <id column="groupId" property="groupid" jdbcType="INTEGER" />
-    <result column="groupPublishDate" property="grouppublishdate" jdbcType="DATE" />
-    <result column="groupStartDate" property="groupstartdate" jdbcType="DATE" />
-    <result column="groupFinishDate" property="groupfinishdate" jdbcType="DATE" />
+    <result column="groupPublishDate" property="grouppublishdate" jdbcType="TIMESTAMP" />
+    <result column="groupStartDate" property="groupstartdate" jdbcType="TIMESTAMP" />
+    <result column="groupFinishDate" property="groupfinishdate" jdbcType="TIMESTAMP" />
     <result column="groupProductId" property="groupproductid" jdbcType="INTEGER" />
     <result column="groupPresentPeople" property="grouppresentpeople" jdbcType="INTEGER" />
     <result column="groupTotalPeople" property="grouptotalpeople" jdbcType="INTEGER" />
-    <result column="goupDiscountPrice" property="goupdiscountprice" jdbcType="REAL" />
+    <result column="groupDiscountPrice" property="groupdiscountprice" jdbcType="REAL" />
+    <result column="groupStatus" property="groupstatus" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List" >
     groupId, groupPublishDate, groupStartDate, groupFinishDate, groupProductId, groupPresentPeople, 
-    groupTotalPeople, goupDiscountPrice
+    groupTotalPeople, groupDiscountPrice, groupStatus
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ProductgroupExample" >
     select
@@ -106,10 +107,12 @@
   <insert id="insert" parameterType="com.sds.em.po.Productgroup" >
     insert into productgroup (groupId, groupPublishDate, groupStartDate, 
       groupFinishDate, groupProductId, groupPresentPeople, 
-      groupTotalPeople, goupDiscountPrice)
-    values (#{groupid,jdbcType=INTEGER}, #{grouppublishdate,jdbcType=DATE}, #{groupstartdate,jdbcType=DATE}, 
-      #{groupfinishdate,jdbcType=DATE}, #{groupproductid,jdbcType=INTEGER}, #{grouppresentpeople,jdbcType=INTEGER}, 
-      #{grouptotalpeople,jdbcType=INTEGER}, #{goupdiscountprice,jdbcType=REAL})
+      groupTotalPeople, groupDiscountPrice, groupStatus
+      )
+    values (#{groupid,jdbcType=INTEGER}, #{grouppublishdate,jdbcType=TIMESTAMP}, #{groupstartdate,jdbcType=TIMESTAMP}, 
+      #{groupfinishdate,jdbcType=TIMESTAMP}, #{groupproductid,jdbcType=INTEGER}, #{grouppresentpeople,jdbcType=INTEGER}, 
+      #{grouptotalpeople,jdbcType=INTEGER}, #{groupdiscountprice,jdbcType=REAL}, #{groupstatus,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Productgroup" >
     insert into productgroup
@@ -135,8 +138,11 @@
       <if test="grouptotalpeople != null" >
         groupTotalPeople,
       </if>
-      <if test="goupdiscountprice != null" >
-        goupDiscountPrice,
+      <if test="groupdiscountprice != null" >
+        groupDiscountPrice,
+      </if>
+      <if test="groupstatus != null" >
+        groupStatus,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -144,13 +150,13 @@
         #{groupid,jdbcType=INTEGER},
       </if>
       <if test="grouppublishdate != null" >
-        #{grouppublishdate,jdbcType=DATE},
+        #{grouppublishdate,jdbcType=TIMESTAMP},
       </if>
       <if test="groupstartdate != null" >
-        #{groupstartdate,jdbcType=DATE},
+        #{groupstartdate,jdbcType=TIMESTAMP},
       </if>
       <if test="groupfinishdate != null" >
-        #{groupfinishdate,jdbcType=DATE},
+        #{groupfinishdate,jdbcType=TIMESTAMP},
       </if>
       <if test="groupproductid != null" >
         #{groupproductid,jdbcType=INTEGER},
@@ -161,8 +167,11 @@
       <if test="grouptotalpeople != null" >
         #{grouptotalpeople,jdbcType=INTEGER},
       </if>
-      <if test="goupdiscountprice != null" >
-        #{goupdiscountprice,jdbcType=REAL},
+      <if test="groupdiscountprice != null" >
+        #{groupdiscountprice,jdbcType=REAL},
+      </if>
+      <if test="groupstatus != null" >
+        #{groupstatus,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -179,13 +188,13 @@
         groupId = #{record.groupid,jdbcType=INTEGER},
       </if>
       <if test="record.grouppublishdate != null" >
-        groupPublishDate = #{record.grouppublishdate,jdbcType=DATE},
+        groupPublishDate = #{record.grouppublishdate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.groupstartdate != null" >
-        groupStartDate = #{record.groupstartdate,jdbcType=DATE},
+        groupStartDate = #{record.groupstartdate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.groupfinishdate != null" >
-        groupFinishDate = #{record.groupfinishdate,jdbcType=DATE},
+        groupFinishDate = #{record.groupfinishdate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.groupproductid != null" >
         groupProductId = #{record.groupproductid,jdbcType=INTEGER},
@@ -196,8 +205,11 @@
       <if test="record.grouptotalpeople != null" >
         groupTotalPeople = #{record.grouptotalpeople,jdbcType=INTEGER},
       </if>
-      <if test="record.goupdiscountprice != null" >
-        goupDiscountPrice = #{record.goupdiscountprice,jdbcType=REAL},
+      <if test="record.groupdiscountprice != null" >
+        groupDiscountPrice = #{record.groupdiscountprice,jdbcType=REAL},
+      </if>
+      <if test="record.groupstatus != null" >
+        groupStatus = #{record.groupstatus,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -207,13 +219,14 @@
   <update id="updateByExample" parameterType="map" >
     update productgroup
     set groupId = #{record.groupid,jdbcType=INTEGER},
-      groupPublishDate = #{record.grouppublishdate,jdbcType=DATE},
-      groupStartDate = #{record.groupstartdate,jdbcType=DATE},
-      groupFinishDate = #{record.groupfinishdate,jdbcType=DATE},
+      groupPublishDate = #{record.grouppublishdate,jdbcType=TIMESTAMP},
+      groupStartDate = #{record.groupstartdate,jdbcType=TIMESTAMP},
+      groupFinishDate = #{record.groupfinishdate,jdbcType=TIMESTAMP},
       groupProductId = #{record.groupproductid,jdbcType=INTEGER},
       groupPresentPeople = #{record.grouppresentpeople,jdbcType=INTEGER},
       groupTotalPeople = #{record.grouptotalpeople,jdbcType=INTEGER},
-      goupDiscountPrice = #{record.goupdiscountprice,jdbcType=REAL}
+      groupDiscountPrice = #{record.groupdiscountprice,jdbcType=REAL},
+      groupStatus = #{record.groupstatus,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -222,13 +235,13 @@
     update productgroup
     <set >
       <if test="grouppublishdate != null" >
-        groupPublishDate = #{grouppublishdate,jdbcType=DATE},
+        groupPublishDate = #{grouppublishdate,jdbcType=TIMESTAMP},
       </if>
       <if test="groupstartdate != null" >
-        groupStartDate = #{groupstartdate,jdbcType=DATE},
+        groupStartDate = #{groupstartdate,jdbcType=TIMESTAMP},
       </if>
       <if test="groupfinishdate != null" >
-        groupFinishDate = #{groupfinishdate,jdbcType=DATE},
+        groupFinishDate = #{groupfinishdate,jdbcType=TIMESTAMP},
       </if>
       <if test="groupproductid != null" >
         groupProductId = #{groupproductid,jdbcType=INTEGER},
@@ -239,21 +252,25 @@
       <if test="grouptotalpeople != null" >
         groupTotalPeople = #{grouptotalpeople,jdbcType=INTEGER},
       </if>
-      <if test="goupdiscountprice != null" >
-        goupDiscountPrice = #{goupdiscountprice,jdbcType=REAL},
+      <if test="groupdiscountprice != null" >
+        groupDiscountPrice = #{groupdiscountprice,jdbcType=REAL},
+      </if>
+      <if test="groupstatus != null" >
+        groupStatus = #{groupstatus,jdbcType=VARCHAR},
       </if>
     </set>
     where groupId = #{groupid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productgroup" >
     update productgroup
-    set groupPublishDate = #{grouppublishdate,jdbcType=DATE},
-      groupStartDate = #{groupstartdate,jdbcType=DATE},
-      groupFinishDate = #{groupfinishdate,jdbcType=DATE},
+    set groupPublishDate = #{grouppublishdate,jdbcType=TIMESTAMP},
+      groupStartDate = #{groupstartdate,jdbcType=TIMESTAMP},
+      groupFinishDate = #{groupfinishdate,jdbcType=TIMESTAMP},
       groupProductId = #{groupproductid,jdbcType=INTEGER},
       groupPresentPeople = #{grouppresentpeople,jdbcType=INTEGER},
       groupTotalPeople = #{grouptotalpeople,jdbcType=INTEGER},
-      goupDiscountPrice = #{goupdiscountprice,jdbcType=REAL}
+      groupDiscountPrice = #{groupdiscountprice,jdbcType=REAL},
+      groupStatus = #{groupstatus,jdbcType=VARCHAR}
     where groupId = #{groupid,jdbcType=INTEGER}
   </update>
 </mapper>

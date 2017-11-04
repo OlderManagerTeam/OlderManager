@@ -131,17 +131,17 @@
 						<ul class="nav navbar-nav">
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">控制台</span>
-			              </a></li>
-			<li class="panel panel-default dropdown">
-			<a data-toggle="collapse" href="#dropdown-element"> 
-			        <span class="icon fa fa-desktop"></span>
-			        <span class="title">UI Kits</span>
-			</a> <!-- 下拉列表 level 1 -->
-			<div id="dropdown-element" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../ui-kits/grid.html">Grid</a></li>
-							<li><a href="../ui-kits/theming.html">主题</a></li></li>
+							</a></li>
+							<li class="panel panel-default dropdown"><a
+								data-toggle="collapse" href="#dropdown-element"> <span
+									class="icon fa fa-desktop"></span> <span class="title">UI
+										Kits</span>
+							</a> <!-- 下拉列表 level 1 -->
+								<div id="dropdown-element" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../ui-kits/grid.html">Grid</a></li>
+											<li><a href="../ui-kits/theming.html">主题</a></li></li>
 							<li><a href="../ui-kits/button.html">按钮</a></li>
 							<li><a href="../ui-kits/card.html">明信片</a></li>
 							<li><a href="../ui-kits/list.html">列表</a></li>
@@ -179,20 +179,18 @@
 						</ul>
 					</div>
 				</div></li>
-             <li class="panel panel-default dropdown">
-			     <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			         <span class="icon  glyphicon glyphicon-user"></span>
-			         <span class="title">总店管理</span>
-			     </a> <!-- Dropdown level 1 -->
-				 <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					    <div class="panel-body">
-						      <ul class="nav navbar-nav">
-							       <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							       <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						      </ul>
-					    </div>
-				 </div>
-			</li> 
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
 			<!--在左边导航栏添加老人管理模块的导航-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderView"> <span
@@ -206,8 +204,7 @@
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEducation"> <span
 					class="icon glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
@@ -218,11 +215,11 @@
 							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderShop"> <span
-					class="icon glyphicon glyphicon-shopping-cart"></span><span class="title">电子商务</span>
+					class="icon glyphicon glyphicon-shopping-cart"></span><span
+					class="title">电子商务</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-olderShop" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -233,8 +230,7 @@
 							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>			
+				</div></li>
 			<!-- 下拉列表-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#component-example"> <span
@@ -335,43 +331,9 @@
 										<th>团购详情</th>
 									</tr>
 								</tfoot>
-								<tbody>
-									<tr>
-										<td>团购ID</td>
-										<td>团购发起日期</td>
-										<td>开团日期</td>
-										<td>团购结束日期</td>
-										<td>团购商品</td>
-										<td>当前人数</td>
-										<td>总人数</td>
-										<td>商品团购价</td>
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
-									</tr>
-									<tr>
-										<td>groupId</td>
-										<td>groupPublishDate</td>
-										<td>groupStartDate</td>
-										<td>groupFinishDate</td>
-										<td>groupProductId</td>
-										<td>groupPresentPeople</td>
-										<td>groupTotalPeople</td>
-										<td>goupDiscountPrice</td>
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
-									</tr>
-									<tr>
-										<td>例如：001</td>
-										<td>2017-10-10</td>
-										<td>2017-10-15</td>
-										<td>2017-10-20</td>
-										<td>脑白金</td>
-										<td>21</td>
-										<td>100</td>
-										<td>998</td>
-										<td><a class="btn btn-primary btn-xs" href="../olderShop/joinGroup.html" role="button">参与者</a></td>
-									</tr>
+								<tbody id="groupview">
 								</tbody>
 							</table>
-							<div id="olderView"></div>
 						</div>
 					</div>
 				</div>
@@ -385,29 +347,64 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
+
+	<!-- Javascript Libs -->
+
+
+	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/bootstrap-switch.min.js"></script>
+
+	<script type="text/javascript"
+		src="../../lib/js/jquery.matchHeight-min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+	<!-- Javascript -->
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript">
 	
-		<!-- Javascript Libs -->
-
-		
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
-
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-
+		$(function() {
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "http://localhost:8080/eldermanage/v1/oldershop/productgroup",
+				data : null
+			}).then(
+				function(result) {
+					productstore = result.data;
+					for (var i = productstore.length - 1; i >= 0; i--) {
+						var oTr = `<tr>
+										<td>${i + 1}</td>
+										<td>${productstore[i].productname}</td>
+										<td>${productstore[i].storeproductid}</td>
+										<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productstore[i].storeproductid}">商品详细</a></td>
+										<td>${productstore[i].storecount}  <a class="btn btn-primary btn-storeadd" role="button">修改库存</a></td>
+										<td>${productstore[i].storedaybrowse}</td>
+										<td>${productstore[i].storemonthbrowse}</td>
+										<td>${productstore[i].storeyearbrowse}</td>
+										<td>${productstore[i].storetotalbrowse}</td>
+										<td>${productstore[i].storedaysales}</td>
+										<td>${productstore[i].storemonthsales}</td>
+										<td>${productstore[i].storeyearsales}</td>
+										<td>${productstore[i].storetotalsales}</td>
+									</tr>
+									`;
+						$($(oTr)).appendTo('#productstoreview');
+					}
+					$('.datatable').DataTable({
+						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+					});
+				})
+		})
+	</script>
 </body>
 
 </html>

@@ -403,17 +403,21 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 		int count = 0;
 		count = staffbaseMapper.getStaffcodeCount(staffbase).size();
 		String staffcode = null;
-		switch (count) {
-		case 1: {
-			staffcode = "00" + count;
-			break;
+		if (count == 0) {
+			staffcode = "001";
+		} else {
+			count = count++;
+			switch (String.valueOf(count).length()) {
+			case 1: {
+				staffcode = "00" + count;
+				break;
+			}
+			case 2: {
+				staffcode = "0" + count;
+				break;
+			}
+			}
 		}
-		case 2: {
-			staffcode = "0" + count;
-			break;
-		}
-		}
-
 		return new Message(true, "返回成功", departmentid + roleid + staffcode);
 	}
 

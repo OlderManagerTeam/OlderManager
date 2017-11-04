@@ -25,8 +25,8 @@ import net.sf.json.JSONObject;
 @Controller
 @RequestMapping("v1/common")
 public class NewsPicContrller {
-	@RequestMapping("/uploadImg")
 	
+	@RequestMapping("/uploadImg")
 	public @ResponseBody UpLoadFile uploadImg(MultipartFile file, HttpServletRequest request) {
 		UpLoadFile upLoadFile = new UpLoadFile();
 

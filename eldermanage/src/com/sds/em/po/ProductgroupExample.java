@@ -2,7 +2,6 @@ package com.sds.em.po;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class ProductgroupExample {
@@ -106,32 +105,6 @@ public class ProductgroupExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
         public Criteria andGroupidIsNull() {
             addCriterion("groupId is null");
             return (Criteria) this;
@@ -203,52 +176,52 @@ public class ProductgroupExample {
         }
 
         public Criteria andGrouppublishdateEqualTo(Date value) {
-            addCriterionForJDBCDate("groupPublishDate =", value, "grouppublishdate");
+            addCriterion("groupPublishDate =", value, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("groupPublishDate <>", value, "grouppublishdate");
+            addCriterion("groupPublishDate <>", value, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateGreaterThan(Date value) {
-            addCriterionForJDBCDate("groupPublishDate >", value, "grouppublishdate");
+            addCriterion("groupPublishDate >", value, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("groupPublishDate >=", value, "grouppublishdate");
+            addCriterion("groupPublishDate >=", value, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateLessThan(Date value) {
-            addCriterionForJDBCDate("groupPublishDate <", value, "grouppublishdate");
+            addCriterion("groupPublishDate <", value, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("groupPublishDate <=", value, "grouppublishdate");
+            addCriterion("groupPublishDate <=", value, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateIn(List<Date> values) {
-            addCriterionForJDBCDate("groupPublishDate in", values, "grouppublishdate");
+            addCriterion("groupPublishDate in", values, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("groupPublishDate not in", values, "grouppublishdate");
+            addCriterion("groupPublishDate not in", values, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("groupPublishDate between", value1, value2, "grouppublishdate");
+            addCriterion("groupPublishDate between", value1, value2, "grouppublishdate");
             return (Criteria) this;
         }
 
         public Criteria andGrouppublishdateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("groupPublishDate not between", value1, value2, "grouppublishdate");
+            addCriterion("groupPublishDate not between", value1, value2, "grouppublishdate");
             return (Criteria) this;
         }
 
@@ -263,52 +236,52 @@ public class ProductgroupExample {
         }
 
         public Criteria andGroupstartdateEqualTo(Date value) {
-            addCriterionForJDBCDate("groupStartDate =", value, "groupstartdate");
+            addCriterion("groupStartDate =", value, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("groupStartDate <>", value, "groupstartdate");
+            addCriterion("groupStartDate <>", value, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateGreaterThan(Date value) {
-            addCriterionForJDBCDate("groupStartDate >", value, "groupstartdate");
+            addCriterion("groupStartDate >", value, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("groupStartDate >=", value, "groupstartdate");
+            addCriterion("groupStartDate >=", value, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateLessThan(Date value) {
-            addCriterionForJDBCDate("groupStartDate <", value, "groupstartdate");
+            addCriterion("groupStartDate <", value, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("groupStartDate <=", value, "groupstartdate");
+            addCriterion("groupStartDate <=", value, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateIn(List<Date> values) {
-            addCriterionForJDBCDate("groupStartDate in", values, "groupstartdate");
+            addCriterion("groupStartDate in", values, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("groupStartDate not in", values, "groupstartdate");
+            addCriterion("groupStartDate not in", values, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("groupStartDate between", value1, value2, "groupstartdate");
+            addCriterion("groupStartDate between", value1, value2, "groupstartdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupstartdateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("groupStartDate not between", value1, value2, "groupstartdate");
+            addCriterion("groupStartDate not between", value1, value2, "groupstartdate");
             return (Criteria) this;
         }
 
@@ -323,52 +296,52 @@ public class ProductgroupExample {
         }
 
         public Criteria andGroupfinishdateEqualTo(Date value) {
-            addCriterionForJDBCDate("groupFinishDate =", value, "groupfinishdate");
+            addCriterion("groupFinishDate =", value, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("groupFinishDate <>", value, "groupfinishdate");
+            addCriterion("groupFinishDate <>", value, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateGreaterThan(Date value) {
-            addCriterionForJDBCDate("groupFinishDate >", value, "groupfinishdate");
+            addCriterion("groupFinishDate >", value, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("groupFinishDate >=", value, "groupfinishdate");
+            addCriterion("groupFinishDate >=", value, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateLessThan(Date value) {
-            addCriterionForJDBCDate("groupFinishDate <", value, "groupfinishdate");
+            addCriterion("groupFinishDate <", value, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("groupFinishDate <=", value, "groupfinishdate");
+            addCriterion("groupFinishDate <=", value, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateIn(List<Date> values) {
-            addCriterionForJDBCDate("groupFinishDate in", values, "groupfinishdate");
+            addCriterion("groupFinishDate in", values, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("groupFinishDate not in", values, "groupfinishdate");
+            addCriterion("groupFinishDate not in", values, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("groupFinishDate between", value1, value2, "groupfinishdate");
+            addCriterion("groupFinishDate between", value1, value2, "groupfinishdate");
             return (Criteria) this;
         }
 
         public Criteria andGroupfinishdateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("groupFinishDate not between", value1, value2, "groupfinishdate");
+            addCriterion("groupFinishDate not between", value1, value2, "groupfinishdate");
             return (Criteria) this;
         }
 
@@ -552,63 +525,133 @@ public class ProductgroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceIsNull() {
-            addCriterion("goupDiscountPrice is null");
+        public Criteria andGroupdiscountpriceIsNull() {
+            addCriterion("groupDiscountPrice is null");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceIsNotNull() {
-            addCriterion("goupDiscountPrice is not null");
+        public Criteria andGroupdiscountpriceIsNotNull() {
+            addCriterion("groupDiscountPrice is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceEqualTo(Float value) {
-            addCriterion("goupDiscountPrice =", value, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceEqualTo(Float value) {
+            addCriterion("groupDiscountPrice =", value, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceNotEqualTo(Float value) {
-            addCriterion("goupDiscountPrice <>", value, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceNotEqualTo(Float value) {
+            addCriterion("groupDiscountPrice <>", value, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceGreaterThan(Float value) {
-            addCriterion("goupDiscountPrice >", value, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceGreaterThan(Float value) {
+            addCriterion("groupDiscountPrice >", value, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceGreaterThanOrEqualTo(Float value) {
-            addCriterion("goupDiscountPrice >=", value, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceGreaterThanOrEqualTo(Float value) {
+            addCriterion("groupDiscountPrice >=", value, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceLessThan(Float value) {
-            addCriterion("goupDiscountPrice <", value, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceLessThan(Float value) {
+            addCriterion("groupDiscountPrice <", value, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceLessThanOrEqualTo(Float value) {
-            addCriterion("goupDiscountPrice <=", value, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceLessThanOrEqualTo(Float value) {
+            addCriterion("groupDiscountPrice <=", value, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceIn(List<Float> values) {
-            addCriterion("goupDiscountPrice in", values, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceIn(List<Float> values) {
+            addCriterion("groupDiscountPrice in", values, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceNotIn(List<Float> values) {
-            addCriterion("goupDiscountPrice not in", values, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceNotIn(List<Float> values) {
+            addCriterion("groupDiscountPrice not in", values, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceBetween(Float value1, Float value2) {
-            addCriterion("goupDiscountPrice between", value1, value2, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceBetween(Float value1, Float value2) {
+            addCriterion("groupDiscountPrice between", value1, value2, "groupdiscountprice");
             return (Criteria) this;
         }
 
-        public Criteria andGoupdiscountpriceNotBetween(Float value1, Float value2) {
-            addCriterion("goupDiscountPrice not between", value1, value2, "goupdiscountprice");
+        public Criteria andGroupdiscountpriceNotBetween(Float value1, Float value2) {
+            addCriterion("groupDiscountPrice not between", value1, value2, "groupdiscountprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusIsNull() {
+            addCriterion("groupStatus is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusIsNotNull() {
+            addCriterion("groupStatus is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusEqualTo(String value) {
+            addCriterion("groupStatus =", value, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusNotEqualTo(String value) {
+            addCriterion("groupStatus <>", value, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusGreaterThan(String value) {
+            addCriterion("groupStatus >", value, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusGreaterThanOrEqualTo(String value) {
+            addCriterion("groupStatus >=", value, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusLessThan(String value) {
+            addCriterion("groupStatus <", value, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusLessThanOrEqualTo(String value) {
+            addCriterion("groupStatus <=", value, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusLike(String value) {
+            addCriterion("groupStatus like", value, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusNotLike(String value) {
+            addCriterion("groupStatus not like", value, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusIn(List<String> values) {
+            addCriterion("groupStatus in", values, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusNotIn(List<String> values) {
+            addCriterion("groupStatus not in", values, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusBetween(String value1, String value2) {
+            addCriterion("groupStatus between", value1, value2, "groupstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andGroupstatusNotBetween(String value1, String value2) {
+            addCriterion("groupStatus not between", value1, value2, "groupstatus");
             return (Criteria) this;
         }
     }
