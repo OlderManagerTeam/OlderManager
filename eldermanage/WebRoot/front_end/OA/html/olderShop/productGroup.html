@@ -311,7 +311,9 @@
 										<th>发起时间</th>
 										<th>开团时间</th>
 										<th>结束时间</th>
+										<th>团购状态</th>
 										<th>团购商品</th>
+										<th>操作</th>
 										<th>当前人数</th>
 										<th>总人数</th>
 										<th>团购价格</th>
@@ -324,7 +326,9 @@
 										<th>发起时间</th>
 										<th>开团时间</th>
 										<th>结束时间</th>
+										<th>团购状态</th>
 										<th>团购商品</th>
+										<th>操作</th>
 										<th>当前人数</th>
 										<th>总人数</th>
 										<th>团购价格</th>
@@ -382,21 +386,21 @@
 					productstore = result.data;
 					for (var i = productstore.length - 1; i >= 0; i--) {
 						var oTr = `<tr>
-										<td>${i + 1}</td>
-										<td>${productstore[i].productname}</td>
-										<td>${productstore[i].storeproductid}</td>
-										<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productstore[i].storeproductid}">商品详细</a></td>
-										<td>${productstore[i].storecount}  <a class="btn btn-primary btn-storeadd" role="button">修改库存</a></td>
-										<td>${productstore[i].storedaybrowse}</td>
-										<td>${productstore[i].storemonthbrowse}</td>
-										<td>${productstore[i].storeyearbrowse}</td>
-										<td>${productstore[i].storetotalbrowse}</td>
-										<td>${productstore[i].storedaysales}</td>
-										<td>${productstore[i].storemonthsales}</td>
-										<td>${productstore[i].storeyearsales}</td>
-										<td>${productstore[i].storetotalsales}</td>
-									</tr>
-									`;
+											<td>${i + 1}</td>
+											<td>${productstore[i].productname}</td>
+											<td>${productstore[i].storeproductid}</td>
+											<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productstore[i].storeproductid}">商品详细</a></td>
+											<td>${productstore[i].storecount}  <a class="btn btn-primary btn-storeadd" role="button">修改库存</a></td>
+											<td>${productstore[i].storedaybrowse}</td>
+											<td>${productstore[i].storemonthbrowse}</td>
+											<td>${productstore[i].storeyearbrowse}</td>
+											<td>${productstore[i].storetotalbrowse}</td>
+											<td>${productstore[i].storedaysales}</td>
+											<td>${productstore[i].storemonthsales}</td>
+											<td>${productstore[i].storeyearsales}</td>
+											<td>${productstore[i].storetotalsales}</td>
+										</tr>
+										`;
 						$($(oTr)).appendTo('#productstoreview');
 					}
 					$('.datatable').DataTable({

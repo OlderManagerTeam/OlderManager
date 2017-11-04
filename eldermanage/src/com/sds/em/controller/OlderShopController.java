@@ -141,4 +141,10 @@ public class OlderShopController {
 	public @ResponseBody Message addproductstore(int productid,int productcount){
 		return olderShopService.addproductstore(productid,productcount);
 	}
+	
+	//wuwenbo,查看团购表
+	@RequestMapping(method = RequestMethod.POST, value = "productgroup")
+	public @ResponseBody Message getproductgroup(){
+		return olderShopService.getproductgroup();
+	}
 }
