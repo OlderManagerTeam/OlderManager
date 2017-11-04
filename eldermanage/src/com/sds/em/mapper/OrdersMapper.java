@@ -30,5 +30,6 @@ public interface OrdersMapper {
 
     int updateByPrimaryKey(Orders record);
 
+    //wuwenbo,获取订单列表
 	List<OrdersExtend> getorders();
 }

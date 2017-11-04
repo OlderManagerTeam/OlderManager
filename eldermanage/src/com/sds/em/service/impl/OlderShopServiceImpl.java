@@ -265,4 +265,10 @@ public class OlderShopServiceImpl implements OlderShopService {
 	}
 	}
 
+	@Override
+	public Message getproductgroup() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }
