@@ -2,7 +2,6 @@ package com.sds.em.po;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class OrdersExample {
@@ -104,32 +103,6 @@ public class OrdersExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                timeList.add(new java.sql.Time(iter.next().getTime()));
-            }
-            addCriterion(condition, timeList, property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
         }
 
         public Criteria andOrderidIsNull() {
@@ -263,52 +236,52 @@ public class OrdersExample {
         }
 
         public Criteria andOrderdateEqualTo(Date value) {
-            addCriterionForJDBCTime("orderDate =", value, "orderdate");
+            addCriterion("orderDate =", value, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateNotEqualTo(Date value) {
-            addCriterionForJDBCTime("orderDate <>", value, "orderdate");
+            addCriterion("orderDate <>", value, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateGreaterThan(Date value) {
-            addCriterionForJDBCTime("orderDate >", value, "orderdate");
+            addCriterion("orderDate >", value, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("orderDate >=", value, "orderdate");
+            addCriterion("orderDate >=", value, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateLessThan(Date value) {
-            addCriterionForJDBCTime("orderDate <", value, "orderdate");
+            addCriterion("orderDate <", value, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("orderDate <=", value, "orderdate");
+            addCriterion("orderDate <=", value, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateIn(List<Date> values) {
-            addCriterionForJDBCTime("orderDate in", values, "orderdate");
+            addCriterion("orderDate in", values, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateNotIn(List<Date> values) {
-            addCriterionForJDBCTime("orderDate not in", values, "orderdate");
+            addCriterion("orderDate not in", values, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("orderDate between", value1, value2, "orderdate");
+            addCriterion("orderDate between", value1, value2, "orderdate");
             return (Criteria) this;
         }
 
         public Criteria andOrderdateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("orderDate not between", value1, value2, "orderdate");
+            addCriterion("orderDate not between", value1, value2, "orderdate");
             return (Criteria) this;
         }
 
@@ -439,6 +412,66 @@ public class OrdersExample {
 
         public Criteria andOrdertotalNotBetween(Float value1, Float value2) {
             addCriterion("orderTotal not between", value1, value2, "ordertotal");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointIsNull() {
+            addCriterion("ordertakePoint is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointIsNotNull() {
+            addCriterion("ordertakePoint is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointEqualTo(Float value) {
+            addCriterion("ordertakePoint =", value, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointNotEqualTo(Float value) {
+            addCriterion("ordertakePoint <>", value, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointGreaterThan(Float value) {
+            addCriterion("ordertakePoint >", value, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointGreaterThanOrEqualTo(Float value) {
+            addCriterion("ordertakePoint >=", value, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointLessThan(Float value) {
+            addCriterion("ordertakePoint <", value, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointLessThanOrEqualTo(Float value) {
+            addCriterion("ordertakePoint <=", value, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointIn(List<Float> values) {
+            addCriterion("ordertakePoint in", values, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointNotIn(List<Float> values) {
+            addCriterion("ordertakePoint not in", values, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointBetween(Float value1, Float value2) {
+            addCriterion("ordertakePoint between", value1, value2, "ordertakepoint");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdertakepointNotBetween(Float value1, Float value2) {
+            addCriterion("ordertakePoint not between", value1, value2, "ordertakepoint");
             return (Criteria) this;
         }
     }
