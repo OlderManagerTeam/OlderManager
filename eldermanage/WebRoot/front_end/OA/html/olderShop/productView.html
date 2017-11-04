@@ -302,7 +302,8 @@
 							<div class="card-title  col-md-offset-9">
 								<div class="title">
 									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productEntry.html" role="button">添加新商品</a>
+										href="../olderShop/productEntry.html" role="button"
+										id="addproduct">添加新商品</a>
 								</div>
 							</div>
 						</div>
@@ -332,7 +333,7 @@
 									</tr>
 								</tfoot>
 								<tbody id="productlist">
-								
+
 								</tbody>
 							</table>
 						</div>
@@ -431,33 +432,34 @@
 	<script type="text/javascript">
 		$(function() {
 			// 后台数据
+			document.getElementById("addproduct").href = "../olderShop/productEntry.html?producttypenumber=" + UrlParm.parm("producttypenumber"),
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/oldershop/productlist?producttypenumber="+UrlParm.parm("producttypenumber"),
+				url : "http://localhost:8080/eldermanage/v1/oldershop/productlist?producttypenumber=" + UrlParm.parm("producttypenumber"),
 				data : null
 			}).then(
 				function(result) {
-				var type=new Array("食物饮品","食物饮品","衣物服饰","文学艺术","生活用品","娱乐器具","运动器材","医药保健品","电子产品","医疗器材","家具器材");
+					var type = new Array("食物饮品", "食物饮品", "衣物服饰", "文学艺术", "生活用品", "娱乐器具", "运动器材", "医药保健品", "电子产品", "医疗器材", "家具器材");
 					const oTbody = $("<tbody>");
 					var productlist = result.data;
 					for (var i = productlist.length - 1; i >= 0; i--) {
 						var oTr = `<tr>
-						<td>${i + 1}</td>
-						<td>${productlist[i].productname}</td>
-						<td>${productlist[i].productprice}元</td>
-						<td>${type[productlist[i].producttypenumber]}</td>
-						<td><a class="btn btn-primary btn-xs"
-							href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productlist[i].productid}" role="button">商品信息</a></td>
-						<td><a class="btn btn-primary btn-xs"
-							href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productRate.html?productid=${productlist[i].productid}" role="button">商品评价</a>
-						</td>
-						<td><a class="btn btn-primary btn-xs"
-							 href="" role="button">修改</a>
-							 <a class="btn btn-primary btn-xs btn-delete" role="button"  data-id="" >删除</a>
-
-					</tr>
-			`;
+							<td>${i + 1}</td>
+							<td>${productlist[i].productname}</td>
+							<td>${productlist[i].productprice}元</td>
+							<td>${type[productlist[i].producttypenumber]}</td>
+							<td><a class="btn btn-primary btn-xs"
+								href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productlist[i].productid}" role="button">商品信息</a></td>
+							<td><a class="btn btn-primary btn-xs"
+								href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productRate.html?productid=${productlist[i].productid}" role="button">商品评价</a>
+							</td>
+							<td><a class="btn btn-primary btn-xs"
+								 href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productAlter.html?productid=${productlist[i].productid}" role="button">修改</a>
+								 <a class="btn btn-primary btn-xs btn-delete" role="button"  data-id="${productlist[i].productid}" >删除</a>
+	
+						</tr>
+				`;
 						$($(oTr)).appendTo('#productlist');
 	
 					}
@@ -472,16 +474,15 @@
 				}
 			)
 				.done(function() {
-					$("#olderlist .btn-delete").on('click', function(event) {
+					$("#productlist .btn-delete").on('click', function(event) {
 						const r = confirm("您确定要删除么?");
 						if (r == true) {
 							const e = event || window.event;
 							e.preventDefault();
-							///let currentTr = $(this).parent().parent();
 							$.ajax({
 								type : 'delete',
 								contentType : 'application/json',
-								url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + $(this).attr('data-id'),
+								url : "http://localhost:8080/eldermanage/v1/oldershop/product/info?productid=" + $(this).attr('data-id'),
 								data : null,
 								success : function() {
 									window.location.reload();
