@@ -71,8 +71,13 @@
 					<input id="searchInput" name="index_none_header_sysc" type="text"
 						placeholder="搜索" autocomplete="off"> <input
 						id="ai-topsearch" class="submit am-btn" value="搜索" index="1"
-						type="submit">
+						type="button">
 				</form>
+				<script type="text/javascript">
+					$("#ai-topsearch").click(function (event){
+						window.open('search.html?'+$("#searchInput").val());
+					});
+				</script>
 			</div>
 		</div>
 
