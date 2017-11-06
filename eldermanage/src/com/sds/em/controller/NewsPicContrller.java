@@ -32,7 +32,7 @@ public class NewsPicContrller {
 
 		List<String> list = new ArrayList<String>();
 		String pic_path = "E:\\oldermanageresource\\newspic\\";
-		String picUrl = "http://localhost:8080/newspic/";
+		String picUrl = "/newspic/";
 		// String path =
 		// request.getSession().getServletContext().getRealPath(realPath);
 

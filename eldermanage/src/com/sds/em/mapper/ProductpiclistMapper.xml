@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.JoingroupMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Joingroup" >
-    <id column="joinGroupId" property="joingroupid" jdbcType="INTEGER" />
-    <result column="joinId" property="joinid" jdbcType="INTEGER" />
-    <result column="joinOlderId" property="joinolderid" jdbcType="INTEGER" />
-    <result column="joinDate" property="joindate" jdbcType="DATE" />
+<mapper namespace="com.sds.em.mapper.ProductpiclistMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Productpiclist" >
+    <id column="ppicId" property="ppicid" jdbcType="INTEGER" />
+    <result column="pproductid" property="pproductid" jdbcType="INTEGER" />
+    <result column="ppicUrl" property="ppicurl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    joinGroupId, joinId, joinOlderId, joinDate
+    ppicId, pproductid, ppicUrl
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.JoingroupExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ProductpiclistExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from joingroup
+    from productpiclist
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +84,67 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from joingroup
-    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
+    from productpiclist
+    where ppicId = #{ppicid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from joingroup
-    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
+    delete from productpiclist
+    where ppicId = #{ppicid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.JoingroupExample" >
-    delete from joingroup
+  <delete id="deleteByExample" parameterType="com.sds.em.po.ProductpiclistExample" >
+    delete from productpiclist
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Joingroup" >
-    insert into joingroup (joinGroupId, joinId, joinOlderId, 
-      joinDate)
-    values (#{joingroupid,jdbcType=INTEGER}, #{joinid,jdbcType=INTEGER}, #{joinolderid,jdbcType=INTEGER}, 
-      #{joindate,jdbcType=DATE})
+  <insert id="insert" parameterType="com.sds.em.po.Productpiclist" >
+    insert into productpiclist (ppicId, pproductid, ppicUrl
+      )
+    values (#{ppicid,jdbcType=INTEGER}, #{pproductid,jdbcType=INTEGER}, #{ppicurl,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Joingroup" >
-    insert into joingroup
+  <insert id="insertSelective" parameterType="com.sds.em.po.Productpiclist" >
+    insert into productpiclist
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="joingroupid != null" >
-        joinGroupId,
+      <if test="ppicid != null" >
+        ppicId,
       </if>
-      <if test="joinid != null" >
-        joinId,
+      <if test="pproductid != null" >
+        pproductid,
       </if>
-      <if test="joinolderid != null" >
-        joinOlderId,
-      </if>
-      <if test="joindate != null" >
-        joinDate,
+      <if test="ppicurl != null" >
+        ppicUrl,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="joingroupid != null" >
-        #{joingroupid,jdbcType=INTEGER},
+      <if test="ppicid != null" >
+        #{ppicid,jdbcType=INTEGER},
       </if>
-      <if test="joinid != null" >
-        #{joinid,jdbcType=INTEGER},
+      <if test="pproductid != null" >
+        #{pproductid,jdbcType=INTEGER},
       </if>
-      <if test="joinolderid != null" >
-        #{joinolderid,jdbcType=INTEGER},
-      </if>
-      <if test="joindate != null" >
-        #{joindate,jdbcType=DATE},
+      <if test="ppicurl != null" >
+        #{ppicurl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.JoingroupExample" resultType="java.lang.Integer" >
-    select count(*) from joingroup
+  <select id="countByExample" parameterType="com.sds.em.po.ProductpiclistExample" resultType="java.lang.Integer" >
+    select count(*) from productpiclist
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update joingroup
+    update productpiclist
     <set >
-      <if test="record.joingroupid != null" >
-        joinGroupId = #{record.joingroupid,jdbcType=INTEGER},
+      <if test="record.ppicid != null" >
+        ppicId = #{record.ppicid,jdbcType=INTEGER},
       </if>
-      <if test="record.joinid != null" >
-        joinId = #{record.joinid,jdbcType=INTEGER},
+      <if test="record.pproductid != null" >
+        pproductid = #{record.pproductid,jdbcType=INTEGER},
       </if>
-      <if test="record.joinolderid != null" >
-        joinOlderId = #{record.joinolderid,jdbcType=INTEGER},
-      </if>
-      <if test="record.joindate != null" >
-        joinDate = #{record.joindate,jdbcType=DATE},
+      <if test="record.ppicurl != null" >
+        ppicUrl = #{record.ppicurl,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -162,40 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update joingroup
-    set joinGroupId = #{record.joingroupid,jdbcType=INTEGER},
-      joinId = #{record.joinid,jdbcType=INTEGER},
-      joinOlderId = #{record.joinolderid,jdbcType=INTEGER},
-      joinDate = #{record.joindate,jdbcType=DATE}
+    update productpiclist
+    set ppicId = #{record.ppicid,jdbcType=INTEGER},
+      pproductid = #{record.pproductid,jdbcType=INTEGER},
+      ppicUrl = #{record.ppicurl,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Joingroup" >
-    update joingroup
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Productpiclist" >
+    update productpiclist
     <set >
-      <if test="joinid != null" >
-        joinId = #{joinid,jdbcType=INTEGER},
+      <if test="pproductid != null" >
+        pproductid = #{pproductid,jdbcType=INTEGER},
       </if>
-      <if test="joinolderid != null" >
-        joinOlderId = #{joinolderid,jdbcType=INTEGER},
-      </if>
-      <if test="joindate != null" >
-        joinDate = #{joindate,jdbcType=DATE},
+      <if test="ppicurl != null" >
+        ppicUrl = #{ppicurl,jdbcType=VARCHAR},
       </if>
     </set>
-    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
+    where ppicId = #{ppicid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Joingroup" >
-    update joingroup
-    set joinId = #{joinid,jdbcType=INTEGER},
-      joinOlderId = #{joinolderid,jdbcType=INTEGER},
-      joinDate = #{joindate,jdbcType=DATE}
-    where joinGroupId = #{joingroupid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productpiclist" >
+    update productpiclist
+    set pproductid = #{pproductid,jdbcType=INTEGER},
+      ppicUrl = #{ppicurl,jdbcType=VARCHAR}
+    where ppicId = #{ppicid,jdbcType=INTEGER}
   </update>
-  
-  <!-- wuwenbo,查看团购参加者 -->
-  <select id="getJoingroup" resultType="com.sds.em.pojo.JoingroupExtend" parameterType="int">
-  SELECT * from joingroup as j INNER JOIN olderbase as o on o.olderId=j.joinOlderId where j.joinGroupId=#{value}
-  </select>
 </mapper>

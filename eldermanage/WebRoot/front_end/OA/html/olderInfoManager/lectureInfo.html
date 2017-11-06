@@ -520,12 +520,12 @@
 		
 			function load() {
 				var lectureid = UrlParm.parm("lectureid");
-				document.getElementById("lecturesubmit").href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
-				document.getElementById("enrollolder").href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureOlderInfo.html?lectureid="+lectureid;
+				document.getElementById("lecturesubmit").href="/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
+				document.getElementById("enrollolder").href="/eldermanage/front_end/OA/html/olderInfoManager/lectureOlderInfo.html?lectureid="+lectureid;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/lecture/info?lectureid=" + lectureid,
+					url : "/eldermanage/v1/brench/lecture/info?lectureid=" + lectureid,
 					data : null,
 					success : function(result) {
 						var lecturename = document.getElementById("lecturename");

@@ -391,7 +391,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/oldershop/productstore",
+				url : "/eldermanage/v1/oldershop/productstore",
 				data : null
 			}).then(
 				function(result) {
@@ -401,7 +401,7 @@
 									<td>${i + 1}</td>
 									<td>${productstore[i].productname}</td>
 									<td>${productstore[i].storeproductid}</td>
-									<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productstore[i].storeproductid}">商品详细</a></td>
+									<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productstore[i].storeproductid}">商品详细</a></td>
 									<td><span>${productstore[i].storecount}</span>  <a class="btn btn-primary btn-storeadd" role="button" onclick="updateStore(this)" dataId="${productstore[i].storeproductid}" data-toggle="modal" data-target="#myModal">修改库存</a></td>
 									<td>${productstore[i].storedaybrowse}</td>
 									<td>${productstore[i].storemonthbrowse}</td>
@@ -427,8 +427,8 @@
 					$.ajax({
 						type : 'post',
 						contentType : 'application/json',
-						url : "http://localhost:8080/eldermanage/v1/oldershop/ordercancel",
-						data: "ordersid="+$(obj).attr('dataId')+"&StoreCount="+$("#currentCount").val(),
+						url : "/eldermanage/v1/oldershop/productstore?productid="+$(obj).attr('dataId')+"&productcount="+$("#currentCount").val(),
+						data: null,
 					}).then(
 						function (){
 							alert("修改成功")

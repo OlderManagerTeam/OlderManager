@@ -132,17 +132,17 @@
 						<ul class="nav navbar-nav">
 							<li><a href="../index.html"> <span
 									class="icon fa fa-tachometer"></span><span class="title">控制台</span>
-			              </a></li>
-			<li class="panel panel-default dropdown">
-			<a data-toggle="collapse" href="#dropdown-element"> 
-			        <span class="icon fa fa-desktop"></span>
-			        <span class="title">UI Kits</span>
-			</a> <!-- 下拉列表 level 1 -->
-			<div id="dropdown-element" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../ui-kits/grid.html">Grid</a></li>
-							<li><a href="../ui-kits/theming.html">主题</a></li></li>
+							</a></li>
+							<li class="panel panel-default dropdown"><a
+								data-toggle="collapse" href="#dropdown-element"> <span
+									class="icon fa fa-desktop"></span> <span class="title">UI
+										Kits</span>
+							</a> <!-- 下拉列表 level 1 -->
+								<div id="dropdown-element" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../ui-kits/grid.html">Grid</a></li>
+											<li><a href="../ui-kits/theming.html">主题</a></li></li>
 							<li><a href="../ui-kits/button.html">按钮</a></li>
 							<li><a href="../ui-kits/card.html">明信片</a></li>
 							<li><a href="../ui-kits/list.html">列表</a></li>
@@ -180,20 +180,18 @@
 						</ul>
 					</div>
 				</div></li>
-             <li class="panel panel-default dropdown">
-			     <a data-toggle="collapse" href="#dropdown-headofficeManage"> 
-			         <span class="icon  glyphicon glyphicon-user"></span>
-			         <span class="title">总店管理</span>
-			     </a> <!-- Dropdown level 1 -->
-				 <div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					    <div class="panel-body">
-						      <ul class="nav navbar-nav">
-							       <li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							       <li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						      </ul>
-					    </div>
-				 </div>
-			</li> 
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+					class="icon  glyphicon glyphicon-user"></span> <span class="title">总店管理</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+						</ul>
+					</div>
+				</div></li>
 			<!--在左边导航栏添加老人管理模块的导航-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderView"> <span
@@ -207,8 +205,7 @@
 							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderEducation"> <span
 					class="icon glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
@@ -219,11 +216,11 @@
 							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>
+				</div></li>
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-olderShop"> <span
-					class="icon glyphicon glyphicon-shopping-cart"></span><span class="title">电子商务</span>
+					class="icon glyphicon glyphicon-shopping-cart"></span><span
+					class="title">电子商务</span>
 			</a> <!-- Dropdown level 1 -->
 				<div id="dropdown-olderShop" class="panel-collapse collapse">
 					<div class="panel-body">
@@ -234,8 +231,7 @@
 							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
 						</ul>
 					</div>
-				</div>
-			</li>			
+				</div></li>
 			<!-- 下拉列表-->
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#component-example"> <span
@@ -299,7 +295,7 @@
 
 							<div class="card-title">
 								<div class="title">
-								    <a class="btn btn-primary btn-lg"
+									<a class="btn btn-primary btn-lg"
 										href="../olderShop/productGroup.html" role="button">返回商品团购表</a>
 								</div>
 							</div>
@@ -310,53 +306,23 @@
 								<thead>
 									<tr>
 										<th>团购编号</th>
-										<th>参团序号</th>
 										<th>参与者</th>
+										<th>参与者详情</th>
 										<th>参加日期</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
 										<th>团购编号</th>
-										<th>参团序号</th>
 										<th>参与者</th>
+										<th>参与者详情</th>
 										<th>参加日期</th>
 									</tr>
 								</tfoot>
-								<tbody>
-								    <tr>
-										<td>团购ID</td>
-										<td>唯一标识</td>
-										<td>老人ID</td>
-										<td>参加日期</td>
-									</tr>
-									<tr>
-										<td>joinGroupId</td>
-										<td>joinId</td>
-										<td>joinOlderId</td>
-										<td>joinDate</td>
-									</tr>
-									<tr>
-										<td>例如：001</td>
-										<td>001</td>
-										<td>药老</td>
-										<td>2017-10-15</td>
-									</tr>
-									<tr>
-										<td>001</td>
-										<td>002</td>
-										<td>张老</td>
-										<td>2017-10-16</td>
-									</tr>
-									<tr>
-										<td>001</td>
-										<td>003</td>
-										<td>李老</td>
-										<td>2017-10-18</td>
-									</tr>
+								<tbody id="groupjoinview">
+
 								</tbody>
 							</table>
-							<div id="olderView"></div>
 						</div>
 					</div>
 				</div>
@@ -370,29 +336,113 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
-	
-		<!-- Javascript Libs -->
 
-		
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
+	<!-- Javascript Libs -->
 
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
 
+	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/bootstrap-switch.min.js"></script>
+
+	<script type="text/javascript"
+		src="../../lib/js/jquery.matchHeight-min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript"
+		src="../../lib/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+	<!-- Javascript -->
+	<script type="text/javascript" src="../../js/app.js"></script>
+
+	<script type="text/javascript">
+		UrlParm = function() { // url参数
+			var data,
+				index;
+			(function init() {
+				data = [];
+				index = {};
+				var u = window.location.search.substr(1);
+				if (u != '') {
+					var parms = decodeURIComponent(u).split('&');
+					for (var i = 0, len = parms.length; i < len; i++) {
+						if (parms[i] != '') {
+							var p = parms[i].split("=");
+							if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+								data.push([ '' ]);
+								index[p[0]] = data.length - 1;
+							} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+								data[0] = [ p[1] ];
+							} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+								data.push([ p[1] ]);
+								index[p[0]] = data.length - 1;
+							} else { // c=aaa
+								data[index[p[0]]].push(p[1]);
+							}
+						}
+					}
+				}
+			})();
+			return {
+				// 获得参数,类似request.getParameter()
+				parm : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+					} catch (e) {}
+				},
+				//获得参数组, 类似request.getParameterValues()
+				parmValues : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+					} catch (e) {}
+				},
+				//是否含有parmName参数
+				hasParm : function(parmName) {
+					return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+				},
+				// 获得参数Map ,类似request.getParameterMap()
+				parmMap : function() {
+					var map = {};
+					try {
+						for (var p in index) {
+							map[p] = data[index[p]];
+						}
+					} catch (e) {}
+					return map;
+				}
+			}
+		}();
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "/eldermanage/v1/oldershop/productgroup/join?groupid=" + UrlParm.parm("groupid"),
+				data : null
+			}).then(
+				function(result) {
+					productgroup = result.data;
+					for (var i = productgroup.length - 1; i >= 0; i--) {
+						var joindate = new Date(productgroup[i].joindate);
+						var oTr = `<tr>
+							<td>${productgroup[i].joingroupid}</td>
+							<td>${productgroup[i].oldername}</td>
+							<td><a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${productgroup[i].oldertel}">详细</a></td>
+							<td>${joindate.toLocaleDateString()}${joindate.toLocaleTimeString()}</td>
+														`;
+						$($(oTr)).appendTo('#groupjoinview');
+					}
+					$('.datatable').DataTable({
+						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+					})
+				})
+		})
+	</script>
 </body>
 
 </html>

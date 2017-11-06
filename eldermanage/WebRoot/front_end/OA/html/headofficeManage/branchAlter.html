@@ -478,7 +478,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/branch/info?branchid=" + branchid,
+					url : "/eldermanage/v1/headoffice/branch/info?branchid=" + branchid,
 					data : null,
 					success : function(result) {
 						$('#branchname').attr("value",result.data.branch.branchname);
@@ -503,7 +503,7 @@
 				form.append("branchid", branchid);
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/branch/info",
+					url : "/eldermanage/v1/headoffice/branch/info",
 					data : form,
 					processData : false,
 					contentType : false,
@@ -511,7 +511,7 @@
 						//var resultdata = JSON.parse(result);
 						alert(result.information);
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/branchView.html";
+							window.location.href = "/eldermanage/front_end/OA/html/headofficeManage/branchView.html";
 						}
 					},
 					error : function() {
@@ -527,7 +527,7 @@
 				$.ajax({
 					type:'get',
 					contentType:'application/json',
-					url:"http://localhost:8080/eldermanage/v1/headoffice/branch/staff?staffcode="+staffcode,
+					url:"/eldermanage/v1/headoffice/branch/staff?staffcode="+staffcode,
 					data:staffcode,
 					success:function(result){
 						var staffinfo = result.data

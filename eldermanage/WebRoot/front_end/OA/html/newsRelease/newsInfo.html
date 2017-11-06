@@ -412,7 +412,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/news/detail?newsid=" + newsid,
+					url : "/eldermanage/v1/news/detail?newsid=" + newsid,
 					data : null,
 					success : function(result) {
 						var date = new Date(result.data.news.newsissueddate + 1000 * 60 * 60 * 8);

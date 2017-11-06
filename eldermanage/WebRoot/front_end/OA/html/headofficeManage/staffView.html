@@ -307,7 +307,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/allstaffs",
+					url : "/eldermanage/v1/headoffice/allstaffs",
 					data : null
 				}).then(
 					function(result) {
@@ -333,9 +333,9 @@
 																	<td>${age}</td>
 																	<td>${staffItem[i].staffbase.stafftel}</td>
 																	<td>${staffItem[i].department.departmentname}</td>
-																	<td><a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffInfo.html?staffid=${staffItem[i].staffbase.staffid}"
+																	<td><a class="btn btn-primary btn-xs"href="/eldermanage/front_end/OA/html/headofficeManage/staffInfo.html?staffid=${staffItem[i].staffbase.staffid}"
 																		 role="button">详情</a>
-																		 <a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffRoleAlter.html?staffid=${staffItem[i].staffbase.staffid}"
+																		 <a class="btn btn-primary btn-xs"href="/eldermanage/front_end/OA/html/headofficeManage/staffRoleAlter.html?staffid=${staffItem[i].staffbase.staffid}"
 																		 role="button">分配</a>
 																    </td>
 															</tr>

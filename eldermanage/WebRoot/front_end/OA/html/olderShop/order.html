@@ -367,7 +367,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/oldershop/orders",
+					url : "/eldermanage/v1/oldershop/orders",
 					data : null
 				}).then(
 					function(result) {
@@ -382,7 +382,7 @@
 																									<td>${date.toLocaleDateString()}${date.toLocaleTimeString()}</td>
 																									<td>${orderItem[i].orderstatus}</td>
 																									<td> <a class="btn btn-primary btn-xs btn-ok" role="button" data-id="${orderItem[i].orderid}">确认到货</a></td>
-																									<td>${orderItem[i].ordertotal}</td>
+			<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/orderList.html?orderid=${orderItem[i].orderid}">订单详细</a></td>
 																									<td>${orderItem[i].ordertotal}元</td>
 																									<td><a class="btn btn-primary btn-xs btn-cancel" role="button" data-id="${orderItem[i].orderid}">取消</a> </td>
 																								</tr>
@@ -394,8 +394,8 @@
 																									<td>${orderItem[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${orderItem[i].oldertel}">详细</a></td>
 																									<td>${date.toLocaleDateString()}${date.toLocaleTimeString()}</td>
 																									<td>${orderItem[i].orderstatus}</td>
-																									<td> <a class="btn btn-primary btn-xs btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/ordersRate.html?orderid=${orderItem[i].orderid}">查看评价</a></td>
-																									<td>${orderItem[i].ordertotal}</td>
+																									<td> <a class="btn btn-primary btn-xs btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/ordersRate.html?orderid=${orderItem[i].orderid}">查看评价</a></td>
+			<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/orderList.html?orderid=${orderItem[i].orderid}">订单详细</a></td>
 																									<td>${orderItem[i].ordertotal}元</td>
 																									<td>不能取消</td>
 																								</tr>
@@ -403,16 +403,16 @@
 								$($(oTr)).appendTo('#orderList');
 							} else if (orderItem[i].orderstatus == "已取消") {
 								var oTr = `<tr>
-																									<td>${orderItem[i].orderid}</td>
-																									<td>${orderItem[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${orderItem[i].oldertel}">详细</a></td>
-																									<td>${date.toLocaleDateString()}${date.toLocaleTimeString()}</td>
-																									<td>${orderItem[i].orderstatus}</td>
-																									<td> 无操作</td>
-																									<td>${orderItem[i].ordertotal}</td>
-																									<td>${orderItem[i].ordertotal}元</td>
-																									<td><a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${orderItem[i].orderid}">删除</a></td>
-																								</tr>
-																								`;
+			<td>${orderItem[i].orderid}</td>
+			<td>${orderItem[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${orderItem[i].oldertel}">详细</a></td>
+			<td>${date.toLocaleDateString()}${date.toLocaleTimeString()}</td>
+			<td>${orderItem[i].orderstatus}</td>
+			<td> 无操作</td>
+			<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/orderList.html?orderid=${orderItem[i].orderid}">订单详细</a></td>
+			<td>${orderItem[i].ordertotal}元</td>
+			<td><a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${orderItem[i].orderid}">删除</a></td>
+		</tr>
+		`;
 								$($(oTr)).appendTo('#orderList');
 							}
 						}
@@ -433,7 +433,7 @@
 								$.ajax({
 									type : 'delete',
 									contentType : 'application/json',
-									url : "http://localhost:8080/eldermanage/v1/oldershop/order?ordersid=" + $(this).attr('data-id'),
+									url : "/eldermanage/v1/oldershop/order?ordersid=" + $(this).attr('data-id'),
 									data : null,
 									success : function() {
 										window.location.reload();
@@ -450,7 +450,7 @@
 								$.ajax({
 									type : 'post',
 									contentType : 'application/json',
-									url : "http://localhost:8080/eldermanage/v1/oldershop/order?ordersid=" + $(this).attr('data-id'),
+									url : "/eldermanage/v1/oldershop/order?ordersid=" + $(this).attr('data-id'),
 									data : null,
 									success : function() {
 										window.location.reload();
@@ -467,7 +467,7 @@
 								$.ajax({
 									type : 'post',
 									contentType : 'application/json',
-									url : "http://localhost:8080/eldermanage/v1/oldershop/ordercancel?ordersid=" + $(this).attr('data-id'),
+									url : "/eldermanage/v1/oldershop/ordercancel?ordersid=" + $(this).attr('data-id'),
 									data : null,
 									success : function() {
 										window.location.reload();

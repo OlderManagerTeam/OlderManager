@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Joingroup;
 import com.sds.em.po.JoingroupExample;
+import com.sds.em.pojo.JoingroupExtend;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,7 @@ public interface JoingroupMapper {
     int updateByPrimaryKeySelective(Joingroup record);
 
     int updateByPrimaryKey(Joingroup record);
+
+    //查看团购参加者
+	List<JoingroupExtend> getJoingroup(int groupid);
 }

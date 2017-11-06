@@ -634,14 +634,14 @@
 				form.append("producttypenumber", producttypenumber);
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/oldershop/product/infoupdate",
+					url : "/eldermanage/v1/oldershop/product/infoupdate",
 					data : form,
 					processData : false,
 					contentType : false,
 				})
 					.then(function(result) {
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + producttypenumber;
+							window.location.href = "/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + producttypenumber;
 						}
 					}
 				)
@@ -654,7 +654,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/oldershop/product/info?productid=" + productid,
+					url : "/eldermanage/v1/oldershop/product/info?productid=" + productid,
 					data : null,
 				})
 					.then(function(result) {

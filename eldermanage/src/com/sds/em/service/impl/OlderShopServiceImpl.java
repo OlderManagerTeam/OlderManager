@@ -1,14 +1,19 @@
 package com.sds.em.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sds.em.mapper.JoingroupMapper;
 import com.sds.em.mapper.OrderlistMapper;
 import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.mapper.ProductMapper;
+import com.sds.em.mapper.ProductgroupMapper;
 import com.sds.em.mapper.ProductrateMapper;
 import com.sds.em.mapper.ProductstoreMapper;
+import com.sds.em.po.Joingroup;
+import com.sds.em.po.JoingroupExample;
 import com.sds.em.po.Message;
 import com.sds.em.po.Orderlist;
 import com.sds.em.po.OrderlistExample;
@@ -17,6 +22,7 @@ import com.sds.em.po.OrdersExample;
 import com.sds.em.po.Product;
 import com.sds.em.po.ProductExample;
 import com.sds.em.po.ProductExample.Criteria;
+import com.sds.em.po.Productgroup;
 import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductrateExample;
 import com.sds.em.po.Productstore;
@@ -56,6 +62,15 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	ProductstoreExample productstoreExample = new ProductstoreExample();
 	ProductstoreExample.Criteria productstorCriteria;
+
+	@Autowired
+	ProductgroupMapper productgroupMapper;
+
+	@Autowired
+	JoingroupMapper joingroupMapper;
+
+	JoingroupExample joingroupExample = new JoingroupExample();
+	JoingroupExample.Criteria joingroupCriteria;
 
 	@Override
 	// wuwenbo,添加商品
@@ -208,7 +223,7 @@ public class OlderShopServiceImpl implements OlderShopService {
 			orderlistCriteria = orderlistExample.createCriteria();
 			orderlistCriteria.andOrderlistfidEqualTo(ordersid);
 			List<Orderlist> orderlists = orderlistMapper.selectByExample(orderlistExample);
-			if (!orderlists.isEmpty())
+			if (orderlists != null)
 				for (Orderlist orderlist : orderlists) {
 					productstoreExample.clear();
 					productstorCriteria = productstoreExample.createCriteria();
@@ -245,30 +260,121 @@ public class OlderShopServiceImpl implements OlderShopService {
 	}
 
 	@Override
-	//wuwenbo,修改商品库存
-	public Message addproductstore(int productid,int productcount) {
+	// wuwenbo,修改商品库存
+	public Message addproductstore(int productid, int productcount) {
 		try {
-		productstoreExample.clear();
-		productstorCriteria=productstoreExample.createCriteria();
-		productstorCriteria.andStoreproductidEqualTo(productid);
-		List<Productstore> productstoreList= productstoreMapper.selectByExample(productstoreExample);
-		Productstore productstore;
-		if(!productstoreList.isEmpty()){
-			productstore=productstoreList.get(0);
-			productstore.setStorecount(productcount);
-			productstoreMapper.updateByPrimaryKeySelective(productstore);
+			productstoreExample.clear();
+			productstorCriteria = productstoreExample.createCriteria();
+			productstorCriteria.andStoreproductidEqualTo(productid);
+			List<Productstore> productstoreList = productstoreMapper.selectByExample(productstoreExample);
+			Productstore productstore;
+			if (!productstoreList.isEmpty()) {
+				productstore = productstoreList.get(0);
+				productstore.setStorecount(productcount);
+				productstoreMapper.updateByPrimaryKeySelective(productstore);
+			}
+			return new Message(true, "修改成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
 		}
-		return new Message(true, "修改成功", null);
+	}
+
+	@Override
+	// 查看团购表
+	public Message getproductgroup() {
+		try {
+			List<com.sds.em.pojo.ProductgroupExtend> productgroupList = productgroupMapper.getproductgroup();
+			return new Message(true, "返回成功", productgroupList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	// 删除一条团购
+	public Message deleteproductgroup(int groupid) {
+		// TODO 自动生成的方法存根
+		try {
+			productgroupMapper.deleteByPrimaryKey(groupid);
+			joingroupCriteria = joingroupExample.createCriteria();
+			joingroupCriteria.andJoinidEqualTo(groupid);
+			joingroupMapper.deleteByExample(joingroupExample);
+			return new Message(true, "删除成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	// 成交并生成订单
+	public Message ordersproductgroup(int groupid) {
+		try {
+			Productgroup productgroup = productgroupMapper.selectByPrimaryKey(groupid);
+			productgroup.setGroupstatus("已成交");
+			productgroupMapper.updateByPrimaryKeySelective(productgroup);
+			joingroupCriteria = joingroupExample.createCriteria();
+			joingroupCriteria.andJoinidEqualTo(groupid);
+			List<Joingroup> joingroupList = joingroupMapper.selectByExample(joingroupExample);
+			for (Joingroup joingroup : joingroupList) {
+				Orders orders = new Orders();
+				orders.setOrderolderid(joingroup.getJoinolderid());
+				orders.setOrderdate(new Date());
+				orders.setOrderstatus("送货中");
+				orders.setOrdertakepoint((float) 0.0);
+				orders.setOrdertotal(productgroup.getGroupdiscountprice());
+				ordersMapper.keyinsert(orders);
+				Orderlist orderlist = new Orderlist();
+				orderlist.setOrderdiscountprice(productgroup.getGroupdiscountprice());
+				orderlist.setOrderlistfid(orders.getOrderid());
+				orderlist.setOrderproductcount(1);
+				orderlist.setOrderproductid(productgroup.getGroupproductid());
+				orderlistMapper.insertSelective(orderlist);
+			}
+			return new Message(true, "操作成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	// wuwenbo,查看团购参加者
+	public Message productgroupjoin(int groupid) {
+		try {
+			joingroupCriteria = joingroupExample.createCriteria();
+			joingroupCriteria.andJoinidEqualTo(groupid);
+			List<com.sds.em.pojo.JoingroupExtend> joingroupList = joingroupMapper.getJoingroup(groupid);
+			return new Message(true, "返回成功", joingroupList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	// wuwenbo,获取订单详情
+	public Message getorderlist(int orderid) {
+		try {
+			List<com.sds.em.pojo.OrderlistExtend> orderlist = orderlistMapper.getorderlist(orderid);
+			return new Message(true, "返回成功", orderlist);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	//添加团购
+	public Message addproductgroup(Productgroup productgroup) {
+		try {
+		productgroupMapper.insertSelective(productgroup);
+		return new Message(true, "添加成功", null);
 	} catch (Exception e) {
 		e.printStackTrace();
 		return new Message(false, "数据库错误", null);
 	}
 	}
-
-	@Override
-	public Message getproductgroup() {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
 }
