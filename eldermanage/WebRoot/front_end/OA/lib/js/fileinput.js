@@ -1149,7 +1149,7 @@
                     var xhrobj = $.ajaxSettings.xhr();
                     return self.initXhr(xhrobj, 98);
                 },
-                url: self.uploadUrl,
+                url: "/eldermanage/v1/oldershop/uploadpic",
                 type: 'POST',
                 dataType: 'json',
                 data: self.formdata,

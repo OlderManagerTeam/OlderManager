@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -53,7 +54,7 @@ public class OlderShopController {
 
 	// wuwenbo,添加商品信息
 	@RequestMapping(method = RequestMethod.POST, value = "product/info")
-	public @ResponseBody Message entryproduct(Product product, MultipartFile productImg, String productUpondate)
+	public @ResponseBody Message entryproduct(Product product, MultipartFile productImg, String productUpondate,@RequestParam(value="fileGG",required=true)MultipartFile[] fileGG)
 			throws Exception {
 		String pic_path = "E:\\oldermanageresource\\productimg\\";
 		String picUrl = "/productimg/";
@@ -208,5 +209,12 @@ public class OlderShopController {
 		productgroup.setGroupstatus("未开始");
 		productgroup.setGrouppresentpeople(0);
 		return olderShopService.addproductgroup(productgroup);
+	}
+	
+	// wuwenbo,上传图片
+	@RequestMapping(method = RequestMethod.POST, value = "uploadpic")
+	public @ResponseBody String uploadpic(String grouppublishDate, String groupstartDate, String groupstarttime,
+			String groupfinishDate, Productgroup productgroup,MultipartFile file_data ) {
+				return "12345678";
 	}
 }
