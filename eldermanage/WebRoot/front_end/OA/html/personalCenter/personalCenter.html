@@ -138,9 +138,19 @@
 							</button>
 						</div>
 						<ul class="nav navbar-nav">
-							<li><a href="../index.html"> <span
-									class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
-							</a></li>
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dataStatistics"> <span
+					class="icon glyphicon glyphicon-stats"></span> <span class="title">数据统计</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dataStatistics" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
+							<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
+							<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
+						</ul>
+					</div>
+				</div></li>					
 			<!-- 总店管理 -->	
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
@@ -222,9 +232,7 @@
 						</ul>
 					</div>
 				</div></li>
-			<li><a href="../license.html"> <span
-					class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
-			</a></li>
+			
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -361,55 +369,7 @@
 			src="../../lib/js/bootstrapValidator.min.js"></script>
 		</script>
 
-		<script type="text/javascript">
-		
-			function load() {
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/personal/message",
-					data : null,
-					success : function(result) {
-						var staffimg = document.getElementById("staffimg");
-						staffimg.innerHTML = result.data.staffbase.staffimg;
-						var staffcode = document.getElementById("staffcode");
-						staffcode.innerHTML = result.data.staffbase.staffcode;
-						var staffname = document.getElementById("staffname");
-						staffname.innerHTML = result.data.staffbase.staffname;
-						var staffsex = document.getElementById("staffsex");
-						staffsex.innerHTML = result.data.staffbase.staffsex;
-		
-						var date = new Date(result.data.staffbase.staffbirthday + 1000 * 60 * 60 * 8);
-						var d = date.toISOString().slice(0, 10);
-						staffbirthday.innerHTML = d;
-		
-		
-						var staffiide = document.getElementById("staffiide");
-						staffiide.innerHTML = result.data.staffbase.staffiide;
-		
-						var stafftel = document.getElementById("stafftel");
-						stafftel.innerHTML = result.data.staffbase.stafftel;
-		
-		
-		
-						var staffdepartmentid = document.getElementById("staffdepartmentid");
-						staffdepartmentid.innerHTML = result.data.staffbase.staffdepartmentid;
-		
-						var departmentname = document.getElementById("departmentname");
-						departmentname.innerHTML = result.data.department.departmentname;
-		
-						var rolecontent = document.getElementById("rolecontent");
-						rolecontent.innerHTML = result.data.role.rolecontent;
-						
-						document.getElementById("olderalter").href = "../personalCenter/personalAlter.html";
-		
-					},
-					error : function() {
-						alert('数据库错误')
-					}
-				})
-			}
-		</script>
+		<script type="text/javascript" src="../../js/personalCenter/personalCenter.js" ></script>
 </body>
 
 </html>

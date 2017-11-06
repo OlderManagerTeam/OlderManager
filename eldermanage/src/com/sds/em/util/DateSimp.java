@@ -29,32 +29,32 @@ public class DateSimp {
 		return str;
 	}
 
-	// ¸ù¾İÄêÔÂÈÕ¼ÆËãÄêÁä,birthTimeString:"1994-11-14"
+	// æ ¹æ®å¹´æœˆæ—¥è®¡ç®—å¹´é¾„,birthTimeString:"1994-11-14"
 	public static int getAgeFromBirthTime(String birthTimeString) {
-		// ÏÈ½ØÈ¡µ½×Ö·û´®ÖĞµÄÄê¡¢ÔÂ¡¢ÈÕ
+		// å…ˆæˆªå–åˆ°å­—ç¬¦ä¸²ä¸­çš„å¹´ã€æœˆã€æ—¥
 		String strs[] = birthTimeString.trim().split("-");
 		int selectYear = Integer.parseInt(strs[0]);
 		int selectMonth = Integer.parseInt(strs[1]);
 		int selectDay = Integer.parseInt(strs[2]);
-		// µÃµ½µ±Ç°Ê±¼äµÄÄê¡¢ÔÂ¡¢ÈÕ
+		// å¾—åˆ°å½“å‰æ—¶é—´çš„å¹´ã€æœˆã€æ—¥
 		Calendar cal = Calendar.getInstance();
 		int yearNow = cal.get(Calendar.YEAR);
 		int monthNow = cal.get(Calendar.MONTH) + 1;
 		int dayNow = cal.get(Calendar.DATE);
 
-		// ÓÃµ±Ç°ÄêÔÂÈÕ¼õÈ¥ÉúÈÕÄêÔÂÈÕ
+		// ç”¨å½“å‰å¹´æœˆæ—¥å‡å»ç”Ÿæ—¥å¹´æœˆæ—¥
 		int yearMinus = yearNow - selectYear;
 		int monthMinus = monthNow - selectMonth;
 		int dayMinus = dayNow - selectDay;
 
-		int age = yearMinus;// ÏÈ´óÖÂ¸³Öµ
-		if (yearMinus < 0) {// Ñ¡ÁËÎ´À´µÄÄê·İ
+		int age = yearMinus;// å…ˆå¤§è‡´èµ‹å€¼
+		if (yearMinus < 0) {// é€‰äº†æœªæ¥çš„å¹´ä»½
 			age = 0;
-		} else if (yearMinus == 0) {// Í¬ÄêµÄ£¬ÒªÃ´Îª1£¬ÒªÃ´Îª0
-			if (monthMinus < 0) {// Ñ¡ÁËÎ´À´µÄÔÂ·İ
+		} else if (yearMinus == 0) {// åŒå¹´çš„ï¼Œè¦ä¹ˆä¸º1ï¼Œè¦ä¹ˆä¸º0
+			if (monthMinus < 0) {// é€‰äº†æœªæ¥çš„æœˆä»½
 				age = 0;
-			} else if (monthMinus == 0) {// Í¬ÔÂ·İµÄ
-				if (dayMinus < 0) {// Ñ¡ÁËÎ´À´µÄÈÕÆÚ
+			} else if (monthMinus == 0) {// åŒæœˆä»½çš„
+				if (dayMinus < 0) {// é€‰äº†æœªæ¥çš„æ—¥æœŸ
 					age = 0;
 				} else if (dayMinus >= 0) {
 					age = 1;
@@ -63,8 +63,8 @@ public class DateSimp {
 				age = 1;
 			}
 		} else if (yearMinus > 0) {
-			if (monthMinus < 0) {// µ±Ç°ÔÂ>ÉúÈÕÔÂ
-			} else if (monthMinus == 0) {// Í¬ÔÂ·İµÄ£¬ÔÙ¸ù¾İÈÕÆÚ¼ÆËãÄêÁä
+			if (monthMinus < 0) {// å½“å‰æœˆ>ç”Ÿæ—¥æœˆ
+			} else if (monthMinus == 0) {// åŒæœˆä»½çš„ï¼Œå†æ ¹æ®æ—¥æœŸè®¡ç®—å¹´é¾„
 				if (dayMinus < 0) {
 				} else if (dayMinus >= 0) {
 					age = age + 1;
@@ -76,7 +76,7 @@ public class DateSimp {
 		return age;
 	}
 
-/*	// ¸ù¾İÊ±¼ä´Á¼ÆËãÄêÁä
+/*	// æ ¹æ®æ—¶é—´æˆ³è®¡ç®—å¹´é¾„
 	public static int getAgeFromBirthTime(long birthTimeLong) {
 		Date date = new Date(birthTimeLong * 1000l);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

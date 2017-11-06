@@ -208,4 +208,11 @@
       orderDiscountPrice = #{orderdiscountprice,jdbcType=REAL}
     where orderListId = #{orderlistid,jdbcType=INTEGER}
   </update>
+  
+<!--   wuwenbo,获取订单详情 -->
+<select id="getorderlist" parameterType="int" resultType="com.sds.em.pojo.OrderlistExtend">
+
+SELECT * FROM orderlist as o INNER JOIN product as p on p.productId=o.orderProductId where o.orderListFId=#{value}
+
+</select>
 </mapper>

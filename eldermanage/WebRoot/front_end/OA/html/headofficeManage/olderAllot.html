@@ -139,10 +139,20 @@
 							</button>
 						</div>
 						<ul class="nav navbar-nav">
-							<li><a href="../index.html"> <span
-									class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
-							</a></li>
 							
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dataStatistics"> <span
+					class="icon glyphicon glyphicon-stats"></span> <span class="title">数据统计</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dataStatistics" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
+							<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
+							<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
+						</ul>
+					</div>
+				</div></li>					
 			<!-- 总店管理 -->	
 			<li class="active panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
@@ -224,9 +234,7 @@
 						</ul>
 					</div>
 				</div></li>
-			<li><a href="../license.html"> <span
-					class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
-			</a></li>
+			
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -426,7 +434,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
+					url : "/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
 					data : null,
 					success : function(result) {
 						$('#oldername').val(result.data.oldername);
@@ -450,7 +458,7 @@
 				var branchid= $("#olderbranchid option:selected").text();
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/older/allot?oldertel="+oldertel+"&branchid="+branchid,
+					url : "/eldermanage/v1/headoffice/older/allot?oldertel="+oldertel+"&branchid="+branchid,
 					data : form,
 					processData : false,
 					contentType : false,
@@ -458,7 +466,7 @@
 						//var resultdata = JSON.parse(result);
 						//alert(result.success);
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/olderView.html";
+							window.location.href = "/eldermanage/front_end/OA/html/headofficeManage/olderView.html";
 						}
 					},
 					error : function() {
@@ -472,7 +480,7 @@
 			$.ajax({
 				type:'get',
 				contentType:'application/json',
-				url:"http://localhost:8080/eldermanage/v1/headoffice/allbranchid",
+				url:"/eldermanage/v1/headoffice/allbranchid",
 				data:null,
 				success:function(result){
 					var branchdata = result.data;
@@ -493,7 +501,7 @@
 						$.ajax({
 							type:'get',
 							contentType:'application/json',
-							url:"http://localhost:8080/eldermanage/v1/headoffice/branch",
+							url:"/eldermanage/v1/headoffice/branch",
 							data:"branchid="+$('#olderbranchid').val(),
 							success:function(result){
 								var branchmanagerdata = result.data

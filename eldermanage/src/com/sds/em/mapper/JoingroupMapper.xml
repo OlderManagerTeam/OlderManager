@@ -193,4 +193,9 @@
       joinDate = #{joindate,jdbcType=DATE}
     where joinGroupId = #{joingroupid,jdbcType=INTEGER}
   </update>
+  
+  <!-- wuwenbo,查看团购参加者 -->
+  <select id="getJoingroup" resultType="com.sds.em.pojo.JoingroupExtend" parameterType="int">
+  SELECT * from joingroup as j INNER JOIN olderbase as o on o.olderId=j.joinOlderId where j.joinGroupId=#{value}
+  </select>
 </mapper>
