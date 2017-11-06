@@ -262,9 +262,9 @@
             '</div>',
         tActions = '<div class="file-actions">\n' +
             '    <div class="file-footer-buttons">\n' +
-            '        {upload}{delete}{other}' +
+            '        ' +
             '    </div>\n' +
-            '    <div class="file-upload-indicator" tabindex="-1" title="{indicatorTitle}">{indicator}</div>\n' +
+            '    <div class="file-upload-indicator" tabindex="-1" title="{indicatorTitle}"></div>\n' +
             '    <div class="clearfix"></div>\n' +
             '</div>',
         tActionDelete = '<button type="button" class="kv-file-remove {removeClass}" ' +
@@ -1961,7 +1961,7 @@
             return '<button type="button" title="' + self.cancelTitle + '" class="hide ' + css + '">' + self.cancelIcon + self.cancelLabel + '</button>';
         },
         renderUpload: function () {
-            var self = this, css = self.uploadClass + ' kv-fileinput-upload fileinput-upload-button', content = '', status = '';
+            var self = this, css = self.uploadClass + '', content = '', status = '';
             if (!self.showUpload) {
                 return '';
             }
@@ -2038,8 +2038,6 @@
         removeClass: 'btn btn-default',
         cancelIcon: '<i class="glyphicon glyphicon-ban-circle"></i> ',
         cancelClass: 'btn btn-default',
-        uploadIcon: '<i class="glyphicon glyphicon-upload"></i> ',
-        uploadClass: 'btn btn-default',
         uploadUrl: null,
         uploadAsync: true,
         uploadExtraData: {},
