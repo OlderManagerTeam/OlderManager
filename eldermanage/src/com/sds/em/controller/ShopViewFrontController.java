@@ -69,9 +69,9 @@ public class ShopViewFrontController {
 
 	// 老人以登录时，根据老人浏览表 降序排序显示--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/older/repeated")
-	public @ResponseBody Message repeatedOlderView(HttpSession session) throws Exception {
+	public @ResponseBody Message repeatedOlderView(int olderid) throws Exception {
 		// int olderid=session.getAttribute("olderid")
-		int olderid = 1;
+	    olderid = 1;
 		return shopViewFrontService.repeatedOlderView(olderid);
 	}
 	

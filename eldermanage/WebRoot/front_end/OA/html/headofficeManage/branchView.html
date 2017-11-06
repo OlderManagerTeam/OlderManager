@@ -312,7 +312,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/allbranchs",
+					url : "/eldermanage/v1/headoffice/allbranchs",
 					data : null
 				}).then(
 					function(result) {
@@ -332,7 +332,7 @@
 																	<td>${branchItem[i].staffbase.staffname}</td>
 																	<td>${branchItem[i].branch.branchadress}</td>
 																	<td>${branchItem[i].branch.branchkpi}</td>
-																	<td><a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/branchAlter.html?branchid=${branchItem[i].branch.branchid}"
+																	<td><a class="btn btn-primary btn-xs"href="/eldermanage/front_end/OA/html/headofficeManage/branchAlter.html?branchid=${branchItem[i].branch.branchid}"
 																		 role="button">修改</a>
 																    </td>
 															</tr>

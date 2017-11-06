@@ -295,7 +295,7 @@
 							<div class="card-title">
 								<div class="title">
 									<a class="btn btn-primary btn-lg"
-										href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/order.html" role="button" id="return">返回订单列表</a>
+										href="/eldermanage/front_end/OA/html/olderShop/order.html" role="button" id="return">返回订单列表</a>
 								</div>
 							</div>
 						</div>
@@ -424,11 +424,11 @@
 	
 		function load() {
 			var orderid = UrlParm.parm("orderid");
-			//	document.getElementById("lecturesubmit").href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
+			//	document.getElementById("lecturesubmit").href="/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/oldershop/orders/rate?ordersid=" + orderid,
+				url : "/eldermanage/v1/oldershop/orders/rate?ordersid=" + orderid,
 				data : null,
 			})
 				.then(function(result) {
@@ -438,7 +438,7 @@
 											<td>${i + 1}</td>
 											<td>${productrate[i].oldername}<a class="btn btn-primary btn-xs" role="button" href="../olderInfoManager/olderInfo.html?oldertel=${productrate[0].oldertel}">详细</a></td>
 											<td>${productrate[i].productname}</td>
-											<td>${productrate[i].productid}  <a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productrate[i].productid}">详细</a></td>
+											<td>${productrate[i].productid}  <a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productrate[i].productid}">详细</a></td>
 											<td>${productrate[i].orderproductcount}</td>
 											<td>${productrate[i].ratestar}星</td>
 											<td>${productrate[i].ratecontent}</td>

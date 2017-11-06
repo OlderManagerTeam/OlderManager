@@ -436,7 +436,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/oldershop/productlist?producttypenumber=" + UrlParm.parm("producttypenumber"),
+				url : "/eldermanage/v1/oldershop/productlist?producttypenumber=" + UrlParm.parm("producttypenumber"),
 				data : null
 			}).then(
 				function(result) {
@@ -445,17 +445,17 @@
 					var productlist = result.data;
 					for (var i = productlist.length - 1; i >= 0; i--) {
 						var oTr = `<tr>
-							<td>${i + 1}</td>
+							<td>${productlist[i].productid}</td>
 							<td>${productlist[i].productname}</td>
 							<td>${productlist[i].productprice}元</td>
 							<td>${type[productlist[i].producttypenumber]}</td>
 							<td><a class="btn btn-primary btn-xs"
-								href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productlist[i].productid}" role="button">商品信息</a></td>
+								href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productlist[i].productid}" role="button">商品信息</a></td>
 							<td><a class="btn btn-primary btn-xs"
-								href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productRate.html?productid=${productlist[i].productid}" role="button">商品评价</a>
+								href="/eldermanage/front_end/OA/html/olderShop/productRate.html?productid=${productlist[i].productid}" role="button">商品评价</a>
 							</td>
 							<td><a class="btn btn-primary btn-xs"
-								 href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productAlter.html?productid=${productlist[i].productid}" role="button">修改</a>
+								 href="/eldermanage/front_end/OA/html/olderShop/productAlter.html?productid=${productlist[i].productid}" role="button">修改</a>
 								 <a class="btn btn-primary btn-xs btn-delete" role="button"  data-id="${productlist[i].productid}" >删除</a>
 	
 						</tr>
@@ -482,7 +482,7 @@
 							$.ajax({
 								type : 'delete',
 								contentType : 'application/json',
-								url : "http://localhost:8080/eldermanage/v1/oldershop/product/info?productid=" + $(this).attr('data-id'),
+								url : "/eldermanage/v1/oldershop/product/info?productid=" + $(this).attr('data-id'),
 								data : null,
 								success : function() {
 									window.location.reload();

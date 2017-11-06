@@ -422,7 +422,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/oldershop/productgroup/join?groupid=" + UrlParm.parm("groupid"),
+				url : "/eldermanage/v1/oldershop/productgroup/join?groupid=" + UrlParm.parm("groupid"),
 				data : null
 			}).then(
 				function(result) {

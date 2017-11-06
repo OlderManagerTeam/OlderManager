@@ -315,28 +315,32 @@
 								<div class="form-group">
 									<label for="grouppublishdate" class="col-sm-3 control-label">发起时间：</label>
 									<div class="col-sm-5">
-										<input type="date" class="form-control" id="grouppublishdate"
-											placeholder="即当前时间" name="grouppublishdate">
+										<input type="date" class="form-control" id="grouppublishDate"
+											placeholder="即当前时间" name="grouppublishDate">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="groupstartdate" class="col-sm-3 control-label">开团时间：</label>
 									<div class="col-sm-2">
 										<input type="date" class="form-control" id="groupstartdate"
-											placeholder="开团时间" name="groupstartdate">
+											placeholder="开团时间" name="groupstartDate">
 									</div>
-									<!-- 精确到小时 -->
-									<div class="col-sm-2">
+																<div class="col-sm-2">
 										<input type="time" class="form-control" id="groupstarttime"
 											placeholder="开团时间" name="groupstarttime">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="groupfinishdate" class="col-sm-3 control-label">结束时间：</label>
-									<div class="col-sm-5">
+									<label for="groupfinishdate" class="col-sm-3 control-label">持续时间：</label>
+									<div class="col-sm-2">
 										<input type="text" class="form-control" id="groupfinishdate"
-											placeholder="结束时间" name="groupfinishdate">
+											placeholder="持续时间" name="groupfinishDate">
 									</div>
+																	<!-- 精确到小时 -->
+									<div class="col-sm-2">
+										<label for="groupstartdate" class="col-sm-3 control-label">小时</label>
+									</div>
+		
 								</div>
 								<div class="form-group">
 									<label for="groupproductid" class="col-sm-3 control-label">团购商品id：</label>
@@ -364,7 +368,7 @@
 									<div class="col-sm-2">
 										<input type="text" class="form-control"
 											id="goupdiscountprice" placeholder="团购价格"
-											name="goupdiscountprice">
+											name="groupdiscountprice">
 									</div>
 									<div class="col-sm-1">
 										<label for="goupdiscountprice" class="control-label">单位：元</label>
@@ -372,7 +376,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
-										<button type="submit" class="btn btn-default">确认提交</button>
+										<button type="button" class="btn btn-default" id="productgroupsubmit">确认提交</button>
 									</div>
 								</div>
 							</form>
@@ -522,6 +526,36 @@
 		
 			});
 		</script>
+		
+		<script type="text/javascript">
+
+			$("#productgroupsubmit").click(function() {
+				var form = new FormData(document.getElementById("groupEntry"));
+				$.ajax({
+					type : 'post',
+					url : "/eldermanage/v1/oldershop/productgroup/info",
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						//var resultdata = JSON.parse(result);
+						if (result.success) {
+							window.location.href = "/eldermanage/front_end/OA/html/olderShop/productGroup.html";
+						}
+					//alert(result.success)
+					},
+					error : function() {
+						alert('fail')
+					}
+				})
+		
+			}
+			)
+		</script>
+		<script type="text/javascript">
+			$('select').select2();
+		</script>
+		
 </body>
 
 </html>

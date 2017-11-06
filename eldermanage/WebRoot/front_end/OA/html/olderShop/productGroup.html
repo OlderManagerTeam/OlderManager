@@ -379,7 +379,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/oldershop/productgroup",
+				url : "/eldermanage/v1/oldershop/productgroup",
 				data : null
 			}).then(
 				function(result) {
@@ -395,12 +395,12 @@
 													<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
 													<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
 													<td>${productgroup[i].groupstatus}</td>
-													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
+													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
 													<td><a class="btn btn-primary btn-xs btn-cancelanddelete" role="button" data-id="${productgroup[i].groupid}">取消并删除</a></td>
 													<td>${productgroup[i].grouppresentpeople}</td>
 													<td>${productgroup[i].grouptotalpeople}</td>
 													<td>${productgroup[i].groupdiscountprice}</td>
-													<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
+													<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
 												`;
 							$($(oTr)).appendTo('#groupview');
 						}else if (productgroup[i].groupstatus == "正在进行") {
@@ -410,12 +410,12 @@
 													<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
 													<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
 													<td>${productgroup[i].groupstatus}</td>
-													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
+													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
 													<td><a class="btn btn-primary btn-xs btn-endandorders" role="button" data-id="${productgroup[i].groupid}">结束并生成订单</a></td>
 													<td>${productgroup[i].grouppresentpeople}</td>
 													<td>${productgroup[i].grouptotalpeople}</td>
 													<td>${productgroup[i].groupdiscountprice}</td>
-													<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
+													<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
 												`;
 							$($(oTr)).appendTo('#groupview');
 						}else if (productgroup[i].groupstatus == "已结束") {
@@ -425,12 +425,12 @@
 													<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
 													<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
 													<td>${productgroup[i].groupstatus}</td>
-													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
+													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
 													<td><a class="btn btn-primary btn-xs btn-orders" role="button" data-id="${productgroup[i].groupid}">生成订单</a></td>
 													<td>${productgroup[i].grouppresentpeople}</td>
 													<td>${productgroup[i].grouptotalpeople}</td>
 													<td>${productgroup[i].groupdiscountprice}</td>
-													<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
+													<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
 												`;
 							$($(oTr)).appendTo('#groupview');
 						}else if (productgroup[i].groupstatus == "已成交") {
@@ -440,12 +440,12 @@
 													<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
 													<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
 													<td>${productgroup[i].groupstatus}</td>
-													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
+													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
 													<td><a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${productgroup[i].groupid}">删除</a></td>
 													<td>${productgroup[i].grouppresentpeople}</td>
 													<td>${productgroup[i].grouptotalpeople}</td>
 													<td>${productgroup[i].groupdiscountprice}</td>
-													<td><a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
+													<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
 												`;
 							$($(oTr)).appendTo('#groupview');
 						}
@@ -463,7 +463,7 @@
 								$.ajax({
 									type : 'delete',
 									contentType : 'application/json',
-									url : "http://localhost:8080/eldermanage/v1/oldershop/productgroup?groupid=" + $(this).attr('data-id'),
+									url : "/eldermanage/v1/oldershop/productgroup?groupid=" + $(this).attr('data-id'),
 									data : null,
 									success : function() {
 										window.location.reload();
@@ -480,7 +480,7 @@
 								$.ajax({
 									type : 'post',
 									contentType : 'application/json',
-									url : "http://localhost:8080/eldermanage/v1/oldershop/productgroup/orders?groupid=" + $(this).attr('data-id'),
+									url : "/eldermanage/v1/oldershop/productgroup/orders?groupid=" + $(this).attr('data-id'),
 									data : null,
 									success : function() {
 										window.location.reload();
@@ -497,7 +497,7 @@
 								$.ajax({
 									type : 'post',
 									contentType : 'application/json',
-									url : "http://localhost:8080/eldermanage/v1/oldershop/productgroup/orders?groupid=" + $(this).attr('data-id'),
+									url : "/eldermanage/v1/oldershop/productgroup/orders?groupid=" + $(this).attr('data-id'),
 									data : null,
 									success : function() {
 										window.location.reload();
@@ -514,7 +514,7 @@
 								$.ajax({
 									type : 'delete',
 									contentType : 'application/json',
-									url : "http://localhost:8080/eldermanage/v1/oldershop/productgroup?groupid=" + $(this).attr('data-id'),
+									url : "/eldermanage/v1/oldershop/productgroup?groupid=" + $(this).attr('data-id'),
 									data : null,
 									success : function() {
 										window.location.reload();

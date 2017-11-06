@@ -320,12 +320,13 @@
 
 
 	<script type="text/javascript">
+	
 		$(function() {
 			// 后台数据
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/brench/elders/info",
+				url : "/eldermanage/v1/brench/elders/info",
 				data : null
 			}).then(
 				function(result) {
@@ -399,7 +400,7 @@
 				$.ajax({
 					type : 'delete',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + $(this).attr('data-id'),
+					url : "/eldermanage/v1/brench/elder/info?oldertel=" + $(this).attr('data-id'),
 					data : null,
 					success : function() {
 						window.location.reload();

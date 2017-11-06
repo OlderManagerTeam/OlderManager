@@ -454,7 +454,7 @@
 				form.append("lecturestatus", $("#lecturestatus option:selected").text());
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/brench/lecture/info",
+					url : "/eldermanage/v1/brench/lecture/info",
 					data : form,
 					processData : false,
 					contentType : false,
@@ -462,7 +462,7 @@
 						//var resultdata = JSON.parse(result);
 						//alert(result.success);
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
+							window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
 						}
 					},
 					error : function() {

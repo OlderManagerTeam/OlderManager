@@ -363,7 +363,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/orders?"+window.location.href.split('?')[1]
+					url : "/eldermanage/v1/brench/elder/orders?"+window.location.href.split('?')[1]
 				
 				}).then(
 					function(result) {
