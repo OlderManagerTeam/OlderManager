@@ -496,7 +496,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/action/info?actionid=" + actionid,
+					url : "/eldermanage/v1/brench/action/info?actionid=" + actionid,
 					data : null,
 					success : function(result) {
 		
@@ -531,7 +531,7 @@
 				form.append("actionstatus", $("#actionstatus option:selected").text());
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/brench/updateaction",
+					url : "/eldermanage/v1/brench/updateaction",
 					data : form,
 					processData : false,
 					contentType : false,
@@ -539,7 +539,7 @@
 						//var resultdata = JSON.parse(result);
 						//alert(result.success);
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/actionView.html";
+							window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/actionView.html";
 						}
 					},
 					error : function() {

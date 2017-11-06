@@ -424,7 +424,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
+					url : "/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
 					data : null,
 					success : function(result) {
 						$('#staffimg').val(result.data.staffbase.staffimg);

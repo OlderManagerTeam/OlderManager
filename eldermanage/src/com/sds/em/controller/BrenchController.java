@@ -46,7 +46,7 @@ public class BrenchController {
 		// int olderbranchid=session.getAttribute("branchid");
 
 		String pic_path = "E:\\oldermanageresource\\olderimg\\";
-		String picUrl = "http://localhost:8080/olderimg/";
+		String picUrl = "/olderimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
 		File dnf1 = new File(pic_path + newFileName);
@@ -57,7 +57,7 @@ public class BrenchController {
 		Date date = DateSimp.simp(olderbirthday);
 		olderbase.setOlderbirthday(date);
 		olderbase.setOlderbranchid(1);
-		// http://localhost:8080/pic/1.jpg
+		// /pic/1.jpg
 		olderbase.setOlderheadurl(picUrl + newFileName);
 
 		olderbase.setOlderide(olderide);
@@ -90,7 +90,7 @@ public class BrenchController {
 				headurl.delete();
 		}
 		String pic_path = "E:\\oldermanageresource\\olderimg\\";
-		String picUrl = "http://localhost:8080/olderimg/";
+		String picUrl = "/olderimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 
 		File dnf1 = new File(pic_path + newFileName);

@@ -443,13 +443,13 @@
 				form.append("visitedolderid", UrlParm.parm("olderid"))
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/visited",
+					url : "/eldermanage/v1/brench/elder/visited",
 					data : form,
 					processData : false,
 					contentType : false,
 					success : function(result) {
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/visitedView.html?olderid="+UrlParm.parm("olderid");
+							window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/visitedView.html?olderid="+UrlParm.parm("olderid");
 						}
 					},
 					error : function() {

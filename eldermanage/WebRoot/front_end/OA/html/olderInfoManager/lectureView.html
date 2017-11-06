@@ -312,7 +312,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/alllectures",
+					url : "/eldermanage/v1/brench/alllectures",
 					data : null
 				})
 					.then(
@@ -331,7 +331,7 @@
 																		<td>${lectureItem[i].lectureenroll}</td>
 																		<td>${lectureItem[i].lecturestatus}</td>
 																		<td><a class="btn btn-primary btn-xs" href="../olderInfoManager/lectureInfo.html?lectureid=${lectureItem[i].lectureid}" role="button">详情</a>
-														                    <a class="btn btn-primary btn-xs" role="button" href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid=${lectureItem[i].lectureid}">修改</a>
+														                    <a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid=${lectureItem[i].lectureid}">修改</a>
 																	    </td>
 																	</tr>
 															`;

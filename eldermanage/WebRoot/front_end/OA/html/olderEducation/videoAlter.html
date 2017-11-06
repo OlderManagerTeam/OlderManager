@@ -574,7 +574,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/video/video?videoid=" + videoid,
+					url : "/eldermanage/v1/video/video?videoid=" + videoid,
 					data : null,
 					success : function(result) {
 						var date = new Date(result.data.videopublishdate + 1000 * 60 * 60 * 8);
@@ -605,7 +605,7 @@
 				form.append("videoid", UrlParm.parm("videoid"));
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/video/updatevideo",
+					url : "/eldermanage/v1/video/updatevideo",
 					data : form,
 					processData : false,
 					contentType : false,
@@ -613,7 +613,7 @@
 						//alert(result)
 						//var resultdata = JSON.parse(result);
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoView.html";
+							window.location.href = "/eldermanage/front_end/OA/html/olderEducation/videoView.html";
 						}
 					//alert(result.success)
 					},

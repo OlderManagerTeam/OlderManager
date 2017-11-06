@@ -488,7 +488,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
+				url : "/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
 				data : null,
 				success : function(result) {
 					$('#staffimg').attr("value",result.data.staffbase.staffimg);
@@ -526,7 +526,7 @@
 		$.ajax({
 			type:'get',
 			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/headoffice/alldepartmentid",
+			url:"/eldermanage/v1/headoffice/alldepartmentid",
 			data:null,
 			success:function(result){
 				var departmentdata = result.data
@@ -545,7 +545,7 @@
 		$.ajax({
 			type:'get',
 			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/headoffice/allRoleid",
+			url:"/eldermanage/v1/headoffice/allRoleid",
 			data:null,
 			success:function(result){
 				var roledata = result.data;
@@ -567,7 +567,7 @@
 			$.ajax({
 				type:'get',
 				contentType:'application/json',
-				url:"http://localhost:8080/eldermanage/v1/headoffice/staff/staffcode",
+				url:"/eldermanage/v1/headoffice/staff/staffcode",
 				data:"staffdepartmentid="+$('#departmentid').val()+"&staffroleid="+$('#roleid').val(),
 				success:function(result){
 					// alert(result.data)
@@ -586,7 +586,7 @@
 			// console.log(form);
 			// $.ajax({
 			// 	type : 'post',
-			// 	url : "http://localhost:8080/eldermanage/v1/headoffice/staff/info",
+			// 	url : "/eldermanage/v1/headoffice/staff/info",
 			// 	data : form,
 			// 	processData : false,
 			// 	contentType : false,
@@ -594,7 +594,7 @@
 			// 		//var resultdata = JSON.parse(result);
 			// 		alert(result.information);
 			// 		if (result.success) {
-			// 			window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
+			// 			window.location.href = "/eldermanage/front_end/OA/html/headofficeManage/staffView.html";
 			// 		}
 			// 	},
 			// 	error : function() {
@@ -619,7 +619,7 @@
 		// 	$.ajax({
 		// 			type:'get',
 		// 			contentType:'application/json',
-		// 			url:"http://localhost:8080/eldermanage/v1/headoffice/staff/staffcode",
+		// 			url:"/eldermanage/v1/headoffice/staff/staffcode",
 		// 			data:"staffdepartmentid="+$('#departmentid').val()+"&staffroleid="+$('#roleid').val(),
 		// 			success:function(result){
 		// 				// alert(result.data)

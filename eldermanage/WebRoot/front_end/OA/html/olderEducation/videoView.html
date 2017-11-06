@@ -313,7 +313,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/video/allvideos",
+				url : "/eldermanage/v1/video/allvideos",
 				data : null
 			}).then(
 				function(result) {
@@ -334,9 +334,9 @@
 											<td>${videoItem[i].videotime}</td>
 											<td>${date.toISOString().slice(0, 10)}</td>
 											<td>${videoItem[i].videoheat}</td>
-													<td><a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoInfo.html?videoid=${videoItem[i].videoid}"
+													<td><a class="btn btn-primary btn-xs"href="/eldermanage/front_end/OA/html/olderEducation/videoInfo.html?videoid=${videoItem[i].videoid}"
 														 role="button">详情</a>
-														 <a class="btn btn-primary btn-xs"href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoAlter.html?videoid=${videoItem[i].videoid}"
+														 <a class="btn btn-primary btn-xs"href="/eldermanage/front_end/OA/html/olderEducation/videoAlter.html?videoid=${videoItem[i].videoid}"
 														 role="button">修改</a>
 										    </td>
 										</tr>

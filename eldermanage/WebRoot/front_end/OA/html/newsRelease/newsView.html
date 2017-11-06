@@ -316,7 +316,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/news/published",
+				url : "/eldermanage/v1/news/published",
 				data : null
 			}).then(
 				function(result) {
@@ -363,7 +363,7 @@
 							$.ajax({
 								type : 'delete',
 								contentType : 'application/json',
-								url : "http://localhost:8080/eldermanage/v1/news/info?newsid=" + $(this).attr('data-id'),
+								url : "/eldermanage/v1/news/info?newsid=" + $(this).attr('data-id'),
 								data : null,
 								success : function() {
 									window.location.reload();
