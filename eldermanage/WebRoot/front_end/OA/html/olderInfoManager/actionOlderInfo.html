@@ -370,7 +370,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/brench/action/older/info?actionid=" + actionid,
+				url : "/eldermanage/v1/brench/action/older/info?actionid=" + actionid,
 				data : null
 			}).then(
 				function(result) {
@@ -426,7 +426,7 @@
 							$.ajax({
 								type : 'delete',
 								contentType : 'application/json',
-								url : "http://localhost:8080/eldermanage/v1/brench/action/older?olderid=" + $(this).attr('data-id') + "&actionid="+UrlParm.parm("actionid"),
+								url : "/eldermanage/v1/brench/action/older?olderid=" + $(this).attr('data-id') + "&actionid="+UrlParm.parm("actionid"),
 								data : null,
 								success : function() {
 									window.location.reload();

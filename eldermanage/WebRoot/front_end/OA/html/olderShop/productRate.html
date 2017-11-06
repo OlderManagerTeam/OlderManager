@@ -422,17 +422,17 @@
 	
 		function load() {
 			var productid = UrlParm.parm("productid");
-			//	document.getElementById("lecturesubmit").href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
+			//	document.getElementById("lecturesubmit").href="/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/oldershop/product/rate?productid=" + productid,
+				url : "/eldermanage/v1/oldershop/product/rate?productid=" + productid,
 				data : null,
 			})
 				.then(function(result) {
 					var productrate = result.data;
 					if (productrate[0].producttypenumber != null)
-						document.getElementById("return").href = "http://localhost:8080/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + productrate[0].producttypenumber;
+						document.getElementById("return").href = "/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + productrate[0].producttypenumber;
 					for (var i = productrate.length - 1; i >= 0; i--) {
 						var oTr = `<tr>
 											<td>${i + 1}</td>

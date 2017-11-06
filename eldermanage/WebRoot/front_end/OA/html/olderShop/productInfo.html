@@ -475,11 +475,11 @@
 		
 			function load() {
 				var productid = UrlParm.parm("productid");
-				//	document.getElementById("lecturesubmit").href="http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
+				//	document.getElementById("lecturesubmit").href="/eldermanage/front_end/OA/html/olderInfoManager/lectureAlter.html?lectureid="+lectureid;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/oldershop/product/info?productid=" + productid,
+					url : "/eldermanage/v1/oldershop/product/info?productid=" + productid,
 					data : null,
 				})
 					.then(function(result) {

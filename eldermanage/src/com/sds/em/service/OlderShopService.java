@@ -2,6 +2,7 @@ package com.sds.em.service;
 
 import com.sds.em.po.Message;
 import com.sds.em.po.Product;
+import com.sds.em.po.Productgroup;
 
 public interface OlderShopService {
 	
@@ -24,4 +25,5 @@ public interface OlderShopService {
 	public Message ordersproductgroup(int groupid);
 	public Message productgroupjoin(int groupid);
 	public Message getorderlist(int orderid);
+	public Message addproductgroup(Productgroup productgroup);
 }

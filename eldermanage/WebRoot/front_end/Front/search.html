@@ -120,7 +120,7 @@
 						
 						<div class="clear"></div>
 						<!--分页 -->
-						<div id="demo5" style=""></div>
+						<div id="demo5" style="text-align: center;"></div>
 
 					</div>
 				</div>
@@ -379,27 +379,27 @@
 					$('#searchCount').text(' ' + searchData.length + ' ');
 					$("#searchTitle").html('"' + window.location.href.split("?")[1] +'"');
 
-					for(var i=searchData.length - 1;i>=0;i--){
-						var oLi = `
-							<li>
-								<div class="i-pic limit">
-									<img src="images/product/imgsearch1.jpg" />											
-									<p class="title fl">${searchData[i].productname}</p>
-									<p class="price fl">
-										<b>¥</b>
-										<strong>${searchData[i].productprice}</strong>
-									</p>
-									<p class="number fl">
-										销量<span>${searchData[i].storetotalsales}</span>
-									</p>
-								</div>
-							</li>
-						`;
-						$('#searchItem').append($(oLi));
-					}
-					
-					// $("#demo5").show();
-					// page(searchData, $("#demo5"));
+					// for(var i=searchData.length - 1;i>=0;i--){
+					// 	var oLi = `
+					// 		<li>
+					// 			<div class="i-pic limit">
+					// 				<img src="images/product/imgsearch1.jpg" />											
+					// 				<p class="title fl">${searchData[i].productname}</p>
+					// 				<p class="price fl">
+					// 					<b>¥</b>
+					// 					<strong>${searchData[i].productprice}</strong>
+					// 				</p>
+					// 				<p class="number fl">
+					// 					销量<span>${searchData[i].storetotalsales}</span>
+					// 				</p>
+					// 			</div>
+					// 		</li>
+					// 	`;
+					// 	$('#searchItem').append($(oLi));
+					// }
+
+					$("#demo5").show();
+					page(searchData, $("#demo5"));
 				},
 				error:function(){
 					alert('数据库错误')
@@ -420,28 +420,28 @@
 					$('#searchCount').text(' ' + searchData.length + ' ');
 					$("#searchTitle").html('"' + window.location.href.split("?")[1] +'"');
 
-					for(var i=0;i<=searchData.length - 1;i++){
-						var oLi = `
-							<li>
-								<div class="i-pic limit">
-									<img src="images/product/imgsearch1.jpg" />											
-									<p class="title fl">${searchData[i].productname}</p>
-									<p class="price fl">
-										<b>¥</b>
-										<strong>${searchData[i].productprice}</strong>
-									</p>
-									<p class="number fl">
-										销量<span>${searchData[i].storetotalsales}</span>
-									</p>
-								</div>
-							</li>
-						`;
-						console.log('${searchData[i].productname');
-						$('#searchItem').append($(oLi));
-					}
+					// for(var i=0;i<=searchData.length - 1;i++){
+					// 	var oLi = `
+					// 		<li>
+					// 			<div class="i-pic limit">
+					// 				<img src="images/product/imgsearch1.jpg" />											
+					// 				<p class="title fl">${searchData[i].productname}</p>
+					// 				<p class="price fl">
+					// 					<b>¥</b>
+					// 					<strong>${searchData[i].productprice}</strong>
+					// 				</p>
+					// 				<p class="number fl">
+					// 					销量<span>${searchData[i].storetotalsales}</span>
+					// 				</p>
+					// 			</div>
+					// 		</li>
+					// 	`;
+					// 	console.log('${searchData[i].productname');
+					// 	$('#searchItem').append($(oLi));
+					// }
 
-					// $("#demo5").show();
-					// page(searchData, $("#demo5"));
+					$("#demo5").show();
+					page(searchData, $("#demo5"));
 				},
 				error:function(){
 					alert('数据库错误')
@@ -449,46 +449,46 @@
 			})
 		}
 
-		// 分页
-		// function page(videodata, pageRoot){
-		// 	layui.use(['laypage', 'layer'], function(){
-		// 		var laypage = layui.laypage
-		// 		,layer = layui.layer;
-		// 		laypage.render({
-		// 		    elem: pageRoot
-		// 		    ,count: videodata.length
-		// 		    ,limit: 12  //每页个数
-		// 		    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
-		// 		    ,hash: 'fenye' //自定义hash值
-		// 		    ,jump: function(obj){
-		// 		      //模拟渲染
-		// 		      document.getElementById('searchItem').innerHTML = function(){
-		// 		        var arr = []
-		// 		        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
-		// 		        layui.each(thisData, function(index, item){
-		// 		        	let datas =`
-		// 						<li>
-		// 							<div class="i-pic limit">
-		// 								<img src="images/product/imgsearch1.jpg" />											
-		// 								<p class="title fl">${item.productname}</p>
-		// 								<p class="price fl">
-		// 									<b>¥</b>
-		// 									<strong>${item.productprice}</strong>
-		// 								</p>
-		// 								<p class="number fl">
-		// 									销量<span>${item.storetotalsales}</span>
-		// 								</p>
-		// 							</div>
-		// 						</li>
-		// 					`;
-		// 		        	arr.push(datas);
-		// 		        });
-		// 		        return arr.join('');
-		// 		      }();
-		// 		    }
-		// 		});
-		// 	});
-		// }
+		//分页
+		function page(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 12  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('searchItem').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let datas =`
+								<li>
+									<div class="i-pic limit">
+										<img src="images/product/imgsearch1.jpg" />											
+										<p class="title fl">${item.productname}</p>
+										<p class="price fl">
+											<b>¥</b>
+											<strong>${item.productprice}</strong>
+										</p>
+										<p class="number fl">
+											销量<span>${item.storetotalsales}</span>
+										</p>
+									</div>
+								</li>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
 	</script>
 
 
