@@ -261,8 +261,8 @@
 									<div class="col-sm-5">
 										<select id="oldersex" name="oldersex">
 											<optgroup label="性别">
-												<option value="">男</option>
-												<option value="">女</option>
+												<option value="1">男</option>
+												<option value="2">女</option>
 											</optgroup>
 										</select>
 									</div>
@@ -690,10 +690,10 @@
 		<script type="text/javascript">
 			$("#altersubmit").click(function() {
 				var form = new FormData(document.getElementById("olderAlter"));
-				form.append("oldersex", document.getElementById("select2-oldersex-container").title);
-				var sex=document.getElementById("select2-oldersex-container").title;
-				form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
-				form.append("oldernation", document.getElementById("select2-oldernation-container").title);
+			//	form.append("oldersex", document.getElementById("select2-oldersex-container").title);
+			//	var sex=document.getElementById("select2-oldersex-container").title;
+			//	form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
+			//	form.append("oldernation", document.getElementById("select2-oldernation-container").title);
 				$.ajax({
 					type : 'post',
 					url : "/eldermanage/v1/brench/elder/infoupdate",
