@@ -5,7 +5,7 @@ public class Productpiclist {
 
     private Integer pproductid;
 
-    private Integer ppicurl;
+    private String ppicurl;
 
     public Integer getPpicid() {
         return ppicid;
@@ -23,11 +23,11 @@ public class Productpiclist {
         this.pproductid = pproductid;
     }
 
-    public Integer getPpicurl() {
+    public String getPpicurl() {
         return ppicurl;
     }
 
-    public void setPpicurl(Integer ppicurl) {
-        this.ppicurl = ppicurl;
+    public void setPpicurl(String ppicurl) {
+        this.ppicurl = ppicurl == null ? null : ppicurl.trim();
     }
 }

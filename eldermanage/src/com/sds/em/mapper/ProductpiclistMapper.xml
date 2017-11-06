@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.sds.em.po.Productpiclist" >
     <id column="ppicId" property="ppicid" jdbcType="INTEGER" />
     <result column="pproductid" property="pproductid" jdbcType="INTEGER" />
-    <result column="ppicUrl" property="ppicurl" jdbcType="INTEGER" />
+    <result column="ppicUrl" property="ppicurl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -100,7 +100,7 @@
   <insert id="insert" parameterType="com.sds.em.po.Productpiclist" >
     insert into productpiclist (ppicId, pproductid, ppicUrl
       )
-    values (#{ppicid,jdbcType=INTEGER}, #{pproductid,jdbcType=INTEGER}, #{ppicurl,jdbcType=INTEGER}
+    values (#{ppicid,jdbcType=INTEGER}, #{pproductid,jdbcType=INTEGER}, #{ppicurl,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Productpiclist" >
@@ -124,7 +124,7 @@
         #{pproductid,jdbcType=INTEGER},
       </if>
       <if test="ppicurl != null" >
-        #{ppicurl,jdbcType=INTEGER},
+        #{ppicurl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -144,7 +144,7 @@
         pproductid = #{record.pproductid,jdbcType=INTEGER},
       </if>
       <if test="record.ppicurl != null" >
-        ppicUrl = #{record.ppicurl,jdbcType=INTEGER},
+        ppicUrl = #{record.ppicurl,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -155,7 +155,7 @@
     update productpiclist
     set ppicId = #{record.ppicid,jdbcType=INTEGER},
       pproductid = #{record.pproductid,jdbcType=INTEGER},
-      ppicUrl = #{record.ppicurl,jdbcType=INTEGER}
+      ppicUrl = #{record.ppicurl,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -167,7 +167,7 @@
         pproductid = #{pproductid,jdbcType=INTEGER},
       </if>
       <if test="ppicurl != null" >
-        ppicUrl = #{ppicurl,jdbcType=INTEGER},
+        ppicUrl = #{ppicurl,jdbcType=VARCHAR},
       </if>
     </set>
     where ppicId = #{ppicid,jdbcType=INTEGER}
@@ -175,7 +175,7 @@
   <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productpiclist" >
     update productpiclist
     set pproductid = #{pproductid,jdbcType=INTEGER},
-      ppicUrl = #{ppicurl,jdbcType=INTEGER}
+      ppicUrl = #{ppicurl,jdbcType=VARCHAR}
     where ppicId = #{ppicid,jdbcType=INTEGER}
   </update>
 </mapper>
