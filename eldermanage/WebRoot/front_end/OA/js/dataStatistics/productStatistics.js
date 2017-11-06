@@ -29,7 +29,7 @@ $(function() {
         pointStrokeColor: "#fff",//点的外边框颜色
         pointHighlightFill: "#fff",
         pointHighlightStroke: "#1ABC9C",
-        data: [6511, 5900, 1280]
+        data: [6511, 5900, 8000]//数据添加处
       }
     ]
   };
