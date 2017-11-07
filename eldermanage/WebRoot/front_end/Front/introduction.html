@@ -122,32 +122,17 @@
 						<div class="box">
 							<script type="text/javascript">
 								$(document).ready(function() {
-									$(".jqzoom").imagezoom();
-									$("#thumblist li a").click(function() {
-										$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
-										$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
-										$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
-									});
+									
 								});
 							</script>
 
 							<div class="tb-booth tb-pic tb-s310">
-								<a href="images/product/01.jpg"><img src="images/product/01_mid.jpg" alt="细节展示放大镜特效" rel="images/product/01.jpg" class="jqzoom" /></a>
+								<a href="images/product/01.jpg" id="productBigImg01"><img src="images/product/01.jpg" alt="细节展示放大镜特效" rel="images/product/01.jpg" class="jqzoom" id="productBigImg02" /></a>
 							</div>
 							<ul class="tb-thumb" id="thumblist">
 								<li class="tb-selected">
 									<div class="tb-pic tb-s40">
-										<a href="#"><img src="images/product/01_small.jpg" mid="images/product/01_mid.jpg" big="images/product/01.jpg"></a>
-									</div>
-								</li>
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="images/product/02_small.jpg" mid="images/product/02_mid.jpg" big="images/product/02.jpg"></a>
-									</div>
-								</li>
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="images/product/03_small.jpg" mid="images/product/03_mid.jpg" big="images/product/03.jpg"></a>
+										<a href="#"><img src="images/product/01.jpg" mid="images/product/01.jpg" big="images/product/01.jpg" id="productBigImg03"></a>
 									</div>
 								</li>
 							</ul>
@@ -298,62 +283,11 @@
 				<div class="introduce">
 					<div class="browse">
 					    <div class="mc"> 
-						     <ul>					    
+						     <ul id="lookAgain">					    
 						     	<div class="mt">            
 						            <h2>看了又看</h2>        
 					            </div>
 						     	
-							      <li class="first">
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/product/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>
-							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/product/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>
-							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/product/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>							      
-							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/product/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>							      
-							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/product/browse1.jpg"> </a>               
-							      	</div>
-							      	<div class="p-name"><a href="#">
-							      		【三只松鼠_开口松子218g】零食坚果特产炒货东北红松子原味
-							      	</a>
-							      	</div>
-							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>							      
-					      
 						     </ul>					
 					    </div>
 					</div>
@@ -391,9 +325,9 @@
 										<div class="clear"></div>
 										<ul id="J_AttrUL">
 											<li title="">发布时间:<span id="productupondate"></span></li>
-											<li title="">产品重量:&nbsp;巴基斯坦</li>
+											<li title="">产品重量:<span id="productweight"></span></li>
 											<li></li>
-											<li>产品描述:<span>123</span></li>
+											<li>产品描述:<span id="productinfo"></span></li>
 										</ul>
 										<div class="clear"></div>
 									</div>
@@ -402,14 +336,8 @@
 										<div class="attr-list-hd after-market-hd">
 											<h4>商品细节</h4>
 										</div>
-										<div class="twlistNews">
-											<img src="images/product/tw1.jpg" />
-											<img src="images/product/tw2.jpg" />
-											<img src="images/product/tw3.jpg" />
-											<img src="images/product/tw4.jpg" />
-											<img src="images/product/tw5.jpg" />
-											<img src="images/product/tw6.jpg" />
-											<img src="images/product/tw7.jpg" />
+										<div class="twlistNews" id="productInfoImg">
+											
 										</div>
 									</div>
 									<div class="clear"></div>
@@ -420,9 +348,9 @@
 									
                                     <div class="actor-new">
                                     	<div class="rate">                
-                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>            
+                                    		<strong id="percent"></strong><strong>%</strong><br> <span>好评度</span>            
                                     	</div>
-                                        <dl>                    
+                                        <!-- <dl>                    
                                             <dt>买家印象</dt>                    
                                             <dd class="p-bfc">
                                             			<q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
@@ -435,7 +363,7 @@
                                             			<q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
                                             			<q class="comm-tags"><span>皮很薄</span><em>(831)</em></q> 
                                             </dd>                                           
-                                         </dl> 
+                                         </dl>  -->
                                     </div>	
                                     <div class="clear"></div>
 									<div class="tb-r-filter-bar">
@@ -443,441 +371,36 @@
 											<li class="tb-taglist-li tb-taglist-li-current">
 												<div class="comment-info">
 													<span>全部评价</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num" id="totalRate"></span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li-1">
 												<div class="comment-info">
 													<span>好评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num" id="highRate"></span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li-0">
 												<div class="comment-info">
 													<span>中评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num" id="mediumRate"></span>
 												</div>
 											</li>
 
 											<li class="tb-taglist-li tb-taglist-li--1">
 												<div class="comment-info">
 													<span>差评</span>
-													<span class="tb-tbcr-num">(32)</span>
+													<span class="tb-tbcr-num" id="badRate"></span>
 												</div>
 											</li>
 										</ul>
 									</div>
 									<div class="clear"></div>
 
-									<ul class="am-comments-list am-comments-list-flip">
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年10月28日 11:33</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255095758792">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															没有色差，很暖和……美美的
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月25日 12:48</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="258040417670">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															式样不错，初冬穿
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
-														</div>
-													</div>
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年10月28日 11:33</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255095758792">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															没有色差，很暖和……美美的
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月25日 12:48</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="258040417670">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															式样不错，初冬穿
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
-														</div>
-													</div>
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">l***4 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年10月28日 11:33</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255095758792">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															没有色差，很暖和……美美的
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：蓝调灰&nbsp;&nbsp;尺码：2XL
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月02日 17:46</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="255776406962">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
-														</div>
-													</div>
-
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
-										<li class="am-comment">
-											<!-- 评论容器 -->
-											<a href="">
-												<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-												<!-- 评论者头像 -->
-											</a>
-
-											<div class="am-comment-main">
-												<!-- 评论内容容器 -->
-												<header class="am-comment-hd">
-													<!--<h3 class="am-comment-title">评论标题</h3>-->
-													<div class="am-comment-meta">
-														<!-- 评论元数据 -->
-														<a href="#link-to-user" class="am-comment-author">h***n (匿名)</a>
-														<!-- 评论者 -->
-														评论于
-														<time datetime="">2015年11月25日 12:48</time>
-													</div>
-												</header>
-
-												<div class="am-comment-bd">
-													<div class="tb-rev-item " data-id="258040417670">
-														<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-															式样不错，初冬穿
-														</div>
-														<div class="tb-r-act-bar">
-															颜色分类：柠檬黄&nbsp;&nbsp;尺码：L
-														</div>
-													</div>
-												</div>
-												<!-- 评论内容 -->
-											</div>
-										</li>
+									<ul class="am-comments-list am-comments-list-flip" id="rateInfo">
+										
 
 									</ul>
 
@@ -903,136 +426,26 @@
 
 								<div class="am-tab-panel am-fade">
 									<div class="like">
-										<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
+										<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes" id="whatYouLike">
 											<li>
 												<div class="i-pic limit">
 													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
+													<p>
+														【良品铺子_开口松子】零食坚果特产炒货 <span>东北红松子奶油味</span>
+													</p>
 													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
+														<b>¥</b> <strong>298.00</strong>
 													</p>
 												</div>
 											</li>
 											<li>
 												<div class="i-pic limit">
 													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
+													<p>
+														【良品铺子_开口松子】零食坚果特产炒货 <span>东北红松子奶油味</span>
 													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
 													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
-													</p>
-												</div>
-											</li>
-											<li>
-												<div class="i-pic limit">
-													<img src="images/product/imgsearch1.jpg" />
-													<p>【良品铺子_开口松子】零食坚果特产炒货
-														<span>东北红松子奶油味</span></p>
-													<p class="price fl">
-														<b>¥</b>
-														<strong>298.00</strong>
+														<b>¥</b> <strong>298.00</strong>
 													</p>
 												</div>
 											</li>
@@ -1063,8 +476,6 @@
 						<div class="footer">
 							<div class="footer-hd">
 								<p>
-									<a href="#">恒望科技</a>
-									<b>|</b>
 									<a href="#">商城首页</a>
 									<b>|</b>
 									<a href="#">支付宝</a>
@@ -1074,7 +485,7 @@
 							</div>
 							<div class="footer-bd">
 								<p>
-									<a href="#">关于恒望</a>
+									<a href="#">关于孝和</a>
 									<a href="#">合作伙伴</a>
 									<a href="#">联系我们</a>
 									<a href="#">网站地图</a>
@@ -1313,15 +724,6 @@
 				contentType : 'application/json',
 				url: "/eldermanage/v1/older/shop/index/product",
 				data: "productid=" + productid,
-				// success:function(result){
-				// 	var resultData = result.data;
-				// 	alert()
-
-				// 	$('#productName').html(resultData.productname)
-				// },
-				// error:function(){
-				// 	alert("数据库错误")
-				// }
 			}).then(
 				function(result){
 					var resultData = result.data;
@@ -1334,13 +736,197 @@
 
 					var date = new Date(resultData.productupondate + 1000 * 60 * 60 * 8);
 					var d = date.toISOString().slice(0, 10);
-					$('#productupondate').html(d)
+					$('#productupondate').html(d);
+
+					$('#productinfo').html(resultData.productinfo);
+					$('#productweight').html(resultData.productweight);
+
+					// 商品细节图片
+					for(var i=0;i<=resultData.picList.length-1;i++){
+						var oImg =`
+							<img src="${result.data.picList[i]}" />
+						`;
+
+						$("#productInfoImg").append(oImg);
+					}
+
+					//放大镜图片第一张图片
+					$('#productBigImg01').attr('href','images/product/01.jpg')
+					//大
+					$('#productBigImg02').attr('rel','images/product/01.jpg')
+					//中
+					$('#productBigImg02').attr('src','images/product/01_mid.jpg')
+					//小
+					$('#productBigImg03').attr('src','images/product/01_small.jpg')
+					//中
+					$('#productBigImg03').attr('mid','images/product/01_mid.jpg')
+					//大
+					$('#productBigImg03').attr('big','images/product/01_big.jpg')
+
+					//放大镜后续图片，最多四张张
+					for(var i=0;i<=3;i++){
+						var oLi = `
+							<li>
+								<div class="tb-pic tb-s40">
+									<a href="#"><img src="images/product/02_small.jpg" mid="images/product/02_mid.jpg" big="images/product/02.jpg"></a>
+								</div>
+							</li>
+						`;
+						$('#thumblist').append(oLi);
+					}
+
+					$(".jqzoom").imagezoom();
+					$("#thumblist li a").click(function() {
+						$(this).parents("li").addClass("tb-selected").siblings().removeClass("tb-selected");
+						$(".jqzoom").attr('src', $(this).find("img").attr("mid"));
+						$(".jqzoom").attr('rel', $(this).find("img").attr("big"));
+					});
 				},
 				function(){
 					alert("数据库错误")
 				}
 			)
 			
+			// 看了又看
+			// $.ajax({
+			// 	type: 'get',
+			// 	contentType : 'application/json',
+			// 	url: "/eldermanage/v1/older/shop/index/product",
+			// 	data: "productid=" + productid,
+			// 	success:function(result){
+			// 		var lookAgainData = result.data;
+
+			// 		for(var i=0;i<=5;i++){
+			// 			var oLi =`
+			// 				<li class="first">
+			// 			      	<div class="p-img">                    
+			// 			      		<a  href="#"> <img class="" src="images/product/browse1.jpg"> </a>               
+			// 			      	</div>
+			// 			      	<div class="p-name"><a href="#">
+			// 			      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
+			// 			      	</a>
+			// 			      	</div>
+			// 			      	<div class="p-price"><strong>￥40</strong></div>
+			// 			    </li>
+			// 			`;
+
+			// 			$('#lookAgain').append(oLi);
+			// 		}
+			// 	},
+			// 	error:function(){
+			// 		alert('数据库错误');
+			// 	}
+			// })
+
+			//全部评价模块-评价等级详情
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "/eldermanage/v1/older/shop/index/product/rate?productid=" + productid,
+				data : null,
+				success : function(result) {
+					var rateData = result.data;
+
+					$('#percent').html(rateData.percent);
+					$('#totalRate').html("(" + rateData.totalRate + ")");
+					$('#highRate').html("(" + rateData.highRate + ")");
+					$('#mediumRate').html("(" + rateData.mediumRate + ")");
+					$('#badRate').html("(" + rateData.badRate + ")");
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+
+			//全部评价模块-用户评价详情
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "/eldermanage/v1/older/shop/index/product/rate/info?productid=" + productid,
+				data : null,
+				success : function(result) {
+					var rateInfoData = result.data;
+
+					for(var i=0;i<=5;i++){
+						var oLi = `
+							<li class="am-comment">
+								<!-- 评论容器 -->
+								<a href="">
+									<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
+									<!-- 评论者头像 -->
+								</a>
+
+								<div class="am-comment-main">
+									<!-- 评论内容容器 -->
+									<header class="am-comment-hd">
+										<!--<h3 class="am-comment-title">评论标题</h3>-->
+										<div class="am-comment-meta">
+											<!-- 评论元数据 -->
+											<a href="#link-to-user" class="am-comment-author">b***1 (匿名)</a>
+											<!-- 评论者 -->
+											评论于
+											<time datetime="">2015年11月02日 17:46</time>
+										</div>
+									</header>
+
+									<div class="am-comment-bd">
+										<div class="tb-rev-item " data-id="255776406962">
+											<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+												摸起来丝滑柔软，不厚，没色差，颜色好看！买这个衣服还接到诈骗电话，我很好奇他们是怎么知道我买了这件衣服，并且还知道我的电话的！
+											</div>
+											<div class="tb-r-act-bar">
+												颜色分类：柠檬黄&nbsp;&nbsp;尺码：S
+											</div>
+										</div>
+
+									</div>
+									<!-- 评论内容 -->
+								</div>
+							</li>
+						`;
+
+						$('#rateInfo').append(oLi);
+					}
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+
+			// 猜你喜欢
+			// $.ajax({
+			// 	type: 'get',
+			// 	contentType : 'application/json',
+			// 	url: "",
+			// 	data: null,
+			// }).then(
+			// 	function(result){
+			// 		var whatYouLikeData =result.data;
+
+			// 		//猜你喜欢
+			// 		for(var i=0;i<=11;i++){
+			// 			var oLi = `
+			// 				<li>
+			// 					<div class="i-pic limit">
+			// 						<img src="images/product/imgsearch1.jpg" />
+			// 						<p>${likeData[i].productname}
+			// 							<span>东北红松子奶油味</span></p>
+			// 						}
+			// 						<p class="price fl">
+			// 							<b>¥</b>
+			// 							<strong>${likeData[i].productprice}</strong>
+			// 						</p>
+			// 					</div>
+			// 				</li>
+			// 			`;
+
+			// 			$('#whatYouLike').append(oLi);
+			// 		}
+			// 	},
+			// 	function(){
+			// 		alert('数据库错误')
+			// 	}
+			// )
 		</script>
 
 	</body>
