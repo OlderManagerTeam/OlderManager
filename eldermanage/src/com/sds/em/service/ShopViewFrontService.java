@@ -19,6 +19,9 @@ public interface ShopViewFrontService {
 	// 根据二级标签搜索商品及量列表
 	public Message typeTwoProducts(String typetwocontent) throws Exception;
 
+	// 根据二级标签搜索商品及量列表-"销量排序"/"价格优先"
+	public Message typeTwoProductsSort(String typetwocontent, String sort) throws Exception;
+
 	// 显示某个商品的详细信息及数量
 	public Message getProduct(int productid) throws Exception;
 
@@ -29,11 +32,21 @@ public interface ShopViewFrontService {
 	public Message repeatedOlderView(int olderid) throws Exception;
 
 	// 搜索商品结果按"销量排序"/"价格优先"/"评价为主"
-	public Message productSearchSort(String info,String sort) throws Exception;
+	public Message productSearchSort(String info, String sort) throws Exception;
 
 	// 查看一个商品的评价等级详情
 	public Message getProductGrade(int productid);
 
 	// 查看一个商品的所有评价及信息
 	public Message getProductRateInfo(int productid);
+
+	// 显示按照团购发起日期排序好的商品页面--团购1
+	public Message GroupIndexView();
+
+	// 显示按照离团购结束日期一天的商品页面--团购2
+	public Message GroupEndView();
+
+	// 显示显示为开团的团购，再按时间排序--未开团
+	public Message GroupNoView();
+
 }

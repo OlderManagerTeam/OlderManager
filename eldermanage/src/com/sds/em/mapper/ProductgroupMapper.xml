@@ -1,276 +1,355 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.ProductgroupMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Productgroup" >
-    <id column="groupId" property="groupid" jdbcType="INTEGER" />
-    <result column="groupPublishDate" property="grouppublishdate" jdbcType="TIMESTAMP" />
-    <result column="groupStartDate" property="groupstartdate" jdbcType="TIMESTAMP" />
-    <result column="groupFinishDate" property="groupfinishdate" jdbcType="TIMESTAMP" />
-    <result column="groupProductId" property="groupproductid" jdbcType="INTEGER" />
-    <result column="groupPresentPeople" property="grouppresentpeople" jdbcType="INTEGER" />
-    <result column="groupTotalPeople" property="grouptotalpeople" jdbcType="INTEGER" />
-    <result column="groupDiscountPrice" property="groupdiscountprice" jdbcType="REAL" />
-    <result column="groupStatus" property="groupstatus" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    groupId, groupPublishDate, groupStartDate, groupFinishDate, groupProductId, groupPresentPeople, 
-    groupTotalPeople, groupDiscountPrice, groupStatus
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.ProductgroupExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from productgroup
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from productgroup
-    where groupId = #{groupid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from productgroup
-    where groupId = #{groupid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.ProductgroupExample" >
-    delete from productgroup
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Productgroup" >
-    insert into productgroup (groupId, groupPublishDate, groupStartDate, 
-      groupFinishDate, groupProductId, groupPresentPeople, 
-      groupTotalPeople, groupDiscountPrice, groupStatus
-      )
-    values (#{groupid,jdbcType=INTEGER}, #{grouppublishdate,jdbcType=TIMESTAMP}, #{groupstartdate,jdbcType=TIMESTAMP}, 
-      #{groupfinishdate,jdbcType=TIMESTAMP}, #{groupproductid,jdbcType=INTEGER}, #{grouppresentpeople,jdbcType=INTEGER}, 
-      #{grouptotalpeople,jdbcType=INTEGER}, #{groupdiscountprice,jdbcType=REAL}, #{groupstatus,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Productgroup" >
-    insert into productgroup
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="groupid != null" >
-        groupId,
-      </if>
-      <if test="grouppublishdate != null" >
-        groupPublishDate,
-      </if>
-      <if test="groupstartdate != null" >
-        groupStartDate,
-      </if>
-      <if test="groupfinishdate != null" >
-        groupFinishDate,
-      </if>
-      <if test="groupproductid != null" >
-        groupProductId,
-      </if>
-      <if test="grouppresentpeople != null" >
-        groupPresentPeople,
-      </if>
-      <if test="grouptotalpeople != null" >
-        groupTotalPeople,
-      </if>
-      <if test="groupdiscountprice != null" >
-        groupDiscountPrice,
-      </if>
-      <if test="groupstatus != null" >
-        groupStatus,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="groupid != null" >
-        #{groupid,jdbcType=INTEGER},
-      </if>
-      <if test="grouppublishdate != null" >
-        #{grouppublishdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="groupstartdate != null" >
-        #{groupstartdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="groupfinishdate != null" >
-        #{groupfinishdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="groupproductid != null" >
-        #{groupproductid,jdbcType=INTEGER},
-      </if>
-      <if test="grouppresentpeople != null" >
-        #{grouppresentpeople,jdbcType=INTEGER},
-      </if>
-      <if test="grouptotalpeople != null" >
-        #{grouptotalpeople,jdbcType=INTEGER},
-      </if>
-      <if test="groupdiscountprice != null" >
-        #{groupdiscountprice,jdbcType=REAL},
-      </if>
-      <if test="groupstatus != null" >
-        #{groupstatus,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.ProductgroupExample" resultType="java.lang.Integer" >
-    select count(*) from productgroup
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update productgroup
-    <set >
-      <if test="record.groupid != null" >
-        groupId = #{record.groupid,jdbcType=INTEGER},
-      </if>
-      <if test="record.grouppublishdate != null" >
-        groupPublishDate = #{record.grouppublishdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.groupstartdate != null" >
-        groupStartDate = #{record.groupstartdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.groupfinishdate != null" >
-        groupFinishDate = #{record.groupfinishdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.groupproductid != null" >
-        groupProductId = #{record.groupproductid,jdbcType=INTEGER},
-      </if>
-      <if test="record.grouppresentpeople != null" >
-        groupPresentPeople = #{record.grouppresentpeople,jdbcType=INTEGER},
-      </if>
-      <if test="record.grouptotalpeople != null" >
-        groupTotalPeople = #{record.grouptotalpeople,jdbcType=INTEGER},
-      </if>
-      <if test="record.groupdiscountprice != null" >
-        groupDiscountPrice = #{record.groupdiscountprice,jdbcType=REAL},
-      </if>
-      <if test="record.groupstatus != null" >
-        groupStatus = #{record.groupstatus,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update productgroup
-    set groupId = #{record.groupid,jdbcType=INTEGER},
-      groupPublishDate = #{record.grouppublishdate,jdbcType=TIMESTAMP},
-      groupStartDate = #{record.groupstartdate,jdbcType=TIMESTAMP},
-      groupFinishDate = #{record.groupfinishdate,jdbcType=TIMESTAMP},
-      groupProductId = #{record.groupproductid,jdbcType=INTEGER},
-      groupPresentPeople = #{record.grouppresentpeople,jdbcType=INTEGER},
-      groupTotalPeople = #{record.grouptotalpeople,jdbcType=INTEGER},
-      groupDiscountPrice = #{record.groupdiscountprice,jdbcType=REAL},
-      groupStatus = #{record.groupstatus,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Productgroup" >
-    update productgroup
-    <set >
-      <if test="grouppublishdate != null" >
-        groupPublishDate = #{grouppublishdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="groupstartdate != null" >
-        groupStartDate = #{groupstartdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="groupfinishdate != null" >
-        groupFinishDate = #{groupfinishdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="groupproductid != null" >
-        groupProductId = #{groupproductid,jdbcType=INTEGER},
-      </if>
-      <if test="grouppresentpeople != null" >
-        groupPresentPeople = #{grouppresentpeople,jdbcType=INTEGER},
-      </if>
-      <if test="grouptotalpeople != null" >
-        groupTotalPeople = #{grouptotalpeople,jdbcType=INTEGER},
-      </if>
-      <if test="groupdiscountprice != null" >
-        groupDiscountPrice = #{groupdiscountprice,jdbcType=REAL},
-      </if>
-      <if test="groupstatus != null" >
-        groupStatus = #{groupstatus,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where groupId = #{groupid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productgroup" >
-    update productgroup
-    set groupPublishDate = #{grouppublishdate,jdbcType=TIMESTAMP},
-      groupStartDate = #{groupstartdate,jdbcType=TIMESTAMP},
-      groupFinishDate = #{groupfinishdate,jdbcType=TIMESTAMP},
-      groupProductId = #{groupproductid,jdbcType=INTEGER},
-      groupPresentPeople = #{grouppresentpeople,jdbcType=INTEGER},
-      groupTotalPeople = #{grouptotalpeople,jdbcType=INTEGER},
-      groupDiscountPrice = #{groupdiscountprice,jdbcType=REAL},
-      groupStatus = #{groupstatus,jdbcType=VARCHAR}
-    where groupId = #{groupid,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.sds.em.mapper.ProductgroupMapper">
+	<resultMap id="BaseResultMap" type="com.sds.em.po.Productgroup">
+		<id column="groupId" property="groupid" jdbcType="INTEGER" />
+		<result column="groupPublishDate" property="grouppublishdate"
+			jdbcType="TIMESTAMP" />
+		<result column="groupStartDate" property="groupstartdate"
+			jdbcType="TIMESTAMP" />
+		<result column="groupFinishDate" property="groupfinishdate"
+			jdbcType="TIMESTAMP" />
+		<result column="groupProductId" property="groupproductid"
+			jdbcType="INTEGER" />
+		<result column="groupPresentPeople" property="grouppresentpeople"
+			jdbcType="INTEGER" />
+		<result column="groupTotalPeople" property="grouptotalpeople"
+			jdbcType="INTEGER" />
+		<result column="groupDiscountPrice" property="groupdiscountprice"
+			jdbcType="REAL" />
+		<result column="groupStatus" property="groupstatus" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		groupId, groupPublishDate, groupStartDate, groupFinishDate,
+		groupProductId,
+		groupPresentPeople,
+		groupTotalPeople,
+		groupDiscountPrice, groupStatus
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.sds.em.po.ProductgroupExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from productgroup
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from productgroup
+		where groupId = #{groupid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		productgroup
+		where groupId = #{groupid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.sds.em.po.ProductgroupExample">
+		delete from productgroup
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.sds.em.po.Productgroup">
+		insert into productgroup
+		(groupId, groupPublishDate, groupStartDate,
+		groupFinishDate,
+		groupProductId, groupPresentPeople,
+		groupTotalPeople,
+		groupDiscountPrice, groupStatus
+		)
+		values (#{groupid,jdbcType=INTEGER},
+		#{grouppublishdate,jdbcType=TIMESTAMP},
+		#{groupstartdate,jdbcType=TIMESTAMP},
+		#{groupfinishdate,jdbcType=TIMESTAMP},
+		#{groupproductid,jdbcType=INTEGER},
+		#{grouppresentpeople,jdbcType=INTEGER},
+		#{grouptotalpeople,jdbcType=INTEGER},
+		#{groupdiscountprice,jdbcType=REAL}, #{groupstatus,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.sds.em.po.Productgroup">
+		insert into productgroup
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="groupid != null">
+				groupId,
+			</if>
+			<if test="grouppublishdate != null">
+				groupPublishDate,
+			</if>
+			<if test="groupstartdate != null">
+				groupStartDate,
+			</if>
+			<if test="groupfinishdate != null">
+				groupFinishDate,
+			</if>
+			<if test="groupproductid != null">
+				groupProductId,
+			</if>
+			<if test="grouppresentpeople != null">
+				groupPresentPeople,
+			</if>
+			<if test="grouptotalpeople != null">
+				groupTotalPeople,
+			</if>
+			<if test="groupdiscountprice != null">
+				groupDiscountPrice,
+			</if>
+			<if test="groupstatus != null">
+				groupStatus,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="groupid != null">
+				#{groupid,jdbcType=INTEGER},
+			</if>
+			<if test="grouppublishdate != null">
+				#{grouppublishdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="groupstartdate != null">
+				#{groupstartdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="groupfinishdate != null">
+				#{groupfinishdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="groupproductid != null">
+				#{groupproductid,jdbcType=INTEGER},
+			</if>
+			<if test="grouppresentpeople != null">
+				#{grouppresentpeople,jdbcType=INTEGER},
+			</if>
+			<if test="grouptotalpeople != null">
+				#{grouptotalpeople,jdbcType=INTEGER},
+			</if>
+			<if test="groupdiscountprice != null">
+				#{groupdiscountprice,jdbcType=REAL},
+			</if>
+			<if test="groupstatus != null">
+				#{groupstatus,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.sds.em.po.ProductgroupExample"
+		resultType="java.lang.Integer">
+		select count(*) from productgroup
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update productgroup
+		<set>
+			<if test="record.groupid != null">
+				groupId = #{record.groupid,jdbcType=INTEGER},
+			</if>
+			<if test="record.grouppublishdate != null">
+				groupPublishDate =
+				#{record.grouppublishdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.groupstartdate != null">
+				groupStartDate =
+				#{record.groupstartdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.groupfinishdate != null">
+				groupFinishDate =
+				#{record.groupfinishdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.groupproductid != null">
+				groupProductId =
+				#{record.groupproductid,jdbcType=INTEGER},
+			</if>
+			<if test="record.grouppresentpeople != null">
+				groupPresentPeople =
+				#{record.grouppresentpeople,jdbcType=INTEGER},
+			</if>
+			<if test="record.grouptotalpeople != null">
+				groupTotalPeople =
+				#{record.grouptotalpeople,jdbcType=INTEGER},
+			</if>
+			<if test="record.groupdiscountprice != null">
+				groupDiscountPrice =
+				#{record.groupdiscountprice,jdbcType=REAL},
+			</if>
+			<if test="record.groupstatus != null">
+				groupStatus = #{record.groupstatus,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update productgroup
+		set groupId = #{record.groupid,jdbcType=INTEGER},
+		groupPublishDate = #{record.grouppublishdate,jdbcType=TIMESTAMP},
+		groupStartDate = #{record.groupstartdate,jdbcType=TIMESTAMP},
+		groupFinishDate = #{record.groupfinishdate,jdbcType=TIMESTAMP},
+		groupProductId = #{record.groupproductid,jdbcType=INTEGER},
+		groupPresentPeople = #{record.grouppresentpeople,jdbcType=INTEGER},
+		groupTotalPeople = #{record.grouptotalpeople,jdbcType=INTEGER},
+		groupDiscountPrice = #{record.groupdiscountprice,jdbcType=REAL},
+		groupStatus = #{record.groupstatus,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Productgroup">
+		update productgroup
+		<set>
+			<if test="grouppublishdate != null">
+				groupPublishDate =
+				#{grouppublishdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="groupstartdate != null">
+				groupStartDate = #{groupstartdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="groupfinishdate != null">
+				groupFinishDate = #{groupfinishdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="groupproductid != null">
+				groupProductId = #{groupproductid,jdbcType=INTEGER},
+			</if>
+			<if test="grouppresentpeople != null">
+				groupPresentPeople =
+				#{grouppresentpeople,jdbcType=INTEGER},
+			</if>
+			<if test="grouptotalpeople != null">
+				groupTotalPeople = #{grouptotalpeople,jdbcType=INTEGER},
+			</if>
+			<if test="groupdiscountprice != null">
+				groupDiscountPrice = #{groupdiscountprice,jdbcType=REAL},
+			</if>
+			<if test="groupstatus != null">
+				groupStatus = #{groupstatus,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where groupId = #{groupid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productgroup">
+		update
+		productgroup
+		set groupPublishDate =
+		#{grouppublishdate,jdbcType=TIMESTAMP},
+		groupStartDate =
+		#{groupstartdate,jdbcType=TIMESTAMP},
+		groupFinishDate =
+		#{groupfinishdate,jdbcType=TIMESTAMP},
+		groupProductId =
+		#{groupproductid,jdbcType=INTEGER},
+		groupPresentPeople =
+		#{grouppresentpeople,jdbcType=INTEGER},
+		groupTotalPeople =
+		#{grouptotalpeople,jdbcType=INTEGER},
+		groupDiscountPrice =
+		#{groupdiscountprice,jdbcType=REAL},
+		groupStatus =
+		#{groupstatus,jdbcType=VARCHAR}
+		where groupId =
+		#{groupid,jdbcType=INTEGER}
+	</update>
+
+	<!-- wuwenbo，获取团购列表 -->
+	<select id="getproductgroup" resultType="com.sds.em.pojo.ProductgroupExtend">
+		SELECT * from
+		productgroup as pg INNER JOIN product as p on
+		p.productId=pg.groupProductId
+
+	</select>
+
+	<!-- lu -->
+
+	<select id="GroupIndexView" resultType="com.sds.em.po.Productgroup">
+		SELECT * FROM productgroup
+		WHERE NOW()-groupStartDate  <![CDATA[<]]>
+		0 ORDER BY
+		groupStartDate
+	</select>
+
+	<select id="GroupEndView" resultType="com.sds.em.po.Productgroup">
+		SELECT * FROM productgroup
+		WHERE groupFinishDate-NOW() <![CDATA[>]]>
+		0 and groupStatus <![CDATA[<>]]>'已结束'
+		OR groupStatus
+		<![CDATA[<>]]>'以成交'
+		ORDER BY groupFinishDate
+	</select>
+
+	<select id="GroupNoView" resultType="com.sds.em.po.Productgroup">
+		SELECT * from productgroup
+		where groupStatus ='未开始' ORDER BY groupStartDate
+	</select>
 </mapper>

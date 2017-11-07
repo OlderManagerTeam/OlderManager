@@ -51,14 +51,14 @@ public class VideoController {
 		video.setVideopublishdate(date);
 
 		String pic_path = "E:\\oldermanageresource\\videoimg\\";
-		String picUrl = "http://localhost:8080/videoimg/";
+		String picUrl = "/videoimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 		// 缩略图
 		File pic = new File(pic_path + newFileName);
 		videopicurl.transferTo(pic);
 		// 视频
 		String video_path = "E:\\oldermanageresource\\videourl\\";
-		String videoUrl = "http://localhost:8080/videourl/";
+		String videoUrl = "/videourl/";
 		String newVideoFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".mp4";
 
 		File vid = new File(video_path + newVideoFileName);
@@ -100,7 +100,7 @@ public class VideoController {
 			MultipartFile videourl) throws Exception {
 		Video video = (Video) videoService.getVideo(videoid).getData();
 		String pic_path = "E:\\oldermanageresource\\videoimg\\";
-		String picUrl = "http://localhost:8080/videoimg/";
+		String picUrl = "/videoimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 		String videoUrl = "E:\\oldermanageresource\\videourl\\";
 		String video_path = "E:\\oldermanageresource\\videourl\\";

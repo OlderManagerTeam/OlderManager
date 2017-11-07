@@ -9,12 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.OlderproductviewMapper;
 import com.sds.em.mapper.ProductMapper;
+import com.sds.em.mapper.ProductgroupMapper;
+import com.sds.em.mapper.ProductpiclistMapper;
 import com.sds.em.mapper.ProductrateMapper;
 import com.sds.em.mapper.ProductstoreMapper;
 import com.sds.em.mapper.ProducttypeMapper;
 import com.sds.em.mapper.ProducttypetwoMapper;
 import com.sds.em.po.Message;
 import com.sds.em.po.Product;
+import com.sds.em.po.Productpiclist;
+import com.sds.em.po.ProductpiclistExample;
 import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductstoreExample;
 import com.sds.em.po.ProductstoreExample.Criteria;
@@ -24,7 +28,7 @@ import com.sds.em.shop.pojo.productGradeExtend;
 import com.sds.em.shop.pojo.productGradeExtend;
 
 public class ShopViewFrontServiceImpl implements ShopViewFrontService {
-	
+
 	@Autowired
 	ProductstoreMapper productstoreMapper;
 	@Autowired
@@ -40,6 +44,12 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 
 	@Autowired
 	ProductrateMapper productrateMapper;
+
+	@Autowired
+	ProductpiclistMapper productpiclistMapper;
+
+	@Autowired
+	ProductgroupMapper productgroupMapper;
 
 	@Override
 	public Message todayRecommend() throws Exception {
@@ -139,11 +149,45 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 	}
 
 	@Override
+	public Message typeTwoProductsSort(String typetwocontent, String sort) throws Exception {
+		try {
+			List<ProductAmount> productList = null;
+			if (sort.equals("销量排序")) {
+				productList = productMapper.typeTwoRecommendA(typetwocontent);
+			} else if (sort.equals("价格优先")) {
+				productList = productMapper.typeTwoRecommendP(typetwocontent);
+			}
+			if (!productList.isEmpty()) {
+				return new Message(true, "返回成功", productList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
 	public Message getProduct(int productid) throws Exception {
 		try {
 			ProductAmount productAmount = new ProductAmount();
 			productAmount = productMapper.productSearchId(productid);
+			List<String> picList = new ArrayList<String>();
 			if (productAmount != null) {
+				ProductpiclistExample productpiclistExample = new ProductpiclistExample();
+				com.sds.em.po.ProductpiclistExample.Criteria criteria = productpiclistExample.createCriteria();
+				criteria.andPproductidEqualTo(productid);
+
+				List<Productpiclist> list = productpiclistMapper.selectByExample(productpiclistExample);
+
+				for (Productpiclist p : list) {
+					String pic;
+					pic = p.getPpicurl();
+					picList.add(pic);
+				}
+				productAmount.setPicList(picList);
 				return new Message(true, "返回成功", productAmount);
 			} else {
 				return new Message(false, "数据库错误", null);
@@ -207,9 +251,9 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 				} else {
 					mediumRate++;
 				}
-				avg = avg+(p.getRatestar() / 5.0);
+				avg = avg + (p.getRatestar() / 5.0);
 			}
-			String percent =""+(int)((avg / totalRate)*100);
+			String percent = "" + (int) ((avg / totalRate) * 100);
 
 			productGradeExtend productGradeExtend = new productGradeExtend();
 			productGradeExtend.setPercent(percent);
@@ -244,6 +288,54 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 			return new Message(false, "数据库错误", null);
 		}
 
+	}
+
+	@Override
+	public Message GroupIndexView() {
+		try {
+			List<Product> productList = productgroupMapper.GroupIndexView();
+			if (!productList.isEmpty()) {
+				return new Message(true, "返回成功", productList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message GroupEndView() {
+		try {
+			List<Product> productList = productgroupMapper.GroupEndView();
+			if (!productList.isEmpty()) {
+				return new Message(true, "返回成功", productList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message GroupNoView() {
+		try {
+			List<Product> productList = productgroupMapper.GroupNoView();
+			if (!productList.isEmpty()) {
+				return new Message(true, "返回成功", productList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 
 }

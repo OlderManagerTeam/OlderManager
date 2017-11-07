@@ -138,10 +138,19 @@
 							</button>
 						</div>
 						<ul class="nav navbar-nav">
-							<li><a href="../index.html"> <span
-									class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
-							</a></li>
-							
+			<li class="panel panel-default dropdown"><a
+				data-toggle="collapse" href="#dataStatistics"> <span
+					class="icon glyphicon glyphicon-stats"></span> <span class="title">数据统计</span>
+			</a> <!-- Dropdown level 1 -->
+				<div id="dataStatistics" class="panel-collapse collapse">
+					<div class="panel-body">
+						<ul class="nav navbar-nav">
+							<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
+							<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
+							<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
+						</ul>
+					</div>
+				</div></li>					
 			<!-- 总店管理 -->	
 			<li class="panel panel-default dropdown"><a
 				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
@@ -223,9 +232,7 @@
 						</ul>
 					</div>
 				</div></li>
-			<li><a href="../license.html"> <span
-					class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
-			</a></li>
+			
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -261,8 +268,8 @@
 									<div class="col-sm-5">
 										<select id="oldersex" name="oldersex">
 											<optgroup label="性别">
-												<option value="">男</option>
-												<option value="">女</option>
+												<option value="1">男</option>
+												<option value="2">女</option>
 											</optgroup>
 										</select>
 									</div>
@@ -690,13 +697,13 @@
 		<script type="text/javascript">
 			$("#altersubmit").click(function() {
 				var form = new FormData(document.getElementById("olderAlter"));
-				form.append("oldersex", document.getElementById("select2-oldersex-container").title);
-				var sex=document.getElementById("select2-oldersex-container").title;
-				form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
-				form.append("oldernation", document.getElementById("select2-oldernation-container").title);
+			//	form.append("oldersex", document.getElementById("select2-oldersex-container").title);
+			//	var sex=document.getElementById("select2-oldersex-container").title;
+			//	form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
+			//	form.append("oldernation", document.getElementById("select2-oldernation-container").title);
 				$.ajax({
 					type : 'post',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/infoupdate",
+					url : "/eldermanage/v1/brench/elder/infoupdate",
 					data : form,
 					processData : false,
 					contentType : false,
@@ -704,7 +711,7 @@
 						//var resultdata = JSON.parse(result);
 						alert('成功');
 						if (result.success) {
-							window.location.href = "http://localhost:8080/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
+							window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
 						}
 					//alert(result.success)
 					},
@@ -722,7 +729,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "http://localhost:8080/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
+					url : "/eldermanage/v1/brench/elder/info?oldertel=" + oldertel,
 					data : null,
 				}).then(
 					function(result) {

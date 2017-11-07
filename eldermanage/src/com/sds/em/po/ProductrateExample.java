@@ -1,6 +1,7 @@
 package com.sds.em.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ProductrateExample {
@@ -411,6 +412,66 @@ public class ProductrateExample {
 
         public Criteria andRatecontentNotBetween(String value1, String value2) {
             addCriterion("ratecontent not between", value1, value2, "ratecontent");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateIsNull() {
+            addCriterion("rateDate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateIsNotNull() {
+            addCriterion("rateDate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateEqualTo(Date value) {
+            addCriterion("rateDate =", value, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateNotEqualTo(Date value) {
+            addCriterion("rateDate <>", value, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateGreaterThan(Date value) {
+            addCriterion("rateDate >", value, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateGreaterThanOrEqualTo(Date value) {
+            addCriterion("rateDate >=", value, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateLessThan(Date value) {
+            addCriterion("rateDate <", value, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateLessThanOrEqualTo(Date value) {
+            addCriterion("rateDate <=", value, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateIn(List<Date> values) {
+            addCriterion("rateDate in", values, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateNotIn(List<Date> values) {
+            addCriterion("rateDate not in", values, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateBetween(Date value1, Date value2) {
+            addCriterion("rateDate between", value1, value2, "ratedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRatedateNotBetween(Date value1, Date value2) {
+            addCriterion("rateDate not between", value1, value2, "ratedate");
             return (Criteria) this;
         }
     }

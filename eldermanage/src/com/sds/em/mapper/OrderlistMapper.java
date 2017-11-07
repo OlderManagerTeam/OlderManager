@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Orderlist;
 import com.sds.em.po.OrderlistExample;
+import com.sds.em.pojo.OrderlistExtend;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,7 @@ public interface OrderlistMapper {
     int updateByPrimaryKeySelective(Orderlist record);
 
     int updateByPrimaryKey(Orderlist record);
+
+    //wuwenbo,获取订单详情
+	List<OrderlistExtend> getorderlist(int orderid);
 }

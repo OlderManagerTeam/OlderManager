@@ -32,4 +32,6 @@ public interface OrdersMapper {
 
     //wuwenbo,获取订单列表
 	List<OrdersExtend> getorders();
+//插入返回主键
+	int keyinsert(Orders orders);
 }
