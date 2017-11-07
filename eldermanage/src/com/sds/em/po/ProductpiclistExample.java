@@ -234,52 +234,62 @@ public class ProductpiclistExample {
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlEqualTo(Integer value) {
+        public Criteria andPpicurlEqualTo(String value) {
             addCriterion("ppicUrl =", value, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlNotEqualTo(Integer value) {
+        public Criteria andPpicurlNotEqualTo(String value) {
             addCriterion("ppicUrl <>", value, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlGreaterThan(Integer value) {
+        public Criteria andPpicurlGreaterThan(String value) {
             addCriterion("ppicUrl >", value, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPpicurlGreaterThanOrEqualTo(String value) {
             addCriterion("ppicUrl >=", value, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlLessThan(Integer value) {
+        public Criteria andPpicurlLessThan(String value) {
             addCriterion("ppicUrl <", value, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlLessThanOrEqualTo(Integer value) {
+        public Criteria andPpicurlLessThanOrEqualTo(String value) {
             addCriterion("ppicUrl <=", value, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlIn(List<Integer> values) {
+        public Criteria andPpicurlLike(String value) {
+            addCriterion("ppicUrl like", value, "ppicurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPpicurlNotLike(String value) {
+            addCriterion("ppicUrl not like", value, "ppicurl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPpicurlIn(List<String> values) {
             addCriterion("ppicUrl in", values, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlNotIn(List<Integer> values) {
+        public Criteria andPpicurlNotIn(List<String> values) {
             addCriterion("ppicUrl not in", values, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlBetween(Integer value1, Integer value2) {
+        public Criteria andPpicurlBetween(String value1, String value2) {
             addCriterion("ppicUrl between", value1, value2, "ppicurl");
             return (Criteria) this;
         }
 
-        public Criteria andPpicurlNotBetween(Integer value1, Integer value2) {
+        public Criteria andPpicurlNotBetween(String value1, String value2) {
             addCriterion("ppicUrl not between", value1, value2, "ppicurl");
             return (Criteria) this;
         }

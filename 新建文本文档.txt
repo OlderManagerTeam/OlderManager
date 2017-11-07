@@ -1,0 +1,15 @@
+<div class="file-preview-frame" id="uploaded-1509968627231" data-fileindex="-1">
+   <img title="捕获1.PNG" class="file-preview-image" style="width:auto;height:160px;" alt="捕获1.PNG" src="blob:B93A8162-77BE-4550-986E-CD54BC7E3B0A">
+   <div class="file-thumbnail-footer">
+    <div title="捕获1.PNG" class="file-caption-name" style="width: 182px;">捕获1.PNG</div>
+    <div class="file-actions">
+    <div class="file-footer-buttons">
+        <button title="Upload file" class="kv-file-upload btn btn-xs btn-default" style="display: none;" type="button">   <i class="glyphicon glyphicon-upload text-info"></i>
+</button>
+<button title="Remove file" class="kv-file-remove btn btn-xs btn-default" style="display: none;" type="button"><i class="glyphicon glyphicon-trash text-danger"></i></button>
+    </div>
+    <div tabindex="-1" title="Uploaded" class="file-upload-indicator"><i class="glyphicon glyphicon-ok-sign file-icon-large text-success"></i></div>
+    <div class="clearfix"></div>
+</div>
+</div>
+</div>
