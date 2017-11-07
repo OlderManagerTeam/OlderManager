@@ -40,7 +40,8 @@
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng">
-						<a href="personal.html" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
+						<a href="personal.html" target="_top"><i
+							class="am-icon-user am-icon-fw"></i>个人中心</a>
 					</div>
 				</div>
 				<div class="topMessage mini-cart">
@@ -70,8 +71,13 @@
 					<input id="searchInput" name="index_none_header_sysc" type="text"
 						placeholder="搜索" autocomplete="off"> <input
 						id="ai-topsearch" class="submit am-btn" value="搜索" index="1"
-						type="submit">
+						type="button">
 				</form>
+				<script type="text/javascript">
+					$("#ai-topsearch").click(function (event){
+						window.open('search.html?'+$("#searchInput").val());
+					});
+				</script>
 			</div>
 		</div>
 
@@ -101,10 +107,10 @@
 			<div class="nav-cont">
 				<ul>
 					<li class="index"><a href="shoppingindex.html">首页</a></li>
-					<li class="qc"><a href="#">团购</a></li>
+					<li class="qc"><a href="groupindex.html">团购</a></li>
 				</ul>
 
-			</div>
+			</div> 
 
 			<!--侧边导航 -->
 			<div id="nav" class="navfull">
@@ -1476,36 +1482,36 @@
 						</a>
 						<div class="triangle-topright"></div>
 					</div>
-					
+
 					<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
 						<div class="outer-con ">
 							<div class="title " id="type3productName1"></div>
-							<div class="sub-title "  id="type3productPrice1"></div>
+							<div class="sub-title " id="type3productPrice1"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src="" id="type3productImg1"/></a>
+						<a href="# "><img src="" id="type3productImg1" /></a>
 					</div>
 
 					<div class="am-u-md-2 am-u-lg-2 text-three sug">
 						<div class="outer-con ">
 							<div class="title " id="type3productName2"></div>
-							<div class="sub-title "  id="type3productPrice2"></div>
+							<div class="sub-title " id="type3productPrice2"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src="" id="type3productImg2"/></a>
+						<a href="# "><img src="" id="type3productImg2" /></a>
 					</div>
 					<div class="am-u-md-2 am-u-lg-2 text-three big">
 						<div class="outer-con ">
-							<div class="title "id="type3productName3"></div>
-							<div class="sub-title "  id="type3productPrice3"></div>
+							<div class="title " id="type3productName3"></div>
+							<div class="sub-title " id="type3productPrice3"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type3productImg3" /></a>
+						<a href="# "><img src="" id="type3productImg3" /></a>
 					</div>
 					<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
 						<div class="outer-con ">
-							<div class="title "id="type3productName4"></div>
-							<div class="sub-title "  id="type3productPrice4"></div>
+							<div class="title " id="type3productName4"></div>
+							<div class="sub-title " id="type3productPrice4"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
 						<a href="# "><img src="" id="type3productImg4" /></a>
@@ -1513,18 +1519,18 @@
 					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
 						<div class="outer-con ">
 							<div class="title " id="type3productName5"></div>
-							<div class="sub-title "  id="type3productPrice5"></div>
+							<div class="sub-title " id="type3productPrice5"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type3productImg5" /></a>
+						<a href="# "><img src="" id="type3productImg5" /></a>
 					</div>
 					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
 						<div class="outer-con ">
 							<div class="title " id="type3productName6"></div>
-							<div class="sub-title "  id="type3productPrice6"></div>
+							<div class="sub-title " id="type3productPrice6"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src="" id="type3productImg6"/></a>
+						<a href="# "><img src="" id="type3productImg6" /></a>
 					</div>
 				</div>
 				<div class="clear "></div>
@@ -1578,7 +1584,7 @@
 					<div class="am-u-sm-7 am-u-md-4 text-two">
 						<div class="outer-con ">
 							<div class="title " id="type4productName2"></div>
-							<div class="sub-title "  id="type4productPrice2"></div>
+							<div class="sub-title " id="type4productPrice2"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
 						<a href="# "><img src="" id="type4productImg2" /></a>
@@ -1588,7 +1594,7 @@
 					<div class="am-u-sm-3 am-u-md-2 text-three big">
 						<div class="outer-con ">
 							<div class="title " id="type4productName3"></div>
-							<div class="sub-title "  id="type4productPrice3"></div>
+							<div class="sub-title " id="type4productPrice3"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
 						<a href="# "><img src="" id="type4productImg3" /></a>
@@ -1597,7 +1603,7 @@
 					<div class="am-u-sm-3 am-u-md-2 text-three sug">
 						<div class="outer-con ">
 							<div class="title " id="type4productName4"></div>
-							<div class="sub-title "  id="type4productPrice4"></div>
+							<div class="sub-title " id="type4productPrice4"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
 						<a href="# "><img src="" id="type4productImg4" /></a>
@@ -1606,7 +1612,7 @@
 					<div class="am-u-sm-3 am-u-md-2 text-three ">
 						<div class="outer-con ">
 							<div class="title " id="type4productName5"></div>
-							<div class="sub-title "  id="type4productPrice5"></div>
+							<div class="sub-title " id="type4productPrice5"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
 						<a href="# "><img src="" id="type4productImg5" /></a>
@@ -1614,8 +1620,8 @@
 
 					<div class="am-u-sm-3 am-u-md-2 text-three last big ">
 						<div class="outer-con ">
-							<div class="title "id="type4productName6"></div>
-							<div class="sub-title "  id="type4productPrice6"></div>
+							<div class="title " id="type4productName6"></div>
+							<div class="sub-title " id="type4productPrice6"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
 						<a href="# "><img src="" id="type4productImg6" /></a>
@@ -1668,36 +1674,36 @@
 							<div class="sub-title " id="type5productPrice1"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=" "  id="type5productImg1" /></a>
+						<a href="# "><img src=" " id="type5productImg1" /></a>
 					</div>
 
 					<div class="am-u-md-2 am-u-lg-2 text-three sug">
 						<div class="outer-con ">
-							<div class="title "  id="type5productName2"></div>
+							<div class="title " id="type5productName2"></div>
 							<div class="sub-title " id="type5productPrice2"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type5productImg2" /></a>
+						<a href="# "><img src="" id="type5productImg2" /></a>
 					</div>
 					<div class="am-u-md-2 am-u-lg-2 text-three big">
 						<div class="outer-con ">
-							<div class="title "  id="type5productName3"></div>
+							<div class="title " id="type5productName3"></div>
 							<div class="sub-title " id="type5productPrice3"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type5productImg3" /></a>
+						<a href="# "><img src="" id="type5productImg3" /></a>
 					</div>
 					<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
 						<div class="outer-con ">
-							<div class="title "  id="type5productName4"></div>
+							<div class="title " id="type5productName4"></div>
 							<div class="sub-title " id="type5productPrice4"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type5productImg4" /></a>
+						<a href="# "><img src="" id="type5productImg4" /></a>
 					</div>
 					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
 						<div class="outer-con ">
-							<div class="title "  id="type5productName5"></div>
+							<div class="title " id="type5productName5"></div>
 							<div class="sub-title " id="type5productPrice5"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
@@ -1705,11 +1711,11 @@
 					</div>
 					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
 						<div class="outer-con ">
-							<div class="title "  id="type5productName6"></div>
+							<div class="title " id="type5productName6"></div>
 							<div class="sub-title " id="type5productPrice6"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type5productImg6" /></a>
+						<a href="# "><img src="" id="type5productImg6" /></a>
 					</div>
 				</div>
 				<div class="clear "></div>
@@ -1757,7 +1763,7 @@
 							<div class="sub-title " id="type6productPrice1"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src="" id="type6productImg1"/></a>
+						<a href="# "><img src="" id="type6productImg1" /></a>
 					</div>
 
 					<div class="am-u-sm-7 am-u-md-4 text-two">
@@ -1850,10 +1856,10 @@
 					<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
 						<div class="outer-con ">
 							<div class="title " id="type7productName1"></div>
-							<div class="sub-title "  id="type7productPrice1"></div>
+							<div class="sub-title " id="type7productPrice1"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src="" id="type7productImg1"  /></a>
+						<a href="# "><img src="" id="type7productImg1" /></a>
 					</div>
 
 					<div class="am-u-md-2 am-u-lg-2 text-three sug">
@@ -1862,12 +1868,12 @@
 							<div class="sub-title " id="type7productPrice2"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type7productImg2" /></a>
+						<a href="# "><img src="" id="type7productImg2" /></a>
 					</div>
 					<div class="am-u-md-2 am-u-lg-2 text-three big">
 						<div class="outer-con ">
 							<div class="title " id="type7productName3"></div>
-							<div class="sub-title "  id="type7productPrice3"></div>
+							<div class="sub-title " id="type7productPrice3"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
 						<a href="# "><img src="" id="type7productImg3" /></a>
@@ -1878,23 +1884,23 @@
 							<div class="sub-title " id="type7productPrice4"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type7productImg4" /></a>
+						<a href="# "><img src="" id="type7productImg4" /></a>
 					</div>
 					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
 						<div class="outer-con ">
 							<div class="title " id="type7productName5"></div>
-							<div class="sub-title "  id="type7productPrice5"></div>
+							<div class="sub-title " id="type7productPrice5"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type7productImg5" /></a>
+						<a href="# "><img src="" id="type7productImg5" /></a>
 					</div>
 					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
 						<div class="outer-con ">
 							<div class="title " id="type7productName6"></div>
-							<div class="sub-title "  id="type7productPrice6"></div>
+							<div class="sub-title " id="type7productPrice6"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type7productImg6" /></a>
+						<a href="# "><img src="" id="type7productImg6" /></a>
 					</div>
 				</div>
 
@@ -1939,11 +1945,11 @@
 
 					<div class="am-u-sm-7 am-u-md-4 text-two sug">
 						<div class="outer-con ">
-							<div class="title "id="type8productName1"></div>
+							<div class="title " id="type8productName1"></div>
 							<div class="sub-title " id="type8productPrice1"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type8productImg1"  /></a>
+						<a href="# "><img src="" id="type8productImg1" /></a>
 					</div>
 
 					<div class="am-u-sm-7 am-u-md-4 text-two">
@@ -1952,7 +1958,7 @@
 							<div class="sub-title " id="type8productPrice2"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type8productImg2" /></a>
+						<a href="# "><img src="" id="type8productImg2" /></a>
 					</div>
 
 
@@ -1962,7 +1968,7 @@
 							<div class="sub-title " id="type8productPrice3"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type8productImg3" /></a>
+						<a href="# "><img src="" id="type8productImg3" /></a>
 					</div>
 
 					<div class="am-u-sm-3 am-u-md-2 text-three sug">
@@ -1971,16 +1977,16 @@
 							<div class="sub-title " id="type8productPrice4"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src="" id="type8productImg4"/></a>
+						<a href="# "><img src="" id="type8productImg4" /></a>
 					</div>
 
 					<div class="am-u-sm-3 am-u-md-2 text-three ">
 						<div class="outer-con ">
-							<div class="title "id="type8productName5"></div>
-							<div class="sub-title "id="type8productPrice5"></div>
+							<div class="title " id="type8productName5"></div>
+							<div class="sub-title " id="type8productPrice5"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type8productImg5" /></a>
+						<a href="# "><img src="" id="type8productImg5" /></a>
 					</div>
 
 					<div class="am-u-sm-3 am-u-md-2 text-three last big ">
@@ -1989,7 +1995,7 @@
 							<div class="sub-title " id="type8productPrice6"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type8productImg6" /></a>
+						<a href="# "><img src="" id="type8productImg6" /></a>
 					</div>
 
 				</div>
@@ -2036,24 +2042,24 @@
 					<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
 						<div class="outer-con ">
 							<div class="title " id="type9productName1"></div>
-							<div class="sub-title "id="type9productPrice1"></div>
+							<div class="sub-title " id="type9productPrice1"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=" "id="type9productImg1" /></a>
+						<a href="# "><img src=" " id="type9productImg1" /></a>
 					</div>
 
 					<div class="am-u-md-2 am-u-lg-2 text-three sug">
 						<div class="outer-con ">
-							<div class="title "id="type9productName2"></div>
-							<div class="sub-title "id="type9productPrice2"></div>
+							<div class="title " id="type9productName2"></div>
+							<div class="sub-title " id="type9productPrice2"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type9productImg2" /></a>
+						<a href="# "><img src="" id="type9productImg2" /></a>
 					</div>
 					<div class="am-u-md-2 am-u-lg-2 text-three big">
 						<div class="outer-con ">
 							<div class="title " id="type9productName3">小优布丁</div>
-							<div class="sub-title "id="type9productPrice3"></div>
+							<div class="sub-title " id="type9productPrice3"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
 						<a href="# "><img src="" id="type9productImg3" /></a>
@@ -2061,26 +2067,26 @@
 					<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
 						<div class="outer-con ">
 							<div class="title " id="type9productName4"></div>
-							<div class="sub-title "id="type9productPrice4"></div>
+							<div class="sub-title " id="type9productPrice4"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type9productImg4" /></a>
+						<a href="# "><img src="" id="type9productImg4" /></a>
 					</div>
 					<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
 						<div class="outer-con ">
-							<div class="title "id="type9productName5"></div>
-							<div class="sub-title "id="type9productPrice5"></div>
+							<div class="title " id="type9productName5"></div>
+							<div class="sub-title " id="type9productPrice5"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type9productImg5" /></a>
+						<a href="# "><img src="" id="type9productImg5" /></a>
 					</div>
 					<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
 						<div class="outer-con ">
 							<div class="title " id="type9productName6"></div>
-							<div class="sub-title "id="type9productPrice6"></div>
+							<div class="sub-title " id="type9productPrice6"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type9productImg6" /></a>
+						<a href="# "><img src="" id="type9productImg6" /></a>
 					</div>
 				</div>
 
@@ -2127,56 +2133,56 @@
 					<div class="am-u-sm-7 am-u-md-4 text-two sug">
 						<div class="outer-con ">
 							<div class="title " id="type10productName1"></div>
-							<div class="sub-title "id="type10productPrice1"></div>
+							<div class="sub-title " id="type10productPrice1"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type10productImg1" /></a>
+						<a href="# "><img src="" id="type10productImg1" /></a>
 					</div>
 
 					<div class="am-u-sm-7 am-u-md-4 text-two">
 						<div class="outer-con ">
-							<div class="title "id="type10productName2"></div>
-							<div class="sub-title "id="type10productPrice2"></div>
+							<div class="title " id="type10productName2"></div>
+							<div class="sub-title " id="type10productPrice2"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type10productImg2"  /></a>
+						<a href="# "><img src="" id="type10productImg2" /></a>
 					</div>
 
 
 					<div class="am-u-sm-3 am-u-md-2 text-three big">
 						<div class="outer-con ">
-							<div class="title "id="type10productName3"></div>
-							<div class="sub-title "id="type10productPrice3"></div>
+							<div class="title " id="type10productName3"></div>
+							<div class="sub-title " id="type10productPrice3"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type10productImg3" /></a>
+						<a href="# "><img src="" id="type10productImg3" /></a>
 					</div>
 
 					<div class="am-u-sm-3 am-u-md-2 text-three sug">
 						<div class="outer-con ">
-							<div class="title "id="type10productName4"></div>
-							<div class="sub-title "id="type10productPrice4"></div>
+							<div class="title " id="type10productName4"></div>
+							<div class="sub-title " id="type10productPrice4"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type10productImg4" /></a>
+						<a href="# "><img src="" id="type10productImg4" /></a>
 					</div>
 
 					<div class="am-u-sm-3 am-u-md-2 text-three ">
 						<div class="outer-con ">
-							<div class="title "id="type10productName5"></div>
+							<div class="title " id="type10productName5"></div>
 							<div class="sub-title " id="type10productPrice5"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type10productImg5" /></a>
+						<a href="# "><img src="" id="type10productImg5" /></a>
 					</div>
 
 					<div class="am-u-sm-3 am-u-md-2 text-three last big ">
 						<div class="outer-con ">
-							<div class="title "id="type10productName6"></div>
+							<div class="title " id="type10productName6"></div>
 							<div class="sub-title " id="type10productPrice6"></div>
 							<i class="am-icon-shopping-basket am-icon-md  seprate"></i>
 						</div>
-						<a href="# "><img src=""id="type10productImg6" /></a>
+						<a href="# "><img src="" id="type10productImg6" /></a>
 					</div>
 
 				</div>
@@ -2357,13 +2363,19 @@
 	<script type="text/javascript " src="basic/js/quick_links.js"></script>
 
 	<script type="text/javascript">
+		function getContextPath() {
+			var pathName = document.location.pathname;
+			var index = pathName.substr(1).indexOf("/");
+			var result = pathName.substr(0, index + 1);
+			return result;
+		}
 		function load() {
-			//	document.getElementById("altersubmit").href="http://localhost:8080/eldermanage/front_end/OA/html/olderEducation/videoAlter.html?videoid="+videoid;
+			//	document.getElementById("altersubmit").href="../OA/html/olderEducation/videoAlter.html?videoid="+videoid;
 	
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/older/shop/index/today/recommend",
+				url : getContextPath() + "/v1/older/shop/index/today/recommend",
 				data : null,
 				success : function(result) {
 	
@@ -2372,8 +2384,9 @@
 					document.getElementById("todayProductInfo1").innerHTML = todayList[0].productinfo;
 					document.getElementById("todayProductImg1").src = todayList[0].productimg;
 	
+	
 					$(todayProductImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("todayProductName2").innerHTML = todayList[1].productname;
@@ -2381,13 +2394,13 @@
 					document.getElementById("todayProductImg2").src = todayList[1].productimg;
 	
 					$(todayProductImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 					document.getElementById("todayProductName3").innerHTML = todayList[2].productname;
 					document.getElementById("todayProductInfo3").innerHTML = todayList[2].productinfo;
 					document.getElementById("todayProductImg3").src = todayList[2].productimg;
 					$(todayProductImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 				},
@@ -2400,7 +2413,7 @@
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "http://localhost:8080/eldermanage/v1/older/shop/index/type/recommend?typecontent=" + typecontent1,
+				url : getContextPath() + "/v1/older/shop/index/type/recommend?typecontent=" + typecontent1,
 				data : null,
 				success : function(result) {
 	
@@ -2408,47 +2421,47 @@
 	
 	
 					document.getElementById("type1productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type1productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type1productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type1productImg1").src = type1List[0].productimg;
 	
 					$(type1productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type1productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type1productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type1productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type1productImg2").src = type1List[1].productimg;
 	
 					$(type1productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type1productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type1productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type1productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type1productImg3").src = type1List[2].productimg;
 	
 					$(type1productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type1productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type1productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type1productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type1productImg4").src = type1List[3].productimg;
 	
 					$(type1productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type1productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type1productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type1productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type1productImg5").src = type1List[4].productimg;
 	
 					$(type1productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type1productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type1productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type1productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type1productImg6").src = type1List[5].productimg;
 	
 					$(type1productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
@@ -2469,47 +2482,47 @@
 	
 	
 					document.getElementById("type2productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type2productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type2productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type2productImg1").src = type1List[0].productimg;
 	
 					$(type2productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type2productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type2productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type2productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type2productImg2").src = type1List[1].productimg;
 	
 					$(type2productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type2productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type2productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type2productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type2productImg3").src = type1List[2].productimg;
 	
 					$(type2productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type2productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type2productPrice4").innerHTML ="￥"+ type1List[3].productprice;
+					document.getElementById("type2productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type2productImg4").src = type1List[3].productimg;
 	
 					$(type2productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type2productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type2productPrice5").innerHTML ="￥"+ type1List[4].productprice;
+					document.getElementById("type2productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type2productImg5").src = type1List[4].productimg;
 	
 					$(type2productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type2productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type2productPrice6").innerHTML = "￥"+type1List[5].productprice;
+					document.getElementById("type2productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type2productImg6").src = type1List[5].productimg;
 	
 					$(type1productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
@@ -2531,54 +2544,54 @@
 	
 	
 					document.getElementById("type3productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type3productPrice1").innerHTML ="￥"+ type1List[0].productprice;
+					document.getElementById("type3productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type3productImg1").src = type1List[0].productimg;
 	
 					$(type3productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type3productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type3productPrice2").innerHTML = "￥"+type1List[1].productprice;
+					document.getElementById("type3productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type3productImg2").src = type1List[1].productimg;
 	
 					$(type3productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type3productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type3productPrice3").innerHTML ="￥"+ type1List[2].productprice;
+					document.getElementById("type3productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type3productImg3").src = type1List[2].productimg;
 	
 					$(type3productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type3productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type3productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type3productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type3productImg4").src = type1List[3].productimg;
 	
 					$(type3productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type3productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type3productPrice5").innerHTML ="￥"+ type1List[4].productprice;
+					document.getElementById("type3productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type3productImg5").src = type1List[4].productimg;
 	
 					$(type3productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type3productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type3productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type3productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type3productImg6").src = type1List[5].productimg;
 	
 					$(type3productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
 					alert('数据库错误')
 				}
 			})
-			
+	
 			//文学艺术推荐
 			var typecontent4 = "文学艺术";
 			$.ajax({
@@ -2592,54 +2605,54 @@
 	
 	
 					document.getElementById("type4productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type4productPrice1").innerHTML ="￥"+ type1List[0].productprice;
+					document.getElementById("type4productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type4productImg1").src = type1List[0].productimg;
 	
 					$(type4productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type4productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type4productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type4productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type4productImg2").src = type1List[1].productimg;
 	
 					$(type4productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type4productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type4productPrice3").innerHTML ="￥"+ type1List[2].productprice;
+					document.getElementById("type4productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type4productImg3").src = type1List[2].productimg;
 	
 					$(type4productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type4productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type4productPrice4").innerHTML ="￥"+ type1List[3].productprice;
+					document.getElementById("type4productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type4productImg4").src = type1List[3].productimg;
 	
 					$(type4productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type4productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type4productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type4productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type4productImg5").src = type1List[4].productimg;
 	
 					$(type4productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type4productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type4productPrice6").innerHTML = "￥"+type1List[5].productprice;
+					document.getElementById("type4productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type4productImg6").src = type1List[5].productimg;
 	
 					$(type4productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
 					alert('数据库错误')
 				}
 			})
-			
+	
 			//娱乐器具推荐
 			var typecontent5 = "娱乐器具";
 			$.ajax({
@@ -2653,54 +2666,54 @@
 	
 	
 					document.getElementById("type5productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type5productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type5productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type5productImg1").src = type1List[0].productimg;
 	
 					$(type5productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type5productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type5productPrice2").innerHTML = "￥"+type1List[1].productprice;
+					document.getElementById("type5productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type5productImg2").src = type1List[1].productimg;
 	
 					$(type5productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type5productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type5productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type5productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type5productImg3").src = type1List[2].productimg;
 	
 					$(type5productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type5productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type5productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type5productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type5productImg4").src = type1List[3].productimg;
 	
 					$(type5productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type5productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type5productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type5productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type5productImg5").src = type1List[4].productimg;
 	
 					$(type5productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type5productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type5productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type5productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type5productImg6").src = type1List[5].productimg;
 	
 					$(type5productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
 					alert('数据库错误')
 				}
 			})
-			
+	
 			//运动器材推荐
 			var typecontent6 = "运动器材";
 			$.ajax({
@@ -2714,54 +2727,54 @@
 	
 	
 					document.getElementById("type6productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type6productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type6productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type6productImg1").src = type1List[0].productimg;
 	
 					$(type6productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type6productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type6productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type6productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type6productImg2").src = type1List[1].productimg;
 	
 					$(type6productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type6productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type6productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type6productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type6productImg3").src = type1List[2].productimg;
 	
 					$(type6productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type6productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type6productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type6productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type6productImg4").src = type1List[3].productimg;
 	
 					$(type6productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type6productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type6productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type6productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type6productImg5").src = type1List[4].productimg;
 	
 					$(type5productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type6productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type6productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type6productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type6productImg6").src = type1List[5].productimg;
 	
 					$(type6productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
 					alert('数据库错误')
 				}
 			})
-			
+	
 			//家具器材推荐
 			var typecontent7 = "家具器材";
 			$.ajax({
@@ -2775,54 +2788,54 @@
 	
 	
 					document.getElementById("type7productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type7productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type7productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type7productImg1").src = type1List[0].productimg;
 	
 					$(type7productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type7productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type7productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type7productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type7productImg2").src = type1List[1].productimg;
 	
 					$(type7productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type7productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type7productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type7productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type7productImg3").src = type1List[2].productimg;
 	
 					$(type7productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type7productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type7productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type7productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type7productImg4").src = type1List[3].productimg;
 	
 					$(type7productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type7productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type7productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type7productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type7productImg5").src = type1List[4].productimg;
 	
 					$(type7productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type7productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type7productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type7productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type7productImg6").src = type1List[5].productimg;
 	
 					$(type7productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
 					alert('数据库错误')
 				}
 			})
-			
+	
 			//电子产品推荐
 			var typecontent8 = "电子产品";
 			$.ajax({
@@ -2836,55 +2849,55 @@
 	
 	
 					document.getElementById("type8productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type8productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type8productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type8productImg1").src = type1List[0].productimg;
 	
 					$(type8productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type8productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type8productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type8productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type8productImg2").src = type1List[1].productimg;
 	
 					$(type8productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type8productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type8productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type8productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type8productImg3").src = type1List[2].productimg;
 	
 					$(type8productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type8productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type8productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type8productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type8productImg4").src = type1List[3].productimg;
 	
 					$(type8productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type8productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type8productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type8productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type8productImg5").src = type1List[4].productimg;
 	
 					$(type8productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type8productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type8productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type8productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type8productImg6").src = type1List[5].productimg;
 	
 					$(type8productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
 					alert('数据库错误')
 				}
 			})
-			
-			
+	
+	
 			//医药保健推荐
 			var typecontent9 = "医药保健";
 			$.ajax({
@@ -2898,55 +2911,55 @@
 	
 	
 					document.getElementById("type9productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type9productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type9productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type9productImg1").src = type1List[0].productimg;
 	
 					$(type9productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type9productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type9productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type9productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type9productImg2").src = type1List[1].productimg;
 	
 					$(type9productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type9productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type9productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type9productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type9productImg3").src = type1List[2].productimg;
 	
 					$(type9productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type9productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type9productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type9productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type9productImg4").src = type1List[3].productimg;
 	
 					$(type9productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type9productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type9productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type9productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type9productImg5").src = type1List[4].productimg;
 	
 					$(type9productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type9productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type9productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type9productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type9productImg6").src = type1List[5].productimg;
 	
 					$(type9productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
 					alert('数据库错误')
 				}
 			})
-			
-			
+	
+	
 			//医疗器材推荐
 			var typecontent10 = "医疗器材";
 			$.ajax({
@@ -2960,47 +2973,47 @@
 	
 	
 					document.getElementById("type10productName1").innerHTML = type1List[0].productname;
-					document.getElementById("type10productPrice1").innerHTML = "￥"+type1List[0].productprice;
+					document.getElementById("type10productPrice1").innerHTML = "￥" + type1List[0].productprice;
 					document.getElementById("type10productImg1").src = type1List[0].productimg;
 	
 					$(type10productImg1).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[0].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[0].productid';
 					})
 	
 					document.getElementById("type10productName2").innerHTML = type1List[1].productname;
-					document.getElementById("type10productPrice2").innerHTML ="￥"+ type1List[1].productprice;
+					document.getElementById("type10productPrice2").innerHTML = "￥" + type1List[1].productprice;
 					document.getElementById("type10productImg2").src = type1List[1].productimg;
 	
 					$(type8productImg2).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[1].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[1].productid';
 					})
 					document.getElementById("type10productName3").innerHTML = type1List[2].productname;
-					document.getElementById("type10productPrice3").innerHTML = "￥"+type1List[2].productprice;
+					document.getElementById("type10productPrice3").innerHTML = "￥" + type1List[2].productprice;
 					document.getElementById("type10productImg3").src = type1List[2].productimg;
 	
 					$(type10productImg3).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[2].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[2].productid';
 					})
 					document.getElementById("type10productName4").innerHTML = type1List[3].productname;
-					document.getElementById("type10productPrice4").innerHTML = "￥"+type1List[3].productprice;
+					document.getElementById("type10productPrice4").innerHTML = "￥" + type1List[3].productprice;
 					document.getElementById("type10productImg4").src = type1List[3].productimg;
 	
 					$(type10productImg4).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[3].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[3].productid';
 					})
 					document.getElementById("type10productName5").innerHTML = type1List[4].productname;
-					document.getElementById("type10productPrice5").innerHTML = "￥"+type1List[4].productprice;
+					document.getElementById("type10productPrice5").innerHTML = "￥" + type1List[4].productprice;
 					document.getElementById("type10productImg5").src = type1List[4].productimg;
 	
 					$(type10productImg5).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[4].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[4].productid';
 					})
 					document.getElementById("type10productName6").innerHTML = type1List[5].productname;
-					document.getElementById("type10productPrice6").innerHTML ="￥"+ type1List[5].productprice;
+					document.getElementById("type10productPrice6").innerHTML = "￥" + type1List[5].productprice;
 					document.getElementById("type10productImg6").src = type1List[5].productimg;
 	
 					$(type10productImg6).on('click', function() {
-						location.href = 'http://localhost:8080/eldermanage/front_end/Front/introduction.html?productid="+todayList[5].productid';
+						location.href = '../Front/introduction.html?productid="+todayList[5].productid';
 					})
 				},
 				error : function() {
