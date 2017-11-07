@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Message;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.IndexService;
 import com.sds.em.util.Md5;
 
@@ -130,17 +131,34 @@ public class IndexController {
 	
 	//wuwenbo,用户登录
 	@RequestMapping(method = RequestMethod.POST, value = "accountnumber")
-	public @ResponseBody String login(String tel,String password) {
+	public @ResponseBody Message login(HttpSession session,String tel,String password,boolean isremember) {
 		Subject subject = SecurityUtils.getSubject();
 		password=Md5.MD5(password);
 		UsernamePasswordToken token = new UsernamePasswordToken(tel, password);
-		token.setRememberMe(true);
+		token.setRememberMe(isremember);
 		try {
 			subject.login(token);
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
-			return "登录失败";
+			return new Message(false,"登录失败",null);
 		}
-		return "登录成功";
+		LoginMassage loginMassage=indexService.getuser(tel);
+		session.setAttribute("oldername", loginMassage.getStaffname());
+		session.setAttribute("olderid", loginMassage.getOlderid());
+		session.setAttribute("oldertel", loginMassage.getOldertel());
+		session.setAttribute("stafftd", loginMassage.getStaffid());
+		session.setAttribute("staffname", loginMassage.getStaffname());
+		session.setAttribute("stafftel", loginMassage.getStafftel());
+		session.setAttribute("branchid", loginMassage.getBranchid());
+		session.setAttribute("branchname", loginMassage.getBranchname());
+		return new Message(true,"登录成功",loginMassage.getUser());
+	}
+	
+	//wuwenbo，用户注销
+	@RequestMapping(method = RequestMethod.DELETE, value = "accountnumber")
+	public @ResponseBody String logout(HttpSession session) {
+		Subject subject = SecurityUtils.getSubject();
+		subject.logout();
+		return "注销成功";
 	}
 }

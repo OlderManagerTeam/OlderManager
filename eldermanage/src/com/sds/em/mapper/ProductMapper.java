@@ -71,7 +71,8 @@ public interface ProductMapper {
 	// 未登录时，看了又看 根据商品 日浏览量 降序排序显示
 	public List<Product> repeatedView();
 
-
+	//wuwenbo
+	int keyinsert(Product record);
 }
 
 

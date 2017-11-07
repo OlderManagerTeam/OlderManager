@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sds.em.mapper.BranchMapper;
 import com.sds.em.mapper.DepartmentMapper;
 import com.sds.em.mapper.NewsMapper;
 import com.sds.em.mapper.OlderbaseMapper;
@@ -15,12 +16,15 @@ import com.sds.em.mapper.RoleMapper;
 import com.sds.em.mapper.SecurityMapper;
 import com.sds.em.mapper.StaffbaseMapper;
 import com.sds.em.mapper.StafftokenMapper;
+import com.sds.em.po.Branch;
+import com.sds.em.po.BranchExample;
 import com.sds.em.po.Department;
 import com.sds.em.po.DepartmentExample;
 import com.sds.em.po.DepartmentExample.Criterion;
 import com.sds.em.po.Message;
 import com.sds.em.po.News;
 import com.sds.em.po.NewsExample;
+import com.sds.em.po.Olderbase;
 import com.sds.em.po.OlderbaseExample;
 import com.sds.em.po.Question;
 import com.sds.em.po.QuestionExample;
@@ -31,6 +35,7 @@ import com.sds.em.po.SecurityExample;
 import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
 import com.sds.em.po.Stafftoken;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.po.StaffbaseExample.Criteria;
 import com.sds.em.service.IndexService;
 import com.sds.em.util.Md5;
@@ -44,6 +49,9 @@ public class IndexServiceImpl implements IndexService {
 	RoleMapper roleMapper;
 
 	Message m;
+	
+	@Autowired
+	BranchMapper branchMapper;
 
 	@Autowired
 	StaffbaseMapper staffbaseMapper;
@@ -323,6 +331,45 @@ public class IndexServiceImpl implements IndexService {
 		if (!(olderbaseMapper.selectByExample(olderbaseExample).isEmpty()))
 			return new Message(true, "账号存在", null);
 		return new Message(false, "账号不存在", null);
+	}
+
+	@Override
+	// wuwenbo 获得用户信息装到session里
+	public LoginMassage getuser(String tel) {
+		LoginMassage loginMassage=new LoginMassage();
+		olderbaseExample.clear();
+		olderbaseCriteria = olderbaseExample.createCriteria();
+		olderbaseCriteria.andOldertelEqualTo(tel);
+		List<Olderbase> olderbaseList=olderbaseMapper.selectByExample(olderbaseExample);
+		if(!olderbaseList.isEmpty()){
+			Olderbase olderbase=olderbaseList.get(0);
+			loginMassage.setOldername(olderbase.getOldername());
+			loginMassage.setOlderid(olderbase.getOlderid());
+			loginMassage.setOldertel(olderbase.getOldertel());
+			loginMassage.setUser("elder");
+		}
+		staffbaseExample.clear();
+		staffbaseCriteria = staffbaseExample.createCriteria();
+		staffbaseCriteria.andStafftelEqualTo(tel);
+		List<Staffbase> staffbaseList=staffbaseMapper.selectByExample(staffbaseExample);
+		if(!staffbaseList.isEmpty()){
+			Staffbase staffbase=staffbaseList.get(0);
+			loginMassage.setStaffid(staffbase.getStaffid());
+			loginMassage.setStaffname(staffbase.getStaffname());
+			loginMassage.setStafftel(staffbase.getStafftel());
+			BranchExample branchExample=new BranchExample();
+			BranchExample.Criteria branchExampleCriteria=branchExample.createCriteria();
+			branchExampleCriteria.andBranchmanageridEqualTo(staffbase.getStaffid());
+			List<Branch> branchList=branchMapper.selectByExample(branchExample);
+			loginMassage.setUser("staff");
+			if(!(branchList.isEmpty())){
+				Branch branch=branchList.get(0);
+				loginMassage.setBranchid(branch.getBranchid());
+				loginMassage.setBranchname(branch.getBranchname());
+				loginMassage.setUser("branchmanager");
+			}
+		}
+		return loginMassage;
 	}
 
 }

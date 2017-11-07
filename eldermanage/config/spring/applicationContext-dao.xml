@@ -47,7 +47,13 @@
 		<!-- 	Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
 			<value>
-				/v1/oldershop/**=roles[shopmanager]
+				/v1/oldershop/**=authc,roles[shopmanager]
+				/v1/brench/**=authc,roles[branchmanager]
+				/v1/headoffice/**=authc,roles[headofficemanager]
+				/v1/news/**=authc,roles[newsmanager]
+				/v1/personal/**=authc
+				/v1/video/**=authc,roles[videomanager]
+				/v1/common/**=authc,roles[newsmanager]
 			</value>
 		</property>
 	</bean>

@@ -10,8 +10,10 @@ import com.sds.em.mapper.OrderlistMapper;
 import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.mapper.ProductMapper;
 import com.sds.em.mapper.ProductgroupMapper;
+import com.sds.em.mapper.ProductpiclistMapper;
 import com.sds.em.mapper.ProductrateMapper;
 import com.sds.em.mapper.ProductstoreMapper;
+import com.sds.em.mapper.ProductviewlistMapper;
 import com.sds.em.po.Joingroup;
 import com.sds.em.po.JoingroupExample;
 import com.sds.em.po.Message;
@@ -23,10 +25,12 @@ import com.sds.em.po.Product;
 import com.sds.em.po.ProductExample;
 import com.sds.em.po.ProductExample.Criteria;
 import com.sds.em.po.Productgroup;
+import com.sds.em.po.Productpiclist;
 import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductrateExample;
 import com.sds.em.po.Productstore;
 import com.sds.em.po.ProductstoreExample;
+import com.sds.em.po.Productviewlist;
 import com.sds.em.pojo.OrdersExtend;
 import com.sds.em.pojo.ProductrateExtend;
 import com.sds.em.pojo.ProductstoreExtend;
@@ -44,6 +48,12 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	@Autowired
 	OrdersMapper ordersMapper;
+	
+	@Autowired
+	ProductpiclistMapper productpiclistMapper;
+	
+	@Autowired
+	ProductviewlistMapper productviewlistMapper;
 
 	ProductExample productExample = new ProductExample();
 	Criteria productCriteria;
@@ -72,6 +82,7 @@ public class OlderShopServiceImpl implements OlderShopService {
 	JoingroupExample joingroupExample = new JoingroupExample();
 	JoingroupExample.Criteria joingroupCriteria;
 
+	
 	@Override
 	// wuwenbo,添加商品
 	public Message addProduct(Product product) throws Exception {
@@ -121,14 +132,23 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	@Override
 	// wuwenbo,添加商品信息
-	public Message product(Product product) {
+	public Message product(Product product, List<Productpiclist> productpiclist, 
+			List<Productviewlist> productviewlist) {
 		try {
-			productMapper.insertSelective(product);
-			return new Message(true, "上传成功", null);
+			productMapper.keyinsert(product);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
+		for(Productpiclist productpic:productpiclist){
+			productpic.setPproductid(product.getProductid());
+			productpiclistMapper.insertSelective(productpic);
+		}
+		for(Productviewlist productpic:productviewlist){
+			productpic.setPviewpicproductid(product.getProductid());
+			productviewlistMapper.insertSelective(productpic);
+		}
+		return new Message(true, "上传成功", null);
 	}
 
 	@Override
