@@ -36,4 +36,6 @@ public interface IndexService {
 	
 	//新闻列表查询
 	public Message allNews();
+
+	public Message verificationAccountNumber(String tel);
 }

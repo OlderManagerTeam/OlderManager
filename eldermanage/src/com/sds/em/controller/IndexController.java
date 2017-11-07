@@ -19,14 +19,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Message;
 import com.sds.em.service.IndexService;
+import com.sds.em.util.Md5;
 
 /**
  * 
- * @author wenbowu ����Ա����controller
+ * @author wenbowu 吴文波登录注册
  */
 
 @Controller
-@RequestMapping("v1/index/staff/")
+@RequestMapping("v1/index/person/")
 public class IndexController {
 
 	@Autowired
@@ -49,7 +50,6 @@ public class IndexController {
 		try {
 			dnf.transferTo(dnf1);
 		} catch (IllegalStateException | IOException e1) {
-			// TODO 自动生成的 catch 块
 			e1.printStackTrace();
 			return "上传失败";
 		}
@@ -58,7 +58,6 @@ public class IndexController {
 		try {
 			subject.login(token);
 		} catch (AuthenticationException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return "failed";
 		}
@@ -104,11 +103,11 @@ public class IndexController {
 	//AJAX上传文件测试
 	@RequestMapping(method = RequestMethod.DELETE, value = "upload")
 	public @ResponseBody Message upload(String username,String accountnum) {
-		int i = 0;
+/*		int i = 0;
 		int j = 0;
 		
-		int k=i+j;
-		return null;
+		//int k=i+j;
+*/		return null;
 	}
 	
 /*	@RequestMapping(method = RequestMethod.PUT, value = "upload")
@@ -122,4 +121,26 @@ public class IndexController {
 	
 	//首页新闻
 	
+	
+	// wuwenbo 验证员工或老人的账号是否存在
+	@RequestMapping(method = RequestMethod.GET, value = "accountnumber")
+	public @ResponseBody Message verificationAccountNumber(String tel) {
+		return indexService.verificationAccountNumber(tel);
+	}
+	
+	//wuwenbo,用户登录
+	@RequestMapping(method = RequestMethod.POST, value = "accountnumber")
+	public @ResponseBody String login(String tel,String password) {
+		Subject subject = SecurityUtils.getSubject();
+		password=Md5.MD5(password);
+		UsernamePasswordToken token = new UsernamePasswordToken(tel, password);
+		token.setRememberMe(true);
+		try {
+			subject.login(token);
+		} catch (AuthenticationException e) {
+			e.printStackTrace();
+			return "登录失败";
+		}
+		return "登录成功";
+	}
 }
