@@ -59,6 +59,15 @@ public interface ProductMapper {
 	// 根据二级标签搜索商品及量列表
 	public List<ProductAmount> typeTwoRecommend(String typetwocontent);
 
+	
+	// 根据二级标签搜索商品及量列表-"销量排序"
+	public List<ProductAmount> typeTwoRecommendA(String typetwocontent);
+
+	
+	// 根据二级标签搜索商品及量列表-"价格优先"
+	public List<ProductAmount> typeTwoRecommendP(String typetwocontent);
+
+	
 	// 未登录时，看了又看 根据商品 日浏览量 降序排序显示
 	public List<Product> repeatedView();
 

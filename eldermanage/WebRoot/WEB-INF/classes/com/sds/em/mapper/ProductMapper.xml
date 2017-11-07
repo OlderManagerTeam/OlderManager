@@ -382,23 +382,47 @@
 
 	<select id="productSearchSortP" parameterType="java.lang.String"
 		resultType="com.sds.em.shop.pojo.ProductAmount">
-		select * from product where product.productName LIKE
+		select * from product INNER JOIN productstore on
+		product.productId=productstore.storeProductId where
+		product.productName LIKE
 		'%${value}%' or
-		product.productInfo LIKE '%${value}%' ORDER BY
+		product.productInfo LIKE
+		'%${value}%' ORDER BY
 		productPrice
 	</select>
 
 	<select id="typeTwoRecommend" parameterType="java.lang.String"
 		resultType="com.sds.em.po.Product">
 		select product.*,productstore.* from
-		product,producttypetwo,productstore where
-		product.productId=producttypetwo.typeTwoTypeId and
+		product,producttypetwo,productstore
+		where
+		product.typeTwoTypeId=producttypetwo.typeTwoId and
+		product.productId=productstore.storeProductId and
+		producttypetwo.typeTwoContent =#{value}
+	</select>
+
+	<select id="typeTwoRecommendA" parameterType="java.lang.String"
+		resultType="com.sds.em.po.Product">
+		select product.*,productstore.* from
+		product,producttypetwo,productstore
+		where
+		product.typeTwoTypeId=producttypetwo.typeTwoId and
 		product.productId=productstore.storeProductId and
 		producttypetwo.typeTwoContent = #{value} ORDER BY
 		productstore.storeDaySales
 		DESC
 	</select>
 
+	<select id="typeTwoRecommendP" parameterType="java.lang.String"
+		resultType="com.sds.em.po.Product">
+		select product.*,productstore.* from
+		product,producttypetwo,productstore
+		where
+		product.typeTwoTypeId=producttypetwo.typeTwoId and
+		product.productId=productstore.storeProductId and
+		producttypetwo.typeTwoContent =#{value} ORDER BY
+		product.productPrice
+	</select>
 	<select id="repeatedView" resultType="com.sds.em.po.Product">
 		select product.* from
 		product,productstore where

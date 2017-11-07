@@ -1,5 +1,7 @@
 package com.sds.em.po;
 
+import java.util.Date;
+
 public class Productrate {
     private Integer rateid;
 
@@ -10,6 +12,8 @@ public class Productrate {
     private Integer ratestar;
 
     private String ratecontent;
+
+    private Date ratedate;
 
     public Integer getRateid() {
         return rateid;
@@ -49,5 +53,13 @@ public class Productrate {
 
     public void setRatecontent(String ratecontent) {
         this.ratecontent = ratecontent == null ? null : ratecontent.trim();
+    }
+
+    public Date getRatedate() {
+        return ratedate;
+    }
+
+    public void setRatedate(Date ratedate) {
+        this.ratedate = ratedate;
     }
 }
