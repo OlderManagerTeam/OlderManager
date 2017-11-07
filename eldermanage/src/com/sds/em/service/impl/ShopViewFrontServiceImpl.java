@@ -144,6 +144,28 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 		}
 	}
 
+
+	@Override
+	public Message typeTwoProductsSort(String typetwocontent, String sort) throws Exception {
+		try {
+			List<ProductAmount> productList = null;
+			if (sort.equals("销量排序")) {
+				productList = productMapper.typeTwoRecommendA(typetwocontent);
+			} else if (sort.equals("价格优先")) {
+				productList = productMapper.typeTwoRecommendP(typetwocontent);
+			} 
+			if (!productList.isEmpty()) {
+				return new Message(true, "返回成功", productList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
 	@Override
 	public Message getProduct(int productid) throws Exception {
 		try {
@@ -263,6 +285,18 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 			return new Message(false, "数据库错误", null);
 		}
 
+	}
+
+	@Override
+	public Message GroupIndexView() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Message GroupEndView() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
