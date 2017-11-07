@@ -31,6 +31,8 @@ public class Olderbase {
 
     private Integer oldermaxpoint;
 
+    private String olderlevel;
+
     public Integer getOlderid() {
         return olderid;
     }
@@ -141,5 +143,13 @@ public class Olderbase {
 
     public void setOldermaxpoint(Integer oldermaxpoint) {
         this.oldermaxpoint = oldermaxpoint;
+    }
+
+    public String getOlderlevel() {
+        return olderlevel;
+    }
+
+    public void setOlderlevel(String olderlevel) {
+        this.olderlevel = olderlevel == null ? null : olderlevel.trim();
     }
 }

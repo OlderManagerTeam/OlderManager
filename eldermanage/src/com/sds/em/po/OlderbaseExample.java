@@ -1061,6 +1061,76 @@ public class OlderbaseExample {
             addCriterion("olderMaxPoint not between", value1, value2, "oldermaxpoint");
             return (Criteria) this;
         }
+
+        public Criteria andOlderlevelIsNull() {
+            addCriterion("olderLevel is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelIsNotNull() {
+            addCriterion("olderLevel is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelEqualTo(String value) {
+            addCriterion("olderLevel =", value, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelNotEqualTo(String value) {
+            addCriterion("olderLevel <>", value, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelGreaterThan(String value) {
+            addCriterion("olderLevel >", value, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelGreaterThanOrEqualTo(String value) {
+            addCriterion("olderLevel >=", value, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelLessThan(String value) {
+            addCriterion("olderLevel <", value, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelLessThanOrEqualTo(String value) {
+            addCriterion("olderLevel <=", value, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelLike(String value) {
+            addCriterion("olderLevel like", value, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelNotLike(String value) {
+            addCriterion("olderLevel not like", value, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelIn(List<String> values) {
+            addCriterion("olderLevel in", values, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelNotIn(List<String> values) {
+            addCriterion("olderLevel not in", values, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelBetween(String value1, String value2) {
+            addCriterion("olderLevel between", value1, value2, "olderlevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andOlderlevelNotBetween(String value1, String value2) {
+            addCriterion("olderLevel not between", value1, value2, "olderlevel");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
