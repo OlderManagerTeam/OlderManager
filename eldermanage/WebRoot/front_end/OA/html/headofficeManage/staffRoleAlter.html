@@ -262,7 +262,7 @@
 								<div class="form-group">
 									<label for="staffImg" class="col-sm-3 control-label">员工头像：</label>
 									<div class="col-sm-5">
-										<img src="../../img/textheadphoto.jpg" id="staffimg">
+										<img src="" id="staffimg">
 									</div>
 								</div>
 								<div class="form-group">
@@ -491,7 +491,6 @@
 	
 		function load() {
 			var staffid = UrlParm.parm("staffid");
-			//var staffid = 1;
 	
 			$.ajax({
 				type : 'get',
@@ -499,7 +498,7 @@
 				url : "/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
 				data : null,
 				success : function(result) {
-					$('#staffimg').attr("value",result.data.staffbase.staffimg);
+					$('#staffimg').attr("src",result.data.staffbase.staffimg);
 					$('#staffname').val(result.data.staffbase.staffname);
 					//$('#staffcode').attr("value",result.data.staffbase.staffcode);
 					$('#staffsex').val(result.data.staffbase.staffsex);

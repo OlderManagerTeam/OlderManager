@@ -258,7 +258,7 @@
 								<div class="form-group">
 									<label for="staffImg" class="col-sm-3 control-label">员工照片：</label>
 									<div class="col-sm-5">
-										<img src="../../img/textheadphoto.jpg" id="staffimg">
+										<img src="" id="staffimg">
 									</div>
 								</div>
 								<div class="form-group">
@@ -435,9 +435,12 @@
 					url : "/eldermanage/v1/headoffice/staff/info?staffid=" + staffid,
 					data : null,
 					success : function(result) {
-						$('#staffimg').val(result.data.staffbase.staffimg);
+					document.getElementById("staffimg").src = result.data.staffbase.staffimg;
+					//	$('#staffimg').val(result.data.staffbase.staffimg);
+						
 						$('#staffcode').val(result.data.staffbase.staffcode);
 						$('#staffname').val(result.data.staffbase.staffname);
+						
 						$('#staffsex').val(result.data.staffbase.staffsex);
 						$('#staffiide').val(result.data.staffbase.staffiide);
 						$('#stafftel').val(result.data.staffbase.stafftel);

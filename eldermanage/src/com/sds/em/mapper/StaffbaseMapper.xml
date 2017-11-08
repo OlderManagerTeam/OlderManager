@@ -133,7 +133,7 @@
 		#{staffpassword,jdbcType=VARCHAR}, #{staffroleid,jdbcType=INTEGER}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="com.sds.em.po.Staffbase">
+	<insert id="insertSelective" parameterType="com.sds.em.po.Staffbase" useGeneratedKeys="true" keyProperty="staffid">
 		insert into staffbase
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="staffid != null">

@@ -3,7 +3,9 @@ package com.sds.em.controller;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.UUID;
 
@@ -19,6 +21,8 @@ import com.sds.em.po.Message;
 import com.sds.em.po.Oldersick;
 import com.sds.em.po.Product;
 import com.sds.em.po.Productgroup;
+import com.sds.em.po.Productpiclist;
+import com.sds.em.po.Productviewlist;
 import com.sds.em.service.OlderShopService;
 import com.sds.em.util.DateSimp;
 
@@ -54,8 +58,12 @@ public class OlderShopController {
 
 	// wuwenbo,添加商品信息
 	@RequestMapping(method = RequestMethod.POST, value = "product/info")
-	public @ResponseBody Message entryproduct(Product product, MultipartFile productImg, String productUpondate,@RequestParam(value="fileGG",required=true)MultipartFile[] fileGG)
+	public @ResponseBody Message entryproduct(Product product, MultipartFile productImg, String productUpondate,@RequestParam(value="fileview",required=true)MultipartFile[] fileview,
+			@RequestParam(value="filepic",required=true)MultipartFile[] filepic
+			)
 			throws Exception {
+		List<Productpiclist> productpiclist=new ArrayList<Productpiclist>();
+		List<Productviewlist> productviewlist=new ArrayList<Productviewlist>();
 		String pic_path = "E:\\oldermanageresource\\productimg\\";
 		String picUrl = "/productimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
@@ -68,8 +76,38 @@ public class OlderShopController {
 		if (!productUpondate.isEmpty()) {
 			date = DateSimp.simp(productUpondate);
 		}
-		product.setProductupondate(date);
-		return olderShopService.product(product);
+		if(filepic.length>0){
+			String productpic_path = "E:\\oldermanageresource\\productpic\\";
+			String url="/productpic/";
+			for(MultipartFile filepicsingle:filepic){
+				Productpiclist Productpic=new Productpiclist();
+				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				File filePicSingle = new File(productpic_path + newFileName);
+				filepicsingle.transferTo(filePicSingle);
+				Productpic.setPpicurl(url + newFileName);
+				productpiclist.add(Productpic);
+			}
+		}
+		if(fileview.length>0){
+			String productview_path = "E:\\oldermanageresource\\productview\\";
+			String url="/productview/";
+				Productviewlist productview=new Productviewlist();
+				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				File filePicSingle = new File(productview_path + newFileName);
+				fileview[0].transferTo(filePicSingle);
+				productview.setPviewpicsmallpic(url + newFileName);
+				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				filePicSingle = new File(productview_path + newFileName);
+				fileview[1].transferTo(filePicSingle);
+				productview.setPviewpicpic(url + newFileName);
+				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				filePicSingle = new File(productview_path + newFileName);
+				fileview[2].transferTo(filePicSingle);
+				productview.setPviewpicbigpic(url + newFileName);
+				productviewlist.add(productview);
+		}
+		product.setProductupondate(date);	
+		return olderShopService.product(product,productpiclist,productviewlist);
 	}
 
 	// wuwenbo,修改商品信息
