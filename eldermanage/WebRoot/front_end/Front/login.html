@@ -96,7 +96,9 @@
 						<div class="form-group">
 							<input type="button" id="loginsubmit" value="登陆" class="btn btn-primary">
 						</div>
-
+						<div class="form-group">
+							<input type="button" id="logoutsubmit" value="注销" class="btn btn-primary">
+						</div>
 					<!-- </form> -->
 					<!-- END Sign In Form -->
 
@@ -129,7 +131,29 @@
 				url: "http://localhost:8080/eldermanage/v1/index/person/accountnumber?tel=123123212&password=123456",
 				data: null,
 				success:function(result){
-				alert();
+				alert(result.information);
+				},
+				error:function(){
+					alert('fail')
+				}
+			})
+		})
+	</script>
+		<script type="text/javascript">
+		$("#logoutsubmit").click(function(){
+			var data = {
+				stafftel: $("#tel").val(),
+				staffpassword: $("#password").val(),
+			}
+			
+			/* var form=new FormData(); */
+			$.ajax({
+				type: 'delete',
+				contentType:false,
+				url: "http://localhost:8080/eldermanage/v1/index/person/accountnumber",
+				data: null,
+				success:function(result){
+				alert(result);
 				},
 				error:function(){
 					alert('fail')

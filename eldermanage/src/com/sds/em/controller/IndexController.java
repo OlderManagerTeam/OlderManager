@@ -2,6 +2,8 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Message;
+import com.sds.em.po.Question;
+import com.sds.em.po.Security;
+import com.sds.em.po.Staffbase;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.IndexService;
+import com.sds.em.util.DateSimp;
 import com.sds.em.util.Md5;
 
 /**
@@ -64,7 +71,7 @@ public class IndexController {
 		return "成功登录";
 	}
 
-	// ���ظ����ܱ�����
+	// 返回所有问题
 	@RequestMapping(method = RequestMethod.GET, value = "question")
 	public @ResponseBody Message question(@RequestBody String stafftel) {
 		return indexService.returnQuestion(stafftel);
@@ -130,17 +137,69 @@ public class IndexController {
 	
 	//wuwenbo,用户登录
 	@RequestMapping(method = RequestMethod.POST, value = "accountnumber")
-	public @ResponseBody String login(String tel,String password) {
+	public @ResponseBody Message login(HttpSession session,String tel,String password,boolean isremember) {
 		Subject subject = SecurityUtils.getSubject();
 		password=Md5.MD5(password);
 		UsernamePasswordToken token = new UsernamePasswordToken(tel, password);
-		token.setRememberMe(true);
+		token.setRememberMe(isremember);
 		try {
 			subject.login(token);
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
-			return "登录失败";
+			return new Message(false,"登录失败",null);
 		}
-		return "登录成功";
+		LoginMassage loginMassage=indexService.getuser(tel);
+		session.setAttribute("oldername", loginMassage.getStaffname());
+		session.setAttribute("olderid", loginMassage.getOlderid());
+		session.setAttribute("oldertel", loginMassage.getOldertel());
+		session.setAttribute("stafftd", loginMassage.getStaffid());
+		session.setAttribute("staffname", loginMassage.getStaffname());
+		session.setAttribute("stafftel", loginMassage.getStafftel());
+		session.setAttribute("branchid", loginMassage.getBranchid());
+		session.setAttribute("branchname", loginMassage.getBranchname());
+		return new Message(true,"登录成功",loginMassage.getUser());
+	}
+	
+	//wuwenbo，用户注销
+	@RequestMapping(method = RequestMethod.DELETE, value = "accountnumber")
+	public @ResponseBody Message logout(HttpSession session) {
+		Subject subject = SecurityUtils.getSubject();
+		subject.logout();
+		return new Message(true,"注销成功",null);
+	}
+	
+	//员工注册
+	@RequestMapping(method = RequestMethod.POST, value = "staff")
+	public @ResponseBody Message staffregister(Staffbase staffbase,Security security,String staffBirthday,
+			MultipartFile staffImg) {
+		if(indexService.usernotregister(staffbase.getStafftel())){
+		try {
+			if(!staffBirthday.isEmpty())
+			staffbase.setStaffbirthday(DateSimp.simp(staffBirthday));
+		} catch (ParseException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		if(!staffImg.isEmpty()){
+			String url="/staffimg/";
+			String imgpath="E:\\oldermanageresource\\staffimg\\";
+			String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+			File file=new File(imgpath+newFileName);
+			try {
+				staffImg.transferTo(file);
+			} catch (IllegalStateException | IOException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+			staffbase.setStaffimg(url+newFileName);
+		}
+		//日期转换
+		//头像
+		//验证电话号码是否重复
+		//密码转换
+		staffbase.setStaffpassword(Md5.MD5(staffbase.getStaffpassword()));
+		return indexService.staffregister(staffbase,security);
+		}
+		return new Message(false,"账号已存在",null);
 	}
 }
