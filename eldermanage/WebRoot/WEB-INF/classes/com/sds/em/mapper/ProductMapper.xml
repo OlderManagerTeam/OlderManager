@@ -429,6 +429,21 @@
 		product.productId=productstore.storeProductId ORDER BY
 		productstore.storeDayBrowse DESC
 	</select>
-
-
+	<!-- wuwenbo,插入返回主键 -->
+	<insert id="keyinsert" parameterType="com.sds.em.po.Product" useGeneratedKeys="true" keyProperty="productid">
+		insert into product
+		(productName, productPrice,
+		productTypeNumber, productInfo,
+		productImg,
+		productWeight, productUponDate, productDiscountPrice,
+		typeTwoTypeId)
+		values (
+		#{productname,jdbcType=VARCHAR},
+		#{productprice,jdbcType=REAL},
+		#{producttypenumber,jdbcType=INTEGER},
+		#{productinfo,jdbcType=VARCHAR}, #{productimg,jdbcType=VARCHAR},
+		#{productweight,jdbcType=REAL}, #{productupondate,jdbcType=DATE},
+		#{productdiscountprice,jdbcType=REAL},
+		#{typetwotypeid,jdbcType=INTEGER})
+	</insert>
 </mapper>

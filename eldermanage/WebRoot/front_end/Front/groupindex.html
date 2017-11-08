@@ -15,7 +15,7 @@
 
 		<link href="css/seastyle.css" rel="stylesheet" type="text/css" />
        
-		
+		<link rel="stylesheet" href="css/layui.css"  media="all">
 		<link type="text/css" href="css/optstyle.css" rel="stylesheet" />
 		<link type="text/css" href="css/style.css" rel="stylesheet" />
 
@@ -28,7 +28,10 @@
 		<script type="text/javascript" src="js/jquery.flexslider.js"></script>
 		<script type="text/javascript" src="js/list.js"></script>
 
-	</head>
+    <script src="js/layui.all.js" charset="utf-8"></script>
+	<script src="js/laypage.js" charset="utf-8"></script>
+
+</head>
 
 	<body >
 
@@ -89,7 +92,7 @@
 		
 			<!--背景图片  -->
 			<div style="background:yellow" >
-                     <img src="images/product/group_bg.jpg" />	
+                     <img src="images/product/group_bg.jpg" style="height:400px;" />	
 			</div>
 				
 					<div class="am-g am-g-fixed" style="background:#fa3c26">
@@ -103,50 +106,31 @@
 								<li class="am-active"> 
 									<a href="#">
 
-										<span class="index-needs-dt-txt">即将开团</span></a>
+										<span class="index-needs-dt-txt" id="newgroup">即将开团</span></a>
 
 								</li>
 
 								<li>
 									<a href="#">
 
-										<span class="index-needs-dt-txt">即将截止</span></a>
+										<span class="index-needs-dt-txt" id="endgroup">即将截止</span></a>
 
 								</li>
 
 								<li>
 									<a href="#">
 
-										<span class="index-needs-dt-txt">未开团</span></a>
+										<span class="index-needs-dt-txt" id="willgroup">未开团</span></a>
 								</li>
 								
 							</ul>
 
 							<div class="am-tabs-bd">
-                                 <!--最新团购-->
+                                 <!--即将开团-->
 								<div class="am-tab-panel am-fade am-in am-active " >
-									<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-									<li ><a href="group_introduction.html">
-										<div class="i-pic limit">
-											<img src="images/product/imgsearch1.jpg" />											
-											<p class="title fl">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>
-											<p >
-												<b style="color:red;font-size:20px">¥</b>
-												<strong style="color:red;font-size:20px">56.90</strong>
-									            <b style="color:#666;font-size:14px" >门市价</b>
-									            <em style="color:#666;font-size:14px">¥</em><b style="text-decoration:line-through;color:#666;font-size:14px">98.00</b>								
-								           </p>
-												<br>													
-												<b style="color:#666;font-size:14px">日期</b>
-												<strong style="color:#666;font-size:14px">2017-11-01</strong>
-											</p>
-											</p>
-
-											<p class="number fl">
-												 <img src="images/product/join_group_button.png"/>
-											</p>
-										</div></a>
-									</li>
+									<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes"  id="searchItem">
+									
+									<!--
 									<li><a href="group_introduction.html">
 										<div class="i-pic limit">
 											<img src="images/product/imgsearch1.jpg" />											
@@ -167,62 +151,15 @@
 												 <img src="images/product/join_group_button.png"/>
 											</p>
 										</div>
-									</li></a>
-									<li>
-										<div class="i-pic limit">
-											<img src="images/product/imgsearch1.jpg" />											
-											<p class="title fl">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>
-											<p >
-												<b style="color:red;font-size:20px">¥</b>
-												<strong style="color:red;font-size:20px">56.90</strong>
-									            <b style="color:#666;font-size:14px" >门市价</b>
-									            <em style="color:#666;font-size:14px">¥</em><b style="text-decoration:line-through;color:#666;font-size:14px">98.00</b>								
-								           </p>
-												<br>													
-												<b style="color:#666;font-size:14px">日期</b>
-												<strong style="color:#666;font-size:14px">2017-11-01</strong>
-											</p>
-											</p>
+									</li></a>-->
 
-											<p class="number fl">
-												 <img src="images/product/join_group_button.png"/>
-											</p>
-										</div>
-									</li>
-								    <li>
-										<div class="i-pic limit">
-											<img src="images/product/imgsearch1.jpg" />											
-											<p class="title fl">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>
-											<p >
-												<b style="color:red;font-size:20px">¥</b>
-												<strong style="color:red;font-size:20px">56.90</strong>
-									            <b style="color:#666;font-size:14px" >门市价</b>
-									            <em style="color:#666;font-size:14px">¥</em><b style="text-decoration:line-through;color:#666;font-size:14px">98.00</b>								
-								           </p>
-												<br>													
-												<b style="color:#666;font-size:14px">日期</b>
-												<strong style="color:#666;font-size:14px">2017-11-01</strong>
-											</p>
-											</p>
 
-											<p class="number fl">
-												 <img src="images/product/join_group_button.png"/>
-											</p>
-										</div>
-									</li>
 									</ul>
 										<!--分页 -->
-									<ul class="am-pagination am-pagination-right">
-										<li class="am-disabled"><a href="#">&laquo;</a></li>
-										<li class="am-active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">&raquo;</a></li>
+									<ul style="text-align: center;" id="demo5"  >
+									
 									</ul>
-									<div class="clear"></div>
-									<div class="clear"></div>
+
 
 									<div class="tb-reviewsft">
 										<div class="tb-rate-alert type-attention">购买前请查看该商品的介绍，明确您的需求。</div>
@@ -231,6 +168,7 @@
 
 								</div>
                                  <!--即将截止-->
+								<!--
 								<div class="am-tab-panel am-fade">
 									
                                     <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
@@ -318,8 +256,8 @@
 											</p>
 										</div>
 									</li>
-									</ul>
-										<!--分页 -->
+									</ul>-->
+										<!--分页
 									<ul class="am-pagination am-pagination-right">
 										<li class="am-disabled"><a href="#">&laquo;</a></li>
 										<li class="am-active"><a href="#">1</a></li>
@@ -336,8 +274,8 @@
 										<div class="tb-rate-alert type-attention">购买前请查看该商品的介绍，明确您的需求。</div>
 									</div>
 
-								</div>
-                                  <!--未开团-->
+								  </div>  -->
+                                  <!--未开团
 								<div class="am-tab-panel am-fade">
 
 									<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
@@ -409,24 +347,8 @@
 											</p>
 										</div>
 									</li>
-									</ul>
-										<!--分页 -->
-									<ul class="am-pagination am-pagination-right">
-										<li class="am-disabled"><a href="#">&laquo;</a></li>
-										<li class="am-active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">&raquo;</a></li>
-									</ul>
-									<div class="clear"></div>
-									<div class="clear"></div>
-
-									<div class="tb-reviewsft">
-										<div class="tb-rate-alert type-attention">购买前请查看该商品的介绍，明确您的需求。</div>
-									</div>
-
+									</ul>-->
+										
 									<div class="clear"></div>
 
 								</div>
@@ -479,6 +401,145 @@
 			window.jQuery || document.write('<script src="basic/js/jquery-1.9.min.js"><\/script>');
 		</script>
 		<script type="text/javascript" src="basic/js/quick_links.js"></script>
+		
+
+		
+		<script type="text/javascript">
+		    <!--搜索-->
+			var serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/group/index";
+
+			$("#ai-topsearch").click(function (event){
+				window.open("search.html?"+$("#searchInput").val());
+			});
+            
+			
+			$("#newgroup").click(function (event){  //即将开团
+				// 刷新页面调用
+				//window.location.href = 'search.html?'+ searchContent;
+
+				//ajax调用， 不刷新页面
+				serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/group/index";
+				$('#searchItem').html('');		
+				groupItem(serachUrl);
+				//return false;
+			});
+
+			$("#endgroup").click(function (event){  //即将截止
+				// 刷新页面调用
+				//window.location.href = 'search.html?'+ searchContent;
+
+				//ajax调用， 不刷新页面
+				serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/group/end";
+				$('#searchItem').html('');	
+				groupItem(serachUrl);
+				//return false;
+			});
+
+			$("#willgroup").click(function (event){  //即将截止
+				// 刷新页面调用
+				//window.location.href = 'search.html?'+ searchContent;
+
+				//ajax调用， 不刷新页面
+				serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/group/no";
+				$('#searchItem').html('');	
+				groupItem(serachUrl);
+				//return false;
+			});
+
+			function groupItem(url){
+
+				$.ajax({
+					type: 'get',
+					contentType:'application/json',
+					url: url,
+					data: null,
+					success:function(result){
+						var searchData = result.data;
+
+					//	$('#searchCount').text(' ' + searchData.length + ' ');
+					//	$("#searchTitle").html('"' + window.location.href.split("?")[1] +'"');
+
+						// for(var i=0;i<=searchData.length - 1;i++){
+						// 	var oLi = `
+						// 		<li>
+						// 			<div class="i-pic limit">
+						// 				<img src="images/product/imgsearch1.jpg" />											
+						// 				<p class="title fl">${searchData[i].productname}</p>
+						// 				<p class="price fl">
+						// 					<b>¥</b>
+						// 					<strong>${searchData[i].productprice}</strong>
+						// 				</p>
+						// 				<p class="number fl">
+						// 					销量<span>${searchData[i].storetotalsales}</span>
+						// 				</p>
+						// 			</div>
+						// 		</li>
+						// 	`;
+						// 	console.log('${searchData[i].productname');
+						// 	$('#searchItem').append($(oLi));
+						// }
+
+						$("#demo5").show();
+						page(searchData, $("#demo5"));
+					},
+					error:function(){
+						alert('数据库错误')
+					}
+				})
+			}
+
+			//分页
+			function page(videodata, pageRoot){
+				layui.use(['laypage', 'layer'], function(){
+					var laypage = layui.laypage
+					,layer = layui.layer;
+					laypage.render({
+					    elem: pageRoot
+					    ,count: videodata.length
+					    ,limit: 12  //每页个数
+					    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+					    ,hash: 'fenye' //自定义hash值
+					    ,jump: function(obj){
+					      //模拟渲染
+					      document.getElementById('searchItem').innerHTML = function(){
+					        var arr = []
+					        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+					        layui.each(thisData, function(index, item){
+					        	let datas =`
+								
+									<li><a href="group_introduction.html">
+										<div class="i-pic limit">
+											<img src="${item.productimg}" />											
+											<p class="title fl">${item.productname}</p>
+											<p >
+												<b style="color:red;font-size:20px">¥</b>
+												<strong style="color:red;font-size:20px">${item.productprice}</strong>
+									            <b style="color:#666;font-size:14px" >门市价</b>
+									            <em style="color:#666;font-size:14px">¥</em><b style="text-decoration:line-through;color:#666;font-size:14px">${item.productdiscountprice}</b>								
+								           </p>
+												<br>													
+												<b style="color:#666;font-size:14px">日期</b>
+												<strong style="color:#666;font-size:14px">${item.productupondate}</strong>
+											</p>
+											</p>
+
+											<p class="number fl">
+												 <img src="images/product/join_group_button.png"/>
+											</p>
+										</div>
+									</li></a>
+								`;
+					        	arr.push(datas);
+					        });
+					        return arr.join('');
+					      }();
+					    }
+					});
+				});
+			}
+		
+		</script>
+
 
 <div class="theme-popover-mask"></div>
 
