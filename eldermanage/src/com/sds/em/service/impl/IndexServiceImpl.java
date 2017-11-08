@@ -49,13 +49,13 @@ public class IndexServiceImpl implements IndexService {
 	RoleMapper roleMapper;
 
 	Message m;
-	
+
 	@Autowired
 	BranchMapper branchMapper;
 
 	@Autowired
 	StaffbaseMapper staffbaseMapper;
-	StaffbaseExample staffbaseExample=new StaffbaseExample();
+	StaffbaseExample staffbaseExample = new StaffbaseExample();
 	StaffbaseExample.Criteria staffbaseCriteria;
 
 	@Autowired
@@ -72,7 +72,7 @@ public class IndexServiceImpl implements IndexService {
 
 	@Autowired
 	OlderbaseMapper olderbaseMapper;
-	OlderbaseExample olderbaseExample=new OlderbaseExample();
+	OlderbaseExample olderbaseExample = new OlderbaseExample();
 	OlderbaseExample.Criteria olderbaseCriteria;
 
 	@Override
@@ -336,13 +336,13 @@ public class IndexServiceImpl implements IndexService {
 	@Override
 	// wuwenbo 获得用户信息装到session里
 	public LoginMassage getuser(String tel) {
-		LoginMassage loginMassage=new LoginMassage();
+		LoginMassage loginMassage = new LoginMassage();
 		olderbaseExample.clear();
 		olderbaseCriteria = olderbaseExample.createCriteria();
 		olderbaseCriteria.andOldertelEqualTo(tel);
-		List<Olderbase> olderbaseList=olderbaseMapper.selectByExample(olderbaseExample);
-		if(!olderbaseList.isEmpty()){
-			Olderbase olderbase=olderbaseList.get(0);
+		List<Olderbase> olderbaseList = olderbaseMapper.selectByExample(olderbaseExample);
+		if (!olderbaseList.isEmpty()) {
+			Olderbase olderbase = olderbaseList.get(0);
 			loginMassage.setOldername(olderbase.getOldername());
 			loginMassage.setOlderid(olderbase.getOlderid());
 			loginMassage.setOldertel(olderbase.getOldertel());
@@ -351,19 +351,19 @@ public class IndexServiceImpl implements IndexService {
 		staffbaseExample.clear();
 		staffbaseCriteria = staffbaseExample.createCriteria();
 		staffbaseCriteria.andStafftelEqualTo(tel);
-		List<Staffbase> staffbaseList=staffbaseMapper.selectByExample(staffbaseExample);
-		if(!staffbaseList.isEmpty()){
-			Staffbase staffbase=staffbaseList.get(0);
+		List<Staffbase> staffbaseList = staffbaseMapper.selectByExample(staffbaseExample);
+		if (!staffbaseList.isEmpty()) {
+			Staffbase staffbase = staffbaseList.get(0);
 			loginMassage.setStaffid(staffbase.getStaffid());
 			loginMassage.setStaffname(staffbase.getStaffname());
 			loginMassage.setStafftel(staffbase.getStafftel());
-			BranchExample branchExample=new BranchExample();
-			BranchExample.Criteria branchExampleCriteria=branchExample.createCriteria();
+			BranchExample branchExample = new BranchExample();
+			BranchExample.Criteria branchExampleCriteria = branchExample.createCriteria();
 			branchExampleCriteria.andBranchmanageridEqualTo(staffbase.getStaffid());
-			List<Branch> branchList=branchMapper.selectByExample(branchExample);
+			List<Branch> branchList = branchMapper.selectByExample(branchExample);
 			loginMassage.setUser("staff");
-			if(!(branchList.isEmpty())){
-				Branch branch=branchList.get(0);
+			if (!(branchList.isEmpty())) {
+				Branch branch = branchList.get(0);
 				loginMassage.setBranchid(branch.getBranchid());
 				loginMassage.setBranchname(branch.getBranchname());
 				loginMassage.setUser("branchmanager");
@@ -372,4 +372,33 @@ public class IndexServiceImpl implements IndexService {
 		return loginMassage;
 	}
 
+	@Override
+	// 员工注册
+	public Message staffregister(Staffbase staffbase, Security security) {
+		try {
+			staffbaseMapper.insertSelective(staffbase);
+			security.setSecuritystaffid(staffbase.getStaffid());
+			securityMapper.insertSelective(security);
+			return new Message(true, "注册成功", null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public boolean usernotregister(String tel) {
+		olderbaseExample.clear();
+		olderbaseCriteria = olderbaseExample.createCriteria();
+		olderbaseCriteria.andOldertelEqualTo(tel);
+		List<Olderbase> olderbaseList = olderbaseMapper.selectByExample(olderbaseExample);
+		StaffbaseExample staffbaseExample = new StaffbaseExample();
+		Criteria criteria = staffbaseExample.createCriteria();
+		criteria.andStafftelEqualTo(tel);
+		List<Staffbase> staffbaseList = staffbaseMapper.selectByExample(staffbaseExample);
+		if (olderbaseList.isEmpty() && staffbaseList.isEmpty())
+			return true;
+		return false;
+	}
 }

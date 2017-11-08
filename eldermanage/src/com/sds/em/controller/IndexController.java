@@ -2,6 +2,8 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,8 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Message;
+import com.sds.em.po.Question;
+import com.sds.em.po.Security;
+import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.IndexService;
+import com.sds.em.util.DateSimp;
 import com.sds.em.util.Md5;
 
 /**
@@ -65,7 +71,7 @@ public class IndexController {
 		return "成功登录";
 	}
 
-	// ���ظ����ܱ�����
+	// 返回所有问题
 	@RequestMapping(method = RequestMethod.GET, value = "question")
 	public @ResponseBody Message question(@RequestBody String stafftel) {
 		return indexService.returnQuestion(stafftel);
@@ -156,9 +162,44 @@ public class IndexController {
 	
 	//wuwenbo，用户注销
 	@RequestMapping(method = RequestMethod.DELETE, value = "accountnumber")
-	public @ResponseBody String logout(HttpSession session) {
+	public @ResponseBody Message logout(HttpSession session) {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
-		return "注销成功";
+		return new Message(true,"注销成功",null);
+	}
+	
+	//员工注册
+	@RequestMapping(method = RequestMethod.POST, value = "staff")
+	public @ResponseBody Message staffregister(Staffbase staffbase,Security security,String staffBirthday,
+			MultipartFile staffImg) {
+		if(indexService.usernotregister(staffbase.getStafftel())){
+		try {
+			if(!staffBirthday.isEmpty())
+			staffbase.setStaffbirthday(DateSimp.simp(staffBirthday));
+		} catch (ParseException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		if(!staffImg.isEmpty()){
+			String url="/staffimg/";
+			String imgpath="E:\\oldermanageresource\\staffimg\\";
+			String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+			File file=new File(imgpath+newFileName);
+			try {
+				staffImg.transferTo(file);
+			} catch (IllegalStateException | IOException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+			staffbase.setStaffimg(url+newFileName);
+		}
+		//日期转换
+		//头像
+		//验证电话号码是否重复
+		//密码转换
+		staffbase.setStaffpassword(Md5.MD5(staffbase.getStaffpassword()));
+		return indexService.staffregister(staffbase,security);
+		}
+		return new Message(false,"账号已存在",null);
 	}
 }

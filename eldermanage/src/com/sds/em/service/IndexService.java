@@ -1,6 +1,8 @@
 package com.sds.em.service;
 
 import com.sds.em.po.Message;
+import com.sds.em.po.Question;
+import com.sds.em.po.Security;
 import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.LoginMassage;
 
@@ -40,4 +42,8 @@ public interface IndexService {
 	public Message verificationAccountNumber(String tel);
 
 	public LoginMassage getuser(String tel);
+
+	public Message staffregister(Staffbase staffbase, Security security);
+
+	public boolean usernotregister(String string);
 }
