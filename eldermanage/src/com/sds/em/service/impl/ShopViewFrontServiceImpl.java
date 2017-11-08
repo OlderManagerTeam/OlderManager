@@ -17,11 +17,13 @@ import com.sds.em.mapper.ProducttypeMapper;
 import com.sds.em.mapper.ProducttypetwoMapper;
 import com.sds.em.po.Message;
 import com.sds.em.po.Product;
+import com.sds.em.po.ProductExample;
 import com.sds.em.po.Productpiclist;
 import com.sds.em.po.ProductpiclistExample;
 import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductstoreExample;
 import com.sds.em.po.ProductstoreExample.Criteria;
+import com.sds.em.pojo.ProductrateExtend;
 import com.sds.em.service.ShopViewFrontService;
 import com.sds.em.shop.pojo.ProductAmount;
 import com.sds.em.shop.pojo.productGradeExtend;
@@ -47,7 +49,6 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 
 	@Autowired
 	ProductpiclistMapper productpiclistMapper;
-
 	@Autowired
 	ProductgroupMapper productgroupMapper;
 
@@ -236,7 +237,7 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 	@Override
 	public Message getProductGrade(int productid) {
 		try {
-			List<Productrate> rateList = productrateMapper.getProductRateInfo(productid);
+			List<ProductrateExtend> rateList = productrateMapper.getProductRateInfo(productid);
 			int totalRate = rateList.size();
 			int highRate = 0;
 			int mediumRate = 0;
@@ -276,7 +277,7 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 	@Override
 	public Message getProductRateInfo(int productid) {
 		try {
-			List<Productrate> rateList = productrateMapper.getProductRateInfo(productid);
+			List<ProductrateExtend> rateList = productrateMapper.getProductRateInfo(productid);
 			if (!rateList.isEmpty()) {
 				return new Message(true, "返回成功", rateList);
 			} else {
@@ -336,6 +337,59 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
+	}
+
+	@Override
+	public Message guessLikeView(int productid) {
+
+		try {
+			int typeTwoTypeId = productMapper.selectByPrimaryKey(productid).getTypetwotypeid();
+			ProductExample productExample = new ProductExample();
+			com.sds.em.po.ProductExample.Criteria criteria = productExample.createCriteria();
+			criteria.andTypetwotypeidEqualTo(typeTwoTypeId);
+
+			List<Product> productList = productMapper.selectByExample(productExample);
+		/*	int index = 0;
+			for (int i = 0; i < productList.size(); i++) {
+				if (productid == productList.get(i).getProductid()) {
+					index = i;
+				}
+			}
+			productList.remove(index);*/
+
+			if (!productList.isEmpty()) {
+				return new Message(true, "返回成功", productList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message guessLikeOlderView(int olderid) {
+		try {
+			List<Product> productList = olderproductviewMapper.guessLikeOlderView(olderid);
+			if (!productList.isEmpty()) {
+				return new Message(true, "返回成功", productList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message magnifyingGlassView(int productid) {
+	
+		return null;
 	}
 
 }

@@ -49,4 +49,14 @@ public interface ShopViewFrontService {
 	// 显示显示为开团的团购，再按时间排序--未开团
 	public Message GroupNoView();
 
+	// 猜你喜欢（未登录时）-推荐本商品的同标签下的商品
+
+	public Message guessLikeView(int productid);
+
+	// 猜你喜欢(已登录时)-推荐老人浏览表的相关标签下的商品
+	public Message guessLikeOlderView(int olderid);
+
+	// 获取放大镜中的本商品的三张图片
+	public Message magnifyingGlassView(int productid);
+
 }

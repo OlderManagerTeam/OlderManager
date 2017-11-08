@@ -250,8 +250,8 @@
 	<!-- lu -->
 
 	<select id="getProductRateInfo" parameterType="int"
-		resultType="com.sds.em.po.Productrate">
-		select productrate.* from product
+		resultType="com.sds.em.pojo.ProductrateExtend">
+		select productrate.*,olderbase.*,product.*,orderlist.* from product
 		INNER JOIN orderlist ON
 		product.productId=orderlist.orderProductId
 		INNER JOIN orders ON

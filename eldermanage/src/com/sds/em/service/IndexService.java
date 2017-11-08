@@ -1,8 +1,10 @@
 package com.sds.em.service;
 
 import com.sds.em.po.Message;
-import com.sds.em.po.Role;
+import com.sds.em.po.Question;
+import com.sds.em.po.Security;
 import com.sds.em.po.Staffbase;
+import com.sds.em.pojo.LoginMassage;
 
 public interface IndexService {
 	// bo:10-12
@@ -36,4 +38,12 @@ public interface IndexService {
 	
 	//新闻列表查询
 	public Message allNews();
+
+	public Message verificationAccountNumber(String tel);
+
+	public LoginMassage getuser(String tel);
+
+	public Message staffregister(Staffbase staffbase, Security security);
+
+	public boolean usernotregister(String string);
 }
