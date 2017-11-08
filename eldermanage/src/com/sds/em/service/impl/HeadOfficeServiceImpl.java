@@ -122,7 +122,11 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 				StaffDepartmentRoleExtend extend = new StaffDepartmentRoleExtend();
 				Department department = departmentMapper.selectByPrimaryKey(s.getStaffdepartmentid());
 				Role role = roleMapper.selectByPrimaryKey(s.getStaffroleid());
+				if(department==null)
+					department=new Department();
 				extend.setDepartment(department);
+				if(role==null)
+					role=new Role();
 				extend.setRole(role);
 				extend.setStaffbase(s);
 				extendList.add(extend);
@@ -187,6 +191,11 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 			StaffDepartmentRoleExtend extend = new StaffDepartmentRoleExtend();
 			Department department = departmentMapper.selectByPrimaryKey(staff.getStaffdepartmentid());
 			Role role = roleMapper.selectByPrimaryKey(staff.getStaffroleid());
+			
+			if(department==null)
+				department=new Department();
+			if(role==null)
+				role=new Role();
 			extend.setDepartment(department);
 			extend.setRole(role);
 			extend.setStaffbase(staff);

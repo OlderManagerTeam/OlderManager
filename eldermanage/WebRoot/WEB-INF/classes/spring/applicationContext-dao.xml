@@ -31,7 +31,7 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	<!-- 自定义Realm -->
-	<bean id="myRealm" class="com.sds.em.realm.Myrealm"/>  
+	<bean id="myRealm" class="com.sds.em.realm.Myrealm" />
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="myRealm" />
@@ -41,16 +41,19 @@
 		<!-- Shiro的核心安全接口,这个属性是必须的 -->
 		<property name="securityManager" ref="securityManager" />
 		<!-- 身份认证失败，则跳转到登录页面的配置 -->
-		<property name="loginUrl" value="/unauthorized.jsp" />
+		<property name="loginUrl" value="/front_end/Front/login.html" /> 
 		<!-- 权限认证失败，则跳转到指定页面 -->
-		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
-		<!-- Shiro连接约束配置,即过滤链的定义 -->
+	<property name="unauthorizedUrl" value="/unauthorized.jsp" />
+		<!-- 	Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
 			<value>
-				/index=anon
-				/admin*=authc
-				/student=roles[teacher]
-				/teacher=perms["user:create"]
+				/v1/oldershop/**=authc,roles[shopmanager]
+				/v1/brench/**=authc,roles[branchmanager]
+				/v1/headoffice/**=authc,roles[headofficemanager]
+				/v1/news/**=authc,roles[newsmanager]
+				/v1/personal/**=authc
+				/v1/video/**=authc,roles[videomanager]
+				/v1/common/**=authc,roles[newsmanager]
 			</value>
 		</property>
 	</bean>

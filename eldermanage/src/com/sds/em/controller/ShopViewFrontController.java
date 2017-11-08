@@ -43,22 +43,22 @@ public class ShopViewFrontController {
 	}
 
 	// 搜索商品结果按"销量排序"/"价格优先"--后端成功-/"评价为主"--未做
-	//销量排序-总销量
+	// 销量排序-总销量
 	@RequestMapping(method = RequestMethod.GET, value = "index/search/sort")
-	public @ResponseBody Message productSearchSort(String info,String sort) throws Exception {
-		return shopViewFrontService.productSearchSort(info,sort);
+	public @ResponseBody Message productSearchSort(String info, String sort) throws Exception {
+		return shopViewFrontService.productSearchSort(info, sort);
 	}
-	
+
 	// 根据二级标签搜索商品及量列表-后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/typetwo")
 	public @ResponseBody Message typeTwoProducts(String typetwocontent) throws Exception {
 		return shopViewFrontService.typeTwoProducts(typetwocontent);
 	}
-	
+
 	// 根据二级标签搜索商品及量列表-"销量排序"/"价格优先"-后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/typetwo/sort")
-	public @ResponseBody Message typeTwoProductsSort(String typetwocontent,String sort) throws Exception {
-		return shopViewFrontService.typeTwoProductsSort(typetwocontent,sort);
+	public @ResponseBody Message typeTwoProductsSort(String typetwocontent, String sort) throws Exception {
+		return shopViewFrontService.typeTwoProductsSort(typetwocontent, sort);
 	}
 
 	// 显示某个商品的详细信息及数量-后端成功
@@ -77,40 +77,65 @@ public class ShopViewFrontController {
 	@RequestMapping(method = RequestMethod.GET, value = "index/older/repeated")
 	public @ResponseBody Message repeatedOlderView(int olderid) throws Exception {
 		// int olderid=session.getAttribute("olderid")
-	    olderid = 1;
+		olderid = 1;
 		return shopViewFrontService.repeatedOlderView(olderid);
 	}
-	
-	//查看一个商品的评价等级详情--后端成功
+
+	// 查看一个商品的评价等级详情--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/product/rate")
 	public @ResponseBody Message getProductGrade(int productid) throws Exception {
 
 		return shopViewFrontService.getProductGrade(productid);
 	}
-	
-	//查看一个商品的所有评价及信息--后端成功
+
+	// 查看一个商品的所有评价及信息--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/product/rate/info")
 	public @ResponseBody Message getProductRateInfo(int productid) throws Exception {
 
 		return shopViewFrontService.getProductRateInfo(productid);
 	}
-	
 
-	// 显示按照团购发起日期排序好的商品页面--团购1
+	// 显示按照团购开团排序好的商品页面--即将开团 --后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "group/index")
 	public @ResponseBody Message getGroupIndex() throws Exception {
 
 		return shopViewFrontService.GroupIndexView();
 	}
-	
-	// 显示按照离团购结束日期一天的商品页面--团购2
+
+	// 显示按照离团购结束日期排序的商品页面--即将截止--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "group/end")
 	public @ResponseBody Message getGroupEnd() throws Exception {
 
 		return shopViewFrontService.GroupEndView();
 	}
-	
-	// 显示按照商品“原价-折扣价” 差值最大的降序排序的商品页面--超值
-	
-	
+
+	// 显示显示为开团的团购，再按时间排序--未开团--后端成功
+
+	@RequestMapping(method = RequestMethod.GET, value = "group/no")
+	public @ResponseBody Message getGroupNo() throws Exception {
+
+		return shopViewFrontService.GroupNoView();
+	}
+
+	// 猜你喜欢（未登录时）-推荐本商品的同标签下的商品--后端成功
+	@RequestMapping(method = RequestMethod.GET, value = "index/product/guesslike")
+	public @ResponseBody Message guessLikeView(int productid) throws Exception {
+
+		return shopViewFrontService.guessLikeView(productid);
+	}
+	// 猜你喜欢(已登录时)-推荐老人浏览表的相关标签下的商品
+
+	@RequestMapping(method = RequestMethod.GET, value = "index/older/product/guesslike")
+	public @ResponseBody Message guessLikeOlderView(int olderid) throws Exception {
+
+		return shopViewFrontService.guessLikeOlderView(olderid);
+	}
+
+	// 获取放大镜中的本商品的三张图片
+	@RequestMapping(method = RequestMethod.GET, value = "index/product/magnifyingglass")
+	public @ResponseBody Message magnifyingGlassView(int productid) throws Exception {
+
+		return shopViewFrontService.magnifyingGlassView(productid);
+	}
+
 }
