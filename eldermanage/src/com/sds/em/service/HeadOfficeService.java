@@ -29,13 +29,13 @@ public interface HeadOfficeService {
 	public Message getStaff(int staffid) throws Exception;
 
 	// 重新分配部门和职位给员工，员工号要改变
-	public Message updateStaffD(StaffDepartmentRoleExtend extend) throws Exception;
+	public Message updateStaffD(String staffcode,int roleid,int departmentid, int staffid) throws Exception;
 
 	// 返回所有的部门号
 	public Message getAllDepartmentId() throws Exception;
 
 	// 返回所有的职位编号
-	public Message getAllRoleId() throws Exception;
+	public Message getAllRoleId(int departmentid) throws Exception;
 
 	// 根据部门号返回部门名称
 	public Message getDepartmentName(int departmentid) throws Exception;

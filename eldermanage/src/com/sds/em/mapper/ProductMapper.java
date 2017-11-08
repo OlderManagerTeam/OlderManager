@@ -1,4 +1,4 @@
-package com.sds.em.mapper;
+﻿package com.sds.em.mapper;
 
 import com.sds.em.po.Message;
 import com.sds.em.po.Product;
@@ -74,5 +74,5 @@ public interface ProductMapper {
 	public List<Product> repeatedView();
 
 	//wuwenbo
-	int keyinsert(Product record);
+	int keyinsert(Product record);  
 }
