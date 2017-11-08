@@ -37,5 +37,5 @@ public interface ProductrateMapper {
 
 	// lu
 	// 查看一个商品的所有评价及信息
-	public List<Productrate> getProductRateInfo(int productid);
+	public List<ProductrateExtend> getProductRateInfo(int productid);
 }

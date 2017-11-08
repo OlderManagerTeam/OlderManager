@@ -1,5 +1,6 @@
 package com.sds.em.mapper;
 
+import com.sds.em.po.Message;
 import com.sds.em.po.Product;
 import com.sds.em.po.ProductExample;
 import com.sds.em.po.Productrate;
@@ -9,6 +10,9 @@ import com.sds.em.shop.pojo.productGradeExtend;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 public interface ProductMapper {
 	int countByExample(ProductExample example);
@@ -59,20 +63,15 @@ public interface ProductMapper {
 	// 根据二级标签搜索商品及量列表
 	public List<ProductAmount> typeTwoRecommend(String typetwocontent);
 
-	
 	// 根据二级标签搜索商品及量列表-"销量排序"
-	public List<ProductAmount> typeTwoRecommendA(String typetwocontent);
 
-	
+	List<ProductAmount> typeTwoRecommendA(String typetwocontent);
+
 	// 根据二级标签搜索商品及量列表-"价格优先"
 	public List<ProductAmount> typeTwoRecommendP(String typetwocontent);
 
-	
 	// 未登录时，看了又看 根据商品 日浏览量 降序排序显示
 	public List<Product> repeatedView();
 
+	
 }
-
-
- 
- 

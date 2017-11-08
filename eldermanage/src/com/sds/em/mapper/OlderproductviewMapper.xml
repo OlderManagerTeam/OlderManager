@@ -22,7 +22,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -54,7 +55,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -94,11 +96,14 @@
 		select
 		<include refid="Base_Column_List" />
 		from olderproductview
-		where productviewID = #{productviewid,jdbcType=INTEGER}
+		where productviewID =
+		#{productviewid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from olderproductview
-		where productviewID = #{productviewid,jdbcType=INTEGER}
+		delete from
+		olderproductview
+		where productviewID =
+		#{productviewid,jdbcType=INTEGER}
 	</delete>
 	<delete id="deleteByExample" parameterType="com.sds.em.po.OlderproductviewExample">
 		delete from olderproductview
@@ -107,10 +112,12 @@
 		</if>
 	</delete>
 	<insert id="insert" parameterType="com.sds.em.po.Olderproductview">
-		insert into olderproductview (productviewID, pviewproductID,
+		insert into olderproductview
+		(productviewID, pviewproductID,
 		pviewolderid,
 		pviewocount)
-		values (#{productviewid,jdbcType=INTEGER},
+		values
+		(#{productviewid,jdbcType=INTEGER},
 		#{pviewproductid,jdbcType=INTEGER}, #{pviewolderid,jdbcType=INTEGER},
 		#{pviewocount,jdbcType=INTEGER})
 	</insert>
@@ -159,7 +166,8 @@
 				productviewID = #{record.productviewid,jdbcType=INTEGER},
 			</if>
 			<if test="record.pviewproductid != null">
-				pviewproductID = #{record.pviewproductid,jdbcType=INTEGER},
+				pviewproductID =
+				#{record.pviewproductid,jdbcType=INTEGER},
 			</if>
 			<if test="record.pviewolderid != null">
 				pviewolderid = #{record.pviewolderid,jdbcType=INTEGER},
@@ -174,10 +182,14 @@
 	</update>
 	<update id="updateByExample" parameterType="map">
 		update olderproductview
-		set productviewID = #{record.productviewid,jdbcType=INTEGER},
-		pviewproductID = #{record.pviewproductid,jdbcType=INTEGER},
-		pviewolderid = #{record.pviewolderid,jdbcType=INTEGER},
-		pviewocount = #{record.pviewocount,jdbcType=INTEGER}
+		set productviewID =
+		#{record.productviewid,jdbcType=INTEGER},
+		pviewproductID =
+		#{record.pviewproductid,jdbcType=INTEGER},
+		pviewolderid =
+		#{record.pviewolderid,jdbcType=INTEGER},
+		pviewocount =
+		#{record.pviewocount,jdbcType=INTEGER}
 		<if test="_parameter != null">
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
@@ -198,11 +210,16 @@
 		where productviewID = #{productviewid,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Olderproductview">
-		update olderproductview
-		set pviewproductID = #{pviewproductid,jdbcType=INTEGER},
-		pviewolderid = #{pviewolderid,jdbcType=INTEGER},
-		pviewocount = #{pviewocount,jdbcType=INTEGER}
-		where productviewID = #{productviewid,jdbcType=INTEGER}
+		update
+		olderproductview
+		set pviewproductID =
+		#{pviewproductid,jdbcType=INTEGER},
+		pviewolderid =
+		#{pviewolderid,jdbcType=INTEGER},
+		pviewocount =
+		#{pviewocount,jdbcType=INTEGER}
+		where productviewID =
+		#{productviewid,jdbcType=INTEGER}
 	</update>
 
 	<!-- lu -->
@@ -211,7 +228,22 @@
 		select product.* from product,olderproductview,olderbase
 		where product.productId=olderproductview.pviewproductID AND
 		olderproductview.pviewolderid=olderbase.olderId AND
-		olderproductview.pviewolderid=#{value} ORDER BY olderproductview.pviewocount
+		olderproductview.pviewolderid=#{value} ORDER BY
+		olderproductview.pviewocount
 		DESC
+	</select>
+
+	<select id="guessLikeOlderView" parameterType="int"
+		resultType="com.sds.em.po.Product">
+		select * from product WHERE typeTwoTypeId in(
+		select
+		product.typeTwoTypeId from product
+		INNER JOIN olderproductview
+		ON
+		product.productId=olderproductview.pviewproductID
+		WHERE
+		olderproductview.pviewolderid=#{value}
+		)
+
 	</select>
 </mapper>

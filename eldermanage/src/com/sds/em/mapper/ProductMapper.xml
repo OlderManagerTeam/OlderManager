@@ -430,5 +430,4 @@
 		productstore.storeDayBrowse DESC
 	</select>
 
-
 </mapper>
