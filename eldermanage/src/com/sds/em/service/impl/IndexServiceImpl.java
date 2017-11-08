@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.DepartmentMapper;
 import com.sds.em.mapper.NewsMapper;
+import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.QuestionMapper;
 import com.sds.em.mapper.RoleMapper;
 import com.sds.em.mapper.SecurityMapper;
@@ -20,6 +21,7 @@ import com.sds.em.po.DepartmentExample.Criterion;
 import com.sds.em.po.Message;
 import com.sds.em.po.News;
 import com.sds.em.po.NewsExample;
+import com.sds.em.po.OlderbaseExample;
 import com.sds.em.po.Question;
 import com.sds.em.po.QuestionExample;
 import com.sds.em.po.Role;
@@ -42,8 +44,11 @@ public class IndexServiceImpl implements IndexService {
 	RoleMapper roleMapper;
 
 	Message m;
+
 	@Autowired
 	StaffbaseMapper staffbaseMapper;
+	StaffbaseExample staffbaseExample=new StaffbaseExample();
+	StaffbaseExample.Criteria staffbaseCriteria;
 
 	@Autowired
 	SecurityMapper securityMapper;
@@ -56,6 +61,11 @@ public class IndexServiceImpl implements IndexService {
 
 	@Autowired
 	NewsMapper newsMapper;
+
+	@Autowired
+	OlderbaseMapper olderbaseMapper;
+	OlderbaseExample olderbaseExample=new OlderbaseExample();
+	OlderbaseExample.Criteria olderbaseCriteria;
 
 	@Override
 	public Message checkStaffName(String staffTel) {// 验证员工电话号码是否可用
@@ -132,7 +142,6 @@ public class IndexServiceImpl implements IndexService {
 		return new Message(false, "数据库错误", null);
 	}
 
-	
 	/**
 	 * 
 	 */
@@ -298,6 +307,22 @@ public class IndexServiceImpl implements IndexService {
 			return new Message(false, "数据库错误", null);
 		}
 
+	}
+
+	@Override
+	// wuwenbo 验证员工或老人的账号是否存在
+	public Message verificationAccountNumber(String tel) {
+		staffbaseExample.clear();
+		olderbaseExample.clear();
+		staffbaseCriteria = staffbaseExample.createCriteria();
+		staffbaseCriteria.andStafftelEqualTo(tel);
+		if (!(staffbaseMapper.selectByExample(staffbaseExample).isEmpty()))
+			return new Message(true, "账号存在", null);
+		olderbaseCriteria = olderbaseExample.createCriteria();
+		olderbaseCriteria.andOldertelEqualTo(tel);
+		if (!(olderbaseMapper.selectByExample(olderbaseExample).isEmpty()))
+			return new Message(true, "账号存在", null);
+		return new Message(false, "账号不存在", null);
 	}
 
 }
