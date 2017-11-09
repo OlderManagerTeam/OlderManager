@@ -75,8 +75,8 @@ public class HeadOfficeController {
 
 	// 返回所有的职位编号
 	@RequestMapping(method = RequestMethod.GET, value = "allRoleid")
-	public @ResponseBody Message getAllRoleId() throws Exception {
-		return headOfficeService.getAllRoleId();
+	public @ResponseBody Message getAllRoleId(int departmentid) throws Exception {
+		return headOfficeService.getAllRoleId(departmentid);
 	}
 
 	// 根据部门号返回部门名称
@@ -87,8 +87,8 @@ public class HeadOfficeController {
 
 	// 重新分配部门和职位给员工，员工号要改变
 	@RequestMapping(method = RequestMethod.POST, value = "staff/info")
-	public @ResponseBody Message updateStaffD(StaffDepartmentRoleExtend extend) throws Exception {
-		return headOfficeService.updateStaffD(extend);
+	public @ResponseBody Message updateStaffD(String staffcode,int roleid,int departmentid,int staffid) throws Exception {
+		return headOfficeService.updateStaffD(staffcode,roleid,departmentid,staffid);
 	}
 
 	// 显示未分配的老人信息

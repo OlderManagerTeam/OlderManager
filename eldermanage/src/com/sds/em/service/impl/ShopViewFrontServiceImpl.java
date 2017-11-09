@@ -15,6 +15,7 @@ import com.sds.em.mapper.ProductrateMapper;
 import com.sds.em.mapper.ProductstoreMapper;
 import com.sds.em.mapper.ProducttypeMapper;
 import com.sds.em.mapper.ProducttypetwoMapper;
+import com.sds.em.mapper.ProductviewlistMapper;
 import com.sds.em.po.Message;
 import com.sds.em.po.Product;
 import com.sds.em.po.ProductExample;
@@ -23,6 +24,8 @@ import com.sds.em.po.ProductpiclistExample;
 import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductstoreExample;
 import com.sds.em.po.ProductstoreExample.Criteria;
+import com.sds.em.po.Productviewlist;
+import com.sds.em.po.ProductviewlistExample;
 import com.sds.em.pojo.ProductrateExtend;
 import com.sds.em.service.ShopViewFrontService;
 import com.sds.em.shop.pojo.ProductAmount;
@@ -51,6 +54,9 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 	ProductpiclistMapper productpiclistMapper;
 	@Autowired
 	ProductgroupMapper productgroupMapper;
+
+	@Autowired
+	ProductviewlistMapper productviewlistMapper;
 
 	@Override
 	public Message todayRecommend() throws Exception {
@@ -349,13 +355,11 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 			criteria.andTypetwotypeidEqualTo(typeTwoTypeId);
 
 			List<Product> productList = productMapper.selectByExample(productExample);
-		/*	int index = 0;
-			for (int i = 0; i < productList.size(); i++) {
-				if (productid == productList.get(i).getProductid()) {
-					index = i;
-				}
-			}
-			productList.remove(index);*/
+			/*
+			 * int index = 0; for (int i = 0; i < productList.size(); i++) { if
+			 * (productid == productList.get(i).getProductid()) { index = i; } }
+			 * productList.remove(index);
+			 */
 
 			if (!productList.isEmpty()) {
 				return new Message(true, "返回成功", productList);
@@ -388,8 +392,21 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 
 	@Override
 	public Message magnifyingGlassView(int productid) {
-	
-		return null;
+		try {
+			ProductviewlistExample productviewlistExample = new ProductviewlistExample();
+			com.sds.em.po.ProductviewlistExample.Criteria criteria = productviewlistExample.createCriteria();
+			criteria.andPviewpicproductidEqualTo(productid);
+			List<Productviewlist> List = productviewlistMapper.selectByExample(productviewlistExample);
+			if (!List.isEmpty()) {
+				return new Message(true, "返回成功", List);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 
 }
