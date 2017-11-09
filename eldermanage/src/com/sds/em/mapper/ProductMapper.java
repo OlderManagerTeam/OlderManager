@@ -1,4 +1,4 @@
-﻿package com.sds.em.mapper;
+package com.sds.em.mapper;
 
 import com.sds.em.po.Message;
 import com.sds.em.po.Product;
@@ -73,6 +73,7 @@ public interface ProductMapper {
 	// 未登录时，看了又看 根据商品 日浏览量 降序排序显示
 	public List<Product> repeatedView();
 
-	//wuwenbo
-	int keyinsert(Product record);  
+	void keyinsert(Product product);
+
+	
 }
