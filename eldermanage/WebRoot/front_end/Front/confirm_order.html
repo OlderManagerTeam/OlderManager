@@ -89,10 +89,10 @@
 					style="font-weight: 700;color: #f40">寄送至</span> <input
 					style="margin-left:2px;" type="radio" name="address" id="radio"
 					checked="ischecked"> <span
-						style="font-size: 14px;font-weight: 700;"> <span id="olderaddress"></span>
-							<span>(</span> <span id="oldername"></span> <span>收)</span> <em
-							style="color: grey;font-size: 14px;font-weight: 700;" id="oldertel"></em>
-							<span style="color: grey;font-size: 14px;font-weight: 700;">默认收获地址</span>
+						style="font-size: 14px;font-weight: 700;"> <span
+							id="olderaddress1"></span> <span>(</span> <span id="oldername1"></span>
+							<span>收)</span> <span
+							style="color: grey;font-size: 14px;font-weight: 700;">默认收获地址</span>
 					</span>
 				</li>
 			</ul>
@@ -128,11 +128,11 @@
 			<div class="clear"></div>
 			<!--商品内容-->
 			<tr class="item-list">
-				   <div class="bundle  bundle-last "id="productview"></div>
+				<div class="bundle  bundle-last " id="productview"></div>
 			</tr>
 			<!-- <div class="clear"></div> -->
 
-			
+
 		</div>
 		<!--商品内容结束-->
 		<div class="clear"></div>
@@ -142,7 +142,7 @@
 		<div style="text-align: right;line-height:45px;padding-right:20px;">
 			<div>
 				<span style="font-color:#3c3c3c;font-weight: 700;">已有积分:</span> <em
-					id="#" style="color:red;font-weight: 700;">0</em> <span>&nbsp;&nbsp;&nbsp;</span>
+					id="olderpoint" style="color:red;font-weight: 700;"></em> <span>&nbsp;&nbsp;&nbsp;</span>
 
 				<span style="font-color:#3c3c3c;font-weight: 700;">使用</span> <em
 					id="#"> <input id="subt" name="" type="button" value="-"
@@ -190,12 +190,12 @@
 					<div class="order-confirmAddr" id="#">
 						<div class="confirmAddr-addr">
 							<span style="font-color:#3c3c3c;font-weight: 700;">寄送至：</span> <span
-								id="#">贵州省贵阳市贵贵阳市贵州省贵阳市贵州省贵阳市贵州省贵阳市贵州</span>
+								id="olderaddress2"></span>
 						</div>
 						<div class="confirmAddr-addr-user">
 							<span style="font-color:#3c3c3c;font-weight: 700;">收货人：</span> <span
-								class="confirmAddr-addr-bd"> <span id="#">某某老人</span> <span
-								id="#">13455169879</span>
+								class="confirmAddr-addr-bd"> <span id="oldername2"></span>
+								<span id="oldertel"></span>
 							</span>
 						</div>
 					</div>
@@ -229,149 +229,161 @@
 	</div>
 
 	<script type="text/javascript">
-	UrlParm = function() { // url参数
-				var data,
-					index;
-				(function init() {
-					data = [];
-					index = {};
-					var u = window.location.search.substr(1);
-					if (u != '') {
-						var parms = decodeURIComponent(u).split('&');
-						for (var i = 0, len = parms.length; i < len; i++) {
-							if (parms[i] != '') {
-								var p = parms[i].split("=");
-								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
-									data.push([ '' ]);
-									index[p[0]] = data.length - 1;
-								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
-									data[0] = [ p[1] ];
-								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
-									data.push([ p[1] ]);
-									index[p[0]] = data.length - 1;
-								} else { // c=aaa
-									data[index[p[0]]].push(p[1]);
-								}
+		UrlParm = function() { // url参数
+			var data,
+				index;
+			(function init() {
+				data = [];
+				index = {};
+				var u = window.location.search.substr(1);
+				if (u != '') {
+					var parms = decodeURIComponent(u).split('&');
+					for (var i = 0, len = parms.length; i < len; i++) {
+						if (parms[i] != '') {
+							var p = parms[i].split("=");
+							if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+								data.push([ '' ]);
+								index[p[0]] = data.length - 1;
+							} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+								data[0] = [ p[1] ];
+							} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+								data.push([ p[1] ]);
+								index[p[0]] = data.length - 1;
+							} else { // c=aaa
+								data[index[p[0]]].push(p[1]);
 							}
 						}
 					}
-				})();
-				return {
-					// 获得参数,类似request.getParameter()
-					parm : function(o) { // o: 参数名或者参数次序
-						try {
-							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
-						} catch (e) {}
-					},
-					//获得参数组, 类似request.getParameterValues()
-					parmValues : function(o) { // o: 参数名或者参数次序
-						try {
-							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
-						} catch (e) {}
-					},
-					//是否含有parmName参数
-					hasParm : function(parmName) {
-						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
-					},
-					// 获得参数Map ,类似request.getParameterMap()
-					parmMap : function() {
-						var map = {};
-						try {
-							for (var p in index) {
-								map[p] = data[index[p]];
-							}
-						} catch (e) {}
-						return map;
-					}
 				}
-			}();
-			var productid=1;
-				/* var productid = UrlParm.parm("productid");
-				  var count = UrlParm.parm("count");
-				if(productid){
-				
-				} */
-		  var count=2;
+			})();
+			return {
+				// 获得参数,类似request.getParameter()
+				parm : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+					} catch (e) {}
+				},
+				//获得参数组, 类似request.getParameterValues()
+				parmValues : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+					} catch (e) {}
+				},
+				//是否含有parmName参数
+				hasParm : function(parmName) {
+					return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+				},
+				// 获得参数Map ,类似request.getParameterMap()
+				parmMap : function() {
+					var map = {};
+					try {
+						for (var p in index) {
+							map[p] = data[index[p]];
+						}
+					} catch (e) {}
+					return map;
+				}
+			}
+		}();
+		  var productid = UrlParm.parm("productid");
+		  var count = UrlParm.parm("count"); 
+	
+		//var productid=1;
+		//var count = 2;
+		if (productid) {
+			url = "/eldermanage/v1/shop/pay/rightnow/confirm/order"
+			data = "productid=" + productid
+		} else {
+			url = "/eldermanage/v1/shop/pay/cart/confirm/order"
+			data = null
+		}
 		$.ajax({
 			type : 'get',
 			contentType : 'application/json',
-			url : "/eldermanage/v1/shop/pay/rightnow/confirm/order?productid="+productid,
-			data : null,
+			url : url,
+			data : data,
 			success : function(result) {
 				var resultData = result.data;
 				for (var i = 0; i < resultData.length; i++) {
+					$('#oldername1').html(resultData[0].oldername);
+					$('#olderaddress1').html(resultData[0].olderaddress);
+					$('#oldername2').html(resultData[0].oldername);
+					$('#olderaddress2').html(resultData[0].olderaddress);
+					$('#oldertel').html(resultData[0].oldertel);
+					$('#olderpoint').html(resultData[0].olderpoint);
+					if(!count){count=resultData[i].cartcount};
 					var oDiv = `
-												<div class="bundle-hd">
-													<div class="bd-promos">
-														<div class="bd-has-promo">
-															已享优惠:<span class="bd-has-promo-content">省￥${resultData[i].preferentialPrice}</span>&nbsp;&nbsp;
+													<div class="bundle-hd">
+														<div class="bd-promos">
+															<div class="bd-has-promo">
+																已享优惠:<span class="bd-has-promo-content">省￥${resultData[i].preferentialPrice}</span>&nbsp;&nbsp;
+															</div>
+								
 														</div>
-							
 													</div>
-												</div>
-												<div class="clear"></div>
-												<div class="bundle-main">
-													<ul class="item-content clearfix">
-														<li class="td td-chk">
-															<div class="cart-checkbox ">
-																<input class="check" id="J_CheckBox_170769542747"
-																	name="items[]" value="170769542747" type="checkbox"> <label
-																	for="J_CheckBox_170769542747" id="check_${i}"></label>
-															</div>
-														</li>
-														<li class="td td-item">
-															<div class="item-pic">
-																<a href="#" target="_blank"
-																	data-title="${resultData[i].productname}"
-																	class="J_MakePoint" data-point="tbcart.8.12"> <img
-																	src="${resultData[i].productimg}"
-																	class="itempic J_ItemImg"></a>
-															</div>
-															<div class="item-info">
-																<div class="item-basic-info">
-																	<a href='../Front/introduction.html?productid=${resultData[i].productid}' target="_blank" title="${resultData[i].productname}"
-																		class="item-title J_MakePoint" data-point="tbcart.8.11">${resultData[i].productname}</a>
+													<div class="clear"></div>
+													<div class="bundle-main">
+														<ul class="item-content clearfix">
+															<li class="td td-chk">
+																<div class="cart-checkbox ">
+																	<input class="check" id="J_CheckBox_170769542747"
+																		name="items[]" value="170769542747" type="checkbox"> <label
+																		for="J_CheckBox_170769542747" id="check_${i}"></label>
 																</div>
-															</div>
-														</li>
-														<li class="td td-info">
-															<div class="item-props item-props-can">
-																<span class="sku-line">重量：${resultData[i].productweight}KG</span>  <br> 
-																<span class="sku-line">简介：${resultData[i].productinfo}KG</span>
-															</div>
-														</li>
-														<li class="td td-price">
-															<div class="item-price price-promo-promo">
-																<div class="price-content">
-																	<div class="price-line">
-																		<em class="price-original">${resultData[i].productprice}</em>
-																	</div>
-																	<div class="price-line">
-																		<em class="J_Price price-now" tabindex="0" id="price_${i}">${resultData[i].productdiscountprice}</em>
+															</li>
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" target="_blank"
+																		data-title="${resultData[i].productname}"
+																		class="J_MakePoint" data-point="tbcart.8.12"> <img
+																		src="${resultData[i].productimg}"
+																		class="itempic J_ItemImg"></a>
+																</div>
+																<div class="item-info">
+																	<div class="item-basic-info">
+																		<a href='../Front/introduction.html?productid=${resultData[i].productid}' target="_blank" title="${resultData[i].productname}"
+																			class="item-title J_MakePoint" data-point="tbcart.8.11">${resultData[i].productname}</a>
 																	</div>
 																</div>
-															</div>
-														</li>
-														<li class="td td-amount">
-															<div class="amount-wrapper ">
-																<div class="item-amount ">
+															</li>
+															<li class="td td-info">
+																<div class="item-props item-props-can">
+																	<span class="sku-line">重量：${resultData[i].productweight}KG</span>  <br> 
+																	<span class="sku-line">简介：${resultData[i].productinfo}KG</span>
+																</div>
+															</li>
+															<li class="td td-price">
+																<div class="item-price price-promo-promo">
+																	<div class="price-content">
+																		<div class="price-line">
+																			<em class="price-original">${resultData[i].productprice}</em>
+																		</div>
+																		<div class="price-line">
+																			<em class="J_Price price-now" tabindex="0" id="price_${i}">${resultData[i].productdiscountprice}</em>
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li class="td td-amount">
+																<div class="amount-wrapper ">
 																	<div class="item-amount ">
-													                     <div class="sl">
-														                <span class="sku-line">${count}</span> 
-													                 </div>
-												                  </div>
+																		<div class="item-amount ">
+														                     <div class="sl">
+															                <span class="sku-line">${count}</span> 
+														                 </div>
+													                  </div>
+																	</div>
 																</div>
-															</div>
-														</li>
-														<li class="td td-sum">
-															<div class="td-inner">
-																<em tabindex="0" class="J_ItemSum number" id="unitprice_${i}"></em>
-															</div>
-														</li>
-													</ul>
-												</div>
-														<div class="clear"></div>
-															`;
+															</li>
+															<li class="td td-sum">
+																<div class="td-inner">
+																	<em tabindex="0" class="J_ItemSum number" id="unitprice_${i}">7777</em>
+																</div>
+															</li>
+														</ul>
+													</div>
+															<div class="clear"></div>
+																`;
 					$("#productview").append(oDiv);
 	
 				}

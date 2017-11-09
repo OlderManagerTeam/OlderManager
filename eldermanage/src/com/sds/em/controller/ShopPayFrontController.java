@@ -40,7 +40,7 @@ public class ShopPayFrontController {
 		return shopPayFrontService.addShopcart(olderid, productid, count);
 	}
 
-	// 显示购物车页面-所加入的商品信息-老人积分信息-后端成功
+	// 显示购物车页面-所加入的商品信息-老人积分信息-后端成功-全部完成
 	@RequestMapping(method = RequestMethod.GET, value = "shopcart/view")
 	public @ResponseBody Message ShopcartView(HttpSession session) throws Exception {
 		// int olderid=session.getAttribute("olderid");
@@ -57,18 +57,20 @@ public class ShopPayFrontController {
 	}
 
 	//
-	// 立即购买-确认订单页面
+	// 立即购买-确认订单页面-全部完成
 	@RequestMapping(method = RequestMethod.GET, value = "rightnow/confirm/order")
 	public @ResponseBody Message confirmOrderRightNow(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
 		return shopPayFrontService.confirmOrderRightNow(olderid, productid);
 	}
-	// 购物车结算-确认订单页面
+	// 购物车结算-确认订单页面-全部完成
 	@RequestMapping(method = RequestMethod.GET, value = "cart/confirm/order")
 	public @ResponseBody Message confirmOrderCart(HttpSession session) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
 		return shopPayFrontService.confirmOrderCart(olderid);
 	}
+	
+	
 }
