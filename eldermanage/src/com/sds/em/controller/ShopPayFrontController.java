@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Message;
 import com.sds.em.service.ShopPayFrontService;
+import com.sds.em.shopfront.pojo.RightNowPayExtend;
 
 /*
  * 作者：刘露
@@ -39,7 +40,7 @@ public class ShopPayFrontController {
 		return shopPayFrontService.addShopcart(olderid, productid, count);
 	}
 
-	// 显示购物车页面-所加入的商品信息-老人积分信息-后端成功
+	// 显示购物车页面-所加入的商品信息-老人积分信息-后端成功-全部完成
 	@RequestMapping(method = RequestMethod.GET, value = "shopcart/view")
 	public @ResponseBody Message ShopcartView(HttpSession session) throws Exception {
 		// int olderid=session.getAttribute("olderid");
@@ -48,7 +49,7 @@ public class ShopPayFrontController {
 	}
 
 	// 从购物车中删除一个商品-后端成功
-	@RequestMapping(method = RequestMethod.GET, value = "shopcart/remove")
+	@RequestMapping(method = RequestMethod.DELETE, value = "shopcart/remove")
 	public @ResponseBody Message cartProductRemove(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
@@ -56,12 +57,20 @@ public class ShopPayFrontController {
 	}
 
 	//
-	// 立即购买，显示购买页面详情
-	@RequestMapping(method = RequestMethod.GET, value = "rightnow")
-	public @ResponseBody Message rightnowView(HttpSession session, int productid, int count) throws Exception {
+	// 立即购买-确认订单页面-全部完成
+	@RequestMapping(method = RequestMethod.GET, value = "rightnow/confirm/order")
+	public @ResponseBody Message confirmOrderRightNow(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
-		return shopPayFrontService.rightnowView(olderid, productid, count);
+		return shopPayFrontService.confirmOrderRightNow(olderid, productid);
 	}
-
+	// 购物车结算-确认订单页面-全部完成
+	@RequestMapping(method = RequestMethod.GET, value = "cart/confirm/order")
+	public @ResponseBody Message confirmOrderCart(HttpSession session) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.confirmOrderCart(olderid);
+	}
+	
+	
 }

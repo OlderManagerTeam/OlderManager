@@ -3,6 +3,7 @@ package com.sds.em.mapper;
 import com.sds.em.po.Cart;
 import com.sds.em.po.CartExample;
 import com.sds.em.shop.pojo.CartViewExtend;
+import com.sds.em.shop.pojo.ConfirmOrderViewExtend;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -33,7 +34,8 @@ public interface CartMapper {
 	// lu
 	// 显示购物车页面-所加入的商品信息-老人积分信息
 	public List<CartViewExtend> ShopcartView(int olderid);
-	
-	// 从购物车中删除一个商品
-	
+
+	// 购物车结算-确认订单页面
+	public List<ConfirmOrderViewExtend> confirmOrderCart(int olderid);
+
 }

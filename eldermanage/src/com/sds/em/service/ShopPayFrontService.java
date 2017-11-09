@@ -12,10 +12,13 @@ public interface ShopPayFrontService {
 	// 从购物车中删除一个商品
 	public Message cartProductRemove(int olderid, int productid);
 
-	// 立即购买，显示购买页面详情
-	public Message rightnowView(int olderid, int productid, int count);
+	// 立即购买-确认订单页面
+	public Message confirmOrderRightNow(int olderid, int productid);
 
-	// 显示购物车页面-所加入的商品信息-老人积分信息
+	// 购物车结算-确认订单页面
+	public Message confirmOrderCart(int olderid);
+
+	// 显示购物车页面-所加入的商品信息
 	public Message ShopcartView(int olderid);
 
 }
