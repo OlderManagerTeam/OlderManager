@@ -110,7 +110,7 @@ public class HeadOfficeController {
 	}
 
 	// 分配老人给某个分店
-	@RequestMapping(method = RequestMethod.GET, value = "older/allot")
+	@RequestMapping(method = RequestMethod.POST, value = "older/allot")
 	public @ResponseBody Message allotOlder(String oldertel, int branchid) throws Exception {
 		return headOfficeService.allotOlder(oldertel, branchid);
 	}

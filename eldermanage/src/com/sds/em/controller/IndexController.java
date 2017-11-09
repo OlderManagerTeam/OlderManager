@@ -152,7 +152,7 @@ public class IndexController {
 		session.setAttribute("oldername", loginMassage.getStaffname());
 		session.setAttribute("olderid", loginMassage.getOlderid());
 		session.setAttribute("oldertel", loginMassage.getOldertel());
-		session.setAttribute("stafftd", loginMassage.getStaffid());
+		session.setAttribute("staffid", loginMassage.getStaffid());
 		session.setAttribute("staffname", loginMassage.getStaffname());
 		session.setAttribute("stafftel", loginMassage.getStafftel());
 		session.setAttribute("branchid", loginMassage.getBranchid());

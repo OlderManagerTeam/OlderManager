@@ -49,6 +49,9 @@ public interface ShopViewFrontService {
 	// 显示显示为开团的团购，再按时间排序--未开团
 	public Message GroupNoView();
 
+	// 显示特惠的商品，按原价减去折扣价最大的排序显示
+	public Message preferentialView();
+
 	// 猜你喜欢（未登录时）-推荐本商品的同标签下的商品
 
 	public Message guessLikeView(int productid);
@@ -58,5 +61,8 @@ public interface ShopViewFrontService {
 
 	// 获取放大镜中的本商品的三张图片
 	public Message magnifyingGlassView(int productid);
+
+	// 显示某个团购商品的团购信息
+	public Message getProductGroup(int groupid);
 
 }

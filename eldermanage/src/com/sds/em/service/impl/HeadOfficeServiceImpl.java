@@ -72,6 +72,8 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 
 			for (Branch b : branchList) {
 				Staffbase staffbase = staffbaseMapper.selectByPrimaryKey(b.getBranchmanagerid());
+				if(staffbase==null)
+					staffbase=new Staffbase();
 				BranchStaffBaseExtend baseExtend = new BranchStaffBaseExtend();
 				baseExtend.setBranch(b);
 				baseExtend.setStaffbase(staffbase);
@@ -122,11 +124,11 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 				StaffDepartmentRoleExtend extend = new StaffDepartmentRoleExtend();
 				Department department = departmentMapper.selectByPrimaryKey(s.getStaffdepartmentid());
 				Role role = roleMapper.selectByPrimaryKey(s.getStaffroleid());
-				if(department==null)
-					department=new Department();
+				if (department == null)
+					department = new Department();
 				extend.setDepartment(department);
-				if(role==null)
-					role=new Role();
+				if (role == null)
+					role = new Role();
 				extend.setRole(role);
 				extend.setStaffbase(s);
 				extendList.add(extend);
@@ -191,11 +193,11 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 			StaffDepartmentRoleExtend extend = new StaffDepartmentRoleExtend();
 			Department department = departmentMapper.selectByPrimaryKey(staff.getStaffdepartmentid());
 			Role role = roleMapper.selectByPrimaryKey(staff.getStaffroleid());
-			
-			if(department==null)
-				department=new Department();
-			if(role==null)
-				role=new Role();
+
+			if (department == null)
+				department = new Department();
+			if (role == null)
+				role = new Role();
 			extend.setDepartment(department);
 			extend.setRole(role);
 			extend.setStaffbase(staff);
@@ -213,7 +215,7 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 	}
 
 	@Override
-	public Message updateStaffD(String staffcode,int roleid,int departmentid,int staffid) throws Exception {
+	public Message updateStaffD(String staffcode, int roleid, int departmentid, int staffid) throws Exception {
 		try {
 
 			Staffbase staffbase = new Staffbase();
@@ -360,13 +362,10 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 			Olderbase older = olderbaseMapper.selectByExample(olderbaseExample1).get(0);
 			older.setOlderbranchid(branchid);
 
-			OlderbaseExample olderbaseExample2 = new OlderbaseExample();
-			com.sds.em.po.OlderbaseExample.Criteria criteria2 = olderbaseExample2.createCriteria();
-			criteria.andOlderidEqualTo(older.getOlderid());
 
 			int flag = 0;
 
-			flag = olderbaseMapper.updateByExampleSelective(older, olderbaseExample2);
+			flag = olderbaseMapper.updateByPrimaryKeySelective(older);
 			if (flag != 0) {
 				return new Message(true, "修改成功", null);
 			} else {
@@ -388,11 +387,18 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 	 */
 	@Override
 	public Message getStaffcode(String staffdepartmentid, String staffroleid) throws Exception {
-
+		StaffbaseExample staffbaseExample;
+		int i = 0;
+		int count = 0;
+		String staffcode = null;
 		String departmentid = null;
 		switch (staffdepartmentid.length()) {
 		case 1: {
 			departmentid = "0" + staffdepartmentid;
+			break;
+		}
+		case 2: {
+			departmentid = staffdepartmentid;
 			break;
 		}
 		}
@@ -403,29 +409,39 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 			roleid = "0" + staffroleid;
 			break;
 		}
+		case 2: {
+			roleid = staffroleid;
+			break;
 		}
-		Staffbase staffbase = new Staffbase();
-		staffbase.setStaffdepartmentid(Integer.parseInt(staffdepartmentid));
-		staffbase.setStaffroleid(Integer.parseInt(staffroleid));
-		int count = 0;
-		count = staffbaseMapper.getStaffcodeCount(staffbase).size();
-		String staffcode = null;
-		if (count == 0) {
-			staffcode = "001";
-		} else {
-			count = count++;
-			switch (String.valueOf(count).length()) {
-			case 1: {
-				staffcode = "00" + count;
-				break;
-			}
-			case 2: {
-				staffcode = "0" + count;
-				break;
-			}
-			}
 		}
-		return new Message(true, "返回成功", departmentid + roleid + staffcode);
+
+			Staffbase staffbase = new Staffbase();
+			staffbase.setStaffdepartmentid(Integer.parseInt(staffdepartmentid));
+			staffbase.setStaffroleid(Integer.parseInt(staffroleid));
+			do {
+			if (count == 0) {
+				staffcode = "001";
+			} else {
+				count++;
+				switch (String.valueOf(count).length()) {
+				case 1: {
+					staffcode = "00" + count;
+					break;
+				}
+				case 2: {
+					staffcode = "0" + count;
+					break;
+				}
+				}
+			}
+			staffbaseExample = new StaffbaseExample();
+			StaffbaseExample.Criteria staffbaseCriteria = staffbaseExample.createCriteria();
+			staffbaseCriteria.andStaffcodeEqualTo(departmentid + roleid + staffcode);
+			i++;
+		} while ((!staffbaseMapper.selectByExample(staffbaseExample).isEmpty()) && i < 999);
+		if (i < 999)
+			return new Message(true, "返回成功", departmentid + roleid + staffcode);
+		return new Message(true, "无可用员工号", null);
 	}
 
 }
