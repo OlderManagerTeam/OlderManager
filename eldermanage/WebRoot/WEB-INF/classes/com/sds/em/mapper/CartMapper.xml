@@ -217,11 +217,31 @@
 	<select id="ShopcartView" parameterType="int"
 		resultType="com.sds.em.shop.pojo.CartViewExtend">
 		select
-		olderbase.olderPoint,product.productPrice-product.productDiscountPrice
-		AS preferentialPrice,
+		product.productPrice-product.productDiscountPrice
+		AS
+		preferentialPrice,
 		cart.cartCount,product.*
 		from cart
 		INNER JOIN
+		product
+		ON cart.cartProductId=product.productId
+		INNER JOIN olderbase
+		ON
+		cart.cartOlderId=olderbase.olderId
+		where olderbase.olderId=#{value}
+
+	</select>
+
+	<select id="confirmOrderCart" parameterType="int"
+		resultType="com.sds.em.shop.pojo.ConfirmOrderViewExtend">
+		select
+		product.productPrice-product.productDiscountPrice
+		AS
+		preferentialPrice,
+		cart.cartCount,product.*,olderbase.*
+		from cart
+		INNER
+		JOIN
 		product
 		ON cart.cartProductId=product.productId
 		INNER JOIN olderbase

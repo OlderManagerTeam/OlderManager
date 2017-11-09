@@ -4,8 +4,10 @@ import com.sds.em.po.Message;
 import com.sds.em.po.Product;
 import com.sds.em.po.ProductExample;
 import com.sds.em.po.Productrate;
+import com.sds.em.shop.pojo.ConfirmOrderViewExtend;
 import com.sds.em.shop.pojo.ProductAmount;
 import com.sds.em.shop.pojo.productGradeExtend;
+import com.sds.em.shopfront.pojo.RightNowPayExtend;
 import com.sds.em.shop.pojo.productGradeExtend;
 
 import java.util.List;
@@ -73,5 +75,9 @@ public interface ProductMapper {
 	// 未登录时，看了又看 根据商品 日浏览量 降序排序显示
 	public List<Product> repeatedView();
 
-	
+	void keyinsert(Product product);
+
+	// 立即购买-确认订单页面
+	public List<ConfirmOrderViewExtend> confirmOrderRightNow(RightNowPayExtend rightNowPayExtend);
+
 }

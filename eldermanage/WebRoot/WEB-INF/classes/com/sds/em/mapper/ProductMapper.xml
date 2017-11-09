@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sds.em.mapper.ProductMapper">
 	<resultMap id="BaseResultMap" type="com.sds.em.po.Product">
@@ -430,12 +430,15 @@
 		productstore.storeDayBrowse DESC
 	</select>
 	<!-- wuwenbo,插入返回主键 -->
-	<insert id="keyinsert" parameterType="com.sds.em.po.Product" useGeneratedKeys="true" keyProperty="productid">
+	<insert id="keyinsert" parameterType="com.sds.em.po.Product"
+		useGeneratedKeys="true" keyProperty="productid">
 		insert into product
-		(productName, productPrice,
+		(productName,
+		productPrice,
 		productTypeNumber, productInfo,
 		productImg,
-		productWeight, productUponDate, productDiscountPrice,
+		productWeight,
+		productUponDate, productDiscountPrice,
 		typeTwoTypeId)
 		values (
 		#{productname,jdbcType=VARCHAR},
@@ -446,4 +449,17 @@
 		#{productdiscountprice,jdbcType=REAL},
 		#{typetwotypeid,jdbcType=INTEGER})
 	</insert>
+
+	<select id="confirmOrderRightNow" parameterType="com.sds.em.shop.pojo.RightNowPayExtend"
+		resultType="com.sds.em.shop.pojo.ConfirmOrderViewExtend">
+		select
+		product.productPrice-product.productDiscountPrice
+		AS
+		preferentialPrice,
+		product.*,olderbase.*
+		from product,olderbase
+		where
+		olderbase.olderId=#{olderid} and product.productId=#{productid}
+
+	</select>
 </mapper>

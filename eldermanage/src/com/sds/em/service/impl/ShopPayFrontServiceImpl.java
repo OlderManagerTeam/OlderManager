@@ -5,16 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.CartMapper;
+import com.sds.em.mapper.ProductMapper;
 import com.sds.em.po.Cart;
 import com.sds.em.po.CartExample;
 import com.sds.em.po.CartExample.Criteria;
 import com.sds.em.po.Message;
 import com.sds.em.service.ShopPayFrontService;
 import com.sds.em.shop.pojo.CartViewExtend;
+import com.sds.em.shop.pojo.ConfirmOrderViewExtend;
+import com.sds.em.shopfront.pojo.RightNowPayExtend;
 
 public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 	@Autowired
 	CartMapper cartMapper;
+	@Autowired
+	ProductMapper productMapper;
 
 	@Override
 	public Message addFirstShopcart(int olderid, int productid, int count) {
@@ -84,9 +89,9 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 	@Override
 	public Message ShopcartView(int olderid) {
 		try {
-			List<CartViewExtend> extend = cartMapper.ShopcartView(olderid);
-			if (!extend.isEmpty()) {
-				return new Message(true, "返回成功", extend);
+			List<CartViewExtend> extendList = cartMapper.ShopcartView(olderid);
+			if (!extendList.isEmpty()) {
+				return new Message(true, "返回成功", extendList);
 			} else {
 				return new Message(false, "购物车为空", null);
 			}
@@ -120,9 +125,38 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 	}
 
 	@Override
-	public Message rightnowView(int olderid, int productid, int cartcount) {
-		// TODO Auto-generated method stub
-		return null;
+	public Message confirmOrderRightNow(int olderid, int productid) {
+		try {
+			RightNowPayExtend rightNowPayExtend = new RightNowPayExtend();
+			rightNowPayExtend.setOlderid(olderid);
+			rightNowPayExtend.setProductid(productid);
+			List<ConfirmOrderViewExtend> extendList = productMapper.confirmOrderRightNow(rightNowPayExtend);
+			if (!extendList.isEmpty()) {
+				return new Message(true, "返回成功", extendList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message confirmOrderCart(int olderid) {
+		try {
+			List<ConfirmOrderViewExtend> extendList = cartMapper.confirmOrderCart(olderid);
+			if (!extendList.isEmpty()) {
+				return new Message(true, "返回成功", extendList);
+			} else {
+				return new Message(false, "购物车为空", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Message;
 import com.sds.em.service.ShopPayFrontService;
+import com.sds.em.shopfront.pojo.RightNowPayExtend;
 
 /*
  * 作者：刘露
@@ -48,7 +49,7 @@ public class ShopPayFrontController {
 	}
 
 	// 从购物车中删除一个商品-后端成功
-	@RequestMapping(method = RequestMethod.GET, value = "shopcart/remove")
+	@RequestMapping(method = RequestMethod.DELETE, value = "shopcart/remove")
 	public @ResponseBody Message cartProductRemove(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
@@ -56,12 +57,18 @@ public class ShopPayFrontController {
 	}
 
 	//
-	// 立即购买，显示购买页面详情
-	@RequestMapping(method = RequestMethod.GET, value = "rightnow")
-	public @ResponseBody Message rightnowView(HttpSession session, int productid, int count) throws Exception {
+	// 立即购买-确认订单页面
+	@RequestMapping(method = RequestMethod.GET, value = "rightnow/order")
+	public @ResponseBody Message confirmOrderRightNow(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
-		return shopPayFrontService.rightnowView(olderid, productid, count);
+		return shopPayFrontService.confirmOrderRightNow(olderid, productid);
 	}
-
+	// 购物车结算-确认订单页面
+	@RequestMapping(method = RequestMethod.GET, value = "cart/order")
+	public @ResponseBody Message confirmOrderCart(HttpSession session) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.confirmOrderCart(olderid);
+	}
 }
