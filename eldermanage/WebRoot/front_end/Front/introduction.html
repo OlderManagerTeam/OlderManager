@@ -137,16 +137,13 @@
 					</script>
 
 					<div class="tb-booth tb-pic tb-s310">
-						<a href="" id="productBigImg01"><img
-							src="" alt="细节展示放大镜特效"
+						<a href="" id="productBigImg01"><img src="" alt="细节展示放大镜特效"
 							rel="" class="jqzoom" id="productBigImg02" /></a>
 					</div>
 					<ul class="tb-thumb" id="thumblist">
 						<li class="tb-selected">
 							<div class="tb-pic tb-s40">
-								<a href="#"><img src=""
-									mid="" big=""
-									id="productBigImg03"></a>
+								<a href="#"><img src="" mid="" big="" id="productBigImg03"></a>
 							</div>
 						</li>
 					</ul>
@@ -717,12 +714,16 @@
 				// 商品细节图片
 				for (var i = 0; i <= resultData.picList.length - 1; i++) {
 					var oImg = `
-																			<img src="${result.data.picList[i]}" />
-																		`;
+																					<img src="${result.data.picList[i]}" />
+																				`;
 	
 					$("#productInfoImg").append(oImg);
 				}
 	
+				var count = document.getElementById("text_box").value;
+					$('#LikBuy').on('click', function() {
+						location.href = "../Front/confirm_order.html?productid=" + resultData.productid + "&count=" + count;
+					})
 	
 			},
 			function() {
@@ -730,17 +731,17 @@
 			}
 		)
 	
-	$.ajax({
+		$.ajax({
 			type : 'get',
 			contentType : 'application/json',
-				url : "/eldermanage/v1/shop/index/product/magnifyingglass",
+			url : "/eldermanage/v1/shop/index/product/magnifyingglass",
 			data : "productid=" + productid,
 		}).then(
 			function(result) {
 				var magnifyingglassItem = result.data
 				//放大镜图片第一张图片
 	
-				$('#productBigImg01').attr('href',magnifyingglassItem[0].pviewpicsmallpic)
+				$('#productBigImg01').attr('href', magnifyingglassItem[0].pviewpicsmallpic)
 				//大
 				$('#productBigImg02').attr('rel', magnifyingglassItem[0].pviewpicbigpic)
 				//中
@@ -755,12 +756,12 @@
 				//放大镜后续图片，最多四张张
 				for (var i = 1; i <= magnifyingglassItem.length - 1; i++) {
 					var oLi = `
-																			<li>
-																				<div class="tb-pic tb-s40">
-																					<a href="#"><img src="${magnifyingglassItem[i].pviewpicsmallpic}" mid="${magnifyingglassItem[i].pviewpicpic}" big="${magnifyingglassItem[i].pviewpicbigpic}"></a>
-																				</div>
-																			</li>
-																		`;
+																					<li>
+																						<div class="tb-pic tb-s40">
+																							<a href="#"><img src="${magnifyingglassItem[i].pviewpicsmallpic}" mid="${magnifyingglassItem[i].pviewpicpic}" big="${magnifyingglassItem[i].pviewpicbigpic}"></a>
+																						</div>
+																					</li>
+																				`;
 					$('#thumblist').append(oLi);
 				}
 	
@@ -792,17 +793,17 @@
 	
 					for (var i = 0; i <= 5; i++) {
 						var oLi = `
-															 				<li class="first">
-																		      	<div class="p-img">                    
-															 			      		<a  href="#"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
-															 			      	</div>
-															 			      	<div class="p-name"><a href="#">
-															 			      		${lookAgainData[i].productname}
-															 			      	</a>
-															 			      	</div>
-															 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
-															 			    </li>
-															 			`;
+																	 				<li class="first">
+																				      	<div class="p-img">                    
+																	 			      		<a  href="#"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
+																	 			      	</div>
+																	 			      	<div class="p-name"><a href="#">
+																	 			      		${lookAgainData[i].productname}
+																	 			      	</a>
+																	 			      	</div>
+																	 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
+																	 			    </li>
+																	 			`;
 	
 						$('#lookAgain').append(oLi);
 					}
@@ -823,17 +824,17 @@
 	
 					for (var i = 0; i <= 5; i++) {
 						var oLi = `
-															 				<li class="first">
-																		      	<div class="p-img">                    
-															 			      		<a  href="#"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
-															 			      	</div>
-															 			      	<div class="p-name"><a href="#">
-															 			      		${lookAgainData[i].productname}
-															 			      	</a>
-															 			      	</div>
-															 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
-															 			    </li>
-															 			`;
+																	 				<li class="first">
+																				      	<div class="p-img">                    
+																	 			      		<a  href="#"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
+																	 			      	</div>
+																	 			      	<div class="p-name"><a href="#">
+																	 			      		${lookAgainData[i].productname}
+																	 			      	</a>
+																	 			      	</div>
+																	 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
+																	 			    </li>
+																	 			`;
 	
 						$('#lookAgain').append(oLi);
 					}
@@ -877,41 +878,41 @@
 					var date = new Date(rateInfoData[i].ratedate);
 					var d = date.toLocaleString();
 					var oLi = `
-																			<li class="am-comment">
-																				<!-- 评论容器 -->
-																				<a href="">
-																					<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-																					<!-- 评论者头像 -->
-																				</a>
-												
-																				<div class="am-comment-main">
-																					<!-- 评论内容容器 -->
-																					<header class="am-comment-hd">
-																						<!--<h3 class="am-comment-title">评论标题</h3>-->
-																						<div class="am-comment-meta">
-																							<!-- 评论元数据 -->
-																							<a href="#link-to-user" class="am-comment-author">${rateInfoData[i].oldername.charAt(0)}** (匿名)</a>
-																							<!-- 评论者 -->
-																							评论于
-																							<time datetime="">${d}</time>
-																						</div>
-																					</header>
-												
-																					<div class="am-comment-bd">
-																						<div class="tb-rev-item " data-id="255776406962">
-																							<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-																								${rateInfoData[i].ratecontent}
+																					<li class="am-comment">
+																						<!-- 评论容器 -->
+																						<a href="">
+																							<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
+																							<!-- 评论者头像 -->
+																						</a>
+														
+																						<div class="am-comment-main">
+																							<!-- 评论内容容器 -->
+																							<header class="am-comment-hd">
+																								<!--<h3 class="am-comment-title">评论标题</h3>-->
+																								<div class="am-comment-meta">
+																									<!-- 评论元数据 -->
+																									<a href="#link-to-user" class="am-comment-author">${rateInfoData[i].oldername.charAt(0)}** (匿名)</a>
+																									<!-- 评论者 -->
+																									评论于
+																									<time datetime="">${d}</time>
+																								</div>
+																							</header>
+														
+																							<div class="am-comment-bd">
+																								<div class="tb-rev-item " data-id="255776406962">
+																									<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+																										${rateInfoData[i].ratecontent}
+																									</div>
+																									<div class="tb-r-act-bar">
+																										评价等级${rateInfoData[i].ratestar}：&nbsp;&nbsp;&nbsp;&nbsp;购买数量：${rateInfoData[i].orderproductcount}
+																									</div>
+																								</div>
+														
 																							</div>
-																							<div class="tb-r-act-bar">
-																								评价等级${rateInfoData[i].ratestar}：&nbsp;&nbsp;&nbsp;&nbsp;购买数量：${rateInfoData[i].orderproductcount}
-																							</div>
+																							<!-- 评论内容 -->
 																						</div>
-												
-																					</div>
-																					<!-- 评论内容 -->
-																				</div>
-																			</li>
-																		`;
+																					</li>
+																				`;
 	
 					$('#rateInfo').append(oLi);
 				}
@@ -936,19 +937,19 @@
 					//猜你喜欢
 					for (var i = 0; i <= whatYouLikeData.length; i++) {
 						var oLi = `
-														<li>
-															<div class="i-pic limit">
-																<img src="${whatYouLikeData[i].productimg}" />
-																<p>${whatYouLikeData[i].productname}
-																	<span>${whatYouLikeData[i].productinfo}</span></p>
-																}
-																<p class="price fl">
-																	<b>¥</b>
-																	<strong>${whatYouLikeData[i].productprice}</strong>
-																</p>
-															</div>
-														</li>
-													`;
+																<li>
+																	<div class="i-pic limit">
+																		<img src="${whatYouLikeData[i].productimg}" />
+																		<p>${whatYouLikeData[i].productname}
+																			<span>${whatYouLikeData[i].productinfo}</span></p>
+																		}
+																		<p class="price fl">
+																			<b>¥</b>
+																			<strong>${whatYouLikeData[i].productprice}</strong>
+																		</p>
+																	</div>
+																</li>
+															`;
 	
 						$('#whatYouLike').append(oLi);
 					}
@@ -971,18 +972,18 @@
 					//猜你喜欢
 					for (var i = 0; i <= whatYouLikeData.length; i++) {
 						var oLi = `
-														<li>
-															<div class="i-pic limit">
-																<img src="${whatYouLikeData[i].productimg}" />
-																<p>${whatYouLikeData[i].productname}
-																	<span>${whatYouLikeData[i].productinfo}</span></p>
-																<p class="price fl">
-																	<b>¥</b>
-																	<strong>${whatYouLikeData[i].productprice}</strong>
-																</p>
-															</div>
-														</li>
-													`;
+																<li>
+																	<div class="i-pic limit">
+																		<img src="${whatYouLikeData[i].productimg}" />
+																		<p>${whatYouLikeData[i].productname}
+																			<span>${whatYouLikeData[i].productinfo}</span></p>
+																		<p class="price fl">
+																			<b>¥</b>
+																			<strong>${whatYouLikeData[i].productprice}</strong>
+																		</p>
+																	</div>
+																</li>
+															`;
 	
 						$('#whatYouLike').append(oLi);
 					}
