@@ -689,8 +689,8 @@
 		}();
 	
 	
-		//var productid = UrlParm.parm("productid");
-		var productid = 1;
+		var productid = UrlParm.parm("productid");
+		//var productid = 1;
 	
 		$.ajax({
 			type : 'get',
@@ -976,7 +976,6 @@
 																<img src="${whatYouLikeData[i].productimg}" />
 																<p>${whatYouLikeData[i].productname}
 																	<span>${whatYouLikeData[i].productinfo}</span></p>
-																}
 																<p class="price fl">
 																	<b>¥</b>
 																	<strong>${whatYouLikeData[i].productprice}</strong>

@@ -7,8 +7,6 @@ public class CartViewExtend extends Product {
 
 	private int cartcount;
 
-	private int olderpoint;
-
 	private float preferentialPrice;// 价格优惠
 
 	public float getPreferentialPrice() {
@@ -25,14 +23,6 @@ public class CartViewExtend extends Product {
 
 	public void setCartcount(int cartcount) {
 		this.cartcount = cartcount;
-	}
-
-	public int getOlderpoint() {
-		return olderpoint;
-	}
-
-	public void setOlderpoint(int olderpoint) {
-		this.olderpoint = olderpoint;
 	}
 
 }
