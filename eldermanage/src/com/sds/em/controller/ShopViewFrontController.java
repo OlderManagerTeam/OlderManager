@@ -19,7 +19,7 @@ import com.sds.em.service.ShopViewFrontService;
  * 
  * */
 @Controller
-@RequestMapping("v1/older/shop/")
+@RequestMapping("v1/shop/")
 public class ShopViewFrontController {
 	@Autowired
 	ShopViewFrontService shopViewFrontService;
