@@ -213,19 +213,16 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 	}
 
 	@Override
-	public Message updateStaffD(StaffDepartmentRoleExtend extend) throws Exception {
+	public Message updateStaffD(String staffcode,int roleid,int departmentid,int staffid) throws Exception {
 		try {
-			StaffbaseExample staffbaseExample = new StaffbaseExample();
-			Criteria criteria = staffbaseExample.createCriteria();
-			criteria.andStaffidEqualTo(extend.getStaffbase().getStaffid());
 
 			Staffbase staffbase = new Staffbase();
-			staffbase.setStaffcode(extend.getStaffbase().getStaffcode());
-			staffbase.setStaffdepartmentid(extend.getStaffbase().getStaffdepartmentid());
-			staffbase.setStaffroleid(extend.getStaffbase().getStaffroleid());
+			staffbase.setStaffid(staffid);
+			staffbase.setStaffcode(staffcode);
+			staffbase.setStaffdepartmentid(departmentid);
+			staffbase.setStaffroleid(roleid);
 			int flag = 0;
-
-			flag = staffbaseMapper.updateByExample(staffbase, staffbaseExample);
+			flag = staffbaseMapper.updateByPrimaryKeySelective(staffbase);
 			if (flag != 0) {
 				return new Message(true, "修改成功", null);
 			} else {
@@ -274,10 +271,11 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 	}
 
 	@Override
-	public Message getAllRoleId() throws Exception {
+	public Message getAllRoleId(int departmentid) throws Exception {
 		try {
 			RoleExample roleExample = new RoleExample();
 			com.sds.em.po.RoleExample.Criteria criteria = roleExample.createCriteria();
+			criteria.andDepaertmentidEqualTo(departmentid);
 			List<Role> roleList = roleMapper.selectByExample(roleExample);
 
 			if (!roleList.isEmpty()) {
