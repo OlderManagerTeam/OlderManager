@@ -58,14 +58,14 @@ public class ShopPayFrontController {
 
 	//
 	// 立即购买-确认订单页面
-	@RequestMapping(method = RequestMethod.GET, value = "rightnow/order")
+	@RequestMapping(method = RequestMethod.GET, value = "rightnow/confirm/order")
 	public @ResponseBody Message confirmOrderRightNow(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
 		return shopPayFrontService.confirmOrderRightNow(olderid, productid);
 	}
 	// 购物车结算-确认订单页面
-	@RequestMapping(method = RequestMethod.GET, value = "cart/order")
+	@RequestMapping(method = RequestMethod.GET, value = "cart/confirm/order")
 	public @ResponseBody Message confirmOrderCart(HttpSession session) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;

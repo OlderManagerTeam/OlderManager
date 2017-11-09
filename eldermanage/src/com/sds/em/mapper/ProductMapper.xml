@@ -450,7 +450,7 @@
 		#{typetwotypeid,jdbcType=INTEGER})
 	</insert>
 
-	<select id="confirmOrderRightNow" parameterType="com.sds.em.shop.pojo.RightNowPayExtend"
+	<select id="confirmOrderRightNow" parameterType="com.sds.em.shopfront.pojo.RightNowPayExtend"
 		resultType="com.sds.em.shop.pojo.ConfirmOrderViewExtend">
 		select
 		product.productPrice-product.productDiscountPrice
