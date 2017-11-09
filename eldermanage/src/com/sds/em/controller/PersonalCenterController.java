@@ -2,10 +2,14 @@ package com.sds.em.controller;
 
 import java.io.File;
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
+import javax.security.auth.Subject;
 import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.security.SecurityUtil;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,7 @@ import com.sds.em.po.Oldersick;
 import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.service.PersonalCenterService;
+import com.sds.em.service.ShiroService;
 import com.sds.em.util.DateSimp;
 import com.sds.em.util.Md5;
 
@@ -32,6 +37,9 @@ import com.sds.em.util.Md5;
 public class PersonalCenterController {
 	@Autowired
 	PersonalCenterService personalCenterService;
+	
+	@Autowired
+	ShiroService shiro;
 
 	// 查看个人信息--所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "message")
@@ -77,4 +85,13 @@ public class PersonalCenterController {
 		staffbase.setStafftel(stafftel);
 		return personalCenterService.updatePersonalMessage(staffbase);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "authorization")
+	//获取权限
+	public @ResponseBody Message getauthorization(HttpSession session){
+		String stafftel = (String) session.getAttribute("stafftel");
+		Set<String> roles=shiro.getRoles(stafftel);
+		return new Message(true,"返回成功",roles);
+	}
+
 }

@@ -25,6 +25,7 @@ import com.sds.em.po.Productpiclist;
 import com.sds.em.po.Productviewlist;
 import com.sds.em.service.OlderShopService;
 import com.sds.em.util.DateSimp;
+import com.sds.em.util.ImageUtil;
 
 /*
  * 作者：刘露
@@ -91,20 +92,25 @@ public class OlderShopController {
 		if(fileview.length>0){
 			String productview_path = "E:\\oldermanageresource\\productview\\";
 			String url="/productview/";
+			for(int i=0;i<5;i++){
 				Productviewlist productview=new Productviewlist();
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				File filePicSingle = new File(productview_path + newFileName);
-				fileview[0].transferTo(filePicSingle);
+				fileview[i].transferTo(filePicSingle);
+				ImageUtil.resizePng(filePicSingle, filePicSingle, 80, 80, false);
 				productview.setPviewpicsmallpic(url + newFileName);
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				filePicSingle = new File(productview_path + newFileName);
-				fileview[1].transferTo(filePicSingle);
+				fileview[i].transferTo(filePicSingle);
+				ImageUtil.resizePng(filePicSingle, filePicSingle, 400, 400, false);
 				productview.setPviewpicpic(url + newFileName);
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				filePicSingle = new File(productview_path + newFileName);
-				fileview[2].transferTo(filePicSingle);
+				fileview[i].transferTo(filePicSingle);
+				ImageUtil.resizePng(filePicSingle, filePicSingle, 800, 800, false);
 				productview.setPviewpicbigpic(url + newFileName);
 				productviewlist.add(productview);
+			}
 		}
 		product.setProductupondate(date);	
 		return olderShopService.product(product,productpiclist,productviewlist);

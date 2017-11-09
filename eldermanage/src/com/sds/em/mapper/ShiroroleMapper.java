@@ -21,4 +21,7 @@ public interface ShiroroleMapper {
     int updateByExampleSelective(@Param("record") ShiroroleKey record, @Param("example") ShiroroleExample example);
 
     int updateByExample(@Param("record") ShiroroleKey record, @Param("example") ShiroroleExample example);
+    
+    //wuwenbo 返回所有角色
+    List<String> getroles();
 }

@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<title>二级标签搜索页面</title>
-
+		<meta charset="utf-8">
 		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 
@@ -56,7 +56,7 @@
 					<a name="index_none_header_sysc" href="#"></a>
 					<form>
 						<input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-						<input id="ai-topsearch" class="submit am-btn"  value="搜索" index="1" type="submit">
+						<input id="ai-topsearch" class="submit am-btn"  value="搜索" index="1" type="button">
 					</form>
 				</div>
 			</div>
@@ -93,105 +93,106 @@
 										<div class="dd-conent" id="em" >
 											
 											<div >
-											<dd id="newsitem_1" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"><a href="#">衣物服饰</a></dd>
-											<dd id="newsitem_2" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"><a href="#">食物饮品</a></dd>
-											<dd id="newsitem_3" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">生活用品</a></dd>
-											<dd id="newsitem_4" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">文学艺术</a></dd>
-											<dd id="newsitem_5" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">娱乐器具</a></dd>
-											<dd id="newsitem_6" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">运动器材</a></dd>
-											<dd id="newsitem_7" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">医药保健</a></dd>
-											<dd id="newsitem_8" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">医疗器材</a></dd>
-											<dd id="newsitem_9" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">家具器材</a></dd>
-											<dd id="newsitem_10" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="#">电子产品</a></dd>
+											<dd id="newsitem_1" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"><a href="">衣物服饰</a></dd>
+											<dd id="newsitem_2" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"><a href="">食物饮品</a></dd>
+											<dd id="newsitem_3" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="">生活用品</a></dd>
+											<dd id="newsitem_4" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="">文学艺术</a></dd>
+											<dd id="newsitem_5" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="">娱乐器具</a></dd>
+											<dd id="newsitem_6" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="">运动器材</a></dd>
+											<dd id="newsitem_7" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="">医药保健</a></dd>
+											<dd id="newsitem_8" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="">医疗器材</a></dd>
+											<dd id="newsitem_9" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="">家具器材</a></dd>
+											<dd id="newsitem_10" onclick="showitem1(this,'em','h_em_',4,'select-all selected');"> <a href="">电子产品</a></dd>
 
 											</div>
 										</div>
 									</dl>
+									
 								</li>
 								<li class="select-list">
 									<dl id="select3">
 										<dt class="am-badge am-round">选购热点</dt>
-										<dd class="select-all selected"><a href="#">全部</a></dd>
+										<dd class="select-all selected"><a href="">全部</a></dd>
 										<div class="dd-conent" id="h_em_1">
 											
-											<dd ><a href="#">上衣</a></dd>
-											<dd><a href="#">裤子</a></dd>
-											<dd><a href="#">毛衣</a></dd>
-											<dd><a href="#">外套</a></dd>
-											<dd><a href="#">内衣</a></dd>
-											<dd><a href="#">鞋子</a></dd>
+											<dd><a href="" id="clothSuit">上衣</a></dd>
+											<dd><a href="">裤子</a></dd>
+											<dd><a href="">毛衣</a></dd>
+											<dd><a href="">外套</a></dd>
+											<dd><a href="">内衣</a></dd>
+											<dd><a href="">鞋子</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_2"  style="display:none;">
-											<dd><a href="#">蛋糕</a></dd>
-											<dd><a href="#">饼干</a></dd>
-											<dd><a href="#">坚果</a></dd>
-											<dd><a href="#">饮品</a></dd>
-											<dd><a href="#">水果</a></dd>
-											<dd><a href="#">甜点</a></dd>
+											<dd><a href="" id="foodCake">蛋糕</a></dd>
+											<dd><a href="">饼干</a></dd>
+											<dd><a href="">坚果</a></dd>
+											<dd><a href="">饮品</a></dd>
+											<dd><a href="">水果</a></dd>
+											<dd><a href="">甜点</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_3"  style="display:none;">
-											<dd ><a href="#">洗发露</a></dd>
-											<dd><a href="#">卫生纸</a></dd>
-											<dd><a href="#">毛巾</a></dd>
-											<dd><a href="#">盆</a></dd>
-											<dd><a href="#">沐浴露</a></dd>
-											<dd><a href="#">牙刷</a></dd>
+											<dd><a href="" id="">洗发露</a></dd>
+											<dd><a href="">卫生纸</a></dd>
+											<dd><a href="">毛巾</a></dd>
+											<dd><a href="">盆</a></dd>
+											<dd><a href="">沐浴露</a></dd>
+											<dd><a href="">牙刷</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_4"  style="display:none;">
-											<dd ><a href="#">文具</a></dd>
-											<dd><a href="#">绘画</a></dd>
-											<dd><a href="#">书籍</a></dd>
-											<dd><a href="#">瑜伽</a></dd>
-											<dd><a href="#">茶具</a></dd>
-											<dd><a href="#">表演</a></dd>
+											<dd ><a href="">文具</a></dd>
+											<dd><a href="">绘画</a></dd>
+											<dd><a href="">书籍</a></dd>
+											<dd><a href="">瑜伽</a></dd>
+											<dd><a href="">茶具</a></dd>
+											<dd><a href="">表演</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_5"  style="display:none;">
-											<dd ><a href="#">钢琴</a></dd>
-											<dd><a href="#">剪纸</a></dd>
-											<dd><a href="#">小提琴</a></dd>
-											<dd><a href="#">口琴</a></dd>
-											<dd><a href="#">葫芦丝</a></dd>
-											<dd><a href="#">吉他</a></dd>
+											<dd ><a href="">钢琴</a></dd>
+											<dd><a href="">剪纸</a></dd>
+											<dd><a href="">小提琴</a></dd>
+											<dd><a href="">口琴</a></dd>
+											<dd><a href="">葫芦丝</a></dd>
+											<dd><a href="">吉他</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_6"  style="display:none;">
-											<dd ><a href="#">跑步</a></dd>
-											<dd><a href="#">游泳</a></dd>
-											<dd><a href="#">篮球</a></dd>
-											<dd><a href="#">乒乓球</a></dd>
-											<dd><a href="#">羽毛球</a></dd>
-											<dd><a href="#">户外</a></dd>
+											<dd ><a href="">跑步</a></dd>
+											<dd><a href="">游泳</a></dd>
+											<dd><a href="">篮球</a></dd>
+											<dd><a href="">乒乓球</a></dd>
+											<dd><a href="">羽毛球</a></dd>
+											<dd><a href="">户外</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_7"  style="display:none;">
-											<dd ><a href="#">口服液</a></dd>
-											<dd><a href="#">粉剂</a></dd>
-											<dd><a href="#">片剂</a></dd>
-											<dd><a href="#">冲剂</a></dd>
-											<dd><a href="#">丸剂</a></dd>
-											<dd><a href="#">颗粒</a></dd>
+											<dd ><a href="">口服液</a></dd>
+											<dd><a href="">粉剂</a></dd>
+											<dd><a href="">片剂</a></dd>
+											<dd><a href="">冲剂</a></dd>
+											<dd><a href="">丸剂</a></dd>
+											<dd><a href="">颗粒</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_8"  style="display:none;">
-											<dd ><a href="#">防风湿器</a></dd>
-											<dd><a href="#">康复</a></dd>
-											<dd><a href="#">吊环</a></dd>
-											<dd><a href="#">保健按摩</a></dd>
-											<dd><a href="#">电理疗</a></dd>
-											<dd><a href="#">火罐</a></dd>
+											<dd ><a href="">防风湿器</a></dd>
+											<dd><a href="">康复</a></dd>
+											<dd><a href="">吊环</a></dd>
+											<dd><a href="">保健按摩</a></dd>
+											<dd><a href="">电理疗</a></dd>
+											<dd><a href="">火罐</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_9"  style="display:none;">
-											<dd ><a href="#">客厅家具</a></dd>
-											<dd><a href="#">餐厅家具</a></dd>
-											<dd><a href="#">厨房家具</a></dd>
-											<dd><a href="#">卫生间</a></dd>
-											<dd><a href="#">卧室家具</a></dd>
-											<dd><a href="#">书房办公</a></dd>
+											<dd ><a href="">客厅家具</a></dd>
+											<dd><a href="">餐厅家具</a></dd>
+											<dd><a href="">厨房家具</a></dd>
+											<dd><a href="">卫生间</a></dd>
+											<dd><a href="">卧室家具</a></dd>
+											<dd><a href="">书房办公</a></dd>
 										</div>
 										<div class="dd-conent" id="h_em_10"  style="display:none;">
-											<dd ><a href="#">生活厨电</a></dd>
-											<dd><a href="#">相机摄像</a></dd>
-											<dd><a href="#">影音智能</a></dd>
-											<dd><a href="#">老人电脑</a></dd>
-											<dd><a href="#">个护健康</a></dd>
-											<dd><a href="#">老人手机</a></dd>
+											<dd ><a href="">生活厨电</a></dd>
+											<dd><a href="">相机摄像</a></dd>
+											<dd><a href="">影音智能</a></dd>
+											<dd><a href="">老人电脑</a></dd>
+											<dd><a href="">个护健康</a></dd>
+											<dd><a href="">老人手机</a></dd>
 										</div>
 
 									</dl>
@@ -224,7 +225,7 @@
 							<div class="search-content">
 								<div class="sort">
 									<li class="first"><a title="综合">综合排序</a></li>
-									<li><a title="销量">销量排序</a></li>
+									<li><a title="销量" href="" id="countSort">销量排序</a></li>
 									<li><a title="价格">价格优先</a></li>
 									<li class="big"><a title="评价" href="#">评价为主</a></li>
 								</div>
@@ -442,37 +443,145 @@
 <div class="theme-popover-mask"></div>
 
 		<script type="text/javascript">
-			$.ajax({
-				type:'get',
-				contentType:'application/json',
-				url:"",
-				data:null,
-				success:function(result){
-					var productData = result.data;
-
-					// $("#demo5").show();
-					// page(productData, $("#demo5"));
-
-					for(let i=0;i<=11;i++){
-						var oLi =`
-							<li>
-								<div class="i-pic limit">
-									<img src="images/product/imgsearch1.jpg" />											
-									<p class="title fl">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>
-									<p class="price fl">
-										<b>¥</b>
-										<strong>56.90</strong>
-									</p>
-									<p class="number fl">
-										销量<span>1110</span>
-									</p>
-								</div>
-							</li>
-						`;
-						$("#productList").append(oLi);
+			//二级标签
+			$(document).ready(function (){
+				//const PARA = window.location.href.split('?')[1];
+				const PARA = "内衣";
+				//alert(PARA);
+				// 找到子类
+				$("#select3 .dd-conent dd").each(function (){
+					let ddContent = $(this).find('a').html();
+					let parent = $(this).parent();
+					if(ddContent == PARA){
+						$("#select3 .dd-conent").each(function (index){
+							if(parent.attr('id') == $(this).attr('id')){
+								$($("#select2 .dd-conent dd")[index]).trigger("click");
+								$($("#select2 .dd-conent dd")[index]).addClass('selected');
+							} else {
+								$($("#select2 .dd-conent dd")[index]).removeClass('selected');
+							}
+						})
+						$(this).addClass('selected');
+					} else {
+						$(this).removeClass('selected');
 					}
-				}
+				});
 			})
+
+			//ajax部分
+			//搜索框功能
+			$("#ai-topsearch").click(function (event){
+				window.open('search.html?'+$("#searchInput").val());
+			});
+			
+			//加载二级标签数据
+			var searchUrl = "http://localhost:8080/eldermanage/v1/older/shop/index/typetwo";
+			var searchContent = window.location.href.split("?")[1];
+			var searchType = null;
+
+			//所有的二级标签点击事件,50个
+			$("#clothSuit").click(function(event){
+				$("#productList").html("");
+				searchContent = $("#clothSuit").html();
+				searchAjaxTwoContent(searchUrl,searchContent);
+				return false;
+			})
+			$("#foodCake").click(function(event){
+				$("#productList").html("");
+				searchContent = $("#foodCake").html();
+				searchAjaxTwoContent(searchUrl,searchContent);
+				return false;
+			})
+
+			//销量排序
+			$("#countSort").click(function (event){
+				// 刷新页面调用
+				//window.location.href = 'search.html?'+ searchContent;
+
+				//ajax调用， 不刷新页面
+				serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/index/typetwo/sort";
+				$('#searchItem').html('');
+				searchContent = $("#searchInput").val()
+				searchType = "销量排序"
+				searchSort(serachUrl, searchContent,searchType);
+				return false;
+			});
+
+			//加载ajax数据方法
+			function searchAjaxTwoContent(url,content){
+				$.ajax({
+					type:'get',
+					contentType:'application/json',
+					url:url,
+					data:"typetwocontent=" + content,
+					success:function(result){
+						var productData = result.data;
+
+						// $("#demo5").show();
+						// page(productData, $("#demo5"));
+
+						for(let i=0;i<=11;i++){
+							var oLi =`
+								<li>
+									<div class="i-pic limit">
+										<img src="images/product/imgsearch1.jpg" />											
+										<p class="title fl">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>
+										<p class="price fl">
+											<b>¥</b>
+											<strong>56.90</strong>
+										</p>
+										<p class="number fl">
+											销量<span>1110</span>
+										</p>
+									</div>
+								</li>
+							`;
+							$("#productList").append(oLi);
+						}
+					}
+				})
+			}
+
+			function searchSort(url, content,sortType){
+				$.ajax({
+					type: 'get',
+					contentType:'application/json',
+					url: url,
+					data: "info=" + content + "&sort=" + sortType,
+					success:function(result){
+						var searchData = result.data;
+
+						$('#searchCount').text(' ' + searchData.length + ' ');
+						$("#searchTitle").html('"' + window.location.href.split("?")[1] +'"');
+
+						// for(var i=0;i<=searchData.length - 1;i++){
+						// 	var oLi = `
+						// 		<li>
+						// 			<div class="i-pic limit">
+						// 				<img src="images/product/imgsearch1.jpg" />											
+						// 				<p class="title fl">${searchData[i].productname}</p>
+						// 				<p class="price fl">
+						// 					<b>¥</b>
+						// 					<strong>${searchData[i].productprice}</strong>
+						// 				</p>
+						// 				<p class="number fl">
+						// 					销量<span>${searchData[i].storetotalsales}</span>
+						// 				</p>
+						// 			</div>
+						// 		</li>
+						// 	`;
+						// 	console.log('${searchData[i].productname');
+						// 	$('#searchItem').append($(oLi));
+						// }
+
+						$("#demo5").show();
+						page(searchData, $("#demo5"));
+					},
+					error:function(){
+						alert('数据库错误')
+					}
+				})
+			}
 
 			//分页
 			// function page(videodata, pageRoot){
