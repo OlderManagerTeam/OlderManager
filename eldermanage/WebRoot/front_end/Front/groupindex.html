@@ -15,9 +15,37 @@
 		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
 
 		<link href="css/hmstyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/layui.css"  media="all">
 		<script src="css/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
 		<script src="css/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
-</head>
+
+		<script src="js/layui.all.js" charset="utf-8"></script>
+		<script src="js/laypage.js" charset="utf-8"></script>
+
+		<style type="text/css">
+			.am-tabs-nav li{
+				height:42px;
+				line-height:42px;
+			}
+
+			.am-tabs-default .am-tabs-nav > .am-active a{
+				background-color:#ff9600;
+				font-size: 20px;
+			}
+
+			.am-tabs-default .am-tabs-nav a{
+				font-size: 20px;
+			}
+
+			.am-tabs-default .am-tabs-nav{
+				background-color: #dcdcdc;
+			}
+
+			[class*="am-u-"] + [class*="am-u-"]:last-child{
+				float: left;
+			}
+		</style>
+	</head>
 
 	<body >
 		<div class="hmtop">
@@ -56,8 +84,8 @@
 			<!--悬浮搜索框-->
 
 			<div class="nav white">
-				<div class="logo">
-					<img src="images/product/logo.png" />
+				<div class="logo" style="text-align: center;line-height: 41px;">
+					<a href="" style="font-size: 20px;">返回</a>
 				</div>
 				<div class="logoBig">
 					<li><img src="images/product/shoplogo.png" /></li>
@@ -90,16 +118,65 @@
 				<div class="nav-cont">
 					<ul>
 						<li class="index"><a href="shoppingindex.html">首页</a></li>
-						<li class="qc"><a href="groupindex.html">团购</a></li>
+						<li class="qc"><a href="groupindex.html">特惠</a></li>
 					</ul>
 				</div>
-
+				
 				<div class="am-u-sm-12">
 					<img src="images/product/group_bg.jpg">
 				</div>
-			</div>
+				<div class="am-u-sm-12">
+					<div data-am-widget="tabs" class="am-tabs am-tabs-default" style="margin: 0;">
+					    <ul class="am-tabs-nav am-cf">
+					        <li class="am-active"><a href="[data-tab-panel-0]">最新开团</a></li>
+					        <li class=""><a href="[data-tab-panel-1]">即将截止</a></li>
+					        <li class=""><a href="[data-tab-panel-2]">未开团</a></li>
+					    </ul>
+					    <div class="am-tabs-bd">
+					        <div data-tab-panel-0 class="am-tab-panel am-active" style="padding: 0;">
+					        	<div class="am-u-md-12" style="background-color: #f3f1f1;padding: 10px 10px 10px 10px;">
+					        		<div class="am-u-sm-12" id="startList">
+					        			
+					        		</div>
+						            
+						            <!--分页 -->
+									<!-- <div id="demo5" style="text-align: center;"></div> -->
+						        </div>
+					        </div>
+					        <div data-tab-panel-1 class="am-tab-panel " style="padding: 0;">
+					            <div class="am-u-md-12" style="background-color: #f3f1f1;padding: 10px 10px 10px 10px;"
+					            	id="endList">
+						            
+						        </div>
+					        </div>
+					        <div data-tab-panel-2 class="am-tab-panel " style="padding: 0;">
+					            <div class="am-u-md-12" style="background-color: #f3f1f1;padding: 10px 10px 10px 10px;"
+					            	id="willStartList">
+						            
+						        </div>
+					        </div>
+					    </div>
+					</div>
+				</div>
 
-			<!-- 最新开团，即将截止，未开团 -->
+				<footer>
+					<div class="am-u-sm-12" style="height: 3px;background-color: #ff7f00;width: 100%;margin-top: 30px;margin-bottom: 5px;">
+					</div>
+
+					<div class="am-u-sm-12">
+						<a href="" style="color: #717171;margin: 10px;font-size: 15px;">孝和集团</a><b>|</b>
+						<a href="" style="color: #717171;margin: 10px;font-size: 15px;">商城首页</a><b>|</b>
+					</div>
+
+					<div class="am-u-sm-12" style="height: 1px;background-color: #bdbdbd;width: 100%;margin-top: 5px;margin-bottom: 10px;">
+					</div>
+
+					<div class="am-u-sm-12" style="font-size: 15px;">
+						<a href="" style="font-size: 15px;">关于孝和</a> © 2017-2025 oldermanage.com 更关注老年人 - Collect from 孝和集团
+					</div>
+				</footer>
+				
+			</div>
 
 		</div> 
 
@@ -251,137 +328,192 @@
 		
 		<script type="text/javascript">
 		    <!--搜索-->
-			var serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/group/index";
+			var serachUrl = "/eldermanage/v1/older/shop/group/index";
 
 			$("#ai-topsearch").click(function (event){
 				window.open("search.html?"+$("#searchInput").val());
 			});
-            
-			
-			$("#newgroup").click(function (event){  //即将开团
-				// 刷新页面调用
-				//window.location.href = 'search.html?'+ searchContent;
 
-				//ajax调用， 不刷新页面
-				serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/group/index";
-				$('#searchItem').html('');		
-				groupItem(serachUrl);
-				//return false;
-			});
+			//最新开团
+			$.ajax({
+				type: 'get',
+				contentType:'application/json',
+				url:"/eldermanage/v1/shop/group/index",
+				data: null,
+				success:function(result){
+					var newStartData = result.data;
 
-			$("#endgroup").click(function (event){  //即将截止
-				// 刷新页面调用
-				//window.location.href = 'search.html?'+ searchContent;
+					// $("#demo5").show();
+					// page(newStartData, $("#demo5"));
 
-				//ajax调用， 不刷新页面
-				serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/group/end";
-				$('#searchItem').html('');	
-				groupItem(serachUrl);
-				//return false;
-			});
-
-			$("#willgroup").click(function (event){  //即将截止
-				// 刷新页面调用
-				//window.location.href = 'search.html?'+ searchContent;
-
-				//ajax调用， 不刷新页面
-				serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/group/no";
-				$('#searchItem').html('');	
-				groupItem(serachUrl);
-				//return false;
-			});
-
-			function groupItem(url){
-
-				$.ajax({
-					type: 'get',
-					contentType:'application/json',
-					url: url,
-					data: null,
-					success:function(result){
-						var searchData = result.data;
-
-					//	$('#searchCount').text(' ' + searchData.length + ' ');
-					//	$("#searchTitle").html('"' + window.location.href.split("?")[1] +'"');
-
-						// for(var i=0;i<=searchData.length - 1;i++){
-						// 	var oLi = `
-						// 		<li>
-						// 			<div class="i-pic limit">
-						// 				<img src="images/product/imgsearch1.jpg" />											
-						// 				<p class="title fl">${searchData[i].productname}</p>
-						// 				<p class="price fl">
-						// 					<b>¥</b>
-						// 					<strong>${searchData[i].productprice}</strong>
-						// 				</p>
-						// 				<p class="number fl">
-						// 					销量<span>${searchData[i].storetotalsales}</span>
-						// 				</p>
-						// 			</div>
-						// 		</li>
-						// 	`;
-						// 	console.log('${searchData[i].productname');
-						// 	$('#searchItem').append($(oLi));
-						// }
-
-						$("#demo5").show();
-						page(searchData, $("#demo5"));
-					},
-					error:function(){
-						alert('数据库错误')
+					for(let i=5;i>=0;i--){
+						var oDiv = `
+							<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
+				            	<div class="am-u-md-12">
+				            		<a href="group_introduction.html?"><img src="images/product/01_mid.jpg"></a>
+				            	</div>
+				            	<div class="am-u-md-12">
+				            		<a href="group_introduction.html?"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">【歌唱】那时候有多好任雨打湿裙角</p></a>
+				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
+				            			<span style="font-size: 15px;text-decoration:line-through;">门市价:￥
+				            				<span style="font-size: 15px;text-decoration:line-through;">500</span>
+				            			</span>
+				            			<span style="font-size: 18px;color: red;margin-left: 10px;">团购价:￥
+				            				<span style="font-size: 18px;color: red;">200</span>
+				            			</span>
+				            		</p>
+				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
+				            			<span style="font-size: 15px;">日期:
+				            				<span style="font-size: 15px;">2017-10-11</span>
+				            			</span>
+				            		</p>
+				            	</div>
+				            </div>
+						`;
+						$("#startList").append(oDiv);
 					}
-				})
-			}
+				},
+				error:function(){
+					alert("数据库错误")
+				}
+			})
 
+			//即将截止
+			$.ajax({
+				type: 'get',
+				contentType:'application/json',
+				url:"/eldermanage/v1/shop/group/end",
+				data: null,
+				success:function(result){
+					var newStartData = result.data;
+
+					// $("#demo5").show();
+					// page(newStartData, $("#demo5"));
+
+					for(let i=5;i>=0;i--){
+						var oDiv = `
+							<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
+				            	<div class="am-u-md-12">
+				            		<a href="group_introduction.html?"><img src="images/product/01_mid.jpg"></a>
+				            	</div>
+				            	<div class="am-u-md-12">
+				            		<a href="group_introduction.html?"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">【歌唱】那时候有多好任雨打湿裙角</p></a>
+				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
+				            			<span style="font-size: 15px;text-decoration:line-through;">门市价:￥
+				            				<span style="font-size: 15px;text-decoration:line-through;">500</span>
+				            			</span>
+				            			<span style="font-size: 18px;color: red;margin-left: 10px;">团购价:￥
+				            				<span style="font-size: 18px;color: red;">200</span>
+				            			</span>
+				            		</p>
+				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
+				            			<span style="font-size: 15px;">日期:
+				            				<span style="font-size: 15px;">2017-10-11</span>
+				            			</span>
+				            		</p>
+				            	</div>
+				            </div>
+						`;
+						$("#endList").append(oDiv);
+					}
+				},
+				error:function(){
+					alert("数据库错误")
+				}
+			})
+
+			//未开团
+			$.ajax({
+				type: 'get',
+				contentType:'application/json',
+				url:"/eldermanage/v1/shop/group/no",
+				data: null,
+				success:function(result){
+					var newStartData = result.data;
+
+					// $("#demo5").show();
+					// page(newStartData, $("#demo5"));
+
+					for(let i=5;i>=0;i--){
+						var oDiv = `
+							<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
+				            	<div class="am-u-md-12">
+				            		<a href="group_introduction.html?"><img src="images/product/01_mid.jpg"></a>
+				            	</div>
+				            	<div class="am-u-md-12">
+				            		<a href="group_introduction.html?"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">【歌唱】那时候有多好任雨打湿裙角</p></a>
+				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
+				            			<span style="font-size: 15px;text-decoration:line-through;">门市价:￥
+				            				<span style="font-size: 15px;text-decoration:line-through;">500</span>
+				            			</span>
+				            			<span style="font-size: 18px;color: red;margin-left: 10px;">团购价:￥
+				            				<span style="font-size: 18px;color: red;">200</span>
+				            			</span>
+				            		</p>
+				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
+				            			<span style="font-size: 15px;">日期:
+				            				<span style="font-size: 15px;">2017-10-11</span>
+				            			</span>
+				            		</p>
+				            	</div>
+				            </div>
+						`;
+						$("#willStartList").append(oDiv);
+					}
+				},
+				error:function(){
+					alert("数据库错误")
+				}
+			})
+            
 			//分页
-			function page(videodata, pageRoot){
-				layui.use(['laypage', 'layer'], function(){
-					var laypage = layui.laypage
-					,layer = layui.layer;
-					laypage.render({
-					    elem: pageRoot
-					    ,count: videodata.length
-					    ,limit: 12  //每页个数
-					    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
-					    ,hash: 'fenye' //自定义hash值
-					    ,jump: function(obj){
-					      //模拟渲染
-					      document.getElementById('searchItem').innerHTML = function(){
-					        var arr = []
-					        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
-					        layui.each(thisData, function(index, item){
-					        	let datas =`
-								
-									<li><a href="group_introduction.html">
-										<div class="i-pic limit">
-											<img src="${item.productimg}" />											
-											<p class="title fl">${item.productname}</p>
-											<p >
-												<b style="color:red;font-size:20px">¥</b>
-												<strong style="color:red;font-size:20px">${item.productprice}</strong>
-									            <b style="color:#666;font-size:14px" >门市价</b>
-									            <em style="color:#666;font-size:14px">¥</em><b style="text-decoration:line-through;color:#666;font-size:14px">${item.productdiscountprice}</b>								
-								           </p>
-												<br>													
-												<b style="color:#666;font-size:14px">日期</b>
-												<strong style="color:#666;font-size:14px">${item.productupondate}</strong>
-											</p>
-											</p>
-
-											<p class="number fl">
-												 <img src="images/product/join_group_button.png"/>
-											</p>
-										</div>
-									</li></a>
-								`;
-					        	arr.push(datas);
-					        });
-					        return arr.join('');
-					      }();
-					    }
-					});
-				});
-			}
+			// function page(videodata, pageRoot){
+			// 	layui.use(['laypage', 'layer'], function(){
+			// 		var laypage = layui.laypage
+			// 		,layer = layui.layer;
+			// 		laypage.render({
+			// 		    elem: pageRoot
+			// 		    ,count: videodata.length
+			// 		    ,limit: 4  //每页个数
+			// 		    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+			// 		    ,hash: 'fenye' //自定义hash值
+			// 		    ,jump: function(obj){
+			// 		      //模拟渲染
+			// 		      document.getElementById('startList').innerHTML = function(){
+			// 		        var arr = []
+			// 		        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+			// 		        layui.each(thisData, function(index, item){
+			// 		        	let datas =`
+			// 						<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
+			// 			            	<div class="am-u-md-12">
+			// 			            		<a href="group_introduction.html?"><img src="images/product/01_mid.jpg"></a>
+			// 			            	</div>
+			// 			            	<div class="am-u-md-12">
+			// 			            		<a href="group_introduction.html?"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">【歌唱】那时候有多好任雨打湿裙角</p></a>
+			// 			            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
+			// 			            			<span style="font-size: 15px;text-decoration:line-through;">门市价:￥
+			// 			            				<span style="font-size: 15px;text-decoration:line-through;">500</span>
+			// 			            			</span>
+			// 			            			<span style="font-size: 18px;color: red;margin-left: 10px;">团购价:￥
+			// 			            				<span style="font-size: 18px;color: red;">200</span>
+			// 			            			</span>
+			// 			            		</p>
+			// 			            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
+			// 			            			<span style="font-size: 15px;">日期:
+			// 			            				<span style="font-size: 15px;">2017-10-11</span>
+			// 			            			</span>
+			// 			            		</p>
+			// 			            	</div>
+			// 			            </div>
+			// 					`;
+			// 		        	arr.push(datas);
+			// 		        });
+			// 		        return arr.join('');
+			// 		      }();
+			// 		    }
+			// 		});
+			// 	});
+			// }
 		
 		</script>
 
