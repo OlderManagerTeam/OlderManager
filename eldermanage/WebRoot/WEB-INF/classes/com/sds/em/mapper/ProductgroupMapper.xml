@@ -332,24 +332,35 @@
 
 	<!-- lu -->
 
-	<select id="GroupIndexView" resultType="com.sds.em.po.Productgroup">
+	<select id="GroupIndexView" resultType="com.sds.em.shop.pojo.ProductGroupExtend">
 		SELECT * FROM productgroup
-		WHERE NOW()-groupStartDate  <![CDATA[<]]>
-		0 ORDER BY
-		groupStartDate
+		INNER JOIN product
+		ON
+		productgroup.groupProductId=product.productId
+		where NOW() -
+		groupPublishDate <![CDATA[>]]>
+		0
+		ORDER BY groupPublishDate DESC
 	</select>
 
-	<select id="GroupEndView" resultType="com.sds.em.po.Productgroup">
+	<select id="GroupEndView" resultType="com.sds.em.shop.pojo.ProductGroupExtend">
 		SELECT * FROM productgroup
-		WHERE groupFinishDate-NOW() <![CDATA[>]]>
+		INNER JOIN product
+		ON
+		productgroup.groupProductId=product.productId
+		WHERE
+		groupFinishDate-NOW() <![CDATA[>]]>
 		0 and groupStatus <![CDATA[<>]]>'已结束'
 		OR groupStatus
 		<![CDATA[<>]]>'以成交'
 		ORDER BY groupFinishDate
 	</select>
 
-	<select id="GroupNoView" resultType="com.sds.em.po.Productgroup">
+	<select id="GroupNoView" resultType="com.sds.em.shop.pojo.ProductGroupExtend">
 		SELECT * from productgroup
-		where groupStatus ='未开始' ORDER BY groupStartDate
+		INNER JOIN product
+		ON productgroup.groupProductId=product.productId
+		where groupStatus ='未开始'
+		ORDER BY groupStartDate
 	</select>
 </mapper>

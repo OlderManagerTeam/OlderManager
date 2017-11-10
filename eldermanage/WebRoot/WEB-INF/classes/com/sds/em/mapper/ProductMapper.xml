@@ -462,4 +462,13 @@
 		olderbase.olderId=#{olderid} and product.productId=#{productid}
 
 	</select>
+
+	<select id="preferentialView" resultType="com.sds.em.po.Product">
+		SELECT
+		productPrice-productDiscountPrice from product
+		where
+		productPrice-productDiscountPrice <![CDATA[>]]>0
+		ORDER BY productPrice-productDiscountPrice DESC
+	</select>
+
 </mapper>

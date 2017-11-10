@@ -19,6 +19,7 @@ import com.sds.em.mapper.ProductviewlistMapper;
 import com.sds.em.po.Message;
 import com.sds.em.po.Product;
 import com.sds.em.po.ProductExample;
+import com.sds.em.po.Productgroup;
 import com.sds.em.po.Productpiclist;
 import com.sds.em.po.ProductpiclistExample;
 import com.sds.em.po.Productrate;
@@ -29,6 +30,7 @@ import com.sds.em.po.ProductviewlistExample;
 import com.sds.em.pojo.ProductrateExtend;
 import com.sds.em.service.ShopViewFrontService;
 import com.sds.em.shop.pojo.ProductAmount;
+import com.sds.em.shop.pojo.ProductGroupExtend;
 import com.sds.em.shop.pojo.productGradeExtend;
 import com.sds.em.shop.pojo.productGradeExtend;
 
@@ -300,7 +302,7 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 	@Override
 	public Message GroupIndexView() {
 		try {
-			List<Product> productList = productgroupMapper.GroupIndexView();
+			List<ProductGroupExtend> productList = productgroupMapper.GroupIndexView();
 			if (!productList.isEmpty()) {
 				return new Message(true, "返回成功", productList);
 			} else {
@@ -316,7 +318,7 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 	@Override
 	public Message GroupEndView() {
 		try {
-			List<Product> productList = productgroupMapper.GroupEndView();
+			List<ProductGroupExtend> productList = productgroupMapper.GroupEndView();
 			if (!productList.isEmpty()) {
 				return new Message(true, "返回成功", productList);
 			} else {
@@ -332,7 +334,7 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 	@Override
 	public Message GroupNoView() {
 		try {
-			List<Product> productList = productgroupMapper.GroupNoView();
+			List<ProductGroupExtend> productList = productgroupMapper.GroupNoView();
 			if (!productList.isEmpty()) {
 				return new Message(true, "返回成功", productList);
 			} else {
@@ -407,6 +409,39 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
+	}
+
+	@Override
+	public Message preferentialView() {
+		try {
+			List<Product> productList = productMapper.preferentialView();
+			if (!productList.isEmpty()) {
+				return new Message(true, "返回成功", productList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message getProductGroup(int groupid) {
+		try {
+			Productgroup groupList = productgroupMapper.selectByPrimaryKey(groupid);
+			if (groupList != null) {
+				return new Message(true, "返回成功", groupList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
 	}
 
 }

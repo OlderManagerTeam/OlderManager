@@ -95,7 +95,7 @@ public class ShopViewFrontController {
 		return shopViewFrontService.getProductRateInfo(productid);
 	}
 
-	// 显示按照团购开团排序好的商品页面--即将开团 --后端成功
+	// 显示按照团购开团排序好的商品页面--即将开团 --后端成功-修改成-最新团购--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "group/index")
 	public @ResponseBody Message getGroupIndex() throws Exception {
 
@@ -117,6 +117,12 @@ public class ShopViewFrontController {
 		return shopViewFrontService.GroupNoView();
 	}
 
+	// 显示特惠的商品，按原价减去折扣价最大的排序显示
+	@RequestMapping(method = RequestMethod.GET, value = "preferential")
+	public @ResponseBody Message preferentialView() throws Exception {
+		return shopViewFrontService.preferentialView();
+	}
+
 	// 猜你喜欢（未登录时）-推荐本商品的同标签下的商品--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/product/guesslike")
 	public @ResponseBody Message guessLikeView(int productid) throws Exception {
@@ -136,6 +142,12 @@ public class ShopViewFrontController {
 	public @ResponseBody Message magnifyingGlassView(int productid) throws Exception {
 
 		return shopViewFrontService.magnifyingGlassView(productid);
+	}
+
+	// 显示某个团购商品的团购信息
+	@RequestMapping(method = RequestMethod.GET, value = "index/product/group")
+	public @ResponseBody Message getProductGroup(int groupid) throws Exception {
+		return shopViewFrontService.getProductGroup(groupid);
 	}
 
 }
