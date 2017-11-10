@@ -73,7 +73,6 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 				return new Message(false, "数据库错误", null);
 			}
 		} else {// 已加入过购物车，应该是修改
-			cartExample.clear();
 			Cart cart = new Cart();
 			int flag = 0;
 			cart.setCartcount(count);
@@ -157,6 +156,31 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
+	}
+
+	@Override
+	public Message updateCart(int olderid, int[] productid, int[] count) {
+		try {
+			boolean flag = true;
+			int f = 1;
+			for (int i = 0; i < productid.length; i++) {
+				flag = this.addShopcart(olderid, productid[i], count[i]).isSuccess();
+				if (!flag) {// 当有一个为false时候
+					f = 0;
+					break;
+				}
+			}
+			if (f == 1) {
+				return new Message(true, "修改成功", null);
+			} else {
+				return new Message(false, "修改失败", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
 	}
 
 }
