@@ -266,7 +266,7 @@
 								<div class="form-group">
 									<label for="olderSex" class="col-sm-3 control-label">老人性别：</label>
 									<div class="col-sm-5">
-										<select id="oldersex" name="oldersex">
+										<select id="oldersex">
 											<optgroup label="性别">
 												<option value="1">男</option>
 												<option value="2">女</option>
@@ -312,7 +312,7 @@
 								<div class="form-group">
 									<label for="olderSingleStatus" class="col-sm-3 control-label">老人独居状况：</label>
 									<div class="col-sm-5">
-										<select id="oldersinglestatus" name="oldersinglestatus">
+										<select id="oldersinglestatus">
 											<optgroup label="单身状况">
 												<option value="yes">是</option>
 												<option value="no">否</option>
@@ -330,7 +330,7 @@
 								<div class="form-group">
 									<label for="olderNation" class="col-sm-3 control-label">老人民族：</label>
 									<div class="col-sm-5">
-										<select id="oldernation" name="oldernation">
+										<select id="oldernation">
 											<optgroup>
 												<option>民族</option>
 												<option value="汉族">汉族</option>
@@ -438,7 +438,6 @@
 					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 		</div>
 	</footer>
-	<div>
 		<!-- Javascript Libs -->
 		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
@@ -697,10 +696,10 @@
 		<script type="text/javascript">
 			$("#altersubmit").click(function() {
 				var form = new FormData(document.getElementById("olderAlter"));
-			//	form.append("oldersex", document.getElementById("select2-oldersex-container").title);
-			//	var sex=document.getElementById("select2-oldersex-container").title;
-			//	form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
-			//	form.append("oldernation", document.getElementById("select2-oldernation-container").title);
+				form.append("oldersex", document.getElementById("select2-oldersex-container").title);
+				var sex=document.getElementById("select2-oldersex-container").title;
+				form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
+				form.append("oldernation", document.getElementById("select2-oldernation-container").title);
 				$.ajax({
 					type : 'post',
 					url : "/eldermanage/v1/brench/elder/infoupdate",

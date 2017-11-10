@@ -514,7 +514,7 @@
 					$('#staffsex').val(result.data.staffbase.staffsex);
 					$('#departmentid').val(result.data.department.departmentid);
 					$('#roleid').attr("value", result.data.role.roleid);
-	
+	$('#staffcode').val(result.data.staffbase.staffcode);
 					$("#select2-staffdepartmentname-container").text(result.data.department.departmentname);
 					for (var i = 0; i < $("#staffdepartmentname option").length; i++) {
 						if ($($("#staffdepartmentname option")[i]).text() == result.data.department.departmentname) {
@@ -549,8 +549,8 @@
 				var departmentdata = result.data
 				for (var i = departmentdata.length - 1; i >= 0; i--) {
 					var oOption = `
-									<option value="${departmentdata[i].departmentid}">${departmentdata[i].departmentname}</option>
-								`;
+											<option value="${departmentdata[i].departmentid}">${departmentdata[i].departmentname}</option>
+										`;
 					$('#staffdepartmentname').append(oOption);
 				}
 			},
@@ -592,17 +592,22 @@
 		$('#staffdepartmentname').change(function() {
 	
 			$('#departmentid').val($(this).val());
-						$.ajax({
+			$("#rolename").empty();
+			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "/eldermanage/v1/headoffice/allRoleid?departmentid="+$('#departmentid').val(),
+				url : "/eldermanage/v1/headoffice/allRoleid?departmentid=" + $('#departmentid').val(),
 				data : null,
 				success : function(result) {
 					var roledata = result.data;
+					var oOption = `
+											<option value="0" selected="selected">无</option>
+										`;
+					$('#rolename').append(oOption);
 					for (var i = roledata.length - 1; i >= 0; i--) {
 						var oOption = `
-									<option value="${roledata[i].roleid}">${roledata[i].rolecontent}</option>
-								`;
+											<option value="${roledata[i].roleid}">${roledata[i].rolecontent}</option>
+										`;
 						$('#rolename').append(oOption);
 					}
 				},
@@ -610,17 +615,17 @@
 					alert('数据库错误')
 				}
 			})
-/* 			$.ajax({
-				type : 'get',
-				contentType : 'application/json',
-				url : "/eldermanage/v1/headoffice/staff/staffcode",
-				data : "staffdepartmentid=" + $('#departmentid').val() + "&staffroleid=" + $('#roleid').val(),
-				success : function(result) {
-					// alert(result.data)
-					$("#staffcode").val(result.data);
-				},
-			}) */
-
+			/* 			$.ajax({
+							type : 'get',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/headoffice/staff/staffcode",
+							data : "staffdepartmentid=" + $('#departmentid').val() + "&staffroleid=" + $('#roleid').val(),
+							success : function(result) {
+								// alert(result.data)
+								$("#staffcode").val(result.data);
+							},
+						}) */
+	
 		})
 	
 		$('#rolename,staffdepartmentname').change(function() {
