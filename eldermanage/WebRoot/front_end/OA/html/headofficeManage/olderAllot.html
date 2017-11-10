@@ -455,11 +455,12 @@
 		<script type="text/javascript">
 			$("#olderallot").click(function() {
 				var oldertel= UrlParm.parm("oldertel");
-				var branchid= $("#olderbranchid option:selected").text();
+				var branchid= document.getElementById("olderbranchid").value;
+				
 				$.ajax({
 					type : 'post',
 					url : "/eldermanage/v1/headoffice/older/allot?oldertel="+oldertel+"&branchid="+branchid,
-					data : form,
+					data : null,
 					processData : false,
 					contentType : false,
 					success : function(result) {

@@ -71,6 +71,12 @@ public class ShopPayFrontController {
 		int olderid = 1;
 		return shopPayFrontService.confirmOrderCart(olderid);
 	}
-	
+	//点击结算时，刷新购物车数据-后端成功
+	@RequestMapping(method = RequestMethod.POST, value = "cart/confirm/order/sure")
+	public @ResponseBody Message updateCart(HttpSession session,int[] productid,int[] count) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.updateCart(olderid, productid, count);
+	}
 	
 }
