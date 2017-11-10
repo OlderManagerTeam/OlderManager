@@ -10,24 +10,26 @@
 		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
 		<link href="css/cartstyle.css" rel="stylesheet" type="text/css" />
-		<link href="css/optstyle.css" rel="stylesheet" type="text/css" />
 		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
 		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
 		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
-		<link type="text/css" href="css/style.css" rel="stylesheet" />
+
+
+		<link rel="stylesheet" href="css/keyao/bootstrapEx.css">
+
+
 
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="basic/js/jquery-1.7.min.js"></script>
-		<script type="text/javascript" src="basic/js/quick_links.js"></script>
 
 		<script type="text/javascript" src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-		<script type="text/javascript" src="js/jquery.imagezoom.min.js"></script>
-		<script type="text/javascript" src="js/jquery.flexslider.js"></script>
-		<script type="text/javascript" src="js/list.js"></script>
+
+
+        <script type="text/javascript" src="js/keyao/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/keyao/bootstrapEx.js"></script>
+        <script type="text/javascript" src="js/keyao/bootstrap.js"></script>
+    
 		
-		<script type="text/javascript" src="js/layer.js"></script>
 
 
 	</head>
@@ -551,22 +553,9 @@
 									            <li class="td td-sum">
 										            <div class="td-inner">
 											            <div class="price-line">
-													        <button class="btn btn-default" name="parentIframe" id="parentIframe">未评价</button>
-
-													        <script type="text/javascript">
-                                                                 //弹出一个iframe层
-  $('#parentIframe').on('click', function(){
-    layer.open({
-      type: 2,
-      title: 'iframe父子操作',
-      maxmin: true,
-      shadeClose: true, //点击遮罩关闭层
-      area : ['800px' , '520px'],
-      content: 'test/iframe'
-    });
-  });
-
-													        </script>
+											            	<button id="btn3" class="btn btn-default" type="button" data-dismiss="modal" aria-hidden="true">未评价</button>
+													        
+													        
 												        </div>
 										            </div>
 									            </li>
@@ -779,5 +768,40 @@
 		</div>
 
 	</body>
+<script>
+    var iframeurl = function () { return "personalComment.html?" + getNowDateInt() };
+
+    var Modal3;
+
+
+    $(document).ready(function () {
+
+        InitModal3();
+
+        $("#btn3").click(function () {
+            Modal3.show();
+        })
+
+    });
+
+
+    function InitModal3() {
+        $(document.body).append('<div id="modal3"></div>');
+        Modal3 = new Modal();
+        Modal3.renderto = "#modal3";
+        Modal3.InitShow = true;
+        Modal3.btns = [{ id: "btn1", text: "保存" }, { id: "closebtn" }]
+        tab1 = new Tab();
+        Modal3.OnfirstInited = function (thismodal) {
+            tab1.tabs = [{
+                id: "tabs1", title: "评价", active: true, isiframe: true, url: iframeurl()
+            }, ];
+            tab1.renderto = thismodal.body;
+            tab1.Init();
+        }
+    }
+
+
+</script>	
 
 </html>
