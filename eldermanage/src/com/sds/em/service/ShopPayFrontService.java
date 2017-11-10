@@ -21,4 +21,7 @@ public interface ShopPayFrontService {
 	// 显示购物车页面-所加入的商品信息
 	public Message ShopcartView(int olderid);
 
+	// 点击结算时，刷新购物车数据
+	public Message updateCart(int olderid, int[] productid, int[] count);
+
 }

@@ -51,11 +51,9 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
 	@Override
 	public Message updatePersonalMessage(Staffbase staffbase) throws Exception {
 		try {
-			StaffbaseExample staffbaseExample = new StaffbaseExample();
-			Criteria criteria = staffbaseExample.createCriteria();
-			criteria.andStaffidEqualTo(staffbase.getStaffid());
+
 			int flag = 0;
-			flag = staffbaseMapper.updateByExample(staffbase, staffbaseExample);
+			flag = staffbaseMapper.updateByPrimaryKeySelective(staffbase);
 			if (flag != 0) {
 				return new Message(true, "修改成功", null);
 			} else {
