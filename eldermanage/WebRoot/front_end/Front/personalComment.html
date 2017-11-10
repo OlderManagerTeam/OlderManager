@@ -1,117 +1,151 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
 
-		<title>评价</title>
-		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
-		<link href="css/cartstyle.css" rel="stylesheet" type="text/css" />
-		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<title>商品评价</title>
 
-		<link rel="stylesheet" href="css/keyao/bootstrapEx.css">
+<meta name="description" content="jquery评论星星打分、鼠标滑过星星区域显示评论信息提交内容，适用在评论表单里面，是表单美化提交内容的一种用户体验设计。" />
 
+<script type="text/javascript" src="js/keyao/jquery-1.4.2.min.js"></script>
 
+<script type="text/javascript" src="js/keyao/comment.js"></script>
 
-		<script type="text/javascript" src="js/jquery.js"></script>
-
-		<script type="text/javascript" src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
-
-
-        <script type="text/javascript" src="js/keyao/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="js/keyao/bootstrapEx.js"></script>
-        <script type="text/javascript" src="js/keyao/bootstrap.js"></script>
-<style type="text/css"> 
-*{margin:0;padding:0;list-style-type:none;}
-body{color:#666;font:12px/1.5 Arial;}
-/* star */
-/*评分位置*/
-#star{position:relative;width:600px;margin:20px;height:24px;}
-#star ul,#star span{float:left;display:inline;height:19px;line-height:19px;}
-#star ul{margin:0 10px;}
-#star li{float:left;width:24px;cursor:pointer;text-indent:-9999px;background:url(images/star.png) no-repeat;}
-#star strong{color:#f60;padding-left:10px;}
-#star li.on{background-position:0 -28px;}
-#star p{position:absolute;top:20px;width:159px;height:60px;display:none;background:url(images/icon.gif) no-repeat;padding:7px 10px 0;}
-#star p em{color:#f60;display:block;font-style:normal;}
-</style>
-<script type="text/javascript"> 
-window.onload = function (){
-	var oStar = document.getElementById("star");
-	var aLi = oStar.getElementsByTagName("li");
-	var oUl = oStar.getElementsByTagName("ul")[0];
-    var oSpan = oStar.getElementsByTagName("span")[1];//获取第一个span标签
-	var oP = oStar.getElementsByTagName("p")[0];
-    var i = iScore = iStar = 0;
-	var aMsg = [
-				"很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
-				"不满意|部分有破损，与卖家描述的不符，不满意",
-				"一般|质量一般，没有卖家描述的那么好",
-				"满意|质量不错，与卖家描述的基本一致，还是挺满意的",
-				"非常满意|质量非常好，与卖家描述的完全一致，非常满意"
-				]
-	for (i = 1; i <= aLi.length; i++){
-		aLi[i - 1].index = i;
-		//鼠标移过显示分数
-		aLi[i - 1].onmouseover = function (){
-			fnPoint(this.index);
-			//浮动层显示
-			oP.style.display = "block";
-			//计算浮动层位置
-			oP.style.left = oUl.offsetLeft + this.index * this.offsetWidth - 104 + "px";
-			//匹配浮动层文字内容
-			oP.innerHTML = "<em><b>" + this.index + "</b> 分 " + aMsg[this.index - 1].match(/(.+)\|/)[1] + "</em>" + aMsg[this.index - 1].match(/\|(.+)/)[1]
-		};
-		//鼠标离开后恢复上次评分
-		aLi[i - 1].onmouseout = function (){
-			fnPoint();
-			//关闭浮动层
-			oP.style.display = "none"
-		};
-		//点击后进行评分处理
-		aLi[i - 1].onclick = function (){
-			iStar = this.index;
-			oP.style.display = "none";
-			oSpan.innerHTML = "<strong>" + (this.index) + " 分</strong> (" + aMsg[this.index - 1].match(/\|(.+)/)[1] + ")"
-		}
-	}
-	//评分处理
-	function fnPoint(iArg){
-		//分数赋值
-		iScore = iArg || iStar;
-		for (i = 0; i < aLi.length; i++) aLi[i].className = i < iScore ? "on" : "";	
-	}
-};
-
-</script>		
 </head>
+
 <body>
-<form>
-    <div id="star">
-        <span>星级评分:</span>
-		<ul>
-			<li><a href="javascript:;">1</a></li>
-			<li><a href="javascript:;">2</a></li>
-			<li><a href="javascript:;">3</a></li>
-			<li><a href="javascript:;">4</a></li>
-			<li><a href="javascript:;">5</a></li>
-		</ul>
-		<span></span>
-		<p></p>
-    </div>
-    <div style="margin:0 20px;" >
-    	<span>评论内容:</span>
-        <textarea style="width:700px;height: 400px"></textarea>
-    </div>
-    <div style="margin-left: 120px;margin-top: 20px" >
-        <button class="btn btn-primary btn-lg">提交</button>
-    </div>
-</form>		
+
+<style type="text/css">
+
+*{margin:0;padding:0;list-style-type:none;}
+
+a,img{border:0;}
+
+body{font:12px/180% Arial, Helvetica, sans-serif;}
+
+/*quiz style*/
+
+.quiz{border:solid 1px #ccc;height:270px;width:500px;}
+
+.quiz h3{font-size:14px;line-height:35px;height:35px;border-bottom:solid 1px #e8e8e8;padding-left:20px;background:#f8f8f8;color:#666;position:relative;}
+
+.quiz_content{padding-top:10px;padding-left:20px;position:relative;height:205px;}
+
+.quiz_content .btm{border:none;width:100px;height:33px;margin:10px 0 0 64px;display:inline;cursor:pointer;}
+
+.quiz_content li.full-comment{position:relative;z-index:99;height:41px;}
+
+.quiz_content li.cate_l{height:24px;line-height:24px;padding-bottom:10px;}
+
+.quiz_content li.cate_l dl dt{float:left;}
+
+.quiz_content li.cate_l dl dd{float:left;padding-right:15px;}
+
+.quiz_content li.cate_l dl dd label{cursor:pointer;}
+
+.quiz_content .l_text{height:120px;position:relative;padding-left:18px;}
+
+.quiz_content .l_text .m_flo{float:left;width:47px;}
+
+.quiz_content .l_text .text{width:400px;height:109px;border:solid 1px #ccc;}/*输入框的宽度*/
+
+.quiz_content .l_text .tr{position:absolute;bottom:-18px;right:40px;}
+
+/*goods-comm-stars style*/
+
+.goods-comm{height:41px;position:relative;z-index:7;}
+
+.goods-comm-stars{line-height:25px;padding-left:12px;height:41px;position:absolute;top:0px;left:0;width:400px;}
+
+.goods-comm-stars .star_l{float:left;display:inline-block;margin-right:5px;display:inline;}
+
+.goods-comm-stars .star_choose{float:left;display:inline-block;}
+
+/* rater star */
+
+.rater-star{position:relative;list-style:none;margin:0;padding:0;background-repeat:repeat-x;background-position:left top;float:left;}
+
+.rater-star-item, .rater-star-item-current, .rater-star-item-hover{position:absolute;top:0;left:0;background-repeat:repeat-x;}
+
+.rater-star-item{background-position: -100% -100%;}
+
+.rater-star-item-hover{background-position:0 -48px;cursor:pointer;}
+
+.rater-star-item-current{background-position:0 -48px;cursor:pointer;}
+
+.rater-star-item-current.rater-star-happy{background-position:0 -25px;}
+
+.rater-star-item-hover.rater-star-happy{background-position:0 -25px;}
+
+.rater-star-item-current.rater-star-full{background-position:0 -72px;}
+
+/* popinfo */
+
+.popinfo{display:none;position:absolute;top:30px;background:url(images/comment/infobox-bg.gif) no-repeat;padding-top:8px;width:192px;margin-left:-14px;}
+
+.popinfo .info-box{border:1px solid #f00;border-top:0;padding:0 5px;color:#F60;background:#FFF;}
+
+.popinfo .info-box div{color:#333;}
+
+.rater-click-tips{font:12px/25px;color:#333;margin-left:10px;background:url(images/comment/infobox-bg-l.gif) no-repeat 0 0;width:125px;height:34px;padding-left:16px;overflow:hidden;}
+
+.rater-click-tips span{display:block;background:#FFF9DD url(images/comment/infobox-bg-l-r.gif) no-repeat 100% 0;height:34px;line-height:34px;padding-right:5px;}
+
+.rater-star-item-tips{background:url(images/comment/star-tips.gif) no-repeat 0 0;height:41px;overflow:hidden;}
+
+.cur.rater-star-item-tips{display:block;}	
+
+.rater-star-result{color:#FF6600;font-weight:bold;padding-left:10px;float:left;}
+
+</style>
+
+
+
+<div class="quiz">
+
+	<h3>我要评论</h3>
+
+	<div class="quiz_content">
+
+		<form action="" id="" method="post">
+
+			<div class="goods-comm">
+
+				<div class="goods-comm-stars">
+
+					<span class="star_l">满意度：</span>
+
+					<div id="rate-comm-1" class="rate-comm"></div>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="l_text">
+
+				<label class="m_flo">内  容：</label>
+
+				<textarea name="" id="" class="text"></textarea>
+
+				<span class="tr">字数限制为5-200个</span>
+
+			</div>
+
+			<button class="btm" type="submit">提交评论</button>
+
+		</form>
+
+	</div><!--quiz_content end-->
+
+</div><!--quiz end-->
+
+
+
 </body>
+
 </html>
