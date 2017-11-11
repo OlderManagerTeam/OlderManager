@@ -71,6 +71,19 @@ public class ShopPayFrontController {
 		int olderid = 1;
 		return shopPayFrontService.confirmOrderCart(olderid);
 	}
-	
+	//点击结算时，刷新购物车数据-后端成功
+	@RequestMapping(method = RequestMethod.POST, value = "cart/confirm/order/sure")
+	public @ResponseBody Message updateCart(HttpSession session,int[] productid,int[] count) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.updateCart(olderid, productid, count);
+	}
+	//生成订单表和订单详情表-后端成功
+	@RequestMapping(method = RequestMethod.GET, value = "order/formation")
+	public @ResponseBody Message orderFormation(HttpSession session,float ordertotal,int ordertakepoint) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.orderFormation(olderid, ordertotal, ordertakepoint);
+	}
 	
 }
