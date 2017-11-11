@@ -267,6 +267,7 @@
 		orderlist.orderProductId=product.productId
 		WHERE
 		orders.orderOlderId=#{olderid} and orders.orderId=#{orderid}
+		and orders.orderStatus <![CDATA[<>]]>'已签收'
 
 	</select>
 

@@ -156,4 +156,64 @@ public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
 		}
 	}
 
+	@Override
+	public Message myOrderSure(int olderid, int orderid) throws Exception {
+		try {
+			OrdersExample ordersExample = new OrdersExample();
+			com.sds.em.po.OrdersExample.Criteria criteria = ordersExample.createCriteria();
+			criteria.andOrderolderidEqualTo(olderid);
+			criteria.andOrderidEqualTo(orderid);
+
+			List<Orders> ordersList = ordersMapper.selectByExample(ordersExample);
+			if (!ordersList.isEmpty()) {
+				Orders orders = ordersList.get(0);
+				orders.setOrderstatus("已签收");
+				int flag = 0;
+				flag = ordersMapper.updateByExampleSelective(orders, ordersExample);
+				if (flag != 0) {
+					return new Message(true, "签收成功", null);
+				} else {
+					return new Message(false, "数据库错误", null);
+				}
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
+	@Override
+	public Message myOrderApplyCancel(int olderid, int orderid) throws Exception {
+		try {
+			OrdersExample ordersExample = new OrdersExample();
+			com.sds.em.po.OrdersExample.Criteria criteria = ordersExample.createCriteria();
+			criteria.andOrderolderidEqualTo(olderid);
+			criteria.andOrderidEqualTo(orderid);
+
+			List<Orders> ordersList = ordersMapper.selectByExample(ordersExample);
+			if (!ordersList.isEmpty()) {
+				Orders orders = ordersList.get(0);
+				orders.setOrderstatus("申请退货");
+				int flag = 0;
+				flag = ordersMapper.updateByExampleSelective(orders, ordersExample);
+				if (flag != 0) {
+					return new Message(true, "申请退货请求成功", null);
+				} else {
+					return new Message(false, "数据库错误", null);
+				}
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
+	}
+
 }

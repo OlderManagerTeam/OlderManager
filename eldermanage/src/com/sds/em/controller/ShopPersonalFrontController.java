@@ -67,9 +67,25 @@ public class ShopPersonalFrontController {
 	}
 
 	// 显示评价信息
-	@RequestMapping(method = RequestMethod.POST, value = "buyrecord/rate/info")
+	@RequestMapping(method = RequestMethod.GET, value = "buyrecord/rate/info")
 	public @ResponseBody Message RateInfo(int rateid) throws Exception {
 		return shopPersonalFrontService.RateInfo(rateid);
+	}
+
+	// 老人确认收货
+	@RequestMapping(method = RequestMethod.GET, value = "myorder/sure")
+	public @ResponseBody Message myOrderSure(HttpSession session, int orderid) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPersonalFrontService.myOrderSure(olderid, orderid);
+	}
+
+	// 老人申请取消订单
+	@RequestMapping(method = RequestMethod.GET, value = "myorder/apply/cancel")
+	public @ResponseBody Message myOrderApplyCancel(HttpSession session, int orderid) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPersonalFrontService.myOrderApplyCancel(olderid, orderid);
 	}
 
 }
