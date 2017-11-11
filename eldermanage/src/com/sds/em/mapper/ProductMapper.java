@@ -6,6 +6,7 @@ import com.sds.em.po.ProductExample;
 import com.sds.em.po.Productrate;
 import com.sds.em.shop.pojo.ConfirmOrderViewExtend;
 import com.sds.em.shop.pojo.ProductAmount;
+import com.sds.em.shop.pojo.ProductGroupExtend;
 import com.sds.em.shop.pojo.productGradeExtend;
 import com.sds.em.shopfront.pojo.RightNowPayExtend;
 import com.sds.em.shop.pojo.productGradeExtend;
@@ -80,4 +81,6 @@ public interface ProductMapper {
 	// 立即购买-确认订单页面
 	public List<ConfirmOrderViewExtend> confirmOrderRightNow(RightNowPayExtend rightNowPayExtend);
 
+	// 显示特惠的商品，按原价减去折扣价最大的排序显示
+	public List<Product> preferentialView();
 }
