@@ -4,6 +4,7 @@ import com.sds.em.po.Product;
 import com.sds.em.po.Productgroup;
 import com.sds.em.po.ProductgroupExample;
 import com.sds.em.pojo.ProductgroupExtend;
+import com.sds.em.shop.pojo.ProductGroupExtend;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -35,13 +36,13 @@ public interface ProductgroupMapper {
 	List<ProductgroupExtend> getproductgroup();
 
 	// lu
-	// 显示按照团购开团排序好的商品页面--即将开团
-	public List<Product> GroupIndexView();
+	// 显示按照团购开团排序好的商品页面--即将开团-修改成最新团购
+	public List<ProductGroupExtend> GroupIndexView();
 
 	// 显示按照离团购结束日期排序的商品页面--即将截止
-	public List<Product> GroupEndView();
+	public List<ProductGroupExtend> GroupEndView();
 
 	// 显示显示为开团的团购，再按时间排序--未开团
-	public List<Product> GroupNoView();
+	public List<ProductGroupExtend> GroupNoView();
 
 }
