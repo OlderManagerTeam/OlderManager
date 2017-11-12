@@ -3,6 +3,8 @@ package com.sds.em.mapper;
 import com.sds.em.po.Orderlist;
 import com.sds.em.po.OrderlistExample;
 import com.sds.em.pojo.OrderlistExtend;
+import com.sds.em.shop.pojo.MyOrderViewExtend;
+import com.sds.em.shopfront.pojo.MyOrdersListExtend;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -32,4 +34,18 @@ public interface OrderlistMapper {
 
     //wuwenbo,获取订单详情
 	List<OrderlistExtend> getorderlist(int orderid);
+	
+	//lu
+	//显示我的订单页面
+	List<MyOrderViewExtend> shopMyOrderInfo(MyOrdersListExtend myOrdersListExtend);
+	
+	//显示购买记录页面
+	List<MyOrderViewExtend> shopBuyRecordInfo(int olderid);
+	
+	
 }
+/*
+ * 	
+ * 
+ * */
+ 
