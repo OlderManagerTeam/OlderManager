@@ -48,8 +48,6 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/v1/weboperation/**=authc,roles[weboperationmanager]
-				/v1/headoffice/allstaffs=authc,roles[weboperationmanager]
-				/v1/brench/elder/info=authc,roles[shopmanager]
 				/v1/oldershop/**=authc,roles[shopmanager]
 				/v1/brench/**=authc,roles[branchmanager]
 				/v1/headoffice/**=authc,roles[headofficemanager]
