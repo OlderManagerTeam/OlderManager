@@ -328,7 +328,7 @@
 	<script type="text/javascript">
 		$("#searchInput").val(window.location.href.split("?")[1]);
 
-		var serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/index/search";
+		var serachUrl = "/eldermanage/v1/shop/index/search";
 
 		var searchContent = window.location.href.split("?")[1];
 
@@ -344,7 +344,7 @@
 			//window.location.href = 'search.html?'+ searchContent;
 
 			//ajax调用， 不刷新页面
-			serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/index/search/sort";
+			serachUrl = "/eldermanage/v1/shop/index/search/sort";
 			$('#searchItem').html('');
 			searchContent = $("#searchInput").val()
 			searchType = "销量排序"
@@ -357,7 +357,7 @@
 			//window.location.href = 'search.html?'+ searchContent;
 
 			//ajax调用， 不刷新页面
-			serachUrl = "http://localhost:8080/eldermanage/v1/older/shop/index/search/sort";
+			serachUrl = "/eldermanage/v1/shop/index/search/sort";
 			$('#searchItem').html('');
 			searchContent = $("#searchInput").val()
 			searchType = "价格优先"

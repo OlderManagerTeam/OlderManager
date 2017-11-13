@@ -1852,129 +1852,139 @@
 				<script type="text/javascript " src="basic/js/quick_links.js"></script>
 
 				<script type="text/javascript">
-	$.ajax({
-				type: 'get',
-				contentType:'application/json',
-				url: "/eldermanage/v1/shop/index/today/recommend",
-				data: null,
-				success:function(result){
-				var resultData = result.data;
-				document.getElementById("todayProductImg1").src = resultData[0].productimg
-		        document.getElementById("todayProductImg2").src = resultData[1].productimg
-		        document.getElementById("todayProductImg3").src = resultData[2].productimg
-		
-		        document.getElementById("todayProductName1").innerHTML = resultData[0].productname
-		        document.getElementById("todayProductName2").innerHTML = resultData[1].productname
-		        document.getElementById("todayProductName3").innerHTML = resultData[2].productname
-		
-		        document.getElementById("todayProductInfo1").innerHTML = resultData[0].productinfo
-		        document.getElementById("todayProductInfo2").innerHTML = resultData[1].productinfo
-		        document.getElementById("todayProductInfo3").innerHTML = resultData[2].productinfo
-		
-		
-		
-				},
-				error:function(){
-					alert('数据库错误')
-				}
-			})
-	
-	
-	
-		var typeData = new Array("衣物服饰","食物饮品","生活用品","文学艺术","娱乐器具","运动器材","医药保健","医疗器材","家具器材","电子产品");
-
-		//let和var的作用域不同,导致i值不同
-		for(let i=0;i<=9;i++){
-			$.ajax({
-				type: 'get',
-				contentType:'application/json',
-				url: "/eldermanage/v1/shop/index/type/recommend",
-				data: "typecontent="+typeData[i],
-				success:function(result){
-					var resultData = result.data;
-					var floor = "floor"+ (i+1);
-					var oDiv =`
-						<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
-							<div class="outer-con ">
-								<div class="title ">
-									${resultData[i].productname}
-								</div>
-								<div class="sub-title ">
-									¥${resultData[i].productdiscountprice}
-								</div>
-								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
-							</div>
-							<a href="# "><img src="${resultData[i].productimg}" /></a>						
-						</div>
+					$.ajax({
+						type : 'get',
+						contentType : 'application/json',
+						url : "/eldermanage/v1/shop/index/today/recommend",
+						data : null,
+						success : function(result) {
+							var resultData = result.data;
+							document.getElementById("todayProductImg1").src = resultData[0].productimg
+							document.getElementById("todayProductImg2").src = resultData[1].productimg
+							document.getElementById("todayProductImg3").src = resultData[2].productimg
 				
-						<div class="am-u-md-2 am-u-lg-2 text-three sug">
-							<div class="outer-con ">
-								<div class="title ">
-									${resultData[i].productname}
-								</div>								
-								<div class="sub-title ">
-									¥${resultData[i].productdiscountprice}
-								</div>
-								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="¥${resultData[i].productdiscountprice}" /></a>
-						</div>
-						<div class="am-u-md-2 am-u-lg-2 text-three big">
-							<div class="outer-con ">
-								<div class="title ">
-									${resultData[i].productname}
-								</div>
-								<div class="sub-title ">
-									¥${resultData[i].productdiscountprice}
-								</div>
-								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="${resultData[i].productimg}" /></a>
-						</div>			
-						<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
-							<div class="outer-con ">
-								<div class="title ">
-									${resultData[i].productname}
-								</div>								
-								<div class="sub-title ">
-									¥${resultData[i].productdiscountprice}
-								</div>
-								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="${resultData[i].productimg}" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
-							<div class="outer-con ">
-								<div class="title ">
-									${resultData[i].productname}
-								</div>
-								<div class="sub-title ">
-									¥4.8
-								</div>
-								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="${resultData[i].productimg}" /></a>
-						</div>	
-						<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
-							<div class="outer-con ">
-								<div class="title ">
-									${resultData[i].productname}
-								</div>
-								<div class="sub-title ">
-								¥${resultData[i].productdiscountprice}
-								</div>
-								<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
-							</div>
-							<a href="# "><img src="${resultData[i].productimg}" /></a>
-						</div>
-					`;
-					$("#"+floor).append(oDiv);
-				},
-				error:function(){
-					alert('数据库错误')
-				}
-			})
-		}
-	</script>
+							document.getElementById("todayProductName1").innerHTML = resultData[0].productname
+							document.getElementById("todayProductName2").innerHTML = resultData[1].productname
+							document.getElementById("todayProductName3").innerHTML = resultData[2].productname
+				
+							document.getElementById("todayProductInfo1").innerHTML = resultData[0].productinfo
+							document.getElementById("todayProductInfo2").innerHTML = resultData[1].productinfo
+							document.getElementById("todayProductInfo3").innerHTML = resultData[2].productinfo
+				
+							$(todayProductImg1).on('click', function() {
+								location.href = '../Front/introduction.html?productid="+resultData[0].productid';
+							})
+				
+							$(todayProductImg2).on('click', function() {
+								location.href = '../Front/introduction.html?productid="+resultData[1].productid';
+							})
+				
+							$(todayProductImg3).on('click', function() {
+								location.href = '../Front/introduction.html?productid="+resultData[2].productid';
+							})
+				
+						},
+						error : function() {
+							alert('数据库错误')
+						}
+					})
+				
+				
+				
+					var typeData = new Array("衣物服饰", "食物饮品", "生活用品", "文学艺术", "娱乐器具", "运动器材", "医药保健", "医疗器材", "家具器材", "电子产品");
+				
+					//let和var的作用域不同,导致i值不同
+					for (let i = 0; i <= 9; i++) {
+						$.ajax({
+							type : 'get',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/shop/index/type/recommend",
+							data : "typecontent=" + typeData[i],
+							success : function(result) {
+								var resultData = result.data;
+								var floor = "floor" + (i + 1);
+								var oDiv = `
+										<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
+											<div class="outer-con ">
+												<div class="title ">
+													${resultData[i].productname}
+												</div>
+												<div class="sub-title ">
+													¥${resultData[i].productdiscountprice}
+												</div>
+												<i class="am-icon-shopping-basket am-icon-md  seprate"></i>									
+											</div>
+											<a href="../Front/introduction.html?productid="+${resultData[i].productid}"><img src="${resultData[i].productimg}" /></a>						
+										</div>
+								
+										<div class="am-u-md-2 am-u-lg-2 text-three sug">
+											<div class="outer-con ">
+												<div class="title ">
+													${resultData[i].productname}
+												</div>								
+												<div class="sub-title ">
+													¥${resultData[i].productdiscountprice}
+												</div>
+												<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
+											</div>
+											<a href="../Front/introduction.html?productid="+${resultData[i].productid}"><img src="¥${resultData[i].productdiscountprice}" /></a>
+										</div>
+										<div class="am-u-md-2 am-u-lg-2 text-three big">
+											<div class="outer-con ">
+												<div class="title ">
+													${resultData[i].productname}
+												</div>
+												<div class="sub-title ">
+													¥${resultData[i].productdiscountprice}
+												</div>
+												<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
+											</div>
+											<a href="../Front/introduction.html?productid="+${resultData[i].productid}"><img src="${resultData[i].productimg}" /></a>
+										</div>			
+										<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
+											<div class="outer-con ">
+												<div class="title ">
+													${resultData[i].productname}
+												</div>								
+												<div class="sub-title ">
+													¥${resultData[i].productdiscountprice}
+												</div>
+												<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
+											</div>
+											<a href="../Front/introduction.html?productid="+${resultData[i].productid}"><img src="${resultData[i].productimg}" /></a>
+										</div>	
+										<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
+											<div class="outer-con ">
+												<div class="title ">
+													${resultData[i].productname}
+												</div>
+												<div class="sub-title ">
+													¥${resultData[i].productdiscountprice}
+												</div>
+												<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
+											</div>
+											<a href="../Front/introduction.html?productid="+${resultData[i].productid}"><img src="${resultData[i].productimg}" /></a>
+										</div>	
+										<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
+											<div class="outer-con ">
+												<div class="title ">
+													${resultData[i].productname}
+												</div>
+												<div class="sub-title ">
+												¥${resultData[i].productdiscountprice}
+												</div>
+												<i class="am-icon-shopping-basket am-icon-md  seprate"></i>								
+											</div>
+											<a href="../Front/introduction.html?productid="+${resultData[i].productid}"><img src="${resultData[i].productimg}" /></a>
+										</div>
+									`;
+								$("#" + floor).append(oDiv);
+							},
+							error : function() {
+								alert('数据库错误')
+							}
+						})
+					}
+				</script>
 </body>
 </html>
