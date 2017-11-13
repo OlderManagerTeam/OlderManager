@@ -14,7 +14,7 @@ public interface OlderShopService {
 	public Message getproductlist(int producttypenumber) throws Exception;
 	public Message getproductinfo(int productid);
 	public Message getproductrate(int productid);
-	public Message product(Product product, List<Productpiclist> productpiclist, List<Productviewlist> productviewlist);
+	public Message product(Product product, List<Productpiclist> productpiclist, List<Productviewlist> productviewlist,int storecount);
 	public Message productalter(Product product);
 	public Message productdelete(int productid);
 	public Message getorders();
@@ -30,4 +30,5 @@ public interface OlderShopService {
 	public Message productgroupjoin(int groupid);
 	public Message getorderlist(int orderid);
 	public Message addproductgroup(Productgroup productgroup);
+	public Message typeTwoTypeId(int productTypeNumber);
 }

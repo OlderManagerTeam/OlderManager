@@ -13,6 +13,7 @@ import com.sds.em.mapper.ProductgroupMapper;
 import com.sds.em.mapper.ProductpiclistMapper;
 import com.sds.em.mapper.ProductrateMapper;
 import com.sds.em.mapper.ProductstoreMapper;
+import com.sds.em.mapper.ProducttypetwoMapper;
 import com.sds.em.mapper.ProductviewlistMapper;
 import com.sds.em.po.Joingroup;
 import com.sds.em.po.JoingroupExample;
@@ -30,6 +31,8 @@ import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductrateExample;
 import com.sds.em.po.Productstore;
 import com.sds.em.po.ProductstoreExample;
+import com.sds.em.po.Producttypetwo;
+import com.sds.em.po.ProducttypetwoExample;
 import com.sds.em.po.Productviewlist;
 import com.sds.em.pojo.OrdersExtend;
 import com.sds.em.pojo.ProductrateExtend;
@@ -82,7 +85,8 @@ public class OlderShopServiceImpl implements OlderShopService {
 	JoingroupExample joingroupExample = new JoingroupExample();
 	JoingroupExample.Criteria joingroupCriteria;
 
-	
+	@Autowired
+	ProducttypetwoMapper producttypetwoMapper;
 	@Override
 	// wuwenbo,添加商品
 	public Message addProduct(Product product) throws Exception {
@@ -133,7 +137,7 @@ public class OlderShopServiceImpl implements OlderShopService {
 	@Override
 	// wuwenbo,添加商品信息
 	public Message product(Product product, List<Productpiclist> productpiclist, 
-			List<Productviewlist> productviewlist) {
+			List<Productviewlist> productviewlist,int storecount) {
 		try {
 			productMapper.keyinsert(product);
 		} catch (Exception e) {
@@ -148,6 +152,18 @@ public class OlderShopServiceImpl implements OlderShopService {
 			productpic.setPviewpicproductid(product.getProductid());
 			productviewlistMapper.insertSelective(productpic);
 		}
+		Productstore productstore=new Productstore();
+		productstore.setStorecount(storecount);
+		productstore.setStoredaybrowse(0);
+		productstore.setStoredaysales(0);
+		productstore.setStoremonthbrowse(0);
+		productstore.setStoremonthsales(0);
+		productstore.setStoreproductid(product.getProductid());
+		productstore.setStoretotalbrowse(0);
+		productstore.setStoretotalsales(0);
+		productstore.setStoreyearbrowse(0);
+		productstore.setStoreyearsales(0);
+		productstoreMapper.insertSelective(productstore);
 		return new Message(true, "上传成功", null);
 	}
 
@@ -396,5 +412,21 @@ public class OlderShopServiceImpl implements OlderShopService {
 		e.printStackTrace();
 		return new Message(false, "数据库错误", null);
 	}
+	}
+
+	@Override
+	//商品获取二级标签
+	public Message typeTwoTypeId(int productTypeNumber) {	
+		ProducttypetwoExample producttypetwoExample=new ProducttypetwoExample();
+		ProducttypetwoExample.Criteria Criteria=producttypetwoExample.createCriteria();
+		Criteria.andTypetwotypeidEqualTo(productTypeNumber);
+		try {
+			List<Producttypetwo> list=producttypetwoMapper.selectByExample(producttypetwoExample);
+			return new Message(true,"返回成功",list);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return new Message(false,"失败成功",null);
+		}
 	}
 }

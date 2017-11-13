@@ -149,9 +149,11 @@
 				data : form,
 				success : function(result) {
 					alert(result.information);
-					document.cookie = "tel=" + $("#tel").val();
-					document.cookie = "password=" + $("#password").val();
-					document.cookie= "remember=" + $('#remember').prop("checked");
+					var d= new Date();
+                    d.setHours(d.getHours() + (24 * 15));
+					document.cookie = "tel=" + $("#tel").val()+";expires="+d.toGMTString();
+					document.cookie = "password=" + $("#password").val()+";expires="+d.toGMTString();
+					document.cookie= "remember=" + $('#remember').prop("checked")+";expires="+d.toGMTString();
 					if (!$('#remember').prop("checked")) {
 						delCookie("password");
 					}
