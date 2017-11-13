@@ -57,9 +57,6 @@
 	function HideMessage() {
 		$(".alert").hide();
 	}
-	function ShowMessage() {
-		$(".alert").show();
-	}
 </script>
 </head>
 <body onLoad="HideMessage()">
@@ -83,8 +80,8 @@
 
 
 				<!-- 员工信息录入表单 -->
-				<form action="login()" class="fh5co-form animate-box"
-					data-animate-effect="fadeIn" id="defaultForm">
+				<form class="fh5co-form animate-box" data-animate-effect="fadeIn"
+					id="defaultForm">
 					<h2>注册</h2>
 					<div>
 						<div class="alert alert-success" role="alert">已经将您的信息录入，请等待审核</div>
@@ -99,7 +96,7 @@
 							<div class="form-group">
 								<label for="staffSex" class="sr-only">性别</label>
 								<!-- <input type="select" class="form-control" id="security" placeholder="请选择您的密保问题" autocomplete="off"> -->
-								<select class="form-control" name="sex">
+								<select class="form-control" name="sex" id="staffsex">
 									<option value="" style="display: none;" disabled selected>员工性别</option>
 									<option id="man">男</option>
 									<option id="faman">女</option>
@@ -149,7 +146,7 @@
 							<div class="form-group">
 								<label for="security" class="sr-only">请选择您的密保问题</label>
 								<!-- <input type="select" class="form-control" id="security" placeholder="请选择您的密保问题" autocomplete="off"> -->
-								<select class="form-control">
+								<select class="form-control" id='securityquestionid'>
 									<option value="" style="display: none;" disabled selected>请选择您的密保问题</option>
 									<option id="mathername">您母亲的名字？</option>
 									<option id="school">您就读过的高中？</option>
@@ -176,7 +173,7 @@
 
 							</div>
 							<div class="form-group">
-								<input id="file-3" type="file" multiple=true class="file">
+								<input id="file-3" type="file" multiple=true class="file" name="staffImg">
 							</div>
 						</div>
 					</div>
@@ -188,8 +185,8 @@
 							</p>
 						</div>
 						<div class="form-group">
-							<input type="submit" value="注册" class="btn btn-primary"
-								style="width: 100px" onclick="ShowMessage()">
+							<input type="button" value="注册" class="btn btn-primary"
+								style="width: 100px" id="registersubmit">
 						</div>
 					</div>
 				</form>
@@ -354,10 +351,29 @@
 		});
 	</script>
 	<script type="text/javascript">
-	function logon(){
-
-	alert("测试");
-	};
+		$(document).ready(function() {
+			$("#registersubmit").click(function() {
+				var form = new FormData($("#defaultForm"));
+				form.append("staffsex",$("#staffsex").find("option:selected").text());
+				form.append("staffname",$("#staffName").val());
+				form.append("staffiide",$("#staffIDE").val());
+				form.append("staffBirthday",$("#staffBirthday").val());
+				form.append("staffaddress",$("#staffAddress").val());
+				form.append("stafftel",$("#staffTel").val());
+				form.append("staffpassword",$("#staffPassword").val());
+				form.append("securityanswer",$("#answer").val());
+				form.append("securityquestionid",$("#securityquestionid").find("option:selected").text());
+			})
+			$.ajax({
+				type : 'post',
+				url : "/eldermanage/v1/index/person/staff",
+				data : form,
+				processData : false,
+				contentType : false,
+			})
+			.then({
+			})
+		})
 	</script>
 </body>
 </html>
