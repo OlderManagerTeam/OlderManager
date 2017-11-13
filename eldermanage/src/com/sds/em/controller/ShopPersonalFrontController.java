@@ -27,7 +27,7 @@ public class ShopPersonalFrontController {
 	@Autowired
 	ShopPersonalFrontService shopPersonalFrontService;
 
-	// 显示电商老人的个人电商信息
+	// 显示电商老人的个人电商信息-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "older/info")
 	public @ResponseBody Message shopPersonalInfo(HttpSession session) throws Exception {
 		// int olderid=session.getAttribute("olderid");
@@ -35,7 +35,7 @@ public class ShopPersonalFrontController {
 		return shopPersonalFrontService.shopPersonalInfo(olderid);
 	}
 
-	// 显示我的订单页面-后端完成
+	// 显示我的订单页面-后端完成-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "myorder/info")
 	public @ResponseBody Message shopMyOrderInfo(HttpSession session) throws Exception {
 		// int olderid=session.getAttribute("olderid");
@@ -43,7 +43,7 @@ public class ShopPersonalFrontController {
 		return shopPersonalFrontService.shopMyOrderInfo(olderid);
 	}
 
-	// 显示购买记录页面
+	// 显示购买记录页面-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "buyrecord/info")
 	public @ResponseBody Message shopBuyRecordInfo(HttpSession session) throws Exception {
 		// int olderid=session.getAttribute("olderid");
@@ -51,9 +51,9 @@ public class ShopPersonalFrontController {
 		return shopPersonalFrontService.shopBuyRecordInfo(olderid);
 	}
 
-	// 评价商品
+	// 评价商品-全部成功
 	@RequestMapping(method = RequestMethod.POST, value = "buyrecord/rate/add")
-	public @ResponseBody Message AddRate(HttpSession session, int orderlistid, int ratestar, String ratecontent)
+	public @ResponseBody Message AddRate(HttpSession session, String orderlistid, String ratestar, String ratecontent)
 			throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
@@ -61,18 +61,18 @@ public class ShopPersonalFrontController {
 		productrate.setRatecontent(ratecontent);
 		productrate.setRatedate(new Date());
 		productrate.setRateolderid(olderid);
-		productrate.setRateorderid(orderlistid);
-		productrate.setRatestar(ratestar);
+		productrate.setRateorderid(Integer.parseInt(orderlistid));
+		productrate.setRatestar(Integer.parseInt(ratestar));
 		return shopPersonalFrontService.AddRate(productrate);
 	}
 
-	// 显示评价信息
+	// 显示评价信息-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "buyrecord/rate/info")
-	public @ResponseBody Message RateInfo(int rateid) throws Exception {
-		return shopPersonalFrontService.RateInfo(rateid);
+	public @ResponseBody Message RateInfo(int orderlistid) throws Exception {
+		return shopPersonalFrontService.RateInfo(orderlistid);
 	}
 
-	// 老人确认收货
+	// 老人确认收货-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "myorder/sure")
 	public @ResponseBody Message myOrderSure(HttpSession session, int orderid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
@@ -80,7 +80,7 @@ public class ShopPersonalFrontController {
 		return shopPersonalFrontService.myOrderSure(olderid, orderid);
 	}
 
-	// 老人申请取消订单
+	// 老人申请取消订单-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "myorder/apply/cancel")
 	public @ResponseBody Message myOrderApplyCancel(HttpSession session, int orderid) throws Exception {
 		// int olderid=session.getAttribute("olderid");

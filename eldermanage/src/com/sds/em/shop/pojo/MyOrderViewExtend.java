@@ -21,14 +21,16 @@ public class MyOrderViewExtend extends Orders {
 
 	private Float productprice;
 
-	private Map<Integer, String> ratestatus;// 购买记录中需要用的记录评价状态的
+	private int rateid;// 购买记录中需要用的记录评价状态的,有评价择记录rateid,没有则0
 
-	public Map<Integer, String> getRatestatus() {
-		return ratestatus;
+
+
+	public int getRateid() {
+		return rateid;
 	}
 
-	public void setRatestatus(Map<Integer, String> ratestatus) {
-		this.ratestatus = ratestatus;
+	public void setRateid(int rateid) {
+		this.rateid = rateid;
 	}
 
 	public Integer getOrderlistid() {

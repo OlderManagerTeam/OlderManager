@@ -267,7 +267,9 @@
 		orderlist.orderProductId=product.productId
 		WHERE
 		orders.orderOlderId=#{olderid} and orders.orderId=#{orderid}
-		and orders.orderStatus <![CDATA[<>]]>'已签收'
+		and
+		orders.orderStatus <![CDATA[<>]]>'已签收'and
+		orders.orderStatus <![CDATA[<>]]>'已取消'
 
 	</select>
 
@@ -285,7 +287,17 @@
 		ON
 		orderlist.orderProductId=product.productId
 		WHERE
-		orders.orderOlderId=#{value} AND orders.orderStatus='已签收'
+		orders.orderOlderId=#{value} AND orders.orderStatus='已签收' or
+		orders.orderStatus ='已取消'
+
+	</select>
+
+	<select id="RateInfo" parameterType="int" resultType="com.sds.em.po.Productrate">
+		select productrate.* from orderlist
+		INNER JOIN
+		productrate
+		ON productrate.rateOrderId=orderlist.orderListId
+		WHERE orderlist.orderListId=#{value}
 
 	</select>
 </mapper>
