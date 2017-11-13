@@ -285,6 +285,15 @@
 											</div>
 										</div>
 										<div class="form-group">
+											<label for="productprice" class="col-sm-3 control-label">商品库存：</label>
+											<div class="col-sm-2">
+												<input type="text" class="form-control"
+													placeholder="商品库存" name="storecount">
+											</div>
+											<div class="col-sm-1">
+											</div>
+										</div>
+										<div class="form-group">
 											<label for="producttypenumber" class="col-sm-3 control-label">商品类型：</label>
 											<div class="col-sm-5">
 												<select id="producttypenumber">
@@ -300,8 +309,22 @@
 														<option value="9">医疗器材</option>
 														<option value="10">家具器材</option>
 													</optgroup>
+												</select> <select id="producttypenumbertwo" name="typetwotypeid">
+													<optgroup class="active" label="商品类型">
+														<option value="1">食物饮品</option>
+														<option value="2">衣物服饰</option>
+														<option value="3">文学艺术</option>
+														<option value="4">生活用品</option>
+														<option value="5">娱乐器具</option>
+														<option value="6">运动器材</option>
+														<option value="7">医药保健品</option>
+														<option value="8">电子产品</option>
+														<option value="9">医疗器材</option>
+														<option value="10">家具器材</option>
+													</optgroup>
 												</select>
 											</div>
+
 										</div>
 										<div class="form-group">
 											<label for="productimg" class="col-sm-3 control-label">商品图片：</label>
@@ -599,6 +622,7 @@
 						form.append("filepic", file[i]); //++++++++++    
 					}
 					form.append("producttypenumber", producttypenumber);
+			
 					$.ajax({
 						type : 'post',
 						url : "/eldermanage/v1/oldershop/product/info",
@@ -619,6 +643,34 @@
 			
 				}
 				)
+			
+			
+				$('#producttypenumber').change(function() {
+					var roledata;
+					$("#producttypenumbertwo").empty();
+			
+			
+					$.ajax({
+						type : 'get',
+						contentType : 'application/json',
+						url : "/eldermanage/v1/oldershop/typeTwoTypeId?productTypeNumber=" + $('#producttypenumber').val(),
+						data : null,
+						success : function(result) {
+							roledata = result.data;
+							var oOption = `
+																	<option value="0" selected="selected">无</option>
+																`;
+							$("#select2-producttypenumbertwo-container").html("无");
+							$('#producttypenumbertwo').append(oOption);
+							for (var i = roledata.length - 1; i >= 0; i--) {
+								var oOption = `
+																	<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
+																`;
+								$('#producttypenumbertwo').append(oOption);
+							}
+						},
+					})
+				})
 			</script>
 			<script type="text/javascript">
 				$('select').select2();

@@ -290,10 +290,13 @@
 	
 		//var productid=1;
 		//var count = 2;
-		if (!productid && typeof(productid)!="undefined" && productid!=0) {
+		//从商品详情页面到确认订单页
+		if (productid) {
 			url = "/eldermanage/v1/shop/pay/rightnow/confirm/order"
 			data = "productid=" + productid
-		} else {
+		} 
+		//从购物车页面到确认订单页
+		else {
 			url = "/eldermanage/v1/shop/pay/cart/confirm/order"
 			data = null
 			//var count =null
@@ -313,7 +316,7 @@
 					$('#oldertel').html(resultData[0].oldertel);
 					$('#olderpoint').html(resultData[0].olderpoint);
 					
-					if(!(!count && typeof(count)!="undefined" && count!=0)){count=resultData[i].cartcount};
+					if(!count){count=resultData[i].cartcount};
 					var Dtatalprice=resultData[i].productdiscountprice*count;
 					var oDiv = `
 													<div class="bundle-hd">

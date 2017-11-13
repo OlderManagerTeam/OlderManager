@@ -33,7 +33,7 @@ public class ShopPayFrontController {
 	}
 
 	// 从详情页面加入购物车-得判断之前有没有加入过-后端成功
-	@RequestMapping(method = RequestMethod.POST, value = "add/shopcart")
+	@RequestMapping(method = RequestMethod.GET, value = "add/shopcart")
 	public @ResponseBody Message addShopcart(HttpSession session, int productid, int count) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
@@ -57,7 +57,7 @@ public class ShopPayFrontController {
 	}
 
 	//
-	// 立即购买-确认订单页面-全部完成
+	// 立即购买-确认订单页面-全部完成--
 	@RequestMapping(method = RequestMethod.GET, value = "rightnow/confirm/order")
 	public @ResponseBody Message confirmOrderRightNow(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");

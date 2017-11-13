@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Timer;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Message;
-import com.sds.em.po.Oldersick;
 import com.sds.em.po.Product;
 import com.sds.em.po.Productgroup;
 import com.sds.em.po.Productpiclist;
@@ -60,7 +58,7 @@ public class OlderShopController {
 	// wuwenbo,添加商品信息
 	@RequestMapping(method = RequestMethod.POST, value = "product/info")
 	public @ResponseBody Message entryproduct(Product product, MultipartFile productImg, String productUpondate,@RequestParam(value="fileview",required=true)MultipartFile[] fileview,
-			@RequestParam(value="filepic",required=true)MultipartFile[] filepic
+			@RequestParam(value="filepic",required=true)MultipartFile[] filepic,int storecount
 			)
 			throws Exception {
 		List<Productpiclist> productpiclist=new ArrayList<Productpiclist>();
@@ -92,7 +90,7 @@ public class OlderShopController {
 		if(fileview.length>0){
 			String productview_path = "E:\\oldermanageresource\\productview\\";
 			String url="/productview/";
-			for(int i=0;i<5;i++){
+			for(int i=0;i<fileview.length;i++){
 				Productviewlist productview=new Productviewlist();
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				File filePicSingle = new File(productview_path + newFileName);
@@ -113,7 +111,7 @@ public class OlderShopController {
 			}
 		}
 		product.setProductupondate(date);	
-		return olderShopService.product(product,productpiclist,productviewlist);
+		return olderShopService.product(product,productpiclist,productviewlist,storecount);
 	}
 
 	// wuwenbo,修改商品信息
@@ -260,5 +258,11 @@ public class OlderShopController {
 	public @ResponseBody String uploadpic(String grouppublishDate, String groupstartDate, String groupstarttime,
 			String groupfinishDate, Productgroup productgroup,MultipartFile file_data ) {
 				return "12345678";
+	}
+	
+	//获取商品二级标签
+	@RequestMapping(method = RequestMethod.GET, value = "typeTwoTypeId")
+	public @ResponseBody Message typeTwoTypeId(int productTypeNumber) {
+		return olderShopService.typeTwoTypeId(productTypeNumber);
 	}
 }
