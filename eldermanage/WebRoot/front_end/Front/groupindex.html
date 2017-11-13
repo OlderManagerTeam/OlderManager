@@ -346,25 +346,26 @@
 					// $("#demo5").show();
 					// page(newStartData, $("#demo5"));
 
-					for(let i=5;i>=0;i--){
+					for(let i=newStartData.length-1;i>=0;i--){
+					
 						var oDiv = `
 							<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
 				            	<div class="am-u-md-12">
-				            		<a href="group_introduction.html?"><img src="images/product/01_mid.jpg"></a>
+				            		<a href="group_introduction.html?groupid="+${newStartData[i].groupid}+"&productid="+${newStartData[i].productid}"><img src="${newStartData[i].productimg}"></a>
 				            	</div>
 				            	<div class="am-u-md-12">
-				            		<a href="group_introduction.html?"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">【歌唱】那时候有多好任雨打湿裙角</p></a>
+				            		<a href="group_introduction.html?groupid="+${newStartData[i].groupid}+"&productid="+${newStartData[i].productid}"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">${newStartData[i].productname}</p></a>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
 				            			<span style="font-size: 15px;text-decoration:line-through;">门市价:￥
-				            				<span style="font-size: 15px;text-decoration:line-through;">500</span>
+				            				<span style="font-size: 15px;text-decoration:line-through;">${newStartData[i].productprice}</span>
 				            			</span>
 				            			<span style="font-size: 18px;color: red;margin-left: 10px;">团购价:￥
-				            				<span style="font-size: 18px;color: red;">200</span>
+				            				<span style="font-size: 18px;color: red;">${newStartData[i].groupdiscountprice}</span>
 				            			</span>
 				            		</p>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
 				            			<span style="font-size: 15px;">日期:
-				            				<span style="font-size: 15px;">2017-10-11</span>
+				            				<span style="font-size: 15px;">${newStartData[i].groupstartdate}</span>
 				            			</span>
 				            		</p>
 				            	</div>
@@ -390,25 +391,25 @@
 					// $("#demo5").show();
 					// page(newStartData, $("#demo5"));
 
-					for(let i=5;i>=0;i--){
+					for(let i=newStartData.length-1;i>=0;i--){
 						var oDiv = `
-							<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
+								<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
 				            	<div class="am-u-md-12">
-				            		<a href="group_introduction.html?"><img src="images/product/01_mid.jpg"></a>
+				            		<a href="group_introduction.html?groupid="+${newStartData[i].groupid}+"&productid="+${newStartData[i].productid}"><img src="${newStartData[i].productimg}"></a>
 				            	</div>
 				            	<div class="am-u-md-12">
-				            		<a href="group_introduction.html?"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">【歌唱】那时候有多好任雨打湿裙角</p></a>
+				            		<a href="group_introduction.html?groupid="+${newStartData[i].groupid}+"&productid="+${newStartData[i].productid}"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">${newStartData[i].productname}</p></a>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
 				            			<span style="font-size: 15px;text-decoration:line-through;">门市价:￥
-				            				<span style="font-size: 15px;text-decoration:line-through;">500</span>
+				            				<span style="font-size: 15px;text-decoration:line-through;">${newStartData[i].productprice}</span>
 				            			</span>
 				            			<span style="font-size: 18px;color: red;margin-left: 10px;">团购价:￥
-				            				<span style="font-size: 18px;color: red;">200</span>
+				            				<span style="font-size: 18px;color: red;">${newStartData[i].groupdiscountprice}</span>
 				            			</span>
 				            		</p>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
 				            			<span style="font-size: 15px;">日期:
-				            				<span style="font-size: 15px;">2017-10-11</span>
+				            				<span style="font-size: 15px;">${newStartData[i].groupstartdate}</span>
 				            			</span>
 				            		</p>
 				            	</div>
@@ -434,25 +435,25 @@
 					// $("#demo5").show();
 					// page(newStartData, $("#demo5"));
 
-					for(let i=5;i>=0;i--){
+					for(let i=newStartData.length-1;i>=0;i--){
 						var oDiv = `
-							<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
+								<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
 				            	<div class="am-u-md-12">
-				            		<a href="group_introduction.html?"><img src="images/product/01_mid.jpg"></a>
+				            		<a href="group_introduction_no.html?groupid="+${newStartData[i].groupid}+"&productid="+${newStartData[i].productid}"><img src="${newStartData[i].productimg}"></a>
 				            	</div>
 				            	<div class="am-u-md-12">
-				            		<a href="group_introduction.html?"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">【歌唱】那时候有多好任雨打湿裙角</p></a>
+				            		<a href="group_introduction_no.html?groupid="+${newStartData[i].groupid}+"&productid="+${newStartData[i].productid}"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">${newStartData[i].productname}</p></a>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
 				            			<span style="font-size: 15px;text-decoration:line-through;">门市价:￥
-				            				<span style="font-size: 15px;text-decoration:line-through;">500</span>
+				            				<span style="font-size: 15px;text-decoration:line-through;">${newStartData[i].productprice}</span>
 				            			</span>
 				            			<span style="font-size: 18px;color: red;margin-left: 10px;">团购价:￥
-				            				<span style="font-size: 18px;color: red;">200</span>
+				            				<span style="font-size: 18px;color: red;">${newStartData[i].groupdiscountprice}</span>
 				            			</span>
 				            		</p>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
 				            			<span style="font-size: 15px;">日期:
-				            				<span style="font-size: 15px;">2017-10-11</span>
+				            				<span style="font-size: 15px;">${newStartData[i].groupstartdate}</span>
 				            			</span>
 				            		</p>
 				            	</div>
