@@ -247,7 +247,59 @@
 										
 										<tr class="">
 											<div class="bundle  bundle-last " id="buyItems">
-												
+												 <div class="bundle-main">
+								            <ul class="item-content clearfix">
+									            <li class="td td-item">
+										            <div class="item-pic">
+											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
+												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+												        </a>
+										            </div>
+										            <div class="item-info">
+											            <div class="item-basic-info">
+												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+											            </div>
+										            </div>
+									            </li>
+									            <li class="td td-info">
+										            <div class="item-props">
+											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
+											<span class="sku-line">包装：裸装</span>
+											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
+											<i class="theme-login am-icon-sort-desc"></i> -->
+										            </div>
+									            </li>
+									            <li class="td td-price">
+										            <div class="item-price price-promo-promo">
+											            <div class="price-content">
+												            <div class="price-line">
+													            <em class="price-original">78.00</em>
+												            </div>
+												            <div class="price-line">
+													            <em class="J_Price price-now" tabindex="0">10.00</em>
+												            </div>
+											            </div>
+										            </div>
+									            </li>
+									            <li class="td td-amount">
+										            <div class="amount-wrapper ">
+											            <div class="item-amount ">60</div>
+										            </div>
+									            </li>
+									            <li class="td td-sum">
+										            <div class="td-inner">2017-10-10 18:00</div>
+									            </li>
+									            <li class="td td-sum">
+										            <div class="td-inner">
+											            <div class="price-line">
+											            	<button id="btn1_1" class="btn btn-primary" type="button" data-dismiss="modal" aria-hidden="true">未评价</button>
+												        </div>
+										            </div>
+									            </li>
+									        </ul>
+								            
+								
+							                </div>
 
 											</div>
 										</tr>
@@ -299,49 +351,39 @@
 
 
 	<script>
-		var iframeurl = function() {
-			return "personalComment.html?" + getNowDateInt()
-		};
-	
-		var Modal3;
-	
-	
-		$(document).ready(function() {
-	
-			InitModal3();
-	
-			$("#btn3").click(function() {
-				Modal3.show();
-			})
-	
-		});
-	
-	
-		function InitModal3() {
-			$(document.body).append('<div id="modal3"></div>');
-			Modal3 = new Modal();
-			Modal3.renderto = "#modal3";
-			Modal3.InitShow = true;
-			Modal3.btns = [ {
-				id : "btn1",
-				text : "保存"
-			}, {
-				id : "closebtn"
-			} ]
-			tab1 = new Tab();
-			Modal3.OnfirstInited = function(thismodal) {
-				tab1.tabs = [ {
-					id : "tabs1",
-					title : "评价",
-					active : true,
-					isiframe : true,
-					url : iframeurl()
-				}, ];
-				tab1.renderto = thismodal.body;
-				tab1.Init();
-			}
-		}
-	</script>
+    var iframeurl = function () { return "personalComment.html?" + getNowDateInt() };
+    var Modal1;
+   
+    $(document).ready(function () {
+        InitModal1();
+        
+        $("#btn1_1").click(function () {
+            Modal1.show();
+            Modal1.setHeigth("500px");
+            Modal1.setWidth("500px");
+        });
+        
+    });
+
+    function InitModal1() {
+        $(document.body).append('<div id="modal1"></div>');
+        Modal1 = new Modal();
+        Modal1.renderto = "#modal1";//绘制到div
+        Modal1.InitMax = false;//是否最大化
+        Modal1.btns = [{ id: "closebtn" }]
+        tab1 = new Tab();
+        Modal1.OnfirstInited = function (thismodal) {
+            tab1.tabs = [{
+                id: "tabs1", title: "Baidu页面", active: true, isiframe: true, url: iframeurl()
+            }];
+            tab1.renderto = thismodal.body;
+            tab1.Init();
+        }//内容
+    }
+
+   
+
+    </script>
 
 	<script type="text/javascript">
 	
