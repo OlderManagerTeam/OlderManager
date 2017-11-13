@@ -2,6 +2,7 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Orderlist;
 import com.sds.em.po.OrderlistExample;
+import com.sds.em.po.Productrate;
 import com.sds.em.pojo.OrderlistExtend;
 import com.sds.em.shop.pojo.MyOrderViewExtend;
 import com.sds.em.shopfront.pojo.MyOrdersListExtend;
@@ -42,6 +43,8 @@ public interface OrderlistMapper {
 	//显示购买记录页面
 	List<MyOrderViewExtend> shopBuyRecordInfo(int olderid);
 	
+	//根据订单详情id得到以评论的内容
+	Productrate RateInfo(int orderlistid);
 	
 }
 /*
