@@ -84,25 +84,25 @@ public class BrenchController {
 			String olderpassword, String repassword, String oldertel, String olderaddress, String oldersinglestatus,
 			String olderide, String oldernation, MultipartFile olderheadurl) throws Exception {
 		Olderbase olderbase1 = (Olderbase) brenchService.getElder(oldertel).getData();
+		String pic_path = "E:\\oldermanageresource\\olderimg\\";
+		String picUrl = "/olderimg/";
+		Olderbase olderbase = new Olderbase();
 		if (!olderheadurl.isEmpty()) {
-			String pic_path = "E:\\oldermanageresource\\olderimg\\";
 			String i[] = olderbase1.getOlderheadurl().split("/");
 			File headurl = new File(pic_path + i[i.length - 1]);
 			if (headurl.exists())
 				headurl.delete();
-		}
-		String pic_path = "E:\\oldermanageresource\\olderimg\\";
-		String picUrl = "/olderimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
-
 		File dnf1 = new File(pic_path + newFileName);
 		olderheadurl.transferTo(dnf1);
-		Olderbase olderbase = new Olderbase();
+		olderbase.setOlderheadurl(picUrl + newFileName);
+		}
+	
 		olderbase.setOlderid(olderbase1.getOlderid());
 		olderbase.setOlderaddress(olderaddress);
 		Date date = DateSimp.simp(olderbirthday);
 		olderbase.setOlderbirthday(date);
-		olderbase.setOlderheadurl(picUrl + newFileName);
+	
 		olderbase.setOlderide(olderide);
 		olderbase.setOldername(oldername);
 		olderbase.setOldernation(oldernation);
@@ -222,6 +222,7 @@ public class BrenchController {
 	public @ResponseBody Message allOlderByBranch(HttpSession session) throws Exception {
 		int branchid = (int) session.getAttribute("branchid");
 		// int branchid = 1;
+		
 		return brenchService.getAllElder(branchid);
 	}
 

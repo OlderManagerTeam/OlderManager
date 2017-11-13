@@ -29,7 +29,12 @@
 	<bean id="DataStatisticsService" class="com.sds.em.service.impl.DataStatisticsServiceImpl" />
 	<bean id="ShopPayFrontService" class="com.sds.em.service.impl.ShopPayFrontServiceImpl" />
 
+	<bean id="WeboperationService" class="com.sds.em.service.impl.WeboperationServiceImpl" />
+
+
 	<bean id="ShopPersonalFrontService" class="com.sds.em.service.impl.ShopPersonalFrontServiceImpl" />
+<<<<<<< HEAD
 
-
+=======
+>>>>>>> 8c11d35ee6824186885b67a77c3580e9da90510c
 </beans>

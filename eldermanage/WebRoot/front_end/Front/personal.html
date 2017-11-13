@@ -1,807 +1,631 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>个人中心</title>
+	<title>个人中心</title>
 
-		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
-		<link href="css/cartstyle.css" rel="stylesheet" type="text/css" />
-		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
-		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet"
+		type="text/css" />
+	<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<link href="css/cartstyle.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet"
+		type="text/css" />
+	<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet"
+		type="text/css" />
+	<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
 
 
-		<link rel="stylesheet" href="css/keyao/bootstrapEx.css">
+	<link rel="stylesheet" href="css/keyao/bootstrapEx.css">
 
 
 
 		<script type="text/javascript" src="js/jquery.js"></script>
 
-		<script type="text/javascript" src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+		<script type="text/javascript"
+			src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 
-        <script type="text/javascript" src="js/keyao/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="js/keyao/bootstrapEx.js"></script>
-        <script type="text/javascript" src="js/keyao/bootstrap.js"></script>
-    
-		
+		<script type="text/javascript" src="js/keyao/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/keyao/bootstrapEx.js"></script>
+		<script type="text/javascript" src="js/keyao/bootstrap.js"></script>
+</head>
 
+<body>
 
-	</head>
-
-	<body>
-
-		<!--顶部导航条 -->
-		<div class="am-container header">
-			<ul class="message-l">
-				<div class="topMessage">
-					<div class="menu-hd">
-						<a href="login.html" target="_top" class="h">亲，请登录</a>
-						<a href="register.html" target="_top">免费注册</a>
-					</div>
-				</div>
-			</ul>
-			<ul class="message-r">
-				<div class="topMessage home">
-					<div class="menu-hd"><a href="shopping.html" target="_top" class="h">商城首页</a></div>
-				</div>
-				<div class="topMessage my-shangcheng">
-					<div class="menu-hd MyShangcheng"><a href="personal.html" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
-				</div>
-				<div class="topMessage mini-cart">
-					<div class="menu-hd"><a id="mc-menu-hd" href="shopcart.html" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
-				</div>
-			</ul>
-			</div>
-                   个人中心设计
-			<!--悬浮搜索框-->
-
-			<div class="nav white">
-				<div class="logo"><img src="images/product/logo.png" /></div>
-				<div class="logoBig">
-					<li><img src="images/product/logobig.png" /></li>
-				</div>
-                
-				<div class="search-bar pr">
-					<div class="nav-table row">
-					    <div class="long-title col-md-offset-9"><span>我的购物车</span></div>
-					</div>
+	<!--顶部导航条 -->
+	<div class="am-container header">
+		<ul class="message-l">
+			<div class="topMessage">
+				<div class="menu-hd">
+					<a href="login.html" target="_top" class="h">亲，请登录</a> <a
+						href="register.html" target="_top">免费注册</a>
 				</div>
 			</div>
-            
-			<div class="clear"></div>
-			
-			
-
-			<!--购物车 -->
-			<div class="concent">
-				<div id="cartTable">
-					<div class="cart-table-th">
-						<div class="wp">
-							<div class="th th-chk">
-						
-							</div>
-							<div class="th th-item">
-								<div class="td-inner">个人中心</div>
-							</div>
-						</div>
-					</div>
-					<div class="clear"></div>
-
-					<tr class="item-list">
-						<div class="bundle  bundle-last ">
-							
-							<div class="bundle-main">
-							
-						       
-					      <div class="introduceMain" style="width: 100%">
-						<div class="am-tabs" data-am-tabs>
-							<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
-								<li class="am-active">
-									<a href="#">
-
-										<span class="index-needs-dt-txt">我的信息</span></a>
-
-								</li>
-
-								<li>
-									<a href="#">
-
-										<span class="index-needs-dt-txt">我的订单</span></a>
-
-								</li>
-
-								<li>
-									<a href="#">
-
-										<span class="index-needs-dt-txt">购买记录</span></a>
-								</li>
-							</ul>
-
-							<div class="am-tabs-bd">
-								<div class="am-tab-panel am-fade am-in am-active">
-								   <!-- 我的信息 -->
-								   <div class="card-body form-horizontal" style="padding-top:50px;padding-bottom: 100px">
-								   	    <div class="form-group" style="padding-top: 20px">
-								            <div for="odlerTel" class="col-sm-4 control-label">
-                                                <div class="thumbnail" style="width: 100px;float: right;">
-									                <img src="images/textheadphoto.jpg" class="img-circle" >
-									            </div>
-								            </div>
-								            <div class="col-sm-3 text-center">
-								            	<span class="" id="oldername" style="font-size: 3em;">伏见柚々</span>
-								            </div>
-							            </div>
-							           <div class="form-group">
-								           <label for="odlerTel" class="col-sm-4 control-label">姓名：</label>
-								           <div class="col-sm-5">
-									           <span class="form-control" id="oldername"></span>
-								           </div>
-							            </div>
-							            <div class="form-group" style="padding-top: 20px">
-								            <label for="odlerTel" class="col-sm-4 control-label">总积分：</label>
-								            <div class="col-sm-5">
-									            <span class="form-control" id="oldertel"></span>
-								            </div>
-							            </div>
-							             <div class="form-group" style="padding-top: 20px">
-								            <label for="odlerTel" class="col-sm-4 control-label">可用积分：</label>
-								            <div class="col-sm-5">
-									            <span class="form-control" id="oldertel">例如：5000</span>
-								            </div>
-							            </div>
-							            <div class="form-group" style="padding-top: 20px">
-								            <label for="odlerTel" class="col-sm-4 control-label">会员等级：</label>
-								            <div class="col-sm-5">
-									            <span class="form-control" id="oldertel">例如:钻石用户</span>
-								            </div>
-							            </div>
-							            <div class="form-group" style="padding-top: 20px">
-								            <label for="odlerTel" class="col-sm-4 control-label">联系电话：</label>
-								            <div class="col-sm-5">
-									            <span class="form-control" id="oldertel">例如：10086</span>
-								            </div>
-							            </div>
-							            <div class="form-group" style="padding-top: 20px">
-								            <label for="odlerAdress" class="col-sm-4 control-label">收货地址：</label>
-								            <div class="col-sm-5">
-									            <span class="form-control" id="olderaddress">例如：贵州省贵阳市贵阳区贵阳街道</span>
-								            </div>
-							            </div>
-						            </div>	
-                                   
-								</div>
-
-								<div class="am-tab-panel am-fade">
-									
-					               <div class="cart-table-th">
-						               <div class="">
-							               <div class="th th-chk">
-								               <div id="J_SelectAll1" class="select-all J_SelectAll">
-
-								               </div>
-							                </div>
-							                <div class="th th-item">
-								                <div class="td-inner">商品信息</div>
-							                </div>
-							                <div class="th th-price">
-								                <div class="td-inner">商品单价</div>
-							                </div>
-							                <div class="th th-amount">
-								                <div class="td-inner">商品数量</div>
-							                </div>
-							                <div class="th th-sum">
-								                <div class="td-inner">生成日期</div>
-							                </div>
-							                <div class="th th-sum">
-								                <div class="td-inner">商品状态</div>
-							                </div>
-						                </div>
-					                </div>
-					                <div class="clear"></div>
-
-					                <tr class="">
-						                <div class="bundle  bundle-last ">
-							                <div class="clear"></div>
-							            <div class="bundle-main">
-								            <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-10 18:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-											            <div class="price-line">
-													        <span>送货中</span>
-												        </div>
-												        <div class="price-line" style="padding-top: 10px">
-													        <button class="btn btn-default">签收</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-								            <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-10 18:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-											            <div class="price-line">
-													        <span>送货中</span>
-												        </div>
-												        <div class="price-line" style="padding-top: 10px">
-													        <button class="btn btn-default">签收</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-								            <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-10 18:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-											            <div class="price-line">
-													        <span>送货中</span>
-												        </div>
-												        <div class="price-line" style="padding-top: 10px">
-													        <button class="btn btn-default">签收</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-								            <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-9 12:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-											            <div class="price-line">
-													        <span>到货</span>
-												        </div>
-												        <div class="price-line" style="padding-top: 10px">
-													        <button class="btn btn-default">签收</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-									        <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-9 12:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-											            <div class="price-line">
-													        <span>到货</span>
-												        </div>
-												        <div class="price-line" style="padding-top: 10px">
-													        <button class="btn btn-default">签收</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-								
-							                </div>
-						                </div>
-					                </tr>
-				                </div>
-                                   
-                                    	
-
-								
-
-								<div class="am-tab-panel am-fade">
-								<div class="cart-table-th">
-						               <div class="">
-							               <div class="th th-chk">
-								               <div id="J_SelectAll1" class="select-all J_SelectAll">
-
-								               </div>
-							                </div>
-							                <div class="th th-item">
-								                <div class="td-inner">商品信息</div>
-							                </div>
-							                <div class="th th-price">
-								                <div class="td-inner">商品单价</div>
-							                </div>
-							                <div class="th th-amount">
-								                <div class="td-inner">商品数量</div>
-							                </div>
-							                <div class="th th-sum">
-								                <div class="td-inner">签收日期</div>
-							                </div>
-							                <div class="th th-sum">
-								                <div class="td-inner">商品状态</div>
-							                </div>
-						                </div>
-					                </div>
-					                <div class="clear"></div>	
-									<tr class="">
-						                <div class="bundle  bundle-last ">
-							                <div class="clear"></div>
-							            <div class="bundle-main">
-								            <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-10 18:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-											            <div class="price-line">
-											            	<button id="btn3" class="btn btn-default" type="button" data-dismiss="modal" aria-hidden="true">未评价</button>
-													        
-													        
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-								            <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-10 18:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-												        <div class="price-line">
-													        <button class="btn btn-default">查看评价</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-								            <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-9 12:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-												        <div class="price-line">
-													        <button class="btn btn-default">未评价</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-									        <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-9 12:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-											            <div class="price-line">
-													        <button class="btn btn-default">查看评价</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-								
-							                </div>
-						                </div>
-					                </tr>
-
-								</div>
-
-							</div>
-
-						</div>
-					</div>
-
+		</ul>
+		<ul class="message-r">
+			<div class="topMessage home">
+				<div class="menu-hd">
+					<a href="shopping.html" target="_top" class="h">商城首页</a>
 				</div>
 			</div>
-								
-								
-							</div>
-						</div>
-					</tr>
-					
+			<div class="topMessage my-shangcheng">
+				<div class="menu-hd MyShangcheng">
+					<a href="personal.html" target="_top"><i
+						class="am-icon-user am-icon-fw"></i>个人中心</a>
 				</div>
-				
-
-				<div class="footer">
-					<div class="footer-hd">
-						<p>
-							<a href="# ">孝和集团</a>
-								<b>|</b>
-								<a href="# ">商城首页</a>
-								<b>|</b>
-								<a href="# "></a>
-								<b>|</b>
-								<a href="# "></a>
-						</p>
-					</div>
-					<div class="footer-bd">
-						<p>
-							<a href="#">关于恒望</a>
-									<a href="index.html ">关于孝和</a>
-								<a href="# "></a>
-								<a href="contact.html">联系我们</a>
-								<a href="# "></a>
-								<em>© 2017-2025 oldermanage.com 更关注老年人 - Collect from 孝和集团</em>
-						</p>
-					</div>
-				</div>
-
 			</div>
+			<div class="topMessage mini-cart">
+				<div class="menu-hd">
+					<a id="mc-menu-hd" href="shopcart.html" target="_top"><i
+						class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong
+						id="J_MiniCartNum" class="h">0</strong></a>
+				</div>
+			</div>
+		</ul>
+	</div>
+	个人中心设计
+	<!--悬浮搜索框-->
 
-			<!--操作页面-->
-
-			
-		<!--引导 -->
-		<div class="navCir">
-			<li><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
-			<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-			<li class="active"><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>	
-			<li><a href="person/index.html"><i class="am-icon-user"></i>我的</a></li>					
+	<div class="nav white">
+		<div class="logo">
+			<img src="images/product/logo.png" />
+		</div>
+		<div class="logoBig">
+			<li><img src="images/product/logobig.png" /></li>
 		</div>
 
-	</body>
-<script>
+		<div class="search-bar pr">
+			<div class="nav-table row">
+				<div class="long-title col-md-offset-9">
+					<span>我的购物车</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+
+
+	<!--购物车 -->
+	<div class="concent">
+		<div id="cartTable">
+			<div class="cart-table-th">
+				<div class="wp">
+					<div class="th th-chk"></div>
+					<div class="th th-item">
+						<div class="td-inner">个人中心</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+
+			<tr class="item-list">
+				<div class="bundle  bundle-last ">
+
+					<div class="bundle-main">
+
+
+						<div class="introduceMain" style="width: 100%">
+							<div class="am-tabs" data-am-tabs>
+								<ul class="am-avg-sm-3 am-tabs-nav am-nav am-nav-tabs">
+									<li class="am-active"><a href="#"> <span
+											class="index-needs-dt-txt">我的信息</span></a></li>
+
+									<li><a href="#"> <span class="index-needs-dt-txt">我的订单</span></a>
+
+									</li>
+
+									<li><a href="#"> <span class="index-needs-dt-txt">购买记录</span></a>
+									</li>
+								</ul>
+
+								<div class="am-tabs-bd">
+									<div class="am-tab-panel am-fade am-in am-active">
+										<!-- 我的信息 -->
+										<div class="card-body form-horizontal"
+											style="padding-top:50px;padding-bottom: 100px">
+											<div class="form-group" style="padding-top: 20px">
+												<div for="odlerTel" class="col-sm-4 control-label">
+													<div class="thumbnail" style="width: 100px;float: right;">
+														<img src="" class="img-circle" id="olderheadurl">
+													</div>
+												</div>
+												<div class="col-sm-3 text-center">
+													<span class="" id="oldername" style="font-size: 3em;"></span>
+												</div>
+											</div>
+
+											<div class="form-group" style="padding-top: 20px">
+												<label for="odlerTel" class="col-sm-4 control-label">总积分：</label>
+												<div class="col-sm-5">
+													<span class="form-control" id="oldermaxpoint"></span>
+												</div>
+											</div>
+											<div class="form-group" style="padding-top: 20px">
+												<label for="odlerTel" class="col-sm-4 control-label">可用积分：</label>
+												<div class="col-sm-5">
+													<span class="form-control" id="olderpoint"></span>
+												</div>
+											</div>
+											<div class="form-group" style="padding-top: 20px">
+												<label for="odlerTel" class="col-sm-4 control-label">会员等级：</label>
+												<div class="col-sm-5">
+													<span class="form-control" id="olderlevel"></span>
+												</div>
+											</div>
+											<div class="form-group" style="padding-top: 20px">
+												<label for="odlerTel" class="col-sm-4 control-label">联系电话：</label>
+												<div class="col-sm-5">
+													<span class="form-control" id="oldertel"></span>
+												</div>
+											</div>
+											<div class="form-group" style="padding-top: 20px">
+												<label for="odlerAdress" class="col-sm-4 control-label">收货地址：</label>
+												<div class="col-sm-5">
+													<span class="form-control" id="olderaddress"></span>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="am-tab-panel am-fade" id="orderItems">
+
+										<div class="cart-table-th">
+											<div class="">
+												<div class="th th-chk">
+													<div id="J_SelectAll1" class="select-all J_SelectAll">
+
+													</div>
+												</div>
+												<div class="th th-item">
+													<div class="td-inner">商品信息</div>
+												</div>
+												<div class="th th-price">
+													<div class="td-inner">商品单价</div>
+												</div>
+												<div class="th th-amount">
+													<div class="td-inner">商品数量</div>
+												</div>
+
+												<div class="th th-sum">
+													<div class="td-inner">商品总价</div>
+												</div>
+												<div class="th th-sum">
+													<div class="td-inner">商品状态</div>
+												</div>
+											</div>
+										</div>
+										<div class="clear"></div>
+
+										<!-- <tr class=""> -->
+											<!-- <div class="bundle  bundle-last ">
+												<div class="clear"></div>
+
+
+											</div> -->
+										<!-- </tr> -->
+										<!-- <div class="float-bar-wrapper" id="orderbottom"></div> -->
+									</div>
+
+
+
+
+
+									<div class="am-tab-panel am-fade">
+										<div class="cart-table-th">
+											<div class="">
+												<div class="th th-chk">
+													<div id="J_SelectAll1" class="select-all J_SelectAll">
+
+													</div>
+												</div>
+												<div class="th th-item">
+													<div class="td-inner">商品信息</div>
+												</div>
+												<div class="th th-price">
+													<div class="td-inner">商品单价</div>
+												</div>
+												<div class="th th-amount">
+													<div class="td-inner">商品数量</div>
+												</div>
+												<div class="th th-sum">
+													<div class="td-inner">商品</div>
+												</div>
+												<div class="th th-sum">
+													<div class="td-inner">商品状态</div>
+												</div>
+											</div>
+										</div>
+										<div class="clear"></div>
+										
+										<tr class="">
+											<div class="bundle  bundle-last " id="buyItems">
+												 <div class="bundle-main">
+								            <ul class="item-content clearfix">
+									            <li class="td td-item">
+										            <div class="item-pic">
+											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
+												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
+												        </a>
+										            </div>
+										            <div class="item-info">
+											            <div class="item-basic-info">
+												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+											            </div>
+										            </div>
+									            </li>
+									            <li class="td td-info">
+										            <div class="item-props">
+											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
+											<span class="sku-line">包装：裸装</span>
+											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
+											<i class="theme-login am-icon-sort-desc"></i> -->
+										            </div>
+									            </li>
+									            <li class="td td-price">
+										            <div class="item-price price-promo-promo">
+											            <div class="price-content">
+												            <div class="price-line">
+													            <em class="price-original">78.00</em>
+												            </div>
+												            <div class="price-line">
+													            <em class="J_Price price-now" tabindex="0">10.00</em>
+												            </div>
+											            </div>
+										            </div>
+									            </li>
+									            <li class="td td-amount">
+										            <div class="amount-wrapper ">
+											            <div class="item-amount ">60</div>
+										            </div>
+									            </li>
+									            <li class="td td-sum">
+										            <div class="td-inner">2017-10-10 18:00</div>
+									            </li>
+									            <li class="td td-sum">
+										            <div class="td-inner">
+											            <div class="price-line">
+											            	<button id="btn1_1" class="btn btn-primary" type="button" data-dismiss="modal" aria-hidden="true">未评价</button>
+												        </div>
+										            </div>
+									            </li>
+									        </ul>
+								            
+								
+							                </div>
+
+											</div>
+										</tr>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+		</div>
+	</div>
+	</tr>
+
+	</div>
+
+
+	<div class="footer">
+		<div class="footer-hd">
+			<p>
+				<a href="# ">孝和集团</a> <b>|</b> <a href="# ">商城首页</a> <b>|</b> <a
+					href="# "></a> <b>|</b> <a href="# "></a>
+			</p>
+		</div>
+		<div class="footer-bd">
+			<p>
+				<a href="#">关于恒望</a> <a href="index.html ">关于孝和</a> <a href="# "></a>
+				<a href="contact.html">联系我们</a> <a href="# "></a> <em>©
+					2017-2025 oldermanage.com 更关注老年人 - Collect from 孝和集团</em>
+			</p>
+		</div>
+	</div>
+
+	</div>
+
+	<!--操作页面-->
+
+
+	<!--引导 -->
+	<div class="navCir">
+		<li><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
+		<li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
+		<li class="active"><a href="shopcart.html"><i
+				class="am-icon-shopping-basket"></i>购物车</a></li>
+		<li><a href="person/index.html"><i class="am-icon-user"></i>我的</a></li>
+	</div>
+
+
+	<script>
     var iframeurl = function () { return "personalComment.html?" + getNowDateInt() };
-
-    var Modal3;
-
-
+    var Modal1;
+   
     $(document).ready(function () {
-
-        InitModal3();
-
-        $("#btn3").click(function () {
-            Modal3.show();
-        })
-
+        InitModal1();
+        
+        $("#btn1_1").click(function () {
+            Modal1.show();
+            Modal1.setHeigth("500px");
+            Modal1.setWidth("500px");
+        });
+        
     });
 
-
-    function InitModal3() {
-        $(document.body).append('<div id="modal3"></div>');
-        Modal3 = new Modal();
-        Modal3.renderto = "#modal3";
-        Modal3.InitShow = true;
-        Modal3.btns = [{ id: "btn1", text: "保存" }, { id: "closebtn" }]
+    function InitModal1() {
+        $(document.body).append('<div id="modal1"></div>');
+        Modal1 = new Modal();
+        Modal1.renderto = "#modal1";//绘制到div
+        Modal1.InitMax = false;//是否最大化
+        Modal1.btns = [{ id: "closebtn" }]
         tab1 = new Tab();
-        Modal3.OnfirstInited = function (thismodal) {
+        Modal1.OnfirstInited = function (thismodal) {
             tab1.tabs = [{
-                id: "tabs1", title: "评价", active: true, isiframe: true, url: iframeurl()
-            }, ];
+                id: "tabs1", title: "Baidu页面", active: true, isiframe: true, url: iframeurl()
+            }];
             tab1.renderto = thismodal.body;
             tab1.Init();
-        }
+        }//内容
     }
 
+   
 
-</script>	
+    </script>
 
+	<script type="text/javascript">
+	
+		//var olderid = ;
+		var olderid = 1;
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/personal/older/info?olderid" + olderid,
+			data : null,
+			success : function(result) {
+				// document.getElementById("oldername").innerHTML = result.data.oldername;
+				// document.getElementById("oldertel").innerHTML = result.data.oldertel;
+				// document.getElementById("olderaddress").innerHTML = result.data.olderaddress;
+				// document.getElementById("olderheadurl").src = result.data.olderheadurl;
+				// document.getElementById("olderpoint").innerHTML = result.data.olderpoint;
+				// document.getElementById("oldermaxpoint").innerHTML = result.data.oldermaxpoint;
+				// document.getElementById("olderlevel").innerHTML = result.data.olderlevel;
+			},
+			error : function() {
+				alert('数据库错误')
+			}
+		})
+	</script>
+	<script type="text/javascript">
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/personal/myorder/info?olderid=" + olderid,
+			data : null,
+			success : function(result) {
+				var resultData = result.data;
+				var orderstatus = "送货中";
+				for (var i = 0; i <= 2; i++) {
+					// if (resultData[i].orderstatus == "送货中") {
+					// 	var text1 = "签收"
+					// } else if (resultData[i].orderstatus == "备货中") {
+					// 	var text1 = "取消"
+					// }
+					if (orderstatus == "备货中") {
+						var text1 = "取消"
+					}else if(orderstatus == "送货中"){
+						 text1 = "签收"
+					}
+					
+					//${resultData[i].productname},${resultData[i].productimg},${resultData[i].productname}
+					//${resultData[i].productname},${resultData[i].productprice},${resultData[i].productdiscountprice}
+					//${resultData[i].orderproductcount},${resultData[i].orderdiscountprice},${resultData[i].orderstatus}
+					//订单详情
+					for(var x = 0;x<=2;x++){
+						var oDiv = `
+								<div class="bundle  bundle-last ">
+									<div class="clear"></div>
+									<div class="bundle-main">
+										<ul class="item-content clearfix">
+											<li class="td td-item">
+												<div class="item-pic">
+													<a href="#" target="_blank"
+														data-title="商品名"
+														class="J_MakePoint" data-point="tbcart.8.12"> <img
+														src="images/product/01_small.jpg" width="80" 
+														class="itempic J_ItemImg"></a>
+												</div>
+												<div class="item-info">
+													<div class="item-basic-info">
+														<a href="#" target="_blank"
+															title="商品名}"
+															class="item-title J_MakePoint"
+															data-point="tbcart.8.11">商品名</a>
+													</div>
+												</div>
+											</li>
+											<li class="td td-info">
+												<div class="item-props"></div>
+											</li>
+											<li class="td td-price">
+												<div class="item-price price-promo-promo">
+													<div class="price-content">
+														<div class="price-line">
+															<em class="price-original">商品价格</em>
+														</div>
+														<div class="price-line">
+															<em class="J_Price price-now" tabindex="0">商品折后价</em>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="td td-amount">
+												<div class="amount-wrapper ">
+													<div class="item-amount ">商品数量</div>
+												</div>
+											</li>
+										
+											<li class="td td-sum">
+												<div class="td-inner">订单总价</div>
+											</li>
+											<li class="td td-sum">
+												<div class="td-inner">
+													<div class="price-line">
+														<span>订单状态</span>
+													</div>
+													
+												</div>
+											</li>
+										</ul>
+									</div>
+
+								</div>
+						`;
+						$("#orderItems").append(oDiv);
+					}
+
+					//每个订单合计
+					var oBottom = `
+							<div class="float-bar-wrapper">
+								<div class="float-bar-right">
+									<div class="amount-sum">
+										<span class="txt">共</span> <em id="J_SelectedItemsCount">0</em>
+										<span class="txt">件</span>
+										<div class="arrow-box">
+											<span class="selected-items-arrow"></span> 
+											<span class="arrow"></span>
+										</div>
+									</div>
+									<div class="price-sum">
+										<span class="txt">合计:</span> 
+										<strong class="price">¥<em id="J_Total">0.00</em></strong>
+										<span class="txt">生成时间:</span> 
+										<span class="txt" style=color:#F00>2017-10-10 18:00</span>
+									</div>
+									<div class="price-sum" style="padding-top: 10px">
+										<button class="btn btn-default" 
+										onclick="checkUrl()">${text1}</button>
+									</div>
+								</div>
+							</div>
+					`;
+					$("#orderItems").append(oBottom);
+				}
+
+			},
+			error : function() {
+				alert('数据库错误')
+			}
+		})
+
+		//取消/收货
+		function checkUrl() {
+		/* if(text=="签收"){
+		    var url="";
+		    var data="";
+		}else if(text=="取消"){
+		    var url="";
+		   var data="";
+		} */
+			if(confirm("你确定要申请取消这个?")){
+				$.ajax({
+					type : 'delete',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/shop/pay/shopcart/remove",
+					data : "productid="+id,
+					success:function(result){
+						alert("删除成功");
+						window.location.reload();
+					},
+					error:function(){
+						alert("数据库错误")
+					}
+				})
+			}
+		}
+			
+		$.ajax({
+		type : 'get',
+		contentType : 'application/json',
+		url : "/eldermanage/v1/shop/personal/buyrecord/info",
+		data : null,
+		success : function(result) {
+			var resultData = result.data;
+			for (var i = 0; i <= 2; i++) {
+				var oDiv = `
+							<div class="bundle-main">
+								<ul class="item-content clearfix">
+									<li class="td td-item">
+										<div class="item-pic">
+											<a href="#" target="_blank"
+												data-title="商品名"
+												class="J_MakePoint" data-point="tbcart.8.12"> <img
+												src="images/product/01_small.jpg" width="80" 
+												class="itempic J_ItemImg"></a>
+										</div>
+										<div class="item-info">
+											<div class="item-basic-info">
+												<a href="#" target="_blank"
+													title="商品名"
+													class="item-title J_MakePoint"
+													data-point="tbcart.8.11">商品名</a>
+											</div>
+										</div>
+									</li>
+									<li class="td td-info">
+										<div class="item-props"></div>
+									</li>
+									<li class="td td-price">
+										<div class="item-price price-promo-promo">
+											<div class="price-content">
+												<div class="price-line">
+													<em class="price-original">商品价格</em>
+												</div>
+												<div class="price-line">
+													<em class="J_Price price-now" tabindex="0">折后价</em>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="td td-amount">
+										<div class="amount-wrapper ">
+											<div class="item-amount ">商品数量</div>
+										</div>
+									</li>
+								
+									<li class="td td-sum">
+										<div class="td-inner">总价</div>
+									</li>
+									<li class="td td-sum">
+										<div class="td-inner">
+											<div class="price-line">
+												<button id="btn3" class="btn btn-default" type="button"
+													data-dismiss="modal" aria-hidden="true">未评价</button>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+				`;
+				$("#buyItems").append(oDiv);
+			}
+		},
+		error : function() {
+			alert('数据库错误')
+		}
+	})
+	</script>
+</body>
 </html>

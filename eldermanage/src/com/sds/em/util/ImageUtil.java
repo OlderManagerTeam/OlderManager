@@ -2,15 +2,9 @@ package com.sds.em.util;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.text.ParseException;
-
 import java.awt.Graphics2D;  
 import java.awt.Image;  
 import java.awt.Transparency;  
-import java.awt.image.BufferedImage;  
-import java.io.File;  
-  
 import javax.imageio.ImageIO;  
   
 /** 
@@ -66,13 +60,12 @@ public class ImageUtil {
             e.printStackTrace();  
         }  
     }  
-  
     /** 
      * 测试 
      */  
     public static void main(String[] args) throws Exception {  
         File fromFile = new File("e:/1.png");  
         File toFile = new File("e:/2.png");  
-        resizePng(fromFile, toFile, 1000, 1000, true);  
+        resizePng(fromFile, toFile, 800, 600, false);  
     }  
 }

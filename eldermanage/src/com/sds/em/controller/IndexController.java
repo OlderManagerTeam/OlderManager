@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.UUID;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
@@ -137,8 +139,14 @@ public class IndexController {
 	
 	//wuwenbo,用户登录
 	@RequestMapping(method = RequestMethod.POST, value = "accountnumber")
-	public @ResponseBody Message login(HttpSession session,String tel,String password,boolean isremember) {
+	public @ResponseBody Message login(HttpSession session,String tel,String password,boolean isremember,HttpServletResponse response) {
 		Subject subject = SecurityUtils.getSubject();
+		
+		
+		Cookie cookie=new Cookie("name","wuwenbo");
+		cookie.setMaxAge(1000);
+		response.addCookie(cookie);
+		
 		password=Md5.MD5(password);
 		UsernamePasswordToken token = new UsernamePasswordToken(tel, password);
 		token.setRememberMe(isremember);

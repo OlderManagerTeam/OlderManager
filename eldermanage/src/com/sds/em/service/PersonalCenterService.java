@@ -10,4 +10,6 @@ public interface PersonalCenterService {
 	// 修改个人信息
 	public Message updatePersonalMessage(Staffbase staffbase) throws Exception;
 
+	public Message getauthorization(String stafftel);
+
 }
