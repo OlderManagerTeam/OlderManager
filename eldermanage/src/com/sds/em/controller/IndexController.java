@@ -210,4 +210,5 @@ public class IndexController {
 		}
 		return new Message(false,"账号已存在",null);
 	}
+	
 }

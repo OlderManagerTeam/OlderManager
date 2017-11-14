@@ -152,7 +152,7 @@
 					var d= new Date();
                     d.setHours(d.getHours() + (24 * 15));
 					document.cookie = "tel=" + $("#tel").val()+";expires="+d.toGMTString();
-					document.cookie = "password=" + $("#password").val()+";expires="+d.toGMTString();
+					document.cookie = "password=" + $("#password").val()+";expires="+d.toGMTString()+ ";path=/";  
 					document.cookie= "remember=" + $('#remember').prop("checked")+";expires="+d.toGMTString();
 					if (!$('#remember').prop("checked")) {
 						delCookie("password");

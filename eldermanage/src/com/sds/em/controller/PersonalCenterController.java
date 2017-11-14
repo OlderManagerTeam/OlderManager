@@ -94,4 +94,13 @@ public class PersonalCenterController {
 		return new Message(true,"返回成功",roles);
 	}
 
+	@RequestMapping("loginUrl")
+	public @ResponseBody String loginUrl() {
+				return "未登录";
+	}
+	
+	@RequestMapping("unauthorizedUrl")
+	public @ResponseBody String unauthorizedUrl() {
+				return "无权限";
+	}
 }
