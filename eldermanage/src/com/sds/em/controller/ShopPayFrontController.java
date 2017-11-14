@@ -49,7 +49,7 @@ public class ShopPayFrontController {
 	}
 
 	// 从购物车中删除一个商品-后端成功
-	@RequestMapping(method = RequestMethod.DELETE, value = "shopcart/remove")
+	@RequestMapping(method = RequestMethod.GET, value = "shopcart/remove")
 	public @ResponseBody Message cartProductRemove(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;

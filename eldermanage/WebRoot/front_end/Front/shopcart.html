@@ -289,8 +289,24 @@
 					for(let i=0;i<=countData-1;i++){
 						form.append("count",$("#countProduct"+i).val())
 					}
+					$.ajax({
+						type : 'post',
+						contentType : 'application/json',
+						url : "/eldermanage/v1/shop/pay/cart/confirm/order/sure",
+						data : form,
+					    processData : false,
+					    contentType : false,
+						success : function(result) {
+							if (result.success) {
+								location.href = "confirm_order.html";
+							}
+						},
+						error : function() {
+							alert("数据库错误")
+						}
+					})
 					
-					location.href = "confirm_order.html";
+					
 				})
 			})
 
@@ -321,7 +337,7 @@
 			function deleteItem(id) {
 				if(confirm("你确定要从购物车删除此商品吗?")){
 					$.ajax({
-						type : 'delete',
+						type : 'get',
 						contentType : 'application/json',
 						url : "/eldermanage/v1/shop/pay/shopcart/remove",
 						data : "productid="+id,

@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body onload="load()">
 
 	<style type="text/css">
 * {
@@ -255,11 +255,11 @@ body {
 
 	<div class="quiz">
 
-		<h3>我要评论</h3>
+		<h3>评论内容</h3>
 
 		<div class="quiz_content">
 
-			<form id="rateView">
+			<form >
 
 				<div class="goods-comm">
 
@@ -272,19 +272,17 @@ body {
 					</div>
 
 				</div>
-				<input id="xingxing" name="ratestar"></input> <input
-					id="orderlistid" name="orderlistid"></input> -
+				<input id="xingxing"></input> <input id="orderlistid"></input> -
 				<div class="l_text">
 
 					<label class="m_flo">内 容：</label>
 
-					<textarea name="ratecontent" class="text"></textarea>
+					<textarea id="ratecontent" class="text"></textarea>
 
 					<span class="tr">字数限制为5-200个</span>
 
 				</div>
 
-				<button class="btm" type="button" id="ratesubmit">提交评论</button>
 
 			</form>
 
@@ -293,7 +291,7 @@ body {
 
 	</div>
 	<!--quiz end-->
-<!-- 	<script type="text/javascript" src="../Front/js/jquery.min.js"></script> -->
+	<!-- 	<script type="text/javascript" src="../Front/js/jquery.min.js"></script> -->
 	<script type="text/javascript">
 		UrlParm = function() { // url参数
 			var data,
@@ -355,28 +353,22 @@ body {
 		var orderlistid = UrlParm.parm("orderlistid");
 		document.getElementById("orderlistid").value = orderlistid;
 	
-		$("#ratesubmit").click(function() {
-			var form = new FormData(document.getElementById("rateView"));
-
+		function load() {
 			$.ajax({
-				type : 'post',
-				url : "/eldermanage/v1/shop/personal/buyrecord/rate/add",
-				data : form,
-				processData : false,
-				contentType : false,
+				type : 'get',
+				contentType : 'application/json',
+				url : "/eldermanage/v1/shop/personal/buyrecord/rate/info?orderlistid=" + orderlistid,
+				data : null,
 				success : function(result) {
-					if (result.success) {
-					     alert("评论成功");
-						parent.location.href= "/eldermanage/front_end/Front/personal.html";
-					}
+	                var current_value=result.data.ratestar;
+					document.getElementById("ratecontent").value = result.data.ratecontent;
+					document.getElementById("xingxing").value = result.data.ratestar;
 				},
 				error : function() {
-					alert('fail')
+					alert('数据库错误')
 				}
 			})
-	
 		}
-		)
 	</script>
 
 </body>

@@ -155,6 +155,7 @@ jQuery.fn.rater	= function(options) {
 			jQuery(this).parents().nextAll('.rater-star-result').html(current_value+'分&nbsp;'+settings.title_format(current_value));
 		}
 		$("#StarNum").val(current_value);
+		
 		//jQuery(this).parents().next('.rater-star-result').html(current_value);
 		//jQuery(this).unbind('mouseout',startTip)
 	})
@@ -169,6 +170,8 @@ $(function(){
 	max	: 5,
 	title_format	: function(value) {
 		var title = '';
+		document.getElementById("xingxing").value =value;
+		// alert(value)
 		switch (value) {
 			case 1 : 
 				title	= '很不满意';
@@ -193,6 +196,7 @@ $(function(){
 	},
 	info_format	: function(value) {
 		var info = '';
+		
 		switch (value) {
 			case 1 : 
 				info	= '<div class="info-box">1分&nbsp;很不满意<div>商品样式和质量都非常差，太令人失望了！</div></div>';
