@@ -101,6 +101,7 @@ body {
 	padding-left: 18px;
 }
 
+
 .quiz_content .l_text .m_flo {
 	float: left;
 	width: 47px;
@@ -249,6 +250,18 @@ body {
 	padding-left: 10px;
 	float: left;
 }
+
+.clearfix::after{ display:block; content:''; height:0; overflow:hidden; clear:both;} 
+/*星星样式*/
+.content{ width:600px; margin:0 auto;}
+.title{ font-size:14px;width: 50px}
+
+/*星星样式*/
+.show_number{ padding-left:12px;}
+.show_number li{float:left; padding:10px; margin-right:5px; margin-bottom:20px;}
+.atar_Show{background:url(images/stark2.png); width:160px; height:21px;  position:relative; float:left; }
+.atar_Show p{ background:url(images/stars2.png);left:0; height:21px; width:134px;}
+.show_number li span{ display:inline-block; line-height:21px;font-size: 1.1em;padding-top: 2px}
 </style>
 
 
@@ -261,18 +274,19 @@ body {
 
 			<form >
 
-				<div class="goods-comm">
-
-					<div class="goods-comm-stars">
-
-						<span class="star_l">满意度：</span>
-
-						<div id="rate-comm-1" class="rate-comm"></div>
-
-					</div>
-
-				</div>
-				<input id="xingxing"></input> <input id="orderlistid"></input> -
+				<div class="">
+                    <ul class="show_number clearfix" >
+                    	<li>星 级：</li>
+                        <li>
+                            <div class="atar_Show">
+                                <p tip="" id="p"></p>
+                            </div>
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+				
+                <input id="xingxing"></input> <input id="orderlistid"></input> -
 				<div class="l_text">
 
 					<label class="m_flo">内 容：</label>
@@ -291,6 +305,20 @@ body {
 
 	</div>
 	<!--quiz end-->
+	<script type="text/javascript">
+     var a=document.getElementById("p");
+     a.setAttribute("tip",3)
+	</script>
+
+	<script type="text/javascript">
+    //显示分数
+      $(".show_number li p").each(function(index, element) {
+        var num=$(this).attr("tip");
+        var www=num*2*16;//
+        $(this).css("width",www);
+        $(this).parent(".atar_Show").siblings("span").text(num+"分");
+    });
+    </script>
 	<!-- 	<script type="text/javascript" src="../Front/js/jquery.min.js"></script> -->
 	<script type="text/javascript">
 		UrlParm = function() { // url参数
