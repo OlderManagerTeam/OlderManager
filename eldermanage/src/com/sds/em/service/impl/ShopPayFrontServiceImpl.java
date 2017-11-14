@@ -6,18 +6,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.CartMapper;
+import com.sds.em.mapper.JoingroupMapper;
 import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OrderlistMapper;
 import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.mapper.ProductMapper;
+import com.sds.em.mapper.ProductgroupMapper;
 import com.sds.em.mapper.ProductstoreMapper;
 import com.sds.em.po.Cart;
 import com.sds.em.po.CartExample;
 import com.sds.em.po.CartExample.Criteria;
+import com.sds.em.po.Joingroup;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Orderlist;
 import com.sds.em.po.Orders;
+import com.sds.em.po.Productgroup;
 import com.sds.em.po.Productstore;
 import com.sds.em.po.ProductstoreExample;
 import com.sds.em.service.ShopPayFrontService;
@@ -40,8 +44,14 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 	@Autowired
 	ProductstoreMapper productstoreMapper;
 
+	@Autowired
+	ProductgroupMapper productgroupMapper;
+
+	@Autowired
+	JoingroupMapper joingroupMapper;
+
 	@Override
-	public Message addFirstShopcart(int olderid, int productid, int count) {
+	public Message addFirstShopcart(int olderid, int productid) {
 		try {
 			CartExample cartExample = new CartExample();
 			Criteria criteria = cartExample.createCriteria();
@@ -52,7 +62,7 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 			if (CartList.isEmpty()) {
 				Cart cart = new Cart();
 				int flag = 0;
-				cart.setCartcount(count);
+				cart.setCartcount(1);
 				cart.setCartolderid(olderid);
 				cart.setCartproductid(productid);
 				flag = cartMapper.insertSelective(cart);
@@ -214,7 +224,7 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 				Orders orders = new Orders();
 				orders.setOrderdate(new Date());
 				orders.setOrderolderid(olderid);
-				orders.setOrderstatus("备件中");
+				orders.setOrderstatus("备货中");
 				orders.setOrdertakepoint((float) ordertakepoint);
 				orders.setOrdertotal(ordertotal);
 				ordersMapper.keyinsert(orders);
@@ -292,6 +302,95 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
+	}
+
+	@Override
+	public Message rightNowOrderFormation(int olderid, float ordertotal, int ordertakepoint, int productid, int count) {
+		try {
+			Orders orders = new Orders();
+			orders.setOrderdate(new Date());
+			orders.setOrderolderid(olderid);
+			orders.setOrderstatus("备货中");
+			orders.setOrdertakepoint((float) ordertakepoint);
+			orders.setOrdertotal(ordertotal);
+			ordersMapper.keyinsert(orders);
+			if (orders.getOrderid() != null) {// 当订单表生成成功
+				int flag = 0;
+				int flag1 = 0;
+				float productprice = productMapper.selectByPrimaryKey(productid).getProductdiscountprice();
+
+				Orderlist orderlist = new Orderlist();
+				orderlist.setOrderproductid(productid);
+				orderlist.setOrderlistfid(orders.getOrderid());
+				orderlist.setOrderproductcount(count);
+				float orderdiscountprice = count * productprice;
+				orderlist.setOrderdiscountprice(orderdiscountprice);
+				flag = orderlistMapper.insert(orderlist);
+				if (flag != 0) {// 订单详情生成成功
+					// 更新库存表
+					ProductstoreExample productstoreExample = new ProductstoreExample();
+					com.sds.em.po.ProductstoreExample.Criteria criteria2 = productstoreExample.createCriteria();
+					criteria2.andStoreproductidEqualTo(productid);
+
+					Productstore productstore = productstoreMapper.selectByExample(productstoreExample).get(0);
+
+					productstore.setStorecount(productstore.getStorecount() - 1);
+					productstore.setStoredaysales(productstore.getStoredaysales() + 1);
+					productstore.setStoretotalsales(productstore.getStoretotalsales() + 1);
+
+					flag1 = productstoreMapper.updateByExampleSelective(productstore, productstoreExample);
+					if (flag1 != 0) {// 库存表更新成功
+						// 修改老人积分情况
+						Olderbase olderbase = olderbaseMapper.selectByPrimaryKey(olderid);
+						olderbase.setOlderid(olderid);
+						olderbase.setOldermaxpoint((int) (olderbase.getOldermaxpoint() + ordertotal));
+						olderbase.setOlderpoint((olderbase.getOlderpoint() + (int) ordertotal - ordertakepoint));
+
+						int flag3 = 0;
+						flag3 = olderbaseMapper.updateByPrimaryKeySelective(olderbase);
+						if (flag3 != 0) {// 老人积分更新成功
+							return new Message(true, "订单详情，库存表及老人积分更新成功", null);
+						} else {
+							return new Message(true, "老人积分更新失败", null);
+						}
+					} else {
+						return new Message(false, "库存表更新失败", null);
+					}
+				} else {
+					return new Message(false, "订单详情生成失败", null);
+				}
+
+			} else {
+				return new Message(false, "订单表生成失败", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message joinGroup(int olderid, int groupid) {
+
+		try {
+			Joingroup group = new Joingroup();
+			group.setJoindate(new Date());
+			group.setJoinid(groupid);
+			group.setJoinolderid(olderid);
+			int flag = 0;
+			flag = joingroupMapper.insert(group);
+			if (flag != 0) {
+				return new Message(false, "申请参团成功", null);
+			} else {
+				return new Message(false, "申请参团失败", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+
 	}
 
 }
