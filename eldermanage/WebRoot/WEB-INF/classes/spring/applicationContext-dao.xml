@@ -47,7 +47,8 @@
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
 			<value>
-				/v1/weboperation/**=authc,roles[weboperationmanager]
+				/v1/brench/elder/info=authc,roles[shopmanager],roles[branchmanager]
+				/v1/weboperation/**=authc,roles[droitmanager]
 				/v1/oldershop/**=authc,roles[shopmanager]
 				/v1/brench/**=authc,roles[branchmanager]
 				/v1/headoffice/**=authc,roles[headofficemanager]
