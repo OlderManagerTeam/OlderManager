@@ -102,19 +102,21 @@
 							</ul></li>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false">伏见柚柚 <span class="caret"></span></a>
+							aria-expanded="false" id="username"><span class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
-								<li class="profile-img"><img
-									src="../../img/textheadphoto.jpg" class="profile-img"></li>
+								<li class="profile-img"><img class="profile-img"
+									id="textheadphoto"></li>
 								<li>
 									<div class="profile-info">
-										<h4 class="username">伏见柚柚</h4>
-										<p>职位：管理员</p>
+										<h4 class="username"></h4>
+										<p id="role"></p>
 										<div class="btn-group margin-bottom-2x" role="group">
-											<button type="button" class="btn btn-default">
+											<a type="button" class="btn btn-default"
+												href="/eldermanage/front_end/OA/html/personalCenter/personalCenter.html">
 												<i class="fa fa-user"></i>个人中心
-											</button>
-											<button type="button" class="btn btn-default">
+											</a>
+											<button type="button" class="btn btn-default"
+												onclick="logout()">
 												<i class="fa fa-sign-out"></i> 退出
 											</button>
 										</div>
@@ -138,8 +140,9 @@
 							</button>
 						</div>
 						<ul class="nav navbar-nav">
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dataStatistics"> <span
+							<li class="panel panel-default dropdown" style="display:none;"
+								id="datamanager"><a data-toggle="collapse"
+								href="#dataStatistics"> <span
 									class="icon glyphicon glyphicon-stats"></span> <span
 									class="title">数据统计</span>
 							</a> <!-- Dropdown level 1 -->
@@ -164,6 +167,7 @@
 										<ul class="nav navbar-nav">
 											<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
 											<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+											<li><a href="../headofficeManage/olderView.html">老人管理</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -229,8 +233,23 @@
 										</ul>
 									</div>
 								</div></li>
+							<!-- 权限管理列表 -->
+							<li class="panel panel-default dropdown" style="display:none;"
+								id='droitmanager'><a data-toggle="collapse"
+								href="#dropdown-stafferDroit"> <span
+									class="icon glyphicon glyphicon-knight"></span><span
+									class="title">权限管理</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-stafferDroit" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../droitManager/droitView.html">员工权限分配</a></li>
+
+										</ul>
+									</div>
+								</div></li>
 							<!-- 员工信息中心 -->
-							<li class="active panel panel-default dropdown"><a
+							<li class="panel panel-default dropdown"><a
 								data-toggle="collapse" href="#dropdown-olderShop"> <span
 									class="icon glyphicon glyphicon-sunglasses"></span><span
 									class="title">个人信息中心</span>
@@ -388,9 +407,11 @@
 						staffcode.innerHTML = result.data.staffbase.staffcode;
 						var staffname = document.getElementById("staffname");
 						staffname.innerHTML = result.data.staffbase.staffname;
+						$("#username").text(result.data.staffbase.staffname);
 						var staffsex = document.getElementById("staffsex");
 						staffsex.innerHTML = result.data.staffbase.staffsex;
 						document.getElementById("staffimg").src = result.data.staffbase.staffimg;
+						document.getElementById("textheadphoto").src = result.data.staffbase.staffimg;
 		
 						var date = new Date(result.data.staffbase.staffbirthday + 1000 * 60 * 60 * 8);
 						var d = date.toISOString().slice(0, 10);
@@ -413,7 +434,7 @@
 		
 						var rolecontent = document.getElementById("rolecontent");
 						rolecontent.innerHTML = result.data.role.rolecontent;
-		
+						$("#role").text(result.data.role.rolecontent);
 		
 		
 					},
@@ -422,23 +443,59 @@
 					}
 				})
 			}
-			
-							$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "/eldermanage/v1/personal/authorization",
+		
+	//	从这以下
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "/eldermanage/v1/personal/message",
+				data : null,
+				success : function(result) {
+					$("#username").text(result.data.staffbase.staffname);
+					document.getElementById("textheadphoto").src = result.data.staffbase.staffimg;
+					$("#role").text(result.data.role.rolecontent);
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "/eldermanage/v1/personal/authorization",
+				data : null,
+			})
+				.then(
+					function(result) {
+						if (result == "未登录") {
+							alert(result);
+							window.location.href = "/eldermanage/front_end/Front/login.html";
+						}
+						var str = result.data.toString();
+						var authorization = new Array();
+						authorization = (str).split(",");
+						for (var i = 0; i < authorization.length; i++) {
+							document.getElementById(authorization[i]).style = "display:block;";
+						}
+					}
+			)
+		
+			function logout() {
+				$.ajax({
+					type : 'delete',
+					contentType : false,
+					url : "/eldermanage/v1/index/person/accountnumber",
 					data : null,
 				})
 					.then(
 						function(result) {
-							var str = result.data.toString();
-							var authorization = new Array();
-							authorization = (str).split(",");
-							for (var i = 0; i < authorization.length; i++) {
-								document.getElementById(authorization[i]).style = "display:block;";
-							}
+							alert(result.information);
+							document.cookie = "password=" + "" + ";path=/";
+							window.location.href = "/eldermanage/front_end/Front/login.html";
 						}
 				)
+			}
+		//	从这以上是每个页面的加载数据都要的方法
 		</script>
 </body>
 

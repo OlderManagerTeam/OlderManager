@@ -363,4 +363,14 @@
 		where groupStatus ='未开始'
 		ORDER BY groupStartDate
 	</select>
+
+	<select id="myGroupsInfo" parameterType="int"
+		resultType="com.sds.em.shop.pojo.ProductGroupExtend">
+		select * from productgroup
+		INNER JOIN joingroup
+		ON productgroup.groupId=joingroup.joinId
+		INNER JOIN product
+		ON productgroup.groupProductId=product.productId
+		where joingroup.joinOlderId=#{value}
+	</select>
 </mapper>

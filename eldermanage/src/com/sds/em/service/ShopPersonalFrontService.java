@@ -30,5 +30,10 @@ public interface ShopPersonalFrontService {
 
 	// 老人申请取消订单
 	public Message myOrderApplyCancel(int olderid,int orderid) throws Exception;
+	
+	//显示 我的团购页面
+	public Message myGroupsInfo(int olderid) throws Exception;
+
+	
 
 }

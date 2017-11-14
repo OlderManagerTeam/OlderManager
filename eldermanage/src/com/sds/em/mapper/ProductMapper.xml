@@ -463,11 +463,14 @@
 
 	</select>
 
-	<select id="preferentialView" resultType="com.sds.em.po.Product">
+	<select id="preferentialView" resultType="com.sds.em.shop.pojo.ProductAmount">
 		SELECT
-		productPrice-productDiscountPrice from product
+		*
+		from product
+		INNER JOIN productstore
+		ON product.productId=productstore.storeProductId
 		where
-		productPrice-productDiscountPrice <![CDATA[>]]>0
+		productPrice-productDiscountPrice  <![CDATA[>]]>0
 		ORDER BY productPrice-productDiscountPrice DESC
 	</select>
 
