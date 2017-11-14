@@ -68,10 +68,11 @@ public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
 				myOrdersListExtend.setOlderid(olderid);
 				myOrdersListExtend.setOrderid(o.getOrderid());
 				List<MyOrderViewExtend> extend = orderlistMapper.shopMyOrderInfo(myOrdersListExtend);
-
-				OlderOrdersExtend olderOrders = new OlderOrdersExtend();
-				olderOrders.setOlderOrders(extend);
-				olderOrdersList.add(olderOrders);
+				if (!extend.isEmpty()) {
+					OlderOrdersExtend olderOrders = new OlderOrdersExtend();
+					olderOrders.setOlderOrders(extend);
+					olderOrdersList.add(olderOrders);
+				}
 			}
 
 			if (olderOrdersList != null) {
@@ -98,14 +99,12 @@ public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
 				criteria.andRateorderidEqualTo(m.getOrderlistid());
 				List<Productrate> rateList = productrateMapper.selectByExample(productrateExtend);
 
-				Map<Integer, String> ratestatus = new HashMap<Integer, String>();
-
 				if (!rateList.isEmpty()) {
-					ratestatus.put(rateList.get(0).getRateid(), "查看评价");
-					m.setRatestatus(ratestatus);
+					int rateid = rateList.get(0).getRateid();
+					m.setRateid(rateid);
 				} else {
-					ratestatus.put(0, "未评价");
-					m.setRatestatus(ratestatus);
+					int rateid = 0;
+					m.setRateid(rateid);
 				}
 			}
 
@@ -139,10 +138,11 @@ public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
 	}
 
 	@Override
-	public Message RateInfo(int rateid) throws Exception {
+	public Message RateInfo(int orderlistid) throws Exception {
 
 		try {
-			Productrate productrate = productrateMapper.selectByPrimaryKey(rateid);
+			
+			Productrate productrate = orderlistMapper.RateInfo(orderlistid);
 			if (productrate != null) {
 				return new Message(true, "返回成功", productrate);
 
