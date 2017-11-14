@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.em.mapper.JoingroupMapper;
 import com.sds.em.mapper.OrderlistMapper;
@@ -51,10 +52,10 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	@Autowired
 	OrdersMapper ordersMapper;
-	
+
 	@Autowired
 	ProductpiclistMapper productpiclistMapper;
-	
+
 	@Autowired
 	ProductviewlistMapper productviewlistMapper;
 
@@ -87,6 +88,7 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	@Autowired
 	ProducttypetwoMapper producttypetwoMapper;
+
 	@Override
 	// wuwenbo,添加商品
 	public Message addProduct(Product product) throws Exception {
@@ -136,23 +138,19 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	@Override
 	// wuwenbo,添加商品信息
-	public Message product(Product product, List<Productpiclist> productpiclist, 
-			List<Productviewlist> productviewlist,int storecount) {
-		try {
-			productMapper.keyinsert(product);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new Message(false, "数据库错误", null);
-		}
-		for(Productpiclist productpic:productpiclist){
+	@Transactional
+	public Message product(Product product, List<Productpiclist> productpiclist, List<Productviewlist> productviewlist,
+			int storecount) {
+		productMapper.keyinsert(product);
+		for (Productpiclist productpic : productpiclist) {
 			productpic.setPproductid(product.getProductid());
 			productpiclistMapper.insertSelective(productpic);
 		}
-		for(Productviewlist productpic:productviewlist){
+		for (Productviewlist productpic : productviewlist) {
 			productpic.setPviewpicproductid(product.getProductid());
 			productviewlistMapper.insertSelective(productpic);
 		}
-		Productstore productstore=new Productstore();
+		Productstore productstore = new Productstore();
 		productstore.setStorecount(storecount);
 		productstore.setStoredaybrowse(0);
 		productstore.setStoredaysales(0);
@@ -403,30 +401,30 @@ public class OlderShopServiceImpl implements OlderShopService {
 	}
 
 	@Override
-	//添加团购
+	// 添加团购
 	public Message addproductgroup(Productgroup productgroup) {
 		try {
-		productgroupMapper.insertSelective(productgroup);
-		return new Message(true, "添加成功", null);
-	} catch (Exception e) {
-		e.printStackTrace();
-		return new Message(false, "数据库错误", null);
-	}
+			productgroupMapper.insertSelective(productgroup);
+			return new Message(true, "添加成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 
 	@Override
-	//商品获取二级标签
-	public Message typeTwoTypeId(int productTypeNumber) {	
-		ProducttypetwoExample producttypetwoExample=new ProducttypetwoExample();
-		ProducttypetwoExample.Criteria Criteria=producttypetwoExample.createCriteria();
+	// 商品获取二级标签
+	public Message typeTwoTypeId(int productTypeNumber) {
+		ProducttypetwoExample producttypetwoExample = new ProducttypetwoExample();
+		ProducttypetwoExample.Criteria Criteria = producttypetwoExample.createCriteria();
 		Criteria.andTypetwotypeidEqualTo(productTypeNumber);
 		try {
-			List<Producttypetwo> list=producttypetwoMapper.selectByExample(producttypetwoExample);
-			return new Message(true,"返回成功",list);
+			List<Producttypetwo> list = producttypetwoMapper.selectByExample(producttypetwoExample);
+			return new Message(true, "返回成功", list);
 		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new Message(false,"失败成功",null);
+			return new Message(false, "失败成功", null);
 		}
 	}
 }
