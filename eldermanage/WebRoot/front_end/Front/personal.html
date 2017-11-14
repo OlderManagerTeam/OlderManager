@@ -81,9 +81,9 @@
 
 		<div class="search-bar pr">
 			<div class="nav-table row">
-				<div class="long-title col-md-offset-9">
+				<a href="shopcart.html"><div class="long-title col-md-offset-9">
 					<span>我的购物车</span>
-				</div>
+				</div></a>
 			</div>
 		</div>
 	</div>
@@ -205,7 +205,7 @@
 										<div class="clear"></div>
 
 										<!-- <tr class=""> -->
-											<!-- <div class="bundle  bundle-last ">
+										<!-- <div class="bundle  bundle-last ">
 												<div class="clear"></div>
 
 
@@ -244,65 +244,14 @@
 											</div>
 										</div>
 										<div class="clear"></div>
-										
+
 										<tr class="">
 											<div class="bundle  bundle-last " id="buyItems">
-												 <div class="bundle-main">
-								            <ul class="item-content clearfix">
-									            <li class="td td-item">
-										            <div class="item-pic">
-											            <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆" class="J_MakePoint" data-point="tbcart.8.12">
-												            <img src="images/product/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg">
-												        </a>
-										            </div>
-										            <div class="item-info">
-											            <div class="item-basic-info">
-												            <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-info">
-										            <div class="item-props">
-											<!-- <span class="sku-line">颜色：12#川南玛瑙</span>
-											<span class="sku-line">包装：裸装</span>
-											<span tabindex="0" class="btn-edit-sku theme-login">修改</span>
-											<i class="theme-login am-icon-sort-desc"></i> -->
-										            </div>
-									            </li>
-									            <li class="td td-price">
-										            <div class="item-price price-promo-promo">
-											            <div class="price-content">
-												            <div class="price-line">
-													            <em class="price-original">78.00</em>
-												            </div>
-												            <div class="price-line">
-													            <em class="J_Price price-now" tabindex="0">10.00</em>
-												            </div>
-											            </div>
-										            </div>
-									            </li>
-									            <li class="td td-amount">
-										            <div class="amount-wrapper ">
-											            <div class="item-amount ">60</div>
-										            </div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">2017-10-10 18:00</div>
-									            </li>
-									            <li class="td td-sum">
-										            <div class="td-inner">
-											            <div class="price-line">
-											            	<button id="btn1_1" class="btn btn-primary" type="button" data-dismiss="modal" aria-hidden="true">未评价</button>
-												        </div>
-										            </div>
-									            </li>
-									        </ul>
-								            
-								
-							                </div>
+												<div class="bundle-main"></div>
 
 											</div>
 										</tr>
+
 									</div>
 
 								</div>
@@ -351,39 +300,94 @@
 
 
 	<script>
-    var iframeurl = function () { return "personalComment.html?" + getNowDateInt() };
-    var Modal1;
-   
-    $(document).ready(function () {
-        InitModal1();
-        
-        $("#btn1_1").click(function () {
-            Modal1.show();
-            Modal1.setHeigth("500px");
-            Modal1.setWidth("500px");
-        });
-        
-    });
-
-    function InitModal1() {
-        $(document.body).append('<div id="modal1"></div>');
-        Modal1 = new Modal();
-        Modal1.renderto = "#modal1";//绘制到div
-        Modal1.InitMax = false;//是否最大化
-        Modal1.btns = [{ id: "closebtn" }]
-        tab1 = new Tab();
-        Modal1.OnfirstInited = function (thismodal) {
-            tab1.tabs = [{
-                id: "tabs1", title: "Baidu页面", active: true, isiframe: true, url: iframeurl()
-            }];
-            tab1.renderto = thismodal.body;
-            tab1.Init();
-        }//内容
-    }
-
-   
-
-    </script>
+		var iframeurl = function(orderlistid) {
+			//	return "personalComment.html?" + getNowDateInt()
+			//var orderlistid=6
+			//alert("asd"+orderlistid)
+			return "personalComment.html?orderlistid=" + orderlistid
+		};
+	
+		var iframeur2 = function(orderlistid) {
+			//	return "personalComment.html?" + getNowDateInt()
+			//var orderlistid=6
+			//alert("asd"+orderlistid)
+			return "personalCommentInfo.html?orderlistid=" + orderlistid
+		};
+		var Modal1;
+	
+		/* 	$(document).ready(function() {
+				InitModal1();
+		
+				$("#btn1_1").click(function() {
+					Modal1.show();
+					Modal1.setHeigth("500px");
+					Modal1.setWidth("500px");
+				});
+		
+			}); */
+		//评论商品
+		function rateCheck(orderlistid) {
+			//alert("fff")
+			InitModal1(orderlistid);
+			// alert("fff")
+			Modal1.show();
+			Modal1.setHeigth("500px");
+			Modal1.setWidth("500px");
+		}
+	
+		function InitModal1(orderlistid) {
+			$(document.body).append('<div id="modal1"></div>');
+			Modal1 = new Modal();
+			Modal1.renderto = "#modal1"; //绘制到div
+			Modal1.InitMax = false; //是否最大化
+			Modal1.btns = [ {
+				id : "closebtn"
+			} ]
+			tab1 = new Tab();
+			Modal1.OnfirstInited = function(thismodal) {
+				tab1.tabs = [ {
+					id : "tabs1",
+					title : "评论页面",
+					active : true,
+					isiframe : true,
+					url : iframeurl(orderlistid)
+				} ];
+				tab1.renderto = thismodal.body;
+				tab1.Init();
+			} //内容
+		}
+		//显示评论
+	
+		function rateInfo(orderlistid) {
+			//alert("fff")
+			InitModal2(orderlistid);
+			// alert("fff")
+			Modal1.show();
+			Modal1.setHeigth("500px");
+			Modal1.setWidth("500px");
+		}
+		function InitModal2(orderlistid) {
+			$(document.body).append('<div id="modal1"></div>');
+			Modal1 = new Modal();
+			Modal1.renderto = "#modal1"; //绘制到div
+			Modal1.InitMax = false; //是否最大化
+			Modal1.btns = [ {
+				id : "closebtn"
+			} ]
+			tab1 = new Tab();
+			Modal1.OnfirstInited = function(thismodal) {
+				tab1.tabs = [ {
+					id : "tabs1",
+					title : "评论内容",
+					active : true,
+					isiframe : true,
+					url : iframeur2(orderlistid)
+				} ];
+				tab1.renderto = thismodal.body;
+				tab1.Init();
+			} //内容
+		}
+	</script>
 
 	<script type="text/javascript">
 	
@@ -395,13 +399,13 @@
 			url : "/eldermanage/v1/shop/personal/older/info?olderid" + olderid,
 			data : null,
 			success : function(result) {
-				// document.getElementById("oldername").innerHTML = result.data.oldername;
-				// document.getElementById("oldertel").innerHTML = result.data.oldertel;
-				// document.getElementById("olderaddress").innerHTML = result.data.olderaddress;
-				// document.getElementById("olderheadurl").src = result.data.olderheadurl;
-				// document.getElementById("olderpoint").innerHTML = result.data.olderpoint;
-				// document.getElementById("oldermaxpoint").innerHTML = result.data.oldermaxpoint;
-				// document.getElementById("olderlevel").innerHTML = result.data.olderlevel;
+				document.getElementById("oldername").innerHTML = result.data.oldername;
+				document.getElementById("oldertel").innerHTML = result.data.oldertel;
+				document.getElementById("olderaddress").innerHTML = result.data.olderaddress;
+				document.getElementById("olderheadurl").src = result.data.olderheadurl;
+				document.getElementById("olderpoint").innerHTML = result.data.olderpoint;
+				document.getElementById("oldermaxpoint").innerHTML = result.data.oldermaxpoint;
+				document.getElementById("olderlevel").innerHTML = result.data.olderlevel;
 			},
 			error : function() {
 				alert('数据库错误')
@@ -417,215 +421,274 @@
 			success : function(result) {
 				var resultData = result.data;
 				var orderstatus = "送货中";
-				for (var i = 0; i <= 2; i++) {
+				for (var i = 0; i < resultData.length; i++) {
+	
 					// if (resultData[i].orderstatus == "送货中") {
 					// 	var text1 = "签收"
 					// } else if (resultData[i].orderstatus == "备货中") {
 					// 	var text1 = "取消"
 					// }
-					if (orderstatus == "备货中") {
-						var text1 = "取消"
-					}else if(orderstatus == "送货中"){
-						 text1 = "签收"
-					}
-					
+	
 					//${resultData[i].productname},${resultData[i].productimg},${resultData[i].productname}
 					//${resultData[i].productname},${resultData[i].productprice},${resultData[i].productdiscountprice}
 					//${resultData[i].orderproductcount},${resultData[i].orderdiscountprice},${resultData[i].orderstatus}
 					//订单详情
-					for(var x = 0;x<=2;x++){
+					//alert(resultData[i].olderOrders[0].productname)
+					for (var x = 0; x < resultData[i].olderOrders.length; x++) {
+						var date = new Date(resultData[i].olderOrders[x].orderdate + 1000 * 60 * 60 * 8);
+						var d = date.toLocaleString();
+						var total = resultData[i].olderOrders[x].ordertotal;
+						var orderid = resultData[i].olderOrders[x].orderid;
+						if (resultData[i].olderOrders[x].orderstatus == "备货中") {
+							var text1 = "取消"
+						} else if (resultData[i].olderOrders[x].orderstatus == "送货中") {
+							var text1 = "签收"
+						} else if (resultData[i].olderOrders[x].orderstatus == "申请取消中") {
+							//    document.getElementById("check_"+${x}).style.display="none";
+						}
+	
+	
 						var oDiv = `
-								<div class="bundle  bundle-last ">
-									<div class="clear"></div>
-									<div class="bundle-main">
-										<ul class="item-content clearfix">
-											<li class="td td-item">
-												<div class="item-pic">
-													<a href="#" target="_blank"
-														data-title="商品名"
-														class="J_MakePoint" data-point="tbcart.8.12"> <img
-														src="images/product/01_small.jpg" width="80" 
-														class="itempic J_ItemImg"></a>
-												</div>
-												<div class="item-info">
-													<div class="item-basic-info">
-														<a href="#" target="_blank"
-															title="商品名}"
-															class="item-title J_MakePoint"
-															data-point="tbcart.8.11">商品名</a>
-													</div>
-												</div>
-											</li>
-											<li class="td td-info">
-												<div class="item-props"></div>
-											</li>
-											<li class="td td-price">
-												<div class="item-price price-promo-promo">
-													<div class="price-content">
-														<div class="price-line">
-															<em class="price-original">商品价格</em>
+													<div class="bundle  bundle-last ">
+														<div class="clear"></div>
+														<div class="bundle-main">
+															<ul class="item-content clearfix">
+																<li class="td td-item">
+																	<div class="item-pic">
+																		<a href="#" target="_blank"
+																			data-title="${resultData[i].olderOrders[x].productname}"
+																			class="J_MakePoint" data-point="tbcart.8.12"> <img
+																			src="${resultData[i].olderOrders[x].productimg}" width="80" 
+																			class="itempic J_ItemImg"></a>
+																	</div>
+																	<div class="item-info">
+																		<div class="item-basic-info">
+																			<a href="#" target="_blank"
+																				title="${resultData[i].olderOrders.productname}"
+																				class="item-title J_MakePoint"
+																				data-point="tbcart.8.11">${resultData[i].olderOrders[x].productname}</a>
+																		</div>
+																	</div>
+																</li>
+																<li class="td td-info">
+																	<div class="item-props"></div>
+																</li>
+																<li class="td td-price">
+																	<div class="item-price price-promo-promo">
+																		<div class="price-content">
+																			<div class="price-line">
+																				<em class="price-original">${resultData[i].olderOrders[x].productprice}</em>
+																			</div>
+																			<div class="price-line">
+																				<em class="J_Price price-now" tabindex="0">${resultData[i].olderOrders[x].productdiscountprice}</em>
+																			</div>
+																		</div>
+																	</div>
+																</li>
+																<li class="td td-amount">
+																	<div class="amount-wrapper ">
+																		<div class="item-amount ">${resultData[i].olderOrders[x].orderproductcount}</div>
+																	</div>
+																</li>
+															
+																<li class="td td-sum">
+																	<div class="td-inner">${resultData[i].olderOrders[x].orderdiscountprice}</div>
+																</li>
+																<li class="td td-sum">
+																	<div class="td-inner">
+																		<div class="price-line">
+																			<span>${resultData[i].olderOrders[x].orderstatus}</span>
+																		</div>
+																		
+																	</div>
+																</li>
+															</ul>
 														</div>
-														<div class="price-line">
-															<em class="J_Price price-now" tabindex="0">商品折后价</em>
-														</div>
+					
 													</div>
-												</div>
-											</li>
-											<li class="td td-amount">
-												<div class="amount-wrapper ">
-													<div class="item-amount ">商品数量</div>
-												</div>
-											</li>
-										
-											<li class="td td-sum">
-												<div class="td-inner">订单总价</div>
-											</li>
-											<li class="td td-sum">
-												<div class="td-inner">
-													<div class="price-line">
-														<span>订单状态</span>
-													</div>
-													
-												</div>
-											</li>
-										</ul>
-									</div>
-
-								</div>
-						`;
+											`;
 						$("#orderItems").append(oDiv);
 					}
-
+	
 					//每个订单合计
 					var oBottom = `
-							<div class="float-bar-wrapper">
-								<div class="float-bar-right">
-									<div class="amount-sum">
-										<span class="txt">共</span> <em id="J_SelectedItemsCount">0</em>
-										<span class="txt">件</span>
-										<div class="arrow-box">
-											<span class="selected-items-arrow"></span> 
-											<span class="arrow"></span>
-										</div>
-									</div>
-									<div class="price-sum">
-										<span class="txt">合计:</span> 
-										<strong class="price">¥<em id="J_Total">0.00</em></strong>
-										<span class="txt">生成时间:</span> 
-										<span class="txt" style=color:#F00>2017-10-10 18:00</span>
-									</div>
-									<div class="price-sum" style="padding-top: 10px">
-										<button class="btn btn-default" 
-										onclick="checkUrl()">${text1}</button>
-									</div>
-								</div>
-							</div>
-					`;
+												<div class="float-bar-wrapper">
+													<div class="float-bar-right">
+														<div class="amount-sum">
+															<span class="txt">共</span> <em id="J_SelectedItemsCount">${resultData[i].olderOrders.length}</em>
+															<span class="txt">件</span>
+															<div class="arrow-box">
+																<span class="selected-items-arrow"></span> 
+																<span class="arrow"></span>
+															</div>
+														</div>
+														<div class="price-sum">
+															<span class="txt">合计:</span> 
+															<strong class="price">¥<em id="J_Total">${total}</em></strong>
+															<span class="txt">生成时间:</span> 
+															<span class="txt" style=color:#F00>${d}</span>
+														</div>
+														<div class="price-sum" style="padding-top: 10px">
+															<button id="check_${x}" class="btn btn-default"
+															onclick="checkUrl(${orderid},'${text1}')" >${text1}</button>
+														</div>
+													</div>
+												</div>
+										`;
 					$("#orderItems").append(oBottom);
 				}
-
+	
 			},
 			error : function() {
 				alert('数据库错误')
 			}
 		})
-
+	
 		//取消/收货
-		function checkUrl() {
-		/* if(text=="签收"){
-		    var url="";
-		    var data="";
-		}else if(text=="取消"){
-		    var url="";
-		   var data="";
-		} */
-			if(confirm("你确定要申请取消这个?")){
-				$.ajax({
-					type : 'delete',
-					contentType : 'application/json',
-					url : "/eldermanage/v1/shop/pay/shopcart/remove",
-					data : "productid="+id,
-					success:function(result){
-						alert("删除成功");
-						window.location.reload();
-					},
-					error:function(){
-						alert("数据库错误")
-					}
-				})
+		function checkUrl(id, text) {
+			if (text == "签收") {
+				if (confirm("您确认收货?!")) {
+					$.ajax({
+						type : 'get',
+						contentType : 'application/json',
+						url : "/eldermanage/v1/shop/personal/myorder/sure",
+						data : "orderid=" + id,
+						success : function(result) {
+							if (result.success) {
+								alert("收货成功");
+								window.location.reload();
+							}
+						},
+						error : function() {
+							alert("数据库错误")
+						}
+					})
+				}
+			} else if (text == "取消") {
+				if (confirm("你确定要申请取消这个?")) {
+					$.ajax({
+						type : 'get',
+						contentType : 'application/json',
+						url : "/eldermanage/v1/shop/personal/myorder/apply/cancel",
+						data : "orderid=" + id,
+						success : function(result) {
+							if (result.success) {
+								alert("申请成功");
+								window.location.reload();
+							}
+						},
+						error : function() {
+							alert("数据库错误")
+						}
+					})
+				}
 			}
+	
 		}
-			
+	
 		$.ajax({
-		type : 'get',
-		contentType : 'application/json',
-		url : "/eldermanage/v1/shop/personal/buyrecord/info",
-		data : null,
-		success : function(result) {
-			var resultData = result.data;
-			for (var i = 0; i <= 2; i++) {
-				var oDiv = `
-							<div class="bundle-main">
-								<ul class="item-content clearfix">
-									<li class="td td-item">
-										<div class="item-pic">
-											<a href="#" target="_blank"
-												data-title="商品名"
-												class="J_MakePoint" data-point="tbcart.8.12"> <img
-												src="images/product/01_small.jpg" width="80" 
-												class="itempic J_ItemImg"></a>
-										</div>
-										<div class="item-info">
-											<div class="item-basic-info">
-												<a href="#" target="_blank"
-													title="商品名"
-													class="item-title J_MakePoint"
-													data-point="tbcart.8.11">商品名</a>
-											</div>
-										</div>
-									</li>
-									<li class="td td-info">
-										<div class="item-props"></div>
-									</li>
-									<li class="td td-price">
-										<div class="item-price price-promo-promo">
-											<div class="price-content">
-												<div class="price-line">
-													<em class="price-original">商品价格</em>
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/personal/buyrecord/info",
+			data : null,
+			success : function(result) {
+				var resultData = result.data;
+				for (var i = 0; i < resultData.length; i++) {
+					if (resultData[i].orderstatus == "已取消") {
+	
+					} else if (resultData[i].orderstatus == "已签收") {
+						if (resultData[i].rateid != 0) {
+							var text2 = "查看评价"
+						} else if (resultData[i].rateid == 0) {
+							var text2 = "评价"
+						}
+					}
+	
+	
+					var oDiv = `
+												<div class="bundle-main">
+													<ul class="item-content clearfix">
+														<li class="td td-item">
+															<div class="item-pic">
+																<a href="#" target="_blank"
+																	data-title="商品名"
+																	class="J_MakePoint" data-point="tbcart.8.12"> <img
+																	src="${resultData[i].productimg}" width="80" 
+																	class="itempic J_ItemImg"></a>
+															</div>
+															<div class="item-info">
+																<div class="item-basic-info">
+																	<a href="#" target="_blank"
+																		title="商品名"
+																		class="item-title J_MakePoint"
+																		data-point="tbcart.8.11">${resultData[i].productname}</a>
+																</div>
+															</div>
+														</li>
+														<li class="td td-info">
+															<div class="item-props"></div>
+														</li>
+														<li class="td td-price">
+															<div class="item-price price-promo-promo">
+																<div class="price-content">
+																	<div class="price-line">
+																		<em class="price-original">${resultData[i].productprice}</em>
+																	</div>
+																	<div class="price-line">
+																		<em class="J_Price price-now" tabindex="0">${resultData[i].productdiscountprice}</em>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li class="td td-amount">
+															<div class="amount-wrapper ">
+																<div class="item-amount ">${resultData[i].orderproductcount}</div>
+															</div>
+														</li>
+													
+														<li class="td td-sum">
+															<div class="td-inner">${resultData[i].orderdiscountprice}</div>
+														</li>
+														<li class="td td-sum">
+															<div class="td-inner">
+																<div class="price-line">
+																		<span>${resultData[i].orderstatus}</span>
+																</div>
+															</div>
+														</li>
+													</ul>
 												</div>
-												<div class="price-line">
-													<em class="J_Price price-now" tabindex="0">折后价</em>
+									`;
+					$("#buyItems").append(oDiv);
+					var oBottom = `
+												<div class="float-bar-wrapper">
+													<div class="float-bar-right">
+														
+														
+														<div class="price-sum" style="padding-top: 10px">
+															<button id="btn1_1" class="btn btn-default" type="button"
+															data-dismiss="modal" aria-hidden="true"
+															 onclick="rateUrl(${resultData[i].orderlistid},'${text2}')" >${text2}</button>
+														</div>
+													</div>
 												</div>
-											</div>
-										</div>
-									</li>
-									<li class="td td-amount">
-										<div class="amount-wrapper ">
-											<div class="item-amount ">商品数量</div>
-										</div>
-									</li>
-								
-									<li class="td td-sum">
-										<div class="td-inner">总价</div>
-									</li>
-									<li class="td td-sum">
-										<div class="td-inner">
-											<div class="price-line">
-												<button id="btn3" class="btn btn-default" type="button"
-													data-dismiss="modal" aria-hidden="true">未评价</button>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-				`;
-				$("#buyItems").append(oDiv);
+										`;
+					$("#buyItems").append(oBottom);
+				}
+			},
+			error : function() {
+				alert('数据库错误')
 			}
-		},
-		error : function() {
-			alert('数据库错误')
+		})
+	
+		function rateUrl(orderlistid, text) {
+			if (text == "查看评价") {
+				rateInfo(orderlistid);
+			} else if (text == "评价") {
+				rateCheck(orderlistid);
+			}
+	
 		}
-	})
 	</script>
 </body>
 </html>
