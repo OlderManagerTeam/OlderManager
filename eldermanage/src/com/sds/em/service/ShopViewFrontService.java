@@ -7,6 +7,9 @@ import com.sds.em.shop.pojo.productGradeExtend;
 import com.sds.em.shop.pojo.productGradeExtend;
 
 public interface ShopViewFrontService {
+	//当老人登录的时候，所调用的用于增加老人浏览记录
+	public Boolean addOlderProductBrowse(int olderid,int productid);
+	
 	// 根据商品日销量进行 =今天推荐-只推荐最高的三个商品
 	public Message todayRecommend() throws Exception;
 
@@ -64,5 +67,10 @@ public interface ShopViewFrontService {
 
 	// 显示某个团购商品的团购信息
 	public Message getProductGroup(int groupid);
+	
+	//显示现有购物车中本老人的商品数量
+	public Message getOlderCartAmount(int olderid);
+	
 
+	
 }

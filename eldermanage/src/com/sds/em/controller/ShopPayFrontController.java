@@ -29,7 +29,7 @@ public class ShopPayFrontController {
 	ShopPayFrontService shopPayFrontService;
 
 	// 第一次将商品加入购物车-从首页加入。不能加入第二次-后端成功
-	@RequestMapping(method = RequestMethod.POST, value = "index/add/shopcart")
+	@RequestMapping(method = RequestMethod.GET, value = "index/add/shopcart")
 	public @ResponseBody Message addFirstShopcart(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
@@ -110,5 +110,6 @@ public class ShopPayFrontController {
 		int olderid = 1;
 		return shopPayFrontService.joinGroup(olderid, groupid);
 	}
+	
 
 }

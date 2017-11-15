@@ -87,5 +87,14 @@ public class ShopPersonalFrontController {
 		int olderid = 1;
 		return shopPersonalFrontService.myOrderApplyCancel(olderid, orderid);
 	}
+	
+	//显示 我的团购页面
+	@RequestMapping(method = RequestMethod.GET, value = "mygroups/info")
+	public @ResponseBody Message myGroupsInfo(HttpSession session) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPersonalFrontService.myGroupsInfo(olderid);
+	}
+
 
 }

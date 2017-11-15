@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sds.em.mapper.CartMapper;
 import com.sds.em.mapper.OlderproductviewMapper;
 import com.sds.em.mapper.ProductMapper;
 import com.sds.em.mapper.ProductgroupMapper;
@@ -16,13 +17,18 @@ import com.sds.em.mapper.ProductstoreMapper;
 import com.sds.em.mapper.ProducttypeMapper;
 import com.sds.em.mapper.ProducttypetwoMapper;
 import com.sds.em.mapper.ProductviewlistMapper;
+import com.sds.em.po.Cart;
+import com.sds.em.po.CartExample;
 import com.sds.em.po.Message;
+import com.sds.em.po.Olderproductview;
+import com.sds.em.po.OlderproductviewExample;
 import com.sds.em.po.Product;
 import com.sds.em.po.ProductExample;
 import com.sds.em.po.Productgroup;
 import com.sds.em.po.Productpiclist;
 import com.sds.em.po.ProductpiclistExample;
 import com.sds.em.po.Productrate;
+import com.sds.em.po.Productstore;
 import com.sds.em.po.ProductstoreExample;
 import com.sds.em.po.ProductstoreExample.Criteria;
 import com.sds.em.po.Productviewlist;
@@ -59,6 +65,43 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 
 	@Autowired
 	ProductviewlistMapper productviewlistMapper;
+	@Autowired
+	CartMapper cartMapper;
+
+	@Override
+	public Boolean addOlderProductBrowse(int olderid, int productid) {
+		OlderproductviewExample olderproductviewExample = new OlderproductviewExample();
+		com.sds.em.po.OlderproductviewExample.Criteria criteria = olderproductviewExample.createCriteria();
+		criteria.andPviewolderidEqualTo(olderid);
+		criteria.andPviewproductidEqualTo(productid);
+		List<Olderproductview> viewList = olderproductviewMapper.selectByExample(olderproductviewExample);
+
+		Olderproductview view = new Olderproductview();
+		view.setPviewolderid(olderid);
+		view.setPviewproductid(productid);
+
+		if (!viewList.isEmpty()) {// 说明这个商品，老人已经浏览了-修改浏览量就行
+			int flag1 = 0;
+			view.setPviewocount(viewList.get(0).getPviewocount() + 1);
+			flag1 = olderproductviewMapper.updateByExampleSelective(view, olderproductviewExample);
+			if (flag1 != 0) {
+				return true;
+			} else {
+				return false;
+			}
+
+		} else {// 说明这个商品，老人第一次浏览，新增记录，浏览量为1
+			int flag = 0;
+			view.setPviewocount(1);
+			flag = olderproductviewMapper.insert(view);
+			if (flag != 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+	}
 
 	@Override
 	public Message todayRecommend() throws Exception {
@@ -197,7 +240,23 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 					picList.add(pic);
 				}
 				productAmount.setPicList(picList);
-				return new Message(true, "返回成功", productAmount);
+				// 增加日浏览量和总浏览量
+
+				ProductstoreExample productstoreExample = new ProductstoreExample();
+				com.sds.em.po.ProductstoreExample.Criteria criteria2 = productstoreExample.createCriteria();
+				criteria2.andStoreproductidEqualTo(productid);
+
+				Productstore productstore = productstoreMapper.selectByExample(productstoreExample).get(0);
+
+				productstore.setStoredaybrowse(productstore.getStoredaybrowse() + 1);
+				productstore.setStoretotalbrowse(productstore.getStoretotalbrowse() + 1);
+				int flag1 = 0;
+				flag1 = productstoreMapper.updateByExampleSelective(productstore, productstoreExample);
+				if (flag1 != 0) {// 库存表更新成功
+					return new Message(true, "返回成功", productAmount);
+				} else {
+					return new Message(false, "数据库错误,库存表更新失败", null);
+				}
 			} else {
 				return new Message(false, "数据库错误", null);
 			}
@@ -414,9 +473,9 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 	@Override
 	public Message preferentialView() {
 		try {
-			List<Product> productList = productMapper.preferentialView();
-			if (!productList.isEmpty()) {
-				return new Message(true, "返回成功", productList);
+			List<ProductAmount> amountList = productMapper.preferentialView();
+			if (!amountList.isEmpty()) {
+				return new Message(true, "返回成功", amountList);
 			} else {
 				return new Message(false, "数据库错误", null);
 			}
@@ -442,6 +501,26 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 			return new Message(false, "数据库错误", null);
 		}
 
+	}
+
+	@Override
+	public Message getOlderCartAmount(int olderid) {
+		try {
+			CartExample cartExample = new CartExample();
+			com.sds.em.po.CartExample.Criteria criteria = cartExample.createCriteria();
+			criteria.andCartolderidEqualTo(olderid);
+			List<Cart> cartList = cartMapper.selectByExample(cartExample);
+			if (!cartList.isEmpty()) {
+				int count = cartList.size();
+				return new Message(true, "返回成功", count);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 
 }

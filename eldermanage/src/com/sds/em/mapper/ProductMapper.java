@@ -82,5 +82,5 @@ public interface ProductMapper {
 	public List<ConfirmOrderViewExtend> confirmOrderRightNow(RightNowPayExtend rightNowPayExtend);
 
 	// 显示特惠的商品，按原价减去折扣价最大的排序显示
-	public List<Product> preferentialView();
+	public List<ProductAmount> preferentialView();
 }

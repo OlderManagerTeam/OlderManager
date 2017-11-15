@@ -44,5 +44,8 @@ public interface ProductgroupMapper {
 
 	// 显示显示为开团的团购，再按时间排序--未开团
 	public List<ProductGroupExtend> GroupNoView();
-
+	
+	//显示 我的团购页面
+	public List<ProductGroupExtend> myGroupsInfo(int olderid);
+	
 }
