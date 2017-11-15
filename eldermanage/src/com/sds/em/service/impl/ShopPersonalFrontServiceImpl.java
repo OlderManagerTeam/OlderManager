@@ -238,4 +238,10 @@ public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
 		}
 	}
 
+	@Override
+	public Message myFootprintInfo(int olderid) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
