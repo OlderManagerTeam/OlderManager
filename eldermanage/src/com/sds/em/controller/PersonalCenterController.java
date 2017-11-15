@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,7 +38,7 @@ import com.sds.em.util.Md5;
 public class PersonalCenterController {
 	@Autowired
 	PersonalCenterService personalCenterService;
-	
+
 	@Autowired
 	ShiroService shiro;
 
@@ -68,7 +69,8 @@ public class PersonalCenterController {
 		staffbase.setStaffiide(staffiide);
 		if (!staffpassword.isEmpty())
 			staffbase.setStaffpassword(Md5.MD5(staffpassword));
-		StaffDepartmentRoleExtend staff = (StaffDepartmentRoleExtend) personalCenterService.personalMessage(staffid).getData();
+		StaffDepartmentRoleExtend staff = (StaffDepartmentRoleExtend) personalCenterService.personalMessage(staffid)
+				.getData();
 		if (!staffimg.isEmpty()) {
 			String pic_path = "E:\\oldermanageresource\\staffimg\\";
 			String i[] = staff.getStaffbase().getStaffimg().split("/");
@@ -78,29 +80,34 @@ public class PersonalCenterController {
 			String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 			headurl = new File(pic_path + newFileName);
 			staffimg.transferTo(headurl);
-			staffbase.setStaffimg("/staffimg/"+newFileName);
+			staffbase.setStaffimg("/staffimg/" + newFileName);
 		}
 		staffbase.setStaffname(staffname);
 		staffbase.setStaffsex(staffsex);
 		staffbase.setStafftel(stafftel);
 		return personalCenterService.updatePersonalMessage(staffbase);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "authorization")
-	//获取权限
-	public @ResponseBody Message getauthorization(HttpSession session){
-		String stafftel = (String) session.getAttribute("stafftel");
-		Set<String> roles=shiro.getRoles(stafftel);
-		return new Message(true,"返回成功",roles);
+	// 获取权限
+	public @ResponseBody Message getauthorization(HttpSession session, @RequestParam(required = false) String tel) {
+		String stafftel = null;
+		if (tel == null) {
+			stafftel = (String) session.getAttribute("stafftel");
+			Set<String> roles = shiro.getRoles(stafftel);
+			return new Message(true, "返回成功", roles);
+		}
+		Set<String> roles = shiro.getRoles(tel);
+		return new Message(true, "返回成功", roles);
 	}
 
 	@RequestMapping("loginUrl")
 	public @ResponseBody String loginUrl() {
-				return "未登录";
+		return "未登录";
 	}
-	
+
 	@RequestMapping("unauthorizedUrl")
 	public @ResponseBody String unauthorizedUrl() {
-				return "无权限";
+		return "无权限";
 	}
 }

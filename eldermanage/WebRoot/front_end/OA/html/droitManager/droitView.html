@@ -34,7 +34,7 @@
 	href="../../css/themes/flat-blue.css">
 </head>
 
-<body class="flat-blue" onload="load()">
+<body class="flat-blue">
 	<div class="app-container">
 		<div class="row content-container">
 			<nav class="navbar navbar-default navbar-fixed-top navbar-top">
@@ -45,7 +45,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>权限管理</li>
-							<li class="active">员工权限分配</li>
+							<li class="active">员工列表</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -57,57 +57,26 @@
 							class="navbar-right-expand-toggle pull-right visible-xs">
 							<i class="fa fa-times icon"></i>
 						</button>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"><i
-								class="fa fa-comments-o"></i></a>
-							<ul class="dropdown-menu animated fadeInDown">
-								<li class="title">消息通知 <span class="badge pull-right">0</span>
-								</li>
-								<li class="message">没有新消息通知</li>
-							</ul></li>
-						<li class="dropdown danger"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
-							<ul class="dropdown-menu danger  animated fadeInDown">
-								<li class="title">消息通知 <span class="badge pull-right">4</span>
-								</li>
-								<li>
-									<ul class="list-group notifications">
-										<a href="#">
-											<li class="list-group-item"><span class="badge">1</span>
-												<i class="fa fa-exclamation-circle icon"></i> 新注册用户</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item"><span class="badge success">1</span>
-												<i class="fa fa-check icon"></i> 新订单</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item"><span class="badge danger">2</span>
-												<i class="fa fa-comments icon"></i> 客户留言</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item message">view all</li>
-										</a>
-									</ul>
-								</li>
-							</ul></li>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false">Emily Hart <span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
-								<li class="profile-img"><img
-									src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg"
-									class="profile-img"></li>
+								<li class="profile-img"><img class="profile-img"
+									id="textheadphoto"></li>
 								<li>
 									<div class="profile-info">
-										<h4 class="username">Emily Hart</h4>
-										<p>emily_hart@email.com</p>
+										<h4 class="username"></h4>
+										<p id="role"></p>
 										<div class="btn-group margin-bottom-2x" role="group">
-											<button type="button" class="btn btn-default">
-												<i class="fa fa-user"></i> Profile
+											<a type="button" class="btn btn-default"
+												href="/eldermanage/front_end/OA/html/personalCenter/personalCenter.html">
+												<i class="fa fa-user"></i>个人中心
+											</a>
+											<button type="button" class="btn btn-default"
+												onclick="logout()">
+												<i class="fa fa-sign-out"></i> 退出
 											</button>
-											<button type="button" class="btn btn-default">
-												<i class="fa fa-sign-out"></i> 退出/button>
 										</div>
 									</div>
 								</li>
@@ -129,9 +98,9 @@
 							</button>
 						</div>
 						<ul class="nav navbar-nav">
-
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dataStatistics"> <span
+							<li class="panel panel-default dropdown" style="display:none;"
+								id="datamanager"><a data-toggle="collapse"
+								href="#dataStatistics"> <span
 									class="icon glyphicon glyphicon-stats"></span> <span
 									class="title">数据统计</span>
 							</a> <!-- Dropdown level 1 -->
@@ -145,8 +114,9 @@
 									</div>
 								</div></li>
 							<!-- 总店管理 -->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+							<li class="panel panel-default dropdown" id='headofficemanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-headofficeManage"> <span
 									class="icon fa fa-user"></span> <span class="title">总店管理</span>
 							</a> <!-- Dropdown level 1 -->
 								<div id="dropdown-headofficeManage"
@@ -155,13 +125,15 @@
 										<ul class="nav navbar-nav">
 											<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
 											<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+											<li><a href="../headofficeManage/olderView.html">老人管理</a></li>
 										</ul>
 									</div>
 								</div></li>
 							<!--分店管理-->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-olderEntry"> <span
-									class="icon  fa fa-group"></span><span class="title">分店管理</span>
+							<li class="panel panel-default dropdown" id='branchmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-olderEntry"> <span class="icon  fa fa-group"></span><span
+									class="title">分店管理</span>
 							</a> <!-- Dropdown level 1 -->
 								<div id="dropdown-olderEntry" class="panel-collapse collapse">
 									<div class="panel-body">
@@ -173,8 +145,9 @@
 									</div>
 								</div></li>
 							<!-- 新闻 -->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-newsRelease"> <span
+							<li class="panel panel-default dropdown" id='newsmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-newsRelease"> <span
 									class="icon glyphicon glyphicon-globe"></span><span
 									class="title">新闻发布</span>
 							</a> <!-- Dropdown level 1 -->
@@ -186,8 +159,9 @@
 									</div>
 								</div></li>
 							<!-- 老年人教育 -->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-olderEducation"> <span
+							<li class="panel panel-default dropdown" id='videomanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-olderEducation"> <span
 									class="icon  glyphicon glyphicon-book"></span><span
 									class="title">老年人教育</span>
 							</a> <!-- Dropdown level 1 -->
@@ -200,8 +174,9 @@
 									</div>
 								</div></li>
 							<!-- 电子商务 -->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-personalCenter"> <span
+							<li class="panel panel-default dropdown" id='shopmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-personalCenter"> <span
 									class="icon glyphicon glyphicon-shopping-cart"></span><span
 									class="title">电子商务</span>
 							</a> <!-- Dropdown level 1 -->
@@ -217,8 +192,9 @@
 									</div>
 								</div></li>
 							<!-- 权限管理列表 -->
-							<li class="active panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-stafferDroit"> <span
+							<li class="panel panel-default dropdown" style="display:none;"
+								id='droitmanager'><a data-toggle="collapse"
+								href="#dropdown-stafferDroit"> <span
 									class="icon glyphicon glyphicon-knight"></span><span
 									class="title">权限管理</span>
 							</a> <!-- Dropdown level 1 -->
@@ -273,8 +249,8 @@
 												<th>序号</th>
 												<th>员工号</th>
 												<th>员工姓名</th>
+												<th>员工电话</th>
 												<th>员工部门名称</th>
-												<th>员工权限</th>
 												<th>操作</th>
 											</tr>
 										</thead>
@@ -283,22 +259,12 @@
 												<th>序号</th>
 												<th>员工号</th>
 												<th>员工姓名</th>
+												<th>员工电话</th>
 												<th>员工部门名称</th>
-												<th>员工权限</th>
 												<th>操作</th>
 											</tr>
 										</tfoot>
 										<tbody id="droitList">
-											<tr>
-												<td>1</td>
-												<td>0001</td>
-												<td>小张</td>
-												<td>新闻</td>
-												<td>1,2,3,5,4</td>
-												<td><a class="btn btn-primary btn-xs"
-													href="../droitManager/droitEntry.html" role="button">分配权限</a>
-												</td>
-											</tr>
 										</tbody>
 									</table>
 								</div>
@@ -332,6 +298,7 @@
 			<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
 			<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
 			<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+			<script type="text/javascript" src="../../js/personal.js"></script>
 			<!-- Javascript -->
 			<script type="text/javascript">
 				$(document).ready(function() {
@@ -346,27 +313,18 @@
 							for (var i = staffItem.length - 1; i >= 0; i--) {
 								var _date = staffItem[i].staffbase.staffbirthday;
 								var date = new Date(_date);
-								if (date) {
-									var year = 1000 * 60 * 60 * 24 * 365;
-									var now = new Date();
-									var birthday = new Date(date);
-									var age = parseInt((now - birthday) / year);
-								}
 								var oTr = `<tr>
-									<td>${i + 1}</td>
-									<td>${staffItem[i].staffbase.staffcode}</td>
-									<td>${staffItem[i].staffbase.staffname}</td>
-									<td>${staffItem[i].staffbase.staffsex}</td>
-									<td>${age}</td>
-									<td>${staffItem[i].staffbase.stafftel}</td>
-									<td>${staffItem[i].department.departmentname}</td>
-									<td><a class="btn btn-primary btn-xs"href="/eldermanage/front_end/OA/html/headofficeManage/staffInfo.html?staffid=${staffItem[i].staffbase.staffid}"
-										 role="button">详情</a>
-										 <a class="btn btn-primary btn-xs"href="/eldermanage/front_end/OA/html/headofficeManage/staffRoleAlter.html?staffid=${staffItem[i].staffbase.staffid}"
-										 role="button">分配</a>
-								    </td>
-							</tr>
-						`;
+												<td>${i + 1}</td>
+												<td>${staffItem[i].staffbase.staffcode}</td>
+												<td>${staffItem[i].staffbase.staffname}</td>
+												<td>${staffItem[i].staffbase.stafftel}</td>
+												<td>${staffItem[i].department.departmentname}</td>
+												<td>
+													 <a class="btn btn-primary btn-xs"href="../droitManager/droitEntry.html?stafftel=${staffItem[i].staffbase.stafftel}"
+													 role="button">分配权限</a>
+											    </td>
+										</tr>
+									`;
 								$(oTr).appendTo('#droitList');
 							}
 							$('.datatable').DataTable({
