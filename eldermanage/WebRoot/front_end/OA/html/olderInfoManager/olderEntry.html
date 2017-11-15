@@ -62,66 +62,30 @@
 							class="navbar-right-expand-toggle pull-right visible-xs">
 							<i class="fa fa-times icon"></i>
 						</button>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"><i
-								class="fa fa-comments-o"></i></a>
-							<ul class="dropdown-menu animated fadeInDown">
-								<li class="title">Notification <span
-									class="badge pull-right">0</span>
-								</li>
-								<li class="message">No new notification</li>
-							</ul></li>
-						<li class="dropdown danger"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
-							<ul class="dropdown-menu danger  animated fadeInDown">
-								<li class="title">Notification <span
-									class="badge pull-right">4</span>
-								</li>
-								<li>
-									<ul class="list-group notifications">
-										<a href="#">
-											<li class="list-group-item"><span class="badge">1</span>
-												<i class="fa fa-exclamation-circle icon"></i> new
-												registration</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item"><span class="badge success">1</span>
-												<i class="fa fa-check icon"></i> new orders</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item"><span class="badge danger">2</span>
-												<i class="fa fa-comments icon"></i> customers messages</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item message">view all</li>
-										</a>
-									</ul>
-								</li>
-							</ul></li>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false">Emily Hart <span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
-								<li class="profile-img"><img
-									src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg"
-									class="profile-img"></li>
+								<li class="profile-img"><img class="profile-img"
+									id="textheadphoto"></li>
 								<li>
 									<div class="profile-info">
-										<h4 class="username">Emily Hart</h4>
-										<p>emily_hart@email.com</p>
+										<h4 class="username"></h4>
+										<p id="role"></p>
 										<div class="btn-group margin-bottom-2x" role="group">
-											<button type="button" class="btn btn-default">
-												<i class="fa fa-user"></i> Profile
-											</button>
-											<button type="button" class="btn btn-default">
-												<i class="fa fa-sign-out"></i> Logout
+											<a type="button" class="btn btn-default"
+												href="/eldermanage/front_end/OA/html/personalCenter/personalCenter.html">
+												<i class="fa fa-user"></i>个人中心
+											</a>
+											<button type="button" class="btn btn-default"
+												onclick="logout()">
+												<i class="fa fa-sign-out"></i> 退出
 											</button>
 										</div>
 									</div>
 								</li>
 							</ul></li>
-					</ul>
+						</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -138,8 +102,9 @@
 							</button>
 						</div>
 						<ul class="nav navbar-nav">
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dataStatistics"> <span
+							<li class="panel panel-default dropdown" style="display:none;"
+								id="datamanager"><a data-toggle="collapse"
+								href="#dataStatistics"> <span
 									class="icon glyphicon glyphicon-stats"></span> <span
 									class="title">数据统计</span>
 							</a> <!-- Dropdown level 1 -->
@@ -153,8 +118,9 @@
 									</div>
 								</div></li>
 							<!-- 总店管理 -->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-headofficeManage"> <span
+							<li class="panel panel-default dropdown" id='headofficemanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-headofficeManage"> <span
 									class="icon fa fa-user"></span> <span class="title">总店管理</span>
 							</a> <!-- Dropdown level 1 -->
 								<div id="dropdown-headofficeManage"
@@ -163,13 +129,15 @@
 										<ul class="nav navbar-nav">
 											<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
 											<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+											<li><a href="../headofficeManage/olderView.html">老人管理</a></li>
 										</ul>
 									</div>
 								</div></li>
 							<!--分店管理-->
-							<li class="active panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-olderEntry"> <span
-									class="icon  fa fa-group"></span><span class="title">分店管理</span>
+							<li class="panel panel-default dropdown" id='branchmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-olderEntry"> <span class="icon  fa fa-group"></span><span
+									class="title">分店管理</span>
 							</a> <!-- Dropdown level 1 -->
 								<div id="dropdown-olderEntry" class="panel-collapse collapse">
 									<div class="panel-body">
@@ -181,8 +149,9 @@
 									</div>
 								</div></li>
 							<!-- 新闻 -->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-newsRelease"> <span
+							<li class="panel panel-default dropdown" id='newsmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-newsRelease"> <span
 									class="icon glyphicon glyphicon-globe"></span><span
 									class="title">新闻发布</span>
 							</a> <!-- Dropdown level 1 -->
@@ -194,8 +163,9 @@
 									</div>
 								</div></li>
 							<!-- 老年人教育 -->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-olderEducation"> <span
+							<li class="panel panel-default dropdown" id='videomanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-olderEducation"> <span
 									class="icon  glyphicon glyphicon-book"></span><span
 									class="title">老年人教育</span>
 							</a> <!-- Dropdown level 1 -->
@@ -208,8 +178,9 @@
 									</div>
 								</div></li>
 							<!-- 电子商务 -->
-							<li class="panel panel-default dropdown"><a
-								data-toggle="collapse" href="#dropdown-personalCenter"> <span
+							<li class="panel panel-default dropdown" id='shopmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-personalCenter"> <span
 									class="icon glyphicon glyphicon-shopping-cart"></span><span
 									class="title">电子商务</span>
 							</a> <!-- Dropdown level 1 -->
@@ -221,6 +192,21 @@
 											<li><a href="../olderShop/order.html">订单总列表</a></li>
 											<li><a href="../olderShop/productStore.html">库存列表</a></li>
 											<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
+										</ul>
+									</div>
+								</div></li>
+							<!-- 权限管理列表 -->
+							<li class="panel panel-default dropdown" style="display:none;"
+								id='droitmanager'><a data-toggle="collapse"
+								href="#dropdown-stafferDroit"> <span
+									class="icon glyphicon glyphicon-knight"></span><span
+									class="title">权限管理</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-stafferDroit" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../droitManager/droitView.html">员工权限分配</a></li>
+
 										</ul>
 									</div>
 								</div></li>
@@ -470,6 +456,8 @@
 			<!--验证js文件-->
 			<script type="text/javascript"
 				src="../../lib/js/bootstrapValidator.min.js"></script>
+				
+			<script type="text/javascript" src="../../js/personal.js"></script>
 			<script>
 				$("#file-3").fileinput({
 					showUpload : false,
