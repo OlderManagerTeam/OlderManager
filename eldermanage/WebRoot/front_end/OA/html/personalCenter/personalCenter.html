@@ -63,46 +63,9 @@
 							class="navbar-right-expand-toggle pull-right visible-xs">
 							<i class="fa fa-times icon"></i>
 						</button>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"><i
-								class="fa fa-comments-o"></i></a>
-							<ul class="dropdown-menu animated fadeInDown">
-								<li class="title">Notification <span
-									class="badge pull-right">0</span>
-								</li>
-								<li class="message">No new notification</li>
-							</ul></li>
-						<li class="dropdown danger"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
-							<ul class="dropdown-menu danger  animated fadeInDown">
-								<li class="title">Notification <span
-									class="badge pull-right">4</span>
-								</li>
-								<li>
-									<ul class="list-group notifications">
-										<a href="#">
-											<li class="list-group-item"><span class="badge">1</span>
-												<i class="fa fa-exclamation-circle icon"></i> new
-												registration</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item"><span class="badge success">1</span>
-												<i class="fa fa-check icon"></i> new orders</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item"><span class="badge danger">2</span>
-												<i class="fa fa-comments icon"></i> customers messages</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item message">view all</li>
-										</a>
-									</ul>
-								</li>
-							</ul></li>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -123,7 +86,7 @@
 									</div>
 								</li>
 							</ul></li>
-					</ul>
+						</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -394,6 +357,9 @@
 		<!--验证js文件-->
 		<script type="text/javascript"
 			src="../../lib/js/bootstrapValidator.min.js"></script>
+			
+			
+		<script type="text/javascript" src="../../js/personal.js"></script>
 
 		<script type="text/javascript">
 			function load() {
@@ -444,7 +410,7 @@
 				})
 			}
 		
-	//	从这以下
+/* 	//	从这以下
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
@@ -495,7 +461,7 @@
 						}
 				)
 			}
-		//	从这以上是每个页面的加载数据都要的方法
+		//	从这以上是每个页面的加载数据都要的方法 */
 		</script>
 </body>
 
