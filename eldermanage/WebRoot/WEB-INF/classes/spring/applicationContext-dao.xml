@@ -37,8 +37,13 @@
 		<property name="realm" ref="myRealm" />
 	</bean>
 	<!-- Shiro过滤器 -->
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean" depends-on="roleOrFilter">
 		<!-- Shiro的核心安全接口,这个属性是必须的 -->
+		<property name="filters">
+			<map>
+				<entry key="roles" value-ref="roleOrFilter" />
+			</map>
+		</property>
 		<property name="securityManager" ref="securityManager" />
 		<!-- 身份认证失败，则跳转到登录页面的配置 -->
 		<property name="loginUrl" value="/v1/personal/loginUrl" />
@@ -47,7 +52,8 @@
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
 			<value>
-				/v1/brench/elder/info=authc,roles[shopmanager],roles[branchmanager]
+				/v1/headoffice/allstaffs=authc,roles["headofficemanager,droitmanager"]
+				/v1/brench/elder/info=authc,roles["shopmanager,branchmanager"]
 				/v1/weboperation/**=authc,roles[droitmanager]
 				/v1/oldershop/**=authc,roles[shopmanager]
 				/v1/brench/**=authc,roles[branchmanager]
@@ -71,4 +77,5 @@
 		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager" />
 	</bean>
+	<bean id="roleOrFilter" class="com.sds.em.util.CustomRolesAuthorizationFilter" />
 </beans>
