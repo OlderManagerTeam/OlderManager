@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Timer;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Message;
-import com.sds.em.po.Oldersick;
 import com.sds.em.po.Product;
 import com.sds.em.po.Productgroup;
 import com.sds.em.po.Productpiclist;
@@ -59,12 +57,12 @@ public class OlderShopController {
 
 	// wuwenbo,添加商品信息
 	@RequestMapping(method = RequestMethod.POST, value = "product/info")
-	public @ResponseBody Message entryproduct(Product product, MultipartFile productImg, String productUpondate,@RequestParam(value="fileview",required=true)MultipartFile[] fileview,
-			@RequestParam(value="filepic",required=true)MultipartFile[] filepic
-			)
+	public @ResponseBody Message entryproduct(Product product, MultipartFile productImg, String productUpondate,
+			@RequestParam(value = "fileview", required = true) MultipartFile[] fileview,
+			@RequestParam(value = "filepic", required = true) MultipartFile[] filepic, int storecount)
 			throws Exception {
-		List<Productpiclist> productpiclist=new ArrayList<Productpiclist>();
-		List<Productviewlist> productviewlist=new ArrayList<Productviewlist>();
+		List<Productpiclist> productpiclist = new ArrayList<Productpiclist>();
+		List<Productviewlist> productviewlist = new ArrayList<Productviewlist>();
 		String pic_path = "E:\\oldermanageresource\\productimg\\";
 		String picUrl = "/productimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
@@ -74,14 +72,15 @@ public class OlderShopController {
 		}
 		product.setProductimg(picUrl + newFileName);
 		Date date = new Date();
+		String productpic_path = "E:\\oldermanageresource\\productpic\\";
 		if (!productUpondate.isEmpty()) {
 			date = DateSimp.simp(productUpondate);
 		}
-		if(filepic.length>0){
-			String productpic_path = "E:\\oldermanageresource\\productpic\\";
-			String url="/productpic/";
-			for(MultipartFile filepicsingle:filepic){
-				Productpiclist Productpic=new Productpiclist();
+		if (filepic.length > 0) {
+
+			String url = "/productpic/";
+			for (MultipartFile filepicsingle : filepic) {
+				Productpiclist Productpic = new Productpiclist();
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				File filePicSingle = new File(productpic_path + newFileName);
 				filepicsingle.transferTo(filePicSingle);
@@ -89,11 +88,12 @@ public class OlderShopController {
 				productpiclist.add(Productpic);
 			}
 		}
-		if(fileview.length>0){
-			String productview_path = "E:\\oldermanageresource\\productview\\";
-			String url="/productview/";
-			for(int i=0;i<5;i++){
-				Productviewlist productview=new Productviewlist();
+		String productview_path = "E:\\oldermanageresource\\productview\\";
+		if (fileview.length > 0) {
+
+			String url = "/productview/";
+			for (int i = 0; i < fileview.length; i++) {
+				Productviewlist productview = new Productviewlist();
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				File filePicSingle = new File(productview_path + newFileName);
 				fileview[i].transferTo(filePicSingle);
@@ -112,21 +112,49 @@ public class OlderShopController {
 				productviewlist.add(productview);
 			}
 		}
-		product.setProductupondate(date);	
-		return olderShopService.product(product,productpiclist,productviewlist);
+		product.setProductupondate(date);
+		try {
+			return olderShopService.product(product, productpiclist, productviewlist, storecount);
+		} catch (Exception e) {
+			e.printStackTrace();
+			File file = new File(
+					pic_path + product.getProductimg().split("/")[product.getProductimg().split("/").length - 1]);
+			if (file.exists())
+				file.delete();
+			for (Productpiclist productpic : productpiclist) {
+				File file1 = new File(productpic_path
+						+ productpic.getPpicurl().split("/")[productpic.getPpicurl().split("/").length - 1]);
+				if (file1.exists())
+					file1.delete();
+			}
+			for (Productviewlist productview : productviewlist) {
+				File file1 = new File(productview_path + productview.getPviewpicbigpic()
+						.split("/")[productview.getPviewpicbigpic().split("/").length - 1]);
+				if (file1.exists())
+					file1.delete();
+				File file11 = new File(productview_path
+						+ productview.getPviewpicpic().split("/")[productview.getPviewpicpic().split("/").length - 1]);
+				if (file11.exists())
+					file11.delete();
+				File file111 = new File(productview_path + productview.getPviewpicsmallpic()
+						.split("/")[productview.getPviewpicsmallpic().split("/").length - 1]);
+				if (file111.exists())
+					file111.delete();
+			}
+			return new Message(false, "操作失败", null);
+		}
 	}
 
 	// wuwenbo,修改商品信息
 	@RequestMapping(method = RequestMethod.POST, value = "product/infoupdate")
-	public @ResponseBody Message alterproduct(Product product, MultipartFile productImg, String productUpondate)
-			throws Exception {
+	public @ResponseBody Message alterproduct(Product product, MultipartFile productImg, String productUpondate,
+			int storecount) throws Exception {
 		String pic_path = "E:\\oldermanageresource\\productimg\\";
 		String picUrl = "/productimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 		Product productold = (Product) olderShopService.getproductinfo(product.getProductid()).getData();
 		String[] productoldsplit = productold.getProductimg().split("/");
 		String productoldname = productoldsplit[productoldsplit.length - 1];
-
 		if (!productImg.isEmpty()) {
 			File oldproductimg = new File(pic_path + productoldname);
 			if (oldproductimg.exists())
@@ -136,8 +164,13 @@ public class OlderShopController {
 			product.setProductimg(picUrl + newFileName);
 		}
 		Date date = new Date();
-		if (!productUpondate.isEmpty()) {
+		try {
 			date = DateSimp.simp(productUpondate);
+			product.setProductupondate(date);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			product.setProductupondate(new Date());
 		}
 		product.setProductupondate(date);
 		return olderShopService.productalter(product);
@@ -245,20 +278,27 @@ public class OlderShopController {
 				}
 			}
 			productgroup.setGroupstartdate(groupstartdate);
-			if(groupfinishDate!=""){
-			Long finishDate = Long.valueOf(groupfinishDate);
-			groupstartdate.setTime(groupstartdate.getTime() + finishDate * 1000 * 60 * 60);}
+			if (groupfinishDate != "") {
+				Long finishDate = Long.valueOf(groupfinishDate);
+				groupstartdate.setTime(groupstartdate.getTime() + finishDate * 1000 * 60 * 60);
+			}
 			productgroup.setGroupfinishdate(groupstartdate);
 		}
 		productgroup.setGroupstatus("未开始");
 		productgroup.setGrouppresentpeople(0);
 		return olderShopService.addproductgroup(productgroup);
 	}
-	
+
 	// wuwenbo,上传图片
 	@RequestMapping(method = RequestMethod.POST, value = "uploadpic")
 	public @ResponseBody String uploadpic(String grouppublishDate, String groupstartDate, String groupstarttime,
-			String groupfinishDate, Productgroup productgroup,MultipartFile file_data ) {
-				return "12345678";
+			String groupfinishDate, Productgroup productgroup, MultipartFile file_data) {
+		return "12345678";
+	}
+
+	// 获取商品二级标签
+	@RequestMapping(method = RequestMethod.GET, value = "typeTwoTypeId")
+	public @ResponseBody Message typeTwoTypeId(int productTypeNumber) {
+		return olderShopService.typeTwoTypeId(productTypeNumber);
 	}
 }

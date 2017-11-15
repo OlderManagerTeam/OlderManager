@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>商品评价</title>
+
+<meta name="description"
+	content="jquery评论星星打分、鼠标滑过星星区域显示评论信息提交内容，适用在评论表单里面，是表单美化提交内容的一种用户体验设计。" />
+
+<script type="text/javascript" src="../Front/js/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/keyao/comment.js"></script>
+
+</head>
+
+<body onload="load()">
+
+	<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+a, img {
+	border: 0;
+}
+
+body {
+	font: 12px/180% Arial, Helvetica, sans-serif;
+	width: 500px;
+	height: 500px;
+}
+
+/*quiz style*/
+.quiz {
+	border: solid 1px #ccc;
+	height: 270px;
+	width: 465px;
+}
+
+.quiz h3 {
+	font-size: 14px;
+	line-height: 35px;
+	height: 35px;
+	border-bottom: solid 1px #e8e8e8;
+	padding-left: 20px;
+	background: #f8f8f8;
+	color: #666;
+	position: relative;
+}
+
+.quiz_content {
+	padding-top: 10px;
+	padding-left: 20px;
+	position: relative;
+	height: 205px;
+}
+
+.quiz_content .btm {
+	border: none;
+	width: 100px;
+	height: 33px;
+	margin: 10px 0 0 64px;
+	display: inline;
+	cursor: pointer;
+}
+
+.quiz_content li.full-comment {
+	position: relative;
+	z-index: 99;
+	height: 41px;
+}
+
+.quiz_content li.cate_l {
+	height: 24px;
+	line-height: 24px;
+	padding-bottom: 10px;
+}
+
+.quiz_content li.cate_l dl dt {
+	float: left;
+}
+
+.quiz_content li.cate_l dl dd {
+	float: left;
+	padding-right: 15px;
+}
+
+.quiz_content li.cate_l dl dd label {
+	cursor: pointer;
+}
+
+.quiz_content .l_text {
+	height: 120px;
+	position: relative;
+	padding-left: 18px;
+}
+
+.quiz_content .l_text .m_flo {
+	float: left;
+	width: 47px;
+}
+
+.quiz_content .l_text .text {
+	width: 370px;
+	height: 109px;
+	border: solid 1px #ccc;
+} /*输入框的宽度*/
+.quiz_content .l_text .tr {
+	position: absolute;
+	bottom: -18px;
+	right: 40px;
+}
+
+/*goods-comm-stars style*/
+.goods-comm {
+	height: 41px;
+	position: relative;
+	z-index: 7;
+}
+
+.goods-comm-stars {
+	line-height: 25px;
+	padding-left: 12px;
+	height: 41px;
+	position: absolute;
+	top: 0px;
+	left: 0;
+	width: 400px;
+}
+
+.goods-comm-stars .star_l {
+	float: left;
+	display: inline-block;
+	margin-right: 5px;
+	display: inline;
+}
+
+.goods-comm-stars .star_choose {
+	float: left;
+	display: inline-block;
+}
+
+/* rater star */
+.rater-star {
+	position: relative;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background-repeat: repeat-x;
+	background-position: left top;
+	float: left;
+}
+
+.rater-star-item, .rater-star-item-current, .rater-star-item-hover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-repeat: repeat-x;
+}
+
+.rater-star-item {
+	background-position: -100% -100%;
+}
+
+.rater-star-item-hover {
+	background-position: 0 -48px;
+	cursor: pointer;
+}
+
+.rater-star-item-current {
+	background-position: 0 -48px;
+	cursor: pointer;
+}
+
+.rater-star-item-current.rater-star-happy {
+	background-position: 0 -25px;
+}
+
+.rater-star-item-hover.rater-star-happy {
+	background-position: 0 -25px;
+}
+
+.rater-star-item-current.rater-star-full {
+	background-position: 0 -72px;
+}
+
+/* popinfo */
+.popinfo {
+	display: none;
+	position: absolute;
+	top: 30px;
+	background: url(images/comment/infobox-bg.gif) no-repeat;
+	padding-top: 8px;
+	width: 192px;
+	margin-left: -14px;
+}
+
+.popinfo .info-box {
+	border: 1px solid #f00;
+	border-top: 0;
+	padding: 0 5px;
+	color: #F60;
+	background: #FFF;
+}
+
+.popinfo .info-box div {
+	color: #333;
+}
+
+.rater-click-tips {
+	font: 12px/25px;
+	color: #333;
+	margin-left: 10px;
+	background: url(images/comment/infobox-bg-l.gif) no-repeat 0 0;
+	width: 125px;
+	height: 34px;
+	padding-left: 16px;
+	overflow: hidden;
+}
+
+.rater-click-tips span {
+	display: block;
+	background: #FFF9DD url(images/comment/infobox-bg-l-r.gif) no-repeat
+		100% 0;
+	height: 34px;
+	line-height: 34px;
+	padding-right: 5px;
+}
+
+.rater-star-item-tips {
+	background: url(images/comment/star-tips.gif) no-repeat 0 0;
+	height: 41px;
+	overflow: hidden;
+}
+
+.cur.rater-star-item-tips {
+	display: block;
+}
+
+.rater-star-result {
+	color: #FF6600;
+	font-weight: bold;
+	padding-left: 10px;
+	float: left;
+}
+</style>
+
+
+
+	<div class="quiz">
+
+		<h3>评论内容</h3>
+
+		<div class="quiz_content">
+
+			<form >
+
+				<div class="goods-comm">
+
+					<div class="goods-comm-stars">
+
+						<span class="star_l">满意度：</span>
+
+						<div id="rate-comm-1" class="rate-comm"></div>
+
+					</div>
+
+				</div>
+				<input id="xingxing"></input> <input id="orderlistid"></input> -
+				<div class="l_text">
+
+					<label class="m_flo">内 容：</label>
+
+					<textarea id="ratecontent" class="text"></textarea>
+
+					<span class="tr">字数限制为5-200个</span>
+
+				</div>
+
+
+			</form>
+
+		</div>
+		<!--quiz_content end-->
+
+	</div>
+	<!--quiz end-->
+	<!-- 	<script type="text/javascript" src="../Front/js/jquery.min.js"></script> -->
+	<script type="text/javascript">
+		UrlParm = function() { // url参数
+			var data,
+				index;
+			(function init() {
+				data = [];
+				index = {};
+				var u = window.location.search.substr(1);
+				if (u != '') {
+					var parms = decodeURIComponent(u).split('&');
+					for (var i = 0, len = parms.length; i < len; i++) {
+						if (parms[i] != '') {
+							var p = parms[i].split("=");
+							if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+								data.push([ '' ]);
+								index[p[0]] = data.length - 1;
+							} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+								data[0] = [ p[1] ];
+							} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+								data.push([ p[1] ]);
+								index[p[0]] = data.length - 1;
+							} else { // c=aaa
+								data[index[p[0]]].push(p[1]);
+							}
+						}
+					}
+				}
+			})();
+			return {
+				// 获得参数,类似request.getParameter()
+				parm : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+					} catch (e) {}
+				},
+				//获得参数组, 类似request.getParameterValues()
+				parmValues : function(o) { // o: 参数名或者参数次序
+					try {
+						return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+					} catch (e) {}
+				},
+				//是否含有parmName参数
+				hasParm : function(parmName) {
+					return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+				},
+				// 获得参数Map ,类似request.getParameterMap()
+				parmMap : function() {
+					var map = {};
+					try {
+						for (var p in index) {
+							map[p] = data[index[p]];
+						}
+					} catch (e) {}
+					return map;
+				}
+			}
+		}();
+	
+		var orderlistid = UrlParm.parm("orderlistid");
+		document.getElementById("orderlistid").value = orderlistid;
+	
+		function load() {
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "/eldermanage/v1/shop/personal/buyrecord/rate/info?orderlistid=" + orderlistid,
+				data : null,
+				success : function(result) {
+	                var current_value=result.data.ratestar;
+					document.getElementById("ratecontent").value = result.data.ratecontent;
+					document.getElementById("xingxing").value = result.data.ratestar;
+				},
+				error : function() {
+					alert('数据库错误')
+				}
+			})
+		}
+	</script>
+
+</body>
+
+</html>

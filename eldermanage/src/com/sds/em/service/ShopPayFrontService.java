@@ -1,10 +1,11 @@
 package com.sds.em.service;
 
 import com.sds.em.po.Message;
+import com.sds.em.po.Orders;
 
 public interface ShopPayFrontService {
 	// 将商品加入购物车。不能加入第二次
-	public Message addFirstShopcart(int olderid, int productid, int count);
+	public Message addFirstShopcart(int olderid, int productid);
 
 	// 从详情页面加入购物车-得判断之前有没有加入过
 	public Message addShopcart(int olderid, int productid, int count);
@@ -26,4 +27,11 @@ public interface ShopPayFrontService {
 
 	// 生成订单表和订单详情表
 	public Message orderFormation(int olderid, float ordertotal, int ordertakepoint);
+
+	// 生成订单表和订单详情表-直接购买中结算-
+	public Message rightNowOrderFormation(int olderid, float ordertotal, int ordertakepoint, int productid, int count);
+
+	//老人参加团购
+	public Message joinGroup(int olderid,int groupid);
+
 }

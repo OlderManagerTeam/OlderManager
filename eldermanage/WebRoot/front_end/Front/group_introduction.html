@@ -250,7 +250,7 @@
 						</li>
 						<li>
 							<div class="clearfix tb-btn tb-btn-basket theme-login">
-								<a id="LikBasket" title="立即参团" href="#">立即参团</a>
+								<a id="joinGroup" title="立即参团" href="#">立即参团</a>
 							</div>
 						</li>
 					</div>
@@ -986,6 +986,24 @@
 				}
 			)
 		}
+		
+		            $("#joinGroup").click(function() {
+					$.ajax({
+						type : 'get',
+						contentType : 'application/json',
+						url : "/eldermanage/v1/shop/pay/group/join",
+						data : "groupid=" +groupid ,
+						success : function(result) {
+							alert(result.information);
+							document.getElementById("joinGroup").style.backgroundColor='gray'
+						},
+						error : function() {
+							alert("数据库错误")
+						}
+					})
+	
+	
+				})
 	</script>
 
 </body>

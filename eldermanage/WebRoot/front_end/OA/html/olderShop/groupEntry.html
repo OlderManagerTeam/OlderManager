@@ -64,66 +64,30 @@
 							class="navbar-right-expand-toggle pull-right visible-xs">
 							<i class="fa fa-times icon"></i>
 						</button>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"><i
-								class="fa fa-comments-o"></i></a>
-							<ul class="dropdown-menu animated fadeInDown">
-								<li class="title">Notification <span
-									class="badge pull-right">0</span>
-								</li>
-								<li class="message">No new notification</li>
-							</ul></li>
-						<li class="dropdown danger"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
-							<ul class="dropdown-menu danger  animated fadeInDown">
-								<li class="title">Notification <span
-									class="badge pull-right">4</span>
-								</li>
-								<li>
-									<ul class="list-group notifications">
-										<a href="#">
-											<li class="list-group-item"><span class="badge">1</span>
-												<i class="fa fa-exclamation-circle icon"></i> new
-												registration</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item"><span class="badge success">1</span>
-												<i class="fa fa-check icon"></i> new orders</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item"><span class="badge danger">2</span>
-												<i class="fa fa-comments icon"></i> customers messages</li>
-										</a>
-										<a href="#">
-											<li class="list-group-item message">view all</li>
-										</a>
-									</ul>
-								</li>
-							</ul></li>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false">Emily Hart <span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
-								<li class="profile-img"><img
-									src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg"
-									class="profile-img"></li>
+								<li class="profile-img"><img class="profile-img"
+									id="textheadphoto"></li>
 								<li>
 									<div class="profile-info">
-										<h4 class="username">Emily Hart</h4>
-										<p>emily_hart@email.com</p>
+										<h4 class="username"></h4>
+										<p id="role"></p>
 										<div class="btn-group margin-bottom-2x" role="group">
-											<button type="button" class="btn btn-default">
-												<i class="fa fa-user"></i> Profile
-											</button>
-											<button type="button" class="btn btn-default">
-												<i class="fa fa-sign-out"></i> Logout
+											<a type="button" class="btn btn-default"
+												href="/eldermanage/front_end/OA/html/personalCenter/personalCenter.html">
+												<i class="fa fa-user"></i>个人中心
+											</a>
+											<button type="button" class="btn btn-default"
+												onclick="logout()">
+												<i class="fa fa-sign-out"></i> 退出
 											</button>
 										</div>
 									</div>
 								</li>
 							</ul></li>
-					</ul>
+						</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -132,7 +96,7 @@
 						<div class="navbar-header">
 							<a class="navbar-brand" href="#">
 								<div class="icon fa fa-paper-plane"></div>
-								<div class="title">孝和集团控制台</div>
+								<div class="title">孝和集团操作台</div>
 							</a>
 							<button type="button"
 								class="navbar-expand-toggle pull-right visible-xs">
@@ -140,370 +104,408 @@
 							</button>
 						</div>
 						<ul class="nav navbar-nav">
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dataStatistics"> <span
-					class="icon glyphicon glyphicon-stats"></span> <span class="title">数据统计</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dataStatistics" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-							<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
-							<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
+							<li class="panel panel-default dropdown" style="display:none;"
+								id="datamanager"><a data-toggle="collapse"
+								href="#dataStatistics"> <span
+									class="icon glyphicon glyphicon-stats"></span> <span
+									class="title">数据统计</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dataStatistics" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
+											<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
+											<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
+										</ul>
+									</div>
+								</div></li>
+							<!-- 总店管理 -->
+							<li class="panel panel-default dropdown" id='headofficemanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-headofficeManage"> <span
+									class="icon fa fa-user"></span> <span class="title">总店管理</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-headofficeManage"
+									class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
+											<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
+											<li><a href="../headofficeManage/olderView.html">老人管理</a></li>
+										</ul>
+									</div>
+								</div></li>
+							<!--分店管理-->
+							<li class="panel panel-default dropdown" id='branchmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-olderEntry"> <span class="icon  fa fa-group"></span><span
+									class="title">分店管理</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-olderEntry" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
+											<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
+											<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
+										</ul>
+									</div>
+								</div></li>
+							<!-- 新闻 -->
+							<li class="panel panel-default dropdown" id='newsmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-newsRelease"> <span
+									class="icon glyphicon glyphicon-globe"></span><span
+									class="title">新闻发布</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-newsRelease" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../newsRelease/newsView.html">新闻列表</a></li>
+										</ul>
+									</div>
+								</div></li>
+							<!-- 老年人教育 -->
+							<li class="panel panel-default dropdown" id='videomanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-olderEducation"> <span
+									class="icon  glyphicon glyphicon-book"></span><span
+									class="title">老年人教育</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-olderEducation"
+									class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../olderEducation/videoView.html">视频列表</a></li>
+										</ul>
+									</div>
+								</div></li>
+							<!-- 电子商务 -->
+							<li class="panel panel-default dropdown" id='shopmanager'
+								style="display:none;"><a data-toggle="collapse"
+								href="#dropdown-personalCenter"> <span
+									class="icon glyphicon glyphicon-shopping-cart"></span><span
+									class="title">电子商务</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-personalCenter"
+									class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../olderShop/typeLable.html">分类查看商品</a></li>
+											<li><a href="../olderShop/order.html">订单总列表</a></li>
+											<li><a href="../olderShop/productStore.html">库存列表</a></li>
+											<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
+										</ul>
+									</div>
+								</div></li>
+							<!-- 权限管理列表 -->
+							<li class="panel panel-default dropdown" style="display:none;"
+								id='droitmanager'><a data-toggle="collapse"
+								href="#dropdown-stafferDroit"> <span
+									class="icon glyphicon glyphicon-knight"></span><span
+									class="title">权限管理</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-stafferDroit" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../droitManager/droitView.html">员工权限分配</a></li>
+
+										</ul>
+									</div>
+								</div></li>
+							<!-- 员工信息中心 -->
+							<li class="panel panel-default dropdown"><a
+								data-toggle="collapse" href="#dropdown-olderShop"> <span
+									class="icon glyphicon glyphicon-sunglasses"></span><span
+									class="title">个人信息中心</span>
+							</a> <!-- Dropdown level 1 -->
+								<div id="dropdown-olderShop" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav navbar-nav">
+											<li><a href="../personalCenter/personalCenter.html">个人信息</a></li>
+										</ul>
+									</div>
+								</div></li>
 						</ul>
 					</div>
-				</div></li>					
-			<!-- 总店管理 -->	
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-headofficeManage"> <span
-					class="icon fa fa-user"></span> <span class="title">总店管理</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-headofficeManage" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../headofficeManage/branchView.html">分店列表</a></li>
-							<li><a href="../headofficeManage/staffView.html">员工列表</a></li>
-						</ul>
-					</div>
-				</div></li>
-			<!--分店管理-->
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-olderEntry"> <span
-					class="icon  fa fa-group"></span><span class="title">分店管理</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-olderEntry" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../olderInfoManager/olderView.html">老年人客户列表</a></li>
-							<li><a href="../olderInfoManager/actionView.html">老年人活动列表</a></li>
-							<li><a href="../olderInfoManager/lectureView.html">老年人讲座列表</a></li>
-						</ul>
-					</div>
-				</div></li>
-			<!-- 新闻 -->	
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-newsRelease"> <span
-					class="icon glyphicon glyphicon-globe"></span><span class="title">新闻发布</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-newsRelease" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../newsRelease/newsView.html">新闻列表</a></li>
-						</ul>
-					</div>
-				</div>
-			</li>
-			<!-- 老年人教育 -->
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-olderEducation"> <span
-					class="icon  glyphicon glyphicon-book"></span><span class="title">老年人教育</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-olderEducation" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../olderEducation/videoView.html">视频列表</a></li>
-						</ul>
-					</div>
-				</div></li>
-			<!-- 电子商务 -->
-			<li class="active panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-personalCenter"> <span
-					class="icon glyphicon glyphicon-shopping-cart"></span><span
-					class="title">电子商务</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-personalCenter" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../olderShop/typeLable.html">分类查看商品</a></li>
-							<li><a href="../olderShop/order.html">订单总列表</a></li>
-							<li><a href="../olderShop/productStore.html">库存列表</a></li>
-							<li><a href="../olderShop/productGroup.html">商品团购列表</a></li>
-						</ul>
-					</div>
-				</div></li>
-			<!-- 员工信息中心 -->
-			<li class="panel panel-default dropdown"><a
-				data-toggle="collapse" href="#dropdown-olderShop"> <span
-					class="icon glyphicon glyphicon-sunglasses"></span><span
-					class="title">个人信息中心</span>
-			</a> <!-- Dropdown level 1 -->
-				<div id="dropdown-olderShop" class="panel-collapse collapse">
-					<div class="panel-body">
-						<ul class="nav navbar-nav">
-							<li><a href="../personalCenter/personalCenter.html">个人信息</a></li>
-						</ul>
-					</div>
-				</div></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-		</nav>
-	</div>
-	<!-- Main Content -->
-	<div class="container-fluid">
-		<div class="side-body">
-			<div class="page-title">
-				<span class="title">发起新团购</span>
-				<div class="description">Entry New Group</div>
+					<!-- /.navbar-collapse -->
+				</nav>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="card">
-						<div class="card-header">
-							<div class="card-title">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productGroup.html" role="button">返回商品团购表</a>
+			<!-- Main Content -->
+			<div class="container-fluid">
+				<div class="side-body">
+					<div class="page-title">
+						<span class="title">发起新团购</span>
+						<div class="description">Entry New Group</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">
+											<a class="btn btn-primary btn-lg"
+												href="../olderShop/productGroup.html" role="button">返回商品团购表</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<!--添加视频-->
+									<form class="form-horizontal" id="groupEntry">
+										<div class="form-group">
+											<label for="grouppublishdate" class="col-sm-3 control-label">发起时间：</label>
+											<div class="col-sm-5">
+												<input type="date" class="form-control"
+													id="grouppublishDate" placeholder="即当前时间"
+													name="grouppublishDate">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="groupstartdate" class="col-sm-3 control-label">开团时间：</label>
+											<div class="col-sm-2">
+												<input type="date" class="form-control" id="groupstartdate"
+													placeholder="开团时间" name="groupstartDate">
+											</div>
+											<div class="col-sm-2">
+												<input type="time" class="form-control" id="groupstarttime"
+													placeholder="开团时间" name="groupstarttime">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="groupfinishdate" class="col-sm-3 control-label">持续时间：</label>
+											<div class="col-sm-2">
+												<input type="text" class="form-control" id="groupfinishdate"
+													placeholder="持续时间" name="groupfinishDate">
+											</div>
+											<!-- 精确到小时 -->
+											<div class="col-sm-2">
+												<label for="groupstartdate" class="col-sm-3 control-label">小时</label>
+											</div>
+
+										</div>
+										<div class="form-group">
+											<label for="groupproductid" class="col-sm-3 control-label">团购商品id：</label>
+											<div class="col-sm-5">
+												<input type="text" class="form-control" id="groupproductid"
+													placeholder="团购商品" name="groupproductid">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="grouppresentpeople"
+												class="col-sm-3 control-label">团购商品名称：</label>
+											<div class="col-sm-5">
+												<span class="form-control" id="grouppresentpeople">通过上面输入的id查出商品名称</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="grouptotalpeople" class="col-sm-3 control-label">总人数：</label>
+											<div class="col-sm-5">
+												<input type="text" class="form-control"
+													id="grouptotalpeople" placeholder="总人数"
+													name="grouptotalpeople">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="goupdiscountprice" class="col-sm-3 control-label">团购价格：</label>
+											<div class="col-sm-2">
+												<input type="text" class="form-control"
+													id="goupdiscountprice" placeholder="团购价格"
+													name="groupdiscountprice">
+											</div>
+											<div class="col-sm-1">
+												<label for="goupdiscountprice" class="control-label">单位：元</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-3 col-sm-5">
+												<button type="button" class="btn btn-primary btn-lg"
+													id="productgroupsubmit">确认提交</button>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
-						<div class="card-body">
-							<!--添加视频-->
-							<form class="form-horizontal" id="groupEntry">
-								<div class="form-group">
-									<label for="grouppublishdate" class="col-sm-3 control-label">发起时间：</label>
-									<div class="col-sm-5">
-										<input type="date" class="form-control" id="grouppublishDate"
-											placeholder="即当前时间" name="grouppublishDate">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="groupstartdate" class="col-sm-3 control-label">开团时间：</label>
-									<div class="col-sm-2">
-										<input type="date" class="form-control" id="groupstartdate"
-											placeholder="开团时间" name="groupstartDate">
-									</div>
-																<div class="col-sm-2">
-										<input type="time" class="form-control" id="groupstarttime"
-											placeholder="开团时间" name="groupstarttime">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="groupfinishdate" class="col-sm-3 control-label">持续时间：</label>
-									<div class="col-sm-2">
-										<input type="text" class="form-control" id="groupfinishdate"
-											placeholder="持续时间" name="groupfinishDate">
-									</div>
-																	<!-- 精确到小时 -->
-									<div class="col-sm-2">
-										<label for="groupstartdate" class="col-sm-3 control-label">小时</label>
-									</div>
-		
-								</div>
-								<div class="form-group">
-									<label for="groupproductid" class="col-sm-3 control-label">团购商品id：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="groupproductid"
-											placeholder="团购商品" name="groupproductid">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="grouppresentpeople" class="col-sm-3 control-label">团购商品名称：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="grouppresentpeople">通过上面输入的id查出商品名称</span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="grouptotalpeople" class="col-sm-3 control-label">总人数：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="grouptotalpeople"
-											placeholder="总人数" name="grouptotalpeople">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="goupdiscountprice"
-										class="col-sm-3 control-label">团购价格：</label>
-									<div class="col-sm-2">
-										<input type="text" class="form-control"
-											id="goupdiscountprice" placeholder="团购价格"
-											name="groupdiscountprice">
-									</div>
-									<div class="col-sm-1">
-										<label for="goupdiscountprice" class="control-label">单位：元</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-5">
-										<button type="button" class="btn btn-primary btn-lg" id="productgroupsubmit">确认提交</button>
-									</div>
-								</div>
-							</form>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	<footer class="app-footer">
-		<div class="wrapper">
-			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-		</div>
-	</footer>
-	<div>
-		<!-- Javascript Libs -->
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
+		<footer class="app-footer">
+			<div class="wrapper">
+				<span class="pull-right">2.1 <a href="#"><i
+						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+			</div>
+		</footer>
+		<div>
+			<!-- Javascript Libs -->
+			<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/bootstrap-switch.min.js"></script>
 
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-		<!-- 文件上传 JS -->
-		<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
-		<script src="../../lib/js/fileinput_locale_zh.js"
-			type="text/javascript"></script>
-		<!--验证js文件-->
-		<script type="text/javascript"
-			src="../../lib/js/bootstrapValidator.min.js"></script>
-		</script>
-		<script>
-			$("#productimg").fileinput({
-				showUpload : false,
-				showCaption : false,
-				browseClass : "btn btn-primary btn-lg",
-				fileType : "any",
-				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
-			});
-		</script>
-		<!--表单验证-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				// Generate a simple captcha
-		
-				$('#groupEntry').bootstrapValidator({
-					//        live: 'disabled',
-					message : '请正确填写',
-					feedbackIcons : {
-						valid : 'glyphicon glyphicon-ok-circle',
-						invalid : 'glyphicon glyphicon-remove-circle',
-						validating : 'glyphicon glyphicon-refresh',
-						regexp : 'glyphicon glyphicon-ok-circle'
-					},
-					fields : {
-						groupproductid : {
-							message : '姓名不能为空',
-							validators : {
-								notEmpty : {
-									message : '商品名字不能为空'
-								}
-							}
-						},
-						grouppresentpeople : {
-							validators : {
-								notEmpty : {
-									message : '人数不能为空'
-								},
-								regexp : {
-									regexp : /^[0-9]*$/,
-									message : '人数只能是数字'
-								}
-							}
-						},
-						grouptotalpeople : {
-							validators : {
-								notEmpty : {
-									message : '人数不能为空'
-								},
-								regexp : {
-									regexp : /^[0-9]*$/,
-									message : '人数只能是数字'
-								}
-							}
-						},
-						grouppublishdate : {
-							validators : {
-								notEmpty : {
-									message : '日期不能为空'
-								},
-								date : {
-									format : 'YYYY-MM-DD',
-									message : '请输入正确的日期格式'
-								}
-							}
-						},
-						groupstartdate : {
-							validators : {
-								notEmpty : {
-									message : '日期不能为空'
-								},
-								date : {
-									format : 'YYYY-MM-DD',
-									message : '请输入正确的日期格式'
-								}
-							}
-						},
-						groupfinishdate : {
-							validators : {
-								notEmpty : {
-									message : '日期不能为空'
-								},
-								regexp : {
-									regexp : /^[0-9]*$/,
-									message : '人数只能是数字'
-								}
-							}
-						},
-						goupdiscountprice : {
-							validators : {
-								notEmpty : {
-									message : '商品团购价不能为空'
-								},
-								regexp : {
-									regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
-									message : '价格只能是数字，可以带两位小数'
-								}
-							}
-						},
-					}
+			<script type="text/javascript"
+				src="../../lib/js/jquery.matchHeight-min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/jquery.dataTables.min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/dataTables.bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+			<!-- Javascript -->
+			<script type="text/javascript" src="../../js/app.js"></script>
+			<!-- 文件上传 JS -->
+			<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
+			<script src="../../lib/js/fileinput_locale_zh.js"
+				type="text/javascript"></script>
+			<!--验证js文件-->
+			<script type="text/javascript"
+				src="../../lib/js/bootstrapValidator.min.js"></script>
+			</script>
+			
+			
+			<script type="text/javascript" src="../../js/personal.js"></script>
+			<script>
+				$("#productimg").fileinput({
+					showUpload : false,
+					showCaption : false,
+					browseClass : "btn btn-primary btn-lg",
+					fileType : "any",
+					previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
 				});
-		
-				// Validate the form manually
-		
-			});
-		</script>
-		
-		<script type="text/javascript">
-
-			$("#productgroupsubmit").click(function() {
-				var form = new FormData(document.getElementById("groupEntry"));
-				$.ajax({
-					type : 'post',
-					url : "/eldermanage/v1/oldershop/productgroup/info",
-					data : form,
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						//var resultdata = JSON.parse(result);
-						if (result.success) {
-							window.location.href = "/eldermanage/front_end/OA/html/olderShop/productGroup.html";
+			</script>
+			<!--表单验证-->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					// Generate a simple captcha
+			
+					$('#groupEntry').bootstrapValidator({
+						//        live: 'disabled',
+						message : '请正确填写',
+						feedbackIcons : {
+							valid : 'glyphicon glyphicon-ok-circle',
+							invalid : 'glyphicon glyphicon-remove-circle',
+							validating : 'glyphicon glyphicon-refresh',
+							regexp : 'glyphicon glyphicon-ok-circle'
+						},
+						fields : {
+							groupproductid : {
+								message : '姓名不能为空',
+								validators : {
+									notEmpty : {
+										message : '商品名字不能为空'
+									}
+								}
+							},
+							grouppresentpeople : {
+								validators : {
+									notEmpty : {
+										message : '人数不能为空'
+									},
+									regexp : {
+										regexp : /^[0-9]*$/,
+										message : '人数只能是数字'
+									}
+								}
+							},
+							grouptotalpeople : {
+								validators : {
+									notEmpty : {
+										message : '人数不能为空'
+									},
+									regexp : {
+										regexp : /^[0-9]*$/,
+										message : '人数只能是数字'
+									}
+								}
+							},
+							grouppublishdate : {
+								validators : {
+									notEmpty : {
+										message : '日期不能为空'
+									},
+									date : {
+										format : 'YYYY-MM-DD',
+										message : '请输入正确的日期格式'
+									}
+								}
+							},
+							groupstartdate : {
+								validators : {
+									notEmpty : {
+										message : '日期不能为空'
+									},
+									date : {
+										format : 'YYYY-MM-DD',
+										message : '请输入正确的日期格式'
+									}
+								}
+							},
+							groupfinishdate : {
+								validators : {
+									notEmpty : {
+										message : '日期不能为空'
+									},
+									regexp : {
+										regexp : /^[0-9]*$/,
+										message : '人数只能是数字'
+									}
+								}
+							},
+							goupdiscountprice : {
+								validators : {
+									notEmpty : {
+										message : '商品团购价不能为空'
+									},
+									regexp : {
+										regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+										message : '价格只能是数字，可以带两位小数'
+									}
+								}
+							},
 						}
-					//alert(result.success)
-					},
-					error : function() {
-						alert('fail')
+					});
+			
+					// Validate the form manually
+			
+				});
+			</script>
+
+			<script type="text/javascript">
+				
+			
+			
+				$("#productgroupsubmit").click(function() {
+					var form = new FormData(document.getElementById("groupEntry"));
+					var bootstrapValidator = $("#groupEntry").data("bootstrapValidator");
+					bootstrapValidator.validate();
+					if (bootstrapValidator.isValid()) {
+						$.ajax({
+							type : 'post',
+							url : "/eldermanage/v1/oldershop/productgroup/info",
+							data : form,
+							processData : false,
+							contentType : false,
+							success : function(result) {
+								//var resultdata = JSON.parse(result);
+								if (result.success) {
+									window.location.href = "/eldermanage/front_end/OA/html/olderShop/productGroup.html";
+								}
+							//alert(result.success)
+							},
+							error : function() {
+								alert('fail')
+							}
+						})
 					}
-				})
-		
-			}
-			)
-		</script>
-		<script type="text/javascript">
-			$('select').select2();
-		</script>
-		
+			
+				}
+				)
+			</script>
+			<script type="text/javascript">
+				$('select').select2();
+			</script>
 </body>
 
 </html>
