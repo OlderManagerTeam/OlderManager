@@ -28,8 +28,52 @@
 </head>
 
 <body>
+	<style type="text/css">
+/*星星样式*/
+.content {
+	width: 600px;
+	margin: 0 auto;
+}
 
+.title {
+	font-size: 14px;
+	width: 50px
+}
 
+/*星星样式*/
+.show_number {
+	padding-left: 12px;
+}
+
+.show_number li {
+	float: left;
+	padding: 10px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+}
+
+.atar_Show {
+	background: url(images/stark2.png);
+	width: 160px;
+	height: 21px;
+	position: relative;
+	float: left;
+}
+
+.atar_Show p {
+	background: url(images/stars2.png);
+	left: 0;
+	height: 21px;
+	width: 134px;
+}
+
+.show_number li span {
+	display: inline-block;
+	line-height: 21px;
+	font-size: 1.1em;
+	padding-top: 2px
+}
+</style>
 	<!--顶部导航条 -->
 	<div class="am-container header">
 		<ul class="message-l">
@@ -494,61 +538,34 @@
 				<div id="prof" class="item">
 					<a href="#"> <span class="setting"></span>
 					</a>
-					<div class="ibar_login_box status_login">
-						<div class="avatar_box">
-							<p class="avatar_imgbox">
-								<img src="images/product/no-img_mid_.jpg" />
-							</p>
-							<ul class="user_info">
-								<li>用户名：sl1903</li>
-								<li>级&nbsp;别：普通会员</li>
-							</ul>
-						</div>
-						<div class="login_btnbox">
-							<a href="#" class="login_order">我的订单</a> <a href="#"
-								class="login_favorite">我的收藏</a>
-						</div>
-						<i class="icon_arrow_white"></i>
-					</div>
+					<div class="ibar_login_box status_login ">
+								<div class="avatar_box ">
+									<p class="avatar_imgbox ">
+										<img src="" id="olderheadurl" width="90" />
+									</p>
+									<ul class="user_info ">
+										<li id="oldername"></li>
+										<li id="olderlevel"></li>
+									</ul>
+								</div>
+								<div class="login_btnbox ">
+									<a href="# " class="login_order ">我的订单</a>
+								</div>
+								<i class="icon_arrow_white "></i>
+							</div>
 
 				</div>
 				<div id="shopCart" class="item">
 					<a href="#"> <span class="message"></span>
 					</a>
 					<p>购物车</p>
-					<p class="cart_num">0</p>
+					<p class="cart_num " id="cartcount"></p>
 				</div>
-				<div id="asset" class="item">
-					<a href="#"> <span class="view"></span>
-					</a>
-					<div class="mp_tooltip">
-						我的资产 <i class="icon_arrow_right_black"></i>
-					</div>
-				</div>
-
 				<div id="foot" class="item">
 					<a href="#"> <span class="zuji"></span>
 					</a>
 					<div class="mp_tooltip">
 						我的足迹 <i class="icon_arrow_right_black"></i>
-					</div>
-				</div>
-
-				<div id="brand" class="item">
-					<a href="#"> <span class="wdsc"><img
-							src="images/product/wdsc.png" /></span>
-					</a>
-					<div class="mp_tooltip">
-						我的收藏 <i class="icon_arrow_right_black"></i>
-					</div>
-				</div>
-
-				<div id="broadcast" class="item">
-					<a href="#"> <span class="chongzhi"><img
-							src="images/product/chongzhi.png" /></span>
-					</a>
-					<div class="mp_tooltip">
-						我要充值 <i class="icon_arrow_right_black"></i>
 					</div>
 				</div>
 
@@ -574,56 +591,7 @@
 			</div>
 
 		</div>
-		<div id="prof-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>我</div>
-		</div>
-		<div id="shopCart-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>购物车</div>
-		</div>
-		<div id="asset-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>资产</div>
-
-			<div class="ia-head-list">
-				<a href="#" target="_blank" class="pl">
-					<div class="num">0</div>
-					<div class="text">优惠券</div>
-				</a> <a href="#" target="_blank" class="pl">
-					<div class="num">0</div>
-					<div class="text">红包</div>
-				</a> <a href="#" target="_blank" class="pl money">
-					<div class="num">￥0</div>
-					<div class="text">余额</div>
-				</a>
-			</div>
-
-		</div>
-		<div id="foot-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>足迹</div>
-		</div>
-		<div id="brand-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>收藏</div>
-		</div>
-		<div id="broadcast-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>充值</div>
-		</div>
+		
 	</div>
 
 	<script type="text/javascript">
@@ -684,6 +652,38 @@
 			}
 		}();
 	
+	//显示菜单内容
+				var olderid = 1;
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/shop/personal/older/info?olderid" + olderid,
+					data : null,
+					success : function(result) {
+						document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
+						document.getElementById("olderheadurl").src = result.data.olderheadurl;
+						document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+				//显示购物车数量
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/shop/older/cart/amount?olderid" + olderid,
+					data : null,
+					success : function(result) {
+						$("#J_MiniCartNum").html(result.data);
+						$("#cartcount").html(result.data);
+						
+					},
+					error : function() {
+						alert('数据库错误')
+					}
+				})
+			
 	
 		//	var productid = UrlParm.parm("productid");
 		var productid = 1;
@@ -921,7 +921,11 @@
 																${rateInfoData[i].ratecontent}
 															</div>
 															<div class="tb-r-act-bar">
-																评价等级${rateInfoData[i].ratestar}：&nbsp;&nbsp;&nbsp;&nbsp;购买数量：${rateInfoData[i].orderproductcount}
+																/* 评价等级${rateInfoData[i].ratestar}：&nbsp;&nbsp;&nbsp;&nbsp; */
+															<div class="atar_Show">
+								                                 <p tip="" id="p"></p>
+							                                 </div>
+															购买数量：${rateInfoData[i].orderproductcount}
 															</div>
 														</div>
 				
@@ -930,8 +934,11 @@
 												</div>
 											</li>
 										`;
-	
+	               
 					$('#rateInfo').append(oLi);
+					$('#p').setAttribute("tip",rateInfoData[i].ratestar)
+				 	//var a = document.getElementById("p_${i}");
+					//a.setAttribute("tip",rateInfoData[i].ratestar)
 				}
 			},
 			error : function() {
