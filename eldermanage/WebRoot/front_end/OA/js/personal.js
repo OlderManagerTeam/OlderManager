@@ -23,7 +23,7 @@
 					function(result) {
 						if (result == "未登录") {
 							alert(result);
-							window.location.href = "/eldermanage/front_end/Front/login.html";
+							window.location.href = "/eldermanage/front_end/Front/login/login.html";
 						}
 						var str = result.data.toString();
 						var authorization = new Array();
@@ -45,7 +45,7 @@
 						function(result) {
 							alert(result.information);
 							document.cookie = "password=" + "" + ";path=/";
-							window.location.href = "/eldermanage/front_end/Front/login.html";
+							window.location.href = "/eldermanage/front_end/Front/login/login.html";
 						}
 				)
 			}

@@ -82,6 +82,7 @@ public class ShopPayFrontController {
 	public @ResponseBody Message updateCart(HttpSession session, int[] productid, int[] count) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
+		
 		return shopPayFrontService.updateCart(olderid, productid, count);
 	}
 
@@ -104,11 +105,21 @@ public class ShopPayFrontController {
 	
 	// 生成订单表和订单详情表-直接购买中结算--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "rightnow/order/formation")
-	public @ResponseBody Message rightNowOrderFormation(HttpSession session, String ordertotal, int ordertakepoint,
+	public @ResponseBody Message rightNowOrderFormation(HttpSession session, String ordertotal, String ordertakepoint,
 			int productid, int count) throws Exception {
 		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
-		return shopPayFrontService.rightNowOrderFormation(olderid, Float.valueOf(ordertotal), ordertakepoint, productid, count);
+		int olderid =1;
+		float total=0;
+		int takepoint=0;
+		try {
+			total = Float.valueOf(ordertotal);
+			takepoint=Integer.parseInt(ordertakepoint);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return shopPayFrontService.rightNowOrderFormation(olderid, total, takepoint, productid, count);
 	}
 
 	// 老人参加团购
