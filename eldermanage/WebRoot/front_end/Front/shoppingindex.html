@@ -1878,14 +1878,18 @@
 						document.getElementById("todayProductImg2").src = resultData[1].productimg
 						document.getElementById("todayProductImg3").src = resultData[2].productimg
 			
-						document.getElementById("todayProductName1").innerHTML = resultData[0].productname
-						document.getElementById("todayProductName2").innerHTML = resultData[1].productname
-						document.getElementById("todayProductName3").innerHTML = resultData[2].productname
 			
-						document.getElementById("todayProductInfo1").innerHTML = resultData[0].productinfo
-						document.getElementById("todayProductInfo2").innerHTML = resultData[1].productinfo
-						document.getElementById("todayProductInfo3").innerHTML = resultData[2].productinfo
+				        document.getElementById("todayProductName1").innerHTML = "￥"+resultData[0].productdiscountprice
+						document.getElementById("todayProductName2").innerHTML = "￥"+resultData[1].productdiscountprice
+						document.getElementById("todayProductName3").innerHTML = "￥"+resultData[2].productdiscountprice
+			 
+					 	document.getElementById("todayProductInfo1").innerHTML = resultData[0].productweight+"KG"
+						document.getElementById("todayProductInfo2").innerHTML = resultData[1].productweight+"KG"
+						document.getElementById("todayProductInfo3").innerHTML = resultData[2].productweight +"KG"
 			
+			
+			
+					
 						$(todayProductImg1).on('click', function() {
 							location.href = '../Front/introduction.html?productid="+resultData[0].productid';
 						})
@@ -1923,76 +1927,64 @@
 							var oDiv = `
 									<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
 										<div class="outer-con ">
-											<div class="title ">
-												${resultData[0].productname}
-											</div>
+											
 											<div class="sub-title ">
 												¥${resultData[0].productdiscountprice}
 											</div>
 											<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[0].productid})"></i>									
 										</div>
-										<a href="../Front/introduction.html?productid="+${resultData[0].productid}"><img src="${resultData[0].productimg}" /></a>						
+										<a href="../Front/introduction.html?productid=${resultData[0].productid}"><img src="${resultData[0].productimg}" /></a>						
 									</div>
 							
 									<div class="am-u-md-2 am-u-lg-2 text-three sug">
 										<div class="outer-con ">
-											<div class="title ">
-												${resultData[1].productname}
-											</div>								
+																		
 											<div class="sub-title ">
 												¥${resultData[1].productdiscountprice}
 											</div>
 											<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[1].productid})"></i>								
 										</div>
-										<a href="../Front/introduction.html?productid="+${resultData[1].productid}"><img src="${resultData[1].productimg}" /></a>
+										<a href="../Front/introduction.html?productid=${resultData[1].productid}"><img src="${resultData[1].productimg}" /></a>
 									</div>
 									<div class="am-u-md-2 am-u-lg-2 text-three big">
 										<div class="outer-con ">
-											<div class="title ">
-												${resultData[2].productname}
-											</div>
+											
 											<div class="sub-title ">
 												¥${resultData[2].productdiscountprice}
 											</div>
 											<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[2].productid})"></i>								
 										</div>
-										<a href="../Front/introduction.html?productid="+${resultData[2].productid}"><img src="${resultData[2].productimg}" /></a>
+										<a href="../Front/introduction.html?productid=${resultData[2].productid}"><img src="${resultData[2].productimg}" /></a>
 									</div>			
 									<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
 										<div class="outer-con ">
-											<div class="title ">
-												${resultData[3].productname}
-											</div>								
+																		
 											<div class="sub-title ">
 												¥${resultData[3].productdiscountprice}
 											</div>
 											<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[3].productid})"></i>								
 										</div>
-										<a href="../Front/introduction.html?productid="+${resultData[3].productid}"><img src="${resultData[3].productimg}" /></a>
+										<a href="../Front/introduction.html?productid=${resultData[3].productid}"><img src="${resultData[3].productimg}" /></a>
 									</div>	
 									<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
 										<div class="outer-con ">
-											<div class="title ">
-												${resultData[4].productname}
-											</div>
+										
 											<div class="sub-title ">
 												¥${resultData[4].productdiscountprice}
 											</div>
 											<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[4].productid})"></i>								
 										</div>
-										<a href="../Front/introduction.html?productid="+${resultData[4].productid}"><img src="${resultData[4].productimg}" /></a>
+										<a href="../Front/introduction.html?productid=${resultData[4].productid}"><img src="${resultData[4].productimg}" /></a>
 									</div>	
 									<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
 										<div class="outer-con ">
-											<div class="title ">
-												${resultData[5].productname}
-											</div>
+											
 											<div class="sub-title ">
 											¥${resultData[5].productdiscountprice}
 											</div>
 											<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[5].productid})"></i>								
 										</div>
-										<a href="../Front/introduction.html?productid="+${resultData[5].productid}"><img src="${resultData[5].productimg}" /></a>
+										<a href="../Front/introduction.html?productid=${resultData[5].productid}"><img src="${resultData[5].productimg}" /></a>
 									</div>
 								`;
 			

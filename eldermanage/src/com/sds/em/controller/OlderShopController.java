@@ -305,4 +305,10 @@ public class OlderShopController {
 	public @ResponseBody Message typeTwoTypeId(int productTypeNumber) {
 		return olderShopService.typeTwoTypeId(productTypeNumber);
 	}
+	
+	//确认送出商品
+	@RequestMapping(method = RequestMethod.POST, value = "ordersend")
+	public @ResponseBody Message ordersend(int ordersid) {
+		return olderShopService.ordersend(ordersid);
+	}
 }
