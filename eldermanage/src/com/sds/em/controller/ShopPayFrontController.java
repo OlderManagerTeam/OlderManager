@@ -107,7 +107,7 @@ public class ShopPayFrontController {
 	public @ResponseBody Message rightNowOrderFormation(HttpSession session, String ordertotal, int ordertakepoint,
 			int productid, int count) throws Exception {
 		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		int olderid =1;
 		return shopPayFrontService.rightNowOrderFormation(olderid, Float.valueOf(ordertotal), ordertakepoint, productid, count);
 	}
 
