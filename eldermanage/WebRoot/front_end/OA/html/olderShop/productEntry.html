@@ -67,7 +67,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -88,7 +89,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -273,11 +274,10 @@
 										<div class="form-group">
 											<label for="productprice" class="col-sm-3 control-label">商品库存：</label>
 											<div class="col-sm-2">
-												<input type="text" class="form-control"
-													placeholder="商品库存" name="storecount">
+												<input type="text" class="form-control" placeholder="商品库存"
+													name="storecount">
 											</div>
-											<div class="col-sm-1">
-											</div>
+											<div class="col-sm-1"></div>
 										</div>
 										<div class="form-group">
 											<label for="producttypenumber" class="col-sm-3 control-label">商品类型：</label>
@@ -416,7 +416,7 @@
 			<!--验证js文件-->
 			<script type="text/javascript"
 				src="../../lib/js/bootstrapValidator.min.js"></script>
-				
+
 			<script type="text/javascript" src="../../js/personal.js"></script>
 			<script>
 				$("#productimg").fileinput({
@@ -424,14 +424,22 @@
 					showCaption : false,
 					browseClass : "btn btn-primary btn-lg",
 					fileType : "any",
-					previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
+					previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
+					language : 'zh',
+					showUpload : false,
+					allowedPreviewTypes : [ 'image' ],
+					allowedFileExtensions : [ 'jpg', 'png' ],
+					maxFileSize : 2000,
+					msgFilesTooMany : 1,
+					maxFileCount : 1
 				});
 				$("#file-1").fileinput({
 					uploadUrl : '#', // you must set a valid URL here else you will get an error
-					allowedFileExtensions : [ 'jpg', 'png', 'gif' ],
+					allowedFileExtensions : [ 'jpg', 'png' ],
 					overwriteInitial : false,
 					maxFileSize : 1000,
-					maxFilesNum : 10,
+					maxFilesNum : 5,
+					maxFileCount : 5,
 					//allowedFileTypes: ['image', 'video', 'flash'],
 					slugCallback : function(filename) {
 						return filename.replace('(', '_').replace(']', '_');
@@ -439,7 +447,7 @@
 				});
 				$("#file-2").fileinput({
 					uploadUrl : '#', // you must set a valid URL here else you will get an error
-					allowedFileExtensions : [ 'jpg', 'png', 'gif' ],
+					allowedFileExtensions : [ 'jpg', 'png' ],
 					overwriteInitial : false,
 					maxFileSize : 1000,
 					maxFilesNum : 10,
@@ -646,14 +654,14 @@
 						success : function(result) {
 							roledata = result.data;
 							var oOption = `
-																	<option value="0" selected="selected">无</option>
-																`;
+																							<option value="0" selected="selected">无</option>
+																						`;
 							$("#select2-producttypenumbertwo-container").html("无");
 							$('#producttypenumbertwo').append(oOption);
 							for (var i = roledata.length - 1; i >= 0; i--) {
 								var oOption = `
-																	<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
-																`;
+																							<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
+																						`;
 								$('#producttypenumbertwo').append(oOption);
 							}
 						},
