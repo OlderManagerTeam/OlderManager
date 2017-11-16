@@ -48,7 +48,7 @@
 		<ul class="message-r">
 			<div class="topMessage home">
 				<div class="menu-hd">
-					<a href="shopping.html" target="_top" class="h">商城首页</a>
+					<a href="shoppingindex.html" target="_top" class="h">商城首页</a>
 				</div>
 			</div>
 			<div class="topMessage my-shangcheng">
@@ -290,19 +290,7 @@
 
 									<div class="am-tab-panel am-fade">
 							<div class="like">
-								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
-									<li>
-										<div class="i-pic limit">
-											<img src="images/product/imgsearch1.jpg" />
-											<p>
-												【良品铺子_开口松子】零食坚果特产炒货 <span>东北红松子奶油味</span>
-											</p>
-											<p class="price fl">
-												<b>¥</b> <strong>298.00</strong>
-											</p>
-										</div>
-									</li>
-									
+								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes" id="MyfootPrintItem">
 									
 								</ul>
 							</div>
@@ -502,17 +490,23 @@
 					//${resultData[i].orderproductcount},${resultData[i].orderdiscountprice},${resultData[i].orderstatus}
 					//订单详情
 					//alert(resultData[i].olderOrders[0].productname)
+					let status_display;
+					var text1;
+					
 					for (var x = 0; x < resultData[i].olderOrders.length; x++) {
 						var date = new Date(resultData[i].olderOrders[x].orderdate + 1000 * 60 * 60 * 8);
 						var d = date.toLocaleString();
 						var total = resultData[i].olderOrders[x].ordertotal;
 						var orderid = resultData[i].olderOrders[x].orderid;
+						
 						if (resultData[i].olderOrders[x].orderstatus == "备货中") {
-							var text1 = "取消"
+							text1 = "取消"
 						} else if (resultData[i].olderOrders[x].orderstatus == "送货中") {
-							var text1 = "签收"
-						} else if (resultData[i].olderOrders[x].orderstatus == "申请取消中") {
+						    text1 = "签收"
+						} else if (resultData[i].olderOrders[x].orderstatus == "申请退货") {
 							//    document.getElementById("check_"+${x}).style.display="none";
+							status_display = "hide";
+							//$("#check_"+x).css('display','none');
 						}
 	
 	
@@ -564,7 +558,7 @@
 																	</li>
 																	<li class="td td-sum">
 																		<div class="td-inner">
-																			<div class="price-line">
+																			<div class="price-line ask-off">
 																				<span>${resultData[i].olderOrders[x].orderstatus}</span>
 																			</div>
 																			
@@ -597,12 +591,15 @@
 																<span class="txt" style=color:#F00>${d}</span>
 															</div>
 															<div class="price-sum" style="padding-top: 10px">
-																<button id="check_${x}" class="btn btn-default"
+																<button id="check_${i}" class="btn btn-default ${status_display} "
 																onclick="checkUrl(${orderid},'${text1}')" >${text1}</button>
 															</div>
 														</div>
 													</div>
 											`;
+					 console.log(status_display);
+				
+					
 					$("#orderItems").append(oBottom);
 				}
 	
@@ -827,6 +824,41 @@
 													</div>
 										`;
 					$("#myGroupItems").append(oDiv);
+				
+				}
+			},
+			error : function() {
+				alert('数据库错误')
+			}
+		})
+		
+		//我的足迹
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/personal/myfootprint/info",
+			data : null,
+			success : function(result) {
+				var resultData = result.data;
+				for (var i = 0; i < resultData.length; i++) {
+		
+				var oLi = `
+								<li>
+									<div class="i-pic limit">
+									<a href="../Front/introduction.html?productid=${resultData[i].productid}">
+										<img src="${resultData[i].productimg}" />
+									</a>
+									
+										<p><span>${resultData[i].productname}</span></p>
+										<p class="price fl">
+											<b>浏览次数：</b>
+											<strong>${resultData[i].pviewocount}</strong>
+										</p>
+									</div>
+								</li>
+							`;
+	
+						$('#MyfootPrintItem').append(oLi);
 				
 				}
 			},
