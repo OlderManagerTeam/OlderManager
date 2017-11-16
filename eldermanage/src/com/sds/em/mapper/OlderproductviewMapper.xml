@@ -7,6 +7,7 @@
 			jdbcType="INTEGER" />
 		<result column="pviewolderid" property="pviewolderid" jdbcType="INTEGER" />
 		<result column="pviewocount" property="pviewocount" jdbcType="INTEGER" />
+		<result column="pviewdate" property="pviewdate" jdbcType="TIMESTAMP" />
 	</resultMap>
 	<sql id="Example_Where_Clause">
 		<where>
@@ -22,8 +23,7 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value}
-									and
+									and ${criterion.condition} #{criterion.value} and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -55,8 +55,7 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value}
-									and
+									and ${criterion.condition} #{criterion.value} and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -74,7 +73,7 @@
 		</where>
 	</sql>
 	<sql id="Base_Column_List">
-		productviewID, pviewproductID, pviewolderid, pviewocount
+		productviewID, pviewproductID, pviewolderid, pviewocount, pviewdate
 	</sql>
 	<select id="selectByExample" resultMap="BaseResultMap"
 		parameterType="com.sds.em.po.OlderproductviewExample">
@@ -96,14 +95,11 @@
 		select
 		<include refid="Base_Column_List" />
 		from olderproductview
-		where productviewID =
-		#{productviewid,jdbcType=INTEGER}
+		where productviewID = #{productviewid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from
-		olderproductview
-		where productviewID =
-		#{productviewid,jdbcType=INTEGER}
+		delete from olderproductview
+		where productviewID = #{productviewid,jdbcType=INTEGER}
 	</delete>
 	<delete id="deleteByExample" parameterType="com.sds.em.po.OlderproductviewExample">
 		delete from olderproductview
@@ -112,14 +108,12 @@
 		</if>
 	</delete>
 	<insert id="insert" parameterType="com.sds.em.po.Olderproductview">
-		insert into olderproductview
-		(productviewID, pviewproductID,
+		insert into olderproductview (productviewID, pviewproductID,
 		pviewolderid,
-		pviewocount)
-		values
-		(#{productviewid,jdbcType=INTEGER},
+		pviewocount, pviewdate)
+		values (#{productviewid,jdbcType=INTEGER},
 		#{pviewproductid,jdbcType=INTEGER}, #{pviewolderid,jdbcType=INTEGER},
-		#{pviewocount,jdbcType=INTEGER})
+		#{pviewocount,jdbcType=INTEGER}, #{pviewdate,jdbcType=TIMESTAMP})
 	</insert>
 	<insert id="insertSelective" parameterType="com.sds.em.po.Olderproductview">
 		insert into olderproductview
@@ -136,6 +130,9 @@
 			<if test="pviewocount != null">
 				pviewocount,
 			</if>
+			<if test="pviewdate != null">
+				pviewdate,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="productviewid != null">
@@ -149,6 +146,9 @@
 			</if>
 			<if test="pviewocount != null">
 				#{pviewocount,jdbcType=INTEGER},
+			</if>
+			<if test="pviewdate != null">
+				#{pviewdate,jdbcType=TIMESTAMP},
 			</if>
 		</trim>
 	</insert>
@@ -166,14 +166,16 @@
 				productviewID = #{record.productviewid,jdbcType=INTEGER},
 			</if>
 			<if test="record.pviewproductid != null">
-				pviewproductID =
-				#{record.pviewproductid,jdbcType=INTEGER},
+				pviewproductID = #{record.pviewproductid,jdbcType=INTEGER},
 			</if>
 			<if test="record.pviewolderid != null">
 				pviewolderid = #{record.pviewolderid,jdbcType=INTEGER},
 			</if>
 			<if test="record.pviewocount != null">
 				pviewocount = #{record.pviewocount,jdbcType=INTEGER},
+			</if>
+			<if test="record.pviewdate != null">
+				pviewdate = #{record.pviewdate,jdbcType=TIMESTAMP},
 			</if>
 		</set>
 		<if test="_parameter != null">
@@ -182,14 +184,11 @@
 	</update>
 	<update id="updateByExample" parameterType="map">
 		update olderproductview
-		set productviewID =
-		#{record.productviewid,jdbcType=INTEGER},
-		pviewproductID =
-		#{record.pviewproductid,jdbcType=INTEGER},
-		pviewolderid =
-		#{record.pviewolderid,jdbcType=INTEGER},
-		pviewocount =
-		#{record.pviewocount,jdbcType=INTEGER}
+		set productviewID = #{record.productviewid,jdbcType=INTEGER},
+		pviewproductID = #{record.pviewproductid,jdbcType=INTEGER},
+		pviewolderid = #{record.pviewolderid,jdbcType=INTEGER},
+		pviewocount = #{record.pviewocount,jdbcType=INTEGER},
+		pviewdate = #{record.pviewdate,jdbcType=TIMESTAMP}
 		<if test="_parameter != null">
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
@@ -206,22 +205,20 @@
 			<if test="pviewocount != null">
 				pviewocount = #{pviewocount,jdbcType=INTEGER},
 			</if>
+			<if test="pviewdate != null">
+				pviewdate = #{pviewdate,jdbcType=TIMESTAMP},
+			</if>
 		</set>
 		where productviewID = #{productviewid,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Olderproductview">
-		update
-		olderproductview
-		set pviewproductID =
-		#{pviewproductid,jdbcType=INTEGER},
-		pviewolderid =
-		#{pviewolderid,jdbcType=INTEGER},
-		pviewocount =
-		#{pviewocount,jdbcType=INTEGER}
-		where productviewID =
-		#{productviewid,jdbcType=INTEGER}
+		update olderproductview
+		set pviewproductID = #{pviewproductid,jdbcType=INTEGER},
+		pviewolderid = #{pviewolderid,jdbcType=INTEGER},
+		pviewocount = #{pviewocount,jdbcType=INTEGER},
+		pviewdate = #{pviewdate,jdbcType=TIMESTAMP}
+		where productviewID = #{productviewid,jdbcType=INTEGER}
 	</update>
-
 	<!-- lu -->
 	<select id="repeatedOlderView" parameterType="int"
 		resultType="com.sds.em.po.Product">
@@ -245,5 +242,14 @@
 		olderproductview.pviewolderid=#{value}
 		)
 
+	</select>
+
+	<select id="myFootprintInfo" parameterType="int"
+		resultType="com.sds.em.shop.pojo.MyFootFrintExtend">
+		SELECT * FROM olderproductview
+		INNER JOIN product
+		ON product.productId=olderproductview.pviewproductID
+		WHERE olderproductview.pviewolderid=#{value}
+		ORDER BY olderproductview.pviewdate DESC
 	</select>
 </mapper>

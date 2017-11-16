@@ -24,6 +24,17 @@ public class ProductGroupExtend extends Product {
 
 	private String groupstatus;
 
+	private Date joindate;// 显示我的团购的时候用
+
+	
+	public Date getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(Date joindate) {
+		this.joindate = joindate;
+	}
+
 	public Integer getGroupid() {
 		return groupid;
 	}
@@ -95,7 +106,5 @@ public class ProductGroupExtend extends Product {
 	public void setGroupstatus(String groupstatus) {
 		this.groupstatus = groupstatus;
 	}
-	
-	
 
 }

@@ -24,6 +24,7 @@ import com.sds.em.po.Productviewlist;
 import com.sds.em.service.OlderShopService;
 import com.sds.em.util.DateSimp;
 import com.sds.em.util.ImageUtil;
+import com.sds.em.util.UploadImg;
 
 /*
  * 作者：刘露
@@ -97,16 +98,19 @@ public class OlderShopController {
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				File filePicSingle = new File(productview_path + newFileName);
 				fileview[i].transferTo(filePicSingle);
+				UploadImg.createThumbnail(productview_path + newFileName);
 				ImageUtil.resizePng(filePicSingle, filePicSingle, 80, 80, false);
 				productview.setPviewpicsmallpic(url + newFileName);
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				filePicSingle = new File(productview_path + newFileName);
 				fileview[i].transferTo(filePicSingle);
+				UploadImg.createThumbnail(productview_path + newFileName);
 				ImageUtil.resizePng(filePicSingle, filePicSingle, 400, 400, false);
 				productview.setPviewpicpic(url + newFileName);
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 				filePicSingle = new File(productview_path + newFileName);
 				fileview[i].transferTo(filePicSingle);
+				UploadImg.createThumbnail(productview_path + newFileName);
 				ImageUtil.resizePng(filePicSingle, filePicSingle, 800, 800, false);
 				productview.setPviewpicbigpic(url + newFileName);
 				productviewlist.add(productview);

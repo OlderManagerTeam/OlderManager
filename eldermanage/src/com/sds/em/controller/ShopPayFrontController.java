@@ -1,5 +1,7 @@
 package com.sds.em.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Message;
+import com.sds.em.po.Orderlist;
+import com.sds.em.po.Orders;
 import com.sds.em.service.ShopPayFrontService;
 import com.sds.em.shopfront.pojo.RightNowPayExtend;
 
@@ -24,16 +28,16 @@ public class ShopPayFrontController {
 	@Autowired
 	ShopPayFrontService shopPayFrontService;
 
-	// 第一次将商品加入购物车。不能加入第二次-后端成功
-	@RequestMapping(method = RequestMethod.POST, value = "index/add/shopcart")
-	public @ResponseBody Message addFirstShopcart(HttpSession session, int productid, int count) throws Exception {
+	// 第一次将商品加入购物车-从首页加入。不能加入第二次-后端成功
+	@RequestMapping(method = RequestMethod.GET, value = "index/add/shopcart")
+	public @ResponseBody Message addFirstShopcart(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
-		return shopPayFrontService.addFirstShopcart(olderid, productid, count);
+		return shopPayFrontService.addFirstShopcart(olderid, productid);
 	}
 
 	// 从详情页面加入购物车-得判断之前有没有加入过-后端成功
-	@RequestMapping(method = RequestMethod.POST, value = "add/shopcart")
+	@RequestMapping(method = RequestMethod.GET, value = "add/shopcart")
 	public @ResponseBody Message addShopcart(HttpSession session, int productid, int count) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
@@ -57,13 +61,14 @@ public class ShopPayFrontController {
 	}
 
 	//
-	// 立即购买-确认订单页面-全部完成
+	// 立即购买-确认订单页面-全部完成--
 	@RequestMapping(method = RequestMethod.GET, value = "rightnow/confirm/order")
 	public @ResponseBody Message confirmOrderRightNow(HttpSession session, int productid) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
 		return shopPayFrontService.confirmOrderRightNow(olderid, productid);
 	}
+
 	// 购物车结算-确认订单页面-全部完成
 	@RequestMapping(method = RequestMethod.GET, value = "cart/confirm/order")
 	public @ResponseBody Message confirmOrderCart(HttpSession session) throws Exception {
@@ -71,19 +76,40 @@ public class ShopPayFrontController {
 		int olderid = 1;
 		return shopPayFrontService.confirmOrderCart(olderid);
 	}
-	//点击结算时，刷新购物车数据-后端成功
+
+	// 点击结算时，刷新购物车数据-后端成功
 	@RequestMapping(method = RequestMethod.POST, value = "cart/confirm/order/sure")
-	public @ResponseBody Message updateCart(HttpSession session,int[] productid,int[] count) throws Exception {
+	public @ResponseBody Message updateCart(HttpSession session, int[] productid, int[] count) throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
 		return shopPayFrontService.updateCart(olderid, productid, count);
 	}
-	//生成订单表和订单详情表-后端成功
+
+	// 生成订单表和订单详情表-从购物车中结算-后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "order/formation")
-	public @ResponseBody Message orderFormation(HttpSession session,float ordertotal,int ordertakepoint) throws Exception {
+	public @ResponseBody Message orderFormation(HttpSession session, float ordertotal, int ordertakepoint)
+			throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
 		return shopPayFrontService.orderFormation(olderid, ordertotal, ordertakepoint);
 	}
+
+	// 生成订单表和订单详情表-直接购买中结算--后端成功
+	@RequestMapping(method = RequestMethod.GET, value = "rightnow/order/formation")
+	public @ResponseBody Message rightNowOrderFormation(HttpSession session, float ordertotal, int ordertakepoint,
+			int productid, int count) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.rightNowOrderFormation(olderid, ordertotal, ordertakepoint, productid, count);
+	}
+
+	// 老人参加团购
+	@RequestMapping(method = RequestMethod.GET, value = "group/join")
+	public @ResponseBody Message joinGroup(HttpSession session, int groupid) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.joinGroup(olderid, groupid);
+	}
 	
+
 }

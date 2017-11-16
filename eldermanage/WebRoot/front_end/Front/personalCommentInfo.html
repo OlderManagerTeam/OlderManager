@@ -10,6 +10,8 @@
 
 <meta name="description"
 	content="jquery评论星星打分、鼠标滑过星星区域显示评论信息提交内容，适用在评论表单里面，是表单美化提交内容的一种用户体验设计。" />
+	<link href="css/keyao/star.css" rel="stylesheet"
+			type="text/css" />
 
 <script type="text/javascript" src="../Front/js/jquery.min.js"></script>
 
@@ -249,6 +251,58 @@ body {
 	padding-left: 10px;
 	float: left;
 }
+
+.clearfix::after {
+	display: block;
+	content: '';
+	height: 0;
+	overflow: hidden;
+	clear: both;
+}
+/*星星样式*/
+.content {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.title {
+	font-size: 14px;
+	width: 50px
+}
+
+/*星星样式*/
+.show_number {
+	padding-left: 12px;
+}
+
+.show_number li {
+	float: left;
+	padding: 10px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+}
+
+.atar_Show {
+	background: url(images/stark2.png);
+	width: 160px;
+	height: 21px;
+	position: relative;
+	float: left;
+}
+
+.atar_Show p {
+	background: url(images/stars2.png);
+	left: 0;
+	height: 21px;
+	width: 134px;
+}
+
+.show_number li span {
+	display: inline-block;
+	line-height: 21px;
+	font-size: 1.1em;
+	padding-top: 2px
+}
 </style>
 
 
@@ -259,27 +313,25 @@ body {
 
 		<div class="quiz_content">
 
-			<form >
+			<form>
 
-				<div class="goods-comm">
-
-					<div class="goods-comm-stars">
-
-						<span class="star_l">满意度：</span>
-
-						<div id="rate-comm-1" class="rate-comm"></div>
-
-					</div>
-
+				<div class="">
+					<ul class="show_number clearfix">
+						<li>星 级：</li>
+						<li>
+							<div class="atar_Show">
+								<p tip="" id="p"></p>
+							</div> <span></span>
+						</li>
+					</ul>
 				</div>
-				<input id="xingxing"></input> <input id="orderlistid"></input> -
 				<div class="l_text">
 
 					<label class="m_flo">内 容：</label>
 
-					<textarea id="ratecontent" class="text"></textarea>
+					<textarea id="ratecontent" class="text" readonly="readonly"></textarea>
 
-					<span class="tr">字数限制为5-200个</span>
+					<span class="tr"></span>
 
 				</div>
 
@@ -291,6 +343,7 @@ body {
 
 	</div>
 	<!--quiz end-->
+
 	<!-- 	<script type="text/javascript" src="../Front/js/jquery.min.js"></script> -->
 	<script type="text/javascript">
 		UrlParm = function() { // url参数
@@ -351,7 +404,6 @@ body {
 		}();
 	
 		var orderlistid = UrlParm.parm("orderlistid");
-		document.getElementById("orderlistid").value = orderlistid;
 	
 		function load() {
 			$.ajax({
@@ -360,9 +412,20 @@ body {
 				url : "/eldermanage/v1/shop/personal/buyrecord/rate/info?orderlistid=" + orderlistid,
 				data : null,
 				success : function(result) {
-	                var current_value=result.data.ratestar;
+					var current_value = result.data.ratestar;
 					document.getElementById("ratecontent").value = result.data.ratecontent;
-					document.getElementById("xingxing").value = result.data.ratestar;
+					// document.getElementById("p").setAttribute("tip",3)
+					// alert(result.data.ratestar)
+					var a = document.getElementById("p");
+					a.setAttribute("tip",result.data.ratestar)
+	
+					//显示分数
+					$(".show_number li p").each(function(index, element) {
+						var num = $(this).attr("tip");
+						var www = num * 2 * 16; //
+						$(this).css("width", www);
+						$(this).parent(".atar_Show").siblings("span").text(num + "分");
+					});
 				},
 				error : function() {
 					alert('数据库错误')
@@ -370,6 +433,7 @@ body {
 			})
 		}
 	</script>
+	
 
 </body>
 

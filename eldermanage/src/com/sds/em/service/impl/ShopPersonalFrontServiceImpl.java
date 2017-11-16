@@ -8,8 +8,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.OlderbaseMapper;
+import com.sds.em.mapper.OlderproductviewMapper;
 import com.sds.em.mapper.OrderlistMapper;
 import com.sds.em.mapper.OrdersMapper;
+import com.sds.em.mapper.ProductgroupMapper;
 import com.sds.em.mapper.ProductrateMapper;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
@@ -20,8 +22,10 @@ import com.sds.em.po.ProductrateExample;
 import com.sds.em.po.ProductrateExample.Criteria;
 import com.sds.em.pojo.ProductrateExtend;
 import com.sds.em.service.ShopPersonalFrontService;
+import com.sds.em.shop.pojo.MyFootFrintExtend;
 import com.sds.em.shop.pojo.MyOrderViewExtend;
 import com.sds.em.shop.pojo.OlderOrdersExtend;
+import com.sds.em.shop.pojo.ProductGroupExtend;
 import com.sds.em.shopfront.pojo.MyOrdersListExtend;
 
 public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
@@ -34,6 +38,10 @@ public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
 	ProductrateMapper productrateMapper;
 	@Autowired
 	OrdersMapper ordersMapper;
+	@Autowired
+	ProductgroupMapper productgroupMapper;
+	@Autowired
+	OlderproductviewMapper olderproductviewMapper;
 
 	@Override
 	public Message shopPersonalInfo(int olderid) throws Exception {
@@ -141,7 +149,7 @@ public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
 	public Message RateInfo(int orderlistid) throws Exception {
 
 		try {
-			
+
 			Productrate productrate = orderlistMapper.RateInfo(orderlistid);
 			if (productrate != null) {
 				return new Message(true, "返回成功", productrate);
@@ -214,6 +222,41 @@ public class ShopPersonalFrontServiceImpl implements ShopPersonalFrontService {
 			return new Message(false, "数据库错误", null);
 		}
 
+	}
+
+	@Override
+	public Message myGroupsInfo(int olderid) throws Exception {
+		try {
+
+			List<ProductGroupExtend> groupList = productgroupMapper.myGroupsInfo(olderid);
+			if (groupList != null) {
+				return new Message(true, "返回成功", groupList);
+
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message myFootprintInfo(int olderid) throws Exception {
+		try {
+
+			List<MyFootFrintExtend> footList = olderproductviewMapper.myFootprintInfo(olderid);
+			if (footList != null) {
+				return new Message(true, "返回成功", footList);
+			} else {
+				return new Message(false, "数据库错误", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 
 }

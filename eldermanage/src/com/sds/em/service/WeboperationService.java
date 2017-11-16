@@ -10,4 +10,6 @@ public interface WeboperationService {
 
 	public Message delpersonauthorization(String stafftel, String authorization);
 
+	public Message staffname(String stafftel);
+
 }

@@ -3,6 +3,7 @@ package com.sds.em.mapper;
 import com.sds.em.po.Olderproductview;
 import com.sds.em.po.OlderproductviewExample;
 import com.sds.em.po.Product;
+import com.sds.em.shop.pojo.MyFootFrintExtend;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -37,5 +38,8 @@ public interface OlderproductviewMapper {
 
 	// 猜你喜欢(已登录时)-推荐老人浏览表的相关标签下的商品
 	public List<Product> guessLikeOlderView(int olderid);
+
+	// 显示我的足迹
+	public List<MyFootFrintExtend> myFootprintInfo(int olderid);
 
 }
