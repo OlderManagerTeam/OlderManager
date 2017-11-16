@@ -301,14 +301,14 @@
 					// $("#demo5").show();
 					// page(newStartData, $("#demo5"));
 
-					for(let i=0;i<16;i++){
+					for(let i=0;i<8;i++){
 						var oDiv = `
 							<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
 				            	<div class="am-u-md-12">
-				            		<a href="group_introduction.html?"><img src="${preFerData[i].productimg}"></a>
+				            		<a href="introduction.html?productid=${preFerData[i].productid}"><img src="${preFerData[i].productimg}"></a>
 				            	</div>
 				            	<div class="am-u-md-12">
-				            		<a href="group_introduction.html?"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">${preFerData[i].productname}</p></a>
+				            		<a href="introduction.html?productid=${preFerData[i].productid}"><p style="margin: 5px 10px 0px 10px;font-size: 20px;">${preFerData[i].productname}</p></a>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
 				            			<span style="font-size: 15px;text-decoration:line-through;">门市价:￥
 				            				<span style="font-size: 15px;text-decoration:line-through;">${preFerData[i].productprice}</span>

@@ -17,6 +17,7 @@ import com.sds.em.po.Cart;
 import com.sds.em.po.CartExample;
 import com.sds.em.po.CartExample.Criteria;
 import com.sds.em.po.Joingroup;
+import com.sds.em.po.JoingroupExample;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Orderlist;
@@ -372,18 +373,51 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 
 	@Override
 	public Message joinGroup(int olderid, int groupid) {
-
 		try {
-			Joingroup group = new Joingroup();
-			group.setJoindate(new Date());
-			group.setJoinid(groupid);
-			group.setJoinolderid(olderid);
-			int flag = 0;
-			flag = joingroupMapper.insert(group);
-			if (flag != 0) {
-				return new Message(false, "申请参团成功", null);
+			JoingroupExample joingroupExample = new JoingroupExample();
+			com.sds.em.po.JoingroupExample.Criteria criteria = joingroupExample.createCriteria();
+			criteria.andJoinidEqualTo(groupid);
+			criteria.andJoinolderidEqualTo(olderid);
+
+			List<Joingroup> groupList = joingroupMapper.selectByExample(joingroupExample);
+
+			if (groupList.isEmpty()) {// 为空的才能参与
+
+				Joingroup group = new Joingroup();
+				group.setJoindate(new Date());
+				group.setJoinid(groupid);
+				group.setJoinolderid(olderid);
+				int flag = 0;
+				flag = joingroupMapper.insert(group);
+				if (flag != 0) {
+					return new Message(false, "申请参团成功", null);
+				} else {
+					return new Message(false, "申请参团失败", null);
+				}
 			} else {
-				return new Message(false, "申请参团失败", null);
+				return new Message(false, "不能重复参与", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
+	}
+
+	@Override
+	public Message judgeJoinGroup(int olderid, int groupid) {
+		try {
+			JoingroupExample joingroupExample = new JoingroupExample();
+			com.sds.em.po.JoingroupExample.Criteria criteria = joingroupExample.createCriteria();
+			criteria.andJoinidEqualTo(groupid);
+			criteria.andJoinolderidEqualTo(olderid);
+
+			List<Joingroup> groupList = joingroupMapper.selectByExample(joingroupExample);
+
+			if (!groupList.isEmpty()) {
+				return new Message(true, "参与过", null);
+			} else {
+				return new Message(false, "没有参与过", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -391,6 +425,27 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 			return new Message(false, "数据库错误", null);
 		}
 
+	}
+
+	@Override
+	public Message judgeAddCart(int olderid, int productid) {
+		try {
+			CartExample cartExample = new CartExample();
+			Criteria criteria = cartExample.createCriteria();
+			criteria.andCartproductidEqualTo(productid);
+			criteria.andCartolderidEqualTo(olderid);
+			List<Cart> CartList = cartMapper.selectByExample(cartExample);
+
+			if (!CartList.isEmpty()) {// 以加入过购物车
+				return new Message(true, "已加过", null);
+			} else {
+				return new Message(false, "没有加过", null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
+		}
 	}
 
 }

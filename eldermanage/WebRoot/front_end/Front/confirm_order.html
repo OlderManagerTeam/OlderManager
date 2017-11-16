@@ -32,7 +32,7 @@
 		<ul class="message-r">
 			<div class="topMessage home">
 				<div class="menu-hd">
-					<a href="shopping.html" target="_top" class="h">商城首页</a>
+					<a href="shoppingindex.html" target="_top" class="h">商城首页</a>
 				</div>
 			</div>
 			<div class="topMessage my-shangcheng">
@@ -141,16 +141,30 @@
 		<!--积分折扣-->
 		<div style="text-align: right;line-height:45px;padding-right:20px;">
 			<div>
-				<span style="font-color:#3c3c3c;font-weight: 700;">已有积分:</span> <em
-					id="olderpoint" style="color:red;font-weight: 700;"></em> <span>&nbsp;&nbsp;&nbsp;</span>
 
-				<span style="font-color:#3c3c3c;font-weight: 700;">使用</span> <em
-					id="#"> <input id="subt" name="" type="button" value="-"
-					style="width:15px;" /> <input id="point_value" name="" type="text"
-					value="100" style="width:40px;" /> <input id="addt" type="button"
-					value="+" style="width:15px;" />
 
-				</em> <span style="font-color:#3c3c3c;font-weight: 700;">积分&nbsp;&nbsp;</span>
+				<!-- <em id="#"> 
+					<input id="subt" name="" type="button" value="-" style="width:15px;" /> 
+					<input id="point_value" name="" type="text" value="100" style="width:40px;" /> 
+					<input id="addt" type="button" value="+" style="width:15px;" />
+				</em>  -->
+				<div class="amount-wrapper ">
+					<div class="item-amount ">
+						<div class="item-amount ">
+							<div class="sl">
+								<span style="font-color:#3c3c3c;font-weight: 700;">已有积分:</span>
+								<em id="olderpoint" style="color:red;font-weight: 700;"></em> <span>&nbsp;&nbsp;&nbsp;</span>
+								<span style="font-color:#3c3c3c;font-weight: 700;">使用</span> <input
+									class="min am-btn" name="" type="button" value="-" /> 
+									<input class="text_box" name="" type="text" value="0"
+									style="width:30px;" readonly="readonly" id="countProduct" />
+								<input class="add am-btn" name="" type="button" value="+" /> <span
+									style="font-color:#3c3c3c;font-weight: 700;">积分&nbsp;&nbsp;</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
 
 			</div>
 			<!--
@@ -181,10 +195,10 @@
 			<div style="display: inline-block;border: 1px solid #f40;">
 				<div class="payInfo-shadow" style="padding:10px 10px 10px 20px;">
 					<div class="order-realPay" id="#">
-						<div>
-							<span style="font-color:#3c3c3c;font-weight: 700;">实付款：</span> <span
-								style="font-size: 26px;color: #999;">￥</span> <span id="#"
-								style="font: 700 26px tahoma;color: #f40;">79.00</span>
+						<div style="display: none;">
+							<span style="font-color:#3c3c3c;font-weight: 700;">总价：</span> <span
+								style="font-size: 26px;color: #999;">￥</span> <span id="J_Total"
+								style="font: 700 26px tahoma;color: #f40;"></span>
 						</div>
 					</div>
 					<div class="order-confirmAddr" id="#">
@@ -199,14 +213,21 @@
 							</span>
 						</div>
 					</div>
-					<div></div>
+					<div>
+						<span style="color:#ff4400;font-weight: 700;font-size: 18px;">积分抵扣:</span>
+						<span style="font-size: 18px;">￥</span> <span id="pointDis"
+							style="font-size: 18px;">0</span> <span
+							style="color:#ff4400;font-weight: 700;font-size: 18px;">实付款:</span>
+						<span style="font-size: 18px;">￥</span> <span id="totalPay"
+							style="font-size: 18px;">0</span>
+					</div>
 					<div class="order-confirmAddr"></div>
 				</div>
 			</div>
 		</div>
 		<!--确认按钮-->
 		<div style="text-align:right;">
-			<a role="button" title="提交订单"
+			<a href="#" title="提交订单" id="submitOrder"
 				style="vertical-align: middle;text-align:center;font-size: 14px;    font-weight:700; line-height: 39px;background: #f40;color:#fff;position: relative;display: inline-block;width: 150px;height: 39px;">提交订单</a>
 		</div>
 		<div class="footer">
@@ -285,8 +306,8 @@
 				}
 			}
 		}();
-		  var productid = UrlParm.parm("productid");
-		  var count = UrlParm.parm("count"); 
+		var productid = UrlParm.parm("productid");
+		var count = UrlParm.parm("count");
 	
 		//var productid=1;
 		//var count = 2;
@@ -294,13 +315,15 @@
 		if (productid) {
 			url = "/eldermanage/v1/shop/pay/rightnow/confirm/order"
 			data = "productid=" + productid
-		} 
+		}
 		//从购物车页面到确认订单页
 		else {
 			url = "/eldermanage/v1/shop/pay/cart/confirm/order"
 			data = null
-			//var count =null
+		//var count =null
 		}
+	
+		var totalPrice = {};
 		$.ajax({
 			type : 'get',
 			contentType : 'application/json',
@@ -315,82 +338,163 @@
 					$('#olderaddress2').html(resultData[0].olderaddress);
 					$('#oldertel').html(resultData[0].oldertel);
 					$('#olderpoint').html(resultData[0].olderpoint);
-					
-					if(!count){count=resultData[i].cartcount};
-					var Dtatalprice=resultData[i].productdiscountprice*count;
+	
+					totalPrice["unitprice_" + i] = resultData[i].productdiscountprice;
+	
+					if (!count) {
+						count = resultData[i].cartcount
+					}
+					;
+					var Dtatalprice = resultData[i].productdiscountprice * count;
 					var oDiv = `
-													<div class="bundle-hd">
-														<div class="bd-promos">
-															<div class="bd-has-promo">
-																已享优惠:<span class="bd-has-promo-content">省￥${resultData[i].preferentialPrice}</span>&nbsp;&nbsp;
-															</div>
-								
+									<div class="bundle-hd">
+										<div class="bd-promos">
+											<div class="bd-has-promo">
+												已享优惠:<span class="bd-has-promo-content">省￥${resultData[i].preferentialPrice}</span>&nbsp;&nbsp;
+											</div>
+				
+										</div>
+									</div>
+									<div class="clear"></div>
+									<div class="bundle-main">
+										<ul class="item-content clearfix">
+											<li class="td td-item">
+												<div class="item-pic">
+													<a href="#" target="_blank"
+														data-title="${resultData[i].productname}"
+														class="J_MakePoint" data-point="tbcart.8.12"> <img
+														src="${resultData[i].productimg}"width="80" 
+														class="itempic J_ItemImg"></a>
+												</div>
+												<div class="item-info">
+													<div class="item-basic-info">
+														<a href='../Front/introduction.html?productid=${resultData[i].productid}' target="_blank" title="${resultData[i].productname}"
+															class="item-title J_MakePoint" data-point="tbcart.8.11">${resultData[i].productname}</a>
+													</div>
+												</div>
+											</li>
+											<li class="td td-info">
+												<div class="item-props item-props-can">
+													<span class="sku-line">重量：${resultData[i].productweight}KG</span>  <br> 
+													<span class="sku-line">简介：${resultData[i].productinfo}KG</span>
+												</div>
+											</li>
+											<li class="td td-price">
+												<div class="item-price price-promo-promo">
+													<div class="price-content">
+														<div class="price-line">
+															<em class="price-original">${resultData[i].productprice}</em>
+														</div>
+														<div class="price-line">
+															<em class="J_Price price-now" tabindex="0" id="price_${i}">${resultData[i].productdiscountprice}</em>
 														</div>
 													</div>
-													<div class="clear"></div>
-													<div class="bundle-main">
-														<ul class="item-content clearfix">
-															<li class="td td-item">
-																<div class="item-pic">
-																	<a href="#" target="_blank"
-																		data-title="${resultData[i].productname}"
-																		class="J_MakePoint" data-point="tbcart.8.12"> <img
-																		src="${resultData[i].productimg}"width="80" 
-																		class="itempic J_ItemImg"></a>
-																</div>
-																<div class="item-info">
-																	<div class="item-basic-info">
-																		<a href='../Front/introduction.html?productid=${resultData[i].productid}' target="_blank" title="${resultData[i].productname}"
-																			class="item-title J_MakePoint" data-point="tbcart.8.11">${resultData[i].productname}</a>
-																	</div>
-																</div>
-															</li>
-															<li class="td td-info">
-																<div class="item-props item-props-can">
-																	<span class="sku-line">重量：${resultData[i].productweight}KG</span>  <br> 
-																	<span class="sku-line">简介：${resultData[i].productinfo}KG</span>
-																</div>
-															</li>
-															<li class="td td-price">
-																<div class="item-price price-promo-promo">
-																	<div class="price-content">
-																		<div class="price-line">
-																			<em class="price-original">${resultData[i].productprice}</em>
-																		</div>
-																		<div class="price-line">
-																			<em class="J_Price price-now" tabindex="0" id="price_${i}">${resultData[i].productdiscountprice}</em>
-																		</div>
-																	</div>
-																</div>
-															</li>
-															<li class="td td-amount">
-																<div class="amount-wrapper ">
-																	<div class="item-amount ">
-																		<div class="item-amount ">
-														                     <div class="sl">
-															                <span class="sku-line">${count}</span> 
-														                 </div>
-													                  </div>
-																	</div>
-																</div>
-															</li>
-															<li class="td td-sum">
-																<div class="td-inner">
-																	<em tabindex="0" class="J_ItemSum number" id="unitprice_${i}">${Dtatalprice}</em>
-																</div>
-															</li>
-														</ul>
+												</div>
+											</li>
+											<li class="td td-amount">
+												<div class="amount-wrapper ">
+													<div class="item-amount ">
+														<div class="item-amount ">
+										                     <div class="sl">
+											                <span class="sku-line">${count}</span> 
+										                 </div>
+									                  </div>
 													</div>
-															<div class="clear"></div>
-																`;
+												</div>
+											</li>
+											<li class="td td-sum">
+												<div class="td-inner">
+													<em tabindex="0" class="J_ItemSum number" id="unitprice_${i}">${Dtatalprice}</em>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="clear"></div>
+						`;
 					$("#productview").append(oDiv);
-	
+					count=null;
 				}
+				countPriceSumObjectJson();
 			},
 			error : function() {
 				alert('数据库错误')
 			}
 		})
+			.done(function() {
+				//动态添加完数据后，添加增加减少按钮
+				$(".add").click(function() {
+					var t = $(this).parent().find('input[class*=text_box]');
+					if (t.val() < $('#olderpoint').html()) {
+						t.val(parseInt(t.val()) + 100)
+						$("#pointDis").html(t.val() / 100)
+						$("#totalPay").html($("#J_Total").html() - $("#pointDis").html())
+					}
+					// t.val(parseInt(t.val())+100)
+					// changeMultiplication($(this),0);
+	
+				})
+				$(".min").click(function() {
+					var t = $(this).parent().find('input[class*=text_box]');
+					t.val(parseInt(t.val()) - 100)
+					$("#pointDis").html(t.val() / 100)
+					$("#totalPay").html($("#J_Total").html() - $("#pointDis").html())
+	
+					if (parseInt(t.val()) < 100) {
+						t.val(0);
+						$("#pointDis").html(0)
+						$("#totalPay").html($("#J_Total").html())
+						return;
+					}
+				// changeMultiplication($(this),1);
+				})
+			})
+	
+		function countPriceSumObjectJson() {
+			var count = 0;
+			for (let item in totalPrice) {
+				count += totalPrice[item];
+			}
+			$("#J_Total").html(count);
+			$("#totalPay").html($("#J_Total").html());
+		}
+	
+		//从购物车中提交订单
+		
+		////从直接购买中结算
+		if (productid) {
+			var url1 =  "/eldermanage/v1/shop/pay/rightnow/order/formation?ordertotal="+$("#totalPay").html()+"&ordertakepoint="+$("#countProduct").val()+"&productid="+productid+"&count="+count
+		}
+		//从购物车页面结算
+		else {
+			var url1 =  "/eldermanage/v1/shop/pay/order/formation?ordertotal="+$("#totalPay").html()+"&ordertakepoint="+$("#countProduct").val()
+		//var count =null
+		}
+		
+				$("#submitOrder").click(function() {
+					//alert($("#totalPay").html())
+					//alert($("#countProduct").val())
+					$.ajax({
+						type : 'get',
+						contentType : 'application/json',
+						url :url1,
+						data:null,
+						success : function(result) {
+							if (result.success) {
+								alert("生成成功");
+							   location.href = "../Front/personal.html";
+							} else {
+								alert(result.information);
+							}
+						},
+						error : function() {
+							alert("数据库错误")
+						}
+					})
+	
+	
+				})
+				
+	
 	</script>
 
 </body>

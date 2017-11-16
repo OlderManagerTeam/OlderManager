@@ -87,12 +87,13 @@
 		<ul class="message-r">
 			<div class="topMessage home">
 				<div class="menu-hd">
-					<a href="#" target="_top" class="h">商城首页</a>
+					<a href="shoppingindex.html" target="_top" class="h">商城首页</a>
 				</div>
 			</div>
 			<div class="topMessage my-shangcheng">
 				<div class="menu-hd MyShangcheng">
-					<a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a>
+					<a href="personal.html" target="_top"><i
+						class="am-icon-user am-icon-fw"></i>个人中心</a>
 				</div>
 			</div>
 			<div class="topMessage mini-cart">
@@ -122,7 +123,7 @@
 				<input id="searchInput" name="index_none_header_sysc" type="text"
 					placeholder="搜索" autocomplete="off"> <input
 					id="ai-topsearch" class="submit am-btn" value="搜索" index="1"
-					type="submit">
+					type="button">
 			</form>
 		</div>
 	</div>
@@ -138,13 +139,13 @@
 			</div>
 			<div class="nav-cont">
 				<ul>
-					<li class="index"><a href="#">首页</a></li>
-					<li class="qc"><a href="#">团购</a></li>
+					<li class="index"><a href="shoppingindex.html">首页</a></li>
+					<li class="qc"><a href="groupindex.html">团购</a></li>
 				</ul>
 			</div>
 		</div>
 		<ol class="am-breadcrumb am-breadcrumb-slash">
-			<li><a href="#">首页</a></li>
+			<li><a href="shoppingindex.html">首页</a></li>
 			<li class="am-active">内容</li>
 		</ol>
 		<script type="text/javascript">
@@ -285,15 +286,17 @@
 											<div class="theme-options">
 												<div class="cart-title number">数量</div>
 												<dd>
-													<input id="min" class="am-btn am-btn-default" name=""
-														type="button" value="-" /> <input id="text_box" name=""
-														type="text" value="1" style="width:30px;" /> <input
-														id="add" class="am-btn am-btn-default" name=""
-														type="button" value="+" /> <span id="Stock"
+													<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" /> 
+													<input id="text_box" name="" type="text" value="1" style="width:30px;" /> 
+													<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
+													
+													 
+														<span id="Stock"
 														class="tb-hidden">库存<span class="stock"
 														id="storecount"></span>件
 													</span>
 												</dd>
+												
 
 											</div>
 											<div class="clear"></div>
@@ -336,10 +339,10 @@
 							<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
 						</div>
 					</li>
-					<li><div class="clearfix tb-btn tb-btn-basket theme-login" id="bgLikBasket">
-								<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
-							</div>
-					</li>
+					<li><div class="clearfix tb-btn tb-btn-basket theme-login"
+							id="bgLikBasket">
+							<a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+						</div></li>
 				</div>
 
 			</div>
@@ -539,20 +542,20 @@
 					<a href="#"> <span class="setting"></span>
 					</a>
 					<div class="ibar_login_box status_login ">
-								<div class="avatar_box ">
-									<p class="avatar_imgbox ">
-										<img src="" id="olderheadurl" width="90" />
-									</p>
-									<ul class="user_info ">
-										<li id="oldername"></li>
-										<li id="olderlevel"></li>
-									</ul>
-								</div>
-								<div class="login_btnbox ">
-									<a href="# " class="login_order ">我的订单</a>
-								</div>
-								<i class="icon_arrow_white "></i>
-							</div>
+						<div class="avatar_box ">
+							<p class="avatar_imgbox ">
+								<img src="" id="olderheadurl" width="90" />
+							</p>
+							<ul class="user_info ">
+								<li id="oldername"></li>
+								<li id="olderlevel"></li>
+							</ul>
+						</div>
+						<div class="login_btnbox ">
+							<a href="# " class="login_order ">我的订单</a>
+						</div>
+						<i class="icon_arrow_white "></i>
+					</div>
 
 				</div>
 				<div id="shopCart" class="item">
@@ -591,7 +594,7 @@
 			</div>
 
 		</div>
-		
+
 	</div>
 
 	<script type="text/javascript">
@@ -652,41 +655,41 @@
 			}
 		}();
 	
-	//显示菜单内容
-				var olderid = 1;
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "/eldermanage/v1/shop/personal/older/info?olderid" + olderid,
-					data : null,
-					success : function(result) {
-						document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
-						document.getElementById("olderheadurl").src = result.data.olderheadurl;
-						document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
-					},
-					error : function() {
-						alert('数据库错误')
-					}
-				})
-				//显示购物车数量
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "/eldermanage/v1/shop/older/cart/amount?olderid" + olderid,
-					data : null,
-					success : function(result) {
-						$("#J_MiniCartNum").html(result.data);
-						$("#cartcount").html(result.data);
-						
-					},
-					error : function() {
-						alert('数据库错误')
-					}
-				})
-			
+		//显示菜单内容
+		var olderid = 1;
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/personal/older/info?olderid" + olderid,
+			data : null,
+			success : function(result) {
+				document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
+				document.getElementById("olderheadurl").src = result.data.olderheadurl;
+				document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
+			},
+			error : function() {
+				alert('数据库错误')
+			}
+		})
+		//显示购物车数量
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/older/cart/amount?olderid" + olderid,
+			data : null,
+			success : function(result) {
+				$("#J_MiniCartNum").html(result.data);
+				$("#cartcount").html(result.data);
 	
-		//	var productid = UrlParm.parm("productid");
-		var productid = 1;
+			},
+			error : function() {
+				alert('数据库错误')
+			}
+		})
+	
+	
+		var productid = UrlParm.parm("productid");
+		//var productid = 3;
 	
 		$.ajax({
 			type : 'get',
@@ -713,16 +716,36 @@
 				// 商品细节图片
 				for (var i = 0; i <= resultData.picList.length - 1; i++) {
 					var oImg = `
-																									<img src="${result.data.picList[i]}" />
-																								`;
+																												<img src="${result.data.picList[i]}" />
+																											`;
 	
 					$("#productInfoImg").append(oImg);
 				}
-	
-				var count = document.getElementById("text_box").value;
-				$('#LikBuy').on('click', function() {
-					location.href = "../Front/confirm_order.html?productid=" + resultData.productid + "&count=" + count;
+				//判断是否加入过购物车
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/shop/pay/judge/add/shopcart",
+					data : "productid=" + resultData.productid + "&count=" + count,
+					success : function(result) {
+						if (result.success) {
+							document.getElementById("LikBasket").style.backgroundColor = 'gray'
+						}
+					},
+					error : function() {
+						alert("数据库错误")
+					}
 				})
+	
+	
+				
+				  $('#LikBuy').on('click', function() {
+				  	var count = document.getElementById("text_box").value;
+					location.href = "../Front/confirm_order.html?productid=" + resultData.productid + "&count=" + count;
+				})  
+				/* $('#LikBuy').click(function(){
+					alert(count)
+				})  */
 	
 				$("#LikBasket").click(function() {
 					$.ajax({
@@ -731,9 +754,13 @@
 						url : "/eldermanage/v1/shop/pay/add/shopcart",
 						data : "productid=" + resultData.productid + "&count=" + count,
 						success : function(result) {
-							alert(result.information);
-							document.getElementById("LikBasket").style.backgroundColor='gray'
-							
+							if (result.success) {
+								alert(result.information);
+								window.location.reload();
+								document.getElementById("LikBasket").style.backgroundColor = 'gray'
+							} else {
+								alert(result.information);
+							}
 						},
 						error : function() {
 							alert("数据库错误")
@@ -774,12 +801,12 @@
 				//放大镜后续图片，最多四张张
 				for (var i = 1; i <= magnifyingglassItem.length - 1; i++) {
 					var oLi = `
-											<li>
-												<div class="tb-pic tb-s40">
-													<a href="#"><img src="${magnifyingglassItem[i].pviewpicsmallpic}" mid="${magnifyingglassItem[i].pviewpicpic}" big="${magnifyingglassItem[i].pviewpicbigpic}"></a>
-												</div>
-											</li>
-										`;
+														<li>
+															<div class="tb-pic tb-s40">
+																<a href="#"><img src="${magnifyingglassItem[i].pviewpicsmallpic}" mid="${magnifyingglassItem[i].pviewpicpic}" big="${magnifyingglassItem[i].pviewpicbigpic}"></a>
+															</div>
+														</li>
+													`;
 					$('#thumblist').append(oLi);
 				}
 	
@@ -811,17 +838,17 @@
 	
 					for (var i = 0; i <= 5; i++) {
 						var oLi = `
-								 				<li class="first">
-											      	<div class="p-img">                    
-								 			      		<a  href="#"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
-								 			      	</div>
-								 			      	<div class="p-name"><a href="#">
-								 			      		${lookAgainData[i].productname}
-								 			      	</a>
-								 			      	</div>
-								 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
-								 			    </li>
-								 			`;
+											 				<li class="first">
+														      	<div class="p-img">                    
+											 			      		<a  href="../Front/introduction.html?productid=${lookAgainData[i].productid}"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
+											 			      	</div>
+											 			      	<div class="p-name"><a href="#">
+											 			      		${lookAgainData[i].productname}
+											 			      	</a>
+											 			      	</div>
+											 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
+											 			    </li>
+											 			`;
 	
 						$('#lookAgain').append(oLi);
 					}
@@ -842,17 +869,17 @@
 	
 					for (var i = 0; i <= 5; i++) {
 						var oLi = `
-								 				<li class="first">
-											      	<div class="p-img">                    
-								 			      		<a  href="#"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
-								 			      	</div>
-								 			      	<div class="p-name"><a href="#">
-								 			      		${lookAgainData[i].productname}
-								 			      	</a>
-								 			      	</div>
-								 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
-								 			    </li>
-							 			`;
+											 				<li class="first">
+														      	<div class="p-img">                    
+											 			      		<a  href="../Front/introduction.html?productid=${lookAgainData[i].productid}"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
+											 			      	</div>
+											 			      	<div class="p-name"><a href="#">
+											 			      		${lookAgainData[i].productname}
+											 			      	</a>
+											 			      	</div>
+											 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
+											 			    </li>
+										 			`;
 						$('#lookAgain').append(oLi);
 					}
 				},
@@ -895,50 +922,53 @@
 					var date = new Date(rateInfoData[i].ratedate);
 					var d = date.toLocaleString();
 					var oLi = `
-											<li class="am-comment">
-												<!-- 评论容器 -->
-												<a href="">
-													<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-													<!-- 评论者头像 -->
-												</a>
-				
-												<div class="am-comment-main">
-													<!-- 评论内容容器 -->
-													<header class="am-comment-hd">
-														<!--<h3 class="am-comment-title">评论标题</h3>-->
-														<div class="am-comment-meta">
-															<!-- 评论元数据 -->
-															<a href="#link-to-user" class="am-comment-author">${rateInfoData[i].oldername.charAt(0)}** (匿名)</a>
-															<!-- 评论者 -->
-															评论于
-															<time datetime="">${d}</time>
-														</div>
-													</header>
-				
-													<div class="am-comment-bd">
-														<div class="tb-rev-item " data-id="255776406962">
-															<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-																${rateInfoData[i].ratecontent}
+														<li class="am-comment">
+															<!-- 评论容器 -->
+															<a href="">
+																<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
+																<!-- 评论者头像 -->
+															</a>
+							
+															<div class="am-comment-main">
+																<!-- 评论内容容器 -->
+																<header class="am-comment-hd">
+																	<!--<h3 class="am-comment-title">评论标题</h3>-->
+																	<div class="am-comment-meta">
+																		<!-- 评论元数据 -->
+																		<a href="#link-to-user" class="am-comment-author">${rateInfoData[i].oldername.charAt(0)}** (匿名)</a>
+																		<!-- 评论者 -->
+																		评论于
+																		<time datetime="">${d}</time>
+																	</div>
+																</header>
+							
+																<div class="am-comment-bd">
+																	<div class="tb-rev-item " data-id="255776406962">
+																		<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+																			${rateInfoData[i].ratecontent}
+																		</div>
+																		<div class="tb-r-act-bar">
+																			
+																		<div class="" id='rateStars${i}'>
+											                                 
+										                                 </div>
+																		购买数量：${rateInfoData[i].orderproductcount}
+																		</div>
+																	</div>
+							
+																</div>
+																<!-- 评论内容 -->
 															</div>
-															<div class="tb-r-act-bar">
-																/* 评价等级${rateInfoData[i].ratestar}：&nbsp;&nbsp;&nbsp;&nbsp; */
-															<div class="atar_Show">
-								                                 <p tip="" id="p"></p>
-							                                 </div>
-															购买数量：${rateInfoData[i].orderproductcount}
-															</div>
-														</div>
-				
-													</div>
-													<!-- 评论内容 -->
-												</div>
-											</li>
-										`;
-	               
+														</li>
+								`;
+					var oSpan = `
+										<span class="am-icon-star" style="color:red;font-size:20px;"></span>
+								`;
+	
 					$('#rateInfo').append(oLi);
-					$('#p').setAttribute("tip",rateInfoData[i].ratestar)
-				 	//var a = document.getElementById("p_${i}");
-					//a.setAttribute("tip",rateInfoData[i].ratestar)
+					for (x = 0; x <= rateInfoData[i].ratestar - 1; x++) {
+						$('#rateStars' + i).append(oSpan);
+					}
 				}
 			},
 			error : function() {
@@ -961,19 +991,20 @@
 					//猜你喜欢
 					for (var i = 0; i <= whatYouLikeData.length; i++) {
 						var oLi = `
-																				<li>
-																					<div class="i-pic limit">
-																						<img src="${whatYouLikeData[i].productimg}" />
-																						<p>${whatYouLikeData[i].productname}
-																							<span>${whatYouLikeData[i].productinfo}</span></p>
-																						}
-																						<p class="price fl">
-																							<b>¥</b>
-																							<strong>${whatYouLikeData[i].productprice}</strong>
-																						</p>
-																					</div>
-																				</li>
-																			`;
+														<li>
+															<div class="i-pic limit">
+															<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
+																<img src="${whatYouLikeData[i].productimg}" />
+															</a>
+															
+																<p><span></span></p>
+																<p class="price fl">
+																	<b>¥</b>
+																	<strong>${whatYouLikeData[i].productprice}</strong>
+																</p>
+															</div>
+														</li>
+													`;
 	
 						$('#whatYouLike').append(oLi);
 					}
@@ -996,18 +1027,21 @@
 					//猜你喜欢
 					for (var i = 0; i <= whatYouLikeData.length; i++) {
 						var oLi = `
-																				<li>
-																					<div class="i-pic limit">
-																						<img src="${whatYouLikeData[i].productimg}" />
-																						<p>${whatYouLikeData[i].productname}
-																							<span>${whatYouLikeData[i].productinfo}</span></p>
-																						<p class="price fl">
-																							<b>¥</b>
-																							<strong>${whatYouLikeData[i].productprice}</strong>
-																						</p>
-																					</div>
-																				</li>
-																			`;
+												<li>
+													<div class="i-pic limit">
+													<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
+														<img src="${whatYouLikeData[i].productimg}" />
+														</a>
+													<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
+														<p><span>${whatYouLikeData[i].productinfo}</span></p>
+														</a>
+														<p class="price fl">
+															<b>¥</b>
+															<strong>${whatYouLikeData[i].productprice}</strong>
+														</p>
+													</div>
+												</li>
+											`;
 	
 						$('#whatYouLike').append(oLi);
 					}
@@ -1017,6 +1051,12 @@
 				}
 			)
 		}
+		$("#ai-topsearch").click(function(event) {
+			searchContent = $("#searchInput").val();
+			window.open('search.html?' + searchContent)
+		});
+		
+		
 	</script>
 
 </body>
