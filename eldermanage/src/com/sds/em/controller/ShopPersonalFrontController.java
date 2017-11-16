@@ -95,6 +95,12 @@ public class ShopPersonalFrontController {
 		int olderid = 1;
 		return shopPersonalFrontService.myGroupsInfo(olderid);
 	}
-
+   //显示我的足迹
+	@RequestMapping(method = RequestMethod.GET, value = "myfootprint/info")
+	public @ResponseBody Message myFootprintInfo(HttpSession session) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPersonalFrontService.myFootprintInfo(olderid);
+	}
 
 }

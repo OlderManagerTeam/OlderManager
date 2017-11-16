@@ -1,6 +1,7 @@
 package com.sds.em.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OlderproductviewExample {
@@ -341,6 +342,66 @@ public class OlderproductviewExample {
 
         public Criteria andPviewocountNotBetween(Integer value1, Integer value2) {
             addCriterion("pviewocount not between", value1, value2, "pviewocount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateIsNull() {
+            addCriterion("pviewdate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateIsNotNull() {
+            addCriterion("pviewdate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateEqualTo(Date value) {
+            addCriterion("pviewdate =", value, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateNotEqualTo(Date value) {
+            addCriterion("pviewdate <>", value, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateGreaterThan(Date value) {
+            addCriterion("pviewdate >", value, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateGreaterThanOrEqualTo(Date value) {
+            addCriterion("pviewdate >=", value, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateLessThan(Date value) {
+            addCriterion("pviewdate <", value, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateLessThanOrEqualTo(Date value) {
+            addCriterion("pviewdate <=", value, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateIn(List<Date> values) {
+            addCriterion("pviewdate in", values, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateNotIn(List<Date> values) {
+            addCriterion("pviewdate not in", values, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateBetween(Date value1, Date value2) {
+            addCriterion("pviewdate between", value1, value2, "pviewdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPviewdateNotBetween(Date value1, Date value2) {
+            addCriterion("pviewdate not between", value1, value2, "pviewdate");
             return (Criteria) this;
         }
     }

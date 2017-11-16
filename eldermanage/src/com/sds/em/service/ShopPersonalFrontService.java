@@ -34,6 +34,7 @@ public interface ShopPersonalFrontService {
 	//显示 我的团购页面
 	public Message myGroupsInfo(int olderid) throws Exception;
 
-	
+	// 显示我的足迹
+	public Message myFootprintInfo(int olderid) throws Exception;
 
 }
