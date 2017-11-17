@@ -1,0 +1,28 @@
+.btn-default{
+	color: #33c11c;
+	border-color: #33c11c;
+	font-weight: 600;
+}
+.btn-default:hover{
+	color: #ff6c00;
+	border-color: #ff6c00;
+	background-color: #fff;
+}
+.btn-default:active:hover{
+	color: #ff6c00;
+	border-color: #ff6c00;
+	background-color: #fff;
+}
+.single-service-item{
+	padding-left: 0px;
+}
+.menuzord-menu > li > a {
+	color: #7aba1e;
+}
+.menuzord-menu > li > a:hover {
+	color: #ffbc1e;
+}
+
+.tab-content li{
+	list-style:none;
+}
