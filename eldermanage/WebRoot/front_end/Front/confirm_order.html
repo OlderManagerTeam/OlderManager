@@ -303,6 +303,7 @@
 		var productid = UrlParm.parm("productid");
 		var count = UrlParm.parm("count");
 	
+	    
 		//var productid=1;
 		//var count = 2;
 		//从商品详情页面到确认订单页
@@ -420,7 +421,7 @@
 				$(".add").click(function() {
 					var t = $(this).parent().find('input[class*=text_box]');
 					if($("#totalPay").html()>0){
-						if ((t.val() - $('#olderpoint').html())<0) {
+						if ((t.val() - $('#olderpoint').html())<-100) {
 							t.val(parseInt(t.val()) + 100)
 							$("#pointDis").html(t.val() / 100)
 							$("#totalPay").html($("#J_Total").html() - $("#pointDis").html())
@@ -464,11 +465,10 @@
 			//alert($("#totalPay").html())
 			//alert($("#countProduct").val())
 			////从直接购买中结算
-			if (productid) {
+			var count =UrlParm.parm("count");
 			var ordertotal= $("#totalPay").html();
 			var ordertakepoint = $("#countProduct").val();
-			alert(ordertotal)
-			alert(ordertakepoint)
+			if (productid) {
 				var url1 = "/eldermanage/v1/shop/pay/rightnow/order/formation?ordertotal=" + ordertotal+ "&ordertakepoint=" + ordertakepoint + "&productid=" + productid + "&count=" + count
 			}
 			//从购物车页面结算
