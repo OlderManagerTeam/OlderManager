@@ -28,6 +28,7 @@ import com.sds.em.po.ProductExample;
 import com.sds.em.po.ProductExample.Criteria;
 import com.sds.em.po.Productgroup;
 import com.sds.em.po.Productpiclist;
+import com.sds.em.po.ProductpiclistExample;
 import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductrateExample;
 import com.sds.em.po.Productstore;
@@ -35,6 +36,7 @@ import com.sds.em.po.ProductstoreExample;
 import com.sds.em.po.Producttypetwo;
 import com.sds.em.po.ProducttypetwoExample;
 import com.sds.em.po.Productviewlist;
+import com.sds.em.po.ProductviewlistExample;
 import com.sds.em.pojo.OrdersExtend;
 import com.sds.em.pojo.ProductrateExtend;
 import com.sds.em.pojo.ProductstoreExtend;
@@ -55,9 +57,13 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	@Autowired
 	ProductpiclistMapper productpiclistMapper;
+	ProductpiclistExample productpiclistExample = new ProductpiclistExample();
+	com.sds.em.po.ProductpiclistExample.Criteria productpiclistCriteria;
 
 	@Autowired
 	ProductviewlistMapper productviewlistMapper;
+	ProductviewlistExample productviewlistExample = new ProductviewlistExample();
+	com.sds.em.po.ProductviewlistExample.Criteria productviewlistCriteria;
 
 	ProductExample productExample = new ProductExample();
 	Criteria productCriteria;
@@ -169,9 +175,26 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	@Override
 	// wuwenbo,修改商品信息
-	public Message productalter(Product product) {
+	public Message productalter(Product product, List<Productviewlist> productviewlist,
+			List<Productpiclist> productpiclist) {
 		try {
 			productMapper.updateByPrimaryKeySelective(product);
+			productpiclistExample.clear();
+			productpiclistCriteria = productpiclistExample.createCriteria();
+			productpiclistCriteria.andPproductidEqualTo(product.getProductid());
+			productpiclistMapper.deleteByExample(productpiclistExample);
+			for (Productpiclist productpic : productpiclist) {
+				productpic.setPproductid(product.getProductid());
+				productpiclistMapper.insertSelective(productpic);
+			}
+			productviewlistExample.clear();
+			productviewlistCriteria = productviewlistExample.createCriteria();
+			productviewlistCriteria.andPviewpicproductidEqualTo(product.getProductid());
+			productviewlistMapper.deleteByExample(productviewlistExample);
+			for (Productviewlist productpic : productviewlist) {
+				productpic.setPviewpicproductid(product.getProductid());
+				productviewlistMapper.insertSelective(productpic);
+			}
 			return new Message(true, "修改成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -443,5 +466,23 @@ public class OlderShopServiceImpl implements OlderShopService {
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
+	}
+
+	@Override
+	// 得到商品图片
+	public List<Productpiclist> getproductpiclist(Integer productid) {
+		productpiclistExample.clear();
+		productpiclistCriteria = productpiclistExample.createCriteria();
+		productpiclistCriteria.andPproductidEqualTo(productid);
+		return productpiclistMapper.selectByExample(productpiclistExample);
+	}
+
+	@Override
+	// 得到商品预览图
+	public List<Productviewlist> getproductviewlist(Integer productid) {
+		productviewlistExample.clear();
+		productviewlistCriteria = productviewlistExample.createCriteria();
+		productviewlistCriteria.andPviewpicproductidEqualTo(productid);
+		return productviewlistMapper.selectByExample(productviewlistExample);
 	}
 }

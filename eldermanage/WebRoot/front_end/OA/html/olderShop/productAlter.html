@@ -255,6 +255,14 @@
 									<!--添加视频-->
 									<form class="form-horizontal" id="productAlter">
 										<div class="form-group">
+											<label for="productname" class="col-sm-3 control-label">按ID查询商品：</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" id="productId"
+													placeholder="按ID查询商品" name="productId">
+											</div>
+											<button class="btn btn-primary btn-small" id="query">查询</button>
+										</div>
+										<div class="form-group">
 											<label for="productname" class="col-sm-3 control-label">修改商品名称：</label>
 											<div class="col-sm-5">
 												<input type="text" class="form-control" id="productname"
@@ -328,9 +336,16 @@
 										</div>
 										<!-- 商品展示图 -->
 										<div class="form-group">
-											<label for="productimg" class="col-sm-3 control-label">商品展示图：</label>
+											<label for="productimg" class="col-sm-3 control-label">商品预览图：</label>
 											<div class="col-sm-5">
 												<input id="file-1" type="file" multiple class="file"
+													data-overwrite-initial="false" data-min-file-count="2">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="productimg" class="col-sm-3 control-label">商品展示图：</label>
+											<div class="col-sm-5">
+												<input id="file-2" type="file" multiple class="file"
 													data-overwrite-initial="false" data-min-file-count="2">
 											</div>
 										</div>
@@ -383,316 +398,341 @@
 						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 			</div>
 		</footer>
-		<div>
-			<!-- Javascript Libs -->
-			<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-			<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-			<script type="text/javascript"
-				src="../../lib/js/bootstrap-switch.min.js"></script>
+		<!-- Javascript Libs -->
+		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/bootstrap-switch.min.js"></script>
 
-			<script type="text/javascript"
-				src="../../lib/js/jquery.matchHeight-min.js"></script>
-			<script type="text/javascript"
-				src="../../lib/js/jquery.dataTables.min.js"></script>
-			<script type="text/javascript"
-				src="../../lib/js/dataTables.bootstrap.min.js"></script>
-			<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-			<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-			<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-			<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-			<!-- Javascript -->
-			<script type="text/javascript" src="../../js/app.js"></script>
-			<!-- 文件上传 JS -->
-			<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
-			<script src="../../lib/js/fileinput_locale_zh.js"
-				type="text/javascript"></script>
-			<!--验证js文件-->
-			<script type="text/javascript"
-				src="../../lib/js/bootstrapValidator.min.js"></script>
-			</script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.matchHeight-min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+		<!-- Javascript -->
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<!-- 文件上传 JS -->
+		<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
+		<script src="../../lib/js/fileinput_locale_zh.js"
+			type="text/javascript"></script>
+		<!--验证js文件-->
+		<script type="text/javascript"
+			src="../../lib/js/bootstrapValidator.min.js"></script>
 
 
-			<script type="text/javascript" src="../../js/personal.js"></script>
-			<script>
-				$("#productimg").fileinput({
-					showUpload : false,
-					showCaption : false,
-					browseClass : "btn btn-primary btn-lg",
-					fileType : "any",
-					previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
-				});
-				$("#file-1").fileinput({
-					uploadUrl : '#', // you must set a valid URL here else you will get an error
-					allowedFileExtensions : [ 'jpg', 'png', 'gif' ],
-					overwriteInitial : false,
-					maxFileSize : 1000,
-					maxFilesNum : 10,
-					//allowedFileTypes: ['image', 'video', 'flash'],
-					slugCallback : function(filename) {
-						return filename.replace('(', '_').replace(']', '_');
-					}
-				});
-			</script>
-			<!--表单验证-->
-			<script type="text/javascript">
-				$(document).ready(function() {
-					// Generate a simple captcha
-			
-					$('#productAlter').bootstrapValidator({
-						//        live: 'disabled',
-						message : '请正确填写',
-						feedbackIcons : {
-							valid : 'glyphicon glyphicon-ok-circle',
-							invalid : 'glyphicon glyphicon-remove-circle',
-							validating : 'glyphicon glyphicon-refresh',
-							regexp : 'glyphicon glyphicon-ok-circle'
-						},
-						fields : {
-							productname : {
-								message : '姓名不能为空',
-								validators : {
-									notEmpty : {
-										message : '商品名字不能为空'
-									}
-								}
-							},
-							productprice : {
-								validators : {
-									notEmpty : {
-										message : '价格不能为空'
-									},
-									regexp : {
-										regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
-										message : '价格只能是数字，可以带两位小数'
-									}
-								}
-							},
-							producttypenumber : {
-								validators : {
-									notEmpty : {
-										message : '商品类型ID不能为空'
-									}
-								}
-							},
-							productinfo : {
-								validators : {
-									notEmpty : {
-										message : '商品详情不能为空'
-									}
-								}
-							},
-							productweight : {
-								validators : {
-									notEmpty : {
-										message : '商品重量不能为空'
-									},
-									regexp : {
-										regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
-										message : '重量只能是数字，可以带两位小数'
-									}
-								}
-							},
-							productupondate : {
-								validators : {
-									notEmpty : {
-										message : '日期不能为空'
-									},
-									date : {
-										format : 'YYYY-MM-DD',
-										message : '请输入正确的日期格式'
-									}
-								}
-							},
-							productDiscountPrice : {
-								validators : {
-									notEmpty : {
-										message : '商品折扣价不能为空'
-									},
-									regexp : {
-										regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
-										message : '价格只能是数字，可以带两位小数'
-									}
-								}
-							},
-						}
-					});
-			
-					// Validate the form manually
-			
-				});
-			</script>
-
-			<script type="text/javascript">
-				UrlParm = function() { // url参数
-					var data,
-						index;
-					(function init() {
-						data = [];
-						index = {};
-						var u = window.location.search.substr(1);
-						if (u != '') {
-							var parms = decodeURIComponent(u).split('&');
-							for (var i = 0, len = parms.length; i < len; i++) {
-								if (parms[i] != '') {
-									var p = parms[i].split("=");
-									if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
-										data.push([ '' ]);
-										index[p[0]] = data.length - 1;
-									} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
-										data[0] = [ p[1] ];
-									} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
-										data.push([ p[1] ]);
-										index[p[0]] = data.length - 1;
-									} else { // c=aaa
-										data[index[p[0]]].push(p[1]);
-									}
-								}
-							}
-						}
-					})();
-					return {
-						// 获得参数,类似request.getParameter()
-						parm : function(o) { // o: 参数名或者参数次序
-							try {
-								return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
-							} catch (e) {}
-						},
-						//获得参数组, 类似request.getParameterValues()
-						parmValues : function(o) { // o: 参数名或者参数次序
-							try {
-								return (typeof (o) == 'number' ? data[o] : data[index[o]]);
-							} catch (e) {}
-						},
-						//是否含有parmName参数
-						hasParm : function(parmName) {
-							return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
-						},
-						// 获得参数Map ,类似request.getParameterMap()
-						parmMap : function() {
-							var map = {};
-							try {
-								for (var p in index) {
-									map[p] = data[index[p]];
-								}
-							} catch (e) {}
-							return map;
-						}
-					}
-				}();
-			</script>
-
-			<script type="text/javascript">
-				if (UrlParm.parm("producttypenumber") == undefined)
-					document.getElementById("return").href = "../olderShop/productView.html?producttypenumber=1";
-				document.getElementById("productAlter")
-				$("#productarltersubmit").click(function() {
-					var form = new FormData(document.getElementById("productAlter"));
-					var producttypenumber = $("#producttypenumber").val()
-					form.append("productid", UrlParm.parm("productid"));
-					var producttypenumber = $("#producttypenumber").val()
-					form.append("producttypenumber", producttypenumber);
-					$.ajax({
-						type : 'post',
-						url : "/eldermanage/v1/oldershop/product/infoupdate",
-						data : form,
-						processData : false,
-						contentType : false,
-					})
-						.then(function(result) {
-							if (result.success) {
-								window.location.href = "/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + producttypenumber;
-							}
-						}
-					)
+		<script type="text/javascript" src="../../js/personal.js"></script>
+		<script>
+			$("#productimg").fileinput({
+				showUpload : false,
+				showCaption : false,
+				browseClass : "btn btn-primary btn-lg",
+				fileType : "any",
+				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
+			});
+			$("#file-1").fileinput({
+				uploadUrl : '#', // you must set a valid URL here else you will get an error
+				allowedFileExtensions : [ 'jpg', 'png', 'gif' ],
+				overwriteInitial : false,
+				maxFileSize : 1000,
+				maxFilesNum : 10,
+				//allowedFileTypes: ['image', 'video', 'flash'],
+				slugCallback : function(filename) {
+					return filename.replace('(', '_').replace(']', '_');
 				}
-				)
-			</script>
-			<script>
-				function load() {
-					var productid = UrlParm.parm("productid");
-					$.ajax({
-						type : 'get',
-						contentType : 'application/json',
-						url : "/eldermanage/v1/oldershop/product/info?productid=" + productid,
-						data : null,
-					})
-						.then(function(result) {
-							var productinfo = result.data;
-							document.getElementById("productname").value = productinfo.productname;
-							document.getElementById("productprice").value = productinfo.productprice;
-							var type = new Array("食物饮品", "食物饮品", "衣物服饰", "文学艺术", "生活用品", "娱乐器具", "运动器材", "医药保健品", "电子产品", "医疗器材", "家具器材");
-							document.getElementById("select2-producttypenumber-container").title = type[productinfo.producttypenumber];
-							document.getElementById("select2-producttypenumber-container").innerHTML = type[productinfo.producttypenumber];
-							document.getElementById("producttypenumber").value = productinfo.producttypenumber;
-							var roledata;
-							$("#producttypenumbertwo").empty();
-							$.ajax({
-								type : 'get',
-								contentType : 'application/json',
-								url : "/eldermanage/v1/oldershop/typeTwoTypeId?productTypeNumber=" + $('#producttypenumber').val(),
-								data : null,
-								success : function(result) {
-									roledata = result.data;
-			
-									for (var i = roledata.length - 1; i >= 0; i--) {
-										if (productinfo.typetwotypeid == roledata[i].typetwoid) {
-											var oOption = `
-																							<option value="${productinfo.typetwotypeid}" selected="selected">${roledata[i].typetwocontent}</option>
-																						`;
-											$("#select2-producttypenumbertwo-container").html(roledata[i].typetwocontent);
-											$('#producttypenumbertwo').append(oOption);
-										} else {
-											var oOption = `
-													<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
-												`;
-											$('#producttypenumbertwo').append(oOption);
-										}
-									}
+			});
+			$("#file-2").fileinput({
+				uploadUrl : '#', // you must set a valid URL here else you will get an error
+				allowedFileExtensions : [ 'jpg', 'png' ],
+				overwriteInitial : false,
+				maxFileSize : 1000,
+				maxFilesNum : 10,
+				//allowedFileTypes: ['image', 'video', 'flash'],
+				slugCallback : function(filename) {
+					return filename.replace('(', '_').replace(']', '_');
+				}
+			});
+		</script>
+		<!--表单验证-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				// Generate a simple captcha
+		
+				$('#productAlter').bootstrapValidator({
+					//        live: 'disabled',
+					message : '请正确填写',
+					feedbackIcons : {
+						valid : 'glyphicon glyphicon-ok-circle',
+						invalid : 'glyphicon glyphicon-remove-circle',
+						validating : 'glyphicon glyphicon-refresh',
+						regexp : 'glyphicon glyphicon-ok-circle'
+					},
+					fields : {
+						productname : {
+							message : '姓名不能为空',
+							validators : {
+								notEmpty : {
+									message : '商品名字不能为空'
+								}
+							}
+						},
+						productprice : {
+							validators : {
+								notEmpty : {
+									message : '价格不能为空'
 								},
-							})
-							document.getElementById("productimgnew").src = productinfo.productimg;
-							document.getElementById("productinfo").value = productinfo.productinfo;
-							document.getElementById("productweight").value = productinfo.productweight;
-							var productupondate = new Date(productinfo.productupondate + 1000 * 60 * 60 * 8);
-							var d = productupondate.toISOString().slice(0, 10);
-							document.getElementById("productupondate").value = d;
-							document.getElementById("productdiscountprice").value = productinfo.productdiscountprice;
-							if (productinfo.producttypenumber != null)
-								document.getElementById("return").href = "../olderShop/productView.html?producttypenumber=" + productinfo.producttypenumber;
-						})
-				}
-			</script>
-			<script type="text/javascript">
-				$('#producttypenumber').change(function() {
-					var roledata;
-					$("#producttypenumbertwo").empty();
-			
-			
-					$.ajax({
-						type : 'get',
-						contentType : 'application/json',
-						url : "/eldermanage/v1/oldershop/typeTwoTypeId?productTypeNumber=" + $('#producttypenumber').val(),
-						data : null,
-						success : function(result) {
-							roledata = result.data;
-							var oOption = `
-																										<option value="0" selected="selected">无</option>
-																									`;
-							$("#select2-producttypenumbertwo-container").html("无");
-							$('#producttypenumbertwo').append(oOption);
-							for (var i = roledata.length - 1; i >= 0; i--) {
-								var oOption = `
-																<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
-															`;
-								$('#producttypenumbertwo').append(oOption);
+								regexp : {
+									regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+									message : '价格只能是数字，可以带两位小数'
+								}
 							}
 						},
-					})
+						producttypenumber : {
+							validators : {
+								notEmpty : {
+									message : '商品类型ID不能为空'
+								}
+							}
+						},
+						productinfo : {
+							validators : {
+								notEmpty : {
+									message : '商品详情不能为空'
+								}
+							}
+						},
+						productweight : {
+							validators : {
+								notEmpty : {
+									message : '商品重量不能为空'
+								},
+								regexp : {
+									regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+									message : '重量只能是数字，可以带两位小数'
+								}
+							}
+						},
+						productupondate : {
+							validators : {
+								notEmpty : {
+									message : '日期不能为空'
+								},
+								date : {
+									format : 'YYYY-MM-DD',
+									message : '请输入正确的日期格式'
+								}
+							}
+						},
+						productDiscountPrice : {
+							validators : {
+								notEmpty : {
+									message : '商品折扣价不能为空'
+								},
+								regexp : {
+									regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+									message : '价格只能是数字，可以带两位小数'
+								}
+							}
+						},
+					}
+				});
+		
+				// Validate the form manually
+		
+			});
+		</script>
+
+		<script type="text/javascript">
+			UrlParm = function() { // url参数
+				var data,
+					index;
+				(function init() {
+					data = [];
+					index = {};
+					var u = window.location.search.substr(1);
+					if (u != '') {
+						var parms = decodeURIComponent(u).split('&');
+						for (var i = 0, len = parms.length; i < len; i++) {
+							if (parms[i] != '') {
+								var p = parms[i].split("=");
+								if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+									data.push([ '' ]);
+									index[p[0]] = data.length - 1;
+								} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+									data[0] = [ p[1] ];
+								} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+									data.push([ p[1] ]);
+									index[p[0]] = data.length - 1;
+								} else { // c=aaa
+									data[index[p[0]]].push(p[1]);
+								}
+							}
+						}
+					}
+				})();
+				return {
+					// 获得参数,类似request.getParameter()
+					parm : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+						} catch (e) {}
+					},
+					//获得参数组, 类似request.getParameterValues()
+					parmValues : function(o) { // o: 参数名或者参数次序
+						try {
+							return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+						} catch (e) {}
+					},
+					//是否含有parmName参数
+					hasParm : function(parmName) {
+						return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+					},
+					// 获得参数Map ,类似request.getParameterMap()
+					parmMap : function() {
+						var map = {};
+						try {
+							for (var p in index) {
+								map[p] = data[index[p]];
+							}
+						} catch (e) {}
+						return map;
+					}
+				}
+			}();
+		</script>
+
+		<script type="text/javascript">
+			if (UrlParm.parm("producttypenumber") == undefined)
+				document.getElementById("return").href = "../olderShop/productView.html?producttypenumber=1";
+			document.getElementById("productAlter")
+			$("#productarltersubmit").click(function() {
+				var form = new FormData(document.getElementById("productAlter"));
+				var producttypenumber = $("#producttypenumber").val()
+				form.append("productid", UrlParm.parm("productid"));
+				var file = document.getElementById('file-1').files;
+				for (i = 0; i < file.length; i++) {
+					form.append("fileview", file[i]); //++++++++++    
+				}
+				var file = document.getElementById('file-2').files;
+				for (i = 0; i < file.length; i++) {
+					form.append("filepic", file[i]); //++++++++++    
+				}
+				form.append("producttypenumber", producttypenumber);
+				$.ajax({
+					type : 'post',
+					url : "/eldermanage/v1/oldershop/product/infoupdate",
+					data : form,
+					processData : false,
+					contentType : false,
 				})
-				$('select').select2();
-				$('#branchname').next('span').width(200);
-			</script>
+					.then(function(result) {
+						if (result.success) {
+							window.location.href = "/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + producttypenumber;
+						}
+					}
+				)
+			}
+			)
+		</script>
+		<script>
+			function load() {
+				var productid = UrlParm.parm("productid");
+				$("#productId").val(productid);
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/oldershop/product/info?productid=" + productid,
+					data : null,
+				})
+					.then(function(result) {
+						var productinfo = result.data;
+						document.getElementById("productname").value = productinfo.productname;
+						document.getElementById("productprice").value = productinfo.productprice;
+						var type = new Array("食物饮品", "食物饮品", "衣物服饰", "文学艺术", "生活用品", "娱乐器具", "运动器材", "医药保健品", "电子产品", "医疗器材", "家具器材");
+						document.getElementById("select2-producttypenumber-container").title = type[productinfo.producttypenumber];
+						document.getElementById("select2-producttypenumber-container").innerHTML = type[productinfo.producttypenumber];
+						document.getElementById("producttypenumber").value = productinfo.producttypenumber;
+						var roledata;
+						$("#producttypenumbertwo").empty();
+						$.ajax({
+							type : 'get',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/oldershop/typeTwoTypeId?productTypeNumber=" + $('#producttypenumber').val(),
+							data : null,
+							success : function(result) {
+								roledata = result.data;
+		
+								for (var i = roledata.length - 1; i >= 0; i--) {
+									if (productinfo.typetwotypeid == roledata[i].typetwoid) {
+										var oOption = `
+																																																					<option value="${productinfo.typetwotypeid}" selected="selected">${roledata[i].typetwocontent}</option>
+																																																				`;
+										$("#select2-producttypenumbertwo-container").html(roledata[i].typetwocontent);
+										$('#producttypenumbertwo').append(oOption);
+									} else {
+										var oOption = `
+																																											<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
+																																										`;
+										$('#producttypenumbertwo').append(oOption);
+									}
+								}
+							},
+						})
+						document.getElementById("productimgnew").src = productinfo.productimg;
+						document.getElementById("productinfo").value = productinfo.productinfo;
+						document.getElementById("productweight").value = productinfo.productweight;
+						var productupondate = new Date(productinfo.productupondate + 1000 * 60 * 60 * 8);
+						var d = productupondate.toISOString().slice(0, 10);
+						document.getElementById("productupondate").value = d;
+						document.getElementById("productdiscountprice").value = productinfo.productdiscountprice;
+						if (productinfo.producttypenumber != null)
+							document.getElementById("return").href = "../olderShop/productView.html?producttypenumber=" + productinfo.producttypenumber;
+					})
+			}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#query").click(function() {
+					var productid = $("#productId").val();
+					window.location.href = "/eldermanage/front_end/OA/html/olderShop/productAlter.html?productid=" + productid;
+				})
+			})
+		</script>
+		<script type="text/javascript">
+			$('#producttypenumber').change(function() {
+				var roledata;
+				$("#producttypenumbertwo").empty();
+		
+		
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/oldershop/typeTwoTypeId?productTypeNumber=" + $('#producttypenumber').val(),
+					data : null,
+					success : function(result) {
+						roledata = result.data;
+						var oOption = `
+																																																								<option value="0" selected="selected">无</option>
+																																																							`;
+						$("#select2-producttypenumbertwo-container").html("无");
+						$('#producttypenumbertwo').append(oOption);
+						for (var i = roledata.length - 1; i >= 0; i--) {
+							var oOption = `
+																																														<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
+																																													`;
+							$('#producttypenumbertwo').append(oOption);
+						}
+					},
+				})
+			})
+			$('select').select2();
+			$('#branchname').next('span').width(200);
+		</script>
 </body>
 
 </html>
