@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sds.em.po.Message;
 import com.sds.em.po.News;
 import com.sds.em.po.Olderbase;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.NewsService;
 import com.sds.em.util.DateSimp;
 
@@ -42,8 +43,8 @@ public class NewsController {
 	@RequestMapping(method = RequestMethod.POST, value = "publish")
 	public @ResponseBody Message publish(HttpSession session, String newstitle, String newstype, String newseditorid,
 			String newsissueddate, String newsintro, MultipartFile newsimg, String content) throws Exception {
-		// int staffid=session.getAttribute("staffid");
-		int staffid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int staffid = loginMassage.getStaffid();
 
 		String pic_path = "E:\\oldermanageresource\\newsimg\\";
 		String picUrl = "/newsimg/";

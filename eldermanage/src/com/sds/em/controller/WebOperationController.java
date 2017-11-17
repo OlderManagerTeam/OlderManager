@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.mapper.ShiroroleMapper;
 import com.sds.em.po.Message;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.ShiroService;
 import com.sds.em.service.WeboperationService;
 
@@ -41,8 +42,8 @@ public class WebOperationController {
 	public @ResponseBody Message addpersonauthorization(HttpSession session, String stafftel, String branchmanager,
 			String datamanager, String droitmanager, String headofficemanager, String newsmanager, String shopmanager,
 			String videomanager) throws Exception {
-		String usertel = (String) session.getAttribute("stafftel");
-		Set<String> allroles = shiroService.getRoles(usertel);
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		Set<String> allroles = shiroService.getRoles(loginMassage.getStafftel());
 		Set<String> oldroles = shiroService.getRoles(stafftel);
 		Set<String> newroles = new HashSet<String>();
 		Set<String> templ = new HashSet<String>();
