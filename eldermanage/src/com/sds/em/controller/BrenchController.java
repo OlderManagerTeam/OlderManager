@@ -18,6 +18,7 @@ import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
 import com.sds.em.po.Oldersick;
 import com.sds.em.po.Visited;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.BrenchService;
 import com.sds.em.service.IndexService;
 import com.sds.em.util.DateSimp;
@@ -46,7 +47,7 @@ public class BrenchController {
 	public @ResponseBody Message info(HttpSession session, String oldername, String oldersex, String olderbirthday,
 			String olderpassword, String oldertel, String olderaddress, String oldersinglestatus, String olderide,
 			String oldernation, MultipartFile olderheadurl) throws Exception {
-		int olderbranchid = (int) session.getAttribute("branchid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		if (indexService.usernotregister(oldertel)) {
 			String pic_path = "E:\\oldermanageresource\\olderimg\\";
 			String picUrl = "/olderimg/";
@@ -58,7 +59,7 @@ public class BrenchController {
 			olderbase.setOlderaddress(olderaddress);
 			Date date = DateSimp.simp(olderbirthday);
 			olderbase.setOlderbirthday(date);
-			olderbase.setOlderbranchid(olderbranchid);
+			olderbase.setOlderbranchid(loginMassage.getBranchid());
 			// /pic/1.jpg
 			olderbase.setOlderheadurl(picUrl + newFileName);
 
@@ -135,7 +136,7 @@ public class BrenchController {
 	@RequestMapping(method = RequestMethod.POST, value = "action")
 	public @ResponseBody Message addAction(HttpSession session, String actionstartdate, String actionintro,
 			String actionname, String actionaddress, String actionstatus, String actiontotal) throws Exception {
-		int actionbranchid = (int) session.getAttribute("branchid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		Action action = new Action();
 		action.setActionaddress(actionaddress);
 		;
@@ -148,7 +149,7 @@ public class BrenchController {
 		action.setActionstatus(actionstatus);
 
 		action.setActiontotal(Integer.parseInt(actiontotal));
-		action.setActionbranchid(actionbranchid);
+		action.setActionbranchid(loginMassage.getBranchid());
 		action.setActionenroll(0);
 		return brenchService.publishAction(action);
 	}
@@ -158,7 +159,7 @@ public class BrenchController {
 	public @ResponseBody Message updateAction(HttpSession session, String actionid, String actionintro,
 			String actionstartdate, String actionname, String actionaddress, String actionstatus, String actiontotal)
 			throws Exception {
-		int actionbranchid = (int) session.getAttribute("branchid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		Action action = new Action();
 		try {
 			int a = Integer.parseInt(actionid);
@@ -178,7 +179,7 @@ public class BrenchController {
 
 		action.setActiontotal(Integer.parseInt(actiontotal));
 
-		action.setActionbranchid(actionbranchid);
+		action.setActionbranchid(loginMassage.getBranchid());
 
 		return brenchService.modifyAction(action);
 	}
@@ -186,9 +187,9 @@ public class BrenchController {
 	// 查看本店的所有活动信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "allactions")
 	public @ResponseBody Message getAallActions(HttpSession session) throws Exception {
-		int actionbranchid = (int) session.getAttribute("branchid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		// int actionbranchid = 1;
-		return brenchService.getAallActions(actionbranchid);
+		return brenchService.getAallActions(loginMassage.getBranchid());
 	}
 
 	// 查看活动的详情信息-所有完成
@@ -220,10 +221,10 @@ public class BrenchController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "elders/info")
 	public @ResponseBody Message allOlderByBranch(HttpSession session) throws Exception {
-		int branchid = (int) session.getAttribute("branchid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		// int branchid = 1;
 		
-		return brenchService.getAllElder(branchid);
+		return brenchService.getAllElder(loginMassage.getBranchid());
 	}
 
 	// 删除某个老人的信息--测试成功
@@ -262,11 +263,11 @@ public class BrenchController {
 	@RequestMapping(method = RequestMethod.POST, value = "elder/visited")
 	public @ResponseBody Message andOlderVisited(String publishDate, Visited visited, HttpSession session)
 			throws Exception {
-		int staffid = (int) session.getAttribute("staffid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		visited.setVisiteddate(new Date());
 		if (publishDate == "")
 			visited.setVisiteddate(DateSimp.simp(publishDate));
-		visited.setVisitedassistantid(staffid);
+		visited.setVisitedassistantid(loginMassage.getStaffid());
 		visited.setVisitedjudgestar(0);
 		visited.setVisitedjudgecontent("未评价");
 		return brenchService.andOlderVisited(visited);
@@ -283,7 +284,7 @@ public class BrenchController {
 	public @ResponseBody Message addLecture(HttpSession session, String lecturename, String lectureintro,
 			String lecturetotal, String lecturepublishdate, String lecturestatus, String lectureaddress)
 			throws Exception {
-		int branchid = (int) session.getAttribute("branchid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		Lecture lecture = new Lecture();
 		lecture.setLectureaddress(lectureaddress);
 		;
@@ -296,7 +297,7 @@ public class BrenchController {
 
 		lecture.setLecturetotal(Integer.parseInt(lecturetotal));
 
-		lecture.setLecturebranchid(branchid);
+		lecture.setLecturebranchid(loginMassage.getBranchid());
 		lecture.setLectureenroll(0);
 		return brenchService.addLecture(lecture);
 	}
@@ -304,9 +305,9 @@ public class BrenchController {
 	// 查看本分店的所有讲座信息
 	@RequestMapping(method = RequestMethod.GET, value = "alllectures")
 	public @ResponseBody Message getAllLectures(HttpSession session) throws Exception {
-		int branchid = (int) session.getAttribute("branchid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		//int branchid = 1;
-		return brenchService.getAllLectures(branchid);
+		return brenchService.getAllLectures(loginMassage.getBranchid());
 	}
 
 	// 查看讲座的详细信息

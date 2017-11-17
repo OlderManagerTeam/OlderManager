@@ -66,7 +66,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -87,7 +88,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -364,7 +365,7 @@
 	<!--验证js文件-->
 	<script type="text/javascript"
 		src="../../lib/js/bootstrapValidator.min.js"></script>
-		
+
 	<script type="text/javascript" src="../../js/personal.js"></script>
 	<script>
 		$("#file-3").fileinput({
@@ -501,20 +502,20 @@
 					$('#staffsex').val(result.data.staffbase.staffsex);
 					$('#departmentid').val(result.data.department.departmentid);
 					$('#roleid').attr("value", result.data.role.roleid);
-	$('#staffcode').val(result.data.staffbase.staffcode);
+					$('#staffcode').val(result.data.staffbase.staffcode);
 					$("#select2-staffdepartmentname-container").text(result.data.department.departmentname);
 					for (var i = 0; i < $("#staffdepartmentname option").length; i++) {
 						if ($($("#staffdepartmentname option")[i]).text() == result.data.department.departmentname) {
 							$($("#staffdepartmentname option")[i]).attr('selected', 'selected');
 						}
 					}
-	
 					$("#select2-rolename-container").text(result.data.role.rolecontent);
 					for (var i = 0; i < $("#rolename option").length; i++) {
 						if ($($("#rolename option")[i]).text() == result.data.role.rolecontent) {
 							$($("#rolename option")[i]).attr('selected', 'selected');
 						}
 					}
+	
 				},
 				error : function() {
 					alert('数据库错误')
@@ -536,8 +537,8 @@
 				var departmentdata = result.data
 				for (var i = departmentdata.length - 1; i >= 0; i--) {
 					var oOption = `
-											<option value="${departmentdata[i].departmentid}">${departmentdata[i].departmentname}</option>
-										`;
+															<option value="${departmentdata[i].departmentid}">${departmentdata[i].departmentname}</option>
+														`;
 					$('#staffdepartmentname').append(oOption);
 				}
 			},
@@ -567,6 +568,7 @@
 					if (result.success) {
 						window.location.href = "/eldermanage/front_end/OA/html/headofficeManage/staffView.html?staffid=" + staffid;
 					}
+	
 				},
 				error : function() {
 					alert('fail')
@@ -588,15 +590,17 @@
 				success : function(result) {
 					var roledata = result.data;
 					var oOption = `
-											<option value="0" selected="selected">无</option>
-										`;
+															<option value="0" selected="selected">无</option>
+														`;
 					$('#rolename').append(oOption);
+					$('#select2-rolename-container').text("无");
 					for (var i = roledata.length - 1; i >= 0; i--) {
 						var oOption = `
-											<option value="${roledata[i].roleid}">${roledata[i].rolecontent}</option>
-										`;
+															<option value="${roledata[i].roleid}">${roledata[i].rolecontent}</option>
+														`;
 						$('#rolename').append(oOption);
 					}
+					$('#rolename,staffdepartmentname').change();
 				},
 				error : function() {
 					alert('数据库错误')

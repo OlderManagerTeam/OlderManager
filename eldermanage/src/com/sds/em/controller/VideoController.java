@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.em.po.Message;
 import com.sds.em.po.Video;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.VideoService;
 import com.sds.em.util.DateSimp;
 
@@ -38,8 +39,6 @@ public class VideoController {
 	public @ResponseBody Message entry(HttpSession session, String videoname, String videointro, String videodetail,
 			String videopublishdate, String videopartition, MultipartFile videopicurl, MultipartFile videourl)
 			throws Exception {
-		// int olderbranchid=session.getAttribute("branchid");
-
 		Video video = new Video();
 		video.setVideodetail(videodetail);
 

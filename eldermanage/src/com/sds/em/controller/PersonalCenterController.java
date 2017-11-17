@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sds.em.po.Message;
 import com.sds.em.po.Oldersick;
 import com.sds.em.po.Staffbase;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.service.PersonalCenterService;
 import com.sds.em.service.ShiroService;
@@ -45,9 +46,9 @@ public class PersonalCenterController {
 	// 查看个人信息--所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "message")
 	public @ResponseBody Message personalMessage(HttpSession session) throws Exception {
-		int staffid = (int) session.getAttribute("staffid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		// int staffid = 1;
-		return personalCenterService.personalMessage(staffid);
+		return personalCenterService.personalMessage(loginMassage.getStaffid());
 	}
 
 	// 个人信息中心修改基本个人信息
@@ -57,9 +58,9 @@ public class PersonalCenterController {
 			MultipartFile staffimg, String staffsex, String staffbirthday, String staffiide, String stafftel,
 			String staffpassword) throws Exception {
 		Staffbase staffbase = new Staffbase();
-		int staffid = (int) session.getAttribute("staffid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		// int staffid = 1;
-		staffbase.setStaffid(staffid);
+		staffbase.setStaffid(loginMassage.getStaffid());
 		staffbase.setStaffaddress(staffaddress);
 		Date date;
 		if (!staffbirthday.isEmpty()) {
@@ -69,7 +70,7 @@ public class PersonalCenterController {
 		staffbase.setStaffiide(staffiide);
 		if (!staffpassword.isEmpty())
 			staffbase.setStaffpassword(Md5.MD5(staffpassword));
-		StaffDepartmentRoleExtend staff = (StaffDepartmentRoleExtend) personalCenterService.personalMessage(staffid)
+		StaffDepartmentRoleExtend staff = (StaffDepartmentRoleExtend) personalCenterService.personalMessage(loginMassage.getStaffid())
 				.getData();
 		if (!staffimg.isEmpty()) {
 			String pic_path = "E:\\oldermanageresource\\staffimg\\";
@@ -93,7 +94,8 @@ public class PersonalCenterController {
 	public @ResponseBody Message getauthorization(HttpSession session, @RequestParam(required = false) String tel) {
 		String stafftel = null;
 		if (tel == null) {
-			stafftel = (String) session.getAttribute("stafftel");
+			LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+			stafftel = loginMassage.getStafftel();
 			Set<String> roles = shiro.getRoles(stafftel);
 			return new Message(true, "返回成功", roles);
 		}
