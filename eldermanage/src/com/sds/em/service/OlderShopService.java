@@ -31,4 +31,5 @@ public interface OlderShopService {
 	public Message getorderlist(int orderid);
 	public Message addproductgroup(Productgroup productgroup);
 	public Message typeTwoTypeId(int productTypeNumber);
+	public Message ordersend(int ordersid);
 }

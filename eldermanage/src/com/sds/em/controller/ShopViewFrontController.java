@@ -27,10 +27,10 @@ public class ShopViewFrontController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "judgeLogin")
 	public @ResponseBody Message session(HttpSession session) throws Exception {
-		LoginMassage loginMassage = new LoginMassage();
-		int olderid = (int) session.getAttribute("olderid");
-		String oldername = (String) session.getAttribute("oldername");
-		String olderaddress = (String) session.getAttribute("olderaddress");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
+		String oldername = loginMassage.getOldername();
+		String olderaddress = loginMassage.getOlderaddress();
 		if (oldername != null && olderaddress != null) {
 			loginMassage.setOlderid(olderid);
 			loginMassage.setOldername(oldername);
@@ -80,8 +80,8 @@ public class ShopViewFrontController {
 	// 显示某个商品的详细信息及数量-后端成功--修订，判断登录否，加老人浏览表-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/product")
 	public @ResponseBody Message getProduct(HttpSession session, int productid) throws Exception {
-		int olderid = 0;
-		// olderid=session.getAttribute("olderid");
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		if (olderid != 0) {// 登录状态
 			Boolean flag = shopViewFrontService.addOlderProductBrowse(olderid, productid);
 			if (flag) {
@@ -103,9 +103,9 @@ public class ShopViewFrontController {
 
 	// 老人以登录时，根据老人浏览表 降序排序显示--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/older/repeated")
-	public @ResponseBody Message repeatedOlderView(int olderid) throws Exception {
-		// int olderid=session.getAttribute("olderid")
-		olderid = 1;
+	public @ResponseBody Message repeatedOlderView(HttpSession session,int olderid) throws Exception {
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		olderid = loginMassage.getOlderid();
 		return shopViewFrontService.repeatedOlderView(olderid);
 	}
 
@@ -181,8 +181,8 @@ public class ShopViewFrontController {
 	// 显示现有购物车中本老人的商品数量
 	@RequestMapping(method = RequestMethod.GET, value = "older/cart/amount")
 	public @ResponseBody Message getOlderCartAmount(HttpSession session) throws Exception {
-		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		return shopViewFrontService.getOlderCartAmount(olderid);
 	}
 
