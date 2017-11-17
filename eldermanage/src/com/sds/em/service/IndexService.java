@@ -22,11 +22,11 @@ public interface IndexService {
 
 	// lu:10-14
 	// 校验密保问题答案
-	public Message checkSecurity(String securityAnswer, int staffId);
+	public Message checkSecurity(String securityAnswer, String stafftel);
 
 	// 修改密码
 
-	public Message modifyPassword(String staffPassword, int staffId);
+	public Message modifyPassword(String staffpassword,String stafftel,String securityanswer);
 
 	// 返回所有的部门
 
