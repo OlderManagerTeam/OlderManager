@@ -617,6 +617,8 @@
 	
 		$('#rolename,staffdepartmentname').change(function() {
 			$('#roleid').val($(this).val());
+			var r1=$('#departmentid').val()
+			var r3=$('#roleid').val()
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
