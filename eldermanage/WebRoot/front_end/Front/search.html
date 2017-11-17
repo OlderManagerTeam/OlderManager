@@ -326,11 +326,14 @@
 
 
 	<script type="text/javascript">
-		$("#searchInput").val(window.location.href.split("?")[1]);
-
+	
+	    var info=decodeURI(window.location.href.split("?")[1])
+	     $("#searchInput").val(info);
+	     
+		
 		var serachUrl = "/eldermanage/v1/shop/index/search";
 
-		var searchContent = window.location.href.split("?")[1];
+		var searchContent = info;
 
 		var searchType = null;
 
@@ -377,7 +380,7 @@
 					var searchData = result.data;
 
 					$('#searchCount').text(' ' + searchData.length + ' ');
-					$("#searchTitle").html('"' + window.location.href.split("?")[1] +'"');
+					$("#searchTitle").html('"' + info +'"');
 
 					// for(var i=searchData.length - 1;i>=0;i--){
 					// 	var oLi = `
@@ -418,7 +421,7 @@
 					var searchData = result.data;
 
 					$('#searchCount').text(' ' + searchData.length + ' ');
-					$("#searchTitle").html('"' + window.location.href.split("?")[1] +'"');
+					$("#searchTitle").html('"' + info +'"');
 
 					// for(var i=0;i<=searchData.length - 1;i++){
 					// 	var oLi = `

@@ -73,22 +73,22 @@ public class IndexController {
 		return "成功登录";
 	}
 
-	// 返回所有问题
+	// 返回员工问题
 	@RequestMapping(method = RequestMethod.GET, value = "question")
-	public @ResponseBody Message question(@RequestBody String stafftel) {
+	public @ResponseBody Message question(String stafftel) {
 		return indexService.returnQuestion(stafftel);
 	}
 
-	// У���ܱ������
-	@RequestMapping(method = RequestMethod.POST, value = "answer")
-	public @ResponseBody Message answer(@RequestBody String securityanswer, @RequestBody int staffid) {
-		return indexService.checkSecurity(securityanswer, staffid);
+	// 确认问题答案
+	@RequestMapping(method = RequestMethod.GET, value = "answer")
+	public @ResponseBody Message answer(String securityanswer,String stafftel) {
+		return indexService.checkSecurity(securityanswer, stafftel);
 	}
 
-	// �޸�����
+	// 修改密码
 	@RequestMapping(method = RequestMethod.POST, value = "password")
-	public @ResponseBody Message password(@RequestBody String staffpassword, @RequestBody int staffid) {
-		return indexService.modifyPassword(staffpassword, staffid);
+	public @ResponseBody Message password(String staffpassword,String stafftel,String securityanswer) {
+		return indexService.modifyPassword(staffpassword, stafftel,securityanswer);
 	}
 
 	// �������еĲ���

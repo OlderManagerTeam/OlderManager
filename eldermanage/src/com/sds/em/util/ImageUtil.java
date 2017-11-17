@@ -64,8 +64,8 @@ public class ImageUtil {
      * 测试 
      */  
     public static void main(String[] args) throws Exception {  
-        File fromFile = new File("e:/1.png");  
-        File toFile = new File("e:/2.png");  
-        resizePng(fromFile, toFile, 800, 600, false);  
+        File fromFile = new File("e:/3.png");  
+        UploadImg.createThumbnail("e:/3.png"); 
+        resizePng(fromFile, fromFile, 200, 200, false); 
     }  
 }
