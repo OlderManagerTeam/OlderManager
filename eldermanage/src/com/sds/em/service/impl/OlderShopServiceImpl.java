@@ -117,6 +117,8 @@ public class OlderShopServiceImpl implements OlderShopService {
 		try {
 
 			Product product = productMapper.selectByPrimaryKey(productid);
+			if (product == null)
+				return new Message(false, "无记录", product);
 			return new Message(true, "返回成功", product);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -356,7 +358,7 @@ public class OlderShopServiceImpl implements OlderShopService {
 				Orders orders = new Orders();
 				orders.setOrderolderid(joingroup.getJoinolderid());
 				orders.setOrderdate(new Date());
-				orders.setOrderstatus("送货中");
+				orders.setOrderstatus("备货中");
 				orders.setOrdertakepoint((float) 0.0);
 				orders.setOrdertotal(productgroup.getGroupdiscountprice());
 				ordersMapper.keyinsert(orders);
@@ -425,6 +427,21 @@ public class OlderShopServiceImpl implements OlderShopService {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return new Message(false, "失败成功", null);
+		}
+	}
+
+	@Override
+	// 确认订单已送出
+	public Message ordersend(int ordersid) {
+		try {
+			Orders orders = new Orders();
+			orders.setOrderid(ordersid);
+			orders.setOrderstatus("送货中");
+			ordersMapper.updateByPrimaryKeySelective(orders);
+			return new Message(true, "修改成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Message(false, "数据库错误", null);
 		}
 	}
 }

@@ -226,8 +226,8 @@
 					<dl class="iteminfo_parameter freight">
 						<dt>配送至</dt>
 						<div class="iteminfo_freprice">
-							<div class="am-form-content address">
-								<select data-am-selected>
+							<div class="am-form-content address" id="olderaddress">
+							<!-- 	<select data-am-selected>
 									<option value="a">浙江省</option>
 									<option value="b">湖北省</option>
 								</select> <select data-am-selected>
@@ -236,7 +236,7 @@
 								</select> <select data-am-selected>
 									<option value="a">瑞安区</option>
 									<option value="b">洪山区</option>
-								</select>
+								</select> -->
 							</div>
 
 						</div>
@@ -552,7 +552,7 @@
 							</ul>
 						</div>
 						<div class="login_btnbox ">
-							<a href="# " class="login_order ">我的订单</a>
+							<a href="" class="login_order " id="myorders">我的订单</a>
 						</div>
 						<i class="icon_arrow_white "></i>
 					</div>
@@ -567,7 +567,7 @@
 				<div id="foot" class="item">
 					<a href="#"> <span class="zuji"></span>
 					</a>
-					<div class="mp_tooltip">
+					<div class="mp_tooltip"  id="myfoots">
 						我的足迹 <i class="icon_arrow_right_black"></i>
 					</div>
 				</div>
@@ -654,37 +654,38 @@
 				}
 			}
 		}();
+		
 	
 		//显示菜单内容
-		var olderid = 1;
 		$.ajax({
 			type : 'get',
 			contentType : 'application/json',
-			url : "/eldermanage/v1/shop/personal/older/info?olderid" + olderid,
+			url : "/eldermanage/v1/shop/personal/older/info",
 			data : null,
 			success : function(result) {
 				document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
 				document.getElementById("olderheadurl").src = result.data.olderheadurl;
 				document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
+				
+				document.getElementById("olderaddress").innerHTML = result.data.olderaddress;
+				document.getElementById("myorders").href = '../Front/personal.html'
+				 document.getElementById("myfoots").href = '../Front/personal.html'
+				
 			},
-			error : function() {
-				alert('数据库错误')
-			}
+			
 		})
 		//显示购物车数量
 		$.ajax({
 			type : 'get',
 			contentType : 'application/json',
-			url : "/eldermanage/v1/shop/older/cart/amount?olderid" + olderid,
+			url : "/eldermanage/v1/shop/older/cart/amount",
 			data : null,
 			success : function(result) {
 				$("#J_MiniCartNum").html(result.data);
 				$("#cartcount").html(result.data);
 	
 			},
-			error : function() {
-				alert('数据库错误')
-			}
+			
 		})
 	
 	
@@ -732,9 +733,7 @@
 							document.getElementById("LikBasket").style.backgroundColor = 'gray'
 						}
 					},
-					error : function() {
-						alert("数据库错误")
-					}
+					
 				})
 	
 	
@@ -762,13 +761,12 @@
 								alert(result.information);
 							}
 						},
-						error : function() {
-							alert("数据库错误")
-						}
+						
 					})
 	
-	
-				})
+				}).fail(function(data) {
+							alert("未登录")
+					});
 	
 			},
 			function() {
@@ -824,15 +822,11 @@
 	
 	
 		// 看了又看
-		//已登录
-		//var olderid = '<%=Session["olderid"] %>';
-		var olderid;
-		if (olderid) {
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
-				url : "/eldermanage/v1/shop/index/older/repeated",
-				data : "olderid=" + olderid,
+				url : "/eldermanage/v1/shop/index/repeated",
+				data : null,
 				success : function(result) {
 					var lookAgainData = result.data;
 	
@@ -857,37 +851,8 @@
 					alert('数据库错误');
 				}
 			})
-		//未登录
-		} else {
-			$.ajax({
-				type : 'get',
-				contentType : 'application/json',
-				url : "/eldermanage/v1/shop/index/repeated",
-				data : "productid=" + productid,
-				success : function(result) {
-					var lookAgainData = result.data;
-	
-					for (var i = 0; i <= 5; i++) {
-						var oLi = `
-											 				<li class="first">
-														      	<div class="p-img">                    
-											 			      		<a  href="../Front/introduction.html?productid=${lookAgainData[i].productid}"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
-											 			      	</div>
-											 			      	<div class="p-name"><a href="#">
-											 			      		${lookAgainData[i].productname}
-											 			      	</a>
-											 			      	</div>
-											 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
-											 			    </li>
-										 			`;
-						$('#lookAgain').append(oLi);
-					}
-				},
-				error : function() {
-					alert('数据库错误');
-				}
-			})
-		}
+		
+		
 		//全部评价模块-评价等级详情
 		$.ajax({
 			type : 'get',
@@ -903,9 +868,7 @@
 				$('#mediumRate').html("(" + rateData.mediumRate + ")");
 				$('#badRate').html("(" + rateData.badRate + ")");
 			},
-			error : function() {
-				alert('数据库错误')
-			}
+			
 		})
 	
 		//全部评价模块-用户评价详情
@@ -971,14 +934,11 @@
 					}
 				}
 			},
-			error : function() {
-				alert('数据库错误')
-			}
+			
 		})
 	
 		//猜你喜欢
-		//未登录
-		if (!olderid) {
+		
 			$.ajax({
 				type : 'get',
 				contentType : 'application/json',
@@ -1013,44 +973,8 @@
 					alert('数据库错误')
 				}
 			)
-		//已登录
-		} else {
-			$.ajax({
-				type : 'get',
-				contentType : 'application/json',
-				url : "/eldermanage/v1/shop/index/older/product/guesslike?olderid=" + olderid,
-				data : null,
-			}).then(
-				function(result) {
-					var whatYouLikeData = result.data;
-	
-					//猜你喜欢
-					for (var i = 0; i <= whatYouLikeData.length; i++) {
-						var oLi = `
-												<li>
-													<div class="i-pic limit">
-													<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
-														<img src="${whatYouLikeData[i].productimg}" />
-														</a>
-													<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
-														<p><span>${whatYouLikeData[i].productinfo}</span></p>
-														</a>
-														<p class="price fl">
-															<b>¥</b>
-															<strong>${whatYouLikeData[i].productprice}</strong>
-														</p>
-													</div>
-												</li>
-											`;
-	
-						$('#whatYouLike').append(oLi);
-					}
-				},
-				function() {
-					alert('数据库错误')
-				}
-			)
-		}
+
+		
 		$("#ai-topsearch").click(function(event) {
 			searchContent = $("#searchInput").val();
 			window.open('search.html?' + searchContent)

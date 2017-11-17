@@ -198,7 +198,7 @@
 									</ul>
 								</div>
 								<div class="login_btnbox ">
-									<a href="# " class="login_order ">我的订单</a>
+									<a href="" class="login_order " id="myorders">我的订单</a>
 								</div>
 								<i class="icon_arrow_white "></i>
 							</div>
@@ -213,7 +213,7 @@
 				<div id="foot" class="item">
 					<a href="#"> <span class="zuji"></span>
 					</a>
-					<div class="mp_tooltip">
+					<div class="mp_tooltip"  id="myfoots">
 						我的足迹 <i class="icon_arrow_right_black"></i>
 					</div>
 				</div>
@@ -252,16 +252,17 @@
 		
 		<script type="text/javascript">
 		//显示菜单内容
-				var olderid = 1;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "/eldermanage/v1/shop/personal/older/info?olderid" + olderid,
+					url : "/eldermanage/v1/shop/personal/older/info",
 					data : null,
 					success : function(result) {
 						document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
 						document.getElementById("olderheadurl").src = result.data.olderheadurl;
 						document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
+					    document.getElementById("myorders").href = '../Front/personal.html'
+					    document.getElementById("myfoots").href = '../Front/personal.html'
 					},
 					error : function() {
 						alert('数据库错误')
@@ -271,7 +272,7 @@
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "/eldermanage/v1/shop/older/cart/amount?olderid" + olderid,
+					url : "/eldermanage/v1/shop/older/cart/amount",
 					data : null,
 					success : function(result) {
 						$("#J_MiniCartNum").html(result.data);

@@ -152,13 +152,16 @@ public class OlderShopController {
 	// wuwenbo,修改商品信息
 	@RequestMapping(method = RequestMethod.POST, value = "product/infoupdate")
 	public @ResponseBody Message alterproduct(Product product, MultipartFile productImg, String productUpondate,
-			int storecount) throws Exception {
+		/*	@RequestParam(value = "fileview", required = true) MultipartFile[] fileview,
+			@RequestParam(value = "filepic", required = true) MultipartFile[] filepic,*/ int storecount)
+			throws Exception {
 		String pic_path = "E:\\oldermanageresource\\productimg\\";
 		String picUrl = "/productimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 		Product productold = (Product) olderShopService.getproductinfo(product.getProductid()).getData();
 		String[] productoldsplit = productold.getProductimg().split("/");
 		String productoldname = productoldsplit[productoldsplit.length - 1];
+
 		if (!productImg.isEmpty()) {
 			File oldproductimg = new File(pic_path + productoldname);
 			if (oldproductimg.exists())
@@ -167,6 +170,19 @@ public class OlderShopController {
 			productImg.transferTo(productimg);
 			product.setProductimg(picUrl + newFileName);
 		}
+
+/*		if (filepic.length > 0) {
+			String url = "/productpic/";
+			for (MultipartFile filepicsingle : filepic) {
+				Productpiclist Productpic = new Productpiclist();
+				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				File filePicSingle = new File(productpic_path + newFileName);
+				filepicsingle.transferTo(filePicSingle);
+				Productpic.setPpicurl(url + newFileName);
+				productpiclist.add(Productpic);
+			}
+		}*/
+
 		Date date = new Date();
 		try {
 			date = DateSimp.simp(productUpondate);
@@ -304,5 +320,11 @@ public class OlderShopController {
 	@RequestMapping(method = RequestMethod.GET, value = "typeTwoTypeId")
 	public @ResponseBody Message typeTwoTypeId(int productTypeNumber) {
 		return olderShopService.typeTwoTypeId(productTypeNumber);
+	}
+
+	// 确认送出商品
+	@RequestMapping(method = RequestMethod.POST, value = "ordersend")
+	public @ResponseBody Message ordersend(int ordersid) {
+		return olderShopService.ordersend(ordersid);
 	}
 }
