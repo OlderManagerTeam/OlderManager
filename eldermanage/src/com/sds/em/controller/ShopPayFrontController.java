@@ -87,20 +87,28 @@ public class ShopPayFrontController {
 
 	// 生成订单表和订单详情表-从购物车中结算-后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "order/formation")
-	public @ResponseBody Message orderFormation(HttpSession session, float ordertotal, int ordertakepoint)
+	public @ResponseBody Message orderFormation(HttpSession session, String ordertotal, int ordertakepoint)
 			throws Exception {
 		// int olderid=session.getAttribute("olderid");
 		int olderid = 1;
-		return shopPayFrontService.orderFormation(olderid, ordertotal, ordertakepoint);
+		float total=0;
+		try {
+			total = Float.valueOf(ordertotal);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return shopPayFrontService.orderFormation(olderid,total, ordertakepoint);
 	}
-
+	
 	// 生成订单表和订单详情表-直接购买中结算--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "rightnow/order/formation")
-	public @ResponseBody Message rightNowOrderFormation(HttpSession session, float ordertotal, int ordertakepoint,
+	public @ResponseBody Message rightNowOrderFormation(HttpSession session, String ordertotal, int ordertakepoint,
 			int productid, int count) throws Exception {
 		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
-		return shopPayFrontService.rightNowOrderFormation(olderid, ordertotal, ordertakepoint, productid, count);
+		int olderid =1;
+		return shopPayFrontService.rightNowOrderFormation(olderid, Float.valueOf(ordertotal), ordertakepoint, productid, count);
 	}
 
 	// 老人参加团购
@@ -110,6 +118,19 @@ public class ShopPayFrontController {
 		int olderid = 1;
 		return shopPayFrontService.joinGroup(olderid, groupid);
 	}
-	
+	//判断老人是否参与过这个团购
+	@RequestMapping(method = RequestMethod.GET, value = "judge/group/join")
+	public @ResponseBody Message judgeJoinGroup(HttpSession session, int groupid) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.judgeJoinGroup(olderid, groupid);
+	}
+	//判断老人是否加入过购物车
+	@RequestMapping(method = RequestMethod.GET, value = "judge/add/shopcart")
+	public @ResponseBody Message judgeAddCart(HttpSession session, int productid) throws Exception {
+		// int olderid=session.getAttribute("olderid");
+		int olderid = 1;
+		return shopPayFrontService.judgeAddCart(olderid, productid);
+	}
 
 }
