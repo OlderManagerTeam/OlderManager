@@ -157,14 +157,15 @@ public class IndexController {
 			return new Message(false,"登录失败",null);
 		}
 		LoginMassage loginMassage=indexService.getuser(tel);
-		session.setAttribute("oldername", loginMassage.getStaffname());
+		session.setAttribute("loginMassage", loginMassage);
+/*		session.setAttribute("oldername", loginMassage.getStaffname());
 		session.setAttribute("olderid", loginMassage.getOlderid());
 		session.setAttribute("oldertel", loginMassage.getOldertel());
 		session.setAttribute("staffid", loginMassage.getStaffid());
 		session.setAttribute("staffname", loginMassage.getStaffname());
 		session.setAttribute("stafftel", loginMassage.getStafftel());
 		session.setAttribute("branchid", loginMassage.getBranchid());
-		session.setAttribute("branchname", loginMassage.getBranchname());
+		session.setAttribute("branchname", loginMassage.getBranchname());*/
 		return new Message(true,"登录成功",loginMassage.getUser());
 	}
 	
