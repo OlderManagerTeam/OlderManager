@@ -16,7 +16,7 @@ import com.sds.em.service.NewsFrontService;
  * 
  * */
 @Controller
-@RequestMapping("v1/front/news")
+@RequestMapping("v1/front/news/")
 public class NewsFrontController {
 	@Autowired
 	NewsFrontService newsFrontService;

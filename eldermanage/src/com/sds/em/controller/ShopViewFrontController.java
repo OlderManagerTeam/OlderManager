@@ -83,19 +83,19 @@ public class ShopViewFrontController {
 	// 显示某个商品的详细信息及数量-后端成功--修订，判断登录否，加老人浏览表-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/product")
 	public @ResponseBody Message getProduct(HttpSession session, int productid) throws Exception {
-		int olderid = 0;
-		// olderid=session.getAttribute("olderid");
-		if (olderid != 0) {// 登录状态
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return shopViewFrontService.getProduct(productid);//未登录，只能查看信息
+		}else{
+			int olderid = loginMassage.getOlderid();
 			Boolean flag = shopViewFrontService.addOlderProductBrowse(olderid, productid);
 			if (flag) {
 				return shopViewFrontService.getProduct(productid);
 			} else {
 				return new Message(false, "老人记录表更新失败", null);
 			}
-		} else {// 未登录状态
-			return shopViewFrontService.getProduct(productid);
 		}
-
 	}
 
 	// 看了又看 根据商品 日浏览量 降序排序显示--后端成功

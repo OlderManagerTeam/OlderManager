@@ -367,7 +367,10 @@
 				}
 				$("#J_Total").html(count);
 			}
-
+	$("#ai-topsearch").click(function(event) {
+			searchContent = $("#searchInput").val();
+			window.open('search.html?' + searchContent)
+		});
 		</script> 
 		
 </body>
