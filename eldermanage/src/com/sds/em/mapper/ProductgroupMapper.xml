@@ -333,27 +333,30 @@
 	<!-- lu -->
 
 	<select id="GroupIndexView" resultType="com.sds.em.shop.pojo.ProductGroupExtend">
+
 		SELECT * FROM productgroup
 		INNER JOIN product
 		ON
 		productgroup.groupProductId=product.productId
 		where NOW() -
-		groupPublishDate <![CDATA[>]]>
-		0
+		groupStartDate <![CDATA[>]]>
+		0 AND productgroup.groupStatus="正在进行"
 		ORDER BY groupPublishDate DESC
+
 	</select>
 
 	<select id="GroupEndView" resultType="com.sds.em.shop.pojo.ProductGroupExtend">
+
 		SELECT * FROM productgroup
 		INNER JOIN product
 		ON
 		productgroup.groupProductId=product.productId
 		WHERE
-		groupFinishDate-NOW() <![CDATA[>]]>
-		0 and groupStatus <![CDATA[<>]]>'已结束'
-		OR groupStatus
-		<![CDATA[<>]]>'以成交'
+		groupFinishDate-NOW()<![CDATA[>]]>0
+		and
+		productgroup.groupStatus="正在进行"
 		ORDER BY groupFinishDate
+
 	</select>
 
 	<select id="GroupNoView" resultType="com.sds.em.shop.pojo.ProductGroupExtend">
@@ -368,9 +371,12 @@
 		resultType="com.sds.em.shop.pojo.ProductGroupExtend">
 		select * from productgroup
 		INNER JOIN joingroup
-		ON productgroup.groupId=joingroup.joinId
+		ON
+		productgroup.groupId=joingroup.joinId
 		INNER JOIN product
-		ON productgroup.groupProductId=product.productId
-		where joingroup.joinOlderId=#{value}
+		ON
+		productgroup.groupProductId=product.productId
+		where
+		joingroup.joinOlderId=#{value}
 	</select>
 </mapper>

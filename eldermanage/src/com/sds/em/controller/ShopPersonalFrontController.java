@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Message;
 import com.sds.em.po.Productrate;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.ShopPersonalFrontService;
 
 /*
@@ -30,24 +31,24 @@ public class ShopPersonalFrontController {
 	// 显示电商老人的个人电商信息-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "older/info")
 	public @ResponseBody Message shopPersonalInfo(HttpSession session) throws Exception {
-		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		return shopPersonalFrontService.shopPersonalInfo(olderid);
 	}
 
 	// 显示我的订单页面-后端完成-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "myorder/info")
 	public @ResponseBody Message shopMyOrderInfo(HttpSession session) throws Exception {
-		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		return shopPersonalFrontService.shopMyOrderInfo(olderid);
 	}
 
 	// 显示购买记录页面-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "buyrecord/info")
 	public @ResponseBody Message shopBuyRecordInfo(HttpSession session) throws Exception {
-		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		return shopPersonalFrontService.shopBuyRecordInfo(olderid);
 	}
 
@@ -55,8 +56,8 @@ public class ShopPersonalFrontController {
 	@RequestMapping(method = RequestMethod.POST, value = "buyrecord/rate/add")
 	public @ResponseBody Message AddRate(HttpSession session, String orderlistid, String ratestar, String ratecontent)
 			throws Exception {
-		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		Productrate productrate = new Productrate();
 		productrate.setRatecontent(ratecontent);
 		productrate.setRatedate(new Date());
@@ -75,26 +76,32 @@ public class ShopPersonalFrontController {
 	// 老人确认收货-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "myorder/sure")
 	public @ResponseBody Message myOrderSure(HttpSession session, int orderid) throws Exception {
-		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		return shopPersonalFrontService.myOrderSure(olderid, orderid);
 	}
 
 	// 老人申请取消订单-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "myorder/apply/cancel")
 	public @ResponseBody Message myOrderApplyCancel(HttpSession session, int orderid) throws Exception {
-		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		return shopPersonalFrontService.myOrderApplyCancel(olderid, orderid);
 	}
 	
 	//显示 我的团购页面
 	@RequestMapping(method = RequestMethod.GET, value = "mygroups/info")
 	public @ResponseBody Message myGroupsInfo(HttpSession session) throws Exception {
-		// int olderid=session.getAttribute("olderid");
-		int olderid = 1;
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
 		return shopPersonalFrontService.myGroupsInfo(olderid);
 	}
-
+   //显示我的足迹
+	@RequestMapping(method = RequestMethod.GET, value = "myfootprint/info")
+	public @ResponseBody Message myFootprintInfo(HttpSession session) throws Exception {
+		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		int olderid = loginMassage.getOlderid();
+		return shopPersonalFrontService.myFootprintInfo(olderid);
+	}
 
 }

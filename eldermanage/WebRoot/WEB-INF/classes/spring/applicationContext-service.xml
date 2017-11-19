@@ -30,5 +30,11 @@
 	<bean id="ShopPayFrontService" class="com.sds.em.service.impl.ShopPayFrontServiceImpl" />
 
 	<bean id="WeboperationService" class="com.sds.em.service.impl.WeboperationServiceImpl" />
+	
 	<bean id="ShopPersonalFrontService" class="com.sds.em.service.impl.ShopPersonalFrontServiceImpl" />
+	
+	<bean id="NewsFrontService" class="com.sds.em.service.impl.NewsFrontServiceImpl" />
+
+
+
 </beans>

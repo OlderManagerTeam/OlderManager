@@ -1,5 +1,7 @@
 package com.sds.em.po;
 
+import java.util.Date;
+
 public class Olderproductview {
     private Integer productviewid;
 
@@ -8,6 +10,8 @@ public class Olderproductview {
     private Integer pviewolderid;
 
     private Integer pviewocount;
+
+    private Date pviewdate;
 
     public Integer getProductviewid() {
         return productviewid;
@@ -39,5 +43,13 @@ public class Olderproductview {
 
     public void setPviewocount(Integer pviewocount) {
         this.pviewocount = pviewocount;
+    }
+
+    public Date getPviewdate() {
+        return pviewdate;
+    }
+
+    public void setPviewdate(Date pviewdate) {
+        this.pviewdate = pviewdate;
     }
 }

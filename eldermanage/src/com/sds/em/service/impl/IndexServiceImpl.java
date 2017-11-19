@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.util.security.MD5Encoder;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,16 +175,7 @@ public class IndexServiceImpl implements IndexService {
 				List<Question> questionList = questionMapper.selectByExample(qustionExample);
 				String questionContent = questionList.get(0).getQuestioncontent();
 
-				JSONObject jsonObject = new JSONObject();
-				try {
-					jsonObject.put("questionId", securityQuestionId);
-					jsonObject.put("questionContent", questionContent);
-					jsonObject.put("staffId", staffId);
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return new Message(true, "返回成功", jsonObject.toString());
+				return new Message(true, "返回成功", questionContent);
 			} else {
 				return new Message(false, "您输入的号码不存在", null);
 			}
@@ -195,46 +187,68 @@ public class IndexServiceImpl implements IndexService {
 	}
 
 	@Override
-	public Message checkSecurity(String securityAnswer, int staffId) {
+	// 确认员工答案
+	public Message checkSecurity(String securityAnswer, String stafftel) {
 		try {
-			SecurityExample securityExample = new SecurityExample();
-			com.sds.em.po.SecurityExample.Criteria criteria2 = securityExample.createCriteria();
-			criteria2.andSecuritystaffidEqualTo(staffId);
-			List<Security> securityList = securityMapper.selectByExample(securityExample);
-			if (securityAnswer.equals(securityList.get(0).getSecurityanswer())) {
-				return new Message(true, ",确认用户", null);
-			} else {
-				return new Message(false, ",用户校验失败", null);
+			StaffbaseExample staffbaseExample = new StaffbaseExample();
+			Criteria criteria = staffbaseExample.createCriteria();
+			criteria.andStafftelEqualTo(stafftel);
+			List<Staffbase> StaffbaseList = staffbaseMapper.selectByExample(staffbaseExample);
+			if (!StaffbaseList.isEmpty()) {
+				int staffId = StaffbaseList.get(0).getStaffid();
+				SecurityExample securityExample = new SecurityExample();
+				com.sds.em.po.SecurityExample.Criteria criteria2 = securityExample.createCriteria();
+				criteria2.andSecuritystaffidEqualTo(staffId);
+				List<Security> securityList = securityMapper.selectByExample(securityExample);
+				if (securityAnswer.equals(securityList.get(0).getSecurityanswer())) {
+					return new Message(true, "确认用户", null);
+				} else {
+					return new Message(false, "用户校验失败", null);
+				}
 			}
+			return new Message(false, "用户不存在", null);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
-
 	}
 
 	@Override
-	public Message modifyPassword(String staffPassword, int staffId) {
+	public Message modifyPassword(String staffpassword, String stafftel, String securityanswer) {
 		try {
-			Staffbase staffbase = new Staffbase();
-
-			staffbase.setStaffid(staffId);
-			staffbase.setStaffpassword(staffPassword);
-
-			int flag = 0;
-			flag = staffbaseMapper.updateByPrimaryKeySelective(staffbase);
-			if (flag != 0) {
-				return new Message(true, ",成功修改密码", null);
-			} else {
-				return new Message(false, "数据库错误", null);
+			StaffbaseExample staffbaseExample = new StaffbaseExample();
+			Criteria criteria = staffbaseExample.createCriteria();
+			criteria.andStafftelEqualTo(stafftel);
+			List<Staffbase> StaffbaseList = staffbaseMapper.selectByExample(staffbaseExample);
+			if (!StaffbaseList.isEmpty()) {
+				int staffId = StaffbaseList.get(0).getStaffid();
+				SecurityExample securityExample = new SecurityExample();
+				com.sds.em.po.SecurityExample.Criteria criteria2 = securityExample.createCriteria();
+				criteria2.andSecuritystaffidEqualTo(staffId);
+				List<Security> securityList = securityMapper.selectByExample(securityExample);
+				if (securityanswer.equals(securityList.get(0).getSecurityanswer())) {
+					Staffbase staffbase = new Staffbase();
+					staffbase.setStaffid(staffId);
+					staffpassword=Md5.MD5(staffpassword);
+					staffbase.setStaffpassword(staffpassword);
+					int flag = 0;
+					flag = staffbaseMapper.updateByPrimaryKeySelective(staffbase);
+					if (flag != 0) {
+						return new Message(true, "成功修改密码", null);
+					} else {
+						return new Message(false, "数据库错误", null);
+					}
+				} else {
+					return new Message(false, "用户校验失败", null);
+				}
 			}
+			return new Message(false, "用户不存在", null);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return new Message(false, "数据库错误", null);
 		}
-
 	}
 
 	@Override
@@ -346,6 +360,7 @@ public class IndexServiceImpl implements IndexService {
 			loginMassage.setOldername(olderbase.getOldername());
 			loginMassage.setOlderid(olderbase.getOlderid());
 			loginMassage.setOldertel(olderbase.getOldertel());
+			loginMassage.setOlderaddress(olderbase.getOlderaddress());
 			loginMassage.setUser("elder");
 		}
 		staffbaseExample.clear();

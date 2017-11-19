@@ -33,5 +33,11 @@ public interface ShopPayFrontService {
 
 	//老人参加团购
 	public Message joinGroup(int olderid,int groupid);
+	
+	//判断老人是否参与过这个团购
+	public Message judgeJoinGroup(int olderid,int groupid);
+	
+	//判断老人是否加入过购物车
+	public Message judgeAddCart(int olderid, int productid);
 
 }

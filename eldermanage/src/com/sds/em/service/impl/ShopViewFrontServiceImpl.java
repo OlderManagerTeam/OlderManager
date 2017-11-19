@@ -1,6 +1,7 @@
 package com.sds.em.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -79,7 +80,7 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 		Olderproductview view = new Olderproductview();
 		view.setPviewolderid(olderid);
 		view.setPviewproductid(productid);
-
+		view.setPviewdate(new Date());
 		if (!viewList.isEmpty()) {// 说明这个商品，老人已经浏览了-修改浏览量就行
 			int flag1 = 0;
 			view.setPviewocount(viewList.get(0).getPviewocount() + 1);

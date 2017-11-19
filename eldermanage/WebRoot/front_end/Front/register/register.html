@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>注册</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free HTML5 Template by FreeHTML5.co" />
+<meta name="keywords"
+	content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+
+
+
+
+<!-- Facebook and Twitter integration -->
+<meta property="og:title" content="" />
+<meta property="og:image" content="" />
+<meta property="og:url" content="" />
+<meta property="og:site_name" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:url" content="" />
+<meta name="twitter:card" content="" />
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300'
+	rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/style.css">
+<!--文件上传css文件-->
+<link href="css/fileinput.css" media="all" rel="stylesheet"
+	type="text/css" />
+<!--验证css文件-->
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrapValidator.min.css">
+
+<!-- Modernizr JS -->
+<script src="js/modernizr-2.6.2.min.js"></script>
+<!-- FOR IE9 below -->
+<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+<script type="text/javascript">
+	function HideMessage() {
+		$(".alert").hide();
+	}
+	function ShowMessage() {
+		$(".alert").show();
+	}
+</script>
+</head>
+<body onLoad="HideMessage()">
+
+	<div class="container">
+		<div class="row">
+			<!--设置上边距-->
+
+			<!--<div class="col-md-12 text-center">
+					<ul class="menu">
+						<li class="active"><a href="sign-up.html">Style 1</a></li>
+						<li><a href="sign-up2.html">Style 2</a></li>
+						<li><a href="sign-up3.html">Style 3</a></li>
+					</ul>
+				</div>-->
+
+		</div>
+		<div class="row">
+
+			<div class="col-md-12">
+
+
+				<!-- 员工信息录入表单 -->
+				<form class="fh5co-form animate-box" data-animate-effect="fadeIn"
+					id="defaultForm">
+					<h2>注册</h2>
+					<div>
+						<div class="alert alert-success" role="alert">已经将您的信息录入，请等待审核</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="staffName" class="sr-only">员工姓名</label> <input
+									type="text" class="form-control" id="staffname"
+									placeholder="员工姓名" autocomplete="off" name="staffname">
+							</div>
+							<div class="form-group">
+								<label for="staffSex" class="sr-only">性别</label>
+								<!-- <input type="select" class="form-control" id="security" placeholder="请选择您的密保问题" autocomplete="off"> -->
+								<select class="form-control" name="staffsex" id="staffsex">
+									<option value="" style="display: none;" disabled selected>员工性别</option>
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="staffIDE" class="sr-only">员工身份证号码</label> <input
+									type="text" class="form-control" id="staffiide"
+									placeholder="员工身份证号码" autocomplete="off" name="staffiide">
+							</div>
+
+							<div class="form-group">
+								<div class="row">
+									<div class="col-md-5"
+										style="font-size: 1.8em;color: rgba(0, 0, 0, 0.3)">
+										<label for="staffBirthday" style="font-size: 0.6em">出生日期:</label>
+									</div>
+									<div class="col-md-7">
+										<input type="date" class="form-control" id="staffbirthday"
+											name="staffBirthday" placeholder="员工出生日期" autocomplete="off">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="staffAddress" class="sr-only">员工住址</label> <input
+									type="telephone" class="form-control" id="staffaddress"
+									placeholder="员工住址" autocomplete="off" name="staffaddress">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="staffTel" class="sr-only">员工电话号码</label> <input
+									class="form-control" id="stafftel" placeholder="员工电话号码"
+									autocomplete="off" name="stafftel">
+							</div>
+							<div class="form-group">
+								<label for="staffPassword" class="sr-only">密码</label> <input
+									type="password" class="form-control" id="staffpassword"
+									placeholder="密码" name="staffpassword">
+							</div>
+							<div class="form-group">
+								<label for="re-staffPassword" class="sr-only">请再输入一次密码</label> <input
+									type="password" class="form-control" id="re-staffpassword"
+									placeholder="请再输入一次密码" autocomplete="off"
+									name="confirmPassword">
+							</div>
+							<div class="form-group">
+								<label for="security" class="sr-only">请选择您的密保问题</label>
+								<!-- <input type="select" class="form-control" id="security" placeholder="请选择您的密保问题" autocomplete="off"> -->
+								<select class="form-control" id="securityquestionid"
+									name="securityquestionid">
+									<option value="" style="display: none;" disabled selected>请选择您的密保问题</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="answer" class="sr-only">请输入您的密保问题答案</label> <input
+									class="form-control" id="securityanswer" name="securityanswer"
+									placeholder="请输入您的密保问题答案" autocomplete="off">
+							</div>
+
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+
+
+
+								<label for="olderHeadUrl"
+									style="font-size: 16px;padding-top: 5px;color: rgba(0, 0, 0, 0.3)">员工照片：</label>
+
+
+
+							</div>
+							<div class="form-group">
+								<input id="staffImg" type="file" name="staffImg" class="file">
+							</div>
+						</div>
+					</div>
+
+					<div class="row text-center">
+						<div class="form-group">
+							<p>
+								已经注册？请<a href="/eldermanage/front_end/Front/login/login.html">登录</a>
+							</p>
+						</div>
+						<div class="form-group">
+							<input type="button" value="注册" class="btn btn-primary"
+								style="width: 100px" id="register">
+						</div>
+					</div>
+				</form>
+				<!-- END Sign In Form -->
+
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Placeholder -->
+	<script src="js/jquery.placeholder.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Main JS -->
+	<script src="js/login.js"></script>
+	<!-- 文件上传 JS -->
+	<script src="js/fileinput.js" type="text/javascript"></script>
+	<script src="js/fileinput_locale_zh.js" type="text/javascript"></script>
+	<!--验证js文件-->
+	<script type="text/javascript" src="js/bootstrapValidator.min.js"></script>
+	<!-- Main JS -->
+	<script>
+		$("#staffImg").fileinput({
+			language : 'zh',
+			showUpload : false,
+			showRemove : false,
+			allowedPreviewTypes : [ 'image' ],
+			allowedFileExtensions : [ 'jpg', 'png' ],
+			maxFileSize : 2000,
+			showCaption : false,
+			browseClass : "btn btn-primary btn-lg",
+			fileType : "any",
+			previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
+			msgFilesTooMany : 1,
+			maxFileCount : 1
+		});
+	</script>
+	<!--表单验证-->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Generate a simple captcha
+	
+			$('#defaultForm').bootstrapValidator({
+				//        live: 'disabled',
+				message : 'This value is not valid',
+				feedbackIcons : {
+					//提示图标
+					valid : 'glyphicon glyphicon-ok',
+					invalid : 'glyphicon glyphicon-remove',
+					validating : 'glyphicon glyphicon-refresh'
+				},
+				fields : {
+					//检验用户名
+					staffname : {
+						message : '姓名不能为空',
+						validators : {
+							//验证名字是否为空
+							notEmpty : {
+								message : '姓名不能为空'
+							},
+							//验证名字长度
+							stringLength : {
+								min : 2,
+								max : 6,
+								message : '姓名只能2到6位汉字'
+							},
+							//验证名字是不是中文
+							regexp : {
+								regexp : /^[\u4e00-\u9fa5]+$/,
+								message : '名字只能是中文'
+							},
+/* 							remote : {
+								url : 'remote.php',
+								message : 'The username is not available'
+							}, */
+							//不能和密码相同
+/* 							different : {
+								field : 'password',
+								message : 'The username and password cannot be the same as each other'
+							} */
+						}
+					},
+					//检验用户名
+					staffiide : {
+						validators : {
+							//身份证是否为空
+							notEmpty : {
+								message : '身份证不能为空'
+							},
+							//身份证格式
+							regexp : {
+								regexp : /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,
+								message : '请输入正确的身份证格式'
+							}
+						}
+					},
+					//检验密码
+					staffpassword : {
+						validators : {
+							//密码不能为空
+							notEmpty : {
+								message : '密码不能为空'
+							},
+							//规定密码的组成方式
+							regexp : {
+								regexp : /^[a-zA-Z0-9_\.]+$/,
+								message : '密码必须由数字与字母组成'
+							},
+							//规定密码的长度
+							stringLength : {
+								min : 6,
+								max : 12,
+								message : '密码只能是6到12位'
+							}
+						}
+					},
+					confirmPassword : {
+						validators : {
+							notEmpty : {
+								message : '密码不能为空'
+							},
+							identical : {
+								field : 'staffpassword',
+								message : '两次密码不一致'
+							},
+						}
+					},
+					stafftel : {
+						validators : {
+							notEmpty : {
+								message : '电话不能为空'
+							},
+							regexp : {
+								regexp : /^1[3|5|8]{1}[0-9]{9}$/,
+								message : '请输入正确的电话号码格式,例如：187XXXXXXXX'
+							}
+						}
+					},
+					staffaddress : {
+						validators : {
+							notEmpty : {
+								message : '地址不能为空'
+							},
+							regexp : {
+								regexp : /^[\u4e00-\u9fa5]{2,4}省[\u4e00-\u9fa5]{2,6}市[\u4e00-\u9fa5]{2,6}县[\u4e00-\u9fa5]{0,20}$/,
+								message : '请输入正确的地址格式，格式为：XX省XX市XX县XXX'
+							}
+						}
+					},
+					staffsex : {
+						enabled : false,
+						validators : {
+							notEmpty : {
+								message : '请选择性别'
+							}
+						}
+					},
+				}
+			});
+	
+			// Validate the form manually
+	
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#register").click(function() {
+				$("#defaultForm").data("bootstrapValidator").validate();
+				var flag = $("#defaultForm").data("bootstrapValidator").isValid();
+				var form = new FormData(document.getElementById("defaultForm"));
+				if (flag) {
+					$.ajax({
+						type : 'post',
+						url : "/eldermanage/v1/index/person/staff",
+						data : form,
+						processData : false,
+						contentType : false,
+					}).then(
+						function(result) {
+							if (result.success) {
+								window.location.href = "/eldermanage/front_end/Front/login/login.html";
+							}
+							else{
+							alert(result.information);
+							}
+						}
+					)
+				}
+			})
+		})
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.ajax({
+				type : 'get',
+				url : "/eldermanage/v1/index/person/securities",
+				data : null,
+				processData : false,
+				contentType : false,
+			}).then(
+				function(result) {
+					if (result.success) {
+						var question = result.data;
+						for (var i = question.length - 1; i >= 0; i--) {
+							var oOption = `
+													<option value="${question[i].questionid}">${question[i].questioncontent}</option>
+												`;
+							$('#securityquestionid').append(oOption);
+						}
+					}
+				}
+			)
+		})
+	</script>
+</body>
+</html>
+
