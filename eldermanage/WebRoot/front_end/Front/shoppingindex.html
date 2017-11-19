@@ -40,13 +40,13 @@
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng">
-						<a href="personal.html" target="_top"><i
+						<a href="" target="_top" id="personal"><i
 							class="am-icon-user am-icon-fw"></i>个人中心</a>
 					</div>
 				</div>
 				<div class="topMessage mini-cart">
 					<div class="menu-hd">
-						<a id="mc-menu-hd" href="shopcart.html" target="_top"><i
+						<a id="mc-menu-hd" href="" target="_top"><i
 							class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong
 							id="J_MiniCartNum" class="h"></strong></a>
 					</div>
@@ -1302,7 +1302,7 @@
 								href="two_searchpage.html?鞋子"><span class="inner"><b
 									class="text">鞋子</b></span></a>
 						</div>
-						<a href="# "> <img src="../images/act1.png " />
+						<a href="# "> <img src="images/product/act1.png " />
 							<div class="outer-con ">
 								<div class="title ">给最爱的你</div>
 								<div class="sub-title ">含外国进口</div>
@@ -1353,7 +1353,7 @@
 								href="two_searchpage.html?甜点"><span class="inner"><b
 									class="text">甜点</b></span></a>
 						</div>
-						<a href="# "> <img src="../images/act1.png " />
+						<a href="# "> <img src="images/product/act1.png " />
 							<div class="outer-con ">
 								<div class="title ">零食大礼包开抢啦</div>
 								<div class="sub-title ">当小鱼儿恋上软豆腐</div>
@@ -1544,7 +1544,7 @@
 										href="two_searchpage.html?户外"><span class="inner"><b
 											class="text">户外</b></span></a>
 								</div>
-								<a href="# "> <img src="../images/act1.png " />
+								<a href="# "> <img src="images/product/act1.png " />
 									<div class="outer-con ">
 										<div class="title ">开抢啦</div>
 										<div class="sub-title ">含外国进口</div>
@@ -1795,7 +1795,7 @@
 									</ul>
 								</div>
 								<div class="login_btnbox ">
-									<a href="# " class="login_order ">我的订单</a>
+									<a href="" class="login_order " id="myorders">我的订单</a>
 								</div>
 								<i class="icon_arrow_white "></i>
 							</div>
@@ -1810,7 +1810,7 @@
 
 
 						<div id="foot " class="item ">
-							<a href="# "> <span class="zuji "></span>
+							<a href="# "> <span class="zuji " id="myfoots"> </span>
 							</a>
 							<div class="mp_tooltip ">
 								我的足迹 <i class="icon_arrow_right_black "></i>
@@ -1852,53 +1852,68 @@
 
 			<script type="text/javascript">
 				//判断登录
+				var olderid;
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
 					url : "/eldermanage/v1/shop/judgeLogin",
 					data : null,
 					success : function(result) {
-						
-							alert(result.information)
-							alert(result.data.olderid)
-						
-					},
-					error : function() {
-						alert('数据库错误')
-					}
-				})
 			
-				//显示菜单内容
-				var olderid = 1;
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "/eldermanage/v1/shop/personal/older/info?olderid" + olderid,
-					data : null,
-					success : function(result) {
-						document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
-						document.getElementById("olderheadurl").src = result.data.olderheadurl;
-						document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
+						//alert(result.information)
+						if (result.success) {
+							olderid = result.data.olderid
+						} else {
+							$("#personal").click(function(event) {
+								alert('请登录')
+							});
+							$("#mc-menu-hd").click(function(event) {
+								alert('请登录')
+							});
+						}
 					},
-					error : function() {
-						alert('数据库错误')
+				}).done(function() {
+					if (olderid) { //已登录状态
+						//显示菜单内容
+						$.ajax({
+							type : 'get',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/shop/personal/older/info",
+							data : null,
+							success : function(result) {
+								if (result.success) {
+									document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
+									document.getElementById("olderheadurl").src = result.data.olderheadurl;
+									document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
+									document.getElementById("myorders").href = '../Front/personal.html'
+									document.getElementById("myfoots").href = '../Front/personal.html'
+								}
+							},
+						})
+						//显示购物车数量
+						$.ajax({
+							type : 'get',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/shop/older/cart/amount",
+							data : null,
+							success : function(result) {
+								if (result.success) {
+									$("#J_MiniCartNum").html(result.data);
+									$("#cartcount").html(result.data);
+								}
+								if (result.information=="购物车为空") {
+										$("#J_MiniCartNum").html(0);
+										$("#cartcount").html(0);
+									}
+							},
+						})
+						document.getElementById("personal").href = '../Front/personal.html'
+						document.getElementById("mc-menu-hd").href = '../Front/shopcart.html'
 					}
-				})
-				//显示购物车数量
-				$.ajax({
-					type : 'get',
-					contentType : 'application/json',
-					url : "/eldermanage/v1/shop/older/cart/amount?olderid" + olderid,
-					data : null,
-					success : function(result) {
-						$("#J_MiniCartNum").html(result.data);
-						$("#cartcount").html(result.data);
+				});
 			
-					},
-					error : function() {
-						alert('数据库错误')
-					}
-				})
+			
+			
 			
 				$.ajax({
 					type : 'get',
@@ -1958,68 +1973,68 @@
 							var floor = "floor" + (x + 1);
 			
 							var oDiv = `
-															<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
-																<div class="outer-con ">
-																	
-																	<div class="sub-title ">
-																		¥${resultData[0].productdiscountprice}
-																	</div>
-																	<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[0].productid})"></i>									
-																</div>
-																<a href="../Front/introduction.html?productid=${resultData[0].productid}"><img src="${resultData[0].productimg}" /></a>						
-															</div>
-													
-															<div class="am-u-md-2 am-u-lg-2 text-three sug">
-																<div class="outer-con ">
+																						<div class="am-u-sm-7 am-u-md-5 am-u-lg-2 text-two">
+																							<div class="outer-con ">
 																								
-																	<div class="sub-title ">
-																		¥${resultData[1].productdiscountprice}
-																	</div>
-																	<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[1].productid})"></i>								
-																</div>
-																<a href="../Front/introduction.html?productid=${resultData[1].productid}"><img src="${resultData[1].productimg}" /></a>
-															</div>
-															<div class="am-u-md-2 am-u-lg-2 text-three big">
-																<div class="outer-con ">
-																	
-																	<div class="sub-title ">
-																		¥${resultData[2].productdiscountprice}
-																	</div>
-																	<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[2].productid})"></i>								
-																</div>
-																<a href="../Front/introduction.html?productid=${resultData[2].productid}"><img src="${resultData[2].productimg}" /></a>
-															</div>			
-															<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
-																<div class="outer-con ">
+																								<div class="sub-title ">
+																									¥${resultData[0].productdiscountprice}
+																								</div>
+																								<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[0].productid})"></i>									
+																							</div>
+																							<a href="../Front/introduction.html?productid=${resultData[0].productid}"><img src="${resultData[0].productimg}" /></a>						
+																						</div>
+																				
+																						<div class="am-u-md-2 am-u-lg-2 text-three sug">
+																							<div class="outer-con ">
+																															
+																								<div class="sub-title ">
+																									¥${resultData[1].productdiscountprice}
+																								</div>
+																								<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[1].productid})"></i>								
+																							</div>
+																							<a href="../Front/introduction.html?productid=${resultData[1].productid}"><img src="${resultData[1].productimg}" /></a>
+																						</div>
+																						<div class="am-u-md-2 am-u-lg-2 text-three big">
+																							<div class="outer-con ">
 																								
-																	<div class="sub-title ">
-																		¥${resultData[3].productdiscountprice}
-																	</div>
-																	<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[3].productid})"></i>								
-																</div>
-																<a href="../Front/introduction.html?productid=${resultData[3].productid}"><img src="${resultData[3].productimg}" /></a>
-															</div>	
-															<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
-																<div class="outer-con ">
-																
-																	<div class="sub-title ">
-																		¥${resultData[4].productdiscountprice}
-																	</div>
-																	<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[4].productid})"></i>								
-																</div>
-																<a href="../Front/introduction.html?productid=${resultData[4].productid}"><img src="${resultData[4].productimg}" /></a>
-															</div>	
-															<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
-																<div class="outer-con ">
-																	
-																	<div class="sub-title ">
-																	¥${resultData[5].productdiscountprice}
-																	</div>
-																	<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[5].productid})"></i>								
-																</div>
-																<a href="../Front/introduction.html?productid=${resultData[5].productid}"><img src="${resultData[5].productimg}" /></a>
-															</div>
-														`;
+																								<div class="sub-title ">
+																									¥${resultData[2].productdiscountprice}
+																								</div>
+																								<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[2].productid})"></i>								
+																							</div>
+																							<a href="../Front/introduction.html?productid=${resultData[2].productid}"><img src="${resultData[2].productimg}" /></a>
+																						</div>			
+																						<div class="am-u-sm-4 am-u-md-5 am-u-lg-4 text-five">
+																							<div class="outer-con ">
+																															
+																								<div class="sub-title ">
+																									¥${resultData[3].productdiscountprice}
+																								</div>
+																								<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[3].productid})"></i>								
+																							</div>
+																							<a href="../Front/introduction.html?productid=${resultData[3].productid}"><img src="${resultData[3].productimg}" /></a>
+																						</div>	
+																						<div class="am-u-sm-4 am-u-md-2 am-u-lg-2 text-six">
+																							<div class="outer-con ">
+																							
+																								<div class="sub-title ">
+																									¥${resultData[4].productdiscountprice}
+																								</div>
+																								<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[4].productid})"></i>								
+																							</div>
+																							<a href="../Front/introduction.html?productid=${resultData[4].productid}"><img src="${resultData[4].productimg}" /></a>
+																						</div>	
+																						<div class="am-u-sm-4 am-u-md-2 am-u-lg-4 text-six big">
+																							<div class="outer-con ">
+																								
+																								<div class="sub-title ">
+																								¥${resultData[5].productdiscountprice}
+																								</div>
+																								<i class="am-icon-shopping-basket am-icon-md  seprate" onclick="cartUrl(${resultData[5].productid})"></i>								
+																							</div>
+																							<a href="../Front/introduction.html?productid=${resultData[5].productid}"><img src="${resultData[5].productimg}" /></a>
+																						</div>
+																					`;
 			
 							$("#" + floor).append(oDiv);
 			
@@ -2031,6 +2046,7 @@
 					})
 				}
 			
+				//首页加入购物车
 				function cartUrl(productid) {
 					$.ajax({
 						type : 'get',
@@ -2042,12 +2058,11 @@
 							if (result.success) {
 								window.location.reload();
 							}
-						},
-						error : function() {
-							alert("数据库错误")
-						}
-					})
 			
+						},
+					}).fail(function(data) {
+						alert("未登录")
+					});
 				}
 			</script>
 </body>

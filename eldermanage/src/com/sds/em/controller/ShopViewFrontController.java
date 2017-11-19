@@ -27,17 +27,20 @@ public class ShopViewFrontController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "judgeLogin")
 	public @ResponseBody Message session(HttpSession session) throws Exception {
-		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
-		int olderid = loginMassage.getOlderid();
-		String oldername = loginMassage.getOldername();
-		String olderaddress = loginMassage.getOlderaddress();
-		if (oldername != null && olderaddress != null) {
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{
+			int olderid = loginMassage.getOlderid();
+			String oldername = loginMassage.getOldername();
+			String olderaddress = loginMassage.getOlderaddress();
 			loginMassage.setOlderid(olderid);
 			loginMassage.setOldername(oldername);
 			loginMassage.setOlderaddress(olderaddress);
 			return new Message(true, "已登录", loginMassage);
 		}
-		return new Message(false, "未登录", null);
+	
 	}
 
 	// 根据商品日销量进行 =今天推荐-前端只取前三个商品-后端成功-所有成功
@@ -80,34 +83,43 @@ public class ShopViewFrontController {
 	// 显示某个商品的详细信息及数量-后端成功--修订，判断登录否，加老人浏览表-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/product")
 	public @ResponseBody Message getProduct(HttpSession session, int productid) throws Exception {
-		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
-		int olderid = loginMassage.getOlderid();
-		if (olderid != 0) {// 登录状态
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return shopViewFrontService.getProduct(productid);//未登录，只能查看信息
+		}else{
+			int olderid = loginMassage.getOlderid();
 			Boolean flag = shopViewFrontService.addOlderProductBrowse(olderid, productid);
 			if (flag) {
 				return shopViewFrontService.getProduct(productid);
 			} else {
 				return new Message(false, "老人记录表更新失败", null);
 			}
-		} else {// 未登录状态
-			return shopViewFrontService.getProduct(productid);
+		}
+	}
+
+	// 看了又看 根据商品 日浏览量 降序排序显示--后端成功
+	@RequestMapping(method = RequestMethod.GET, value = "index/repeated")
+	public @ResponseBody Message repeatedView(HttpSession session) throws Exception {
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return shopViewFrontService.repeatedView();
+		} else {
+			int olderid = loginMassage.getOlderid();
+			return shopViewFrontService.repeatedOlderView(olderid);
 		}
 
 	}
 
-	// 未登录时，看了又看 根据商品 日浏览量 降序排序显示--后端成功
-	@RequestMapping(method = RequestMethod.GET, value = "index/repeated")
-	public @ResponseBody Message repeatedView() throws Exception {
-		return shopViewFrontService.repeatedView();
-	}
-
-	// 老人以登录时，根据老人浏览表 降序排序显示--后端成功
-	@RequestMapping(method = RequestMethod.GET, value = "index/older/repeated")
-	public @ResponseBody Message repeatedOlderView(HttpSession session,int olderid) throws Exception {
-		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
-		olderid = loginMassage.getOlderid();
-		return shopViewFrontService.repeatedOlderView(olderid);
-	}
+	/*
+	 * // 老人以登录时，根据老人浏览表 降序排序显示--后端成功
+	 * 
+	 * @RequestMapping(method = RequestMethod.GET, value =
+	 * "index/older/repeated") public @ResponseBody Message repeatedOlderView()
+	 * throws Exception { // int olderid=session.getAttribute("olderid") olderid
+	 * = 1; return shopViewFrontService.repeatedOlderView(olderid); }
+	 */
 
 	// 查看一个商品的评价等级详情--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/product/rate")
@@ -153,17 +165,26 @@ public class ShopViewFrontController {
 
 	// 猜你喜欢（未登录时）-推荐本商品的同标签下的商品--后端成功
 	@RequestMapping(method = RequestMethod.GET, value = "index/product/guesslike")
-	public @ResponseBody Message guessLikeView(int productid) throws Exception {
+	public @ResponseBody Message guessLikeView(HttpSession session, int productid) throws Exception {
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return shopViewFrontService.guessLikeView(productid);
+		} else {
+			int olderid = loginMassage.getOlderid();
+			return shopViewFrontService.guessLikeOlderView(olderid);
+		}
 
-		return shopViewFrontService.guessLikeView(productid);
 	}
-	// 猜你喜欢(已登录时)-推荐老人浏览表的相关标签下的商品
-
-	@RequestMapping(method = RequestMethod.GET, value = "index/older/product/guesslike")
-	public @ResponseBody Message guessLikeOlderView(int olderid) throws Exception {
-
-		return shopViewFrontService.guessLikeOlderView(olderid);
-	}
+	/*
+	 * // 猜你喜欢(已登录时)-推荐老人浏览表的相关标签下的商品
+	 * 
+	 * @RequestMapping(method = RequestMethod.GET, value =
+	 * "index/older/product/guesslike") public @ResponseBody Message
+	 * guessLikeOlderView(int olderid) throws Exception {
+	 * 
+	 * return shopViewFrontService.guessLikeOlderView(olderid); }
+	 */
 
 	// 获取放大镜中的本商品的三张图片
 	@RequestMapping(method = RequestMethod.GET, value = "index/product/magnifyingglass")
@@ -181,9 +202,14 @@ public class ShopViewFrontController {
 	// 显示现有购物车中本老人的商品数量
 	@RequestMapping(method = RequestMethod.GET, value = "older/cart/amount")
 	public @ResponseBody Message getOlderCartAmount(HttpSession session) throws Exception {
-		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
-		int olderid = loginMassage.getOlderid();
-		return shopViewFrontService.getOlderCartAmount(olderid);
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) session.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		} else {
+			int olderid = loginMassage.getOlderid();
+			return shopViewFrontService.getOlderCartAmount(olderid);
+		}
 	}
 
 }

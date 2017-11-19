@@ -1,3 +1,24 @@
+.menuzord .showhide{
+	height: 60px;
+	width: 30px;
+	padding: 18px 0 41px;
+	float: none;
+}
+.menuzord-responsive.menuzord {
+	padding: 0 15px;
+	min-height: 66px;
+}
+.h1, .h2, .h3, h1, h2, h3{
+	margin: 0;
+	padding: 0;
+}
+ol, ul{
+	margin-bottom: 0;
+}
+a:focus, a:hover{
+	text-decoration: none;
+}
+
 .btn-default{
 	color: #33c11c;
 	border-color: #33c11c;

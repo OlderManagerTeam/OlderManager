@@ -515,7 +515,7 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 				int count = cartList.size();
 				return new Message(true, "返回成功", count);
 			} else {
-				return new Message(false, "数据库错误", null);
+				return new Message(false, "购物车为空", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
