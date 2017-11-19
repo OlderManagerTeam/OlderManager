@@ -5,6 +5,8 @@ public class LoginMassage {
 
     private String oldername;
     
+    private String olderaddress;
+    
     private Integer staffid;
 
     private String staffname;
@@ -14,7 +16,17 @@ public class LoginMassage {
     private String branchname;
     
     private String user;
-    public Integer getOlderid() {
+    
+    
+    public String getOlderaddress() {
+		return olderaddress;
+	}
+
+	public void setOlderaddress(String olderaddress) {
+		this.olderaddress = olderaddress;
+	}
+
+	public Integer getOlderid() {
 		return olderid;
 	}
 

@@ -1,4 +1,4 @@
-package com.sds.em.service.impl;
+﻿package com.sds.em.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,8 +72,8 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 
 			for (Branch b : branchList) {
 				Staffbase staffbase = staffbaseMapper.selectByPrimaryKey(b.getBranchmanagerid());
-				if(staffbase==null)
-					staffbase=new Staffbase();
+				if (staffbase == null)
+					staffbase = new Staffbase();
 				BranchStaffBaseExtend baseExtend = new BranchStaffBaseExtend();
 				baseExtend.setBranch(b);
 				baseExtend.setStaffbase(staffbase);
@@ -362,7 +362,6 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 			Olderbase older = olderbaseMapper.selectByExample(olderbaseExample1).get(0);
 			older.setOlderbranchid(branchid);
 
-
 			int flag = 0;
 
 			flag = olderbaseMapper.updateByPrimaryKeySelective(older);
@@ -415,14 +414,13 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 		}
 		}
 
-			Staffbase staffbase = new Staffbase();
-			staffbase.setStaffdepartmentid(Integer.parseInt(staffdepartmentid));
-			staffbase.setStaffroleid(Integer.parseInt(staffroleid));
-			do {
+		Staffbase staffbase = new Staffbase();
+		staffbase.setStaffdepartmentid(Integer.parseInt(staffdepartmentid));
+		staffbase.setStaffroleid(Integer.parseInt(staffroleid));
+		do {
 			if (count == 0) {
 				staffcode = "001";
 			} else {
-				count++;
 				switch (String.valueOf(count).length()) {
 				case 1: {
 					staffcode = "00" + count;
@@ -438,6 +436,7 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 			StaffbaseExample.Criteria staffbaseCriteria = staffbaseExample.createCriteria();
 			staffbaseCriteria.andStaffcodeEqualTo(departmentid + roleid + staffcode);
 			i++;
+			count++;
 		} while ((!staffbaseMapper.selectByExample(staffbaseExample).isEmpty()) && i < 999);
 		if (i < 999)
 			return new Message(true, "返回成功", departmentid + roleid + staffcode);

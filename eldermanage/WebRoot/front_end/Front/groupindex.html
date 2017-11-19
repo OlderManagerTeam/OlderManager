@@ -298,11 +298,14 @@
 				success:function(result){
 					var newStartData = result.data;
 
+	          
 					// $("#demo5").show();
 					// page(newStartData, $("#demo5"));
 
-					for(let i=newStartData.length-1;i>=0;i--){
+					for(var i=0;i<newStartData.length;i++){
 					
+					  var date = new Date(newStartData[i].groupfinishdate + 1000 * 60 * 60 * 8);
+				      var d = date.toLocaleString();
 						var oDiv = `
 							<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
 				            	<div class="am-u-md-12">
@@ -319,8 +322,8 @@
 				            			</span>
 				            		</p>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
-				            			<span style="font-size: 15px;">日期:
-				            				<span style="font-size: 15px;">${newStartData[i].groupstartdate}</span>
+				            			<span style="font-size: 15px;">截止日期:
+				            				<span style="font-size: 15px;">${d}</span>
 				            			</span>
 				            		</p>
 				            	</div>
@@ -346,7 +349,9 @@
 					// $("#demo5").show();
 					// page(newStartData, $("#demo5"));
 
-					for(let i=newStartData.length-1;i>=0;i--){
+					for(let i=0;i<newStartData.length;i++){
+					 var date = new Date(newStartData[i].groupfinishdate + 1000 * 60 * 60 * 8);
+				      var d = date.toLocaleString();
 						var oDiv = `
 					<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
 	            	<div class="am-u-md-12">
@@ -363,8 +368,8 @@
 	            			</span>
 	            		</p>
 	            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
-	            			<span style="font-size: 15px;">日期:
-	            				<span style="font-size: 15px;">${newStartData[i].groupstartdate}</span>
+	            			<span style="font-size: 15px;">截止日期:
+	            				<span style="font-size: 15px;">${d}</span>
 	            			</span>
 	            		</p>
 	            	</div>
@@ -390,7 +395,9 @@
 					// $("#demo5").show();
 					// page(newStartData, $("#demo5"));
 
-					for(let i=newStartData.length-1;i>=0;i--){
+					for(let i=0;i<newStartData.length;i++){
+					 var date = new Date(newStartData[i].groupstartdate + 1000 * 60 * 60 * 8);
+				      var d = date.toLocaleString();
 						var oDiv = `
 								<div class="am-u-md-3" style="padding-right: 10px;padding-bottom: 20px;">
 				            	<div class="am-u-md-12">
@@ -407,8 +414,8 @@
 				            			</span>
 				            		</p>
 				            		<p style="margin: 0px 10px 0px 10px;font-size: 20px;">
-				            			<span style="font-size: 15px;">日期:
-				            				<span style="font-size: 15px;">${newStartData[i].groupstartdate}</span>
+				            			<span style="font-size: 15px;">开团日期:
+				            				<span style="font-size: 15px;">${d}</span>
 				            			</span>
 				            		</p>
 				            	</div>
