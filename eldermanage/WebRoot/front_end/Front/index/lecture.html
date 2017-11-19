@@ -10,17 +10,45 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	<link rel="stylesheet" href="fonts/flaticon.css" />
+
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.bootstrap-touchspin.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/flaticon.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/settings.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+	<link rel="stylesheet" type="text/css" href="css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css">
+	<link rel="stylesheet" type="text/css" href="css/polyglot-language-switcher.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/nouislider.css">
+	<link rel="stylesheet" type="text/css" href="css/nouislider.pips.css">
+	<link rel="stylesheet" type="text/css" href="css/menuzord.css">
+	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+	<link rel="stylesheet" type="text/css" href="css/hover.css">
+
+	<link rel="stylesheet" href="css/layui.css"  media="all">
+	<script src="js/layui.all.js" charset="utf-8"></script>
+	<script src="js/laypage.js" charset="utf-8"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 
 	<style type="text/css">
 		/*讲座活动列表*/
 		.tab-content a{
 			font-weight: 500;
-			color: black;
+			color: #7aba1e;
 		}
 		.tab-content a:hover{
 			font-weight: 500;
-			color: #7aba1e;
+			color: #ffbc1e;
 		}
 		.nav-pills>li.active>a {
 			border-top-left-radius: 10px;
@@ -68,6 +96,10 @@
 		.btn-default:hover{
 			color: #ffbc1e;
 			border-color: #ffbc1e;
+		}
+
+		.layui-laypage .layui-laypage-curr .layui-laypage-em{
+			background-color: #1abb05;
 		}
 	</style>
 </head>
@@ -163,105 +195,19 @@
 					<!-- 讲座 -->
 					<div class="col-md-12 tab-pane fade in active" id="lectureList" 
 						style="margin-top: 10px;padding: 30px 0 0 0;">
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<div class="single-service-item">
-								<span class="top-border"></span>
-	                            <span class="right-border"></span>
-	                            <span class="bottom-border"></span>
-								<div class="service-left-bg"></div>
-								<!-- <div class="service-icon">
-									<i class="icon flaticon-budding-leaves"></i>
-								</div> -->
-								<div class="service-text">
-									<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
-										这是标题噢噢噢这是标题噢噢噢
-									</p>
-									<p style="margin-top: 10px;font-size: 18px;line-height: 28px;letter-spacing: 0.5px;height: 112px;overflow: hidden;">
-										这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢
-									</p>
-									<div class="row" style="margin-top: 20px;">
-										<div class="col-md-6">
-											<span style="font-size: 20px;color: #7aba1e;">已预约人数:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">50</span>
-										</div>
-										<div class="col-md-6">
-											<span style="font-size: 20px;color: #7aba1e;">开启所需人数:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">100</span>
-										</div>
-										<div class="col-md-6">
-											<span style="font-size: 20px;color: #7aba1e;">讲座时间:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">2017-10-1</span>
-										</div>
-										<div class="col-md-6">
-											<span style="font-size: 20px;color: #7aba1e;">讲座状态:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">预约中</span>
-										</div>
-										<div class="col-md-12">
-											<span style="font-size: 20px;color: #7aba1e;">讲座地点:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">贵州大学</span>
-										</div>
-										<div class="col-md-6" style="padding-top: 20px;">
-											<a href="" style="font-size: 20px;color: #7aba1e;">查看详情 ></a>
-										</div>
-										<div class="col-md-6" style="padding-top: 20px;">
-											<button type="button" class="btn btn-default" style="float: right;">点击报名</button>
-										</div>
-									</div>
-								</div>
-							</div>
+						<div class="col-md-12" id="lectureItem">
+							
 						</div>
+						<div id="demo5" style="text-align: center;" class="col-md-12"></div>
 					</div>
 
 					<!-- 活动 -->
 					<div class="col-md-12 tab-pane fade" id="activityList" 
 						style="margin-top: 10px;padding: 30px 0 0 0;">
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<div class="single-service-item">
-								<span class="top-border"></span>
-	                            <span class="right-border"></span>
-	                            <span class="bottom-border"></span>
-								<div class="service-left-bg"></div>
-								<!-- <div class="service-icon">
-									<i class="icon flaticon-budding-leaves"></i>
-								</div> -->
-								<div class="service-text">
-									<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
-										这是标题噢噢噢这是标题噢噢噢
-									</p>
-									<p style="margin-top: 10px;font-size: 18px;line-height: 28px;letter-spacing: 0.5px;height: 112px;overflow: hidden;">
-										这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢
-									</p>
-									<div class="row" style="margin-top: 20px;">
-										<div class="col-md-6">
-											<span style="font-size: 20px;color: #7aba1e;">已预约人数:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">50</span>
-										</div>
-										<div class="col-md-6">
-											<span style="font-size: 20px;color: #7aba1e;">开启所需人数:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">100</span>
-										</div>
-										<div class="col-md-6">
-											<span style="font-size: 20px;color: #7aba1e;">活动时间:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">2017-10-1</span>
-										</div>
-										<div class="col-md-6">
-											<span style="font-size: 20px;color: #7aba1e;">活动状态:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">预约中</span>
-										</div>
-										<div class="col-md-12">
-											<span style="font-size: 20px;color: #7aba1e;">活动地点:</span>
-											<span style="font-size: 20px;color: #ffbc1e;">贵州大学</span>
-										</div>
-										<div class="col-md-6" style="padding-top: 20px;">
-											<a href="" style="font-size: 20px;color: #7aba1e;">查看详情 ></a>
-										</div>
-										<div class="col-md-6" style="padding-top: 20px;">
-											<button type="button" class="btn btn-default" style="float: right;">点击报名</button>
-										</div>
-									</div>
-								</div>
-							</div>
+						<div class="col-md-12" id="activityItem">
+							
 						</div>
+						<div id="activityPage" style="text-align: center;" class="col-md-12"></div>
 					</div>
 				</div>
 			</div>  
@@ -417,6 +363,192 @@
 		<script src="js/custom.js"></script>
 
 	</div>
+
+	<script type="text/javascript">
+		//讲座列表
+		$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"http://localhost:8080/eldermanage/v1/course/lecture",
+			data:null,
+			success:function(result){
+				var lectureData = result.data;
+
+				$("#demo5").show();
+				page(lectureData, $("#demo5"));
+			},
+			error(){
+				alert('数据库错误')
+			}
+		})
+
+		//活动列表
+		$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"http://localhost:8080/eldermanage/v1/course/actions/allactions",
+			data:null,
+			success:function(result){
+				var activityData = result.data;
+
+				$("#activityPage").show();
+				pageL(activityData, $("#activityPage"));
+			},
+			error(){
+				alert('数据库错误')
+			}
+		})
+
+		//讲座分页
+		function page(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 8  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('lectureItem').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let datas =`
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="single-service-item">
+										<span class="top-border"></span>
+			                            <span class="right-border"></span>
+			                            <span class="bottom-border"></span>
+										<div class="service-left-bg"></div>
+										<!-- <div class="service-icon">
+											<i class="icon flaticon-budding-leaves"></i>
+										</div> -->
+										<div class="service-text">
+											<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
+												这是标题噢噢噢这是标题噢噢噢
+											</p>
+											<p style="margin-top: 10px;font-size: 18px;line-height: 28px;letter-spacing: 0.5px;height: 112px;overflow: hidden;">
+												这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢
+											</p>
+											<div class="row" style="margin-top: 20px;">
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">已预约人数:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">50</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">开启所需人数:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">100</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">讲座时间:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">2017-10-1</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">讲座状态:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">预约中</span>
+												</div>
+												<div class="col-md-12">
+													<span style="font-size: 20px;color: #7aba1e;">讲座地点:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">贵州大学</span>
+												</div>
+												<div class="col-md-6" style="padding-top: 20px;">
+													<a href="" style="font-size: 20px;">查看详情 ></a>
+												</div>
+												<div class="col-md-6" style="padding-top: 20px;">
+													<button type="button" class="btn btn-default" style="float: right;">点击报名</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//活动分页
+		function pageL(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 8  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('activityItem').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let datas =`
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="single-service-item">
+										<span class="top-border"></span>
+			                            <span class="right-border"></span>
+			                            <span class="bottom-border"></span>
+										<div class="service-left-bg"></div>
+										<!-- <div class="service-icon">
+											<i class="icon flaticon-budding-leaves"></i>
+										</div> -->
+										<div class="service-text">
+											<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
+												这是标题噢噢噢这是标题噢噢噢
+											</p>
+											<p style="margin-top: 10px;font-size: 18px;line-height: 28px;letter-spacing: 0.5px;height: 112px;overflow: hidden;">
+												这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢
+											</p>
+											<div class="row" style="margin-top: 20px;">
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">已预约人数:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">50</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">开启所需人数:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">100</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">活动时间:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">2017-10-1</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">活动状态:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">预约中</span>
+												</div>
+												<div class="col-md-12">
+													<span style="font-size: 20px;color: #7aba1e;">活动地点:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">贵州大学</span>
+												</div>
+												<div class="col-md-6" style="padding-top: 20px;">
+													<a href="" style="font-size: 20px;">查看详情 ></a>
+												</div>
+												<div class="col-md-6" style="padding-top: 20px;">
+													<button type="button" class="btn btn-default" style="float: right;">点击报名</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+	</script>
 	
 </body>
 </html>

@@ -44,8 +44,8 @@
 							<i class="fa fa-bars icon"></i>
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
-							<li>Components</li>
-							<li class="active">Chart.js</li>
+							<li>数据统计</li>
+							<li class="active">电商数据统计</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -107,6 +107,9 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
+											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a href="../dataStatistics/headofficeStatistics.html">分店数据统计</a></li>
+											<li><a href="../dataStatistics/olderInfoStatistics.html">老人信息数据统计</a></li>
 											<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
 											<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
 										</ul>
@@ -294,6 +297,40 @@
 								<div class="card-body">
 									<h4>图释</h4>
 									展示一年内每个月商品的总销售量
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">商城日团购量</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="groupDay-chart" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									展示一周内团购的商品数量
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">商城月团购量</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="groupMouth-chart" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									展示一年内每个月团购的商品数量
 								</div>
 							</div>
 						</div>
