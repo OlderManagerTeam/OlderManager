@@ -143,5 +143,10 @@ public class CourseFrontController {
 		return courseService.selelctActiondetail(actionid);
 	}
 	
+	//近期活动（得到最新所有活动）
+	@RequestMapping(method = RequestMethod.GET,value="actions/newactions")
+	public @ResponseBody Message actionNew(){
+		return courseService.getAllNewActions();
+	}
 
 }
