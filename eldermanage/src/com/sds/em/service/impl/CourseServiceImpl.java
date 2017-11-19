@@ -259,7 +259,7 @@ public class CourseServiceImpl implements CourseService {
 		lecture.setLectureenroll(lectureenroll);
 		int flag = lectureMapper.updateByPrimaryKey(lecture);
 		if (flag == 1) {
-			return new Message(true, "返回成功", null);
+			return new Message(true, "返回成功", lectureList.get(lectureid).getLectureenroll());
 		}
 
 		return new Message(false, "数据错误", null);
@@ -473,7 +473,7 @@ public class CourseServiceImpl implements CourseService {
 		action.setActionenroll(actionList.get(0).getActionenroll() + 1);
 		int flag = actionMapper.updateByPrimaryKey(action);
 		if (flag == 1) {
-			return new Message(true, "添加修改成功", null);
+			return new Message(true, "添加修改成功", actionList.get(actionid).getActionenroll());
 		}
 
 		return new Message(false, "添加失败", null);
@@ -503,6 +503,19 @@ public class CourseServiceImpl implements CourseService {
 			return new Message(true, "返回成功", actionList.get(0));
 		}
 		return new Message(false, "数据错误", null);
+	}
+
+	//得到近期所有活动（按发布时间排序）
+	@Override
+	public Message getAllNewActions() {
+		ActionExample actionExample = new ActionExample();
+		actionExample.setOrderByClause("actionstartdate DESC,actionid DESC");
+		List<Action> actionList = actionMapper.selectByExample(actionExample);
+		
+		if(!actionList.isEmpty()){
+			return new Message(true,"返回成功",actionList);
+		}
+		return new Message(false,"数据错误",null);
 	}
 
 
