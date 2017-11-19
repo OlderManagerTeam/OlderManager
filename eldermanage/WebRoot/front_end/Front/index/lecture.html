@@ -369,7 +369,7 @@
 		$.ajax({
 			type:'get',
 			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/course/lecture",
+			url:"/eldermanage/v1/course/lecture",
 			data:null,
 			success:function(result){
 				var lectureData = result.data;
@@ -386,7 +386,7 @@
 		$.ajax({
 			type:'get',
 			contentType:'application/json',
-			url:"http://localhost:8080/eldermanage/v1/course/actions/allactions",
+			url:"/eldermanage/v1/course/actions/allactions",
 			data:null,
 			success:function(result){
 				var activityData = result.data;
@@ -407,7 +407,7 @@
 				laypage.render({
 				    elem: pageRoot
 				    ,count: videodata.length
-				    ,limit: 8  //每页个数
+				    ,limit: 6  //每页个数
 				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
 				    ,hash: 'fenye' //自定义hash值
 				    ,jump: function(obj){
@@ -482,7 +482,7 @@
 				laypage.render({
 				    elem: pageRoot
 				    ,count: videodata.length
-				    ,limit: 8  //每页个数
+				    ,limit: 6  //每页个数
 				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
 				    ,hash: 'fenye' //自定义hash值
 				    ,jump: function(obj){
