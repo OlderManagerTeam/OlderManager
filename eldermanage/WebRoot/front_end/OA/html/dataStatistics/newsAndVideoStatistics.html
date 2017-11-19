@@ -45,7 +45,7 @@
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
 							<li>数据统计</li>
-							<li class="active">商品评论统计</li>
+							<li class="active">新闻及视频数据统计</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -230,66 +230,78 @@
 			<div class="container-fluid">
 				<div class="side-body">
 					<div class="page-title">
-						<a class="btn btn-primary btn-lg"
-							href="../olderShop/productView.html" role="button">返回商品列表</a>
+						<span class="title">数据统计</span>
+						<div class="description">Data Statistics</div>
 					</div>
-
+					
 					<div class="row">
-						<div class="col-sm-2"></div>
-						<div class="col-sm-8">
+						<div class="col-sm-6">
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">
-										<div class="title">商品星级统计</div>
+										<div class="title">新闻</div>
 									</div>
 								</div>
 								<div class="card-body no-padding">
-									<canvas id="sellDay-chart" class="chart"></canvas>
+									<canvas id="news-chart" class="chart"></canvas>
 								</div>
 								<div class="card-body">
 									<h4>图释</h4>
-									查看商品星级情况
+									展示新闻篇数
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">视频统计</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="videoPie-chart" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									主要显示不同类型的视频数量
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
-	</div>
-	<footer class="app-footer">
-		<div class="wrapper">
-			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-		</div>
-	</footer>
-	<div>
-		<!-- Javascript Libs -->
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
+		<footer class="app-footer">
+			<div class="wrapper">
+				<span class="pull-right">2.1 <a href="#"><i
+						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+			</div>
+		</footer>
+		<div>
+			<!-- Javascript Libs -->
+			<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/bootstrap-switch.min.js"></script>
 
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-		
-		<script type="text/javascript" src="../../js/personal.js"></script>
-		<!-- 链接js文件 -->
-		<script type="text/javascript"
-			src="../../js/dataStatistics/productStatistics.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/jquery.matchHeight-min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/jquery.dataTables.min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/dataTables.bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+			<!-- Javascript -->
+			<script type="text/javascript" src="../../js/app.js"></script>
+			<!-- 链接js文件 -->
+			<script type="text/javascript"
+				src="../../js/dataStatistics/newsAndVideoStatistics.js" charset="UTF-8"></script>
+				
+			<script type="text/javascript" src="../../js/personal.js"></script>
 </body>
 
 </html>
