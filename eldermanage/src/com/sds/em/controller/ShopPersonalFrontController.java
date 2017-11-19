@@ -31,9 +31,15 @@ public class ShopPersonalFrontController {
 	// 显示电商老人的个人电商信息-全部成功
 	@RequestMapping(method = RequestMethod.GET, value = "older/info")
 	public @ResponseBody Message shopPersonalInfo(HttpSession session) throws Exception {
+		int olderid = 0;
 		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
-		int olderid = loginMassage.getOlderid();
-		return shopPersonalFrontService.shopPersonalInfo(olderid);
+		if (loginMassage != null) {
+			olderid = loginMassage.getOlderid();
+			return shopPersonalFrontService.shopPersonalInfo(olderid);
+		} else {
+			return new Message(false, "未登录", null);
+		}
+
 	}
 
 	// 显示我的订单页面-后端完成-全部成功
@@ -88,15 +94,16 @@ public class ShopPersonalFrontController {
 		int olderid = loginMassage.getOlderid();
 		return shopPersonalFrontService.myOrderApplyCancel(olderid, orderid);
 	}
-	
-	//显示 我的团购页面
+
+	// 显示 我的团购页面
 	@RequestMapping(method = RequestMethod.GET, value = "mygroups/info")
 	public @ResponseBody Message myGroupsInfo(HttpSession session) throws Exception {
 		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
 		int olderid = loginMassage.getOlderid();
 		return shopPersonalFrontService.myGroupsInfo(olderid);
 	}
-   //显示我的足迹
+
+	// 显示我的足迹
 	@RequestMapping(method = RequestMethod.GET, value = "myfootprint/info")
 	public @ResponseBody Message myFootprintInfo(HttpSession session) throws Exception {
 		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");

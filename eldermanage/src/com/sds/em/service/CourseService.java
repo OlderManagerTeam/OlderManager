@@ -62,7 +62,8 @@ public interface CourseService {
  	public Message selectLecturedetail(int lectureid);
  	//查看活动详情
  	public Message selelctActiondetail(int actionid);
- 	//分页测试--------------------------
+ 	//得到最新所有活动
+ 	public Message getAllNewActions();
  	
 
  	

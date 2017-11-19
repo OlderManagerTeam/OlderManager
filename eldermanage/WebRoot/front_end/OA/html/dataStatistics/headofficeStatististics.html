@@ -3,8 +3,8 @@
 
 <head>
 <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"
-	charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
 <!-- Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
@@ -32,12 +32,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <link rel="stylesheet" type="text/css"
 	href="../../css/themes/flat-blue.css">
-<!--文件上传css文件-->
-<link href="../../lib/css/fileinput.css" media="all" rel="stylesheet"
-	type="text/css" />
-<!--验证css文件-->
-<link rel="stylesheet" type="text/css"
-	href="../../lib/css/bootstrapValidator.min.css">
 </head>
 
 <body class="flat-blue">
@@ -50,9 +44,8 @@
 							<i class="fa fa-bars icon"></i>
 						</button>
 						<ol class="breadcrumb navbar-breadcrumb">
-							<li>新闻发布</li>
-							<li>新闻列表</li>
-							<li class="active">编辑新闻</li>
+							<li>数据统计</li>
+							<li class="active">分店数据统计</li>
 						</ol>
 						<button type="button"
 							class="navbar-right-expand-toggle pull-right visible-xs">
@@ -114,6 +107,9 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
+											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a href="../dataStatistics/headofficeStatistics.html">分店数据统计</a></li>
+											<li><a href="../dataStatistics/olderInfoStatistics.html">老人信息数据统计</a></li>
 											<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
 											<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
 										</ul>
@@ -225,264 +221,87 @@
 										</ul>
 									</div>
 								</div></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-		</nav>
-	</div>
-	<!-- Main Content -->
-	<div class="container-fluid">
-		<div class="side-body">
-			<div class="page-title">
-				<span class="title">编辑新闻</span>
-				<div class="description">Editor News</div>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</nav>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="card">
-						<div class="card-header">
-							<div class="card-title">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../newsRelease/newsView.html" role="button">返回新闻列表</a>
+			<!-- Main Content -->
+			<div class="container-fluid">
+				<div class="side-body">
+					<div class="page-title">
+						<span class="title">数据统计</span>
+						<div class="description">Data Statistics</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">岗位统计</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="work-chart" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									统计出不同岗位都在职人员
 								</div>
 							</div>
 						</div>
-						<div class="card-body">
-							<form class="form-horizontal" id="newsEntry">
-								<div class="form-group">
-									<label for="newstitle" class="col-sm-1 control-label">新闻标题：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="newstitle"
-											placeholder="新闻标题" name="newstitle">
+						<div class="col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">性别统计</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="newseditorid" class="col-sm-1 control-label">编辑者：</label>
-									<div class="col-sm-2">
-										<input type="text" class="form-control" id="newseditorid"
-											placeholder="编辑者" name="newseditorid">
-									</div>
+								<div class="card-body no-padding">
+									<canvas id="sexPie-chart" class="chart"></canvas>
 								</div>
-								<div class="form-group">
-									<label for="" class="col-sm-1 control-label">新闻类型：</label>
-									<div class="col-sm-1">
-										<select id="newstype" class="form-control">
-											<optgroup class="active" label="新闻类型">
-												<option value="1">健康养生</option>
-												<option value="2">知识普及</option>
-											
-											</optgroup>
-										</select>
-									</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									统计出公司都男女比例
 								</div>
-								<div class="form-group">
-									<label for="newsimg" class="col-sm-1 control-label">新闻缩略图片：</label>
-									<div class="col-sm-10">
-										<input type="file" id="newsimg" name="newsimg">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="newsissueddate" class="col-sm-1 control-label">新闻发布日期：</label>
-									<div class="col-sm-2">
-										<input type="date" class="form-control" id="newsissueddate"
-											placeholder="编辑者" name="newsissueddate">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="newsintro" class="col-sm-1 control-label">新闻简介：</label>
-									<div class="col-sm-5">
-										<textarea class="form-control" id="newsintro"
-											placeholder="新闻简介" style="height: 100px" name="newsintro"></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="productupondate" class="col-sm-1 control-label">内容：</label>
-									<div class="col-sm-10">
-										<div id="newscontent" name="newscontent"></div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-1 col-sm-5">
-
-										<!-- <button type="reset" class="btn btn-default" id="reset">重置</button> -->
-										<button type="button" class="btn btn-primary btn-lg" id="newssubmit">
-											确认提交</button>
-									</div>
-								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	<footer class="app-footer">
-		<div class="wrapper">
-			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-		</div>
-	</footer>
-	<div>
-		<!-- Javascript Libs -->
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
+		<footer class="app-footer">
+			<div class="wrapper">
+				<span class="pull-right">2.1 <a href="#"><i
+						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+			</div>
+		</footer>
+		<div>
+			<!-- Javascript Libs -->
+			<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/bootstrap-switch.min.js"></script>
 
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-		<!-- 文件上传 JS -->
-		<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
-		<script src="../../lib/js/fileinput_locale_zh.js"
-			type="text/javascript"></script>
-		<!--验证js文件-->
-		<script type="text/javascript"
-			src="../../lib/js/bootstrapValidator.min.js"></script>
-		<script type="text/javascript" src="../../js/personal.js"></script>
-		<script>
-			$("#newsimg").fileinput({
-				showUpload : false,
-				showCaption : false,
-				browseClass : "btn btn-primary btn-lg",
-				fileType : "any",
-				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
-			});
-		</script>
-		<!--表单验证-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				// Generate a simple captcha
-		
-				$('#newsEntry').bootstrapValidator({
-					//        live: 'disabled',
-					message : '请正确填写',
-					feedbackIcons : {
-						valid : 'glyphicon glyphicon-ok-circle',
-						invalid : 'glyphicon glyphicon-remove-circle',
-						validating : 'glyphicon glyphicon-refresh',
-						regexp : 'glyphicon glyphicon-ok-circle'
-					},
-					fields : {
-						newstitle : {
-							message : '新闻不能为空',
-							validators : {
-								notEmpty : {
-									message : '新闻标题不能为空'
-								}
-							}
-						},
-						newseditorid : {
-							validators : {
-								notEmpty : {
-									message : '编辑者不能为空'
-								},
-							}
-						},
-						newstype : {
-							validators : {
-								notEmpty : {
-									message : '新闻类型不能为空'
-								}
-							}
-						},
-						newsimg : {
-							validators : {
-								notEmpty : {
-									message : '新闻缩略图不能为空'
-								}
-							}
-						},
-						newscontent : {
-							validators : {
-							}
-						},
-						newsissueddate : {
-							validators : {
-								notEmpty : {
-									message : '日期不能为空'
-								},
-								date : {
-									format : 'YYYY-MM-DD',
-									message : '请输入正确的日期格式'
-								}
-							}
-						},
-						newsintro : {
-							validators : {
-								notEmpty : {
-									message : '新闻简介不能为空'
-								},
-							}
-						},
-					}
-				});
-		
-				// Validate the form manually
-		
-			});
-		</script>
-		<!-- 富文本编辑器 -->
-		<script type="text/javascript" src="../../js/wangEditor.min.js"></script>
-		<script type="text/javascript">
-			var E = window.wangEditor
-			var newscontent = new E('#newscontent')
-			//newscontent.customConfig.debug = true;
-			//newscontent.customConfig.uploadImgShowBase64 = true
-			//newscontent.customConfig.debug=true;
-			newscontent.customConfig.uploadImgServer = '/eldermanage/v1/common/uploadImg';
-			newscontent.customConfig.uploadFileName = 'file';
-			/* 	newscontent.customConfig.uploadImgHeaders = {
-					'Accept' : 'multipart/form-data'
-				};  */
-		
-			newscontent.create()
-		</script>
-
-
-		<script type="text/javascript">
-			$("#newssubmit").click(function() {
-				var form = new FormData(document.getElementById("newsEntry"));
-				form.append("content", newscontent.txt.html());
-				form.append("newstype",$("#newstype option:selected").text());
-				//alert(newscontent.txt.html());
-				$.ajax({
-					type : 'post',
-					url : "/eldermanage/v1/news/publish",
-					data : form,
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						//var resultdata = JSON.parse(result);
-						alert(result.information)
-						if (result.success) {
-							window.location.href = "/eldermanage/front_end/OA/html/newsRelease/newsView.html";
-						}
-					
-					},
-					error : function() {
-						alert('fail')
-					}
-				})
-		
-			}
-			)
-		</script>
-		<script type="text/javascript">
-			$('select').select2();
-		</script>
+			<script type="text/javascript"
+				src="../../lib/js/jquery.matchHeight-min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/jquery.dataTables.min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/dataTables.bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+			<!-- Javascript -->
+			<script type="text/javascript" src="../../js/app.js"></script>
+			<!-- 链接js文件 -->
+			<script type="text/javascript"
+				src="../../js/dataStatistics/headofficeStatististics.js" charset="UTF-8"></script>
+				
+			<script type="text/javascript" src="../../js/personal.js"></script>
 </body>
 
 </html>

@@ -43,8 +43,11 @@ public class NewsController {
 	@RequestMapping(method = RequestMethod.POST, value = "publish")
 	public @ResponseBody Message publish(HttpSession session, String newstitle, String newstype, String newseditorid,
 			String newsissueddate, String newsintro, MultipartFile newsimg, String content) throws Exception {
-		LoginMassage loginMassage = (LoginMassage) session.getAttribute("loginMassage");
-		int staffid = loginMassage.getStaffid();
+		
+		LoginMassage loginMassage=(LoginMassage)session.getAttribute("loginMassage");
+		
+		int staffid=loginMassage.getStaffid();
+		//int staffid = 1;
 
 		String pic_path = "E:\\oldermanageresource\\newsimg\\";
 		String picUrl = "/newsimg/";
