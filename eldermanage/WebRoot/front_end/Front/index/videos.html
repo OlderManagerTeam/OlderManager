@@ -10,8 +10,36 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	<link rel="stylesheet" href="fonts/flaticon.css" />
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
 
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.bootstrap-touchspin.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/flaticon.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/settings.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+	<link rel="stylesheet" type="text/css" href="css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css">
+	<link rel="stylesheet" type="text/css" href="css/polyglot-language-switcher.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/nouislider.css">
+	<link rel="stylesheet" type="text/css" href="css/nouislider.pips.css">
+	<link rel="stylesheet" type="text/css" href="css/menuzord.css">
+	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+	<link rel="stylesheet" type="text/css" href="css/hover.css">
+
+	<link rel="stylesheet" href="css/layui.css"  media="all">
+	<script src="js/layui.all.js" charset="utf-8"></script>
+	<script src="js/laypage.js" charset="utf-8"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	
 	<style type="text/css">
 		/*热门视频css*/
 		.latest-news {
@@ -87,6 +115,10 @@
 
 		.service-text {
 			padding: 5px 5px 10px 5px;
+		}
+
+		.layui-laypage .layui-laypage-curr .layui-laypage-em{
+			background-color: #1abb05;
 		}
 	</style>
 </head>
@@ -168,62 +200,8 @@
 					<h2 style="margin-bottom: 0px;">热门<span>视频</span></h2>
 					<span style="font-size: 18px;color: #929292;">HOT VIDEOS</span>
 				</div>
-				<div class="latest-news-carousel owl-carousel owl-theme">
+				<div class="latest-news-carousel owl-carousel owl-theme" id="heatVideoList">
 
-					<div class="item">
-						<figure class="image-box">
-							<img src="images/news/3.jpg" alt="Awesome Image">
-						</figure>										
-						<h4><a href="blog-details.html">This is a standard post with thumbnail</a></h4>
-						<ul class="admin-comments">
-							<li style="color: #7aba1e;">
-								<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-								<span style="color: #7aba1e;"> 播放量:10000</span>
-							</li>
-							<li style="float: right;color: #7aba1e;">
-								<i class="glyphicon glyphicon-upload" style="color: #7aba1e;"></i>
-								<span style="color: #7aba1e;"> 2017-10-01</span>
-							</li>
-						</ul>
-						<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-						<span style="color: #7aba1e;">视频时长:300分钟</span>
-					</div>
-					<div class="item">
-						<figure class="image-box">
-							<img src="images/news/2.jpg" alt="Awesome Image">
-						</figure>
-						<h4><a href="blog-details.html">This is a standard post with thumbnail</a></h4>
-						<ul class="admin-comments">
-							<li style="color: #7aba1e;">
-								<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-								<span style="color: #7aba1e;"> 播放量:10000</span>
-							</li>
-							<li style="float: right;color: #7aba1e;">
-								<i class="glyphicon glyphicon-upload" style="color: #7aba1e;"></i>
-								<span style="color: #7aba1e;"> 2017-10-01</span>
-							</li>
-						</ul>
-						<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-						<span style="color: #7aba1e;">视频时长:300分钟</span>
-					</div>
-					<div class="item">
-						<figure class="image-box">
-							<img src="images/news/1.jpg" alt="Awesome Image">
-						</figure>
-						<h4><a href="blog-details.html">This is a standard post with thumbnail</a></h4>
-						<ul class="admin-comments">
-							<li style="color: #7aba1e;">
-								<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-								<span style="color: #7aba1e;"> 播放量:10000</span>
-							</li>
-							<li style="float: right;color: #7aba1e;">
-								<i class="glyphicon glyphicon-upload" style="color: #7aba1e;"></i>
-								<span style="color: #7aba1e;"> 2017-10-01</span>
-							</li>
-						</ul>
-						<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-						<span style="color: #7aba1e;">视频时长:300分钟</span>
-					</div>					
 				</div>
 			</div>  
 		</section>
@@ -238,8 +216,8 @@
 				
 				<div class="col-md-12" style="margin-top: 10px;">
 					<ul class="nav nav-pills" style="margin:0 auto;width:302px;">
-					  <li class="active"><a href="#healthyVideo" data-toggle="tab">健康养生视频</a></li>
-					  <li><a href="#lectureReplay" data-toggle="tab" 
+					  <li class="active"><a href="#healthyVideoList" data-toggle="tab">健康养生视频</a></li>
+					  <li><a href="#lectureReplayList" data-toggle="tab" 
 					  	style="border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;border-top-left-radius: 0px;border-top-right-radius: 10px;">
 					  讲座回放</a></li>
 					</ul>
@@ -247,70 +225,21 @@
 
 				<div id="myTabContent" class="tab-content">
 					<!-- 健康养生视频 -->
-					<div class="col-md-12 tab-pane fade in active" id="healthyVideo" 
+					<div id="healthyVideoList" class="col-md-12 tab-pane fade in active" 
 						style="margin-top: 10px;padding: 30px 0 0 0;">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service-item">
-								<span class="top-border"></span>
-	                            <span class="right-border"></span>
-	                            <span class="bottom-border"></span>
-								<div class="service-left-bg"></div>
-								<!-- <div class="service-icon">
-									<i class="icon flaticon-budding-leaves"></i>
-								</div> -->
-								<div class="service-text">
-									<img src="images/feature/2.jpg">
-									<a href="" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
-										护理服务
-									</a>
-									<div>
-										<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-										<span style="color: #7aba1e;"> 播放量:10000</span>
-										<span style="color: #7aba1e;float: right;"> 2017-10-01</span>
-										<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
-									</div>
-									<div>
-										<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-										<span style="color: #7aba1e;">视频时长:300分钟</span>
-									</div>
-								</div>
-							</div>
+						<div class="col-md-12" id="healthyVideo">
+							
 						</div>
+						<div id="demo5" style="text-align: center;" class="col-md-12"></div>
 					</div>
 
 					<!-- 讲座回放 -->
-					<div class="col-md-12 tab-pane fade" id="lectureReplay" 
+					<div class="col-md-12 tab-pane fade" id="lectureReplayList" 
 						style="margin-top: 10px;padding: 30px 0 0 0;">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service-item">
-								<span class="top-border"></span>
-	                            <span class="right-border"></span>
-	                            <span class="bottom-border"></span>
-								<div class="service-left-bg"></div>
-								<!-- <div class="service-icon">
-									<i class="icon flaticon-budding-leaves"></i>
-								</div> -->
-								<div class="service-text">
-									<img src="images/feature/1.jpg">
-									<a href="" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
-										护理服务护理护理服务护理护理服务护理
-									</a>
-									<!-- <p style="color: #ff6c00;font-size: 20px;overflow:hidden;height: 44px;">
-										护理服务护理服务护理服务护理服务
-									</p> -->
-									<div>
-										<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-										<span style="color: #7aba1e;"> 播放量:10000</span>
-										<span style="color: #7aba1e;float: right;"> 2017-10-01</span>
-										<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
-									</div>
-									<div>
-										<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-										<span style="color: #7aba1e;">视频时长:300分钟</span>
-									</div>
-								</div>
-							</div>
+						<div class="col-md-12" id="lectureReplay">
+							
 						</div>
+						<div id="lecturePage" style="text-align: center;" class="col-md-12"></div>
 					</div>
 				</div>
 			</div>  
@@ -429,8 +358,8 @@
 		<!-- jQuery validation -->
 		<script src="js/jquery.validate.min.js"></script>
 		<!-- google map -->
-		<script src="http://ditu.google.cn/maps/api/js?key=AIzaSyCRvBPo3-t31YFk588DpMYS6EqKf-oGBSI"></script> 
-		<script src="js/gmap.js"></script>
+		<!-- <script src="http://ditu.google.cn/maps/api/js?key=AIzaSyCRvBPo3-t31YFk588DpMYS6EqKf-oGBSI"></script>  -->
+		<!-- <script src="js/gmap.js"></script> -->
 		<!-- mixit up -->
 		<script src="js/wow.js"></script>
 		<script src="js/jquery.mixitup.min.js"></script>
@@ -467,6 +396,193 @@
 
 	</div>
 	
+
+	<script type="text/javascript">
+		// 热门视频
+		$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"/eldermanage/v1/course/video/heat",
+			data:null,
+			success:function(result){
+				var heatdata = result.data;
+
+				for(var i=0;i<=4;i++){
+					var oDiv =`
+						<div class="item">
+							<figure class="image-box">
+								<img src="images/news/3.jpg" alt="Awesome Image">
+							</figure>										
+							<h4><a href="blog-details.html">This is a standard post with thumbnail</a></h4>
+							<ul class="admin-comments">
+								<li style="color: #7aba1e;">
+									<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
+									<span style="color: #7aba1e;"> 播放量:${heatdata[0].videoheat}</span>
+								</li>
+								<li style="float: right;color: #7aba1e;">
+									<i class="glyphicon glyphicon-upload" style="color: #7aba1e;"></i>
+									<span style="color: #7aba1e;">${heatdata[0].videopublishdate} </span>
+								</li>
+							</ul>
+							<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
+							<span style="color: #7aba1e;">视频时长:${heatdata[0].videotime}分钟</span>
+						</div>
+					`;
+
+					$("#heatVideoList").append(oDiv);
+				}
+			}
+		})
+
+		//健康养生视频
+		var healthyType = '健康视频'
+		$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"/eldermanage/v1/course/classes?videopartition="+healthyType,
+			data:null,
+			success:function(result){
+				var healthyData = result.data;
+
+				$("#demo5").show();
+				page(healthyData, $("#demo5"));
+			},
+			error(){
+				alert('数据库错误')
+			}
+		})
+
+		//讲座回放
+		var lectureType = '讲座回放'
+		$.ajax({
+			type:'get',
+			contentType:'application/json',
+			url:"/eldermanage/v1/course/classes?videopartition="+lectureType,
+			data:null,
+			success:function(result){
+				var lectureData = result.data;
+
+				$("#lecturePage").show();
+				pageL(lectureData, $("#lecturePage"));
+			},
+			error(){
+				alert('数据库错误')
+			}
+		})
+
+		//健康视频分页
+		function page(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 8  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('healthyVideo').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let datas =`
+								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<div class="single-service-item">
+										<span class="top-border"></span>
+			                            <span class="right-border"></span>
+			                            <span class="bottom-border"></span>
+										<div class="service-left-bg"></div>
+										<!-- <div class="service-icon">
+											<i class="icon flaticon-budding-leaves"></i>
+										</div> -->
+										<div class="service-text">
+											<img src="images/feature/2.jpg">
+											<a href="" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
+												${videodata[0].videoname}
+											</a>
+											<div>
+												<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
+												<span style="color: #7aba1e;"> 播放量:${videodata[0].videoheat}</span>
+												<span style="color: #7aba1e;float: right;"> ${videodata[0].videopublishdate}</span>
+												<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
+											</div>
+											<div>
+												<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
+												<span style="color: #7aba1e;">视频时长: ${videodata[0].videotime}分钟</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//讲座回放分页
+		function pageL(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 8  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('lectureReplay').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let datas =`
+								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<div class="single-service-item">
+										<span class="top-border"></span>
+			                            <span class="right-border"></span>
+			                            <span class="bottom-border"></span>
+										<div class="service-left-bg"></div>
+										<!-- <div class="service-icon">
+											<i class="icon flaticon-budding-leaves"></i>
+										</div> -->
+										<div class="service-text">
+											<img src="images/feature/1.jpg">
+											<a href="" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
+												${videodata[0].videoname}
+											</a>
+											<!-- <p style="color: #ff6c00;font-size: 20px;overflow:hidden;height: 44px;">
+												护理服务护理服务护理服务护理服务
+											</p> -->
+											<div>
+												<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
+												<span style="color: #7aba1e;"> 播放量:${videodata[0].videoheat}</span>
+												<span style="color: #7aba1e;float: right;"> ${videodata[0].videopublishdate}</span>
+												<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
+											</div>
+											<div>
+												<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
+												<span style="color: #7aba1e;">视频时长:${videodata[0].videotime}分钟</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+	</script>
 </body>
 </html>
 

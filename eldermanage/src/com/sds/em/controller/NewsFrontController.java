@@ -16,7 +16,7 @@ import com.sds.em.service.NewsFrontService;
  * 
  * */
 @Controller
-@RequestMapping("v1/front/news")
+@RequestMapping("v1/front/news/")
 public class NewsFrontController {
 	@Autowired
 	NewsFrontService newsFrontService;
@@ -39,5 +39,18 @@ public class NewsFrontController {
 	public @ResponseBody Message heatNewsView() throws Exception {
 		return newsFrontService.heatNewsView();
 	}
+	
+	//最新的两类新闻，按照时间排序
 
+	@RequestMapping(method = RequestMethod.GET, value = "all")
+	public @ResponseBody Message NewsView() throws Exception {
+		return newsFrontService.NewsView();
+	}
+	
+	//显示 一个新闻的详情
+	
+	@RequestMapping(method = RequestMethod.GET, value = "info")
+	public @ResponseBody Message NewsInfo(int newsid) throws Exception {
+		return newsFrontService.NewsInfo(newsid);
+	}
 }
