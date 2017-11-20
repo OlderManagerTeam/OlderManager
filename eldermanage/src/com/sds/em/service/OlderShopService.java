@@ -15,7 +15,7 @@ public interface OlderShopService {
 	public Message getproductinfo(int productid);
 	public Message getproductrate(int productid);
 	public Message product(Product product, List<Productpiclist> productpiclist, List<Productviewlist> productviewlist,int storecount);
-	public Message productalter(Product product);
+	public Message productalter(Product product, List<Productviewlist> productviewlist, List<Productpiclist> productpiclist);
 	public Message productdelete(int productid);
 	public Message getorders();
 	public Message getordersrate(int ordersid);
@@ -32,4 +32,6 @@ public interface OlderShopService {
 	public Message addproductgroup(Productgroup productgroup);
 	public Message typeTwoTypeId(int productTypeNumber);
 	public Message ordersend(int ordersid);
+	public List<Productpiclist> getproductpiclist(Integer productid);
+	public List<com.sds.em.po.Productviewlist> getproductviewlist(Integer productid);
 }
