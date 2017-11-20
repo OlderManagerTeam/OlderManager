@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>news1.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script type="text/javascript" src="js/flowplayer.min.js"></script>
+</head>
+
+<body>
+	<div id="jwplayer"
+		style="background: transparent !important; margin:0 auto; width:400px; height:270px; overflow:hidden;">
+		<div id="player"></div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	jwplayer("player").setup({ //通过js调用播放器并安装到指定容器（#player）内 
+		skin : "glow.zip", //填写皮肤swf文件的直链地址 
+		stretching : "fill", //锁定高宽比填满屏幕 
+		flashplayer : "player.swf", //调用播放器 
+		image : "screen.jpg", //视频预览图片 
+		width : 400, //播放器宽 
+		height : 270,
+		levels : [ {
+			file : "video.mp4"
+		} ] ////调用视频文件 
+	});
+</script>
+
+</html>

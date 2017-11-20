@@ -251,6 +251,9 @@ public class ShopViewFrontServiceImpl implements ShopViewFrontService {
 
 				productstore.setStoredaybrowse(productstore.getStoredaybrowse() + 1);
 				productstore.setStoretotalbrowse(productstore.getStoretotalbrowse() + 1);
+
+				productstore.setStoremonthbrowse(productstore.getStoremonthbrowse() + 1);
+				productstore.setStoreyearbrowse(productstore.getStoreyearbrowse() + 1);
 				int flag1 = 0;
 				flag1 = productstoreMapper.updateByExampleSelective(productstore, productstoreExample);
 				if (flag1 != 0) {// 库存表更新成功
