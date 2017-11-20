@@ -251,9 +251,13 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 
 						Productstore productstore = productstoreMapper.selectByExample(productstoreExample).get(0);
 
-						productstore.setStorecount(productstore.getStorecount() - 1);
-						productstore.setStoredaysales(productstore.getStoredaysales() + 1);
-						productstore.setStoretotalsales(productstore.getStoretotalsales() + 1);
+						productstore.setStorecount(productstore.getStorecount() - c.getCartcount());
+						productstore.setStoredaysales(productstore.getStoredaysales() + c.getCartcount());
+						productstore.setStoretotalsales(productstore.getStoretotalsales() + c.getCartcount());
+
+						productstore.setStoremonthsales(productstore.getStoremonthsales() + c.getCartcount());
+						productstore.setStoreyearsales(productstore.getStoreyearsales() + c.getCartcount());
+
 						int flag5 = 0;
 						flag5 = productstoreMapper.updateByExampleSelective(productstore, productstoreExample);
 
@@ -335,9 +339,12 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 
 					Productstore productstore = productstoreMapper.selectByExample(productstoreExample).get(0);
 
-					productstore.setStorecount(productstore.getStorecount() - 1);
-					productstore.setStoredaysales(productstore.getStoredaysales() + 1);
-					productstore.setStoretotalsales(productstore.getStoretotalsales() + 1);
+					productstore.setStorecount(productstore.getStorecount() - count);
+					productstore.setStoredaysales(productstore.getStoredaysales() + count);
+					productstore.setStoretotalsales(productstore.getStoretotalsales() + count);
+
+					productstore.setStoremonthsales(productstore.getStoremonthsales() + count);
+					productstore.setStoreyearsales(productstore.getStoreyearsales() + count);
 
 					flag1 = productstoreMapper.updateByExampleSelective(productstore, productstoreExample);
 					if (flag1 != 0) {// 库存表更新成功

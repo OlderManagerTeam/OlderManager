@@ -196,6 +196,7 @@ public class CourseFrontController {
 	
 	
 	//老年人取消参加某讲座
-	 
+	
+	
 
 }
