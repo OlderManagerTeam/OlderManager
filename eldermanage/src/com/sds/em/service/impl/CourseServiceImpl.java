@@ -146,6 +146,8 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Message allLectures() {
 		LectureExample lectureExample = new LectureExample();
+		//按逆序
+		lectureExample.setOrderByClause("lectureid DESC,lectureid DESC");
 		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
 		
 		List<LectureExtend> lectureExtendList = new ArrayList<LectureExtend>();
@@ -174,6 +176,7 @@ public class CourseServiceImpl implements CourseService {
      
 		// 判断该老人是否有参加讲座的记录（参加过的话，将改状态传至前端，更改已参加）
 		LecturerecordExample lecturerecordExample = new LecturerecordExample();
+		lecturerecordExample.setOrderByClause("lectureid DESC,lectureid DESC");
 		com.sds.em.po.LecturerecordExample.Criteria lecturercordCriteria = lecturerecordExample.createCriteria();
 		lecturercordCriteria.andLrecordolderidEqualTo(olderid);
 		// 得到老人参加过的讲座id
@@ -183,6 +186,7 @@ public class CourseServiceImpl implements CourseService {
 		if (!recordListByOlder.isEmpty()) {//表明老人有参加的讲座
 			for (Lecturerecord l : recordListByOlder) {
 				LectureExample lectureExampleTrue = new LectureExample();
+				lectureExampleTrue.setOrderByClause("lectureid DESC,lectureid DESC");
 				com.sds.em.po.LectureExample.Criteria lectureCriteriaTrue = lectureExampleTrue.createCriteria();
 				lectureCriteriaTrue.andLectureidEqualTo(l.getLrecordlectureid());
 				List<Lecture> lectureListTrue = lectureMapper.selectByExample(lectureExampleTrue);
@@ -207,6 +211,7 @@ public class CourseServiceImpl implements CourseService {
 				
                //查找老人参加过的讲座之外的lectureid
 				LectureExample lectureExampleFalse = new LectureExample();
+				lectureExampleFalse.setOrderByClause("lectureid DESC,lectureid DESC");
 				com.sds.em.po.LectureExample.Criteria lectureCriteriaFalse = lectureExampleFalse.createCriteria();
 				lectureCriteriaFalse.andLectureidNotEqualTo(l.getLrecordlectureid());
 			    //老人没有参加过得讲座List
@@ -359,6 +364,7 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Message allActionsByolder(int olderid) {
 		ActionrecordExample actionrecordExample = new ActionrecordExample();
+		actionrecordExample.setOrderByClause("actionid DESC,actionid DESC");
 		com.sds.em.po.ActionrecordExample.Criteria recordCriteria = actionrecordExample.createCriteria();
 		recordCriteria.andArecordolderidEqualTo(olderid);
 		//得到老人报名的活动
@@ -368,6 +374,7 @@ public class CourseServiceImpl implements CourseService {
 		if(!recordListByolder.isEmpty()){//表明老人有参加的活动
 			for(Actionrecord a : recordListByolder){
 				ActionExample actionExampletrue = new ActionExample();
+				actionExampletrue.setOrderByClause("actionid DESC,actionid DESC");
 				com.sds.em.po.ActionExample.Criteria actionCriteria = actionExampletrue.createCriteria();
 				actionCriteria.andActionidEqualTo(a.getArecordactionid());
 				List<Action> actiontrue = actionMapper.selectByExample(actionExampletrue);
@@ -388,6 +395,7 @@ public class CourseServiceImpl implements CourseService {
 				}
 				//老人无参加的活动
 				ActionExample actionExamplefalse = new ActionExample();
+				actionExamplefalse.setOrderByClause("actionid DESC,actionid DESC");
 				com.sds.em.po.ActionExample.Criteria criteriafalse = actionExamplefalse.createCriteria();
 				criteriafalse.andActionidNotEqualTo(a.getArecordid());
 				List<Action> actionFalse = actionMapper.selectByExample(actionExamplefalse);
@@ -420,6 +428,7 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public Message allActions() {
 		ActionExample actionExample = new ActionExample();
+		actionExample.setOrderByClause("actionid DESC,actionid DESC");
 		List<Action> actionList = actionMapper.selectByExample(actionExample);
 		
 		List<ActionExtend> actionExtendList = new ArrayList<ActionExtend>();
@@ -544,43 +553,77 @@ public class CourseServiceImpl implements CourseService {
 	//老年人取消参加某活动
 	@Override
 	public Message deleteActionRecord(int olderid, int actionid) {
-		int flag = 0;
+		int flag1 = 0;
 		ActionrecordExample actionrecordExample = new ActionrecordExample();
 		com.sds.em.po.ActionrecordExample.Criteria criteria = actionrecordExample.createCriteria();
 		criteria.andArecordolderidEqualTo(olderid);
 		criteria.andArecordactionidEqualTo(actionid);
 		List<Actionrecord> actionrecordList = actionrecordMapper.selectByExample(actionrecordExample);
 		if(!actionrecordList.isEmpty()){//找到该老年人参加某活动的id
-			flag = actionrecordMapper.deleteByPrimaryKey(actionrecordList.get(0).getArecordid());
-			if(flag != 0){//删除操作成功
-				return new Message(true,"删除操作成功，取消参加成功",null);
+			flag1 = actionrecordMapper.deleteByPrimaryKey(actionrecordList.get(0).getArecordid());
+			if(flag1 != 0){//删除操作成功
+				//删除成功后修改actionenrol
+				ActionExample actionExample = new ActionExample();
+				List<Action> actionList = actionMapper.selectByExample(actionExample);
+				if(!actionList.isEmpty()){//找到该活动
+					int flag2 = 0 ; 
+					Action action = new Action();
+					action.setActionid(actionid);
+					action.setActionenroll(actionList.get(0).getActionenroll() - 1);
+					flag2 = actionMapper.updateByPrimaryKey(action);
+					if(flag2 != 0){//
+						return new Message(true,"更新成功",null);
+					}else{
+						return new Message(false,"更新失败",null);
+					}
+				
+			  }else{
+				return new Message(false,"找不到该活动",null);
+			  }
 			}else{
-				return new Message(false,"取消操作失败",null);
+				return new Message(false,"取消失败",null);
 			}
-			
+		}else{
+			return new Message(false,"数据错误",null);
 		}
-		return new Message(false,"数据错误",null);
 	}
 
 	//老年人取消参加某讲座
 	@Override
 	public Message deleteLectureRecord(int olderid, int lectureid) {
-		int flag = 0;
+		int flag1 = 0;
 		LecturerecordExample lecturecordExample = new LecturerecordExample();
 		com.sds.em.po.LecturerecordExample.Criteria criteria = lecturecordExample.createCriteria();
 		criteria.andLrecordolderidEqualTo(olderid);
 		criteria.andLrecordlectureidEqualTo(lectureid);
 		List<Lecturerecord> lecturerecordList = lecturerecordMapper.selectByExample(lecturecordExample);
 		if(!lecturerecordList.isEmpty()){//找到该老年人参加某活动的id
-			flag = lecturerecordMapper.deleteByPrimaryKey(lecturerecordList.get(0).getLrecordid());
-			if(flag != 0){//删除操作成功
-				return new Message(true,"删除操作成功，取消参加成功",null);
+			flag1 = lecturerecordMapper.deleteByPrimaryKey(lecturerecordList.get(0).getLrecordid());
+			if(flag1 != 0){//删除操作成功
+				//删除成功后修改actionenrol
+				LectureExample lectureExample = new LectureExample();
+				List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
+				if(!lectureList.isEmpty()){//找到该活动
+					int flag2 = 0 ; 
+					Lecture lecture = new Lecture();
+					lecture.setLectureid(lectureid);
+					lecture.setLectureenroll(lectureList.get(0).getLectureenroll() - 1);
+					flag2 = lectureMapper.updateByPrimaryKey(lecture);
+					if(flag2 != 0){//
+						return new Message(true,"更新成功",null);
+					}else{
+						return new Message(false,"更新失败",null);
+					}
+				
+			  }else{
+				return new Message(false,"找不到该活动",null);
+			  }
 			}else{
-				return new Message(false,"取消操作失败",null);
+				return new Message(false,"取消失败",null);
 			}
-			
+		}else{
+			return new Message(false,"数据错误",null);
 		}
-		return new Message(false,"数据错误",null);
 	}
 
 
