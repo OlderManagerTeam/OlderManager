@@ -152,16 +152,19 @@ public class OlderShopController {
 	// wuwenbo,修改商品信息
 	@RequestMapping(method = RequestMethod.POST, value = "product/infoupdate")
 	public @ResponseBody Message alterproduct(Product product, MultipartFile productImg, String productUpondate,
-		/*	@RequestParam(value = "fileview", required = true) MultipartFile[] fileview,
-			@RequestParam(value = "filepic", required = true) MultipartFile[] filepic,*/ int storecount)
+			@RequestParam(value = "fileview", required = true) MultipartFile[] fileview,
+			@RequestParam(value = "filepic", required = true) MultipartFile[] filepic)
 			throws Exception {
 		String pic_path = "E:\\oldermanageresource\\productimg\\";
+		String productpic_path = "E:\\oldermanageresource\\productpic\\";
+		String productview_path = "E:\\oldermanageresource\\productview\\";
 		String picUrl = "/productimg/";
 		String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
 		Product productold = (Product) olderShopService.getproductinfo(product.getProductid()).getData();
 		String[] productoldsplit = productold.getProductimg().split("/");
 		String productoldname = productoldsplit[productoldsplit.length - 1];
-
+		List<Productpiclist> productpiclist = olderShopService.getproductpiclist(product.getProductid());
+		List<Productviewlist> productviewlist = olderShopService.getproductviewlist(product.getProductid());
 		if (!productImg.isEmpty()) {
 			File oldproductimg = new File(pic_path + productoldname);
 			if (oldproductimg.exists())
@@ -171,17 +174,67 @@ public class OlderShopController {
 			product.setProductimg(picUrl + newFileName);
 		}
 
-/*		if (filepic.length > 0) {
+		if (filepic.length > 0) {
 			String url = "/productpic/";
+			for (Productpiclist productpic : productpiclist) {
+				File file1 = new File(productpic_path
+						+ productpic.getPpicurl().split("/")[productpic.getPpicurl().split("/").length - 1]);
+				if (file1.exists())
+					file1.delete();
+			}
+			productpiclist.clear();
 			for (MultipartFile filepicsingle : filepic) {
 				Productpiclist Productpic = new Productpiclist();
 				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
-				File filePicSingle = new File(productpic_path + newFileName);
+				File filePicSingle = new File(productpic_path+newFileName);
 				filepicsingle.transferTo(filePicSingle);
 				Productpic.setPpicurl(url + newFileName);
 				productpiclist.add(Productpic);
 			}
-		}*/
+		}
+
+		if (fileview.length > 0) {
+
+			String url = "/productview/";
+			
+			for (Productviewlist productview : productviewlist) {
+				File file1 = new File(productview_path + productview.getPviewpicbigpic()
+						.split("/")[productview.getPviewpicbigpic().split("/").length - 1]);
+				if (file1.exists())
+					file1.delete();
+				File file11 = new File(productview_path
+						+ productview.getPviewpicpic().split("/")[productview.getPviewpicpic().split("/").length - 1]);
+				if (file11.exists())
+					file11.delete();
+				File file111 = new File(productview_path + productview.getPviewpicsmallpic()
+						.split("/")[productview.getPviewpicsmallpic().split("/").length - 1]);
+				if (file111.exists())
+					file111.delete();
+			}
+			productviewlist.clear();
+			for (int i = 0; i < fileview.length; i++) {
+				Productviewlist productview = new Productviewlist();
+				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				File filePicSingle = new File(productview_path + newFileName);
+				fileview[i].transferTo(filePicSingle);
+				UploadImg.createThumbnail(productview_path + newFileName);
+				ImageUtil.resizePng(filePicSingle, filePicSingle, 80, 80, false);
+				productview.setPviewpicsmallpic(url + newFileName);
+				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				filePicSingle = new File(productview_path + newFileName);
+				fileview[i].transferTo(filePicSingle);
+				UploadImg.createThumbnail(productview_path + newFileName);
+				ImageUtil.resizePng(filePicSingle, filePicSingle, 400, 400, false);
+				productview.setPviewpicpic(url + newFileName);
+				newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				filePicSingle = new File(productview_path + newFileName);
+				fileview[i].transferTo(filePicSingle);
+				UploadImg.createThumbnail(productview_path + newFileName);
+				ImageUtil.resizePng(filePicSingle, filePicSingle, 800, 800, false);
+				productview.setPviewpicbigpic(url + newFileName);
+				productviewlist.add(productview);
+			}
+		}
 
 		Date date = new Date();
 		try {
@@ -193,7 +246,7 @@ public class OlderShopController {
 			product.setProductupondate(new Date());
 		}
 		product.setProductupondate(date);
-		return olderShopService.productalter(product);
+		return olderShopService.productalter(product,productviewlist,productpiclist);
 	}
 
 	// wuwenbo,删除商品信息

@@ -189,7 +189,7 @@
 			<div style="display: inline-block;border: 1px solid #f40;">
 				<div class="payInfo-shadow" style="padding:10px 10px 10px 20px;">
 					<div class="order-realPay" id="#">
-						<div style="display: none;">
+						<div style="">
 							<span style="font-color:#3c3c3c;font-weight: 700;">总价：</span> <span
 								style="font-size: 26px;color: #999;">￥</span> <span id="J_Total"
 								style="font: 700 26px tahoma;color: #f40;"></span>
@@ -337,11 +337,9 @@
 					if (!count) {
 						count = resultData[i].cartcount;
 					}
-					totalPrice["unitprice_" + i] = resultData[i].productdiscountprice;
-	
-	
-	
 					var Dtatalprice = resultData[i].productdiscountprice * count;
+					totalPrice["unitprice_" + i] = Dtatalprice;
+	
 					var oDiv = `
 										<div class="bundle-hd">
 											<div class="bd-promos">
@@ -421,7 +419,7 @@
 				$(".add").click(function() {
 					var t = $(this).parent().find('input[class*=text_box]');
 					if($("#totalPay").html()>0){
-						if ((t.val() - $('#olderpoint').html())<-100) {
+						if ((t.val() - $('#olderpoint').html())<=-100) {
 							t.val(parseInt(t.val()) + 100)
 							$("#pointDis").html(t.val() / 100)
 							$("#totalPay").html($("#J_Total").html() - $("#pointDis").html())
