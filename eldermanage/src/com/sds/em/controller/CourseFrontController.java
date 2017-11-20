@@ -21,6 +21,7 @@ import com.sds.em.po.Action;
 import com.sds.em.po.Lecture;
 import com.sds.em.po.Message;
 import com.sds.em.po.Video;
+import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.CourseService;
 
 /**
@@ -49,32 +50,44 @@ public class CourseFrontController {
 	//添加老人观看课程（视频）记录表       ----写完
 	@RequestMapping(method =RequestMethod.POST,value = "record" )
 	public @ResponseBody Message insertRecord(HttpSession s,int videoid){
-//		int olderid=(int) s.getAttribute("olderid");
-		int olderid=1;
-//		int videoid=4;
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
 		return courseService.classRecord(olderid,videoid,new Date());
+		}
 	}
 	
 	//返回当前讲座        ----写完--测试过
 	@RequestMapping(method = RequestMethod.GET,value ="lecture")
 	public @ResponseBody Message currentLecture(HttpSession s){
-		
-		int olderid=0;
-	
-		if(olderid != 0){//老人登陆后看到该片区所有讲座
-			return courseService.allLectureByolder(olderid);
-		}else
-		   return courseService.allLectures();//未登录返回所有讲座
-		
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			if(olderid != 0){//老人登陆后看到该片区所有讲座
+				return courseService.allLectureByolder(olderid);
+			}else
+			   return courseService.allLectures();//未登录返回所有讲座
+		}
 	}
 	
 	 
 	//某老人报名讲座(参加讲座、将讲座已预约人数修改)   ----写完
 	@RequestMapping(method = RequestMethod.POST,value="lecture/joinlectur")
 	public @ResponseBody Message insertlectureRecord(HttpSession s,int lectureid){
-		//int olderid=(int) s.getAttribute("olderid");
-		int olderid = 9;
-		return courseService.joinLecture(olderid, lectureid);
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+		  return courseService.joinLecture(olderid, lectureid);
+		}
 	}
 	
    //播放热度列表实现     ----写完 通过--测试过
@@ -100,8 +113,14 @@ public class CourseFrontController {
 	//老人查看自己的课程视频播放记录   -----写完--测试过
 	@RequestMapping(method = RequestMethod.GET,value= "video/videorecord")
 	public @ResponseBody Message videoRecord(HttpSession s){
-		int olderid =4;
-		return courseService.videoRecord(olderid);
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+		    return courseService.videoRecord(olderid);
+		}
 	}
 	//活动发布
 	@RequestMapping(method = RequestMethod.POST,value= "actions")
@@ -111,13 +130,18 @@ public class CourseFrontController {
 	//查看所有活动 ---写完--测试过
 	@RequestMapping(method= RequestMethod.GET,value="actions/allactions")
 	public @ResponseBody Message allActions(HttpSession s){
-		
-		int olderid = 0;
-	
-		if(olderid != 0){//老人登陆后看到该片区所有活动
-			return courseService.allActionsByolder(olderid);
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			if(olderid != 0){//老人登陆后看到该片区所有活动
+				return courseService.allActionsByolder(olderid);
+			}else{
+			return courseService.allActions();//未登录返回所有活动
+			}
 		}
-		return courseService.allActions();//未登录返回所有活动
 	}
 	//老人查看已报名参加过活动  ---写完
 	@RequestMapping(method= RequestMethod.GET,value="actions/olderactions")
@@ -129,9 +153,15 @@ public class CourseFrontController {
 	//插入活动记录表（老人报名参加活动）同时修改已报名人数---写完
 	@RequestMapping(method = RequestMethod.POST,value="actions/joinaction")
 	public @ResponseBody Message insertActionRecord(HttpSession s,int actionid){
-		//int olderid=(int) s.getAttribute("olderid");
-		int olderid = 9;
-		return courseService.joinAction(olderid, actionid);
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			return courseService.joinAction(olderid, actionid);
+		}
+			
 	}
 	
 	//讲座详情
@@ -150,5 +180,22 @@ public class CourseFrontController {
 	public @ResponseBody Message actionNew(){
 		return courseService.getAllNewActions();
 	}
+	
+	//老年人取消参加某活动
+	@RequestMapping(method = RequestMethod.POST,value="actions/cancelctions")
+	public @ResponseBody Message cancelAction(HttpSession s,int actionid){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+		    return courseService.deleteActionRecord(olderid,actionid);
+		}
+	}
+	
+	
+	//老年人取消参加某讲座
+	 
 
 }
