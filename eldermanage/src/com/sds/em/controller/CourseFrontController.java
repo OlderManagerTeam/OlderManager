@@ -72,7 +72,8 @@ public class CourseFrontController {
 	//某老人报名讲座(参加讲座、将讲座已预约人数修改)   ----写完
 	@RequestMapping(method = RequestMethod.POST,value="lecture/joinlectur")
 	public @ResponseBody Message insertlectureRecord(HttpSession s,int lectureid){
-		int olderid=(int) s.getAttribute("olderid");
+		//int olderid=(int) s.getAttribute("olderid");
+		int olderid = 9;
 		return courseService.joinLecture(olderid, lectureid);
 	}
 	
@@ -128,7 +129,8 @@ public class CourseFrontController {
 	//插入活动记录表（老人报名参加活动）同时修改已报名人数---写完
 	@RequestMapping(method = RequestMethod.POST,value="actions/joinaction")
 	public @ResponseBody Message insertActionRecord(HttpSession s,int actionid){
-		int olderid=(int) s.getAttribute("olderid");
+		//int olderid=(int) s.getAttribute("olderid");
+		int olderid = 9;
 		return courseService.joinAction(olderid, actionid);
 	}
 	
