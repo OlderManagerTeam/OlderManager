@@ -262,7 +262,7 @@ public class OlderShopServiceImpl implements OlderShopService {
 		try {
 			Orders orders = new Orders();
 			orders.setOrderid(ordersid);
-			orders.setOrderstatus("已成交");
+			orders.setOrderstatus("已签收");
 			ordersMapper.updateByPrimaryKeySelective(orders);
 			return new Message(true, "修改成功", null);
 		} catch (Exception e) {
