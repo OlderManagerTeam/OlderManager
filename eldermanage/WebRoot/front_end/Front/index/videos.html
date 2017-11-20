@@ -417,15 +417,15 @@
 							<ul class="admin-comments">
 								<li style="color: #7aba1e;">
 									<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-									<span style="color: #7aba1e;"> 播放量:10000</span>
+									<span style="color: #7aba1e;"> 播放量:${heatdata[0].videoheat}</span>
 								</li>
 								<li style="float: right;color: #7aba1e;">
 									<i class="glyphicon glyphicon-upload" style="color: #7aba1e;"></i>
-									<span style="color: #7aba1e;"> 2017-10-01</span>
+									<span style="color: #7aba1e;">${heatdata[0].videopublishdate} </span>
 								</li>
 							</ul>
 							<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-							<span style="color: #7aba1e;">视频时长:300分钟</span>
+							<span style="color: #7aba1e;">视频时长:${heatdata[0].videotime}分钟</span>
 						</div>
 					`;
 
@@ -500,17 +500,17 @@
 										<div class="service-text">
 											<img src="images/feature/2.jpg">
 											<a href="" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
-												护理服务
+												${videodata[0].videoname}
 											</a>
 											<div>
 												<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-												<span style="color: #7aba1e;"> 播放量:10000</span>
-												<span style="color: #7aba1e;float: right;"> 2017-10-01</span>
+												<span style="color: #7aba1e;"> 播放量:${videodata[0].videoheat}</span>
+												<span style="color: #7aba1e;float: right;"> ${videodata[0].videopublishdate}</span>
 												<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
 											</div>
 											<div>
 												<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-												<span style="color: #7aba1e;">视频时长:300分钟</span>
+												<span style="color: #7aba1e;">视频时长: ${videodata[0].videotime}分钟</span>
 											</div>
 										</div>
 									</div>
@@ -555,20 +555,20 @@
 										<div class="service-text">
 											<img src="images/feature/1.jpg">
 											<a href="" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
-												护理服务护理护理服务护理护理服务护理
+												${videodata[0].videoname}
 											</a>
 											<!-- <p style="color: #ff6c00;font-size: 20px;overflow:hidden;height: 44px;">
 												护理服务护理服务护理服务护理服务
 											</p> -->
 											<div>
 												<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-												<span style="color: #7aba1e;"> 播放量:10000</span>
-												<span style="color: #7aba1e;float: right;"> 2017-10-01</span>
+												<span style="color: #7aba1e;"> 播放量:${videodata[0].videoheat}</span>
+												<span style="color: #7aba1e;float: right;"> ${videodata[0].videopublishdate}</span>
 												<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
 											</div>
 											<div>
 												<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-												<span style="color: #7aba1e;">视频时长:300分钟</span>
+												<span style="color: #7aba1e;">视频时长:${videodata[0].videotime}分钟</span>
 											</div>
 										</div>
 									</div>
