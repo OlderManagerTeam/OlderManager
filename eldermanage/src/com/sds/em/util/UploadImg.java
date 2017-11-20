@@ -1,5 +1,7 @@
 package com.sds.em.util;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -41,7 +43,8 @@ public class UploadImg {
 		File F = new File(fromFileStr);
 		if (!F.isFile())
 			throw new Exception(F + " is not image file error in CreateThumbnail!");
-		BufferedImage buffer = ImageIO.read(F);
+		Image src=Toolkit.getDefaultToolkit().getImage(F.getPath());
+		BufferedImage buffer = BufferedImageBuilder.toBufferedImage(src);  
 		/*
 		 * 核心算法，计算图片的压缩比
 		 */
