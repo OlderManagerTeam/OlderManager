@@ -157,6 +157,7 @@ public class CourseServiceImpl implements CourseService {
 					extend.setPublishDateStirng("未定");
 
 				} else {
+					extend.setLecture(l);
 					extend.setPublishDateStirng("有值");
 				}
 				extend.setJoinStatus("QQ");
@@ -194,6 +195,7 @@ public class CourseServiceImpl implements CourseService {
 							extend.setPublishDateStirng("未定");
 
 						} else {
+							extend.setLecture(e);
 							extend.setPublishDateStirng("有值");
 						}
 						extend.setJoinStatus("已报名");
@@ -219,6 +221,7 @@ public class CourseServiceImpl implements CourseService {
 							extend.setPublishDateStirng("未定");
 
 						} else {
+							extend.setLecture(e);
 							extend.setPublishDateStirng("有值");
 						}
 						extend.setJoinStatus("未报名");
@@ -370,6 +373,7 @@ public class CourseServiceImpl implements CourseService {
 							actionExtend.setAction(aa);
 							actionExtend.setStartDateString("未定");
 						} else {
+							actionExtend.setAction(aa);
 							actionExtend.setStartDateString("有值");
 						}
 						actionExtend.setJionStatuString("您已报名");
@@ -389,6 +393,7 @@ public class CourseServiceImpl implements CourseService {
 							actionExtend.setStartDateString("未定");
 
 						} else {
+							actionExtend.setAction(aa);
 							actionExtend.setStartDateString("有值");
 						}
 						actionExtend.setJionStatuString("您已报名");
@@ -420,6 +425,7 @@ public class CourseServiceImpl implements CourseService {
 					extend.setStartDateString("未定");
 
 				} else {
+					extend.setAction(a);
 					extend.setStartDateString("有值");
 				}
 				extend.setJionStatuString("QQ");
