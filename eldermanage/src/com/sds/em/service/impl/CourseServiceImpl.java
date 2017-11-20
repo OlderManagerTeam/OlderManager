@@ -509,14 +509,14 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Message deleteLectureRecord(int olderid, int lectureid) {
-		// TODO Auto-generated method stub
+	public Message deleteActionRecord(int olderid, int actionid) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
 
 	@Override
-	public Message deleteActionRecord(int olderid, int actionid) {
-		// TODO Auto-generated method stub
+	public Message deleteLectureRecord(int olderid, int lectureid) {
+		// TODO 自动生成的方法存根
 		return null;
 	}
 
