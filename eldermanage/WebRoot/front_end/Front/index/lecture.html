@@ -373,9 +373,15 @@
 			data:null,
 			success:function(result){
 				var lectureData = result.data;
+					// var date = new Date(lectureData.);
+					// 	var d = date.toLocaleString();
             
 				$("#demo5").show();
 				page(lectureData, $("#demo5"));
+
+				// for(var i=0;i<=lectureData.length-1;i++){
+
+				// }
 			},
 			error(){
 				alert('数据库错误')
@@ -416,6 +422,8 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.lecture.lecturepublishdate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="single-service-item">
@@ -444,7 +452,7 @@
 												</div>
 												<div class="col-md-6">
 													<span style="font-size: 20px;color: #7aba1e;">讲座时间:</span>
-													<span style="font-size: 20px;color: #ffbc1e;">${item.lecture.lecturepublishdate}</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${year}</span>
 												</div>
 												<div class="col-md-6">
 													<span style="font-size: 20px;color: #7aba1e;">讲座状态:</span>
@@ -458,7 +466,8 @@
 													<a href="" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<button id="joinlecture" type="button" class="btn btn-default" style="float: right;">点击报名</button>
+													<button id="lecturebtn${index}" type="button" class="btn btn-default" style="float: right;">已报名</button>
+													<button id="joinlecture${index}" type="button" class="btn btn-default" style="float: right;">点击报名</button>
 												</div>
 											</div>
 										</div>
@@ -491,6 +500,8 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.action.actionstartdate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="single-service-item">
@@ -519,7 +530,7 @@
 												</div>
 												<div class="col-md-6">
 													<span style="font-size: 20px;color: #7aba1e;">活动时间:</span>
-													<span style="font-size: 20px;color: #ffbc1e;">${item.action.actionstartdate}</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${year}</span>
 												</div>
 												<div class="col-md-6">
 													<span style="font-size: 20px;color: #7aba1e;">活动状态:</span>
@@ -533,7 +544,8 @@
 													<a href="" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<button id="joinaction" type="button" class="btn btn-default" style="float: right;">点击报名</button>
+													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;">已报名</button>
+													<button id="joinaction${index}" type="button" class="btn btn-default" style="float: right;">点击报名</button>
 												</div>
 											</div>
 										</div>
@@ -548,6 +560,9 @@
 				});
 			});
 		}
+
+		//报名按钮
+		function
 	</script>
 	
 </body>

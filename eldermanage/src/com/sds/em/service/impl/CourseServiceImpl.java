@@ -106,7 +106,7 @@ public class CourseServiceImpl implements CourseService {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return new Message(true, "返回成功", videoList.toString());
+			return new Message(true, "返回成功", videoList);
 		}
 		return new Message(false, "数据错误", null);
 
@@ -244,28 +244,34 @@ public class CourseServiceImpl implements CourseService {
 	// 某老人报名讲座(参加讲座、将讲座已预约人数修改)(同时修改lectureeEnroll)
 	@Override
 	public Message joinLecture(int olderid, int lectureid) {
-
+		//判断是否插入lecture表成功
+		int flag1 =0;
 		Lecturerecord lectureRecord = new Lecturerecord();
 		lectureRecord.setLrecordolderid(olderid);
 		lectureRecord.setLrecordlectureid(lectureid);
 		lectureRecord.setLrecorddate(new Date());
-
-		lecturerecordMapper.insert(lectureRecord);
-
-		LectureExample lectureExample = new LectureExample();
-		com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
-		lectureCriteria.andLectureidEqualTo(lectureid);
-		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
-		int lectureenroll = lectureList.get(0).getLectureenroll() + 1;
-		Lecture lecture = new Lecture();
-		lecture.setLectureid(lectureid);
-		lecture.setLectureenroll(lectureenroll);
-		int flag = lectureMapper.updateByPrimaryKey(lecture);
-		if (flag == 1) {
-			return new Message(true, "返回成功", lectureList.get(lectureid).getLectureenroll());
-		}
-
-		return new Message(false, "数据错误", null);
+		flag1 = lecturerecordMapper.insert(lectureRecord);
+        if(flag1!=0){//插入成功
+        	//更新lecture报名人数
+        	int flag2 = 0;
+        	LectureExample lectureExample = new LectureExample();
+    		com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
+    		lectureCriteria.andLectureidEqualTo(lectureid);
+    		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
+    		int lectureenroll = lectureList.get(0).getLectureenroll() + 1;
+    		Lecture lecture = new Lecture();
+    		lecture.setLectureid(lectureid);
+    		lecture.setLectureenroll(lectureenroll);
+    		flag2 = lectureMapper.updateByPrimaryKey(lecture);
+    		if (flag2 != 0) {//更新操作成功
+    			return new Message(true, "更新操作成功", lectureList.get(lectureid).getLectureenroll());
+    		}else{
+    			return new Message(false, "更新操作失败", null);
+    		}
+    		
+        } else{
+        	return new Message(false,"插入操作失败",null);
+        }
 
 	}
 
@@ -463,26 +469,37 @@ public class CourseServiceImpl implements CourseService {
 	// 插入活动记录表
 	@Override
 	public Message joinAction(int olderid, int actionid) {
+		//判断是否插入表成功
+		int flag1 = 0;
 		// ActionrecordExample actionrecordExample = new ActionrecordExample();
 		Actionrecord actionRecord = new Actionrecord();
 		actionRecord.setArecordolderid(olderid);
 		actionRecord.setArecordactionid(actionid);
 		actionRecord.setArecorddate(new Date());
-		actionrecordMapper.insert(actionRecord);
+		flag1=actionrecordMapper.insert(actionRecord);
 
-		ActionExample actionExample = new ActionExample();
-		com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
-		actionCriteria.andActionidEqualTo(actionid);
-		List<Action> actionList = actionMapper.selectByExample(actionExample);
-		Action action = new Action();
-		action.setActionid(actionid);
-		action.setActionenroll(actionList.get(0).getActionenroll() + 1);
-		int flag = actionMapper.updateByPrimaryKey(action);
-		if (flag == 1) {
-			return new Message(true, "添加修改成功", actionList.get(actionid).getActionenroll());
+		if(flag1 !=0){//插入成功
+			//判断action表的报名人数是否增加（更新）
+			int flag2 = 0;
+			ActionExample actionExample = new ActionExample();
+			com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
+			actionCriteria.andActionidEqualTo(actionid);
+			List<Action> actionList = actionMapper.selectByExample(actionExample);
+			Action action = new Action();
+			action.setActionid(actionid);
+			action.setActionenroll(actionList.get(0).getActionenroll() + 1);
+			flag2 = actionMapper.updateByPrimaryKey(action);
+			if (flag2 !=0) {//更新报名人数成功
+				return new Message(true, "更新人数成功", actionList.get(actionid).getActionenroll());
+			}else{
+				return new Message(false, "更新人数失败", null);
+			}
+			
+		}else{
+			return new Message(false, "插入失败", null);
 		}
-
-		return new Message(false, "添加失败", null);
+		
+		
 	}
 
 	// 讲座详情
@@ -520,6 +537,48 @@ public class CourseServiceImpl implements CourseService {
 		
 		if(!actionList.isEmpty()){
 			return new Message(true,"返回成功",actionList);
+		}
+		return new Message(false,"数据错误",null);
+	}
+
+	//老年人取消参加某活动
+	@Override
+	public Message deleteActionRecord(int olderid, int actionid) {
+		int flag = 0;
+		ActionrecordExample actionrecordExample = new ActionrecordExample();
+		com.sds.em.po.ActionrecordExample.Criteria criteria = actionrecordExample.createCriteria();
+		criteria.andArecordolderidEqualTo(olderid);
+		criteria.andArecordactionidEqualTo(actionid);
+		List<Actionrecord> actionrecordList = actionrecordMapper.selectByExample(actionrecordExample);
+		if(!actionrecordList.isEmpty()){//找到该老年人参加某活动的id
+			flag = actionrecordMapper.deleteByPrimaryKey(actionrecordList.get(0).getArecordid());
+			if(flag != 0){//删除操作成功
+				return new Message(true,"删除操作成功，取消参加成功",null);
+			}else{
+				return new Message(false,"取消操作失败",null);
+			}
+			
+		}
+		return new Message(false,"数据错误",null);
+	}
+
+	//老年人取消参加某讲座
+	@Override
+	public Message deleteLectureRecord(int olderid, int lectureid) {
+		int flag = 0;
+		LecturerecordExample lecturecordExample = new LecturerecordExample();
+		com.sds.em.po.LecturerecordExample.Criteria criteria = lecturecordExample.createCriteria();
+		criteria.andLrecordolderidEqualTo(olderid);
+		criteria.andLrecordlectureidEqualTo(lectureid);
+		List<Lecturerecord> lecturerecordList = lecturerecordMapper.selectByExample(lecturecordExample);
+		if(!lecturerecordList.isEmpty()){//找到该老年人参加某活动的id
+			flag = lecturerecordMapper.deleteByPrimaryKey(lecturerecordList.get(0).getLrecordid());
+			if(flag != 0){//删除操作成功
+				return new Message(true,"删除操作成功，取消参加成功",null);
+			}else{
+				return new Message(false,"取消操作失败",null);
+			}
+			
 		}
 		return new Message(false,"数据错误",null);
 	}
