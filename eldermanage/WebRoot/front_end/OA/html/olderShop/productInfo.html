@@ -67,7 +67,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -88,7 +89,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -226,90 +227,101 @@
 										</ul>
 									</div>
 								</div></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-		</nav>
-	</div>
-	<!-- Main Content -->
-	<div class="container-fluid">
-		<div class="side-body">
-			<div class="page-title">
-				<span class="title">商品信息</span>
-				<div class="description">Product Infomation</div>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</nav>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="card">
-						<div class="card-header">
-							<div class="card-title">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../olderShop/productView.html?producttypenumber=1" role="button" id="return">返回商品列表</a>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!--添加视频-->
-							<div class="form-horizontal" id="productEntry">
-								<div class="form-group">
-									<label for="productName" class="col-sm-3 control-label">商品名称：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="productname">从数据库读出显示，例如：茶具</span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="productprice" class="col-sm-3 control-label">商品价格：</label>
-									<div class="col-sm-2">
-										<span class="form-control" id="productprice">从数据库读出显示，例如：300</span>
-									</div>
-									<div class="col-sm-1">
-										<label for="productprice" class="control-label">单位：元</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="producttypenumber" class="col-sm-3 control-label">商品类型：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="producttypenumber">从数据库读出显示，例如：生活用品</span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="productimg" class="col-sm-3 control-label">商品图片：</label>
-									<div class="col-sm-5">
-										<div>
-											<img src="" id="productimg">
+			<!-- Main Content -->
+			<div class="container-fluid">
+				<div class="side-body">
+					<div class="page-title">
+						<span class="title">商品信息</span>
+						<div class="description">Product Infomation</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">
+											<a class="btn btn-primary btn-lg"
+												href="../olderShop/productView.html?producttypenumber=1"
+												role="button" id="return">返回商品列表</a>
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="productinfo" class="col-sm-3 control-label">商品信息：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="productinfo">从数据库读出显示，例如：喝茶用的</span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="productweight" class="col-sm-3 control-label">商品重量：</label>
-									<div class="col-sm-2">
-										<span class="form-control" id="productweight">从数据库读出显示，例如：0.3</span>
-									</div>
-									<div class="col-sm-1">
-										<label for="productweight" class="control-label">单位：kg</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="productupondate" class="col-sm-3 control-label">商品上架日期：</label>
-									<div class="col-sm-5">
-										<span class="form-control" id="productupondate">从数据库读出显示，例如：2017-10-10</span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="productdiscountprice"
-										class="col-sm-3 control-label">商品折扣价：</label>
-									<div class="col-sm-2">
-										<span class="form-control" id="productdiscountprice">从数据库读出显示，例如：300</span>
-									</div>
-									<div class="col-sm-1">
-										<label for="productdiscountprice" class="control-label">单位：元</label>
+								<div class="card-body">
+									<!--添加视频-->
+									<div class="form-horizontal" id="productEntry">
+										<div class="form-group">
+											<label for="productname" class="col-sm-3 control-label">按ID查询商品：</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" id="productId"
+													placeholder="按ID查询商品" name="productId">
+											</div>
+											<button class="btn btn-primary btn-small" id="query">查询</button>
+										</div>
+										<div class="form-group">
+											<label for="productName" class="col-sm-3 control-label">商品名称：</label>
+											<div class="col-sm-5">
+												<span class="form-control" id="productname">从数据库读出显示，例如：茶具</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="productprice" class="col-sm-3 control-label">商品价格：</label>
+											<div class="col-sm-2">
+												<span class="form-control" id="productprice">从数据库读出显示，例如：300</span>
+											</div>
+											<div class="col-sm-1">
+												<label for="productprice" class="control-label">单位：元</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="producttypenumber" class="col-sm-3 control-label">商品类型：</label>
+											<div class="col-sm-5">
+												<span class="form-control" id="producttypenumber">从数据库读出显示，例如：生活用品</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="productimg" class="col-sm-3 control-label">商品图片：</label>
+											<div class="col-sm-5">
+												<div>
+													<img src="" id="productimg">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="productinfo" class="col-sm-3 control-label">商品信息：</label>
+											<div class="col-sm-5">
+												<span class="form-control" id="productinfo">从数据库读出显示，例如：喝茶用的</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="productweight" class="col-sm-3 control-label">商品重量：</label>
+											<div class="col-sm-2">
+												<span class="form-control" id="productweight">从数据库读出显示，例如：0.3</span>
+											</div>
+											<div class="col-sm-1">
+												<label for="productweight" class="control-label">单位：kg</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="productupondate" class="col-sm-3 control-label">商品上架日期：</label>
+											<div class="col-sm-5">
+												<span class="form-control" id="productupondate">从数据库读出显示，例如：2017-10-10</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="productdiscountprice"
+												class="col-sm-3 control-label">商品折扣价：</label>
+											<div class="col-sm-2">
+												<span class="form-control" id="productdiscountprice">从数据库读出显示，例如：300</span>
+											</div>
+											<div class="col-sm-1">
+												<label for="productdiscountprice" class="control-label">单位：元</label>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -318,15 +330,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	<footer class="app-footer">
-		<div class="wrapper">
-			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-		</div>
-	</footer>
-	<div>
+		<footer class="app-footer">
+			<div class="wrapper">
+				<span class="pull-right">2.1 <a href="#"><i
+						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+			</div>
+		</footer>
 		<!-- Javascript Libs -->
 		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
@@ -353,9 +362,16 @@
 		<!--验证js文件-->
 		<script type="text/javascript"
 			src="../../lib/js/bootstrapValidator.min.js"></script>
-			
-			
+
+
 		<script type="text/javascript" src="../../js/personal.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#query").click(function() {
+					var productid = $("#productId").val();
+					window.location.href = "/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=" + productid;
+				})
+			})
 		</script>
 		<script type="text/javascript">
 			UrlParm = function() { // url参数

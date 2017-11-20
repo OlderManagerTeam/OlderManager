@@ -350,7 +350,7 @@ public class OlderShopController {
 					e.printStackTrace();
 				}
 			}
-			productgroup.setGroupstartdate(groupstartdate);
+			productgroup.setGroupstartdate(new Date(groupstartdate.getTime()));
 			if (groupfinishDate != "") {
 				Long finishDate = Long.valueOf(groupfinishDate);
 				groupstartdate.setTime(groupstartdate.getTime() + finishDate * 1000 * 60 * 60);

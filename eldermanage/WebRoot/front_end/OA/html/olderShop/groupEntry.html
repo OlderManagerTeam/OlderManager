@@ -290,11 +290,19 @@
 													placeholder="团购商品" name="groupproductid">
 											</div>
 										</div>
+
 										<div class="form-group">
 											<label for="grouppresentpeople"
 												class="col-sm-3 control-label">团购商品名称：</label>
 											<div class="col-sm-5">
 												<span class="form-control" id="groupproductname">通过上面输入的id查出商品名称</span>
+											</div>
+										</div>
+																				<div class="form-group">
+											<label for="grouppresentpeople"
+												class="col-sm-3 control-label">团购商品价格：</label>
+											<div class="col-sm-5">
+												<span class="form-control" id="groupproductprice">商品现价格</span>
 											</div>
 										</div>
 										<div class="form-group">
@@ -484,8 +492,9 @@
 					}).then(function(result) {
 						if (result.success) {
 							$("#groupproductname").text(result.data.productname);
+							$("#groupproductprice").text(result.data.productdiscountprice);
 						} else {
-						$("#groupproductname").text(result.information);
+							$("#groupproductname").text(result.information);
 						}
 					})
 				})
