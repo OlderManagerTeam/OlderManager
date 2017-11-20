@@ -508,4 +508,16 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false, "数据错误", null);
 	}
 
+	@Override
+	public Message deleteLectureRecord(int olderid, int lectureid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Message deleteActionRecord(int olderid, int actionid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
