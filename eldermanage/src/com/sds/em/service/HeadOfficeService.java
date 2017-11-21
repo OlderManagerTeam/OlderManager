@@ -2,9 +2,6 @@ package com.sds.em.service;
 
 import com.sds.em.po.Branch;
 import com.sds.em.po.Message;
-import com.sds.em.po.Staffbase;
-import com.sds.em.pojo.BranchStaffBaseExtend;
-import com.sds.em.pojo.StaffDepartmentRoleExtend;
 
 public interface HeadOfficeService {
 	// 添加分店
