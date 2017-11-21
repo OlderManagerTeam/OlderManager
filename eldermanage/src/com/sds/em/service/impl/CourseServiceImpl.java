@@ -167,7 +167,7 @@ public class CourseServiceImpl implements CourseService {
 					extend.setLecture(l);
 					extend.setPublishDateStirng("有值");
 				}
-				extend.setJoinStatus("QQ");
+				extend.setJoinStatus("未登录");
 				lectureExtendList.add(extend);
 			}
 			return new Message(true, "返回成功", lectureExtendList);
@@ -518,7 +518,7 @@ public class CourseServiceImpl implements CourseService {
 					extend.setAction(a);
 					extend.setStartDateString("有值");
 				}
-				extend.setJionStatuString("QQ");
+				extend.setJionStatuString("未登录");
 				actionExtendList.add(extend);
 			}
 			
