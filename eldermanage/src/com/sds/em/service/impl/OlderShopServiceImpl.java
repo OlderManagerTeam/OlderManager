@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.em.mapper.JoingroupMapper;
+import com.sds.em.mapper.OlderbaseMapper;
 import com.sds.em.mapper.OrderlistMapper;
 import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.mapper.ProductMapper;
@@ -19,6 +20,7 @@ import com.sds.em.mapper.ProductviewlistMapper;
 import com.sds.em.po.Joingroup;
 import com.sds.em.po.JoingroupExample;
 import com.sds.em.po.Message;
+import com.sds.em.po.Olderbase;
 import com.sds.em.po.Orderlist;
 import com.sds.em.po.OrderlistExample;
 import com.sds.em.po.Orders;
@@ -54,6 +56,9 @@ public class OlderShopServiceImpl implements OlderShopService {
 
 	@Autowired
 	OrdersMapper ordersMapper;
+	
+	@Autowired
+	OlderbaseMapper olderbaseMapper;
 
 	@Autowired
 	ProductpiclistMapper productpiclistMapper;
@@ -391,6 +396,18 @@ public class OlderShopServiceImpl implements OlderShopService {
 				orderlist.setOrderproductcount(1);
 				orderlist.setOrderproductid(productgroup.getGroupproductid());
 				orderlistMapper.insertSelective(orderlist);
+				Productstore productstore = productstoreMapper.selectByExample(productstoreExample).get(0);
+				productstore.setStorecount(productstore.getStorecount() - 1);
+				productstore.setStoredaysales(productstore.getStoredaysales() + 1);
+				productstore.setStoretotalsales(productstore.getStoretotalsales() + 1);
+				productstore.setStoremonthsales(productstore.getStoremonthsales() + 1);
+				productstore.setStoreyearsales(productstore.getStoreyearsales() + 1);
+				productstoreMapper.updateByPrimaryKeySelective(productstore);
+				Olderbase olderbase = olderbaseMapper.selectByPrimaryKey(joingroup.getJoinolderid());
+				olderbase.setOlderid(joingroup.getJoinolderid());
+				olderbase.setOldermaxpoint((int) (olderbase.getOldermaxpoint() + productgroup.getGroupdiscountprice()));
+				olderbase.setOlderpoint((olderbase.getOlderpoint() + productgroup.getGroupdiscountprice().intValue()));
+				olderbaseMapper.updateByPrimaryKeySelective(olderbase);
 			}
 			return new Message(true, "操作成功", null);
 		} catch (Exception e) {

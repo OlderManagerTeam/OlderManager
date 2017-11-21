@@ -130,7 +130,7 @@
 		<!-- Menu -->
 		<section class="theme_menu stricky">
 			<div class="container">
-				<div class="row">
+				<div class="row" style="background-color: #fff;">
 					<div class="col-md-4">
 						<div class="main-logo">
 							<a href="index.html"><img src="images/logo/logo.png" alt=""></a>
@@ -606,14 +606,14 @@
 				//$("#loginModal").show('modal');
 			}else if(state == "未报名") {
 				//报名
-				var form=new form();
+				var form=new FormData();
 				form.append("lectureid",id);
 
 				$.ajax({
 					type:'post',
 					contentType:'application/json',
-					url:"/eldermanage/v1/course/lecture/joinlectur",
-					data:form,
+					url:"/eldermanage/v1/course/lecture/joinlectur?lectureid="+id,
+					data:null,
 					success:function(result){
 						alert(result.information)
 						window.location.reload();
