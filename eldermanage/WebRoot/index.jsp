@@ -18,9 +18,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<script type="text/javascript">
+	window.location.href("/eldermanage/front_end/Front/login/login.html");
+	
+	</script>
   </head>
   
   <body>
-  sdfsd
   </body>
 </html>

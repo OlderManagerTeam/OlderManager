@@ -1,10 +1,6 @@
 package com.sds.em.service;
 
-import java.util.List;
-
 import com.sds.em.po.Message;
-import com.sds.em.shop.pojo.productGradeExtend;
-import com.sds.em.shop.pojo.productGradeExtend;
 
 public interface ShopViewFrontService {
 	//当老人登录的时候，所调用的用于增加老人浏览记录
