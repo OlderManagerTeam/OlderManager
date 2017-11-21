@@ -47,7 +47,7 @@
 		</property>
 		<property name="securityManager" ref="securityManager" />
 		<!-- 身份认证失败，则跳转到登录页面的配置 -->
-		<property name="loginUrl" value="/front_end/Front/login/login.html" />
+		<property name="loginUrl" value="/v1/personal/loginUrl" />
 		<!-- 权限认证失败，则跳转到指定页面 -->
 		<property name="unauthorizedUrl" value="/v1/personal/unauthorizedUrl" />
 		<!-- Shiro连接约束配置,即过滤链的定义 -->

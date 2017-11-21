@@ -65,17 +65,15 @@ public class CourseFrontController {
 	public @ResponseBody Message currentLecture(HttpSession s){
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
-		if (loginMassage == null) {
-			return new Message(false, "未登录", null);
+		if (loginMassage == null) {//未登录
+//			return new Message(false, "未登录", null);
+			return courseService.allLectures();//未登录返回所有讲座
 		}else{//已登陆
 			int olderid = loginMassage.getOlderid();
-			if(olderid != 0){//老人登陆后看到该片区所有讲座
-				return courseService.allLectureByolder(olderid);
-			}else
-			   return courseService.allLectures();//未登录返回所有讲座
-		}
-	}
-	
+		//老人登陆后看到该片区所有讲座
+		return courseService.allLectureByolder(olderid);
+	   }
+   }	
 	 
 	//某老人报名讲座(参加讲座、将讲座已预约人数修改)   ----写完
 	@RequestMapping(method = RequestMethod.POST,value="lecture/joinlectur")
@@ -133,15 +131,13 @@ public class CourseFrontController {
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
 		if (loginMassage == null) {
-			return new Message(false, "未登录", null);
+//			return new Message(false, "未登录", null);
+			return courseService.allActions();//未登录返回所有活动
 		}else{//已登陆
 			int olderid = loginMassage.getOlderid();
-			if(olderid != 0){//老人登陆后看到该片区所有活动
-				return courseService.allActionsByolder(olderid);
-			}else{
-			return courseService.allActions();//未登录返回所有活动
+            return courseService.allActionsByolder(olderid);
 			}
-		}
+		
 	}
 	//老人查看已报名参加过活动  ---写完
 	@RequestMapping(method= RequestMethod.GET,value="actions/olderactions")
@@ -182,7 +178,7 @@ public class CourseFrontController {
 	}
 	
 	//老年人取消参加某活动
-	@RequestMapping(method = RequestMethod.POST,value="actions/cancelctions")
+	@RequestMapping(method = RequestMethod.POST,value="actions/cancelaction")
 	public @ResponseBody Message cancelAction(HttpSession s,int actionid){
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
@@ -192,11 +188,22 @@ public class CourseFrontController {
 			int olderid = loginMassage.getOlderid();
 		    return courseService.deleteActionRecord(olderid,actionid);
 		}
+	
+  
 	}
 	
 	
 	//老年人取消参加某讲座
-	
-	
+	@RequestMapping(method = RequestMethod.POST,value="actions/cancellecture")
+	public @ResponseBody Message cancelLecture(HttpSession s,int lectureid){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+		    return courseService.deleteActionRecord(olderid,lectureid);
+		}
+	}
 
 }
