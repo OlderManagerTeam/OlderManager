@@ -238,7 +238,7 @@ public class CourseServiceImpl implements CourseService {
 							lectureExtend.setLecture(b);
 							lectureExtend.setPublishDateStirng("有值");
 						}
-						lectureExtend.setPublishDateStirng("未报名");
+						lectureExtend.setJoinStatus("未报名");
 						lectureExtendList.add(lectureExtend);
 					}
 				}
