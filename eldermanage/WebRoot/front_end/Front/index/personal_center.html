@@ -41,7 +41,16 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 
 	<style type="text/css">
-		
+		 #mobile-menu {position:fixed;top:0;left:0;width:220px;height:100%;background-color:#373737;z-index:9999;}
+         a:hover ,a:focus{text-decoration:none}
+        .mobile-nav ul li a {color:gray;display:block;padding:1em 5%;    border-top:1px solid #4f4f4f;border-bottom:1px solid #292929;transition:all 0.2s ease-out;cursor:pointer;}
+    	#mobile-menu {position:fixed;top:0;left:0;width:220px;height:100%;background-color:#373737;z-index:9999;transition:all 0.3s ease-in;}
+        .mobile-nav ul li a:hover {background-color: #23A1F6;color: #ffffff;}
+        .show-nav {transform:translateX(0);}
+        .hide-nav {transform:translateX(-220px);} /*侧滑关键*/
+        .mobile-nav-taggle {height:35px;line-height:35px;width:35px;background-color:#23A1F6;color:#ffffff;display:inline-block;text-align:center;cursor:pointer}
+        .nav.avbar-inverse{position:relative;}
+        .nav-btn {position:absolute;right:20px;top:20px;}
 	</style>
 </head>
 
@@ -81,7 +90,7 @@
 						   <ul class="menuzord-menu">
 								<li><a href="index.html" style="font-size: 25px;">首页</a></li>
 								<li><a href="videos.html" style="font-size: 25px;">课程视频</a></li>
-								<li><a href="lecture.html" style="font-size: 25px;color: #ffbc1e;">讲座活动</a></li>
+								<li><a href="lecture.html" style="font-size: 25px;">讲座活动</a></li>
 								<li><a href="news-center.html" style="font-size: 25px;">新闻中心</a></li>
 								<li><a href="service-single.html" style="font-size: 25px;">商城首页</a></li>
 								<li><a href="contact.html" style="font-size: 25px;">关于我们</a></li>
@@ -117,20 +126,38 @@
         <!--Page Title Ends-->
 
         <section>
-        	<div class="container">
-            	<div class="col-md-12" style="padding-top: 50px;padding-bottom: 50px;background-color: #f5f5f5;margin-top: 100px;margin-bottom: 100px;">
-            		<div class="col-md-3">
-            			<img src="" id="personImg">
-            		</div>
-
-            		<div class="col-md-12" style="margin-top: 30px;">
-            			<span style="font-size: 25px;color: #7aba1e;">姓名:</span>
-						<span style="font-size: 25px;color: #ffbc1e;" id="personName">某某</span>
-            		</div>
-            		<div class="col-md-12" style="margin-top: 10px;">
-            			<span style="font-size: 25px;color: #7aba1e;">年龄:</span>
-						<span style="font-size: 25px;color: #ffbc1e;" id="personName">18</span>
-            		</div>
+        	<div class="container" style="padding-left: 0;padding-right: 0;">
+            	<div class="col-md-12" style="padding-top: 0px;padding-bottom: 50px;background-color: #f5f5f5;margin-top: 50px;margin-bottom: 100px;padding-left: 0;padding-right: 0;">
+            		<!--手机导航栏-->
+				    <div id="mobile-menu" class="mobile-nav visible-xs visible-sm">
+				        <ul>
+				            <li><a href="">首页</a></li>
+				            <li><a href="">Java</a></li>
+				            <li><a href="">SVN</a></li>
+				            <li><a href="">iOS</a></li>
+				        </ul>
+				    </div>
+				    <!--pc导航栏-->
+				    <nav class="navbar-inverse visible-lg visible-md" role="navigation">
+				        <div class="container">
+				            <div class="navbar-header">
+				                <a class="navbar-brand" href="">菜鸟教程</a>
+				            </div>
+				            <div>
+				                <ul class="nav navbar-nav">
+				                    <li class="active"><a href="">iOS</a></li>
+				                    <li><a href="">SVN</a></li>
+				                    <li><a href="" class="dropdown-toggle" data-toggle="dropdown">Java</a></li>
+				                </ul>
+				            </div>
+				        </div>
+				    </nav>
+				    <!--手机导航栏侧滑-->
+				    <div class="nav-btn visible-xs visible-sm">
+				        <a href="#" class="mobile-nav-taggle" id="mobile-nav-taggle">
+				            <span class="glyphicon glyphicon-align-justify"></span>
+				        </a>
+				    </div>
 
             	</div>
             </div>
@@ -307,6 +334,19 @@
 		// 		$("lectureSite").html(lectureData.)
 		// 	}
 		// })
+		$("#mobile-nav-taggle").click(function () {
+            var mobileMenu = $("#mobile-menu");
+            if (mobileMenu.hasClass("show-nav")) {
+                setTimeout(function () {
+                    mobileMenu.addClass("hide-nav").removeClass("show-nav");
+                }, 100)
+            }
+            else {
+                setTimeout(function (){
+                    mobileMenu.addClass("show-nav").removeClass("hide-nav");
+                }, 100)
+            }
+        })
 	</script>
 	
 </body>
