@@ -488,7 +488,10 @@
 													<a href="" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<button id="lecturebtn${index}" class="btn btn-default" style="float: right;${joinState1}">取消报名</button>
+													<button id="lecturebtn${index}" class="btn btn-default" style="float: right;${joinState1}" onclick="lectureCancel(${item.lecture.lectureid},'${item.joinStatus}',this)">
+														取消报名
+													</button>
+
 													<button id="joinlecture${index}" type="button" class="btn btn-default" style="float: right;${joinState2}" onclick="lectureEnroll(${item.lecture.lectureid},'${item.joinStatus}',this)" >
 														点击报名
 													</button>
@@ -578,7 +581,10 @@
 													<a href="" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;${joinState1}">取消报名</button>
+													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;${joinState1}" onclick="actionCancel(${item.action.actionid},'${item.jionStatuString}',this)">
+														取消报名
+													</button>
+
 													<button id="joinaction${index}" type="button" class="btn btn-default" style="float: right;${joinState2}" onclick="actionEnroll(${item.action.actionid},'${item.jionStatuString}',this)">
 														点击报名
 													</button>
@@ -622,6 +628,31 @@
 			}
 		}
 
+		//讲座取消报名按钮
+		function lectureCancel(id,state,obj){
+			//$("#myModalLabel").attr("data",id);
+			if (state == "未登录") {
+				$(obj).attr("data-toggle", "modal");
+				$(obj).attr("data-target", "#loginModal");
+				//$("#loginModal").show('modal');
+			}else if(state == "已报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/cancellecture?lectureid="+id,
+					data:null,
+					success:function(result){
+						alert(result.information)
+						window.location.reload();
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
+
 		//活动报名按钮
 		function actionEnroll(id,state, obj){
 			//$("#myModalLabel").attr("data",id);
@@ -638,6 +669,31 @@
 					data:null,
 					success:function(result){
 						alert(result.information)
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
+
+		//讲座取消报名按钮
+		function actionCancel(id,state,obj){
+			//$("#myModalLabel").attr("data",id);
+			if (state == "未登录") {
+				$(obj).attr("data-toggle", "modal");
+				$(obj).attr("data-target", "#loginModal");
+				//$("#loginModal").show('modal');
+			}else if(state == "已报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/cancelaction?actionid="+id,
+					data:null,
+					success:function(result){
+						alert(result.information)
+						window.location.reload();
 					},
 					error(){
 						alert('数据库错误')
