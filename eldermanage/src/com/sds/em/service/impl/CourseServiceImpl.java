@@ -187,7 +187,7 @@ public class CourseServiceImpl implements CourseService {
 		List<LectureExtend> lectureExtendList = new ArrayList<LectureExtend>();	
 		if(!olderBaseList.isEmpty()){//有该老人信息，得到branchid
 			int branchid = olderBaseList.get(0).getOlderbranchid();
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+branchid);
+			
 			LectureExample lectureex = new LectureExample();
 			com.sds.em.po.LectureExample.Criteria cri = lectureex.createCriteria();
 			cri.andLecturebranchidEqualTo(branchid);
@@ -282,12 +282,12 @@ public class CourseServiceImpl implements CourseService {
 			int flag1 = 0;
 			// ActionrecordExample actionrecordExample = new ActionrecordExample();
 			Actionrecord actionRecord = new Actionrecord();
-			System.out.println("===================="+actionid);
+			
 			actionRecord.setArecordolderid(olderid);
 			actionRecord.setArecordactionid(actionid);
 			actionRecord.setArecorddate(new Date());
 			flag1=actionrecordMapper.insert(actionRecord);
-			System.out.println("---------------------------------------"+actionid);
+			
 			if(flag1 !=0){//插入成功
 				return new Message(true, "插入成功", null);
 			}else{
