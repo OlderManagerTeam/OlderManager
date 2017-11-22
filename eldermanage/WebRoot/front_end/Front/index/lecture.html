@@ -101,6 +101,8 @@
 		.layui-laypage .layui-laypage-curr .layui-laypage-em{
 			background-color: #1abb05;
 		}
+
+
 	</style>
 </head>
 
@@ -128,7 +130,7 @@
 		<!-- Menu -->
 		<section class="theme_menu stricky">
 			<div class="container">
-				<div class="row">
+				<div class="row" style="background-color: #fff;">
 					<div class="col-md-4">
 						<div class="main-logo">
 							<a href="index.html"><img src="images/logo/logo.png" alt=""></a>
@@ -198,7 +200,7 @@
 						<div class="col-md-12" id="lectureItem">
 							
 						</div>
-						<div id="demo5" style="text-align: center;" class="col-md-12"></div>
+						<div id="demo5" style="text-align: center;" class="row"></div>
 					</div>
 
 					<!-- 活动 -->
@@ -212,6 +214,23 @@
 				</div>
 			</div>  
 		</section>
+
+		<!-- 登录提示模态框-->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">登录提示</h4>
+		            </div>
+		            <div class="modal-body">亲，你还没有登录哦，请先登录</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		                <button type="button" class="btn btn-primary">点我去登录</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
 		
 		<footer class="footer bg-style" style="background-image:url(images/background/bg-3.jpg);">
 			<div class="container">
@@ -326,8 +345,8 @@
 		<!-- jQuery validation -->
 		<script src="js/jquery.validate.min.js"></script>
 		<!-- google map -->
-		<script src="http://ditu.google.cn/maps/api/js?key=AIzaSyCRvBPo3-t31YFk588DpMYS6EqKf-oGBSI"></script> 
-		<script src="js/gmap.js"></script>
+		<!-- <script src="http://ditu.google.cn/maps/api/js?key=AIzaSyCRvBPo3-t31YFk588DpMYS6EqKf-oGBSI"></script> 
+		<script src="js/gmap.js"></script> -->
 		<!-- mixit up -->
 		<script src="js/wow.js"></script>
 		<script src="js/jquery.mixitup.min.js"></script>
@@ -373,15 +392,9 @@
 			data:null,
 			success:function(result){
 				var lectureData = result.data;
-					// var date = new Date(lectureData.);
-					// 	var d = date.toLocaleString();
             
 				$("#demo5").show();
 				page(lectureData, $("#demo5"));
-
-				// for(var i=0;i<=lectureData.length-1;i++){
-
-				// }
 			},
 			error(){
 				alert('数据库错误')
@@ -424,6 +437,15 @@
 				        layui.each(thisData, function(index, item){
 				        	let date = new Date(item.lecture.lecturepublishdate);
 				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+
+				        	var joinState1;
+				        	var joinState2;
+				        	if(item.joinStatus == '已报名'){
+				        		joinState2 = "display:none;"
+				        	}else{
+				        		joinState1 = "display:none;"
+				        	}
+
 				        	let datas =`
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="single-service-item">
@@ -466,8 +488,13 @@
 													<a href="" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<button id="lecturebtn${index}" type="button" class="btn btn-default" style="float: right;">已报名</button>
-													<button id="joinlecture${index}" type="button" class="btn btn-default" style="float: right;">点击报名</button>
+													<button id="lecturebtn${index}" class="btn btn-default" style="float: right;${joinState1}" onclick="lectureCancel(${item.lecture.lectureid},'${item.joinStatus}',this)">
+														取消报名
+													</button>
+
+													<button id="joinlecture${index}" type="button" class="btn btn-default" style="float: right;${joinState2}" onclick="lectureEnroll(${item.lecture.lectureid},'${item.joinStatus}',this)" >
+														点击报名
+													</button>
 												</div>
 											</div>
 										</div>
@@ -475,6 +502,7 @@
 								</div>
 							`;
 				        	arr.push(datas);
+				        	//data-toggle="modal" data-target="#myModal"
 				        });
 				        return arr.join('');
 				      }();
@@ -502,6 +530,15 @@
 				        layui.each(thisData, function(index, item){
 				        	let date = new Date(item.action.actionstartdate);
 				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+
+				        	var joinState1;
+				        	var joinState2;
+				        	if(item.jionStatuString == '已报名'){
+				        		joinState2 = "display:none;"
+				        	}else{
+				        		joinState1 = "display:none;"
+				        	}
+				        	
 				        	let datas =`
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="single-service-item">
@@ -544,8 +581,13 @@
 													<a href="" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;">已报名</button>
-													<button id="joinaction${index}" type="button" class="btn btn-default" style="float: right;">点击报名</button>
+													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;${joinState1}" onclick="actionCancel(${item.action.actionid},'${item.jionStatuString}',this)">
+														取消报名
+													</button>
+
+													<button id="joinaction${index}" type="button" class="btn btn-default" style="float: right;${joinState2}" onclick="actionEnroll(${item.action.actionid},'${item.jionStatuString}',this)">
+														点击报名
+													</button>
 												</div>
 											</div>
 										</div>
@@ -561,13 +603,105 @@
 			});
 		}
 
-		//报名按钮
-		function
+		//讲座报名按钮
+		function lectureEnroll(id,state, obj){
+			//$("#myModalLabel").attr("data",id);
+			if (state == "未登录") {
+				$(obj).attr("data-toggle", "modal");
+				$(obj).attr("data-target", "#loginModal");
+				//$("#loginModal").show('modal');
+			}else if(state == "未报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/lecture/joinlectur?lectureid="+id,
+					data:null,
+					success:function(result){
+						alert(result.information)
+						window.location.reload();
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
+
+		//讲座取消报名按钮
+		function lectureCancel(id,state,obj){
+			//$("#myModalLabel").attr("data",id);
+			if (state == "未登录") {
+				$(obj).attr("data-toggle", "modal");
+				$(obj).attr("data-target", "#loginModal");
+				//$("#loginModal").show('modal');
+			}else if(state == "已报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/cancellecture?lectureid="+id,
+					data:null,
+					success:function(result){
+						alert(result.information)
+						window.location.reload();
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
+
+		//活动报名按钮
+		function actionEnroll(id,state, obj){
+			//$("#myModalLabel").attr("data",id);
+			if (state == "未登录") {
+				$(obj).attr("data-toggle", "modal");
+				$(obj).attr("data-target", "#loginModal");
+				//$("#loginModal").show('modal');
+			}else if(state == "未报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/joinaction?actionid="+id,
+					data:null,
+					success:function(result){
+						alert(result.information)
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
+
+		//讲座取消报名按钮
+		function actionCancel(id,state,obj){
+			//$("#myModalLabel").attr("data",id);
+			if (state == "未登录") {
+				$(obj).attr("data-toggle", "modal");
+				$(obj).attr("data-target", "#loginModal");
+				//$("#loginModal").show('modal');
+			}else if(state == "已报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/cancelaction?actionid="+id,
+					data:null,
+					success:function(result){
+						alert(result.information)
+						window.location.reload();
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
 	</script>
 	
 </body>
 </html>
-
-
-
-

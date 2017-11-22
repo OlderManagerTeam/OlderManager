@@ -273,4 +273,19 @@
       actionTotal = #{actiontotal,jdbcType=INTEGER}
     where actionId = #{actionid,jdbcType=INTEGER}
   </update>
+  <!-- 自定义-->
+<select id="selectByOlderJoinTrue" resultType= "com.sds.em.po.Action" parameterType="com.sds.em.po.Olderbase" >
+    select * from action a where a.actionId  in(
+      select ar.ARecordActionId
+      from actionrecord ar,olderbase ob 
+     where ob.olderId=ar.ARecordolderId  and ar.ARecordolderId= #{olderid,jdbcType=INTEGER}) ORDER BY a.actionId desc
+   </select>
+   
+   <select id="selectByOlderJoinFalse" resultType="com.sds.em.po.Action" parameterType="com.sds.em.po.Olderbase" >
+      select * from action a where a.actionBranchId= #{olderbranchid,jdbcType=INTEGER} and a.actionId not in(
+      select ar.ARecordActionId
+      from actionrecord ar,olderbase ob 
+      where ob.olderId=ar.ARecordolderId  and ar.ARecordolderId= #{olderid,jdbcType=INTEGER} ) ORDER BY a.actionId desc
+   </select> 
+
 </mapper>
