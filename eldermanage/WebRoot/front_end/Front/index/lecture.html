@@ -130,7 +130,7 @@
 		<!-- Menu -->
 		<section class="theme_menu stricky">
 			<div class="container">
-				<div class="row">
+				<div class="row" style="background-color: #fff;">
 					<div class="col-md-4">
 						<div class="main-logo">
 							<a href="index.html"><img src="images/logo/logo.png" alt=""></a>
@@ -578,8 +578,8 @@
 													<a href="" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;display:none;">取消报名</button>
-													<button id="joinaction${index}" type="button" class="btn btn-default" style="float: right;" onclick="actionEnroll(${item.action.actionid},'${item.jionStatuString}',this)">
+													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;${joinState1}">取消报名</button>
+													<button id="joinaction${index}" type="button" class="btn btn-default" style="float: right;${joinState2}" onclick="actionEnroll(${item.action.actionid},'${item.jionStatuString}',this)">
 														点击报名
 													</button>
 												</div>
@@ -606,14 +606,11 @@
 				//$("#loginModal").show('modal');
 			}else if(state == "未报名") {
 				//报名
-				var form=new form();
-				form.append("lectureid",id);
-
 				$.ajax({
 					type:'post',
 					contentType:'application/json',
-					url:"/eldermanage/v1/course/lecture/joinlectur",
-					data:form,
+					url:"/eldermanage/v1/course/lecture/joinlectur?lectureid="+id,
+					data:null,
 					success:function(result){
 						alert(result.information)
 						window.location.reload();
@@ -634,14 +631,11 @@
 				//$("#loginModal").show('modal');
 			}else if(state == "未报名") {
 				//报名
-				var form=new form();
-				form.append("actionid",id);
-
 				$.ajax({
 					type:'post',
 					contentType:'application/json',
-					url:"/eldermanage/v1/course/actions/joinaction",
-					data:form,
+					url:"/eldermanage/v1/course/actions/joinaction?actionid="+id,
+					data:null,
 					success:function(result){
 						alert(result.information)
 					},
@@ -655,7 +649,3 @@
 	
 </body>
 </html>
-
-
-
-

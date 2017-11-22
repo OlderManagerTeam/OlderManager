@@ -48,6 +48,11 @@
 			margin: 0;
 			font-size: 17px;
 		}
+
+		/*我们的服务*/
+		.service-text{
+			padding: 5px 5px 30px;
+		}
 	</style>
 
 </head>
@@ -66,8 +71,8 @@
 				<!--Top Right-->
                     <div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href=""><span>请登录</span></a>
-						<a href=""><span>注册账号</span></a>
+						<a href="../login/login.html"><span>请登录</span></a>
+						<a href="" data-toggle="modal" data-target="#signUpModal"><span>注册账号</span></a>
 					</div>
 				</div>
 			</div>
@@ -76,7 +81,7 @@
 		<!-- Menu -->
 		<section class="theme_menu stricky">
 			<div class="container">
-				<div class="row">
+				<div class="row" style="background-color: #fff;">
 					<div class="col-md-4">
 						<div class="main-logo">
 							<a href="index.html"><img src="images/logo/logo.png" alt=""></a>
@@ -813,7 +818,23 @@
 					<li><a href="contact.html" class="thm-btn style-two">Contact us</a></li>
 				</ul>	
 			</div>
-		</section>		
+		</section>
+
+		<!-- 注册提示模态框-->
+		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">注册提示</h4>
+		            </div>
+		            <div class="modal-body">亲，我们暂不支持在线注册，如需注册请联系工作人员:13310105261</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>		
 
 		<footer class="footer bg-style" style="background-image:url(images/background/bg-3.jpg);">
 			<div class="container">
@@ -907,8 +928,6 @@
 				</div>
 			</div>
 		</footer>
-
-
 
 	<!-- Scroll Top Button -->
 	<button class="scroll-top tran3s color2_bg">

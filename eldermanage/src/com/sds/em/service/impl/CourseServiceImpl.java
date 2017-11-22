@@ -208,7 +208,7 @@ public class CourseServiceImpl implements CourseService {
 							lectureExtend.setLecture(l);
 							lectureExtend.setPublishDateStirng("有值");
 						}
-						lectureExtend.setPublishDateStirng("已报名");
+						lectureExtend.setJoinStatus("已报名");
 						lectureExtendList.add(lectureExtend);
 					}
 					//加载没参加的讲座
@@ -223,7 +223,7 @@ public class CourseServiceImpl implements CourseService {
 							lectureExtend.setLecture(b);
 							lectureExtend.setPublishDateStirng("有值");
 						}
-						lectureExtend.setPublishDateStirng("已报名");
+						lectureExtend.setJoinStatus("未报名");
 						lectureExtendList.add(lectureExtend);
 					}
 				}else{//无参加讲座记录
@@ -238,7 +238,7 @@ public class CourseServiceImpl implements CourseService {
 							lectureExtend.setLecture(b);
 							lectureExtend.setPublishDateStirng("有值");
 						}
-						lectureExtend.setPublishDateStirng("已报名");
+						lectureExtend.setPublishDateStirng("未报名");
 						lectureExtendList.add(lectureExtend);
 					}
 				}
@@ -268,28 +268,33 @@ public class CourseServiceImpl implements CourseService {
 		lectureRecord.setLrecorddate(new Date());
 		flag1 = lecturerecordMapper.insert(lectureRecord);
         if(flag1!=0){//插入成功
-        	//更新lecture报名人数
-        	int flag2 = 0;
-        	LectureExample lectureExample = new LectureExample();
-    		com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
-    		lectureCriteria.andLectureidEqualTo(lectureid);
-    		List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
-    		int lectureenroll = lectureList.get(0).getLectureenroll() + 1;
-    		Lecture lecture = new Lecture();
-    		lecture.setLectureid(lectureid);
-    		lecture.setLectureenroll(lectureenroll);
-    		flag2 = lectureMapper.updateByPrimaryKey(lecture);
-    		if (flag2 != 0) {//更新操作成功
-    			return new Message(true, "更新操作成功", lectureList.get(lectureid).getLectureenroll());
-    		}else{
-    			return new Message(false, "更新操作失败", null);
-    		}
-    		
+        	return new Message(true,"插入操作成功",null);
         } else{
         	return new Message(false,"插入操作失败",null);
         }
 
 	}
+	
+	// 某老人报名活动（插入活动记录表）
+		@Override
+		public Message joinAction(int olderid, int actionid) {
+			//判断是否插入表成功
+			int flag1 = 0;
+			// ActionrecordExample actionrecordExample = new ActionrecordExample();
+			Actionrecord actionRecord = new Actionrecord();
+			actionRecord.setArecordolderid(olderid);
+			actionRecord.setArecordactionid(actionid);
+			actionRecord.setArecorddate(new Date());
+			flag1=actionrecordMapper.insert(actionRecord);
+			if(flag1 !=0){//插入成功
+				return new Message(true, "插入成功", null);
+				
+			}else{
+				return new Message(false, "插入失败", null);
+			}
+			
+			
+		}
 
 	// 播放热度列表实现
 	@Override
@@ -502,41 +507,7 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false, "数据错误", null);
 	}
 
-	// 插入活动记录表
-	@Override
-	public Message joinAction(int olderid, int actionid) {
-		//判断是否插入表成功
-		int flag1 = 0;
-		// ActionrecordExample actionrecordExample = new ActionrecordExample();
-		Actionrecord actionRecord = new Actionrecord();
-		actionRecord.setArecordolderid(olderid);
-		actionRecord.setArecordactionid(actionid);
-		actionRecord.setArecorddate(new Date());
-		flag1=actionrecordMapper.insert(actionRecord);
-
-		if(flag1 !=0){//插入成功
-			//判断action表的报名人数是否增加（更新）
-			int flag2 = 0;
-			ActionExample actionExample = new ActionExample();
-			com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
-			actionCriteria.andActionidEqualTo(actionid);
-			List<Action> actionList = actionMapper.selectByExample(actionExample);
-			Action action = new Action();
-			action.setActionid(actionid);
-			action.setActionenroll(actionList.get(0).getActionenroll() + 1);
-			flag2 = actionMapper.updateByPrimaryKey(action);
-			if (flag2 !=0) {//更新报名人数成功
-				return new Message(true, "更新人数成功", actionList.get(actionid).getActionenroll());
-			}else{
-				return new Message(false, "更新人数失败", null);
-			}
-			
-		}else{
-			return new Message(false, "插入失败", null);
-		}
-		
-		
-	}
+	
 
 	// 讲座详情
 	@Override
@@ -586,32 +557,15 @@ public class CourseServiceImpl implements CourseService {
 		criteria.andArecordolderidEqualTo(olderid);
 		criteria.andArecordactionidEqualTo(actionid);
 		List<Actionrecord> actionrecordList = actionrecordMapper.selectByExample(actionrecordExample);
-		if(!actionrecordList.isEmpty()){//找到该老年人参加某活动的id
-			flag1 = actionrecordMapper.deleteByPrimaryKey(actionrecordList.get(0).getArecordid());
+		if(!actionrecordList.isEmpty()){//找到该老年人参加某活动的id记录
+			flag1 = actionrecordMapper.deleteByExample(actionrecordExample);
 			if(flag1 != 0){//删除操作成功
-				//删除成功后修改actionenrol
-				ActionExample actionExample = new ActionExample();
-				List<Action> actionList = actionMapper.selectByExample(actionExample);
-				if(!actionList.isEmpty()){//找到该活动
-					int flag2 = 0 ; 
-					Action action = new Action();
-					action.setActionid(actionid);
-					action.setActionenroll(actionList.get(0).getActionenroll() - 1);
-					flag2 = actionMapper.updateByPrimaryKey(action);
-					if(flag2 != 0){//
-						return new Message(true,"更新成功",null);
-					}else{
-						return new Message(false,"更新失败",null);
-					}
-				
+				return new Message(true,"删除操作成功",null);
 			  }else{
-				return new Message(false,"找不到该活动",null);
+				return new Message(false,"删除操作失败",null);
 			  }
 			}else{
-				return new Message(false,"取消失败",null);
-			}
-		}else{
-			return new Message(false,"数据错误",null);
+			return new Message(false,"数据错误，无该老人参加的活动记录",null);
 		}
 	}
 
@@ -624,32 +578,15 @@ public class CourseServiceImpl implements CourseService {
 		criteria.andLrecordolderidEqualTo(olderid);
 		criteria.andLrecordlectureidEqualTo(lectureid);
 		List<Lecturerecord> lecturerecordList = lecturerecordMapper.selectByExample(lecturecordExample);
-		if(!lecturerecordList.isEmpty()){//找到该老年人参加某活动的id
-			flag1 = lecturerecordMapper.deleteByPrimaryKey(lecturerecordList.get(0).getLrecordid());
+		if(!lecturerecordList.isEmpty()){//找到该老年人参加某讲座的id记录
+			flag1 = lecturerecordMapper.deleteByExample(lecturecordExample);
 			if(flag1 != 0){//删除操作成功
-				//删除成功后修改actionenrol
-				LectureExample lectureExample = new LectureExample();
-				List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);
-				if(!lectureList.isEmpty()){//找到该活动
-					int flag2 = 0 ; 
-					Lecture lecture = new Lecture();
-					lecture.setLectureid(lectureid);
-					lecture.setLectureenroll(lectureList.get(0).getLectureenroll() - 1);
-					flag2 = lectureMapper.updateByPrimaryKey(lecture);
-					if(flag2 != 0){//
-						return new Message(true,"更新成功",null);
-					}else{
-						return new Message(false,"更新失败",null);
-					}
-				
+				return new Message(true,"删除操作成功",null);
 			  }else{
-				return new Message(false,"找不到该活动",null);
+				return new Message(false,"删除操作失败",null);
 			  }
-			}else{
-				return new Message(false,"取消失败",null);
-			}
 		}else{
-			return new Message(false,"数据错误",null);
+			return new Message(false,"数据错误，无该老人参加的讲座",null);
 		}
 	}
 
