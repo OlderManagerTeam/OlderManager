@@ -202,7 +202,7 @@ public class CourseFrontController {
 			return new Message(false, "未登录", null);
 		}else{//已登陆
 			int olderid = loginMassage.getOlderid();
-		    return courseService.deleteActionRecord(olderid,lectureid);
+		    return courseService.deleteLectureRecord(olderid,lectureid);
 		}
 	}
 
