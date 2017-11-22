@@ -397,7 +397,7 @@ public class ShopPayFrontServiceImpl implements ShopPayFrontService {
 				int flag = 0;
 				flag = joingroupMapper.insert(group);
 				if (flag != 0) {
-					return new Message(false, "申请参团成功", null);
+					return new Message(true, "申请参团成功", null);
 				} else {
 					return new Message(false, "申请参团失败", null);
 				}

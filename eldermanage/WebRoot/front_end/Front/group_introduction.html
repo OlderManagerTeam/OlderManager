@@ -48,8 +48,8 @@
 			</div>
 			<div class="topMessage my-shangcheng">
 				<div class="menu-hd MyShangcheng">
-					<a href="" target="_top" id="personal"><i class="am-icon-user am-icon-fw"
-						></i>个人中心</a>
+					<a href="" target="_top" id="personal"><i
+						class="am-icon-user am-icon-fw"></i>个人中心</a>
 				</div>
 			</div>
 			<div class="topMessage mini-cart">
@@ -554,10 +554,10 @@
 							$("#J_MiniCartNum").html(result.data);
 							$("#cartcount").html(result.data);
 						}
-						if (result.information=="购物车为空") {
-										$("#J_MiniCartNum").html(0);
-										$("#cartcount").html(0);
-									}
+						if (result.information == "购物车为空") {
+							$("#J_MiniCartNum").html(0);
+							$("#cartcount").html(0);
+						}
 					},
 				})
 				document.getElementById("personal").href = '../Front/personal.html'
@@ -699,8 +699,8 @@
 				// 商品细节图片
 				for (var i = 0; i <= resultData.picList.length - 1; i++) {
 					var oImg = `
-								<img src="${result.data.picList[i]}" />
-							`;
+									<img src="${result.data.picList[i]}" />
+								`;
 	
 					$("#productInfoImg").append(oImg);
 				}
@@ -768,12 +768,12 @@
 				//放大镜后续图片，最多四张张
 				for (var i = 1; i <= magnifyingglassItem.length - 1; i++) {
 					var oLi = `
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="${magnifyingglassItem[i].pviewpicsmallpic}" mid="${magnifyingglassItem[i].pviewpicpic}" big="${magnifyingglassItem[i].pviewpicbigpic}"></a>
-									</div>
-								</li>
-							`;
+									<li>
+										<div class="tb-pic tb-s40">
+											<a href="#"><img src="${magnifyingglassItem[i].pviewpicsmallpic}" mid="${magnifyingglassItem[i].pviewpicpic}" big="${magnifyingglassItem[i].pviewpicbigpic}"></a>
+										</div>
+									</li>
+								`;
 					$('#thumblist').append(oLi);
 				}
 	
@@ -801,17 +801,17 @@
 	
 				for (var i = 0; i <= 5; i++) {
 					var oLi = `
-												 				<li class="first">
-															      	<div class="p-img">                    
-												 			      		<a  href="../Front/introduction.html?productid=${lookAgainData[i].productid}"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
-												 			      	</div>
-												 			      	<div class="p-name"><a href="#">
-												 			      		${lookAgainData[i].productname}
-												 			      	</a>
-												 			      	</div>
-												 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
-												 			    </li>
-												 			`;
+													 				<li class="first">
+																      	<div class="p-img">                    
+													 			      		<a  href="../Front/introduction.html?productid=${lookAgainData[i].productid}"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
+													 			      	</div>
+													 			      	<div class="p-name"><a href="#">
+													 			      		${lookAgainData[i].productname}
+													 			      	</a>
+													 			      	</div>
+													 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
+													 			    </li>
+													 			`;
 	
 					$('#lookAgain').append(oLi);
 				}
@@ -855,48 +855,48 @@
 					var date = new Date(rateInfoData[i].ratedate);
 					var d = date.toLocaleString();
 					var oLi = `
-														<li class="am-comment">
-															<!-- 评论容器 -->
-															<a href="">
-																<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-																<!-- 评论者头像 -->
-															</a>
-							
-															<div class="am-comment-main">
-																<!-- 评论内容容器 -->
-																<header class="am-comment-hd">
-																	<!--<h3 class="am-comment-title">评论标题</h3>-->
-																	<div class="am-comment-meta">
-																		<!-- 评论元数据 -->
-																		<a href="#link-to-user" class="am-comment-author">${rateInfoData[i].oldername.charAt(0)}** (匿名)</a>
-																		<!-- 评论者 -->
-																		评论于
-																		<time datetime="">${d}</time>
-																	</div>
-																</header>
-							
-																<div class="am-comment-bd">
-																	<div class="tb-rev-item " data-id="255776406962">
-																		<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-																			${rateInfoData[i].ratecontent}
+															<li class="am-comment">
+																<!-- 评论容器 -->
+																<a href="">
+																	<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
+																	<!-- 评论者头像 -->
+																</a>
+								
+																<div class="am-comment-main">
+																	<!-- 评论内容容器 -->
+																	<header class="am-comment-hd">
+																		<!--<h3 class="am-comment-title">评论标题</h3>-->
+																		<div class="am-comment-meta">
+																			<!-- 评论元数据 -->
+																			<a href="#link-to-user" class="am-comment-author">${rateInfoData[i].oldername.charAt(0)}** (匿名)</a>
+																			<!-- 评论者 -->
+																			评论于
+																			<time datetime="">${d}</time>
 																		</div>
-																		<div class="tb-r-act-bar">
-																		
-																	      <div class="" id='rateStars${i}'>
-										                                 
-									                                       </div>
-																	         购买数量：${rateInfoData[i].orderproductcount}
-																	      </div>
+																	</header>
+								
+																	<div class="am-comment-bd">
+																		<div class="tb-rev-item " data-id="255776406962">
+																			<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+																				${rateInfoData[i].ratecontent}
+																			</div>
+																			<div class="tb-r-act-bar">
+																			
+																		      <div class="" id='rateStars${i}'>
+											                                 
+										                                       </div>
+																		         购买数量：${rateInfoData[i].orderproductcount}
+																		      </div>
+																		</div>
+								
 																	</div>
-							
+																	<!-- 评论内容 -->
 																</div>
-																<!-- 评论内容 -->
-															</div>
-														</li>
-													`;
+															</li>
+														`;
 					var oSpan = `
-									<span class="am-icon-star" style="color:red;font-size:20px;"></span>
-				`;
+										<span class="am-icon-star" style="color:red;font-size:20px;"></span>
+					`;
 	
 					$('#rateInfo').append(oLi);
 					for (x = 0; x <= rateInfoData[i].ratestar - 1; x++) {
@@ -923,20 +923,20 @@
 				//猜你喜欢
 				for (var i = 0; i <= whatYouLikeData.length; i++) {
 					var oLi = `
-															<li>
-																<div class="i-pic limit">
-																<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
-																	<img src="${whatYouLikeData[i].productimg}" />
-																</a>
-																
-																	<p><span></span></p>
-																	<p class="price fl">
-																		<b>¥</b>
-																		<strong>${whatYouLikeData[i].productprice}</strong>
-																	</p>
-																</div>
-															</li>
-														`;
+																<li>
+																	<div class="i-pic limit">
+																	<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
+																		<img src="${whatYouLikeData[i].productimg}" />
+																	</a>
+																	
+																		<p><span></span></p>
+																		<p class="price fl">
+																			<b>¥</b>
+																			<strong>${whatYouLikeData[i].productprice}</strong>
+																		</p>
+																	</div>
+																</li>
+															`;
 	
 					$('#whatYouLike').append(oLi);
 				}

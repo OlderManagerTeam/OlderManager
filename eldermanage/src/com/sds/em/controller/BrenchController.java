@@ -142,7 +142,7 @@ public class BrenchController {
 		;
 		action.setActionintro(actionintro);
 		action.setActionname(actionname);
-		action.setActionstatus("正在进行");
+		action.setActionstatus("报名中");
 		Date date = DateSimp.simp(actionstartdate);
 		action.setActionstartdate(date);
 
