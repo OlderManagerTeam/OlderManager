@@ -5,7 +5,7 @@
     <id column="ARecordId" property="arecordid" jdbcType="INTEGER" />
     <result column="ARecordolderId" property="arecordolderid" jdbcType="INTEGER" />
     <result column="ARecordActionId" property="arecordactionid" jdbcType="INTEGER" />
-    <result column="ARecordDate" property="arecorddate" jdbcType="TIME" />
+    <result column="ARecordDate" property="arecorddate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -102,7 +102,7 @@
     insert into actionrecord (ARecordId, ARecordolderId, ARecordActionId, 
       ARecordDate)
     values (#{arecordid,jdbcType=INTEGER}, #{arecordolderid,jdbcType=INTEGER}, #{arecordactionid,jdbcType=INTEGER}, 
-      #{arecorddate,jdbcType=TIME})
+      #{arecorddate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.sds.em.po.Actionrecord" >
     insert into actionrecord
@@ -131,7 +131,7 @@
         #{arecordactionid,jdbcType=INTEGER},
       </if>
       <if test="arecorddate != null" >
-        #{arecorddate,jdbcType=TIME},
+        #{arecorddate,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -154,7 +154,7 @@
         ARecordActionId = #{record.arecordactionid,jdbcType=INTEGER},
       </if>
       <if test="record.arecorddate != null" >
-        ARecordDate = #{record.arecorddate,jdbcType=TIME},
+        ARecordDate = #{record.arecorddate,jdbcType=DATE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -166,7 +166,7 @@
     set ARecordId = #{record.arecordid,jdbcType=INTEGER},
       ARecordolderId = #{record.arecordolderid,jdbcType=INTEGER},
       ARecordActionId = #{record.arecordactionid,jdbcType=INTEGER},
-      ARecordDate = #{record.arecorddate,jdbcType=TIME}
+      ARecordDate = #{record.arecorddate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -181,7 +181,7 @@
         ARecordActionId = #{arecordactionid,jdbcType=INTEGER},
       </if>
       <if test="arecorddate != null" >
-        ARecordDate = #{arecorddate,jdbcType=TIME},
+        ARecordDate = #{arecorddate,jdbcType=DATE},
       </if>
     </set>
     where ARecordId = #{arecordid,jdbcType=INTEGER}
@@ -190,14 +190,16 @@
     update actionrecord
     set ARecordolderId = #{arecordolderid,jdbcType=INTEGER},
       ARecordActionId = #{arecordactionid,jdbcType=INTEGER},
-      ARecordDate = #{arecorddate,jdbcType=TIME}
+      ARecordDate = #{arecorddate,jdbcType=DATE}
     where ARecordId = #{arecordid,jdbcType=INTEGER}
   </update>
   
+    
 <!--   wuwenbo,获取活动信息以及老人信息 -->
 	<select id="getactionRecordinfo" parameterType="int"
 		resultType="com.sds.em.pojo.ActionRecordOlderExtend">
 		SELECT * from olderbase as o INNER JOIN actionrecord as a on
 		o.olderId=a.ARecordolderId WHERE a.ARecordActionId=#{value}
 	</select>
+  
 </mapper>
