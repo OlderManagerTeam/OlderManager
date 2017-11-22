@@ -167,7 +167,7 @@ public class CourseServiceImpl implements CourseService {
 					extend.setLecture(l);
 					extend.setPublishDateStirng("有值");
 				}
-				extend.setJoinStatus("QQ");
+				extend.setJoinStatus("未登录");
 				lectureExtendList.add(extend);
 			}
 			return new Message(true, "返回成功", lectureExtendList);
@@ -282,13 +282,14 @@ public class CourseServiceImpl implements CourseService {
 			int flag1 = 0;
 			// ActionrecordExample actionrecordExample = new ActionrecordExample();
 			Actionrecord actionRecord = new Actionrecord();
+			System.out.println("===================="+actionid);
 			actionRecord.setArecordolderid(olderid);
 			actionRecord.setArecordactionid(actionid);
 			actionRecord.setArecorddate(new Date());
 			flag1=actionrecordMapper.insert(actionRecord);
+			System.out.println("---------------------------------------"+actionid);
 			if(flag1 !=0){//插入成功
 				return new Message(true, "插入成功", null);
-				
 			}else{
 				return new Message(false, "插入失败", null);
 			}
@@ -475,7 +476,7 @@ public class CourseServiceImpl implements CourseService {
 					extend.setAction(a);
 					extend.setStartDateString("有值");
 				}
-				extend.setJionStatuString("QQ");
+				extend.setJionStatuString("未登录");
 				actionExtendList.add(extend);
 			}
 			
@@ -560,7 +561,31 @@ public class CourseServiceImpl implements CourseService {
 		if(!actionrecordList.isEmpty()){//找到该老年人参加某活动的id记录
 			flag1 = actionrecordMapper.deleteByExample(actionrecordExample);
 			if(flag1 != 0){//删除操作成功
-				return new Message(true,"删除操作成功",null);
+				ActionExample actionExample = new ActionExample();
+				com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
+				actionCriteria.andActionidEqualTo(actionid);
+				List<Action> actionList = actionMapper.selectByExample(actionExample);//得到该活动
+				List<ActionExtend> actionExtendList = new ArrayList<ActionExtend>();
+				if(!actionList.isEmpty()){//活动不为空
+					//包装该活动状态
+					for(Action  a:actionList){
+						ActionExtend extend = new ActionExtend();
+						if (a.getActionstartdate() == null) {
+							extend.setAction(a);
+							extend.setStartDateString("未定");
+
+						} else {
+							extend.setAction(a);
+							extend.setStartDateString("有值");
+						}
+						extend.setJionStatuString("未报名");
+						actionExtendList.add(extend);
+					}
+					return new Message(true,"删除操作成功，更新状态",actionExtendList);
+				}else{
+					return new Message(false,"活动为空",null);
+				}
+				
 			  }else{
 				return new Message(false,"删除操作失败",null);
 			  }
@@ -581,7 +606,30 @@ public class CourseServiceImpl implements CourseService {
 		if(!lecturerecordList.isEmpty()){//找到该老年人参加某讲座的id记录
 			flag1 = lecturerecordMapper.deleteByExample(lecturecordExample);
 			if(flag1 != 0){//删除操作成功
-				return new Message(true,"删除操作成功",null);
+				LectureExample lectureExample = new LectureExample();
+				com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
+				lectureCriteria.andLectureidEqualTo(lectureid);
+				List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);//得到该讲座
+				List<LectureExtend> lectureExtendList = new ArrayList<LectureExtend>();
+				if(!lectureList.isEmpty()){//讲座不为空
+					//包装该活动状态
+					for(Lecture  a:lectureList){
+						LectureExtend extend = new LectureExtend();
+						if (a.getLecturepublishdate()== null) {
+							extend.setLecture(a);;
+							extend.setPublishDateStirng("未定");
+
+						} else {
+							extend.setLecture(a);
+							extend.setPublishDateStirng("有值");
+						}
+						extend.setJoinStatus("未报名");
+						lectureExtendList.add(extend);
+					}
+					return new Message(true,"删除操作成功，更新状态",lectureExtendList);
+				}else{
+					return new Message(false,"活动为空",null);
+				}
 			  }else{
 				return new Message(false,"删除操作失败",null);
 			  }
