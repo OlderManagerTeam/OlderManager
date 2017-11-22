@@ -79,8 +79,7 @@
 		<ul class="message-l">
 			<div class="topMessage">
 				<div class="menu-hd">
-					<a href="#" target="_top" class="h">亲，请登录</a> <a href="#"
-						target="_top">免费注册</a>
+					<a id="loginid" target="_top" class="h"></a>
 				</div>
 			</div>
 		</ul>
@@ -112,10 +111,10 @@
 
 	<div class="nav white">
 		<div class="logo">
-			<img src="images/product/logo.png" />
+			<li><img src="images/product/shopinglog.jpg" /></li>
 		</div>
 		<div class="logoBig">
-			<li><img src="images/product/logobig.png" /></li>
+			<li><img src="images/product/shopinglog.jpg" /></li>
 		</div>
 		<div class="search-bar pr">
 			<a name="index_none_header_sysc" href="#"></a>
@@ -227,7 +226,7 @@
 						<dt>配送至</dt>
 						<div class="iteminfo_freprice">
 							<div class="am-form-content address" id="olderaddress">
-							<!-- 	<select data-am-selected>
+								<!-- 	<select data-am-selected>
 									<option value="a">浙江省</option>
 									<option value="b">湖北省</option>
 								</select> <select data-am-selected>
@@ -286,17 +285,16 @@
 											<div class="theme-options">
 												<div class="cart-title number">数量</div>
 												<dd>
-													<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" /> 
-													<input id="text_box" name="" type="text" value="1" style="width:30px;" /> 
-													<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
-													
-													 
-														<span id="Stock"
+													<input id="min" class="am-btn am-btn-default" name=""
+														type="button" value="-" /> <input id="text_box" name=""
+														type="text" value="1" style="width:30px;" /> <input
+														id="add" class="am-btn am-btn-default" name=""
+														type="button" value="+" /> <span id="Stock"
 														class="tb-hidden">库存<span class="stock"
 														id="storecount"></span>件
 													</span>
 												</dd>
-												
+
 
 											</div>
 											<div class="clear"></div>
@@ -567,7 +565,7 @@
 				<div id="foot" class="item">
 					<a href="#"> <span class="zuji"></span>
 					</a>
-					<div class="mp_tooltip"  id="myfoots">
+					<div class="mp_tooltip" id="myfoots">
 						我的足迹 <i class="icon_arrow_right_black"></i>
 					</div>
 				</div>
@@ -654,70 +652,73 @@
 				}
 			}
 		}();
-		
-				//判断登录
-				var olderid;
+	
+		//判断登录
+		var olderid;
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/judgeLogin",
+			data : null,
+			success : function(result) {
+	
+				//alert(result.information)
+				if (result.success) {
+					olderid = result.data.olderid
+				} else {
+					$("#personal").click(function(event) {
+						alert('请登录')
+					});
+					$("#mc-menu-hd").click(function(event) {
+						alert('请登录')
+					});
+				}
+			},
+		}).done(function() {
+			if (olderid) { //已登录状态
+				//显示菜单内容
 				$.ajax({
 					type : 'get',
 					contentType : 'application/json',
-					url : "/eldermanage/v1/shop/judgeLogin",
+					url : "/eldermanage/v1/shop/personal/older/info",
 					data : null,
 					success : function(result) {
-			
-						//alert(result.information)
 						if (result.success) {
-							olderid = result.data.olderid
-						} else {
-							$("#personal").click(function(event) {
-								alert('请登录')
-							});
-							$("#mc-menu-hd").click(function(event) {
-								alert('请登录')
-							});
+							document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
+							document.getElementById("olderheadurl").src = result.data.olderheadurl;
+							document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
+							document.getElementById("myorders").href = '../Front/personal.html'
+							document.getElementById("myfoots").href = '../Front/personal.html'
+							document.getElementById("olderaddress").innerHTML = result.data.olderaddress;
+							document.getElementById("loginid").innerHTML = '您好 ' + result.data.oldername;
 						}
 					},
-				}).done(function() {
-					if (olderid) { //已登录状态
-						//显示菜单内容
-						$.ajax({
-							type : 'get',
-							contentType : 'application/json',
-							url : "/eldermanage/v1/shop/personal/older/info",
-							data : null,
-							success : function(result) {
-								if (result.success) {
-									document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
-									document.getElementById("olderheadurl").src = result.data.olderheadurl;
-									document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
-									document.getElementById("myorders").href = '../Front/personal.html'
-									document.getElementById("myfoots").href = '../Front/personal.html'
-								    document.getElementById("olderaddress").innerHTML = result.data.olderaddress;
-							
-								}
-							},
-						})
-						//显示购物车数量
-						$.ajax({
-							type : 'get',
-							contentType : 'application/json',
-							url : "/eldermanage/v1/shop/older/cart/amount",
-							data : null,
-							success : function(result) {
-								if (result.success) {
-									$("#J_MiniCartNum").html(result.data);
-									$("#cartcount").html(result.data);
-								}
-								if (result.information=="购物车为空") {
-										$("#J_MiniCartNum").html(0);
-										$("#cartcount").html(0);
-									}
-							},
-						})
-						document.getElementById("personal").href = '../Front/personal.html'
-						document.getElementById("mc-menu-hd").href = '../Front/shopcart.html'
-					}
-				});
-			
+				})
+				//显示购物车数量
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/shop/older/cart/amount",
+					data : null,
+					success : function(result) {
+						if (result.success) {
+							$("#J_MiniCartNum").html(result.data);
+							$("#cartcount").html(result.data);
+						}
+						if (result.information == "购物车为空") {
+							$("#J_MiniCartNum").html(0);
+							$("#cartcount").html(0);
+						}
+					},
+				})
+				document.getElementById("personal").href = '../Front/personal.html'
+				document.getElementById("mc-menu-hd").href = '../Front/shopcart.html'
+			} else {
+				document.getElementById("loginid").innerHTML = '亲 请登录'
+				document.getElementById("loginid").href = '../Front/login/login.html'
+			}
+		});
+	
 	
 		var productid = UrlParm.parm("productid");
 		//var productid = 3;
@@ -747,8 +748,8 @@
 				// 商品细节图片
 				for (var i = 0; i <= resultData.picList.length - 1; i++) {
 					var oImg = `
-																												<img src="${result.data.picList[i]}" />
-																											`;
+																													<img src="${result.data.picList[i]}" />
+																												`;
 	
 					$("#productInfoImg").append(oImg);
 				}
@@ -763,18 +764,31 @@
 							document.getElementById("LikBasket").style.backgroundColor = 'gray'
 						}
 					},
-					
 				})
 	
 	
+			
+	
+	
+				$('#LikBuy').on('click', function() {
+					$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/shop/judgeLogin",
+					data : null,
+					success : function(result) {
+						if (result.success) {
+							var count = document.getElementById("text_box").value;
+							location.href = "../Front/confirm_order.html?productid=" + resultData.productid + "&count=" + count;
+						} else {
+							alert('请登录')
+						}
+					},
+				});
+	
 				
-				  $('#LikBuy').on('click', function() {
-				  	var count = document.getElementById("text_box").value;
-					location.href = "../Front/confirm_order.html?productid=" + resultData.productid + "&count=" + count;
-				})  
-				/* $('#LikBuy').click(function(){
-					alert(count)
-				})  */
+				})
+			
 	
 				$("#LikBasket").click(function() {
 					var count = document.getElementById("text_box").value;
@@ -792,7 +806,6 @@
 								alert(result.information);
 							}
 						},
-						
 					})
 	
 				})
@@ -828,12 +841,12 @@
 				//放大镜后续图片，最多四张张
 				for (var i = 1; i <= magnifyingglassItem.length - 1; i++) {
 					var oLi = `
-														<li>
-															<div class="tb-pic tb-s40">
-																<a href="#"><img src="${magnifyingglassItem[i].pviewpicsmallpic}" mid="${magnifyingglassItem[i].pviewpicpic}" big="${magnifyingglassItem[i].pviewpicbigpic}"></a>
-															</div>
-														</li>
-													`;
+															<li>
+																<div class="tb-pic tb-s40">
+																	<a href="#"><img src="${magnifyingglassItem[i].pviewpicsmallpic}" mid="${magnifyingglassItem[i].pviewpicpic}" big="${magnifyingglassItem[i].pviewpicbigpic}"></a>
+																</div>
+															</li>
+														`;
 					$('#thumblist').append(oLi);
 				}
 	
@@ -851,37 +864,37 @@
 	
 	
 		// 看了又看
-			$.ajax({
-				type : 'get',
-				contentType : 'application/json',
-				url : "/eldermanage/v1/shop/index/repeated",
-				data : null,
-				success : function(result) {
-					var lookAgainData = result.data;
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/index/repeated",
+			data : null,
+			success : function(result) {
+				var lookAgainData = result.data;
 	
-					for (var i = 0; i <= 5; i++) {
-						var oLi = `
-											 				<li class="first">
-														      	<div class="p-img">                    
-											 			      		<a  href="../Front/introduction.html?productid=${lookAgainData[i].productid}"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
-											 			      	</div>
-											 			      	<div class="p-name"><a href="#">
-											 			      		${lookAgainData[i].productname}
-											 			      	</a>
-											 			      	</div>
-											 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
-											 			    </li>
-											 			`;
+				for (var i = 0; i <= 5; i++) {
+					var oLi = `
+												 				<li class="first">
+															      	<div class="p-img">                    
+												 			      		<a  href="../Front/introduction.html?productid=${lookAgainData[i].productid}"> <img class="" src="${lookAgainData[i].productimg}"> </a>               
+												 			      	</div>
+												 			      	<div class="p-name"><a href="#">
+												 			      		${lookAgainData[i].productname}
+												 			      	</a>
+												 			      	</div>
+												 			      	<div class="p-price"><strong>￥${lookAgainData[i].productprice}</strong></div>
+												 			    </li>
+												 			`;
 	
-						$('#lookAgain').append(oLi);
-					}
-				},
-				error : function() {
-					alert('数据库错误');
+					$('#lookAgain').append(oLi);
 				}
-			})
-		
-		
+			},
+			error : function() {
+				alert('数据库错误');
+			}
+		})
+	
+	
 		//全部评价模块-评价等级详情
 		$.ajax({
 			type : 'get',
@@ -897,7 +910,6 @@
 				$('#mediumRate').html("(" + rateData.mediumRate + ")");
 				$('#badRate').html("(" + rateData.badRate + ")");
 			},
-			
 		})
 	
 		//全部评价模块-用户评价详情
@@ -914,48 +926,48 @@
 					var date = new Date(rateInfoData[i].ratedate);
 					var d = date.toLocaleString();
 					var oLi = `
-														<li class="am-comment">
-															<!-- 评论容器 -->
-															<a href="">
-																<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
-																<!-- 评论者头像 -->
-															</a>
-							
-															<div class="am-comment-main">
-																<!-- 评论内容容器 -->
-																<header class="am-comment-hd">
-																	<!--<h3 class="am-comment-title">评论标题</h3>-->
-																	<div class="am-comment-meta">
-																		<!-- 评论元数据 -->
-																		<a href="#link-to-user" class="am-comment-author">${rateInfoData[i].oldername.charAt(0)}** (匿名)</a>
-																		<!-- 评论者 -->
-																		评论于
-																		<time datetime="">${d}</time>
-																	</div>
-																</header>
-							
-																<div class="am-comment-bd">
-																	<div class="tb-rev-item " data-id="255776406962">
-																		<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
-																			${rateInfoData[i].ratecontent}
+															<li class="am-comment">
+																<!-- 评论容器 -->
+																<a href="">
+																	<img class="am-comment-avatar" src="images/product/hwbn40x40.jpg" />
+																	<!-- 评论者头像 -->
+																</a>
+								
+																<div class="am-comment-main">
+																	<!-- 评论内容容器 -->
+																	<header class="am-comment-hd">
+																		<!--<h3 class="am-comment-title">评论标题</h3>-->
+																		<div class="am-comment-meta">
+																			<!-- 评论元数据 -->
+																			<a href="#link-to-user" class="am-comment-author">${rateInfoData[i].oldername.charAt(0)}** (匿名)</a>
+																			<!-- 评论者 -->
+																			评论于
+																			<time datetime="">${d}</time>
 																		</div>
-																		<div class="tb-r-act-bar">
-																			
-																		<div class="" id='rateStars${i}'>
-											                                 
-										                                 </div>
-																		购买数量：${rateInfoData[i].orderproductcount}
+																	</header>
+								
+																	<div class="am-comment-bd">
+																		<div class="tb-rev-item " data-id="255776406962">
+																			<div class="J_TbcRate_ReviewContent tb-tbcr-content ">
+																				${rateInfoData[i].ratecontent}
+																			</div>
+																			<div class="tb-r-act-bar">
+																				
+																			<div class="" id='rateStars${i}'>
+												                                 
+											                                 </div>
+																			购买数量：${rateInfoData[i].orderproductcount}
+																			</div>
 																		</div>
+								
 																	</div>
-							
+																	<!-- 评论内容 -->
 																</div>
-																<!-- 评论内容 -->
-															</div>
-														</li>
-								`;
+															</li>
+									`;
 					var oSpan = `
-										<span class="am-icon-star" style="color:red;font-size:20px;"></span>
-								`;
+											<span class="am-icon-star" style="color:red;font-size:20px;"></span>
+									`;
 	
 					$('#rateInfo').append(oLi);
 					for (x = 0; x <= rateInfoData[i].ratestar - 1; x++) {
@@ -963,53 +975,50 @@
 					}
 				}
 			},
-			
 		})
 	
 		//猜你喜欢
-		
-			$.ajax({
-				type : 'get',
-				contentType : 'application/json',
-				url : "/eldermanage/v1/shop/index/product/guesslike?productid=" + productid,
-				data : null,
-			}).then(
-				function(result) {
-					var whatYouLikeData = result.data;
 	
-					//猜你喜欢
-					for (var i = 0; i <= whatYouLikeData.length; i++) {
-						var oLi = `
-														<li>
-															<div class="i-pic limit">
-															<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
-																<img src="${whatYouLikeData[i].productimg}" />
-															</a>
-															
-																<p><span></span></p>
-																<p class="price fl">
-																	<b>¥</b>
-																	<strong>${whatYouLikeData[i].productprice}</strong>
-																</p>
-															</div>
-														</li>
-													`;
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/index/product/guesslike?productid=" + productid,
+			data : null,
+		}).then(
+			function(result) {
+				var whatYouLikeData = result.data;
 	
-						$('#whatYouLike').append(oLi);
-					}
-				},
-				function() {
-					alert('数据库错误')
+				//猜你喜欢
+				for (var i = 0; i <= whatYouLikeData.length; i++) {
+					var oLi = `
+															<li>
+																<div class="i-pic limit">
+																<a href="../Front/introduction.html?productid=${whatYouLikeData[i].productid}">
+																	<img src="${whatYouLikeData[i].productimg}" />
+																</a>
+																
+																	<p><span></span></p>
+																	<p class="price fl">
+																		<b>¥</b>
+																		<strong>${whatYouLikeData[i].productprice}</strong>
+																	</p>
+																</div>
+															</li>
+														`;
+	
+					$('#whatYouLike').append(oLi);
 				}
-			)
-
-		
+			},
+			function() {
+				alert('数据库错误')
+			}
+		)
+	
+	
 		$("#ai-topsearch").click(function(event) {
 			searchContent = $("#searchInput").val();
 			window.open('search.html?' + searchContent)
 		});
-		
-		
 	</script>
 
 </body>
