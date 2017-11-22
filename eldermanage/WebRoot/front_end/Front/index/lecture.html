@@ -225,7 +225,7 @@
 		            </div>
 		            <div class="modal-body">亲，你还没有登录哦，请先登录</div>
 		            <div class="modal-footer">
-		                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 		                <button type="button" class="btn btn-primary">点我去登录</button>
 		            </div>
 		        </div><!-- /.modal-content -->
@@ -437,6 +437,15 @@
 				        layui.each(thisData, function(index, item){
 				        	let date = new Date(item.lecture.lecturepublishdate);
 				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+
+				        	var joinState1;
+				        	var joinState2;
+				        	if(item.joinStatus == '已报名'){
+				        		joinState2 = "display:none;"
+				        	}else{
+				        		joinState1 = "display:none;"
+				        	}
+
 				        	let datas =`
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="single-service-item">
@@ -479,8 +488,8 @@
 													<a href="" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<button id="lecturebtn${index}" class="btn btn-default" style="float: right;display:none;">取消报名</button>
-													<button id="joinlecture${index}" type="button" class="btn btn-default" style="float: right;" onclick="lectureEnroll(${item.lecture.lectureid},'${item.joinStatus}',this)" >
+													<button id="lecturebtn${index}" class="btn btn-default" style="float: right;${joinState1}">取消报名</button>
+													<button id="joinlecture${index}" type="button" class="btn btn-default" style="float: right;${joinState2}" onclick="lectureEnroll(${item.lecture.lectureid},'${item.joinStatus}',this)" >
 														点击报名
 													</button>
 												</div>
@@ -518,6 +527,15 @@
 				        layui.each(thisData, function(index, item){
 				        	let date = new Date(item.action.actionstartdate);
 				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+
+				        	var joinState1;
+				        	var joinState2;
+				        	if(item.jionStatuString == '已报名'){
+				        		joinState2 = "display:none;"
+				        	}else{
+				        		joinState1 = "display:none;"
+				        	}
+				        	
 				        	let datas =`
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="single-service-item">
@@ -598,6 +616,7 @@
 					data:form,
 					success:function(result){
 						alert(result.information)
+						window.location.reload();
 					},
 					error(){
 						alert('数据库错误')
