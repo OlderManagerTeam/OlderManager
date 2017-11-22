@@ -209,7 +209,7 @@
 						<div class="col-md-12" id="activityItem">
 							
 						</div>
-						<div id="activityPage" style="text-align: center;" class="col-md-12"></div>
+						<div id="activityPage" style="text-align: center;" class="row"></div>
 					</div>
 				</div>
 			</div>  
@@ -669,6 +669,7 @@
 					data:null,
 					success:function(result){
 						alert(result.information)
+						window.location.reload();
 					},
 					error(){
 						alert('数据库错误')
