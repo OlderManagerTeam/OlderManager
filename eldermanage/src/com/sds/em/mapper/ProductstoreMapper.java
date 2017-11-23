@@ -27,6 +27,9 @@ public interface ProductstoreMapper {
     int updateByPrimaryKeySelective(Productstore record);
 
     int updateByPrimaryKey(Productstore record);
-//wuwenbo,查看库存
+    //wuwenbo,查看库存
 	List<com.sds.em.pojo.ProductstoreExtend> getproductstore();
+	
+	//wenbowu,分类查看库存
+	List<com.sds.em.po.Producttype> typestorecount();
 }
