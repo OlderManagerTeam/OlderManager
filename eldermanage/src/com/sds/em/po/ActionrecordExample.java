@@ -106,30 +106,30 @@ public class ActionrecordExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Time(value.getTime()), property);
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
         }
 
-        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
             if (values == null || values.size() == 0) {
                 throw new RuntimeException("Value list for " + property + " cannot be null or empty");
             }
-            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
             Iterator<Date> iter = values.iterator();
             while (iter.hasNext()) {
-                timeList.add(new java.sql.Time(iter.next().getTime()));
+                dateList.add(new java.sql.Date(iter.next().getTime()));
             }
-            addCriterion(condition, timeList, property);
+            addCriterion(condition, dateList, property);
         }
 
-        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andArecordidIsNull() {
@@ -323,52 +323,52 @@ public class ActionrecordExample {
         }
 
         public Criteria andArecorddateEqualTo(Date value) {
-            addCriterionForJDBCTime("ARecordDate =", value, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate =", value, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateNotEqualTo(Date value) {
-            addCriterionForJDBCTime("ARecordDate <>", value, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate <>", value, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateGreaterThan(Date value) {
-            addCriterionForJDBCTime("ARecordDate >", value, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate >", value, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("ARecordDate >=", value, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate >=", value, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateLessThan(Date value) {
-            addCriterionForJDBCTime("ARecordDate <", value, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate <", value, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("ARecordDate <=", value, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate <=", value, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateIn(List<Date> values) {
-            addCriterionForJDBCTime("ARecordDate in", values, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate in", values, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateNotIn(List<Date> values) {
-            addCriterionForJDBCTime("ARecordDate not in", values, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate not in", values, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("ARecordDate between", value1, value2, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate between", value1, value2, "arecorddate");
             return (Criteria) this;
         }
 
         public Criteria andArecorddateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("ARecordDate not between", value1, value2, "arecorddate");
+            addCriterionForJDBCDate("ARecordDate not between", value1, value2, "arecorddate");
             return (Criteria) this;
         }
     }

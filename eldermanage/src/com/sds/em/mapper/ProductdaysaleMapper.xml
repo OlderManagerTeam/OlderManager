@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sds.em.mapper.ProductdaysaleMapper">
+	<resultMap id="BaseResultMap" type="com.sds.em.po.Productdaysale">
+		<id column="pdsid" property="pdsid" jdbcType="BIGINT" />
+		<result column="pdsproductid" property="pdsproductid" jdbcType="INTEGER" />
+		<result column="pdsdaysale" property="pdsdaysale" jdbcType="INTEGER" />
+		<result column="pdsdaydate" property="pdsdaydate" jdbcType="TIMESTAMP" />
+		<result column="storeDayBrowse" property="storedaybrowse"
+			jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		pdsid, pdsproductid, pdsdaysale, pdsdaydate, storeDayBrowse
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.sds.em.po.ProductdaysaleExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from productdaysale
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from productdaysale
+		where pdsid = #{pdsid,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from
+		productdaysale
+		where pdsid = #{pdsid,jdbcType=BIGINT}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.sds.em.po.ProductdaysaleExample">
+		delete from productdaysale
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.sds.em.po.Productdaysale">
+		insert into productdaysale
+		(pdsid, pdsproductid, pdsdaysale,
+		pdsdaydate, storeDayBrowse)
+		values
+		(#{pdsid,jdbcType=BIGINT}, #{pdsproductid,jdbcType=INTEGER},
+		#{pdsdaysale,jdbcType=INTEGER},
+		#{pdsdaydate,jdbcType=TIMESTAMP},
+		#{storedaybrowse,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.sds.em.po.Productdaysale">
+		insert into productdaysale
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pdsid != null">
+				pdsid,
+			</if>
+			<if test="pdsproductid != null">
+				pdsproductid,
+			</if>
+			<if test="pdsdaysale != null">
+				pdsdaysale,
+			</if>
+			<if test="pdsdaydate != null">
+				pdsdaydate,
+			</if>
+			<if test="storedaybrowse != null">
+				storeDayBrowse,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pdsid != null">
+				#{pdsid,jdbcType=BIGINT},
+			</if>
+			<if test="pdsproductid != null">
+				#{pdsproductid,jdbcType=INTEGER},
+			</if>
+			<if test="pdsdaysale != null">
+				#{pdsdaysale,jdbcType=INTEGER},
+			</if>
+			<if test="pdsdaydate != null">
+				#{pdsdaydate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="storedaybrowse != null">
+				#{storedaybrowse,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.sds.em.po.ProductdaysaleExample"
+		resultType="java.lang.Integer">
+		select count(*) from productdaysale
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update productdaysale
+		<set>
+			<if test="record.pdsid != null">
+				pdsid = #{record.pdsid,jdbcType=BIGINT},
+			</if>
+			<if test="record.pdsproductid != null">
+				pdsproductid = #{record.pdsproductid,jdbcType=INTEGER},
+			</if>
+			<if test="record.pdsdaysale != null">
+				pdsdaysale = #{record.pdsdaysale,jdbcType=INTEGER},
+			</if>
+			<if test="record.pdsdaydate != null">
+				pdsdaydate = #{record.pdsdaydate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.storedaybrowse != null">
+				storeDayBrowse =
+				#{record.storedaybrowse,jdbcType=INTEGER},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update productdaysale
+		set pdsid = #{record.pdsid,jdbcType=BIGINT},
+		pdsproductid = #{record.pdsproductid,jdbcType=INTEGER},
+		pdsdaysale =
+		#{record.pdsdaysale,jdbcType=INTEGER},
+		pdsdaydate =
+		#{record.pdsdaydate,jdbcType=TIMESTAMP},
+		storeDayBrowse =
+		#{record.storedaybrowse,jdbcType=INTEGER}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Productdaysale">
+		update productdaysale
+		<set>
+			<if test="pdsproductid != null">
+				pdsproductid = #{pdsproductid,jdbcType=INTEGER},
+			</if>
+			<if test="pdsdaysale != null">
+				pdsdaysale = #{pdsdaysale,jdbcType=INTEGER},
+			</if>
+			<if test="pdsdaydate != null">
+				pdsdaydate = #{pdsdaydate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="storedaybrowse != null">
+				storeDayBrowse = #{storedaybrowse,jdbcType=INTEGER},
+			</if>
+		</set>
+		where pdsid = #{pdsid,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productdaysale">
+		update
+		productdaysale
+		set pdsproductid = #{pdsproductid,jdbcType=INTEGER},
+		pdsdaysale = #{pdsdaysale,jdbcType=INTEGER},
+		pdsdaydate =
+		#{pdsdaydate,jdbcType=TIMESTAMP},
+		storeDayBrowse =
+		#{storedaybrowse,jdbcType=INTEGER}
+		where pdsid =
+		#{pdsid,jdbcType=BIGINT}
+	</update>
+	<!-- 获取近十天商成的销售数据和商品浏览情况 -->
+	<select id="daysales" resultType="com.sds.em.po.Productdaysale">
+		SELECT
+		productdaysale.pdsdaydate,SUM(productdaysale.pdsdaysale)
+		pdsdaysale,SUM(productdaysale.storeDayBrowse) storeDayBrowse
+		from
+		productdaysale
+		GROUP BY productdaysale.pdsdaydate-NOW()
+		ORDER BY
+		productdaysale.pdsdaydate-NOW() DESC
+		LIMIT 0,10
+	</select>
+	<!-- 获取近12个月的销售数据 -->
+	<select id="monthsales" resultType="com.sds.em.po.Productdaysale">
+		SELECT
+		productdaysale.pdsdaydate,SUM(productdaysale.pdsdaysale)
+		pdsdaysale,SUM(productdaysale.storeDayBrowse) storeDayBrowse
+		from
+		productdaysale
+		GROUP BY date_format(productdaysale.pdsdaydate, '%Y-%m')
+		ORDER BY
+		productdaysale.pdsdaydate-NOW() DESC
+		LIMIT 0,12
+	</select>	
+	
+</mapper>

@@ -29,8 +29,7 @@
 		<ul class="message-l">
 			<div class="topMessage">
 				<div class="menu-hd">
-					<a href="login.html" target="_top" class="h">亲，请登录</a>
-					<a href="register.html" target="_top">免费注册</a>
+						<a  id="loginid"   target="_top" class="h"></a>
 				</div>
 			</div>
 		</ul>
@@ -39,10 +38,13 @@
 				<div class="menu-hd"><a href="shoppingindex.html" target="_top" class="h">商城首页</a></div>
 			</div>
 			<div class="topMessage my-shangcheng">
-				<div class="menu-hd MyShangcheng"><a href="personal.html" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+				<div class="menu-hd MyShangcheng"><a href="" target="_top" id="personal"><i
+								class="am-icon-user am-icon-fw"></i>个人中心</a></div>
 			</div>
 			<div class="topMessage mini-cart">
-				<div class="menu-hd"><a id="mc-menu-hd" href="shopcart.html" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
+				<div class="menu-hd"><a id="mc-menu-hd" href="" target="_top"><i
+							class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong
+							id="J_MiniCartNum" class="h"></strong></a></div>
 			</div>
 			
 		</ul>
@@ -51,9 +53,9 @@
 		<!--悬浮搜索框-->
 
 		<div class="nav white">
-			<div class="logo"><img src="images/product/logo.png" /></div>
+			<div class="logo"><li><img src="images/product/shopinglog.jpg" /></li></div>
 			<div class="logoBig">
-				<li><img src="images/product/logobig.png" /></li>
+				<li><img src="images/product/shopinglog.jpg" /></li>
 			</div>
 
 			<div class="search-bar pr">
@@ -168,15 +170,14 @@
 					</a>
 					<div class="ibar_login_box status_login">
 						<div class="avatar_box">
-							<p class="avatar_imgbox"><img src="images/product/no-img_mid_.jpg" /></p>
+							<p class="avatar_imgbox"><img src=""  id="olderheadurl"/></p>
 							<ul class="user_info">
-								<li>用户名：sl1903</li>
-								<li>级&nbsp;别：普通会员</li>
+								<li id="oldername"></li>
+								<li id="olderlevel"></li>
 							</ul>
 						</div>
 						<div class="login_btnbox">
-							<a href="#" class="login_order">我的订单</a>
-							<a href="#" class="login_favorite">我的收藏</a>
+							<a href="#" class="login_order" id="myorders">我的订单</a>
 						</div>
 						<i class="icon_arrow_white"></i>
 					</div>
@@ -189,17 +190,9 @@
 					<p>
 						购物车
 					</p>
-					<p class="cart_num">0</p>
+					<p class="cart_num" id="cartcount"></p>
 				</div>
-				<div id="asset" class="item">
-					<a href="#">
-						<span class="view"></span>
-					</a>
-					<div class="mp_tooltip">
-						我的资产
-						<i class="icon_arrow_right_black"></i>
-					</div>
-				</div>
+			
 
 				<div id="foot" class="item">
 					<a href="#">
@@ -207,26 +200,6 @@
 					</a>
 					<div class="mp_tooltip">
 						我的足迹
-						<i class="icon_arrow_right_black"></i>
-					</div>
-				</div>
-
-				<div id="brand" class="item">
-					<a href="#">
-						<span class="wdsc"><img src="images/product/wdsc.png" /></span>
-					</a>
-					<div class="mp_tooltip">
-						我的收藏
-						<i class="icon_arrow_right_black"></i>
-					</div>
-				</div>
-
-				<div id="broadcast" class="item">
-					<a href="#">
-						<span class="chongzhi"><img src="images/product/chongzhi.png" /></span>
-					</a>
-					<div class="mp_tooltip">
-						我要充值
 						<i class="icon_arrow_right_black"></i>
 					</div>
 				</div>
@@ -252,70 +225,7 @@
 			</div>
 
 		</div>
-		<div id="prof-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>
-				我
-			</div>
-		</div>
-		<div id="shopCart-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>
-				购物车
-			</div>
-		</div>
-		<div id="asset-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>
-				资产
-			</div>
 
-			<div class="ia-head-list">
-				<a href="#" target="_blank" class="pl">
-					<div class="num">0</div>
-					<div class="text">优惠券</div>
-				</a>
-				<a href="#" target="_blank" class="pl">
-					<div class="num">0</div>
-					<div class="text">红包</div>
-				</a>
-				<a href="#" target="_blank" class="pl money">
-					<div class="num">￥0</div>
-					<div class="text">余额</div>
-				</a>
-			</div>
-
-		</div>
-		<div id="foot-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>
-				足迹
-			</div>
-		</div>
-		<div id="brand-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>
-				收藏
-			</div>
-		</div>
-		<div id="broadcast-content" class="nav-content">
-			<div class="nav-con-close">
-				<i class="am-icon-angle-right am-icon-fw"></i>
-			</div>
-			<div>
-				充值
-			</div>
-		</div>
 	</div>
 
 	<script>
@@ -326,6 +236,70 @@
 
 
 	<script type="text/javascript">
+	//判断登录
+				var olderid;
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/shop/judgeLogin",
+					data : null,
+					success : function(result) {
+			
+						//alert(result.information)
+						if (result.success) {
+							olderid = result.data.olderid
+						} else {
+							$("#personal").click(function(event) {
+								alert('请登录')
+							});
+							$("#mc-menu-hd").click(function(event) {
+								alert('请登录')
+							});
+						}
+					},
+				}).done(function() {
+					if (olderid) { //已登录状态
+						//显示菜单内容
+						$.ajax({
+							type : 'get',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/shop/personal/older/info",
+							data : null,
+							success : function(result) {
+								if (result.success) {
+									document.getElementById("oldername").innerHTML = "用户名：" + result.data.oldername;
+									document.getElementById("olderheadurl").src = result.data.olderheadurl;
+									document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
+									document.getElementById("myorders").href = '../Front/personal.html'
+									document.getElementById("loginid").innerHTML ='您好 '+result.data.oldername;
+								}
+							},
+						})
+						//显示购物车数量
+						$.ajax({
+							type : 'get',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/shop/older/cart/amount",
+							data : null,
+							success : function(result) {
+								if (result.success) {
+									$("#J_MiniCartNum").html(result.data);
+									$("#cartcount").html(result.data);
+								}
+								if (result.information=="购物车为空") {
+										$("#J_MiniCartNum").html(0);
+										$("#cartcount").html(0);
+									}
+							},
+						})
+						document.getElementById("personal").href = '../Front/personal.html'
+						document.getElementById("mc-menu-hd").href = '../Front/shopcart.html'
+					}else{
+					    document.getElementById("loginid").innerHTML='亲 请登录'
+						document.getElementById("loginid").href = '../Front/login/login.html'
+					}
+				});
+	
 	
 	    var info=decodeURI(window.location.href.split("?")[1])
 	     $("#searchInput").val(info);

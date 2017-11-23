@@ -30,6 +30,7 @@ public interface ActionrecordMapper {
 
     int updateByPrimaryKey(Actionrecord record);
     
+
     //wuwenbo,获取活动记录信息以及老人信息
-    List<ActionRecordOlderExtend> getactionRecordinfo(Integer arecordid);
+       List<ActionRecordOlderExtend> getactionRecordinfo(Integer arecordid);
 }

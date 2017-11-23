@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Action;
 import com.sds.em.po.ActionExample;
+import com.sds.em.po.Olderbase;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +29,7 @@ public interface ActionMapper {
     int updateByPrimaryKeySelective(Action record);
 
     int updateByPrimaryKey(Action record);
+    
+    List<Action> selectByOlderJoinTrue(Olderbase olderbase);
+    List<Action> selectByOlderJoinFalse(Olderbase olderbase);
 }
