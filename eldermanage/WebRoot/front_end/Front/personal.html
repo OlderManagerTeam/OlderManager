@@ -40,8 +40,7 @@
 		<ul class="message-l">
 			<div class="topMessage">
 				<div class="menu-hd">
-					<a href="login.html" target="_top" class="h">亲，请登录</a> <a
-						href="register.html" target="_top">免费注册</a>
+					<a id="loginid" target="_top" class="h"></a> 
 				</div>
 			</div>
 		</ul>
@@ -65,10 +64,10 @@
 
 	<div class="nav white">
 		<div class="logo">
-			<img src="images/product/logo.png" />
+			<li><img src="images/product/shopinglog.jpg" /></li>
 		</div>
 		<div class="logoBig">
-			<li><img src="images/product/logobig.png" /></li>
+			<li><img src="images/product/shopinglog.jpg" /></li>
 		</div>
 
 		<div class="search-bar pr">
@@ -456,11 +455,15 @@
 				document.getElementById("olderpoint").innerHTML = result.data.olderpoint;
 				document.getElementById("oldermaxpoint").innerHTML = result.data.oldermaxpoint;
 				document.getElementById("olderlevel").innerHTML = result.data.olderlevel;
+		        document.getElementById("loginid").innerHTML ='您好 '+result.data.oldername;
 			},
-			error : function() {
-				alert('数据库错误')
-			}
-		})
+			
+			}).done(function() {
+				if (!olderid) { //已登录状态
+				  document.getElementById("loginid").innerHTML='亲 请登录'
+				  document.getElementById("loginid").href = '../Front/login/login.html'
+				}
+			});
 	</script>
 	<script type="text/javascript">
 		$.ajax({

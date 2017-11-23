@@ -273,4 +273,21 @@
       lectureBranchId = #{lecturebranchid,jdbcType=INTEGER}
     where lectureId = #{lectureid,jdbcType=INTEGER}
   </update>
+  
+  <!-- 自定义 -->
+  <select id="selectByOlderJoinTrue" resultType= "com.sds.em.po.Lecture" parameterType="com.sds.em.po.Olderbase" >
+       select * from lecture l where l.lectureId  in(
+       select lr.lRecordLectureId
+       from lecturerecord lr,olderbase ob 
+      where ob.olderId=lr.lRecordOlderId  and lr.lRecordOlderId=#{olderid,jdbcType=INTEGER}) ORDER BY l.lectureId desc
+   </select>
+   
+   <select id="selectByOlderJoinFalse" resultType="com.sds.em.po.Lecture" parameterType="com.sds.em.po.Olderbase" >
+     select * from lecture l where l.lectureBranchId= #{olderbranchid,jdbcType=INTEGER} and l.lectureId not in(
+      select lr.lRecordLectureId
+       from lecturerecord lr,olderbase ob 
+      where ob.olderId=lr.lRecordOlderId  and lr.lRecordOlderId=#{olderid,jdbcType=INTEGER}) ORDER BY l.lectureId desc
+      
+   </select> 
+ 
 </mapper>

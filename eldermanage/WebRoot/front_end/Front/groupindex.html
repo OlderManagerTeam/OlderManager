@@ -54,8 +54,7 @@
 				<ul class="message-l">
 					<div class="topMessage">
 						<div class="menu-hd">
-							<a href="login.html" target="_top" class="h">亲，请登录</a> <a
-								href="register.html" target="_top">免费注册</a>
+							<a  id="loginid"  target="_top" class="h"></a> 
 						</div>
 					</div>
 				</ul>
@@ -88,7 +87,7 @@
 					<a href="" style="font-size: 20px;">返回</a>
 				</div>
 				<div class="logoBig">
-					<li><img src="images/product/shoplogo.png" /></li>
+					<li><img src="images/product/shopinglog.jpg" /></li>
 				</div>
 
 				<div class="search-bar pr">
@@ -287,6 +286,7 @@
 									document.getElementById("olderlevel").innerHTML = "级&nbsp;&nbsp;&nbsp;别：" + result.data.olderlevel;
 									document.getElementById("myorders").href = '../Front/personal.html'
 									document.getElementById("myfoots").href = '../Front/personal.html'
+									document.getElementById("loginid").innerHTML ='您好 '+result.data.oldername;
 								}
 							},
 						})
@@ -309,6 +309,9 @@
 						})
 						document.getElementById("personal").href = '../Front/personal.html'
 						document.getElementById("mc-menu-hd").href = '../Front/shopcart.html'
+					}else{
+					    document.getElementById("loginid").innerHTML='亲 请登录'
+						document.getElementById("loginid").href = '../Front/login/login.html'
 					}
 				});
 			
