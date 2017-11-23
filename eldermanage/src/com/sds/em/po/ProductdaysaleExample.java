@@ -2,7 +2,6 @@ package com.sds.em.po;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class ProductdaysaleExample {
@@ -106,32 +105,6 @@ public class ProductdaysaleExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
         public Criteria andPdsidIsNull() {
             addCriterion("pdsid is null");
             return (Criteria) this;
@@ -142,52 +115,52 @@ public class ProductdaysaleExample {
             return (Criteria) this;
         }
 
-        public Criteria andPdsidEqualTo(Integer value) {
+        public Criteria andPdsidEqualTo(Long value) {
             addCriterion("pdsid =", value, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidNotEqualTo(Integer value) {
+        public Criteria andPdsidNotEqualTo(Long value) {
             addCriterion("pdsid <>", value, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidGreaterThan(Integer value) {
+        public Criteria andPdsidGreaterThan(Long value) {
             addCriterion("pdsid >", value, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPdsidGreaterThanOrEqualTo(Long value) {
             addCriterion("pdsid >=", value, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidLessThan(Integer value) {
+        public Criteria andPdsidLessThan(Long value) {
             addCriterion("pdsid <", value, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidLessThanOrEqualTo(Integer value) {
+        public Criteria andPdsidLessThanOrEqualTo(Long value) {
             addCriterion("pdsid <=", value, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidIn(List<Integer> values) {
+        public Criteria andPdsidIn(List<Long> values) {
             addCriterion("pdsid in", values, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidNotIn(List<Integer> values) {
+        public Criteria andPdsidNotIn(List<Long> values) {
             addCriterion("pdsid not in", values, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidBetween(Integer value1, Integer value2) {
+        public Criteria andPdsidBetween(Long value1, Long value2) {
             addCriterion("pdsid between", value1, value2, "pdsid");
             return (Criteria) this;
         }
 
-        public Criteria andPdsidNotBetween(Integer value1, Integer value2) {
+        public Criteria andPdsidNotBetween(Long value1, Long value2) {
             addCriterion("pdsid not between", value1, value2, "pdsid");
             return (Criteria) this;
         }
@@ -323,52 +296,112 @@ public class ProductdaysaleExample {
         }
 
         public Criteria andPdsdaydateEqualTo(Date value) {
-            addCriterionForJDBCDate("pdsdaydate =", value, "pdsdaydate");
+            addCriterion("pdsdaydate =", value, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("pdsdaydate <>", value, "pdsdaydate");
+            addCriterion("pdsdaydate <>", value, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateGreaterThan(Date value) {
-            addCriterionForJDBCDate("pdsdaydate >", value, "pdsdaydate");
+            addCriterion("pdsdaydate >", value, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("pdsdaydate >=", value, "pdsdaydate");
+            addCriterion("pdsdaydate >=", value, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateLessThan(Date value) {
-            addCriterionForJDBCDate("pdsdaydate <", value, "pdsdaydate");
+            addCriterion("pdsdaydate <", value, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("pdsdaydate <=", value, "pdsdaydate");
+            addCriterion("pdsdaydate <=", value, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateIn(List<Date> values) {
-            addCriterionForJDBCDate("pdsdaydate in", values, "pdsdaydate");
+            addCriterion("pdsdaydate in", values, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("pdsdaydate not in", values, "pdsdaydate");
+            addCriterion("pdsdaydate not in", values, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("pdsdaydate between", value1, value2, "pdsdaydate");
+            addCriterion("pdsdaydate between", value1, value2, "pdsdaydate");
             return (Criteria) this;
         }
 
         public Criteria andPdsdaydateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("pdsdaydate not between", value1, value2, "pdsdaydate");
+            addCriterion("pdsdaydate not between", value1, value2, "pdsdaydate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseIsNull() {
+            addCriterion("storeDayBrowse is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseIsNotNull() {
+            addCriterion("storeDayBrowse is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseEqualTo(Integer value) {
+            addCriterion("storeDayBrowse =", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseNotEqualTo(Integer value) {
+            addCriterion("storeDayBrowse <>", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseGreaterThan(Integer value) {
+            addCriterion("storeDayBrowse >", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storeDayBrowse >=", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseLessThan(Integer value) {
+            addCriterion("storeDayBrowse <", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseLessThanOrEqualTo(Integer value) {
+            addCriterion("storeDayBrowse <=", value, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseIn(List<Integer> values) {
+            addCriterion("storeDayBrowse in", values, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseNotIn(List<Integer> values) {
+            addCriterion("storeDayBrowse not in", values, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseBetween(Integer value1, Integer value2) {
+            addCriterion("storeDayBrowse between", value1, value2, "storedaybrowse");
+            return (Criteria) this;
+        }
+
+        public Criteria andStoredaybrowseNotBetween(Integer value1, Integer value2) {
+            addCriterion("storeDayBrowse not between", value1, value2, "storedaybrowse");
             return (Criteria) this;
         }
     }

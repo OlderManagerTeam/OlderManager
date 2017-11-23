@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sds.em.mapper.VideocollectionMapper" >
+  <resultMap id="BaseResultMap" type="com.sds.em.po.Videocollection" >
+    <id column="videoCollectionId" property="videocollectionid" jdbcType="INTEGER" />
+    <result column="videoColleOlderId" property="videocolleolderid" jdbcType="INTEGER" />
+    <result column="videoColleVideoId" property="videocollevideoid" jdbcType="INTEGER" />
+    <result column="videoColleDate" property="videocolledate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    videoCollectionId, videoColleOlderId, videoColleVideoId, videoColleDate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.VideocollectionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from videocollection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from videocollection
+    where videoCollectionId = #{videocollectionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from videocollection
+    where videoCollectionId = #{videocollectionid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sds.em.po.VideocollectionExample" >
+    delete from videocollection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sds.em.po.Videocollection" >
+    insert into videocollection (videoCollectionId, videoColleOlderId, 
+      videoColleVideoId, videoColleDate)
+    values (#{videocollectionid,jdbcType=INTEGER}, #{videocolleolderid,jdbcType=INTEGER}, 
+      #{videocollevideoid,jdbcType=INTEGER}, #{videocolledate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sds.em.po.Videocollection" >
+    insert into videocollection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="videocollectionid != null" >
+        videoCollectionId,
+      </if>
+      <if test="videocolleolderid != null" >
+        videoColleOlderId,
+      </if>
+      <if test="videocollevideoid != null" >
+        videoColleVideoId,
+      </if>
+      <if test="videocolledate != null" >
+        videoColleDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="videocollectionid != null" >
+        #{videocollectionid,jdbcType=INTEGER},
+      </if>
+      <if test="videocolleolderid != null" >
+        #{videocolleolderid,jdbcType=INTEGER},
+      </if>
+      <if test="videocollevideoid != null" >
+        #{videocollevideoid,jdbcType=INTEGER},
+      </if>
+      <if test="videocolledate != null" >
+        #{videocolledate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sds.em.po.VideocollectionExample" resultType="java.lang.Integer" >
+    select count(*) from videocollection
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update videocollection
+    <set >
+      <if test="record.videocollectionid != null" >
+        videoCollectionId = #{record.videocollectionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.videocolleolderid != null" >
+        videoColleOlderId = #{record.videocolleolderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.videocollevideoid != null" >
+        videoColleVideoId = #{record.videocollevideoid,jdbcType=INTEGER},
+      </if>
+      <if test="record.videocolledate != null" >
+        videoColleDate = #{record.videocolledate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update videocollection
+    set videoCollectionId = #{record.videocollectionid,jdbcType=INTEGER},
+      videoColleOlderId = #{record.videocolleolderid,jdbcType=INTEGER},
+      videoColleVideoId = #{record.videocollevideoid,jdbcType=INTEGER},
+      videoColleDate = #{record.videocolledate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Videocollection" >
+    update videocollection
+    <set >
+      <if test="videocolleolderid != null" >
+        videoColleOlderId = #{videocolleolderid,jdbcType=INTEGER},
+      </if>
+      <if test="videocollevideoid != null" >
+        videoColleVideoId = #{videocollevideoid,jdbcType=INTEGER},
+      </if>
+      <if test="videocolledate != null" >
+        videoColleDate = #{videocolledate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where videoCollectionId = #{videocollectionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Videocollection" >
+    update videocollection
+    set videoColleOlderId = #{videocolleolderid,jdbcType=INTEGER},
+      videoColleVideoId = #{videocollevideoid,jdbcType=INTEGER},
+      videoColleDate = #{videocolledate,jdbcType=TIMESTAMP}
+    where videoCollectionId = #{videocollectionid,jdbcType=INTEGER}
+  </update>
+</mapper>

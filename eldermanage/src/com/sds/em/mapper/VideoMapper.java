@@ -1,5 +1,6 @@
 package com.sds.em.mapper;
 
+import com.sds.em.po.Olderbase;
 import com.sds.em.po.Video;
 import com.sds.em.po.VideoExample;
 import java.util.List;
@@ -31,4 +32,7 @@ public interface VideoMapper {
     List<Video> select_video_healthy();
     
     List<Video> select_video_lecture();
+    
+    List<Video> select_videocollection_true(Olderbase olderbase);
+    List<Video> select_videocollection_false(Olderbase olderbase);
 }
