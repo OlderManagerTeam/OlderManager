@@ -13,8 +13,10 @@ import com.sds.em.po.Video;
  */
 public interface CourseService {
 	
-	// 查询所有的视频(返回课程列表)
-	public Message allClasses(String videopartition);
+	// 登录后返回所有的视频(返回课程列表)
+	public Message allClasses(int olderid,String videopartition);
+	// 未登录时返回所有的视频(返回课程列表)
+	public Message allClassesno(String videopartition);
 	 //返回课程（视频）详细
 	 public Message classDetail(int videoId);
 
@@ -48,7 +50,9 @@ public interface CourseService {
  	//所有活动
 	public Message allActions();
  	//老人参加过的活动
- 	public Message olderActions(int olderid,int olderbranchid);
+ 	public Message olderActions(int olderid);
+ 	//老人参加过的讲座
+ 	public Message olderLectures(int olderid);
  	//插入活动记录表
  	public Message joinAction(int olderid, int actionid);
  	//查看讲座详情
@@ -61,6 +65,8 @@ public interface CourseService {
  	public Message deleteActionRecord(int olderid,int actionid);
  	//老年人取消参加某讲座
  	public Message deleteLectureRecord(int olderid,int lectureid);
-
- 	
+ 	//收藏视频（插入视频收藏记录表）
+ 	public Message insertVCollectin(int olderid,int videoid);
+	//查看已收藏视频
+ 	public Message videoCollectinRecord(int olderid);
 }
