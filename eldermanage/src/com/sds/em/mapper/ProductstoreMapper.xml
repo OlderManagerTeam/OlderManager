@@ -37,7 +37,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -69,7 +70,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -87,9 +89,11 @@
 		</where>
 	</sql>
 	<sql id="Base_Column_List">
-		storeId, storeProductId, storeCount, storeDayBrowse, storeMonthBrowse,
+		storeId, storeProductId, storeCount, storeDayBrowse,
+		storeMonthBrowse,
 		storeYearBrowse,
-		storeTotalBrowse, storeDaySales, storeMonthSales, storeYearSales, storeTotalSales
+		storeTotalBrowse, storeDaySales,
+		storeMonthSales, storeYearSales, storeTotalSales
 	</sql>
 	<select id="selectByExample" resultMap="BaseResultMap"
 		parameterType="com.sds.em.po.ProductstoreExample">
@@ -114,7 +118,8 @@
 		where storeId = #{storeid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from productstore
+		delete from
+		productstore
 		where storeId = #{storeid,jdbcType=INTEGER}
 	</delete>
 	<delete id="deleteByExample" parameterType="com.sds.em.po.ProductstoreExample">
@@ -124,13 +129,17 @@
 		</if>
 	</delete>
 	<insert id="insert" parameterType="com.sds.em.po.Productstore">
-		insert into productstore (storeId, storeProductId, storeCount,
-		storeDayBrowse, storeMonthBrowse, storeYearBrowse,
+		insert into productstore
+		(storeId, storeProductId, storeCount,
+		storeDayBrowse, storeMonthBrowse,
+		storeYearBrowse,
 		storeTotalBrowse, storeDaySales, storeMonthSales,
 		storeYearSales, storeTotalSales)
-		values (#{storeid,jdbcType=INTEGER}, #{storeproductid,jdbcType=INTEGER},
+		values (#{storeid,jdbcType=INTEGER},
+		#{storeproductid,jdbcType=INTEGER},
 		#{storecount,jdbcType=INTEGER},
-		#{storedaybrowse,jdbcType=INTEGER}, #{storemonthbrowse,jdbcType=INTEGER},
+		#{storedaybrowse,jdbcType=INTEGER},
+		#{storemonthbrowse,jdbcType=INTEGER},
 		#{storeyearbrowse,jdbcType=INTEGER},
 		#{storetotalbrowse,jdbcType=INTEGER},
 		#{storedaysales,jdbcType=INTEGER},
@@ -225,34 +234,42 @@
 				storeId = #{record.storeid,jdbcType=INTEGER},
 			</if>
 			<if test="record.storeproductid != null">
-				storeProductId = #{record.storeproductid,jdbcType=INTEGER},
+				storeProductId =
+				#{record.storeproductid,jdbcType=INTEGER},
 			</if>
 			<if test="record.storecount != null">
 				storeCount = #{record.storecount,jdbcType=INTEGER},
 			</if>
 			<if test="record.storedaybrowse != null">
-				storeDayBrowse = #{record.storedaybrowse,jdbcType=INTEGER},
+				storeDayBrowse =
+				#{record.storedaybrowse,jdbcType=INTEGER},
 			</if>
 			<if test="record.storemonthbrowse != null">
-				storeMonthBrowse = #{record.storemonthbrowse,jdbcType=INTEGER},
+				storeMonthBrowse =
+				#{record.storemonthbrowse,jdbcType=INTEGER},
 			</if>
 			<if test="record.storeyearbrowse != null">
-				storeYearBrowse = #{record.storeyearbrowse,jdbcType=INTEGER},
+				storeYearBrowse =
+				#{record.storeyearbrowse,jdbcType=INTEGER},
 			</if>
 			<if test="record.storetotalbrowse != null">
-				storeTotalBrowse = #{record.storetotalbrowse,jdbcType=INTEGER},
+				storeTotalBrowse =
+				#{record.storetotalbrowse,jdbcType=INTEGER},
 			</if>
 			<if test="record.storedaysales != null">
 				storeDaySales = #{record.storedaysales,jdbcType=INTEGER},
 			</if>
 			<if test="record.storemonthsales != null">
-				storeMonthSales = #{record.storemonthsales,jdbcType=INTEGER},
+				storeMonthSales =
+				#{record.storemonthsales,jdbcType=INTEGER},
 			</if>
 			<if test="record.storeyearsales != null">
-				storeYearSales = #{record.storeyearsales,jdbcType=INTEGER},
+				storeYearSales =
+				#{record.storeyearsales,jdbcType=INTEGER},
 			</if>
 			<if test="record.storetotalsales != null">
-				storeTotalSales = #{record.storetotalsales,jdbcType=INTEGER},
+				storeTotalSales =
+				#{record.storetotalsales,jdbcType=INTEGER},
 			</if>
 		</set>
 		<if test="_parameter != null">
@@ -263,15 +280,24 @@
 		update productstore
 		set storeId = #{record.storeid,jdbcType=INTEGER},
 		storeProductId = #{record.storeproductid,jdbcType=INTEGER},
-		storeCount = #{record.storecount,jdbcType=INTEGER},
-		storeDayBrowse = #{record.storedaybrowse,jdbcType=INTEGER},
-		storeMonthBrowse = #{record.storemonthbrowse,jdbcType=INTEGER},
-		storeYearBrowse = #{record.storeyearbrowse,jdbcType=INTEGER},
-		storeTotalBrowse = #{record.storetotalbrowse,jdbcType=INTEGER},
-		storeDaySales = #{record.storedaysales,jdbcType=INTEGER},
-		storeMonthSales = #{record.storemonthsales,jdbcType=INTEGER},
-		storeYearSales = #{record.storeyearsales,jdbcType=INTEGER},
-		storeTotalSales = #{record.storetotalsales,jdbcType=INTEGER}
+		storeCount
+		= #{record.storecount,jdbcType=INTEGER},
+		storeDayBrowse =
+		#{record.storedaybrowse,jdbcType=INTEGER},
+		storeMonthBrowse =
+		#{record.storemonthbrowse,jdbcType=INTEGER},
+		storeYearBrowse =
+		#{record.storeyearbrowse,jdbcType=INTEGER},
+		storeTotalBrowse =
+		#{record.storetotalbrowse,jdbcType=INTEGER},
+		storeDaySales =
+		#{record.storedaysales,jdbcType=INTEGER},
+		storeMonthSales =
+		#{record.storemonthsales,jdbcType=INTEGER},
+		storeYearSales =
+		#{record.storeyearsales,jdbcType=INTEGER},
+		storeTotalSales =
+		#{record.storetotalsales,jdbcType=INTEGER}
 		<if test="_parameter != null">
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
@@ -313,25 +339,46 @@
 		where storeId = #{storeid,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productstore">
-		update productstore
+		update
+		productstore
 		set storeProductId = #{storeproductid,jdbcType=INTEGER},
 		storeCount = #{storecount,jdbcType=INTEGER},
-		storeDayBrowse = #{storedaybrowse,jdbcType=INTEGER},
-		storeMonthBrowse = #{storemonthbrowse,jdbcType=INTEGER},
-		storeYearBrowse = #{storeyearbrowse,jdbcType=INTEGER},
-		storeTotalBrowse = #{storetotalbrowse,jdbcType=INTEGER},
-		storeDaySales = #{storedaysales,jdbcType=INTEGER},
-		storeMonthSales = #{storemonthsales,jdbcType=INTEGER},
-		storeYearSales = #{storeyearsales,jdbcType=INTEGER},
-		storeTotalSales = #{storetotalsales,jdbcType=INTEGER}
-		where storeId = #{storeid,jdbcType=INTEGER}
+		storeDayBrowse =
+		#{storedaybrowse,jdbcType=INTEGER},
+		storeMonthBrowse =
+		#{storemonthbrowse,jdbcType=INTEGER},
+		storeYearBrowse =
+		#{storeyearbrowse,jdbcType=INTEGER},
+		storeTotalBrowse =
+		#{storetotalbrowse,jdbcType=INTEGER},
+		storeDaySales =
+		#{storedaysales,jdbcType=INTEGER},
+		storeMonthSales =
+		#{storemonthsales,jdbcType=INTEGER},
+		storeYearSales =
+		#{storeyearsales,jdbcType=INTEGER},
+		storeTotalSales =
+		#{storetotalsales,jdbcType=INTEGER}
+		where storeId =
+		#{storeid,jdbcType=INTEGER}
 	</update>
 
 	<!-- wuwenbo,查看库存 -->
 	<select id="getproductstore" resultType="com.sds.em.pojo.ProductstoreExtend">
 
-		SELECT * from productstore as ps INNER JOIN product as p on
+		SELECT * from
+		productstore as ps INNER JOIN product as p on
 		p.productId=ps.storeProductId
+	</select>
 
+	<!-- wuwenbo,分类查看库存 -->
+	<select id="typestorecount" resultType="com.sds.em.po.Producttype">
+		SELECT
+		pt.typeContent,SUM(ps.storeCount) typeId FROM product as p INNER JOIN
+		productstore as ps on p.productId = ps.storeProductId
+		INNER JOIN
+		producttype as pt on p.productTypeNumber=pt.typeNumber
+		GROUP BY
+		p.productTypeNumber
 	</select>
 </mapper>

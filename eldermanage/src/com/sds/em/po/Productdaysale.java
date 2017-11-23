@@ -3,7 +3,7 @@ package com.sds.em.po;
 import java.util.Date;
 
 public class Productdaysale {
-    private Integer pdsid;
+    private Long pdsid;
 
     private Integer pdsproductid;
 
@@ -11,11 +11,13 @@ public class Productdaysale {
 
     private Date pdsdaydate;
 
-    public Integer getPdsid() {
+    private Integer storedaybrowse;
+
+    public Long getPdsid() {
         return pdsid;
     }
 
-    public void setPdsid(Integer pdsid) {
+    public void setPdsid(Long pdsid) {
         this.pdsid = pdsid;
     }
 
@@ -41,5 +43,13 @@ public class Productdaysale {
 
     public void setPdsdaydate(Date pdsdaydate) {
         this.pdsdaydate = pdsdaydate;
+    }
+
+    public Integer getStoredaybrowse() {
+        return storedaybrowse;
+    }
+
+    public void setStoredaybrowse(Integer storedaybrowse) {
+        this.storedaybrowse = storedaybrowse;
     }
 }

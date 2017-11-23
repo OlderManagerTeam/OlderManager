@@ -287,7 +287,9 @@
       select lr.lRecordLectureId
        from lecturerecord lr,olderbase ob 
       where ob.olderId=lr.lRecordOlderId  and lr.lRecordOlderId=#{olderid,jdbcType=INTEGER}) ORDER BY l.lectureId desc
-      
    </select> 
- 
+ <select id="slelectOlderLectureRecord" resultType="com.sds.em.po.Lecture" parameterType="com.sds.em.po.Olderbase">
+   select * from lecture l where l.lectureId in(
+  select lr.lRecordLectureId from lecturerecord lr where lr.lRecordOlderId = #{olderid,jdbcType=INTEGER}) ORDER BY l.lectureId desc
+</select>
 </mapper>
