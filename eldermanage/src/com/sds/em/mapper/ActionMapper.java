@@ -32,4 +32,6 @@ public interface ActionMapper {
     
     List<Action> selectByOlderJoinTrue(Olderbase olderbase);
     List<Action> selectByOlderJoinFalse(Olderbase olderbase);
+    List<Action> slelectOlderActionRecord(Olderbase olderbase);
+    
 }

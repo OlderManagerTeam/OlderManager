@@ -30,6 +30,12 @@ public interface LectureMapper {
     int updateByPrimaryKeySelective(Lecture record);
 
     int updateByPrimaryKey(Lecture record);
+    
     List<Lecture> selectByOlderJoinTrue(Olderbase olderbase);
+    
     List<Lecture> selectByOlderJoinFalse(Olderbase olderbase);
+    
+    List<Lecture> slelectOlderLectureRecord(Olderbase olderbase);
+    
+    
 }

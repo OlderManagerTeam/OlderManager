@@ -71,7 +71,7 @@
 				<!--Top Right-->
                     <div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href="personal_center.html">
+						<a href="personal_center.html" id="person_center">
 							<span>个人中心</span>
 							<span class="badge" style="margin-left: 3px;">1</span>
 						</a>
@@ -79,7 +79,10 @@
 							<span id="myName">请登录</span>
 						</a>
 						<a href="" data-toggle="modal" data-target="#signUpModal" id="signUp">
-							<span id="loginOut">注册账号</span>
+							<span>注册账号</span>
+						</a>
+						<a href="" id="loginOut" onclick="login_out();return false;" data-toggle="modal">
+							<span>注销</span>
 						</a>
 					</div>
 				</div>
@@ -842,6 +845,22 @@
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 注销提示模态框-->
+		<div class="modal fade" id="loginOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">注销提示</h4>
+		            </div>
+		            <div class="modal-body" id="login_info"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="reload()">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
 		</div>		
 
 		<footer class="footer bg-style" style="background-image:url(images/background/bg-3.jpg);">
@@ -1004,6 +1023,10 @@
 				if (result.success) {
 					$("#myCenter").attr('href','personal_center.html')
 					$('#myName').html(result.data.oldername)
+					$("#signUp").hide();
+				}else {
+					$("#loginOut").hide();
+					$("#person_center").hide();
 				}
 			},
 			error:function(){
@@ -1011,6 +1034,28 @@
 			}
 		})
 
+		//注销
+		function login_out(){
+			$.ajax({
+				type : 'delete',
+				contentType : false,
+				url : "/eldermanage/v1/index/person/accountnumber",
+				data : null,
+				success : function(result) {
+					$("#login_info").html(result.information);
+					$("#loginOutModal").modal('show');
+				},
+				error : function() {
+					alert('fail')
+				}
+			})
+		}
+
+		//刷新页面
+		function reload(){
+			window.location.reload();
+		}
+		
 		//近期活动
 		$.ajax({
 			type:'get',
