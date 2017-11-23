@@ -71,9 +71,16 @@
 				<!--Top Right-->
                     <div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href="personal_center.html"><span>个人中心</span></a>
-						<a href="../login/login.html"><span>请登录</span></a>
-						<a href="" data-toggle="modal" data-target="#signUpModal"><span>注册账号</span></a>
+						<a href="personal_center.html">
+							<span>个人中心</span>
+							<span class="badge" style="margin-left: 3px;">1</span>
+						</a>
+						<a href="../login/login.html" id="myCenter">
+							<span id="myName">请登录</span>
+						</a>
+						<a href="" data-toggle="modal" data-target="#signUpModal" id="signUp">
+							<span id="loginOut">注册账号</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -987,6 +994,23 @@
 	</div>
 	
 	<script type="text/javascript">
+		//判断登录
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/judgeLogin",
+			data : null,
+			success : function(result){
+				if (result.success) {
+					$("#myCenter").attr('href','personal_center.html')
+					$('#myName').html(result.data.oldername)
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+
 		//近期活动
 		$.ajax({
 			type:'get',
