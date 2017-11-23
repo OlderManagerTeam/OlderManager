@@ -175,7 +175,7 @@ public class CourseFrontController {
 	}
 	
 	//老人查看已报名参加的讲座  ---写完
-		@RequestMapping(method= RequestMethod.GET,value="actions/olderactions")
+		@RequestMapping(method= RequestMethod.GET,value="actions/olderlecture")
 		public Message olderlectures(HttpSession s){
 			LoginMassage loginMassage = null;
 			loginMassage = (LoginMassage) s.getAttribute("loginMassage");
