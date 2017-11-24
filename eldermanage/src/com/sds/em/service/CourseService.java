@@ -73,4 +73,6 @@ public interface CourseService {
  	public Message deleteVCollectin(int olderid,int videoid);
 	//查看已收藏视频
  	public Message videoCollectinRecord(int olderid);
+ 	
+ 	public boolean jugeCollect(int videoid,int olderid);
 }
