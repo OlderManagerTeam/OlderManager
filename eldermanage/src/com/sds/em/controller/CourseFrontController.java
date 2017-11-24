@@ -37,8 +37,15 @@ public class CourseFrontController {
 	CourseService courseService;
 	// 查询所有视频(返回课程列表)----写完--测试过
 	@RequestMapping(method=RequestMethod.GET, value = "classes")
-	public @ResponseBody Message option(String videopartition){//所有的视频
-		return courseService.allClasses(videopartition);
+	public @ResponseBody Message option(HttpSession s,String videopartition){//所有的视频
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {//未登录下的所有视频
+			return courseService.allClassesno(videopartition);
+		}else{//已登陆下的所有视频
+			int olderid = loginMassage.getOlderid();
+		    return courseService.allClasses(olderid,videopartition);
+		}
 	}
 	
 	//返回课程（视频）详细  ----写完
@@ -87,6 +94,20 @@ public class CourseFrontController {
 		  return courseService.joinLecture(olderid, lectureid);
 		}
 	}
+	
+	//插入活动记录表（老人报名参加活动）同时修改已报名人数---写完
+		@RequestMapping(method = RequestMethod.POST,value="actions/joinaction")
+		public @ResponseBody Message insertActionRecord(HttpSession s,int actionid){
+			LoginMassage loginMassage = null;
+			loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+			if (loginMassage == null) {
+				return new Message(false, "未登录", null);
+			}else{//已登陆
+				int olderid = loginMassage.getOlderid();
+				return courseService.joinAction(olderid, actionid);
+			}
+				
+		}
 	
    //播放热度列表实现     ----写完 通过--测试过
 	@RequestMapping(method = RequestMethod.GET,value="video/heat")
@@ -139,26 +160,36 @@ public class CourseFrontController {
 			}
 		
 	}
-	//老人查看已报名参加过活动  ---写完
+	//老人查看已报名参加的活动  ---写完
 	@RequestMapping(method= RequestMethod.GET,value="actions/olderactions")
 	public Message olderactions(HttpSession s){
-		int olderid = (int) s.getAttribute("olderid");
-		int olderbranchid = (int) s.getAttribute("olderbranchid");
-		return courseService.olderActions(olderid,olderbranchid);
-	}
-	//插入活动记录表（老人报名参加活动）同时修改已报名人数---写完
-	@RequestMapping(method = RequestMethod.POST,value="actions/joinaction")
-	public @ResponseBody Message insertActionRecord(HttpSession s,int actionid){
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
 		if (loginMassage == null) {
 			return new Message(false, "未登录", null);
+			
 		}else{//已登陆
 			int olderid = loginMassage.getOlderid();
-			return courseService.joinAction(olderid, actionid);
-		}
-			
+		   return courseService.olderActions(olderid);
+		   }
 	}
+	
+	//老人查看已报名参加的讲座  ---写完
+		@RequestMapping(method= RequestMethod.GET,value="actions/olderlecture")
+		public Message olderlectures(HttpSession s){
+			LoginMassage loginMassage = null;
+			loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+			if (loginMassage == null) {
+				return new Message(false, "未登录", null);
+				
+			}else{//已登陆
+				int olderid = loginMassage.getOlderid();
+			   return courseService.olderLectures(olderid);
+			   }
+		}
+	
+	
+	
 	
 	//讲座详情
 	@RequestMapping(method = RequestMethod.GET,value ="lecture/lecturedetail")
@@ -204,6 +235,34 @@ public class CourseFrontController {
 			int olderid = loginMassage.getOlderid();
 		    return courseService.deleteLectureRecord(olderid,lectureid);
 		}
+	}
+	
+	//收藏视频（插入视频收藏记录表）
+	@RequestMapping(method = RequestMethod.POST,value="video/collectionvideo")
+	public @ResponseBody Message insertVideoCollectin(HttpSession s,int videoid){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			return courseService.insertVCollectin(olderid, videoid);
+		}
+			
+	}
+	
+	//查看已收藏视频
+	@RequestMapping(method = RequestMethod.GET,value="video/videocollection")
+	public @ResponseBody Message VideoCollectinRecord(HttpSession s,int videoid){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			return courseService.videoCollectinRecord(olderid);
+		}
+			
 	}
 
 }

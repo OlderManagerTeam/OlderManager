@@ -36,7 +36,7 @@ $(function() {
 		storedaybrowse = new Array();
 		pdsdaysale = new Array();
 		for (i = result.data.length - 1; i >= 0; i--) {
-			productsalesdate[result.data.length - i - 1] = new Date(result.data[i].pdsdaydate).toLocaleDateString().substr(8, 20);
+			productsalesdate[result.data.length - i - 1] = new Date(result.data[i].pdsdaydate).toLocaleDateString();
 			storedaybrowse[result.data.length - i - 1] = result.data[i].storedaybrowse;
 			pdsdaysale[result.data.length - i - 1] = result.data[i].pdsdaysale;
 		}
@@ -106,7 +106,7 @@ $(function() {
 		storedaybrowse = new Array();
 		pdsdaysale = new Array();
 		for (i = result.data.length - 1; i >= 0; i--) {
-			productsalesdate[result.data.length - i - 1] = new Date(result.data[i].pdsdaydate).toLocaleDateString().substr(8, 20);
+			productsalesdate[result.data.length - i - 1] = new Date(result.data[i].pdsdaydate).toLocaleDateString();
 			storedaybrowse[result.data.length - i - 1] = result.data[i].storedaybrowse;
 			pdsdaysale[result.data.length - i - 1] = result.data[i].pdsdaysale;
 		}
@@ -257,7 +257,7 @@ $(function() {
 		joincount = new Array();
 		pdsdaysale = new Array();
 		for (i = result.data.length - 1; i >= 0; i--) {
-			joindate[result.data.length - i - 1] = new Date(result.data[i].joindate).toLocaleDateString().substr(8, 20);
+			joindate[result.data.length - i - 1] = new Date(result.data[i].joindate).toLocaleDateString();
 			joincount[result.data.length - i - 1] = result.data[i].joingroupid;
 		}
 		data = {
@@ -311,7 +311,7 @@ $(function() {
 		joincount = new Array();
 		pdsdaysale = new Array();
 		for (i = result.data.length - 1; i >= 0; i--) {
-			joindate[result.data.length - i - 1] = new Date(result.data[i].joindate).toLocaleDateString().substr(8, 20);
+			joindate[result.data.length - i - 1] = new Date(result.data[i].joindate).toLocaleDateString();
 			joincount[result.data.length - i - 1] = result.data[i].joingroupid;
 		}
 		data = {
@@ -475,6 +475,77 @@ $(function() {
 			]
 		};
 		myBarChart = new Chart(ctx).Radar(data, option_bars);
+	})
+});
+//商城近日评价
+$(function() {
+	var ctx,
+		data,
+		myLineChart,
+		options;
+	var ratedate,
+		aratecontent,
+		bratecontent,
+		cratecontent;
+	Chart.defaults.global.responsive = true;
+	ctx = $('productdayrate-chart').get(0).getContext('2d');
+	options = {
+		scaleShowGridLines : true,
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+		scaleGridLineWidth : 1,
+		scaleShowHorizontalLines : true,
+		scaleShowVerticalLines : true,
+		bezierCurve : false,
+		bezierCurveTension : 0.4,
+		pointDot : true,
+		pointDotRadius : 4,
+		pointDotStrokeWidth : 1,
+		pointHitDetectionRadius : 20,
+		datasetStroke : true,
+		datasetStrokeWidth : 2,
+		datasetFill : true,
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+	};
+	$.ajax({
+		type : 'get',
+		contentType : 'application/json',
+		url : "/eldermanage/v1/data/produtct/daysales?rateid=0&rateolderid=3",
+		data : null,
+	}).then(function(result) {
+		productsalesdate = new Array();
+		storedaybrowse = new Array();
+		pdsdaysale = new Array();
+		for (i = result.data.length - 1; i >= 0; i--) {
+			ratedate[result.data.length - i - 1] = new Date(result.data[i].ratedate).toLocaleDateString();
+			cratecontent[result.data.length - i - 1] = result.data[i].cratecontent;
+			pdsdaysale[result.data.length - i - 1] = result.data[i].pdsdaysale;
+		}
+		data = {
+			labels : productsalesdate,
+			datasets : [
+				{
+					label : "My First dataset",
+					fillColor : "rgba(255,255,255,0.2)",
+					strokeColor : "#1ABC9C",
+					pointColor : "#1ABC9C",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "#1ABC9C",
+					data : storedaybrowse //添加数据
+				},
+				{
+					label : "My First dataset",
+					fillColor : "rgba(255,255,255,0.2)",
+					strokeColor : "#FF4500",
+					pointColor : "#FF4500",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "#1ABC9C",
+					data : pdsdaysale //添加数据
+				},
+			]
+		};
+		myLineChart = new Chart(ctx).Line(data, options);
 	})
 });
 /*//新闻统计
