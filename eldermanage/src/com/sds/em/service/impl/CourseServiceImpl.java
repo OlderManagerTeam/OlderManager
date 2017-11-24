@@ -77,7 +77,7 @@ public class CourseServiceImpl implements CourseService {
 		olderbaseC.andOlderidEqualTo(olderid);
 		List<Olderbase> olderbaseList = olderbaseMapper.selectByExample(olderbaseExample);
 		List<VideoExtend> videoextendList  = new ArrayList<VideoExtend>();
-		
+		List<VideoExtend> videoextendList2  = new ArrayList<VideoExtend>();
 		if(!olderbaseList.isEmpty()){//有该老人信息
 			List<Video> videocollectionListByOlder = videoMapper.select_videocollection_true(olderbaseList.get(0));
 			if(!videocollectionListByOlder.isEmpty()){//有收藏记录
@@ -106,8 +106,16 @@ public class CourseServiceImpl implements CourseService {
 					videoextendList.add(videoExtend);
 				}
 			}
-			if(!videoextendList.isEmpty()){
-				return new Message(true, "返回成功", videoextendList);
+			if(!videoextendList.isEmpty()){//得到所有视频后
+				for(VideoExtend ve :videoextendList){
+				  	if(ve.getVideo().getVideopartition().equals("健康视频")){
+				  		videoextendList2.add(ve);
+				  	}else if(ve.getVideo().getVideopartition().equals("讲座回放")){
+				  		videoextendList2.add(ve);
+				  	}
+				}
+
+				return new Message(true, "返回成功", videoextendList2);
 			}else {
 				return new Message(false, "错误，没有包装进去", null);
 			}
@@ -121,8 +129,33 @@ public class CourseServiceImpl implements CourseService {
 	//未登录下的所有视频
 	@Override
 	public Message allClassesno(String videopartition) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		List<Video> videoList1 = videoMapper.select_video_healthy();
+		List<Video> videoList2 = videoMapper.select_video_lecture();
+		List<VideoExtend> videoextendList  = new ArrayList<VideoExtend>();
+		if (videopartition.equals("健康视频")) {
+			for(Video v1:videoList1){
+				VideoExtend videoe1 = new VideoExtend();
+				videoe1.setVideo(v1);
+				videoe1.setCollectionStatue("未收藏");
+				videoextendList.add(videoe1);
+			}
+			
+		} else if (videopartition.equals("讲座回放")) {
+			for(Video v2:videoList2){
+				VideoExtend videoe2 = new VideoExtend();
+				videoe2.setVideo(v2);
+				videoe2.setCollectionStatue("未收藏");
+				videoextendList.add(videoe2);
+			}
+		}
+
+		if (!videoextendList.isEmpty()) {
+			return new Message(true, "返回成功", videoextendList);
+		}
+
+		
+		return new Message(false, "数据错误", null);
 	}
 
 	// 返回课程（视频）详细
@@ -507,7 +540,6 @@ public class CourseServiceImpl implements CourseService {
 				if (a.getActionstartdate() == null) {
 					extend.setAction(a);
 					extend.setStartDateString("未定");
-
 				} else {
 					extend.setAction(a);
 					extend.setStartDateString("有值");
@@ -515,7 +547,6 @@ public class CourseServiceImpl implements CourseService {
 				extend.setJionStatuString("未登录");
 				actionExtendList.add(extend);
 			}
-			
 			return new Message(true, "返回成功", actionExtendList);
 		}
 		return new Message(false, "数据错误", null);
@@ -696,6 +727,7 @@ public class CourseServiceImpl implements CourseService {
 		flag = videocollectionMapper.insert(videocollection);
 		if(flag != 0){//插入成功
 			return new Message(true,"收藏成功",null);
+			
 		}else{//插入失败
 			return new Message(false,"数据错误，插入失败",null);
 		}

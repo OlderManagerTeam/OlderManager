@@ -59,7 +59,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -80,7 +81,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -218,260 +219,276 @@
 										</ul>
 									</div>
 								</div></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-		</nav>
-	</div>
-	<!-- Main Content -->
-	<div class="container-fluid">
-		<div class="side-body">
-			<div class="page-title">
-				<span class="title">商品团购表</span>
-				<div class="description">Product Group List</div>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</nav>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="card">
-						<div class="card-header">
+			<!-- Main Content -->
+			<div class="container-fluid">
+				<div class="side-body">
+					<div class="page-title">
+						<span class="title">商品团购表</span>
+						<div class="description">Product Group List</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="card">
+								<div class="card-header">
 
-							<div class="card-title">
-								<div class="title">列表</div>
-							</div>
-							<div class="card-title  col-md-offset-10">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../olderShop/groupEntry.html" role="button">发起新团购</a>
+									<div class="card-title">
+										<div class="title">列表</div>
+									</div>
+									<div class="card-title  col-md-offset-10">
+										<div class="title">
+											<a class="btn btn-primary btn-lg"
+												href="../olderShop/groupEntry.html" role="button">发起新团购</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<table class="datatable table table-striped" cellspacing="0"
+										width="100%">
+										<thead>
+											<tr>
+												<th>团购编号</th>
+												<th>发起时间</th>
+												<th>开团时间</th>
+												<th>结束时间</th>
+												<th>团购状态</th>
+												<th>团购商品</th>
+												<th>操作</th>
+												<th>当前人数</th>
+												<th>总人数</th>
+												<th>团购价格</th>
+												<th>团购详情</th>
+											</tr>
+										</thead>
+										<tfoot>
+											<tr>
+												<th>团购编号</th>
+												<th>发起时间</th>
+												<th>开团时间</th>
+												<th>结束时间</th>
+												<th>团购状态</th>
+												<th>团购商品</th>
+												<th>操作</th>
+												<th>当前人数</th>
+												<th>总人数</th>
+												<th>团购价格</th>
+												<th>团购详情</th>
+											</tr>
+										</tfoot>
+										<tbody id="groupview">
+										</tbody>
+									</table>
 								</div>
 							</div>
-						</div>
-						<div class="card-body">
-							<table class="datatable table table-striped" cellspacing="0"
-								width="100%">
-								<thead>
-									<tr>
-										<th>团购编号</th>
-										<th>发起时间</th>
-										<th>开团时间</th>
-										<th>结束时间</th>
-										<th>团购状态</th>
-										<th>团购商品</th>
-										<th>操作</th>
-										<th>当前人数</th>
-										<th>总人数</th>
-										<th>团购价格</th>
-										<th>团购详情</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th>团购编号</th>
-										<th>发起时间</th>
-										<th>开团时间</th>
-										<th>结束时间</th>
-										<th>团购状态</th>
-										<th>团购商品</th>
-										<th>操作</th>
-										<th>当前人数</th>
-										<th>总人数</th>
-										<th>团购价格</th>
-										<th>团购详情</th>
-									</tr>
-								</tfoot>
-								<tbody id="groupview">
-								</tbody>
-							</table>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	<footer class="app-footer">
-		<div class="wrapper">
-			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-		</div>
-	</footer>
+		<footer class="app-footer">
+			<div class="wrapper">
+				<span class="pull-right">2.1 <a href="#"><i
+						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+			</div>
+		</footer>
 
-	<!-- Javascript Libs -->
+		<!-- Javascript Libs -->
 
 
-	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-	<script type="text/javascript"
-		src="../../lib/js/bootstrap-switch.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/bootstrap-switch.min.js"></script>
 
-	<script type="text/javascript"
-		src="../../lib/js/jquery.matchHeight-min.js"></script>
-	<script type="text/javascript"
-		src="../../lib/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript"
-		src="../../lib/js/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-	<!-- Javascript -->
-	<script type="text/javascript" src="../../js/app.js"></script>
-	
-	<script type="text/javascript" src="../../js/personal.js"></script>
-	<script type="text/javascript">
-	
-		$(function() {
-			$.ajax({
-				type : 'get',
-				contentType : 'application/json',
-				url : "/eldermanage/v1/oldershop/productgroup",
-				data : null
-			}).then(
-				function(result) {
-					productgroup = result.data;
-					for (var i = productgroup.length - 1; i >= 0; i--) {
-						var grouppublishdate = new Date(productgroup[i].grouppublishdate);
-						var groupstartdate = new Date(productgroup[i].groupstartdate);
-						var groupfinishdate = new Date(productgroup[i].groupfinishdate);
-						if (productgroup[i].groupstatus == "未开始") {
-							var oTr = `<tr>
-													<td>${productgroup[i].groupid}</td>
-													<td>${grouppublishdate.toLocaleDateString()}${grouppublishdate.toLocaleTimeString()}</td>
-													<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
-													<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
-													<td>${productgroup[i].groupstatus}</td>
-													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
-													<td><a class="btn btn-primary btn-xs btn-cancelanddelete" role="button" data-id="${productgroup[i].groupid}">取消并删除</a></td>
-													<td>${productgroup[i].grouppresentpeople}</td>
-													<td>${productgroup[i].grouptotalpeople}</td>
-													<td>${productgroup[i].groupdiscountprice}</td>
-													<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
-												`;
-							$($(oTr)).appendTo('#groupview');
-						}else if (productgroup[i].groupstatus == "正在进行") {
-							var oTr = `<tr>
-													<td>${productgroup[i].groupid}</td>
-													<td>${grouppublishdate.toLocaleDateString()}${grouppublishdate.toLocaleTimeString()}</td>
-													<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
-													<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
-													<td>${productgroup[i].groupstatus}</td>
-													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
-													<td><a class="btn btn-primary btn-xs btn-endandorders" role="button" data-id="${productgroup[i].groupid}">结束并生成订单</a></td>
-													<td>${productgroup[i].grouppresentpeople}</td>
-													<td>${productgroup[i].grouptotalpeople}</td>
-													<td>${productgroup[i].groupdiscountprice}</td>
-													<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
-												`;
-							$($(oTr)).appendTo('#groupview');
-						}else if (productgroup[i].groupstatus == "已结束") {
-							var oTr = `<tr>
-													<td>${productgroup[i].groupid}</td>
-													<td>${grouppublishdate.toLocaleDateString()}${grouppublishdate.toLocaleTimeString()}</td>
-													<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
-													<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
-													<td>${productgroup[i].groupstatus}</td>
-													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
-													<td><a class="btn btn-primary btn-xs btn-orders" role="button" data-id="${productgroup[i].groupid}">生成订单</a></td>
-													<td>${productgroup[i].grouppresentpeople}</td>
-													<td>${productgroup[i].grouptotalpeople}</td>
-													<td>${productgroup[i].groupdiscountprice}</td>
-													<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
-												`;
-							$($(oTr)).appendTo('#groupview');
-						}else if (productgroup[i].groupstatus == "已成交") {
-							var oTr = `<tr>
-													<td>${productgroup[i].groupid}</td>
-													<td>${grouppublishdate.toLocaleDateString()}${grouppublishdate.toLocaleTimeString()}</td>
-													<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
-													<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
-													<td>${productgroup[i].groupstatus}</td>
-													<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
-													<td><a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${productgroup[i].groupid}">删除</a></td>
-													<td>${productgroup[i].grouppresentpeople}</td>
-													<td>${productgroup[i].grouptotalpeople}</td>
-													<td>${productgroup[i].groupdiscountprice}</td>
-													<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
-												`;
-							$($(oTr)).appendTo('#groupview');
+		<script type="text/javascript"
+			src="../../lib/js/jquery.matchHeight-min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+		<!-- Javascript -->
+		<script type="text/javascript" src="../../js/app.js"></script>
+
+		<script type="text/javascript" src="../../js/personal.js"></script>
+		<script type="text/javascript">
+		
+			$(function() {
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/oldershop/productgroup",
+					data : null
+				}).then(
+					function(result) {
+						productgroup = result.data;
+						for (var i = productgroup.length - 1; i >= 0; i--) {
+							var grouppublishdate = new Date(productgroup[i].grouppublishdate);
+							var groupstartdate = new Date(productgroup[i].groupstartdate);
+							var groupfinishdate = new Date(productgroup[i].groupfinishdate);
+							if (productgroup[i].groupstatus == "未开始") {
+								var oTr = `<tr>
+																			<td>${productgroup[i].groupid}</td>
+																			<td>${grouppublishdate.toLocaleDateString()}${grouppublishdate.toLocaleTimeString()}</td>
+																			<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
+																			<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
+																			<td>${productgroup[i].groupstatus}</td>
+																			<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
+																			<td><a class="btn btn-primary btn-xs btn-cancelanddelete" role="button" data-id="${productgroup[i].groupid}">取消并删除</a></td>
+																			<td>${productgroup[i].grouppresentpeople}</td>
+																			<td>${productgroup[i].grouptotalpeople}</td>
+																			<td>${productgroup[i].groupdiscountprice}</td>
+																			<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
+																		`;
+								$($(oTr)).appendTo('#groupview');
+							} else if (productgroup[i].groupstatus == "正在进行") {
+								var oTr = `<tr>
+																			<td>${productgroup[i].groupid}</td>
+																			<td>${grouppublishdate.toLocaleDateString()}${grouppublishdate.toLocaleTimeString()}</td>
+																			<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
+																			<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
+																			<td>${productgroup[i].groupstatus}</td>
+																			<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
+																			<td><a class="btn btn-primary btn-xs btn-endandorders" role="button" data-id="${productgroup[i].groupid}">结束并生成订单</a></td>
+																			<td>${productgroup[i].grouppresentpeople}</td>
+																			<td>${productgroup[i].grouptotalpeople}</td>
+																			<td>${productgroup[i].groupdiscountprice}</td>
+																			<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
+																		`;
+								$($(oTr)).appendTo('#groupview');
+							} else if (productgroup[i].groupstatus == "已结束") {
+								var oTr = `<tr>
+																			<td>${productgroup[i].groupid}</td>
+																			<td>${grouppublishdate.toLocaleDateString()}${grouppublishdate.toLocaleTimeString()}</td>
+																			<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
+																			<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
+																			<td>${productgroup[i].groupstatus}</td>
+																			<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
+																			<td><a class="btn btn-primary btn-xs btn-orders" role="button" data-id="${productgroup[i].groupid}">生成订单</a></td>
+																			<td>${productgroup[i].grouppresentpeople}</td>
+																			<td>${productgroup[i].grouptotalpeople}</td>
+																			<td>${productgroup[i].groupdiscountprice}</td>
+																			<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
+																		`;
+								$($(oTr)).appendTo('#groupview');
+							} else if (productgroup[i].groupstatus == "已成交") {
+								var oTr = `<tr>
+																			<td>${productgroup[i].groupid}</td>
+																			<td>${grouppublishdate.toLocaleDateString()}${grouppublishdate.toLocaleTimeString()}</td>
+																			<td>${groupstartdate.toLocaleDateString()}${groupstartdate.toLocaleTimeString()}</td>
+																			<td>${groupfinishdate.toLocaleDateString()}${groupfinishdate.toLocaleTimeString()}</td>
+																			<td>${productgroup[i].groupstatus}</td>
+																			<td>${productgroup[i].productname}<a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/productInfo.html?productid=${productgroup[i].productid}">商品详细</a></td>
+																			<td><a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${productgroup[i].groupid}">删除</a></td>
+																			<td>${productgroup[i].grouppresentpeople}</td>
+																			<td>${productgroup[i].grouptotalpeople}</td>
+																			<td>${productgroup[i].groupdiscountprice}</td>
+																			<td><a class="btn btn-primary btn-xs" role="button" href="/eldermanage/front_end/OA/html/olderShop/joinGroup.html?groupid=${productgroup[i].groupid}">参团列表</a></td>
+																		`;
+								$($(oTr)).appendTo('#groupview');
+							}
 						}
-					}
-					$('.datatable').DataTable({
-						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+						$('.datatable').DataTable({
+							"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+						})
+						addDelete();
+		
+						$("#DataTables_Table_0_paginate").click(function() {
+							$("#groupview .btn-delete").off('click')
+							addDelete();
+						});
+						$("#DataTables_Table_0_filter").change(function() {
+							$("#groupview .btn-delete").off('click')
+							addDelete();
+						});
+						$("#DataTables_Table_0_length").change(function() {
+							$("#groupview .btn-delete").off('click')
+							addDelete();
+						});
 					})
-				})
-				.done(function() {
-						$("#groupview .btn-cancelanddelete").on('click', function(event) {
-							const r = confirm("您确定要取消并删除这条团购么?");
-							if (r == true) {
-								const e = event || window.event;
-								e.preventDefault();
-								$.ajax({
-									type : 'delete',
-									contentType : 'application/json',
-									url : "/eldermanage/v1/oldershop/productgroup?groupid=" + $(this).attr('data-id'),
-									data : null,
-									success : function() {
-										window.location.reload();
-									}
-								})
-		
-							} else return false;
-						});
-						$("#groupview .btn-endandorders").on('click', function(event) {
-							const r = confirm("您确定提前结束并生成订单吗?");
-							if (r == true) {
-								const e = event || window.event;
-								e.preventDefault();
-								$.ajax({
-									type : 'post',
-									contentType : 'application/json',
-									url : "/eldermanage/v1/oldershop/productgroup/orders?groupid=" + $(this).attr('data-id'),
-									data : null,
-									success : function() {
-										window.location.reload();
-									}
-								})
-		
-							} else return false;
-						});
-						$("#groupview .btn-orders").on('click', function(event) {
-							const r = confirm("您确定要生成订单么?");
-							if (r == true) {
-								const e = event || window.event;
-								e.preventDefault();
-								$.ajax({
-									type : 'post',
-									contentType : 'application/json',
-									url : "/eldermanage/v1/oldershop/productgroup/orders?groupid=" + $(this).attr('data-id'),
-									data : null,
-									success : function() {
-										window.location.reload();
-									}
-								})
-		
-							} else return false;
-						});
-						$("#groupview .btn-delete").on('click', function(event) {
-							const r = confirm("您确定要刪除么?");
-							if (r == true) {
-								const e = event || window.event;
-								e.preventDefault();
-								$.ajax({
-									type : 'delete',
-									contentType : 'application/json',
-									url : "/eldermanage/v1/oldershop/productgroup?groupid=" + $(this).attr('data-id'),
-									data : null,
-									success : function() {
-										window.location.reload();
-									}
-								})
-		
-							} else return false;
-						});
-					}
+					.done(function() {}
 				)
 			})
-	</script>
+		
+			function addDelete() {
+				$("#groupview .btn-cancelanddelete").on('click', function(event) {
+					const r = confirm("您确定要取消并删除这条团购么?");
+					if (r == true) {
+						const e = event || window.event;
+						e.preventDefault();
+						$.ajax({
+							type : 'delete',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/oldershop/productgroup?groupid=" + $(this).attr('data-id'),
+							data : null,
+							success : function() {
+								window.location.reload();
+							}
+						})
+		
+					} else return false;
+				});
+				$("#groupview .btn-endandorders").on('click', function(event) {
+					const r = confirm("您确定提前结束并生成订单吗?");
+					if (r == true) {
+						const e = event || window.event;
+						e.preventDefault();
+						$.ajax({
+							type : 'post',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/oldershop/productgroup/orders?groupid=" + $(this).attr('data-id'),
+							data : null,
+							success : function() {
+								window.location.reload();
+							}
+						})
+		
+					} else return false;
+				});
+				$("#groupview .btn-orders").on('click', function(event) {
+					const r = confirm("您确定要生成订单么?");
+					if (r == true) {
+						const e = event || window.event;
+						e.preventDefault();
+						$.ajax({
+							type : 'post',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/oldershop/productgroup/orders?groupid=" + $(this).attr('data-id'),
+							data : null,
+							success : function() {
+								window.location.reload();
+							}
+						})
+		
+					} else return false;
+				});
+				$("#groupview .btn-delete").on('click', function(event) {
+					const r = confirm("您确定要刪除么?");
+					if (r == true) {
+						const e = event || window.event;
+						e.preventDefault();
+						$.ajax({
+							type : 'delete',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/oldershop/productgroup?groupid=" + $(this).attr('data-id'),
+							data : null,
+							success : function() {
+								window.location.reload();
+							}
+						})
+		
+					} else return false;
+				});
+			}
+		</script>
 </body>
 
 </html>

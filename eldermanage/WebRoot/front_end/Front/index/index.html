@@ -71,9 +71,19 @@
 				<!--Top Right-->
                     <div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href="personal_center.html"><span>个人中心</span></a>
-						<a href="../login/login.html"><span>请登录</span></a>
-						<a href="" data-toggle="modal" data-target="#signUpModal"><span>注册账号</span></a>
+						<a href="personal_center.html" id="person_center">
+							<span>个人中心</span>
+							<span class="badge" style="margin-left: 3px;">1</span>
+						</a>
+						<a href="../login/login.html" id="myCenter">
+							<span id="myName">请登录</span>
+						</a>
+						<a href="" data-toggle="modal" data-target="#signUpModal" id="signUp">
+							<span>注册账号</span>
+						</a>
+						<a href="" id="loginOut" onclick="login_out();return false;" data-toggle="modal">
+							<span>注销</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -83,12 +93,12 @@
 		<section class="theme_menu stricky">
 			<div class="container">
 				<div class="row" style="background-color: #fff;">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="main-logo">
 							<a href="index.html"><img src="images/logo/logo.png" alt=""></a>
 						</div>
 					</div>
-					<div class="col-md-8 menu-column">
+					<div class="col-md-9 menu-column">
 						<nav class="menuzord" id="main_menu">
 						   <ul class="menuzord-menu">
 								<li><a href="index.html" style="font-size: 25px;color: #ffbc1e;">首页</a></li>
@@ -835,6 +845,22 @@
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 注销提示模态框-->
+		<div class="modal fade" id="loginOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">注销提示</h4>
+		            </div>
+		            <div class="modal-body" id="login_info"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="reload()">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
 		</div>		
 
 		<footer class="footer bg-style" style="background-image:url(images/background/bg-3.jpg);">
@@ -987,6 +1013,49 @@
 	</div>
 	
 	<script type="text/javascript">
+		//判断登录
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/judgeLogin",
+			data : null,
+			success : function(result){
+				if (result.success) {
+					$("#myCenter").attr('href','personal_center.html')
+					$('#myName').html(result.data.oldername)
+					$("#signUp").hide();
+				}else {
+					$("#loginOut").hide();
+					$("#person_center").hide();
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+
+		//注销
+		function login_out(){
+			$.ajax({
+				type : 'delete',
+				contentType : false,
+				url : "/eldermanage/v1/index/person/accountnumber",
+				data : null,
+				success : function(result) {
+					$("#login_info").html(result.information);
+					$("#loginOutModal").modal('show');
+				},
+				error : function() {
+					alert('fail')
+				}
+			})
+		}
+
+		//刷新页面
+		function reload(){
+			window.location.reload();
+		}
+		
 		//近期活动
 		$.ajax({
 			type:'get',

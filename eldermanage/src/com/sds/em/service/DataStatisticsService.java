@@ -10,4 +10,8 @@ public interface DataStatisticsService {
 	public Message dayjoingroup();
 
 	public Message monthjoingroup();
+
+	public Message typestorecount();
+
+	public Message typesales();
 }

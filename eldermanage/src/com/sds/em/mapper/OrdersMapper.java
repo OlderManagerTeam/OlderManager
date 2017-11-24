@@ -34,4 +34,7 @@ public interface OrdersMapper {
 	List<OrdersExtend> getorders();
 //插入返回主键
 	int keyinsert(Orders orders);
+	
+	//wuwenbo,近三十天商城商品类别销售数据
+	List<com.sds.em.po.Producttype> typesales();
 }
