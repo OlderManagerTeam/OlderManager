@@ -8,6 +8,7 @@ public class VideoExtend {
 	private Video video;
 	private Date vrecorddate;
 	private String collectionStatue;
+	
 	public String getCollectionStatue() {
 		return collectionStatue;
 	}

@@ -111,8 +111,15 @@ public class CourseFrontController {
 	
    //播放热度列表实现     ----写完 通过--测试过
 	@RequestMapping(method = RequestMethod.GET,value="video/heat")
-	public @ResponseBody Message videoheat(){
-		return courseService.videoHeatTop();
+	public @ResponseBody Message videoheat(HttpSession s){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return courseService.videoHeatTopNo();
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			return courseService.videoHeatTop(olderid);
+		}
 	}
 	
 	//发布课程
@@ -247,6 +254,20 @@ public class CourseFrontController {
 		}else{//已登陆
 			int olderid = loginMassage.getOlderid();
 			return courseService.insertVCollectin(olderid, videoid);
+		}
+			
+	}
+	
+	//取消收藏视频
+	@RequestMapping(method = RequestMethod.POST,value="video/cancelcollection")
+	public @ResponseBody Message deleteVideoCollectin(HttpSession s,int videoid){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			return courseService.deleteVCollectin(olderid, videoid);
 		}
 			
 	}

@@ -1,5 +1,7 @@
 package com.sds.em.service.impl;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -34,6 +36,7 @@ import com.sds.em.po.Video;
 import com.sds.em.po.VideoExample;
 import com.sds.em.po.VideoExample.Criteria;
 import com.sds.em.po.Videocollection;
+import com.sds.em.po.VideocollectionExample;
 import com.sds.em.po.Videorecord;
 import com.sds.em.po.VideorecordExample;
 import com.sds.em.pojo.ActionExtend;
@@ -138,7 +141,7 @@ public class CourseServiceImpl implements CourseService {
 				VideoExtend videoe1 = new VideoExtend();
 				videoe1.setVideo(v1);
 				videoe1.setCollectionStatue("未登录");
-	
+				
 				videoextendList.add(videoe1);
 			}
 			
@@ -147,7 +150,6 @@ public class CourseServiceImpl implements CourseService {
 				VideoExtend videoe2 = new VideoExtend();
 				videoe2.setVideo(v2);
 				videoe2.setCollectionStatue("未登录");
-		
 				videoextendList.add(videoe2);
 			}
 		}
@@ -160,6 +162,77 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false, "数据错误", null);
 	}
 
+	// 播放热度列表实现
+	@Override
+	public Message videoHeatTop(int olderid) {
+		OlderbaseExample olderbaseExample = new OlderbaseExample();
+		com.sds.em.po.OlderbaseExample.Criteria olderbaseC = olderbaseExample.createCriteria();
+		olderbaseC.andOlderidEqualTo(olderid);
+		List<Olderbase> olderbaseList = olderbaseMapper.selectByExample(olderbaseExample);
+		//videocollectionListByOlder为老人收藏过的视频id
+		List<Video> videocollectionListByOlder = videoMapper.select_videocollection_true(olderbaseList.get(0));
+		List<VideoExtend> videoextendList  = new ArrayList<VideoExtend>();
+		if(!olderbaseList.isEmpty()){//老人信息存在
+			VideoExample videoExample = new VideoExample();
+			videoExample.setOrderByClause("videoheat DESC,videoid DESC");
+			List<Video> videoList = videoMapper.selectByExample(videoExample);//得到按热度排序的所有视频
+			if (!videoList.isEmpty()) {//热度视频不为空
+				for(Video v1 : videoList){
+					for(Video v2 : videocollectionListByOlder){//加载已收藏的
+						if(v1.getVideoid()==v2.getVideoid()){
+							VideoExtend vExtend = new VideoExtend();
+							vExtend.setVideo(v1);
+							vExtend.setCollectionStatue("已收藏");
+							videoextendList.add(vExtend);
+						}else{
+							VideoExtend vExtend = new VideoExtend();
+							vExtend.setVideo(v1);
+							vExtend.setCollectionStatue("未登录");
+							videoextendList.add(vExtend);
+						}
+					}
+					
+				}
+				if(!videoextendList.isEmpty()){
+					return new Message(true, "返回成功", videoextendList);
+				}else{
+					return new Message(false, "没有包装到数据", null);
+				}
+				
+			}else{//热度视频为空
+				return new Message(false, "热度视频为空", null);
+			}
+		}else{//老人信息不存在
+			return new Message(false, "老人信息不存在", null);
+		}
+		
+	}
+
+	//播放热度列表实现-- 未登录
+		@Override
+		public Message videoHeatTopNo() {
+			VideoExample videoExample = new VideoExample();
+			videoExample.setOrderByClause("videoheat DESC,videoid DESC");
+			List<Video> videoList = videoMapper.selectByExample(videoExample);//得到按热度排序的所有视频
+			List<VideoExtend> videoextendList  = new ArrayList<VideoExtend>();
+			if(!videoList.isEmpty()){//有热度视频
+				for(Video v:videoList){
+					VideoExtend ve = new VideoExtend();
+					ve.setVideo(v);
+					ve.setCollectionStatue("未登录");
+					videoextendList.add(ve);
+				}
+				if(!videoextendList.isEmpty()){
+					return new Message(true, "返回成功", videoextendList);
+				}else{
+					return new Message(false, "没有包装到数据", null);
+				}
+			}else{//无热度视频
+			return new Message(false, "没有热门视频", null);
+			}
+		}
+
+	
 	// 返回课程（视频）详细
 	@Override
 	public Message classDetail(int videoId) {
@@ -368,19 +441,6 @@ public class CourseServiceImpl implements CourseService {
 			
 		}
 
-	// 播放热度列表实现
-	@Override
-	public Message videoHeatTop() {
-
-		VideoExample videoExample = new VideoExample();
-		videoExample.setOrderByClause("videoheat DESC,videoid DESC");
-		List<Video> videoList = videoMapper.selectByExample(videoExample);
-		if (!videoList.isEmpty()) {
-			return new Message(true, "返回成功", videoList);
-		}
-
-		return new Message(false, "数据错误", null);
-	}
 
 	// 发布课程
 	@Override
@@ -643,31 +703,7 @@ public class CourseServiceImpl implements CourseService {
 		if(!actionrecordList.isEmpty()){//找到该老年人参加某活动的id记录
 			flag1 = actionrecordMapper.deleteByExample(actionrecordExample);
 			if(flag1 != 0){//删除操作成功
-				ActionExample actionExample = new ActionExample();
-				com.sds.em.po.ActionExample.Criteria actionCriteria = actionExample.createCriteria();
-				actionCriteria.andActionidEqualTo(actionid);
-				List<Action> actionList = actionMapper.selectByExample(actionExample);//得到该活动
-				List<ActionExtend> actionExtendList = new ArrayList<ActionExtend>();
-				if(!actionList.isEmpty()){//活动不为空
-					//包装该活动状态
-					for(Action  a:actionList){
-						ActionExtend extend = new ActionExtend();
-						if (a.getActionstartdate() == null) {
-							extend.setAction(a);
-							extend.setStartDateString("未定");
-
-						} else {
-							extend.setAction(a);
-							extend.setStartDateString("有值");
-						}
-						extend.setJionStatuString("未报名");
-						actionExtendList.add(extend);
-					}
-					return new Message(true,"取消成功",actionExtendList);
-				}else{
-					return new Message(false,"活动为空",null);
-				}
-				
+			    return new Message(true,"取消成功",null);
 			  }else{
 				return new Message(false,"删除操作失败",null);
 			  }
@@ -688,30 +724,7 @@ public class CourseServiceImpl implements CourseService {
 		if(!lecturerecordList.isEmpty()){//找到该老年人参加某讲座的id记录
 			flag1 = lecturerecordMapper.deleteByExample(lecturecordExample);
 			if(flag1 != 0){//删除操作成功
-				LectureExample lectureExample = new LectureExample();
-				com.sds.em.po.LectureExample.Criteria lectureCriteria = lectureExample.createCriteria();
-				lectureCriteria.andLectureidEqualTo(lectureid);
-				List<Lecture> lectureList = lectureMapper.selectByExample(lectureExample);//得到该讲座
-				List<LectureExtend> lectureExtendList = new ArrayList<LectureExtend>();
-				if(!lectureList.isEmpty()){//讲座不为空
-					//包装该活动状态
-					for(Lecture  a:lectureList){
-						LectureExtend extend = new LectureExtend();
-						if (a.getLecturepublishdate()== null) {
-							extend.setLecture(a);;
-							extend.setPublishDateStirng("未定");
-
-						} else {
-							extend.setLecture(a);
-							extend.setPublishDateStirng("有值");
-						}
-						extend.setJoinStatus("未报名");
-						lectureExtendList.add(extend);
-					}
-					return new Message(true,"取消成功",lectureExtendList);
-				}else{
-					return new Message(false,"活动为空",null);
-				}
+				return new Message(true,"取消成功",null);
 			  }else{
 				return new Message(false,"删除操作失败",null);
 			  }
@@ -735,6 +748,30 @@ public class CourseServiceImpl implements CourseService {
 		}
 		
 	}
+	
+	//取消收藏视频
+	@Override
+	public Message deleteVCollectin(int olderid, int videoid) {
+		int flag1 = 0;
+		VideocollectionExample videocollectionExample = new VideocollectionExample();
+		com.sds.em.po.VideocollectionExample.Criteria criteria = videocollectionExample.createCriteria();
+		criteria.andVideocolleolderidEqualTo(olderid);
+		criteria.andVideocollevideoidEqualTo(videoid);
+		List<Videocollection> videoCollectionList = videocollectionMapper.selectByExample(videocollectionExample);
+		if(!videoCollectionList.isEmpty()){//找到该老年人收藏某视频的id记录
+			flag1 = videocollectionMapper.deleteByExample(videocollectionExample);
+			if(flag1 != 0){//删除操作成功
+				
+					return new Message(true,"取消成功",null);
+				}else{
+					return new Message(false,"取消失败",null);
+				}
+		}else{
+		  return new Message(false,"数据错误，没有找到该视频",null);
+	    }
+		
+	}
+	
 	//查看已收藏视频
 	@Override
 	public Message videoCollectinRecord(int olderid) {
@@ -742,10 +779,22 @@ public class CourseServiceImpl implements CourseService {
 		com.sds.em.po.OlderbaseExample.Criteria olderbaseC = olderbaseExample.createCriteria();
 		olderbaseC.andOlderidEqualTo(olderid);
 		List<Olderbase> olderbaseList = olderbaseMapper.selectByExample(olderbaseExample);
+		List<VideoExtend> videoextendList  = new ArrayList<VideoExtend>();
 		if(!olderbaseList.isEmpty()){//有该老人信息
 			List<Video> videocollectionListByOlder = videoMapper.select_videocollection_true(olderbaseList.get(0));
 			if(!videocollectionListByOlder.isEmpty()){//有收藏记录
-				return new Message(true, "返回成功", videocollectionListByOlder);
+				for(Video v : videocollectionListByOlder){
+					VideoExtend ve = new VideoExtend();
+					ve.setVideo(v);
+					ve.setCollectionStatue("已收藏");
+					videoextendList.add(ve);
+				}
+				if(!videoextendList.isEmpty()){
+					return new Message(true, "返回成功", videoextendList);
+				}else{
+					return new Message(false, "没有包装到", null);
+				}
+				
 			}else{//无收藏记录
 				return new Message(true, "该老人无收藏记录", null);
 			}
@@ -754,6 +803,8 @@ public class CourseServiceImpl implements CourseService {
 		}
 	}
 
+	
+	
 
 	
 }

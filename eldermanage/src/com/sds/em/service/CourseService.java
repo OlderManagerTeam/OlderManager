@@ -31,8 +31,10 @@ public interface CourseService {
 	// 老人报名讲座（添加讲座记录表/修改预约人数+1）
 	public Message joinLecture(int olderid, int lectureId);
 
-  //播放热度列表实现
-   public Message videoHeatTop();
+  //播放热度列表实现--登陆
+   public Message videoHeatTop(int olderid);
+ //播放热度列表实现-- 未登录
+   public Message videoHeatTopNo();
 	
    //发布课程
    public Message publishVideos(Video video);
@@ -67,6 +69,8 @@ public interface CourseService {
  	public Message deleteLectureRecord(int olderid,int lectureid);
  	//收藏视频（插入视频收藏记录表）
  	public Message insertVCollectin(int olderid,int videoid);
+ 	//取消收藏视频
+ 	public Message deleteVCollectin(int olderid,int videoid);
 	//查看已收藏视频
  	public Message videoCollectinRecord(int olderid);
 }
