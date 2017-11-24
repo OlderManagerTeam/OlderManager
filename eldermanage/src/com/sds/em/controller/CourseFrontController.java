@@ -37,7 +37,7 @@ public class CourseFrontController {
 	CourseService courseService;
 	// 查询所有视频(返回课程列表)----写完--测试过
 	@RequestMapping(method=RequestMethod.GET, value = "classes")
-	public @ResponseBody Message option(HttpSession s,String videopartition){//所有的视频
+	public @ResponseBody Message allVideos(HttpSession s,String videopartition){//所有的视频
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
 		if (loginMassage == null) {//未登录下的所有视频

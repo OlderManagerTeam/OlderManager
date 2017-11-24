@@ -137,7 +137,8 @@ public class CourseServiceImpl implements CourseService {
 			for(Video v1:videoList1){
 				VideoExtend videoe1 = new VideoExtend();
 				videoe1.setVideo(v1);
-				videoe1.setCollectionStatue("未收藏");
+				videoe1.setCollectionStatue("未登录");
+	
 				videoextendList.add(videoe1);
 			}
 			
@@ -145,7 +146,8 @@ public class CourseServiceImpl implements CourseService {
 			for(Video v2:videoList2){
 				VideoExtend videoe2 = new VideoExtend();
 				videoe2.setVideo(v2);
-				videoe2.setCollectionStatue("未收藏");
+				videoe2.setCollectionStatue("未登录");
+		
 				videoextendList.add(videoe2);
 			}
 		}
