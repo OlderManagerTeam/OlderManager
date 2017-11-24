@@ -161,7 +161,7 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false, "数据错误", null);
 	}
 
-	// 播放热度列表实现
+	// 播放热度列表实现--已登录
 	@Override
 	public Message videoHeatTop(int olderid) {
 		OlderbaseExample olderbaseExample = new OlderbaseExample();
@@ -176,31 +176,27 @@ public class CourseServiceImpl implements CourseService {
 			videoExample.setOrderByClause("videoheat DESC,videoid DESC");
 			List<Video> videoList = videoMapper.selectByExample(videoExample);//得到按热度排序的所有视频
 			if (!videoList.isEmpty()) {//热度视频不为空
-				for(Video v1 : videoList){
-					for(Video v2 : videocollectionListByOlder){//加载已收藏的
-						if(v1.getVideoid()==v2.getVideoid()){
-							VideoExtend vExtend = new VideoExtend();
-							vExtend.setVideo(v1);
-							vExtend.setCollectionStatue("已收藏");
-							videoextendList.add(vExtend);
-						}else{
-							VideoExtend vExtend = new VideoExtend();
-							vExtend.setVideo(v1);
-							vExtend.setCollectionStatue("未登录");
-							videoextendList.add(vExtend);
-						}
-					}
+				if(!videocollectionListByOlder.isEmpty()){//有收藏视频
+					
 					
 				}
+					
+				}else{//无收藏视频
+					for(Video video :videoList){
+						VideoExtend vExtend = new VideoExtend();
+						vExtend.setVideo(video);
+						vExtend.setCollectionStatue("未收藏");
+						videoextendList.add(vExtend);
+					}
+				}
+				
 				if(!videoextendList.isEmpty()){
 					return new Message(true, "返回成功", videoextendList);
 				}else{
 					return new Message(false, "没有包装到数据", null);
 				}
 				
-			}else{//热度视频为空
-				return new Message(false, "热度视频为空", null);
-			}
+			
 		}else{//老人信息不存在
 			return new Message(false, "老人信息不存在", null);
 		}
@@ -783,6 +779,7 @@ public class CourseServiceImpl implements CourseService {
 	public Message insertVCollectin(int olderid, int videoid) {
 		int flag = 0;
 		Videocollection videocollection = new Videocollection();
+		videocollection.setVideocolleolderid(olderid);
 		videocollection.setVideocollevideoid(videoid);
 		videocollection.setVideocolledate(new Date());
 		flag = videocollectionMapper.insert(videocollection);
