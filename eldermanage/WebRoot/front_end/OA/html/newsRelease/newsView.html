@@ -59,7 +59,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -80,7 +81,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -218,170 +219,178 @@
 										</ul>
 									</div>
 								</div></li>
-			
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-		</nav>
-	</div>
-	<!-- Main Content -->
-	<div class="container-fluid">
-		<div class="side-body">
-			<div class="page-title">
-				<span class="title">新闻列表</span>
-				<div class="description">News List</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="card">
-						<div class="card-header">
 
-							<div class="card-title">
-								<div class="title">列表</div>
-							</div>
-							<div class="card-title  col-md-offset-10">
-								<div class="title">
-									<a class="btn btn-primary btn-lg"
-										href="../newsRelease/newsEntry.html" role="button">编辑新闻</a>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</nav>
+			</div>
+			<!-- Main Content -->
+			<div class="container-fluid">
+				<div class="side-body">
+					<div class="page-title">
+						<span class="title">新闻列表</span>
+						<div class="description">News List</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="card">
+								<div class="card-header">
+
+									<div class="card-title">
+										<div class="title">列表</div>
+									</div>
+									<div class="card-title  col-md-offset-10">
+										<div class="title">
+											<a class="btn btn-primary btn-lg"
+												href="../newsRelease/newsEntry.html" role="button">编辑新闻</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<table class="datatable table table-striped" cellspacing="0"
+										width="100%">
+										<thead>
+											<tr>
+												<th>新闻序号</th>
+												<th>新闻标题</th>
+												<th>新闻类型</th>
+												<th>新闻编辑者</th>
+												<th>新闻发布日期</th>
+												<th>新闻详细</th>
+												<th>新闻热度</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tfoot>
+											<tr>
+												<th>新闻序号</th>
+												<th>新闻标题</th>
+												<th>新闻类型</th>
+												<th>新闻编辑者</th>
+												<th>新闻发布日期</th>
+												<th>新闻详细</th>
+												<th>新闻热度</th>
+												<th>操作</th>
+											</tr>
+										</tfoot>
+										<tbody id="newsList">
+
+										</tbody>
+									</table>
 								</div>
 							</div>
-						</div>
-						<div class="card-body">
-							<table class="datatable table table-striped" cellspacing="0"
-								width="100%">
-								<thead>
-									<tr>
-										<th>新闻序号</th>
-										<th>新闻标题</th>
-										<th>新闻类型</th>
-										<th>新闻编辑者</th>
-										<th>新闻发布日期</th>
-										<th>新闻详细</th>
-										<th>新闻热度</th>
-										<th>操作</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th>新闻序号</th>
-										<th>新闻标题</th>
-										<th>新闻类型</th>
-										<th>新闻编辑者</th>
-										<th>新闻发布日期</th>
-										<th>新闻详细</th>
-										<th>新闻热度</th>
-										<th>操作</th>
-									</tr>
-								</tfoot>
-								<tbody id="newsList">
-								
-								</tbody>
-							</table>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	<footer class="app-footer">
-		<div class="wrapper">
-			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-		</div>
-	</footer>
+		<footer class="app-footer">
+			<div class="wrapper">
+				<span class="pull-right">2.1 <a href="#"><i
+						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+			</div>
+		</footer>
 
-	<!-- Javascript Libs -->
+		<!-- Javascript Libs -->
 
 
-	<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-	<script type="text/javascript"
-		src="../../lib/js/bootstrap-switch.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/bootstrap-switch.min.js"></script>
 
-	<script type="text/javascript"
-		src="../../lib/js/jquery.matchHeight-min.js"></script>
-	<script type="text/javascript"
-		src="../../lib/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript"
-		src="../../lib/js/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-	<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-	<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-	<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-	<!-- Javascript -->
-    <script type="text/javascript" src="../../js/personal.js"></script>
-	<script type="text/javascript">
-		function load() {
-			// 后台数据
-			$.ajax({
-				type : 'get',
-				contentType : 'application/json',
-				url : "/eldermanage/v1/news/published",
-				data : null
-			}).then(
-				function(result) {
-					const oTbody = $("<tbody>");
-					var newsItem = result.data;
-					//alert(result.data);
-					for (var i = newsItem.length - 1; i >= 0; i--) {
-	
-						/* 	var olderAlter = "../olderInfoManager/olderAlter.html?olderid=";
-							olderAlter = olderAlter + olderItem[i].olderid; */
-						var _date = newsItem[i].news.newsissueddate;
-						var date = new Date(_date);
-						var oTr = `<tr>
-													<td>${i + 1}</td>
-													<td>${newsItem[i].news.newstitle}</td>
-													<td>${newsItem[i].news.newstype}</td>
-													<td>${newsItem[i].newsediter}</td>
-													<td>${date.toISOString().slice(0, 10)}</td>
-													<td>${newsItem[i].news.newsintro}</td>
-													<td>${newsItem[i].news.newsheat}</td>
-													<td><a class="btn btn-primary btn-xs"
-												        href="../newsRelease/newsInfo.html?newsid=${newsItem[i].news.newsid}" role="button">详情</a>
-												         <a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${newsItem[i].news.newsid}">删除</a></td>
-												</tr>
-										`;
-						$($(oTr)).appendTo('#newsList');
-					}
-	
-					$('.datatable').DataTable({
-						"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
-					});
-	
-				},
-				function() {
-				}
+		<script type="text/javascript"
+			src="../../lib/js/jquery.matchHeight-min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+		<!-- Javascript -->
+		<script type="text/javascript" src="../../js/personal.js"></script>
+		<script type="text/javascript">
+			function load() {
+				// 后台数据
+				$.ajax({
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/news/published",
+					data : null
+				}).then(
+					function(result) {
+						const oTbody = $("<tbody>");
+						var newsItem = result.data;
+						//alert(result.data);
+						for (var i = newsItem.length - 1; i >= 0; i--) {
+		
+							/* 	var olderAlter = "../olderInfoManager/olderAlter.html?olderid=";
+								olderAlter = olderAlter + olderItem[i].olderid; */
+							var _date = newsItem[i].news.newsissueddate;
+							var date = new Date(_date);
+							var oTr = `<tr>
+																					<td>${i + 1}</td>
+																					<td>${newsItem[i].news.newstitle}</td>
+																					<td>${newsItem[i].news.newstype}</td>
+																					<td>${newsItem[i].newsediter}</td>
+																					<td>${date.toISOString().slice(0, 10)}</td>
+																					<td>${newsItem[i].news.newsintro}</td>
+																					<td>${newsItem[i].news.newsheat}</td>
+																					<td><a class="btn btn-primary btn-xs"
+																				        href="../newsRelease/newsInfo.html?newsid=${newsItem[i].news.newsid}" role="button">详情</a>
+																				         <a class="btn btn-primary btn-xs btn-delete" role="button" data-id="${newsItem[i].news.newsid}">删除</a></td>
+																				</tr>
+																		`;
+							$($(oTr)).appendTo('#newsList');
+						}
+		
+						$('.datatable').DataTable({
+							"dom" : '<"top"fl<"clear">>rt<"bottom"ip<"clear">>'
+						});
+						addDelete();
+		
+						$("#DataTables_Table_0_paginate").click(function() {
+							$("#newsList .btn-delete").off('click')
+							addDelete();
+						});
+						$("#DataTables_Table_0_filter").change(function() {
+							$("#newsList .btn-delete").off('click')
+							addDelete();
+						});
+						$("#DataTables_Table_0_length").change(function() {
+							$("#newsList .btn-delete").off('click')
+							addDelete();
+						});
+					},
+					function() {}
 				)
-				.done(function() {
-					$("#newsList .btn-delete").on('click', function(event) {
-						const r = confirm("您确定要删除么?");
-						if (r == true) {
-							const e = event || window.event;
-							e.preventDefault();
-							///let currentTr = $(this).parent().parent();
-							$.ajax({
-								type : 'delete',
-								contentType : 'application/json',
-								url : "/eldermanage/v1/news/info?newsid=" + $(this).attr('data-id'),
-								data : null,
-								success : function() {
-									window.location.reload();
-								}
-							})
-						} else return false;
+					.done(function() {});
+			}
+			function addDelete() {
+				$("#newsList .btn-delete").on('click', function(event) {
+					const r = confirm("您确定要删除么?");
+					if (r == true) {
+						const e = event || window.event;
+						e.preventDefault();
+						///let currentTr = $(this).parent().parent();
+						$.ajax({
+							type : 'delete',
+							contentType : 'application/json',
+							url : "/eldermanage/v1/news/info?newsid=" + $(this).attr('data-id'),
+							data : null,
+							success : function() {
+								window.location.reload();
+							}
 						})
-					});
-				}
-		
-	
-		
-		
-	</script>
-	<script type="text/javascript" src="../../js/app.js"></script>
-
+					} else return false;
+				})
+			}
+		</script>
+		<script type="text/javascript" src="../../js/app.js"></script>
 </body>
 
 </html>
