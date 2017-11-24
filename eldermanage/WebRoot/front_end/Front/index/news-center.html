@@ -415,19 +415,22 @@
 				var hotNewsData = result.data;
 
 				for(i=0;i<=5;i++){
+					var date = new Date(hotNewsData[i].newsissueddate);
+					let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 					var oDiv = `
 							<div class="item">
 								<figure class="image-box">
-									<img src="images/news/3.jpg" alt="Awesome Image">
+									<img src="${hotNewsData[i].newsimg}" alt="Awesome Image">
 								</figure>										
-								<h4 style="font-size: 22px;overflow: hidden;height: 34px;">
-									<a href="blog-details.html">标题标题标题标题</a>
+								<h4 style="font-size: 22px;height:56px;overflow:hidden;">
+									<a href="blog-details.html">${hotNewsData[i].newstitle}</a>
 								</h4>
 								<ul class="admin-comments">
-									<li><i class="icon flaticon-black">浏览数:1000</i></li>
+									<li><i class="icon flaticon-black" style="color: #7aba1e;">浏览数:${hotNewsData[i].newsheat}</i></li>
+									<li style="float:right;"><i class="glyphicon glyphicon-upload" style="color: #7aba1e;">${year}</i></li>
 								</ul>
 								<p style="height: 72px;overflow: hidden;margin-top: 0;font-size: 17px;">
-									内江粉丝多个黑花露水的好感度
+									${hotNewsData[i].newsintro}
 								</p>
 							</div>
 					`;
@@ -474,13 +477,16 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
+				        	var date = new Date(item.newsissueddate);
+							let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 								<div class="col-lg-4 col-md-6" style="margin-top: 50px;">
-									<img src="images/news/1.jpg">
-									<a href="blog-details.html" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;">
+									<img src="${item.newsimg}">
+									<a href="blog-details.html" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;overflow:hidden;height: 52px;">
 									    ${item.newstitle}</a>
 									<li style="color: #7aba1e">
 										<i class="icon flaticon-black" style="font-size: 16px;"> 浏览数:${item.newsheat}</i>
+										<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float:right;">${year}</i>
 									</li>
 									<div style="height: 1px;background-color: #cecece;width: 100%;margin-bottom: 5px"></div>
 									<p style="word-break: break-all;padding-right: 8px;font-size: 18px;height: 96px;overflow: hidden;">
@@ -532,13 +538,16 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
+				        	var date = new Date(item.newsissueddate);
+							let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 								<div class="col-lg-4 col-md-6" style="margin-top: 50px;">
-									<img src="images/news/1.jpg">
-									<a href="blog-details.html" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;">
+									<img src="${item.newsimg}">
+									<a href="blog-details.html" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;overflow:hidden;height: 52px;">
 									   ${item.newstitle}</a>
 									<li style="color: #7aba1e">
 										<i class="icon flaticon-black" style="font-size: 16px;"> 浏览数:${item.newsheat}</i>
+										<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float:right;">${year}</i>
 									</li>
 									<div style="height: 1px;background-color: #cecece;width: 100%;margin-bottom: 5px"></div>
 									<p style="word-break: break-all;padding-right: 8px;font-size: 18px;height: 96px;overflow: hidden;">
