@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -148,12 +148,12 @@
 		<section class="theme_menu stricky">
 			<div class="container">
 				<div class="row" style="background-color: #fff;">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="main-logo">
 							<a href="index.html"><img src="images/logo/logo.png" alt=""></a>
 						</div>
 					</div>
-					<div class="col-md-8 menu-column">
+					<div class="col-md-9 menu-column">
 						<nav class="menuzord" id="main_menu">
 						   <ul class="menuzord-menu">
 								<li><a href="index.html" style="font-size: 25px;">首页</a></li>
@@ -429,7 +429,7 @@
 								</li>
 							</ul>
 							<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-							<span style="color: #7aba1e;">视频时长:${heatdata[i].videotime}分钟</span>
+							<span style="color: #7aba1e;">视频时长:${heatdata[i].videotime}</span>
 						</div>
 					`;
 
@@ -491,7 +491,7 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
-				        	let date = new Date(item.videopublishdate);
+				        	let date = new Date(item.video.videopublishdate);
 				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -506,17 +506,17 @@
 										<div class="service-text">
 											<a href="index.html" target="_blank"><img src="images/feature/2.jpg"></a>
 											<a href="index.html" target="_blank" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
-												${item.videoname}
+												${item.video.videoname}
 											</a>
 											<div>
 												<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-												<span style="color: #7aba1e;"> 播放量:${item.videoheat}</span>
+												<span style="color: #7aba1e;"> 播放量:${item.video.videoheat}</span>
 												<span style="color: #7aba1e;float: right;"> ${year}</span>
 												<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
 											</div>
 											<div>
 												<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-												<span style="color: #7aba1e;">视频时长: ${item.videotime}分钟</span>
+												<span style="color: #7aba1e;">视频时长: ${item.video.videotime}</span>
 											</div>
 										</div>
 									</div>
@@ -548,7 +548,7 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
-				        	let date = new Date(item.videopublishdate);
+				        	let date = new Date(item.video.videopublishdate);
 				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -563,20 +563,20 @@
 										<div class="service-text">
 											<a href="index.html" target="_blank"><img src="images/feature/1.jpg"></a>
 											<a href="index.html" target="_blank" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
-												${item.videoname}
+												${item.video.videoname}
 											</a>
 											<!-- <p style="color: #ff6c00;font-size: 20px;overflow:hidden;height: 44px;">
 												护理服务护理服务护理服务护理服务
 											</p> -->
 											<div>
 												<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
-												<span style="color: #7aba1e;"> 播放量:${item.videoheat}</span>
+												<span style="color: #7aba1e;"> 播放量:${item.video.videoheat}</span>
 												<span style="color: #7aba1e;float: right;"> ${year}</span>
 												<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
 											</div>
 											<div>
 												<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
-												<span style="color: #7aba1e;">视频时长:${item.videotime}分钟</span>
+												<span style="color: #7aba1e;">视频时长:${item.video.videotime}</span>
 											</div>
 										</div>
 									</div>
