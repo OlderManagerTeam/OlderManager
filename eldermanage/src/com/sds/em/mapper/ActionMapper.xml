@@ -287,5 +287,8 @@
       from actionrecord ar,olderbase ob 
       where ob.olderId=ar.ARecordolderId  and ar.ARecordolderId= #{olderid,jdbcType=INTEGER} ) ORDER BY a.actionId desc
    </select> 
-
+<select id="slelectOlderActionRecord" resultType="com.sds.em.po.Action" parameterType="com.sds.em.po.Olderbase" >
+     select * from action a where a.actionId in(
+    select ar.ARecordActionId from actionrecord ar where ar.ARecordolderId =  #{olderid,jdbcType=INTEGER}) ORDER BY a.actionId desc
+</select>
 </mapper>
