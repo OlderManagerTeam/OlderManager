@@ -359,61 +359,69 @@ $(function() {
 		datasetFill : true,
 		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 	};
-	data = [
-		{
-			value : 150, //插入数据
-			color : "#FA2A00",
-			highlight : "#FA2A00",
-			label : "食物饮品"
-		}, {
-			value : 50, //插入数据
-			color : "#1ABC9C",
-			highlight : "#1ABC9C",
-			label : "衣物服饰"
-		}, {
-			value : 100, //插入数据
-			color : "#FF00FF",
-			highlight : "#FF00FF",
-			label : "文学艺术"
-		}, {
-			value : 100, //插入数据
-			color : "#EE82EE",
-			highlight : "#EE82EE",
-			label : "生活用品"
-		}, {
-			value : 50, //插入数据
-			color : "#9932CC",
-			highlight : "#9932CC",
-			label : "娱乐器具"
-		}, {
-			value : 50, //插入数据
-			color : "#FFFF00",
-			highlight : "#FFFF00",
-			label : "运动器材"
-		}, {
-			value : 50, //插入数据
-			color : "#0000CD",
-			highlight : "#0000CD",
-			label : "医药保健品"
-		}, {
-			value : 50, //插入数据
-			color : "#FFDAB9",
-			highlight : "#FFDAB9",
-			label : "电子产品"
-		}, {
-			value : 50, //插入数据
-			color : "#FABE28",
-			highlight : "#FABE28",
-			label : "医疗器具"
-		}, {
-			value : 50, //插入数据
-			color : "#00FF00",
-			highlight : "#00FF00",
-			label : "家具器材"
-		}
+	$.ajax({
+		type : 'get',
+		contentType : 'application/json',
+		url : "/eldermanage/v1/data/produtct/typestorecount",
+		data : null,
+	}).then(function(result) {
+		var typestore = result.data;
+		data = [
+			{
+				value : typestore[0].typeid, //插入数据
+				color : "#FA2A00",
+				highlight : "#FA2A00",
+				label : "食物饮品"
+			}, {
+				value : typestore[1].typeid, //插入数据
+				color : "#1ABC9C",
+				highlight : "#1ABC9C",
+				label : "衣物服饰"
+			}, {
+				value : typestore[2].typeid, //插入数据
+				color : "#FF00FF",
+				highlight : "#FF00FF",
+				label : "文学艺术"
+			}, {
+				value : typestore[3].typeid, //插入数据
+				color : "#EE82EE",
+				highlight : "#EE82EE",
+				label : "生活用品"
+			}, {
+				value : typestore[4].typeid, //插入数据
+				color : "#9932CC",
+				highlight : "#9932CC",
+				label : "娱乐器具"
+			}, {
+				value : typestore[5].typeid, //插入数据
+				color : "#FFFF00",
+				highlight : "#FFFF00",
+				label : "运动器材"
+			}, {
+				value : typestore[6].typeid, //插入数据
+				color : "#0000CD",
+				highlight : "#0000CD",
+				label : "医药保健品"
+			}, {
+				value : typestore[7].typeid, //插入数据
+				color : "#FFDAB9",
+				highlight : "#FFDAB9",
+				label : "电子产品"
+			}, {
+				value : typestore[8].typeid, //插入数据
+				color : "#FABE28",
+				highlight : "#FABE28",
+				label : "医疗器具"
+			}, {
+				value : typestore[9].typeid, //插入数据
+				color : "#00FF00",
+				highlight : "#00FF00",
+				label : "家具器材"
+			}
 
-	];
-	myLineChart = new Chart(ctx).Pie(data, options);
+		];
+		myLineChart = new Chart(ctx).Pie(data, options);
+	})
 });
 //客户购物雷达图
 $(function() {
@@ -421,6 +429,8 @@ $(function() {
 		data,
 		myBarChart,
 		option_bars;
+	var typecontent,
+		typenumber;
 	Chart.defaults.global.responsive = true;
 	ctx = $('#olderRadar-chart').get(0).getContext('2d');
 	option_bars = {
@@ -436,24 +446,38 @@ $(function() {
 		barDatasetSpacing : 1,
 		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 	};
-	data = {
-		labels : [ '食物饮品', '衣物服饰', '文学艺术', '生活用品', '娱乐器具', '运动器材', '医药保健品', '电子产品', '医疗器材', '家具器材' ],
-		datasets : [
-			{
-				label : "My First dataset",
-				fillColor : "rgba(26, 188, 156,0.2)",
-				strokeColor : "#1ABC9C",
-				pointColor : "#1ABC9C",
-				pointStrokeColor : "#fff",
-				pointHighlightFill : "#fff",
-				pointHighlightStroke : "#1ABC9C",
-				data : [ 65, 59, 80, 81, 56, 55, 40, 25, 55, 70 ] //插入数据
-			}
-		]
-	};
-	myBarChart = new Chart(ctx).Radar(data, option_bars);
+	$.ajax({
+		type : 'get',
+		contentType : 'application/json',
+		url : "/eldermanage/v1/data/produtct/typesales",
+		data : null,
+	}).then(function(result) {
+		typenumber = new Array();
+		typecontent = new Array();
+		for (i = result.data.length - 1; i >= 0; i--) {
+			typenumber[result.data.length - i - 1] = result.data[i].typenumber;
+			typecontent[result.data.length - i - 1] = result.data[i].typecontent;
+		}
+
+		data = {
+			labels : typecontent,
+			datasets : [
+				{
+					label : "My First dataset",
+					fillColor : "rgba(26, 188, 156,0.2)",
+					strokeColor : "#1ABC9C",
+					pointColor : "#1ABC9C",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "#1ABC9C",
+					data : typenumber //插入数据
+				}
+			]
+		};
+		myBarChart = new Chart(ctx).Radar(data, option_bars);
+	})
 });
-//新闻统计
+/*//新闻统计
 $(function() {
 	// 开始绘制柱状图
 	var ctx,
@@ -492,4 +516,4 @@ $(function() {
 		]
 	};
 	myBarChart = new Chart(ctx).Bar(data, option_bars);
-});
+});*/

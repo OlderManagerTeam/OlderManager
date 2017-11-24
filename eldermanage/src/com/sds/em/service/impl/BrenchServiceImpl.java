@@ -1,6 +1,7 @@
 package com.sds.em.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -292,7 +293,10 @@ public class BrenchServiceImpl implements BrenchService {
 			if (!olderbasesList.isEmpty()) {
 				List<Integer> olderAgeList = new ArrayList<Integer>();
 				for (Olderbase o : olderbasesList) {
-					String olderAgeS = DateSimp.simpToSting(o.getOlderbirthday());
+					Date date=o.getOlderbirthday();
+					if(date==null)
+						date=new Date();
+					String olderAgeS = DateSimp.simpToSting(date);
 					int olderAgeD = DateSimp.getAgeFromBirthTime(olderAgeS);
 					olderAgeList.add(olderAgeD);
 				}

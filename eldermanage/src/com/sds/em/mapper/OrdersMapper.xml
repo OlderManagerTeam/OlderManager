@@ -258,15 +258,38 @@
 	</select>
 
 	<!-- wuwenbo,插入返回主键 -->
-	<insert id="keyinsert" parameterType="com.sds.em.po.Orders" useGeneratedKeys="true" keyProperty="orderid">
-				insert into orders (
-		orderOlderId, orderDate,
-		orderStatus, orderTotal, ordertakePoint
+	<insert id="keyinsert" parameterType="com.sds.em.po.Orders"
+		useGeneratedKeys="true" keyProperty="orderid">
+		insert into orders (
+		orderOlderId,
+		orderDate,
+		orderStatus, orderTotal,
+		ordertakePoint
 		)
-		values (#{orderolderid,jdbcType=INTEGER},
+		values
+		(#{orderolderid,jdbcType=INTEGER},
 		#{orderdate,jdbcType=TIMESTAMP},
 		#{orderstatus,jdbcType=VARCHAR},
-		#{ordertotal,jdbcType=REAL}, #{ordertakepoint,jdbcType=REAL}
+		#{ordertotal,jdbcType=REAL},
+		#{ordertakepoint,jdbcType=REAL}
 		)
 	</insert>
+	<!-- 近三十天商城销售数据 -->
+	<select id="typesales" resultType="com.sds.em.po.Producttype">
+		SELECT
+		typeContent,sum(ol.orderProductCount) typeNumber from orderlist
+		as ol
+		INNER JOIN product as p on p.productId=ol.orderProductId INNER
+		JOIN
+		orders
+		as o on o.orderId=ol.orderListFId INNER JOIN producttype as pt
+		on
+		p.productTypeNumber=pt.typeNumber
+		where
+		unix_timestamp(NOW())-
+		unix_timestamp(orderDate)<![CDATA[<]]>2592000 and
+		o.orderStatus="已签收"
+		GROUP BY
+		p.productTypeNumber
+	</select>
 </mapper>
