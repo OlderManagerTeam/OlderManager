@@ -1,5 +1,7 @@
 package com.sds.em.service.impl;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -137,7 +139,8 @@ public class CourseServiceImpl implements CourseService {
 			for(Video v1:videoList1){
 				VideoExtend videoe1 = new VideoExtend();
 				videoe1.setVideo(v1);
-				videoe1.setCollectionStatue("未收藏");
+				videoe1.setCollectionStatue("未登录");
+				
 				videoextendList.add(videoe1);
 			}
 			
@@ -145,7 +148,7 @@ public class CourseServiceImpl implements CourseService {
 			for(Video v2:videoList2){
 				VideoExtend videoe2 = new VideoExtend();
 				videoe2.setVideo(v2);
-				videoe2.setCollectionStatue("未收藏");
+				videoe2.setCollectionStatue("未登录");
 				videoextendList.add(videoe2);
 			}
 		}
@@ -158,6 +161,73 @@ public class CourseServiceImpl implements CourseService {
 		return new Message(false, "数据错误", null);
 	}
 
+	// 播放热度列表实现--已登录
+	@Override
+	public Message videoHeatTop(int olderid) {
+		OlderbaseExample olderbaseExample = new OlderbaseExample();
+		com.sds.em.po.OlderbaseExample.Criteria olderbaseC = olderbaseExample.createCriteria();
+		olderbaseC.andOlderidEqualTo(olderid);
+		List<Olderbase> olderbaseList = olderbaseMapper.selectByExample(olderbaseExample);
+		//videocollectionListByOlder为老人收藏过的视频id
+		List<Video> videocollectionListByOlder = videoMapper.select_videocollection_true(olderbaseList.get(0));
+		List<VideoExtend> videoextendList  = new ArrayList<VideoExtend>();
+		if(!olderbaseList.isEmpty()){//老人信息存在
+			VideoExample videoExample = new VideoExample();
+			videoExample.setOrderByClause("videoheat DESC,videoid DESC");
+			List<Video> videoList = videoMapper.selectByExample(videoExample);//得到按热度排序的所有视频
+			if (!videoList.isEmpty()) {//热度视频不为空
+				if(!videocollectionListByOlder.isEmpty()){//有收藏视频
+					
+					
+				}
+					
+				}else{//无收藏视频
+					for(Video video :videoList){
+						VideoExtend vExtend = new VideoExtend();
+						vExtend.setVideo(video);
+						vExtend.setCollectionStatue("未收藏");
+						videoextendList.add(vExtend);
+					}
+				}
+				
+				if(!videoextendList.isEmpty()){
+					return new Message(true, "返回成功", videoextendList);
+				}else{
+					return new Message(false, "没有包装到数据", null);
+				}
+				
+			
+		}else{//老人信息不存在
+			return new Message(false, "老人信息不存在", null);
+		}
+		
+	}
+
+	//播放热度列表实现-- 未登录
+		@Override
+		public Message videoHeatTopNo() {
+			VideoExample videoExample = new VideoExample();
+			videoExample.setOrderByClause("videoheat DESC,videoid DESC");
+			List<Video> videoList = videoMapper.selectByExample(videoExample);//得到按热度排序的所有视频
+			List<VideoExtend> videoextendList  = new ArrayList<VideoExtend>();
+			if(!videoList.isEmpty()){//有热度视频
+				for(Video v:videoList){
+					VideoExtend ve = new VideoExtend();
+					ve.setVideo(v);
+					ve.setCollectionStatue("未登录");
+					videoextendList.add(ve);
+				}
+				if(!videoextendList.isEmpty()){
+					return new Message(true, "返回成功", videoextendList);
+				}else{
+					return new Message(false, "没有包装到数据", null);
+				}
+			}else{//无热度视频
+			return new Message(false, "没有热门视频", null);
+			}
+		}
+
+	
 	// 返回课程（视频）详细
 	@Override
 	public Message classDetail(int videoId) {
@@ -366,19 +436,6 @@ public class CourseServiceImpl implements CourseService {
 			
 		}
 
-	// 播放热度列表实现
-	@Override
-	public Message videoHeatTop() {
-
-		VideoExample videoExample = new VideoExample();
-		videoExample.setOrderByClause("videoheat DESC,videoid DESC");
-		List<Video> videoList = videoMapper.selectByExample(videoExample);
-		if (!videoList.isEmpty()) {
-			return new Message(true, "返回成功", videoList);
-		}
-
-		return new Message(false, "数据错误", null);
-	}
 
 	// 发布课程
 	@Override
@@ -722,6 +779,7 @@ public class CourseServiceImpl implements CourseService {
 	public Message insertVCollectin(int olderid, int videoid) {
 		int flag = 0;
 		Videocollection videocollection = new Videocollection();
+		videocollection.setVideocolleolderid(olderid);
 		videocollection.setVideocollevideoid(videoid);
 		videocollection.setVideocolledate(new Date());
 		flag = videocollectionMapper.insert(videocollection);
@@ -751,7 +809,7 @@ public class CourseServiceImpl implements CourseService {
 			return new Message(false, "数据错误,无该老人信息", null);
 		}
 	}
-
+	
 
 	
 }
