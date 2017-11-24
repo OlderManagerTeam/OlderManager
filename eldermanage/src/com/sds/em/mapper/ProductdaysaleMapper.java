@@ -10,13 +10,28 @@ public interface ProductdaysaleMapper {
 
     int deleteByExample(ProductdaysaleExample example);
 
+    int deleteByPrimaryKey(Long pdsid);
+
     int insert(Productdaysale record);
 
     int insertSelective(Productdaysale record);
 
     List<Productdaysale> selectByExample(ProductdaysaleExample example);
 
+    Productdaysale selectByPrimaryKey(Long pdsid);
+
     int updateByExampleSelective(@Param("record") Productdaysale record, @Param("example") ProductdaysaleExample example);
 
     int updateByExample(@Param("record") Productdaysale record, @Param("example") ProductdaysaleExample example);
+
+    int updateByPrimaryKeySelective(Productdaysale record);
+
+    int updateByPrimaryKey(Productdaysale record);
+    
+    //返回商品近十天的浏览量和销售量
+    List<Productdaysale> daysales();
+
+	// 商城近十二月数据浏览量和销售量 wuwenbo
+	List<Productdaysale> monthsales();
+
 }

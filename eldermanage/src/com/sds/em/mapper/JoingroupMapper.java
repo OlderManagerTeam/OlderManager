@@ -32,4 +32,10 @@ public interface JoingroupMapper {
 
     //查看团购参加者
 	List<JoingroupExtend> getJoingroup(int groupid);
+	
+    //查看近10天团购信息
+	List<Joingroup> dayjoingroup();
+
+	//获取近12月的团购数据
+	List<Joingroup> monthjoingroup();
 }
