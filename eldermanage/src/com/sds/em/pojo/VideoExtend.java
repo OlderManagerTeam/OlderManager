@@ -8,6 +8,7 @@ public class VideoExtend {
 	private Video video;
 	private Date vrecorddate;
 	private String collectionStatue;
+	
 	public String getCollectionStatue() {
 		return collectionStatue;
 	}
@@ -26,7 +27,6 @@ public class VideoExtend {
 	public void setVrecorddate(Date vrecorddate) {
 		this.vrecorddate = vrecorddate;
 	}
-	
 	
 
 }

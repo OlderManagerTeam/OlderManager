@@ -47,3 +47,22 @@ a:focus, a:hover{
 .tab-content li{
 	list-style:none;
 }
+
+/*模态窗口*/
+.btn-primary{
+	background-color: #38ca1b;
+	border-color: #38ca1b;
+	font-size: 20px;
+}
+.btn-primary:hover{
+	background-color: #30e60d;
+	border-color: #30e60d;
+}
+/*内容字体大小*/
+.modal-body{
+	font-size: 20px;
+}
+/*标题大小*/
+.modal-title{
+	font-size: 20px;
+}

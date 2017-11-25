@@ -298,12 +298,20 @@
 		product.productId=#{value}
 	</select>
 	<!-- 获取近10天商城评价 -->
-	<select id="daysrate" parameterType="com.sds.em.po.Productrate" resultType="com.sds.em.po.Productrate">
+	<select id="daysrate" parameterType="com.sds.em.po.Productrate"
+		resultType="com.sds.em.po.Productrate">
 		SELECT productrate.rateDate,COUNT(rateId) ratecontent
 		FROM productrate
-		WHERE rateStar <![CDATA[>]]> #{rateid} and rateStar<![CDATA[<]]>#{rateolderid}
+		INNER JOIN orderlist on orderListId=productrate.rateOrderId INNER JOIN
+		product on productId= orderProductId
+		WHERE rateStar <![CDATA[>]]>
+		#{rateid} and rateStar<![CDATA[<]]>#{rateolderid}
+		<if test="ratestar != 0">
+			and productId=#{ratestar}
+		</if>
 		GROUP BY date_format(productrate.rateDate, '%Y-%m-%d')
-		ORDER BY rateDate DESC
+		ORDER BY
+		rateDate DESC
 		LIMIT 0,10
 	</select>
 </mapper>
