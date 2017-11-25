@@ -37,7 +37,7 @@ public class CourseFrontController {
 	CourseService courseService;
 	// 查询所有视频(返回课程列表)----写完--测试过
 	@RequestMapping(method=RequestMethod.GET, value = "classes")
-	public @ResponseBody Message option(HttpSession s,String videopartition){//所有的视频
+	public @ResponseBody Message allVideos(HttpSession s,String videopartition){//所有的视频
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
 		if (loginMassage == null) {//未登录下的所有视频
@@ -111,8 +111,15 @@ public class CourseFrontController {
 	
    //播放热度列表实现     ----写完 通过--测试过
 	@RequestMapping(method = RequestMethod.GET,value="video/heat")
-	public @ResponseBody Message videoheat(){
-		return courseService.videoHeatTop();
+	public @ResponseBody Message videoheat(HttpSession s){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return courseService.videoHeatTopNo();
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			return courseService.videoHeatTop(olderid);
+		}
 	}
 	
 	//发布课程
@@ -247,6 +254,20 @@ public class CourseFrontController {
 		}else{//已登陆
 			int olderid = loginMassage.getOlderid();
 			return courseService.insertVCollectin(olderid, videoid);
+		}
+			
+	}
+	
+	//取消收藏视频
+	@RequestMapping(method = RequestMethod.POST,value="video/cancelcollection")
+	public @ResponseBody Message deleteVideoCollectin(HttpSession s,int videoid){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+			return courseService.deleteVCollectin(olderid, videoid);
 		}
 			
 	}

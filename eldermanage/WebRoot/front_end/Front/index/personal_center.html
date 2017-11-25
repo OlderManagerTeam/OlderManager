@@ -138,12 +138,12 @@
 		<section class="theme_menu stricky">
 			<div class="container">
 				<div class="row" style="background-color: #fff;">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="main-logo">
 							<a href="index.html"><img src="images/logo/logo.png" alt=""></a>
 						</div>
 					</div>
-					<div class="col-md-8 menu-column">
+					<div class="col-md-9 menu-column">
 						<nav class="menuzord" id="main_menu">
 						   <ul class="menuzord-menu">
 								<li><a href="index.html" style="font-size: 25px;">首页</a></li>
@@ -587,6 +587,17 @@
                     mobileMenu.addClass("show-nav").removeClass("hide-nav");
                 }, 100)
             }
+        })
+
+        //已收藏视频列表
+        $.ajax({
+        	type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/course/video/videocollection",
+        	data:null,
+        	success:function(result){
+        		
+        	}
         })
 	</script>
 	
