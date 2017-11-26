@@ -65,8 +65,10 @@ public interface CourseService {
  	public Message selelctActiondetail(int olderid,int actionid);
  	//查看活动详情-- 未登录
  	public Message selelctActiondetailNo(int actionid);
- 	//得到最新所有活动
- 	public Message getAllNewActions();
+ 	//得到最新所有活动--已登陆
+ 	public Message getAllNewActions(int olderid);
+ 	//得到最新所有活动--未登陆
+ 	public Message getAllNewActionsNo();
  	//老年人取消参加某活动
  	public Message deleteActionRecord(int olderid,int actionid);
  	//老年人取消参加某讲座

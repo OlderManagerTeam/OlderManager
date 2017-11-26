@@ -176,7 +176,7 @@ public class CourseFrontController {
 	}
 	//老人查看已报名参加的活动  ---写完
 	@RequestMapping(method= RequestMethod.GET,value="actions/olderactions")
-	public Message olderactions(HttpSession s){
+	public @ResponseBody Message olderactions(HttpSession s){
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
 		if (loginMassage == null) {
@@ -190,7 +190,7 @@ public class CourseFrontController {
 	
 	//老人查看已报名参加的讲座  ---写完
 		@RequestMapping(method= RequestMethod.GET,value="actions/olderlecture")
-		public Message olderlectures(HttpSession s){
+		public  @ResponseBody Message olderlectures(HttpSession s){
 			LoginMassage loginMassage = null;
 			loginMassage = (LoginMassage) s.getAttribute("loginMassage");
 			if (loginMassage == null) {
@@ -232,8 +232,15 @@ public class CourseFrontController {
 	
 	//近期活动（得到最新所有活动）
 	@RequestMapping(method = RequestMethod.GET,value="actions/newactions")
-	public @ResponseBody Message actionNew(){
-		return courseService.getAllNewActions();
+	public @ResponseBody Message actionNew(HttpSession s){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return courseService.getAllNewActionsNo();
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+		    return courseService.getAllNewActions(olderid);
+		}
 	}
 	
 	//老年人取消参加某活动
