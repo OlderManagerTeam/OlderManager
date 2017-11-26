@@ -38,4 +38,7 @@ public interface ProductrateMapper {
 	// lu
 	// 查看一个商品的所有评价及信息
 	public List<ProductrateExtend> getProductRateInfo(int productid);
+	
+	//获取近10天商城评价
+	public List<com.sds.em.po.Productrate> daysrate(com.sds.em.po.Productrate pr);
 }

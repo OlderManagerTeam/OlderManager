@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Message;
+import com.sds.em.po.Productrate;
 import com.sds.em.service.DataStatisticsService;
 
 /*
@@ -55,5 +56,11 @@ public class DataStatisticsController {
 	@RequestMapping(method = RequestMethod.GET, value = "produtct/typesales")
 	public @ResponseBody Message typesales() throws Exception {
 		return dataStatisticsService.typesales();
+	}
+	
+	// wuwenbo,获取近10天商城评价
+	@RequestMapping(method = RequestMethod.GET, value = "produtct/daysrate")
+	public @ResponseBody Message typesales(Productrate pr) throws Exception {
+		return dataStatisticsService.daysrate(pr);
 	}
 }

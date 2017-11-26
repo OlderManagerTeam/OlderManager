@@ -23,7 +23,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -55,7 +56,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -73,7 +75,8 @@
 		</where>
 	</sql>
 	<sql id="Base_Column_List">
-		rateId, rateOlderId, rateOrderId, rateStar, ratecontent, rateDate
+		rateId, rateOlderId, rateOrderId, rateStar, ratecontent,
+		rateDate
 	</sql>
 	<select id="selectByExample" resultMap="BaseResultMap"
 		parameterType="com.sds.em.po.ProductrateExample">
@@ -98,7 +101,8 @@
 		where rateId = #{rateid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from productrate
+		delete from
+		productrate
 		where rateId = #{rateid,jdbcType=INTEGER}
 	</delete>
 	<delete id="deleteByExample" parameterType="com.sds.em.po.ProductrateExample">
@@ -108,12 +112,14 @@
 		</if>
 	</delete>
 	<insert id="insert" parameterType="com.sds.em.po.Productrate">
-		insert into productrate (rateId, rateOlderId, rateOrderId,
+		insert into productrate
+		(rateId, rateOlderId, rateOrderId,
 		rateStar, ratecontent, rateDate
 		)
 		values (#{rateid,jdbcType=INTEGER}, #{rateolderid,jdbcType=INTEGER},
 		#{rateorderid,jdbcType=INTEGER},
-		#{ratestar,jdbcType=INTEGER}, #{ratecontent,jdbcType=VARCHAR}, #{ratedate,jdbcType=TIMESTAMP}
+		#{ratestar,jdbcType=INTEGER},
+		#{ratecontent,jdbcType=VARCHAR}, #{ratedate,jdbcType=TIMESTAMP}
 		)
 	</insert>
 	<insert id="insertSelective" parameterType="com.sds.em.po.Productrate">
@@ -196,10 +202,14 @@
 		update productrate
 		set rateId = #{record.rateid,jdbcType=INTEGER},
 		rateOlderId = #{record.rateolderid,jdbcType=INTEGER},
-		rateOrderId = #{record.rateorderid,jdbcType=INTEGER},
-		rateStar = #{record.ratestar,jdbcType=INTEGER},
-		ratecontent = #{record.ratecontent,jdbcType=VARCHAR},
-		rateDate = #{record.ratedate,jdbcType=TIMESTAMP}
+		rateOrderId =
+		#{record.rateorderid,jdbcType=INTEGER},
+		rateStar =
+		#{record.ratestar,jdbcType=INTEGER},
+		ratecontent =
+		#{record.ratecontent,jdbcType=VARCHAR},
+		rateDate =
+		#{record.ratedate,jdbcType=TIMESTAMP}
 		<if test="_parameter != null">
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
@@ -228,11 +238,16 @@
 	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Productrate">
 		update productrate
 		set rateOlderId = #{rateolderid,jdbcType=INTEGER},
-		rateOrderId = #{rateorderid,jdbcType=INTEGER},
-		rateStar = #{ratestar,jdbcType=INTEGER},
-		ratecontent = #{ratecontent,jdbcType=VARCHAR},
-		rateDate = #{ratedate,jdbcType=TIMESTAMP}
-		where rateId = #{rateid,jdbcType=INTEGER}
+		rateOrderId =
+		#{rateorderid,jdbcType=INTEGER},
+		rateStar =
+		#{ratestar,jdbcType=INTEGER},
+		ratecontent =
+		#{ratecontent,jdbcType=VARCHAR},
+		rateDate =
+		#{ratedate,jdbcType=TIMESTAMP}
+		where rateId =
+		#{rateid,jdbcType=INTEGER}
 	</update>
 	<!-- wuwenbo,查询商品评价 -->
 	<select id="getproductrate" parameterType="int"
@@ -268,7 +283,8 @@
 
 	<select id="getProductRateInfo" parameterType="int"
 		resultType="com.sds.em.pojo.ProductrateExtend">
-		select productrate.*,olderbase.*,product.*,orderlist.* from product
+		select productrate.*,olderbase.*,product.*,orderlist.* from
+		product
 		INNER
 		JOIN orderlist ON
 		product.productId=orderlist.orderProductId
@@ -280,5 +296,14 @@
 		productrate.rateOlderId=olderbase.olderId
 		WHERE
 		product.productId=#{value}
+	</select>
+	<!-- 获取近10天商城评价 -->
+	<select id="daysrate" parameterType="com.sds.em.po.Productrate" resultType="com.sds.em.po.Productrate">
+		SELECT productrate.rateDate,COUNT(rateId) ratecontent
+		FROM productrate
+		WHERE rateStar <![CDATA[>]]> #{rateid} and rateStar<![CDATA[<]]>#{rateolderid}
+		GROUP BY date_format(productrate.rateDate, '%Y-%m-%d')
+		ORDER BY rateDate DESC
+		LIMIT 0,10
 	</select>
 </mapper>

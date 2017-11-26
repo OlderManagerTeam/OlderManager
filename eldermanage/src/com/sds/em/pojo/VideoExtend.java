@@ -28,6 +28,5 @@ public class VideoExtend {
 		this.vrecorddate = vrecorddate;
 	}
 	
-	
 
 }

@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sds.em.mapper.JoingroupMapper;
 import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.mapper.ProductdaysaleMapper;
+import com.sds.em.mapper.ProductrateMapper;
 import com.sds.em.mapper.ProductstoreMapper;
 import com.sds.em.po.JoingroupExample;
 import com.sds.em.po.Message;
 import com.sds.em.po.ProductdaysaleExample;
+import com.sds.em.po.Productrate;
 import com.sds.em.po.ProductstoreExample;
 import com.sds.em.service.DataStatisticsService;
 
@@ -30,6 +32,9 @@ public class DataStatisticsServiceImpl implements DataStatisticsService {
 	ProductstoreMapper productstoreMapper;
 	ProductstoreExample productstoreExample = new ProductstoreExample();
 	ProductstoreExample.Criteria productstoreCriteria;
+	
+	@Autowired
+	ProductrateMapper productrateMapper;
 	@Override
 	// 查询近10天商品浏览量和销售量
 	public Message daysales() {
@@ -68,5 +73,11 @@ public class DataStatisticsServiceImpl implements DataStatisticsService {
 	public Message typesales() {
 		// TODO 自动生成的方法存根
 		return new Message(true, "返回成功", ordersMapper.typesales());
+	}
+	
+	//获取近10天商城评价
+	@Override
+	public Message daysrate(Productrate pr) {
+		return new Message(true, "返回成功", productrateMapper.daysrate(pr));
 	}
 }
