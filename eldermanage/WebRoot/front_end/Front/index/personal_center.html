@@ -312,13 +312,11 @@
 					        		<span style="font-size: 25px;color: #525252">我收藏的视频</span>
 					        	</div>
 					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;">
-						        		<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
-						        		<span>
-						        			<a href="" target="_blank" style="font-size: 20px;">标题标题标题</a>
-						        		</span>
-					        		</div>
-
+					        		<div class="col-md-12" id="myCollectionList">
+							
+									</div>
+									<div id="myCollectionListPage" style="text-align: center;" class="col-md-12">
+									</div>
 					        	</div>
 					        </div>
 					    </div>
@@ -596,9 +594,88 @@
         	url:"/eldermanage/v1/course/video/videocollection",
         	data:null,
         	success:function(result){
-        		
+        		var myCollectionVideoData = result.data;
+
+        		$("#myCollectionListPage").show();
+				pageCollection(myCollectionVideoData, $("#myCollectionListPage"));
+        	},
+        	error:function(){
+        		alert('数据库错误')
         	}
         })
+
+        //已收藏视频分页
+		function pageCollection(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 8  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myCollectionList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	var collectVideo1 = '';
+				        	var collectVideo2 = '';
+				        	if(item.collectionStatue == '已收藏'){
+				        		collectVideo1 = "display:none;"
+				        	}else{
+				        		collectVideo2 = "display:none;"
+				        	}
+				        	let date = new Date(item.video.videopublishdate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+				        	let datas =`
+								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<div class="single-service-item">
+										<span class="top-border"></span>
+			                            <span class="right-border"></span>
+			                            <span class="bottom-border"></span>
+										<div class="service-left-bg"></div>
+										<!-- <div class="service-icon">
+											<i class="icon flaticon-budding-leaves"></i>
+										</div> -->
+										<div class="service-text">
+											<a href="index.html" target="_blank"><img src="${item.video.videopicurl}"></a>
+											<a href="index.html" target="_blank" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
+												${item.video.videoname}
+											</a>
+											<!-- <p style="color: #ff6c00;font-size: 20px;overflow:hidden;height: 44px;">
+												护理服务护理服务护理服务护理服务
+											</p> -->
+											<div>
+												<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
+												<span style="color: #7aba1e;"> 播放量:${item.video.videoheat}</span>
+												<span style="color: #7aba1e;float: right;"> ${year}</span>
+												<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
+											</div>
+											<div>
+												<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
+												<span style="color: #7aba1e;">视频时长:${item.video.videotime}</span>
+												<a href="" style="float:right;${collectVideo1}" onclick="collectVideo(${item.video.videoid},'${item.collectionStatue}',this);return false;">
+													<img src="images/logo/collectionStar_none.png" style="width:25px;"/>
+												</a>
+												<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${item.video.videoid},'${item.collectionStatue}',this);return false;">
+													<img src="images/logo/collectionStar.png" style="width:25px;"/>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
 	</script>
 	
 </body>
