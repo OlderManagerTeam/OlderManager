@@ -40,7 +40,7 @@ $(function() {
 			datasets : [
 				{
 					label : "My First dataset",
-					fillColor : "#FF2D2D",
+					fillColor : "#FABE28",
 					strokeColor : "#fff",
 					pointColor : "#fff",
 					pointStrokeColor : "#fff",
@@ -404,7 +404,7 @@ $(function() {
 			datasets : [
 				{
 					label : "My First dataset",
-					fillColor : "#FF2D2D",
+					fillColor : "#0000CD",
 					strokeColor : "#fff",
 					pointColor : "#fff",
 					pointStrokeColor : "#fff",

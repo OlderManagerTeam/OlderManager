@@ -113,8 +113,8 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
-											<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
+											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -305,7 +305,7 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-5">
-										<button type="submit" class="btn btn-default" id="altersubmit">提交修改</button>
+										<button type="submit" class="btn btn-primary btn-lg" id="altersubmit">提交修改</button>
 									</div>
 								</div>
 							</form>
@@ -390,6 +390,20 @@
 							validators : {
 								notEmpty : {
 									message : '举办地址不能为空'
+								},
+							}
+						},
+						actionintro : {
+							validators : {
+								notEmpty : {
+									message : '活动内容不能为空'
+								},
+							}
+						},
+						actiontotal : {
+							validators : {
+								notEmpty : {
+									message : '最大人数不能为空'
 								},
 							}
 						},
