@@ -313,5 +313,7 @@ public class CourseFrontController {
 		}
 			
 	}
+	
+	
 
 }
