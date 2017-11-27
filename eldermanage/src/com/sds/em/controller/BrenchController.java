@@ -204,7 +204,7 @@ public class BrenchController {
 		return brenchService.getActionOlder(actionid);
 	}
 
-	// 查找本活动参加的老人信息-所有完成
+	// 查找本讲座参加的老人信息-所有完成
 	@RequestMapping(method = RequestMethod.GET, value = "lecture/older/info")
 	public @ResponseBody Message getLectureOlder(int lectureid) throws Exception {
 		return brenchService.getLectureOlder(lectureid);

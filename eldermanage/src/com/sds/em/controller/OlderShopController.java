@@ -293,7 +293,7 @@ public class OlderShopController {
 
 	// wuwenbo,修改商品库存
 	@RequestMapping(method = RequestMethod.POST, value = "productstore")
-	public @ResponseBody Message addproductstore(int productid, int productcount) {
+	public @ResponseBody Message updateProductstore(int productid, int productcount) {
 		return olderShopService.addproductstore(productid, productcount);
 	}
 
