@@ -784,7 +784,7 @@ public class CourseServiceImpl implements CourseService {
 		if (!olderbaseList.isEmpty()) {// 有该老人信息
 			LecturerecordExample lecturerecordExample = new LecturerecordExample();
 			com.sds.em.po.LecturerecordExample.Criteria criteria = lecturerecordExample.createCriteria();
-			criteria.andLrecordidEqualTo(olderbaseList.get(0).getOlderid());
+			criteria.andLrecordolderidEqualTo(olderbaseList.get(0).getOlderid());
 			//得到该老人的参加讲座记录
 			List<Lecturerecord> lecturerecordList =lecturerecordMapper.selectByExample(lecturerecordExample);
 			if(!lecturerecordList.isEmpty()){//有参加讲座记录
@@ -897,7 +897,7 @@ public class CourseServiceImpl implements CourseService {
 		if(!lectureList.isEmpty()){//找到该讲座
 			LectureExtend lectureExtend = new LectureExtend();
 			lectureExtend.setLecture(lectureList.get(0));
-			lectureExtend.setJoinStatus("未报名");
+			lectureExtend.setJoinStatus("未登录");
 			lectureExtendList.add(lectureExtend);
 			if(!lectureExtendList.isEmpty()){
 				return new Message(true, "返回成功", lectureExtendList);
@@ -971,7 +971,7 @@ public class CourseServiceImpl implements CourseService {
 		if(!actionList.isEmpty()){//找到该活动
 			ActionExtend actionExtend = new ActionExtend();
 			actionExtend.setAction(actionList.get(0));
-			actionExtend.setJionStatuString("未报名");
+			actionExtend.setJionStatuString("未登录");
 			actionExtendList.add(actionExtend);
 			if(!actionExtendList.isEmpty()){
 				return new Message(true, "返回成功", actionExtendList);
