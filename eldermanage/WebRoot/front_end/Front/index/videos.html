@@ -272,7 +272,7 @@
 		            </div>
 		            <div class="modal-body" id="collectSuccessInfo"></div>
 		            <div class="modal-footer">
-		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		                <button type="button" class="btn btn-primary" onclick="closeModal()">确定</button>
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
@@ -284,9 +284,41 @@
 		        <div class="modal-content">
 		            <div class="modal-header">
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="cancelCollectSuccessInfo"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 收藏失败提示模态框-->
+		<div class="modal fade" id="collectFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		                <h4 class="modal-title" id="myModalLabel">收藏提示</h4>
 		            </div>
-		            <div class="modal-body">已取消收藏</div>
+		            <div class="modal-body" id="collectFailInfo">收藏失败,请稍后再试。</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消收藏失败提示模态框-->
+		<div class="modal fade" id="cancelCollectFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="cancelCollectFailInfo">取消收藏失败,请稍后再试。</div>
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
 		            </div>
@@ -457,8 +489,8 @@
 				var heatdata = result.data;
 
 				for(var i=0;i<=4;i++){
-					var collectVideo1;
-		        	var collectVideo2;
+					var collectVideo1 = '';
+		        	var collectVideo2 = '';
 		        	if(heatdata[i].collectionStatue == '已收藏'){
 		        		collectVideo1 = "display:none;"
 		        	}else{
@@ -473,7 +505,7 @@
 									<img src="${heatdata[i].video.videopicurl}" alt="Awesome Image">
 								</a>
 							</figure>										
-							<h4><a href="index.html" target="_blank">${heatdata[i].video.videoname}</a></h4>
+							<h4><a href="index.html" target="_blank" style="height:38px;overflow:hidden;">${heatdata[i].video.videoname}</a></h4>
 							<ul class="admin-comments">
 								<li style="color: #7aba1e;">
 									<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
@@ -489,7 +521,7 @@
 							<a href="" style="float:right;${collectVideo1}" onclick="collectVideo(${heatdata[i].video.videoid},'${heatdata[i].collectionStatue}',this);return false;">
 								<img src="images/logo/collectionStar_none.png" style="width:25px;"/>
 							</a>
-							<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${heatdata[i].video.videoid},'${heatdata[i].collectionStatue}',this);return false;"
+							<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${heatdata[i].video.videoid},'${heatdata[i].collectionStatue}',this);return false;">
 								<img src="images/logo/collectionStar.png" style="width:25px;"/>
 							</a>
 						</div>
@@ -553,8 +585,8 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
-				        	var collectVideo1;
-				        	var collectVideo2;
+				        	var collectVideo1 = '';
+				        	var collectVideo2 = '';
 				        	if(item.collectionStatue == '已收藏'){
 				        		collectVideo1 = "display:none;"
 				        	}else{
@@ -589,7 +621,7 @@
 												<a href="" style="float:right;${collectVideo1}" onclick="collectVideo(${item.video.videoid},'${item.collectionStatue}',this);return false;">
 													<img src="images/logo/collectionStar_none.png" style="width:25px;"/>
 												</a>
-												<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${item.video.videoid},'${item.collectionStatue}',this);return false;"
+												<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${item.video.videoid},'${item.collectionStatue}',this);return false;">
 													<img src="images/logo/collectionStar.png" style="width:25px;"/>
 												</a>
 											</div>
@@ -623,8 +655,8 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
-				        	var collectVideo1;
-				        	var collectVideo2;
+				        	var collectVideo1 = '';
+				        	var collectVideo2 = '';
 				        	if(item.collectionStatue == '已收藏'){
 				        		collectVideo1 = "display:none;"
 				        	}else{
@@ -662,7 +694,7 @@
 												<a href="" style="float:right;${collectVideo1}" onclick="collectVideo(${item.video.videoid},'${item.collectionStatue}',this);return false;">
 													<img src="images/logo/collectionStar_none.png" style="width:25px;"/>
 												</a>
-												<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${item.video.videoid},'${item.collectionStatue}',this);return false;"
+												<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${item.video.videoid},'${item.collectionStatue}',this);return false;">
 													<img src="images/logo/collectionStar.png" style="width:25px;"/>
 												</a>
 											</div>
@@ -691,8 +723,14 @@
 					url:"/eldermanage/v1/course/video/collectionvideo?videoid="+id,
 					data:null,
 					success:function(result){
-						$("#collectSuccessInfo").html(result.information)
-						$("#collectSuccessModal").modal('show');
+						if(result.information == '收藏成功'){
+							$("#collectSuccessInfo").html(result.information);
+							$("#collectSuccessModal").modal('show');
+							$(obj).hide().next().show();
+						}else if(result.information == '收藏失败'){
+							$("#collectFailInfo").html(result.information);
+							$("#collectFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')
@@ -710,17 +748,27 @@
 				$.ajax({
 					type:'post',
 					contentType:'application/json',
-					url:"/eldermanage/v1/course/actions/cancellecture?lectureid="+id,
+					url:"/eldermanage/v1/course/video/cancelcollection?videoid="+id,
 					data:null,
 					success:function(result){
+						$("#cancelCollectSuccessInfo").html(result.information)
 						$("#cancelCollectSuccessModal").modal('show');
-						window.location.reload();
 					},
 					error(){
 						alert('数据库错误')
 					}
 				})
 			}
+		}
+
+		//收藏按钮确定改变图标
+		function closeModal(){
+			$("#collectSuccessModal").modal('hide');
+		}
+
+		//取消收藏按钮确定改变图标
+		function cancelCloseModal(){
+			$("#cancelCollectFailModal").modal('hide');
 		}
 	</script>
 </body>

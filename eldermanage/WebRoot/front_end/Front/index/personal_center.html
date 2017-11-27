@@ -109,6 +109,11 @@
         	font-size: 13px;
         	margin-top: 2px;
         }
+
+        /*分页背景色*/
+        .layui-laypage .layui-laypage-curr .layui-laypage-em{
+			background-color: #1abb05;
+		}
 	</style>
 </head>
 
@@ -312,13 +317,11 @@
 					        		<span style="font-size: 25px;color: #525252">我收藏的视频</span>
 					        	</div>
 					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;">
-						        		<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
-						        		<span>
-						        			<a href="" target="_blank" style="font-size: 20px;">标题标题标题</a>
-						        		</span>
-					        		</div>
-
+					        		<div class="col-md-12" id="myCollectionList">
+							
+									</div>
+									<div id="myCollectionListPage" style="text-align: center;" class="col-md-12">
+									</div>
 					        	</div>
 					        </div>
 					    </div>
@@ -331,13 +334,11 @@
 					        		<span style="font-size: 25px;color: #525252">我的播放历史</span>
 					        	</div>
 					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;">
-						        		<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
-						        		<span>
-						        			<a href="" target="_blank" style="font-size: 20px;">标题标题标题</a>
-						        		</span>
+					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;" id="myVideoRecordList">
+						        		
 					        		</div>
-
+					        		<div id="myVideoRecordPage" style="text-align: center;" class="col-md-12">
+									</div>
 					        	</div>
 					        </div>
 					    </div>
@@ -350,12 +351,11 @@
 					        		<span style="font-size: 25px;color: #525252">我参加的讲座</span>
 					        	</div>
 					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;">
-						        		<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
-						        		<span>
-						        			<a href="" target="_blank" style="font-size: 20px;">标题标题标题</a>
-						        		</span>
-					        		</div>
+					        		<div class="col-md-12" id="myLectureRecordList">
+							
+									</div>
+									<div id="myLectureRecordPage" style="text-align: center;" class="col-md-12">
+									</div>
 
 					        	</div>
 					        </div>
@@ -369,12 +369,11 @@
 					        		<span style="font-size: 25px;color: #525252">我参加的活动</span>
 					        	</div>
 					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;">
-						        		<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
-						        		<span>
-						        			<a href="" target="_blank" style="font-size: 20px;">标题标题标题</a>
-						        		</span>
-					        		</div>
+					        		<div class="col-md-12" id="myActionRecordList">
+							
+									</div>
+									<div id="myActionRecordPage" style="text-align: center;" class="col-md-12">
+									</div>
 
 					        	</div>
 					        </div>
@@ -588,6 +587,413 @@
                 }, 100)
             }
         })
+
+        //已收藏视频列表
+        $.ajax({
+        	type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/course/video/videocollection",
+        	data:null,
+        	success:function(result){
+        		var myCollectionVideoData = result.data;
+
+        		$("#myCollectionListPage").show();
+				pageCollection(myCollectionVideoData, $("#myCollectionListPage"));
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+        })
+
+        //已收藏视频分页
+		function pageCollection(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 8  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myCollectionList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	var collectVideo1 = '';
+				        	var collectVideo2 = '';
+				        	if(item.collectionStatue == '已收藏'){
+				        		collectVideo1 = "display:none;"
+				        	}else{
+				        		collectVideo2 = "display:none;"
+				        	}
+				        	let date = new Date(item.video.videopublishdate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+				        	let datas =`
+								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+									<div class="single-service-item">
+										<span class="top-border"></span>
+			                            <span class="right-border"></span>
+			                            <span class="bottom-border"></span>
+										<div class="service-left-bg"></div>
+										<!-- <div class="service-icon">
+											<i class="icon flaticon-budding-leaves"></i>
+										</div> -->
+										<div class="service-text">
+											<a href="index.html" target="_blank"><img src="${item.video.videopicurl}"></a>
+											<a href="index.html" target="_blank" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
+												${item.video.videoname}
+											</a>
+											<!-- <p style="color: #ff6c00;font-size: 20px;overflow:hidden;height: 44px;">
+												护理服务护理服务护理服务护理服务
+											</p> -->
+											<div>
+												<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
+												<span style="color: #7aba1e;"> 播放量:${item.video.videoheat}</span>
+												<span style="color: #7aba1e;float: right;"> ${year}</span>
+												<i class="glyphicon glyphicon-upload" style="color: #7aba1e;float: right;"></i>
+											</div>
+											<div>
+												<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
+												<span style="color: #7aba1e;">视频时长:${item.video.videotime}</span>
+												<a href="" style="float:right;${collectVideo1}" onclick="collectVideo(${item.video.videoid},'${item.collectionStatue}',this);return false;">
+													<img src="images/logo/collectionStar_none.png" style="width:25px;"/>
+												</a>
+												<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${item.video.videoid},'${item.collectionStatue}',this);return false;">
+													<img src="images/logo/collectionStar.png" style="width:25px;"/>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//播放历史
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/course/video/videorecord",
+        	data:null,
+        	success:function(result){
+        		var myVideoRecordData = result.data;
+
+        		$("#myVideoRecordPage").show();
+				pageVideoRecord(myVideoRecordData, $("#myVideoRecordPage"));
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+		})
+
+		//播放历史分页
+		function pageVideoRecord(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 10  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myVideoRecordList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let datas =`
+								<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
+				        		<span>
+				        			<a href="" target="_blank" style="font-size: 20px;">${item.video.videoname}</a>
+				        		</span>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//我的讲座记录
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/course/actions/olderlecture",
+        	data:null,
+        	success:function(result){
+        		var myLectureRecordData = result.data;
+
+        		$("#myLectureRecordPage").show();
+				pageLectureRecord(myLectureRecordData, $("#myLectureRecordPage"));
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+		})
+
+		//我的讲座记录分页
+		function pageLectureRecord(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 6  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myLectureRecordList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.lecture.lecturepublishdate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+
+				        	var joinState1;
+				        	var joinState2;
+				        	if(item.joinStatus == '已报名'){
+				        		joinState2 = "display:none;"
+				        	}else{
+				        		joinState1 = "display:none;"
+				        	}
+
+				        	let datas =`
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="single-service-item">
+										<span class="top-border"></span>
+			                            <span class="right-border"></span>
+			                            <span class="bottom-border"></span>
+										<div class="service-left-bg"></div>
+										<!-- <div class="service-icon">
+											<i class="icon flaticon-budding-leaves"></i>
+										</div> -->
+										<div class="service-text">
+											<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
+												${item.lecture.lecturename}
+											</p>
+											<p style="margin-top: 10px;font-size: 18px;line-height: 28px;letter-spacing: 0.5px;height: 112px;overflow: hidden;">
+												${item.lecture.lectureintro}
+											</p>
+											<div class="row" style="margin-top: 20px;">
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">已预约人数:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${item.lecture.lectureenroll}</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">开启所需人数:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${item.lecture.lecturetotal}</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">讲座时间:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${year}</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">讲座状态:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${item.lecture.lecturestatus}</span>
+												</div>
+												<div class="col-md-12">
+													<span style="font-size: 20px;color: #7aba1e;">讲座地点:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${item.lecture.lectureaddress}</span>
+												</div>
+												<div class="col-md-6" style="padding-top: 20px;">
+													<a href="" style="font-size: 20px;">查看详情 ></a>
+												</div>
+												<div class="col-md-6" style="padding-top: 20px;">
+													<button id="lecturebtn${index}" class="btn btn-default" style="float: right;${joinState1}" onclick="lectureCancel(${item.lecture.lectureid},'${item.joinStatus}',this)">
+														取消报名
+													</button>
+
+													<button id="joinlecture${index}" type="button" class="btn btn-default" style="float: right;${joinState2}" onclick="lectureEnroll(${item.lecture.lectureid},'${item.joinStatus}',this)" >
+														点击报名
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//我的活动记录
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/course/actions/olderactions",
+        	data:null,
+        	success:function(result){
+        		var myActionRecordData = result.data;
+
+        		$("#myActionRecordPage").show();
+				pageActionRecord(myActionRecordData, $("#myActionRecordPage"));
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+		})
+
+		//我的活动记录分页
+		function pageActionRecord(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 6  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myActionRecordList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.action.actionstartdate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+
+				        	var joinState1;
+				        	var joinState2;
+				        	if(item.jionStatuString == '已报名'){
+				        		joinState2 = "display:none;"
+				        	}else{
+				        		joinState1 = "display:none;"
+				        	}
+				        	
+				        	let datas =`
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="single-service-item">
+										<span class="top-border"></span>
+			                            <span class="right-border"></span>
+			                            <span class="bottom-border"></span>
+										<div class="service-left-bg"></div>
+										<!-- <div class="service-icon">
+											<i class="icon flaticon-budding-leaves"></i>
+										</div> -->
+										<div class="service-text">
+											<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
+												${item.action.actionname}
+											</p>
+											<p style="margin-top: 10px;font-size: 18px;line-height: 28px;letter-spacing: 0.5px;height: 112px;overflow: hidden;">
+												${item.action.actionintro}
+											</p>
+											<div class="row" style="margin-top: 20px;">
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">已预约人数:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${item.action.actionenroll}</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">开启所需人数:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${item.action.actiontotal}</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">活动时间:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${year}</span>
+												</div>
+												<div class="col-md-6">
+													<span style="font-size: 20px;color: #7aba1e;">活动状态:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${item.action.actionstatus}</span>
+												</div>
+												<div class="col-md-12">
+													<span style="font-size: 20px;color: #7aba1e;">活动地点:</span>
+													<span style="font-size: 20px;color: #ffbc1e;">${item.action.actionaddress}</span>
+												</div>
+												<div class="col-md-6" style="padding-top: 20px;">
+													<a href="" style="font-size: 20px;">查看详情 ></a>
+												</div>
+												<div class="col-md-6" style="padding-top: 20px;">
+													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;${joinState1}" onclick="actionCancel(${item.action.actionid},'${item.jionStatuString}',this)">
+														取消报名
+													</button>
+
+													<button id="joinaction${index}" type="button" class="btn btn-default" style="float: right;${joinState2}" onclick="actionEnroll(${item.action.actionid},'${item.jionStatuString}',this)">
+														点击报名
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//讲座取消报名按钮
+		function lectureCancel(id,state,obj){
+			//$("#myModalLabel").attr("data",id);
+			if (state == "未登录") {
+				$(obj).attr("data-toggle", "modal");
+				$(obj).attr("data-target", "#loginModal");
+				//$("#loginModal").show('modal');
+			}else if(state == "已报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/cancellecture?lectureid="+id,
+					data:null,
+					success:function(result){
+						alert(result.information)
+						window.location.reload();
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
+
+		//活动取消报名按钮
+		function actionCancel(id,state,obj){
+			//$("#myModalLabel").attr("data",id);
+			if (state == "未登录") {
+				$(obj).attr("data-toggle", "modal");
+				$(obj).attr("data-target", "#loginModal");
+				//$("#loginModal").show('modal');
+			}else if(state == "已报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/cancelaction?actionid="+id,
+					data:null,
+					success:function(result){
+						alert(result.information)
+						window.location.reload();
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
 	</script>
 	
 </body>

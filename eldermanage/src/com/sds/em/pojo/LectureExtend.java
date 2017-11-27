@@ -1,5 +1,7 @@
 package com.sds.em.pojo;
 
+import java.util.Date;
+
 import com.sds.em.po.Lecture;
 
 public class LectureExtend {
@@ -7,7 +9,15 @@ public class LectureExtend {
 	 private String publishDateStirng;
 	 
 	 private String joinStatus;
+	 private Date lrecorddate;
 	 
+	 
+	public Date getLrecorddate() {
+		return lrecorddate;
+	}
+	public void setLrecorddate(Date lrecorddate) {
+		this.lrecorddate = lrecorddate;
+	}
 	public String getJoinStatus() {
 		return joinStatus;
 	}
