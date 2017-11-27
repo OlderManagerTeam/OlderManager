@@ -27,4 +27,16 @@ public interface BranchMapper {
     int updateByPrimaryKeySelective(Branch record);
 
     int updateByPrimaryKey(Branch record);
+
+	List<Branch> brancholdercount();
+
+	List<Branch> branchKPI();
+	
+	List<Branch> branchactioncount();
+
+	List<Branch> branchactionjoin();
+
+	List<Branch> branchvisit();
+
+	List<Branch> brancholderlevel();
 }

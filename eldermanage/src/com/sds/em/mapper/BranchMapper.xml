@@ -1,228 +1,351 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.BranchMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Branch" >
-    <id column="branchId" property="branchid" jdbcType="INTEGER" />
-    <result column="branchName" property="branchname" jdbcType="VARCHAR" />
-    <result column="branchPostCode" property="branchpostcode" jdbcType="VARCHAR" />
-    <result column="branchManagerId" property="branchmanagerid" jdbcType="INTEGER" />
-    <result column="branchAdress" property="branchadress" jdbcType="VARCHAR" />
-    <result column="branchKPI" property="branchkpi" jdbcType="REAL" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    branchId, branchName, branchPostCode, branchManagerId, branchAdress, branchKPI
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.BranchExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from branch
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from branch
-    where branchId = #{branchid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from branch
-    where branchId = #{branchid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.BranchExample" >
-    delete from branch
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Branch" >
-    insert into branch (branchId, branchName, branchPostCode, 
-      branchManagerId, branchAdress, branchKPI
-      )
-    values (#{branchid,jdbcType=INTEGER}, #{branchname,jdbcType=VARCHAR}, #{branchpostcode,jdbcType=VARCHAR}, 
-      #{branchmanagerid,jdbcType=INTEGER}, #{branchadress,jdbcType=VARCHAR}, #{branchkpi,jdbcType=REAL}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Branch" >
-    insert into branch
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="branchid != null" >
-        branchId,
-      </if>
-      <if test="branchname != null" >
-        branchName,
-      </if>
-      <if test="branchpostcode != null" >
-        branchPostCode,
-      </if>
-      <if test="branchmanagerid != null" >
-        branchManagerId,
-      </if>
-      <if test="branchadress != null" >
-        branchAdress,
-      </if>
-      <if test="branchkpi != null" >
-        branchKPI,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="branchid != null" >
-        #{branchid,jdbcType=INTEGER},
-      </if>
-      <if test="branchname != null" >
-        #{branchname,jdbcType=VARCHAR},
-      </if>
-      <if test="branchpostcode != null" >
-        #{branchpostcode,jdbcType=VARCHAR},
-      </if>
-      <if test="branchmanagerid != null" >
-        #{branchmanagerid,jdbcType=INTEGER},
-      </if>
-      <if test="branchadress != null" >
-        #{branchadress,jdbcType=VARCHAR},
-      </if>
-      <if test="branchkpi != null" >
-        #{branchkpi,jdbcType=REAL},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.BranchExample" resultType="java.lang.Integer" >
-    select count(*) from branch
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update branch
-    <set >
-      <if test="record.branchid != null" >
-        branchId = #{record.branchid,jdbcType=INTEGER},
-      </if>
-      <if test="record.branchname != null" >
-        branchName = #{record.branchname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.branchpostcode != null" >
-        branchPostCode = #{record.branchpostcode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.branchmanagerid != null" >
-        branchManagerId = #{record.branchmanagerid,jdbcType=INTEGER},
-      </if>
-      <if test="record.branchadress != null" >
-        branchAdress = #{record.branchadress,jdbcType=VARCHAR},
-      </if>
-      <if test="record.branchkpi != null" >
-        branchKPI = #{record.branchkpi,jdbcType=REAL},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update branch
-    set branchId = #{record.branchid,jdbcType=INTEGER},
-      branchName = #{record.branchname,jdbcType=VARCHAR},
-      branchPostCode = #{record.branchpostcode,jdbcType=VARCHAR},
-      branchManagerId = #{record.branchmanagerid,jdbcType=INTEGER},
-      branchAdress = #{record.branchadress,jdbcType=VARCHAR},
-      branchKPI = #{record.branchkpi,jdbcType=REAL}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Branch" >
-    update branch
-    <set >
-      <if test="branchname != null" >
-        branchName = #{branchname,jdbcType=VARCHAR},
-      </if>
-      <if test="branchpostcode != null" >
-        branchPostCode = #{branchpostcode,jdbcType=VARCHAR},
-      </if>
-      <if test="branchmanagerid != null" >
-        branchManagerId = #{branchmanagerid,jdbcType=INTEGER},
-      </if>
-      <if test="branchadress != null" >
-        branchAdress = #{branchadress,jdbcType=VARCHAR},
-      </if>
-      <if test="branchkpi != null" >
-        branchKPI = #{branchkpi,jdbcType=REAL},
-      </if>
-    </set>
-    where branchId = #{branchid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Branch" >
-    update branch
-    set branchName = #{branchname,jdbcType=VARCHAR},
-      branchPostCode = #{branchpostcode,jdbcType=VARCHAR},
-      branchManagerId = #{branchmanagerid,jdbcType=INTEGER},
-      branchAdress = #{branchadress,jdbcType=VARCHAR},
-      branchKPI = #{branchkpi,jdbcType=REAL}
-    where branchId = #{branchid,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.sds.em.mapper.BranchMapper">
+	<resultMap id="BaseResultMap" type="com.sds.em.po.Branch">
+		<id column="branchId" property="branchid" jdbcType="INTEGER" />
+		<result column="branchName" property="branchname" jdbcType="VARCHAR" />
+		<result column="branchPostCode" property="branchpostcode"
+			jdbcType="VARCHAR" />
+		<result column="branchManagerId" property="branchmanagerid"
+			jdbcType="INTEGER" />
+		<result column="branchAdress" property="branchadress" jdbcType="VARCHAR" />
+		<result column="branchKPI" property="branchkpi" jdbcType="REAL" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		branchId, branchName, branchPostCode, branchManagerId,
+		branchAdress, branchKPI
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.sds.em.po.BranchExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from branch
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from branch
+		where branchId = #{branchid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from branch
+		where branchId = #{branchid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.sds.em.po.BranchExample">
+		delete from branch
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.sds.em.po.Branch">
+		insert into branch (branchId,
+		branchName, branchPostCode,
+		branchManagerId, branchAdress, branchKPI
+		)
+		values (#{branchid,jdbcType=INTEGER}, #{branchname,jdbcType=VARCHAR},
+		#{branchpostcode,jdbcType=VARCHAR},
+		#{branchmanagerid,jdbcType=INTEGER}, #{branchadress,jdbcType=VARCHAR},
+		#{branchkpi,jdbcType=REAL}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.sds.em.po.Branch">
+		insert into branch
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="branchid != null">
+				branchId,
+			</if>
+			<if test="branchname != null">
+				branchName,
+			</if>
+			<if test="branchpostcode != null">
+				branchPostCode,
+			</if>
+			<if test="branchmanagerid != null">
+				branchManagerId,
+			</if>
+			<if test="branchadress != null">
+				branchAdress,
+			</if>
+			<if test="branchkpi != null">
+				branchKPI,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="branchid != null">
+				#{branchid,jdbcType=INTEGER},
+			</if>
+			<if test="branchname != null">
+				#{branchname,jdbcType=VARCHAR},
+			</if>
+			<if test="branchpostcode != null">
+				#{branchpostcode,jdbcType=VARCHAR},
+			</if>
+			<if test="branchmanagerid != null">
+				#{branchmanagerid,jdbcType=INTEGER},
+			</if>
+			<if test="branchadress != null">
+				#{branchadress,jdbcType=VARCHAR},
+			</if>
+			<if test="branchkpi != null">
+				#{branchkpi,jdbcType=REAL},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.sds.em.po.BranchExample"
+		resultType="java.lang.Integer">
+		select count(*) from branch
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update branch
+		<set>
+			<if test="record.branchid != null">
+				branchId = #{record.branchid,jdbcType=INTEGER},
+			</if>
+			<if test="record.branchname != null">
+				branchName = #{record.branchname,jdbcType=VARCHAR},
+			</if>
+			<if test="record.branchpostcode != null">
+				branchPostCode =
+				#{record.branchpostcode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.branchmanagerid != null">
+				branchManagerId =
+				#{record.branchmanagerid,jdbcType=INTEGER},
+			</if>
+			<if test="record.branchadress != null">
+				branchAdress = #{record.branchadress,jdbcType=VARCHAR},
+			</if>
+			<if test="record.branchkpi != null">
+				branchKPI = #{record.branchkpi,jdbcType=REAL},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update branch
+		set branchId = #{record.branchid,jdbcType=INTEGER},
+		branchName = #{record.branchname,jdbcType=VARCHAR},
+		branchPostCode =
+		#{record.branchpostcode,jdbcType=VARCHAR},
+		branchManagerId =
+		#{record.branchmanagerid,jdbcType=INTEGER},
+		branchAdress =
+		#{record.branchadress,jdbcType=VARCHAR},
+		branchKPI =
+		#{record.branchkpi,jdbcType=REAL}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Branch">
+		update branch
+		<set>
+			<if test="branchname != null">
+				branchName = #{branchname,jdbcType=VARCHAR},
+			</if>
+			<if test="branchpostcode != null">
+				branchPostCode = #{branchpostcode,jdbcType=VARCHAR},
+			</if>
+			<if test="branchmanagerid != null">
+				branchManagerId = #{branchmanagerid,jdbcType=INTEGER},
+			</if>
+			<if test="branchadress != null">
+				branchAdress = #{branchadress,jdbcType=VARCHAR},
+			</if>
+			<if test="branchkpi != null">
+				branchKPI = #{branchkpi,jdbcType=REAL},
+			</if>
+		</set>
+		where branchId = #{branchid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Branch">
+		update branch
+		set
+		branchName = #{branchname,jdbcType=VARCHAR},
+		branchPostCode =
+		#{branchpostcode,jdbcType=VARCHAR},
+		branchManagerId =
+		#{branchmanagerid,jdbcType=INTEGER},
+		branchAdress =
+		#{branchadress,jdbcType=VARCHAR},
+		branchKPI =
+		#{branchkpi,jdbcType=REAL}
+		where branchId =
+		#{branchid,jdbcType=INTEGER}
+	</update>
+	<!-- 获取排名前十的分店的老人数量 -->
+	<select id="brancholdercount" resultType="com.sds.em.po.Branch">
+		SELECT
+		branchName,COUNT(o.olderId) branchManagerId from olderbase as o
+		INNER
+		JOIN branch as b
+		on o.olderBranchId=b.branchId
+		GROUP BY b.branchId
+		ORDER
+		BY
+		COUNT(o.olderId) DESC
+		LIMIT 0,10
+	</select>
+
+	<!-- 获取排名前十的分店kpi -->
+	<select id="branchKPI" resultType="com.sds.em.po.Branch">
+		SELECT
+		branchName,branch.branchKPI from branch
+		ORDER BY branchKPI DESC
+		LIMIT
+		0,10
+	</select>
+
+	<!-- 分店讲座活动数量 -->
+	<select id="branchactioncount" resultType="com.sds.em.po.Branch">
+		select
+		branchId,branchName,sum(coun) branchManagerId from
+		(SELECT
+		b.branchId,b.branchName,COUNT(branchId) coun from branch as b
+		INNER
+		JOIN lecture as l on l.lectureBranchId=b.branchId
+		where
+		UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(l.lecturePublishDate)<![CDATA[<]]>60*60*24*30
+		GROUP BY b.branchId
+		UNION all
+		SELECT
+		b.branchId,b.branchName,COUNT(branchId) coun from
+		branch as b
+		INNER JOIN
+		action as a on a.actionBranchId=b.branchId
+		where
+		UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(a.actionStartDate)<![CDATA[<]]>60*60*24*30
+		GROUP
+		BY b.branchId) a
+		GROUP BY branchId
+		ORDER BY sum(coun) DESC
+		LIMIT
+		0,10
+	</select>
+
+	<!-- 近三十天讲座活动参加统计 -->
+	<select id="branchactionjoin" resultType="com.sds.em.po.Branch">
+		select
+		branchId,branchName,sum(coun) branchManagerId from
+		(SELECT
+		b.branchId,b.branchName,COUNT(lr.lRecordId) coun from branch as b
+		INNER JOIN lecture as l on b.branchId=l.lectureBranchId
+		INNER JOIN
+		lecturerecord as lr on lr.lRecordLectureId=l.lectureId
+		where
+		UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(lr.lRecordDate)<![CDATA[<]]>60*60*24*30
+		GROUP BY b.branchId
+		UNION ALL
+		SELECT
+		b.branchId,b.branchName,COUNT(ar.ARecordId) coun from branch as b
+		INNER JOIN action as a on b.branchId=a.actionBranchId
+		INNER JOIN
+		actionrecord as ar on ar.ARecordActionId=a.actionId
+		where
+		UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(ar.ARecordDate)<![CDATA[<]]>60*60*24*30
+		GROUP BY b.branchId) a
+		GROUP BY branchId
+		ORDER BY sum(coun) DESC
+		LIMIT
+		0,10
+	</select>
+
+	<!-- 近三十天回访数量统计 -->
+	<select id="branchvisit" resultType="com.sds.em.po.Branch">
+		SELECT b.branchId,b.branchName,COUNT(v.visitedId) branchManagerId from
+		visited as v
+		INNER JOIN branch as b on b.branchManagerId=
+		v.visitedAssistantId
+		WHERE
+		UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(v.visitedDate)<![CDATA[<]]>60*60*24*30
+		GROUP BY b.branchId
+		ORDER BY COUNT(v.visitedId) DESC
+		LIMIT 0,10
+	</select>
+
+	<!-- 用户等级统计 -->
+	<select id="brancholderlevel" resultType="com.sds.em.po.Olderbase">
+		SELECT olderLevel,COUNT(o.olderId) olderId from olderbase as o
+		GROUP BY o.olderLevel
+	</select>
 </mapper>

@@ -233,28 +233,35 @@
 		#{pdsid,jdbcType=BIGINT}
 	</update>
 	<!-- 获取近十天商成的销售数据和商品浏览情况 -->
-	<select id="daysales" resultType="com.sds.em.po.Productdaysale">
+	<select id="daysales" parameterType="com.sds.em.po.Product"
+		resultType="com.sds.em.po.Productdaysale">
 		SELECT
 		productdaysale.pdsdaydate,SUM(productdaysale.pdsdaysale)
 		pdsdaysale,SUM(productdaysale.storeDayBrowse) storeDayBrowse
 		from
 		productdaysale
+		<if test="productid!=0">
+			where productdaysale.pdsproductid=#{productid}
+		</if>
 		GROUP BY productdaysale.pdsdaydate-NOW()
 		ORDER BY
 		productdaysale.pdsdaydate-NOW() DESC
 		LIMIT 0,10
 	</select>
 	<!-- 获取近12个月的销售数据 -->
-	<select id="monthsales" resultType="com.sds.em.po.Productdaysale">
+	<select id="monthsales" parameterType="com.sds.em.po.Product"
+		resultType="com.sds.em.po.Productdaysale">
 		SELECT
 		productdaysale.pdsdaydate,SUM(productdaysale.pdsdaysale)
 		pdsdaysale,SUM(productdaysale.storeDayBrowse) storeDayBrowse
 		from
 		productdaysale
+		<if test="productid!=0">
+			where productdaysale.pdsproductid=#{productid}
+		</if>
 		GROUP BY date_format(productdaysale.pdsdaydate, '%Y-%m')
 		ORDER BY
 		productdaysale.pdsdaydate-NOW() DESC
 		LIMIT 0,12
-	</select>	
-	
+	</select>
 </mapper>

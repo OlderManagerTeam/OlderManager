@@ -59,7 +59,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -80,7 +81,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -107,8 +108,10 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
-											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
+											<li><a
+												href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a
+												href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 											<li><a href="../dataStatistics/olderInfoStatistics.html">老人信息数据统计</a></li>
 											<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
 											<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
@@ -233,21 +236,85 @@
 						<span class="title">数据统计</span>
 						<div class="description">Data Statistics</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">
-										<div class="title">岗位统计</div>
+										<div class="title">客户人数排行</div>
 									</div>
 								</div>
 								<div class="card-body no-padding">
-									<canvas id="work-chart" class="chart"></canvas>
+									<canvas id="oldercount" class="chart"></canvas>
 								</div>
 								<div class="card-body">
 									<h4>图释</h4>
-									统计出不同岗位都在职人员
+									统计出不同分店老人人数
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">分店kpi排行</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="KPI" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									统计出本月不同分店的kpi
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">分店活动讲座排行</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="branchactioncount" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									统计出一个月内不同分店的活动和讲座数量
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">分店活动讲座报名排行</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="branchactionjoin" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									统计出一个月内不同分店的活动和讲座的老人参加数量
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">分店回访统计</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="branchvisit" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									统计出一个月内不同分店的回访老人次数
 								</div>
 							</div>
 						</div>
@@ -255,15 +322,15 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">
-										<div class="title">性别统计</div>
+										<div class="title">星级统计</div>
 									</div>
 								</div>
 								<div class="card-body no-padding">
-									<canvas id="sexPie-chart" class="chart"></canvas>
+									<canvas id="brancholderlevel" class="chart"></canvas>
 								</div>
 								<div class="card-body">
 									<h4>图释</h4>
-									统计出公司都男女比例
+									统计全部老人客户星级
 								</div>
 							</div>
 						</div>
@@ -299,8 +366,9 @@
 			<script type="text/javascript" src="../../js/app.js"></script>
 			<!-- 链接js文件 -->
 			<script type="text/javascript"
-				src="../../js/dataStatistics/headofficeStatististics.js" charset="UTF-8"></script>
-				
+				src="../../js/dataStatistics/headofficeStatististics.js"
+				charset="UTF-8"></script>
+
 			<script type="text/javascript" src="../../js/personal.js"></script>
 </body>
 

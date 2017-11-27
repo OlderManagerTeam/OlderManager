@@ -382,6 +382,35 @@
 
 	<select id="heatNewsView" resultType="com.sds.em.po.News">
 		select * from news
-		ORDER BY newsHeat DESC
+		ORDER BY
+		newsHeat DESC
+	</select>
+
+	<!-- 一周新闻访问量 -->
+	<select id="weeknewsview" resultType="com.sds.em.po.News">
+		SELECT
+		newsIssuedDate,SUM(n.newsHeat) newsHeat from news as n
+		where
+		UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(n.newsIssuedDate)<![CDATA[<]]>60*60*24*7
+		GROUP BY n.newsIssuedDate DESC
+		LIMIT 0,7
+	</select>
+
+	<!-- 一周新闻上传情况 -->
+	<select id="weekaddnews" resultType="com.sds.em.po.News">
+		SELECT
+		newsIssuedDate,COUNT(n.newsId) newsId from news as n
+		where
+		UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(n.newsIssuedDate)<![CDATA[<]]>60*60*24*7
+		GROUP BY n.newsIssuedDate DESC
+		LIMIT 0,7
+	</select>
+
+	<!-- 一周新闻热度前十 -->
+	<select id="weeknewsheat" resultType="com.sds.em.po.News">
+		SELECT * from news as n
+		where UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(n.newsIssuedDate)<![CDATA[<]]>60*60*24*7
+		ORDER BY n.newsHeat DESC
+		LIMIT 0,10
 	</select>
 </mapper>
