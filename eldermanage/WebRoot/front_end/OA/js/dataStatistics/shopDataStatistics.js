@@ -1,4 +1,63 @@
+UrlParm = function() { // url参数
+	var data,
+		index;
+	(function init() {
+		data = [];
+		index = {};
+		var u = window.location.search.substr(1);
+		if (u != '') {
+			var parms = decodeURIComponent(u).split('&');
+			for (var i = 0, len = parms.length; i < len; i++) {
+				if (parms[i] != '') {
+					var p = parms[i].split("=");
+					if (p.length == 1 || (p.length == 2 && p[1] == '')) { // p | p=
+						data.push([ '' ]);
+						index[p[0]] = data.length - 1;
+					} else if (typeof (p[0]) == 'undefined' || p[0] == '') { // =c | =
+						data[0] = [ p[1] ];
+					} else if (typeof (index[p[0]]) == 'undefined') { // c=aaa
+						data.push([ p[1] ]);
+						index[p[0]] = data.length - 1;
+					} else { // c=aaa
+						data[index[p[0]]].push(p[1]);
+					}
+				}
+			}
+		}
+	})();
+	return {
+		// 获得参数,类似request.getParameter()
+		parm : function(o) { // o: 参数名或者参数次序
+			try {
+				return (typeof (o) == 'number' ? data[o][0] : data[index[o]][0]);
+			} catch (e) {}
+		},
+		//获得参数组, 类似request.getParameterValues()
+		parmValues : function(o) { // o: 参数名或者参数次序
+			try {
+				return (typeof (o) == 'number' ? data[o] : data[index[o]]);
+			} catch (e) {}
+		},
+		//是否含有parmName参数
+		hasParm : function(parmName) {
+			return typeof (parmName) == 'string' ? typeof (index[parmName]) != 'undefined' : false;
+		},
+		// 获得参数Map ,类似request.getParameterMap()
+		parmMap : function() {
+			var map = {};
+			try {
+				for (var p in index) {
+					map[p] = data[index[p]];
+				}
+			} catch (e) {}
+			return map;
+		}
+	}
+}();
 //商城日阅览量
+var productid = UrlParm.parm("productid");
+if (productid == null)
+	productid = 0;
 $(function() {
 	var ctx,
 		data,
@@ -29,7 +88,7 @@ $(function() {
 	$.ajax({
 		type : 'get',
 		contentType : 'application/json',
-		url : "/eldermanage/v1/data/produtct/daysales",
+		url : "/eldermanage/v1/data/produtct/daysales?productid=" + productid,
 		data : null,
 	}).then(function(result) {
 		productsalesdate = new Array();
@@ -99,7 +158,7 @@ $(function() {
 	$.ajax({
 		type : 'get',
 		contentType : 'application/json',
-		url : "/eldermanage/v1/data/produtct/monthsales",
+		url : "/eldermanage/v1/data/produtct/monthsales?productid=" + productid,
 		data : null,
 	}).then(function(result) {
 		productsalesdate = new Array();
@@ -488,7 +547,7 @@ $(function() {
 		bratecontent,
 		cratecontent;
 	Chart.defaults.global.responsive = true;
-	ctx = $('productdayrate-chart').get(0).getContext('2d');
+	ctx = $('#productdayrate-chart').get(0).getContext('2d');
 	options = {
 		scaleShowGridLines : true,
 		scaleGridLineColor : "rgba(0,0,0,.05)",
@@ -509,43 +568,80 @@ $(function() {
 	$.ajax({
 		type : 'get',
 		contentType : 'application/json',
-		url : "/eldermanage/v1/data/produtct/daysales?rateid=0&rateolderid=3",
+		url : "/eldermanage/v1/data/produtct/daysrate?rateid=0&rateolderid=3&productid=" + productid,
 		data : null,
 	}).then(function(result) {
-		productsalesdate = new Array();
-		storedaybrowse = new Array();
-		pdsdaysale = new Array();
+		ratedate = new Array();
+		aratecontent = new Array();
+		bratecontent = new Array();
+		cratecontent = new Array();
 		for (i = result.data.length - 1; i >= 0; i--) {
 			ratedate[result.data.length - i - 1] = new Date(result.data[i].ratedate).toLocaleDateString();
-			cratecontent[result.data.length - i - 1] = result.data[i].cratecontent;
-			pdsdaysale[result.data.length - i - 1] = result.data[i].pdsdaysale;
+			cratecontent[result.data.length - i - 1] = result.data[i].ratecontent;
 		}
-		data = {
-			labels : productsalesdate,
-			datasets : [
-				{
-					label : "My First dataset",
-					fillColor : "rgba(255,255,255,0.2)",
-					strokeColor : "#1ABC9C",
-					pointColor : "#1ABC9C",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "#1ABC9C",
-					data : storedaybrowse //添加数据
-				},
-				{
-					label : "My First dataset",
-					fillColor : "rgba(255,255,255,0.2)",
-					strokeColor : "#FF4500",
-					pointColor : "#FF4500",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "#1ABC9C",
-					data : pdsdaysale //添加数据
-				},
-			]
-		};
-		myLineChart = new Chart(ctx).Line(data, options);
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/data/produtct/daysrate?rateid=2&rateolderid=4&productid=" + productid,
+			data : null,
+		}).then(function(result) {
+
+
+			for (i = result.data.length - 1; i >= 0; i--) {
+				ratedate[result.data.length - i - 1] = new Date(result.data[i].ratedate).toLocaleDateString();
+				bratecontent[result.data.length - i - 1] = result.data[i].ratecontent;
+			}
+			$.ajax({
+				type : 'get',
+				contentType : 'application/json',
+				url : "/eldermanage/v1/data/produtct/daysrate?rateid=3&rateolderid=6&productid=" + productid,
+				data : null,
+			}).then(function(result) {
+
+
+				for (i = result.data.length - 1; i >= 0; i--) {
+					ratedate[result.data.length - i - 1] = new Date(result.data[i].ratedate).toLocaleDateString();
+					aratecontent[result.data.length - i - 1] = result.data[i].ratecontent;
+				}
+				data = {
+					labels : ratedate,
+					datasets : [
+						{
+							label : "My First dataset",
+							fillColor : "rgba(255,255,255,0.2)",
+							strokeColor : "#1ABC9C",
+							pointColor : "#1ABC9C",
+							pointStrokeColor : "#fff",
+							pointHighlightFill : "#fff",
+							pointHighlightStroke : "#1ABC9C",
+							data : cratecontent //添加数据
+						},
+						{
+							label : "My First dataset",
+							fillColor : "rgba(255,255,255,0.2)",
+							strokeColor : "#1A009C",
+							pointColor : "#1ABC9C",
+							pointStrokeColor : "#fff",
+							pointHighlightFill : "#fff",
+							pointHighlightStroke : "#1ABC9C",
+							data : bratecontent //添加数据
+						},
+						{
+							label : "My First dataset",
+							fillColor : "rgba(255,255,255,0.2)",
+							strokeColor : "#FF0000",
+							pointColor : "#FF4500",
+							pointStrokeColor : "#fff",
+							pointHighlightFill : "#fff",
+							pointHighlightStroke : "#1ABC9C",
+							data : aratecontent //添加数据
+						},
+					]
+				};
+				myLineChart = new Chart(ctx).Line(data, options);
+			})
+		})
+
 	})
 });
 /*//新闻统计

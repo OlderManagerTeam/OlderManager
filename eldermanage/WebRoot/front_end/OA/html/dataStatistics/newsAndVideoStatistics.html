@@ -59,7 +59,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -80,7 +81,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -107,8 +108,10 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
-											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
+											<li><a
+												href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a
+												href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 											<li><a href="../dataStatistics/olderInfoStatistics.html">老人信息数据统计</a></li>
 											<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
 											<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
@@ -233,21 +236,21 @@
 						<span class="title">数据统计</span>
 						<div class="description">Data Statistics</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">
-										<div class="title">新闻</div>
+										<div class="title">视频排行</div>
 									</div>
 								</div>
 								<div class="card-body no-padding">
-									<canvas id="news-chart" class="chart"></canvas>
+									<canvas id="weekheatvedio" class="chart"></canvas>
 								</div>
 								<div class="card-body">
 									<h4>图释</h4>
-									展示新闻篇数
+									一周最热视频
 								</div>
 							</div>
 						</div>
@@ -255,15 +258,104 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">
-										<div class="title">视频统计</div>
+										<div class="title">上传视频</div>
 									</div>
 								</div>
 								<div class="card-body no-padding">
-									<canvas id="videoPie-chart" class="chart"></canvas>
+									<canvas id="weekaddvedio" class="chart"></canvas>
 								</div>
 								<div class="card-body">
 									<h4>图释</h4>
-									主要显示不同类型的视频数量
+
+									<div
+										style="background:#1ABC9C;width:30px;height:15px;float:left"></div>
+									<div>上传视频量</div>
+									<div
+										style="background:#0080FF;width:30px;height:15px;float:left"></div>
+									<div>视频时长</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">视频收藏</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="weekvediocolle" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									一周收藏最多视频
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">视频访问量</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="weekvedioview" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									一周视频访问量
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">新闻访问量</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="weeknewsview" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									一周新闻访问量
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">上传新闻</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="weekaddnews" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+
+									一周上传新闻情况
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">视频排行</div>
+									</div>
+								</div>
+								<div class="card-body no-padding">
+									<canvas id="weeknewsheat" class="chart"></canvas>
+								</div>
+								<div class="card-body">
+									<h4>图释</h4>
+									一周最热视频
 								</div>
 							</div>
 						</div>
@@ -277,31 +369,31 @@
 						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
 			</div>
 		</footer>
-		<div>
-			<!-- Javascript Libs -->
-			<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-			<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-			<script type="text/javascript"
-				src="../../lib/js/bootstrap-switch.min.js"></script>
+		<!-- Javascript Libs -->
+		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/bootstrap-switch.min.js"></script>
 
-			<script type="text/javascript"
-				src="../../lib/js/jquery.matchHeight-min.js"></script>
-			<script type="text/javascript"
-				src="../../lib/js/jquery.dataTables.min.js"></script>
-			<script type="text/javascript"
-				src="../../lib/js/dataTables.bootstrap.min.js"></script>
-			<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-			<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-			<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-			<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-			<!-- Javascript -->
-			<script type="text/javascript" src="../../js/app.js"></script>
-			<!-- 链接js文件 -->
-			<script type="text/javascript"
-				src="../../js/dataStatistics/newsAndVideoStatistics.js" charset="UTF-8"></script>
-				
-			<script type="text/javascript" src="../../js/personal.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.matchHeight-min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript"
+			src="../../lib/js/dataTables.bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+		<!-- Javascript -->
+		<script type="text/javascript" src="../../js/app.js"></script>
+		<!-- 链接js文件 -->
+		<script type="text/javascript"
+			src="../../js/dataStatistics/newsAndVideoStatistics.js"
+			charset="UTF-8"></script>
+
+		<script type="text/javascript" src="../../js/personal.js"></script>
 </body>
 
 </html>
