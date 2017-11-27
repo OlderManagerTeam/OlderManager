@@ -83,5 +83,6 @@ public interface CourseService {
  	public boolean jugeCollect(int videoid,int olderid);
  	public boolean jugeJoinLecture(int lectureid,int olderid);
  	public boolean jugeJoinAction(int actionid,int olderid);
- 
+
+ 	
 }
