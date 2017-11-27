@@ -86,8 +86,16 @@ public class NewsFrontServiceImpl implements NewsFrontService {
 	public Message NewsInfo(int newsid) throws Exception {
 		try {
 			News news = newsMapper.selectByPrimaryKey(newsid);
+
 			if (news != null) {
-				return new Message(true, "返回成功", news);
+				news.setNewsheat(news.getNewsheat() + 1);
+				int flag = 0;
+				flag = newsMapper.updateByPrimaryKeySelective(news);
+				if (flag != 0) {
+					return new Message(true, "返回成功,热度加一", news);
+				}else{
+					return new Message(false, "热度加一错误", null);
+				}
 			} else {
 				return new Message(false, "数据库错误", null);
 			}
