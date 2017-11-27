@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.em.mapper.JoingroupMapper;
 import com.sds.em.mapper.OlderbaseMapper;
+import com.sds.em.mapper.OldermessageMapper;
 import com.sds.em.mapper.OrderlistMapper;
 import com.sds.em.mapper.OrdersMapper;
 import com.sds.em.mapper.ProductMapper;
@@ -21,6 +22,8 @@ import com.sds.em.po.Joingroup;
 import com.sds.em.po.JoingroupExample;
 import com.sds.em.po.Message;
 import com.sds.em.po.Olderbase;
+import com.sds.em.po.Oldermessage;
+import com.sds.em.po.OldermessageExample;
 import com.sds.em.po.Orderlist;
 import com.sds.em.po.OrderlistExample;
 import com.sds.em.po.Orders;
@@ -64,6 +67,11 @@ public class OlderShopServiceImpl implements OlderShopService {
 	ProductpiclistMapper productpiclistMapper;
 	ProductpiclistExample productpiclistExample = new ProductpiclistExample();
 	com.sds.em.po.ProductpiclistExample.Criteria productpiclistCriteria;
+	
+	@Autowired
+	OldermessageMapper oldermessageMapper;
+	OldermessageExample oldermessageExample = new OldermessageExample();
+	com.sds.em.po.OldermessageExample.Criteria oldermessageCriteria;
 
 	@Autowired
 	ProductviewlistMapper productviewlistMapper;
@@ -280,12 +288,18 @@ public class OlderShopServiceImpl implements OlderShopService {
 	// 取消订单
 	public Message ordercancel(int ordersid) {
 		try {
-			Orders orders = new Orders();
+			Orders orders =  ordersMapper.selectByPrimaryKey(ordersid);;
 			orders.setOrderid(ordersid);
 			orders.setOrderstatus("已取消");
 			ordersMapper.updateByPrimaryKeySelective(orders);
 			orderlistCriteria = orderlistExample.createCriteria();
 			orderlistCriteria.andOrderlistfidEqualTo(ordersid);
+			Oldermessage oldermessage=new Oldermessage();
+			oldermessage.setMessagecontent("您的订单已取消");
+			oldermessage.setMessagedate(new Date());
+			oldermessage.setMessageolderid(orders.getOrderolderid());
+			oldermessage.setMessagestatus("未读");
+			oldermessage.setMessagetype("商城消息");
 			List<Orderlist> orderlists = orderlistMapper.selectByExample(orderlistExample);
 			if (orderlists != null)
 				for (Orderlist orderlist : orderlists) {
@@ -408,6 +422,13 @@ public class OlderShopServiceImpl implements OlderShopService {
 				olderbase.setOldermaxpoint((int) (olderbase.getOldermaxpoint() + productgroup.getGroupdiscountprice()));
 				olderbase.setOlderpoint((olderbase.getOlderpoint() + productgroup.getGroupdiscountprice().intValue()));
 				olderbaseMapper.updateByPrimaryKeySelective(olderbase);
+				Oldermessage oldermessage=new Oldermessage();
+				oldermessage.setMessagecontent("你的团购订单已生成");
+				oldermessage.setMessagedate(new Date());
+				oldermessage.setMessageolderid(joingroup.getJoinolderid());
+				oldermessage.setMessagestatus("未读");
+				oldermessage.setMessagetype("商城消息");
+				oldermessageMapper.insertSelective(oldermessage);
 			}
 			return new Message(true, "操作成功", null);
 		} catch (Exception e) {
@@ -474,10 +495,16 @@ public class OlderShopServiceImpl implements OlderShopService {
 	// 确认订单已送出
 	public Message ordersend(int ordersid) {
 		try {
-			Orders orders = new Orders();
+			Orders orders = ordersMapper.selectByPrimaryKey(ordersid);
 			orders.setOrderid(ordersid);
 			orders.setOrderstatus("送货中");
 			ordersMapper.updateByPrimaryKeySelective(orders);
+			Oldermessage oldermessage=new Oldermessage();
+			oldermessage.setMessagecontent("您的订单已送出");
+			oldermessage.setMessagedate(new Date());
+			oldermessage.setMessageolderid(orders.getOrderolderid());
+			oldermessage.setMessagestatus("未读");
+			oldermessage.setMessagetype("商城消息");
 			return new Message(true, "修改成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();

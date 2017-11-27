@@ -232,6 +232,70 @@
 		    </div><!-- /.modal -->
 		</div>
 		
+		<!-- 报名成功提示模态框-->
+		<div class="modal fade" id="lectureEnrollSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">报名提示</h4>
+		            </div>
+		            <div class="modal-body">报名成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 报名失败提示模态框-->
+		<div class="modal fade" id="lectureEnrollFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">报名提示</h4>
+		            </div>
+		            <div class="modal-body">报名失败,请稍后再试</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消报名成功提示模态框-->
+		<div class="modal fade" id="cancelLectureEnrollSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消报名提示</h4>
+		            </div>
+		            <div class="modal-body">取消报名成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消报名成功提示模态框-->
+		<div class="modal fade" id="cancelLectureEnrollFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消报名提示</h4>
+		            </div>
+		            <div class="modal-body">取消报名失败,请稍后再试</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
 		<footer class="footer bg-style" style="background-image:url(images/background/bg-3.jpg);">
 			<div class="container">
 				<div class="footer-upper">
@@ -605,11 +669,9 @@
 
 		//讲座报名按钮
 		function lectureEnroll(id,state, obj){
-			//$("#myModalLabel").attr("data",id);
 			if (state == "未登录") {
 				$(obj).attr("data-toggle", "modal");
 				$(obj).attr("data-target", "#loginModal");
-				//$("#loginModal").show('modal');
 			}else if(state == "未报名") {
 				//报名
 				$.ajax({
@@ -618,8 +680,12 @@
 					url:"/eldermanage/v1/course/lecture/joinlectur?lectureid="+id,
 					data:null,
 					success:function(result){
-						alert(result.information)
-						window.location.reload();
+						if(result.information == '报名成功'){
+							$("#lectureEnrollSuccessModal").modal('show');
+							$(obj).hide().prev().show();
+						}else if(result.information == '插入操作失败'){
+							$("#lectureEnrollFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')
@@ -630,11 +696,9 @@
 
 		//讲座取消报名按钮
 		function lectureCancel(id,state,obj){
-			//$("#myModalLabel").attr("data",id);
 			if (state == "未登录") {
 				$(obj).attr("data-toggle", "modal");
 				$(obj).attr("data-target", "#loginModal");
-				//$("#loginModal").show('modal');
 			}else if(state == "已报名") {
 				//报名
 				$.ajax({
@@ -643,8 +707,12 @@
 					url:"/eldermanage/v1/course/actions/cancellecture?lectureid="+id,
 					data:null,
 					success:function(result){
-						alert(result.information)
-						window.location.reload();
+						if(result.information == '取消成功'){
+							$("#cancelLectureEnrollSuccessModal").modal('show');
+							$(obj).hide().next().show();
+						}else if(result.information == '取消失败'){
+							$("#cancelLectureEnrollFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')
@@ -655,11 +723,9 @@
 
 		//活动报名按钮
 		function actionEnroll(id,state, obj){
-			//$("#myModalLabel").attr("data",id);
 			if (state == "未登录") {
 				$(obj).attr("data-toggle", "modal");
 				$(obj).attr("data-target", "#loginModal");
-				//$("#loginModal").show('modal');
 			}else if(state == "未报名") {
 				//报名
 				$.ajax({
@@ -668,8 +734,12 @@
 					url:"/eldermanage/v1/course/actions/joinaction?actionid="+id,
 					data:null,
 					success:function(result){
-						alert(result.information)
-						window.location.reload();
+						if(result.information == '报名成功'){
+							$("#lectureEnrollSuccessModal").modal('show');
+							$(obj).hide().prev().show();
+						}else if(result.information == '插入失败'){
+							$("#lectureEnrollFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')
@@ -680,11 +750,9 @@
 
 		//活动取消报名按钮
 		function actionCancel(id,state,obj){
-			//$("#myModalLabel").attr("data",id);
 			if (state == "未登录") {
 				$(obj).attr("data-toggle", "modal");
 				$(obj).attr("data-target", "#loginModal");
-				//$("#loginModal").show('modal');
 			}else if(state == "已报名") {
 				//报名
 				$.ajax({
@@ -693,8 +761,12 @@
 					url:"/eldermanage/v1/course/actions/cancelaction?actionid="+id,
 					data:null,
 					success:function(result){
-						alert(result.information)
-						window.location.reload();
+						if(result.information == '取消成功'){
+							$("#cancelLectureEnrollSuccessModal").modal('show');
+							$(obj).hide().next().show();
+						}else if(result.information == '取消失败'){
+							$("#cancelLectureEnrollFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')
