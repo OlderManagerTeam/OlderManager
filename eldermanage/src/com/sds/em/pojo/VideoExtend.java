@@ -8,7 +8,14 @@ public class VideoExtend {
 	private Video video;
 	private Date vrecorddate;
 	private String collectionStatue;
+	private Date videocolledate;
 	
+	public Date getVideocolledate() {
+		return videocolledate;
+	}
+	public void setVideocolledate(Date videocolledate) {
+		this.videocolledate = videocolledate;
+	}
 	public String getCollectionStatue() {
 		return collectionStatue;
 	}
