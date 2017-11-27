@@ -43,4 +43,10 @@ public interface NewsMapper {
 
 	// 不论两类，按照访问量进行排序的热门新闻
 	public List<News> heatNewsView();
+	// 一周新闻访问量
+	List<News> weeknewsview();
+	// 一周新闻上传情况
+	List<News> weekaddnews();
+	// 一周新闻热度前十
+	List<News> weeknewsheat();
 }

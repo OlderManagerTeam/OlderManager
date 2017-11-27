@@ -272,7 +272,7 @@
 		            </div>
 		            <div class="modal-body" id="collectSuccessInfo"></div>
 		            <div class="modal-footer">
-		                <button type="button" class="btn btn-primary" id="close_modal">确定</button>
+		                <button type="button" class="btn btn-primary" onclick="closeModal()">确定</button>
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
@@ -284,9 +284,41 @@
 		        <div class="modal-content">
 		            <div class="modal-header">
 		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		                <h4 class="modal-title" id="myModalLabel">收藏提示</h4>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
 		            </div>
 		            <div class="modal-body" id="cancelCollectSuccessInfo"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 收藏失败提示模态框-->
+		<div class="modal fade" id="collectFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="collectFailInfo">收藏失败,请稍后再试。</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消收藏失败提示模态框-->
+		<div class="modal fade" id="cancelCollectFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="cancelCollectFailInfo">取消收藏失败,请稍后再试。</div>
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
 		            </div>
@@ -691,10 +723,14 @@
 					url:"/eldermanage/v1/course/video/collectionvideo?videoid="+id,
 					data:null,
 					success:function(result){
-						$("#collectSuccessInfo").html(result.information);
-						$("#collectSuccessModal").modal('show');
-						$("#close_modal").modal("hide");
-						$(obj).hide().next().show();
+						if(result.information == '收藏成功'){
+							$("#collectSuccessInfo").html(result.information);
+							$("#collectSuccessModal").modal('show');
+							$(obj).hide().next().show();
+						}else if(result.information == '收藏失败'){
+							$("#collectFailInfo").html(result.information);
+							$("#collectFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')
@@ -726,8 +762,13 @@
 		}
 
 		//收藏按钮确定改变图标
-		function confirm(){
-			
+		function closeModal(){
+			$("#collectSuccessModal").modal('hide');
+		}
+
+		//取消收藏按钮确定改变图标
+		function cancelCloseModal(){
+			$("#cancelCollectFailModal").modal('hide');
 		}
 	</script>
 </body>

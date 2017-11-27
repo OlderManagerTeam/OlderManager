@@ -1,5 +1,6 @@
 package com.sds.em.mapper;
 
+import com.sds.em.po.Product;
 import com.sds.em.po.Productdaysale;
 import com.sds.em.po.ProductdaysaleExample;
 import java.util.List;
@@ -29,9 +30,9 @@ public interface ProductdaysaleMapper {
     int updateByPrimaryKey(Productdaysale record);
     
     //返回商品近十天的浏览量和销售量
-    List<Productdaysale> daysales();
+    List<Productdaysale> daysales(Product productid);
 
 	// 商城近十二月数据浏览量和销售量 wuwenbo
-	List<Productdaysale> monthsales();
+	List<Productdaysale> monthsales(Product productid);
 
 }
