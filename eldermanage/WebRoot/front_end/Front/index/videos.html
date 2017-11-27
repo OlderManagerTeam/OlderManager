@@ -272,7 +272,7 @@
 		            </div>
 		            <div class="modal-body" id="collectSuccessInfo"></div>
 		            <div class="modal-footer">
-		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		                <button type="button" class="btn btn-primary" id="close_modal">确定</button>
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
@@ -691,8 +691,10 @@
 					url:"/eldermanage/v1/course/video/collectionvideo?videoid="+id,
 					data:null,
 					success:function(result){
-						$("#collectSuccessInfo").html(result.information)
+						$("#collectSuccessInfo").html(result.information);
 						$("#collectSuccessModal").modal('show');
+						$("#close_modal").modal("hide");
+						$(obj).hide().next().show();
 					},
 					error(){
 						alert('数据库错误')
