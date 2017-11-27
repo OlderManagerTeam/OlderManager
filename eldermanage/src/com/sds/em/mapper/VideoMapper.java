@@ -35,4 +35,15 @@ public interface VideoMapper {
     
     List<Video> select_videocollection_true(Olderbase olderbase);
     List<Video> select_videocollection_false(Olderbase olderbase);
+
+	//一周视频上传时长
+    List<Video> weekvediotime();
+  //一周最热视频
+	List<Video> weekheatvedio();
+	//一周上传视频情况
+	List<Video> weekaddvedio();
+	//一周上收藏最多
+	List<Video> weekvediocolle();
+	// 一周访问量
+	List<Video> weekvedioview();
 }
