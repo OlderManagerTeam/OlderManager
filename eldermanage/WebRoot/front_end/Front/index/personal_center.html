@@ -114,6 +114,37 @@
         .layui-laypage .layui-laypage-curr .layui-laypage-em{
 			background-color: #1abb05;
 		}
+
+		/*收藏视频*/
+		.service-text {
+			padding: 5px 5px 10px 5px;
+		}
+		.tab-content a{
+			font-weight: 500;
+			color: black;
+		}
+		.tab-content a:hover{
+			font-weight: 500;
+			color: #7aba1e;
+		}
+
+		/*讲座活动按钮*/
+		.btn-default{
+			font-size: 20px;
+		}
+		.btn-default:hover{
+			color: #ffbc1e;
+			border-color: #ffbc1e;
+		}
+		/*讲座活动列表*/
+		.tab-content a{
+			font-weight: 500;
+			color: #7aba1e;
+		}
+		.tab-content a:hover{
+			font-weight: 500;
+			color: #ffbc1e;
+		}
 	</style>
 </head>
 
@@ -131,7 +162,6 @@
 				<!--Top Right-->
 				<div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href="personal_center.html"><span>个人中心</span></a>
 						<a href=""><span>请登录</span></a>
 						<a href=""><span>注册账号</span></a>
 					</div>
@@ -311,13 +341,13 @@
 
 					    <!-- 我的收藏 -->
 					    <div class="tab-pane fade" id="myCollection">
-					        <div class="col-md-12" style="padding-top: 20px;">
+					        <div class="col-md-12" style="padding-top: 20px;padding-left: 0px;padding-right: 0px;">
 					        	<div class="col-md-12">
 					        		<img src="images/logo/collection.png" style="width: 28px;margin-bottom: 10px;">
 					        		<span style="font-size: 25px;color: #525252">我收藏的视频</span>
 					        	</div>
-					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-12" id="myCollectionList">
+					        	<div class="col-md-12" style="margin-top: 30px;padding-left: 0px;padding-right: 0px;">
+					        		<div class="col-md-12" id="myCollectionList" style="padding: 0;">
 							
 									</div>
 									<div id="myCollectionListPage" style="text-align: center;" class="col-md-12">
@@ -496,6 +526,38 @@
 			</div>
 		</footer>
 
+		<!-- 取消收藏成功提示模态框-->
+		<div class="modal fade" id="cancelCollectSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body">取消收藏成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消收藏失败提示模态框-->
+		<div class="modal fade" id="cancelCollectFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="cancelCollectFailInfo">取消收藏失败,请稍后再试。</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
 	<!-- Scroll Top Button -->
 	<button class="scroll-top tran3s color2_bg">
 		<span class="fa fa-angle-up"></span>
@@ -597,13 +659,41 @@
         	success:function(result){
         		var myCollectionVideoData = result.data;
 
-        		$("#myCollectionListPage").show();
-				pageCollection(myCollectionVideoData, $("#myCollectionListPage"));
+        		if(myCollectionVideoData != null){
+        			$("#myCollectionListPage").show();
+					pageCollection(myCollectionVideoData, $("#myCollectionListPage"));
+        		}
         	},
         	error:function(){
         		alert('数据库错误')
         	}
         })
+
+        //取消收藏按钮
+		function cancelCollect(id,state,obj){
+			if (state == "未登录") {
+				$("#loginModal").modal('show');
+			}else if(state == "已收藏") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/video/cancelcollection?videoid="+id,
+					data:null,
+					success:function(result){
+						if(result.information == '取消成功'){
+							$("#cancelCollectSuccessModal").modal('show');
+							$(obj).closest('.videoItemHide').hide();
+						}else if(result.information == '取消失败'){
+							$("#cancelCollectFailModal").modal('show');
+						}
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
 
         //已收藏视频分页
 		function pageCollection(videodata, pageRoot){
@@ -632,7 +722,7 @@
 				        	let date = new Date(item.video.videopublishdate);
 				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
-								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 videoItemHide">
 									<div class="single-service-item">
 										<span class="top-border"></span>
 			                            <span class="right-border"></span>
@@ -687,8 +777,10 @@
         	success:function(result){
         		var myVideoRecordData = result.data;
 
-        		$("#myVideoRecordPage").show();
-				pageVideoRecord(myVideoRecordData, $("#myVideoRecordPage"));
+        		if(myVideoRecordData != null){
+        			$("#myVideoRecordPage").show();
+					pageVideoRecord(myVideoRecordData, $("#myVideoRecordPage"));
+        		}
         	},
         	error:function(){
         		alert('数据库错误')
@@ -712,8 +804,12 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.vrecorddate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate()
+				        		+" "+date.getHours()+":"+date.getMinutes();
 				        	let datas =`
 								<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
+								<span style="font-size: 20px;">观看时间:${year}</span>
 				        		<span>
 				        			<a href="" target="_blank" style="font-size: 20px;">${item.video.videoname}</a>
 				        		</span>
@@ -736,8 +832,10 @@
         	success:function(result){
         		var myLectureRecordData = result.data;
 
-        		$("#myLectureRecordPage").show();
-				pageLectureRecord(myLectureRecordData, $("#myLectureRecordPage"));
+        		if(myLectureRecordData != null){
+        			$("#myLectureRecordPage").show();
+					pageLectureRecord(myLectureRecordData, $("#myLectureRecordPage"));
+        		}
         	},
         	error:function(){
         		alert('数据库错误')
@@ -782,7 +880,7 @@
 										<!-- <div class="service-icon">
 											<i class="icon flaticon-budding-leaves"></i>
 										</div> -->
-										<div class="service-text">
+										<div class="service-text" style="padding:10px 10px 10px 10px">
 											<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
 												${item.lecture.lecturename}
 											</p>
@@ -845,8 +943,10 @@
         	success:function(result){
         		var myActionRecordData = result.data;
 
-        		$("#myActionRecordPage").show();
-				pageActionRecord(myActionRecordData, $("#myActionRecordPage"));
+        		if(myActionRecordData != null){
+        			$("#myActionRecordPage").show();
+					pageActionRecord(myActionRecordData, $("#myActionRecordPage"));
+        		}
         	},
         	error:function(){
         		alert('数据库错误')
@@ -891,7 +991,7 @@
 										<!-- <div class="service-icon">
 											<i class="icon flaticon-budding-leaves"></i>
 										</div> -->
-										<div class="service-text">
+										<div class="service-text" style="padding:10px 10px 10px 10px">
 											<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
 												${item.action.actionname}
 											</p>

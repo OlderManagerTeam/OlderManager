@@ -115,8 +115,8 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
-											<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
+											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -429,7 +429,7 @@
 									}
 								}
 							},
-							grouppublishdate : {
+							grouppublishDate : {
 								validators : {
 									notEmpty : {
 										message : '日期不能为空'
@@ -440,7 +440,7 @@
 									}
 								}
 							},
-							groupstartdate : {
+							groupstartDate : {
 								validators : {
 									notEmpty : {
 										message : '日期不能为空'
@@ -449,6 +449,13 @@
 										format : 'YYYY-MM-DD',
 										message : '请输入正确的日期格式'
 									}
+								}
+							},
+							groupstarttime : {
+								validators : {
+									notEmpty : {
+										message : '日期不能为空'
+									},
 								}
 							},
 							groupfinishdate : {
@@ -471,6 +478,24 @@
 										regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
 										message : '价格只能是数字，可以带两位小数'
 									}
+								}
+							},
+							groupdiscountprice : {
+							validators : {
+								notEmpty : {
+									message : '价格不能为空'
+								},
+								regexp : {
+									regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+									message : '价格只能是数字，可以带两位小数'
+								}
+							}
+						   },
+						   groupfinishDate: {
+								validators : {
+									notEmpty : {
+										message : '时间不能为空'
+									},
 								}
 							},
 						}

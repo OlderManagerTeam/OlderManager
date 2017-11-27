@@ -288,7 +288,7 @@
 		            </div>
 		            <div class="modal-body" id="cancelCollectSuccessInfo"></div>
 		            <div class="modal-footer">
-		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		                <button type="button" class="btn btn-primary" onclick="cancelCloseModal()">确定</button>
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
@@ -518,12 +518,6 @@
 							</ul>
 							<i class="glyphicon glyphicon-time" style="color: #7aba1e;"></i>
 							<span style="color: #7aba1e;">视频时长:${heatdata[i].video.videotime}</span>
-							<a href="" style="float:right;${collectVideo1}" onclick="collectVideo(${heatdata[i].video.videoid},'${heatdata[i].collectionStatue}',this);return false;">
-								<img src="images/logo/collectionStar_none.png" style="width:25px;"/>
-							</a>
-							<a href="" style="float:right;${collectVideo2}" onclick="cancelCollect(${heatdata[i].video.videoid},'${heatdata[i].collectionStatue}',this);return false;">
-								<img src="images/logo/collectionStar.png" style="width:25px;"/>
-							</a>
 						</div>
 					`;
 
@@ -728,7 +722,6 @@
 							$("#collectSuccessModal").modal('show');
 							$(obj).hide().next().show();
 						}else if(result.information == '收藏失败'){
-							$("#collectFailInfo").html(result.information);
 							$("#collectFailModal").modal('show');
 						}
 					},
@@ -751,8 +744,13 @@
 					url:"/eldermanage/v1/course/video/cancelcollection?videoid="+id,
 					data:null,
 					success:function(result){
-						$("#cancelCollectSuccessInfo").html(result.information)
-						$("#cancelCollectSuccessModal").modal('show');
+						if(result.information == '取消成功'){
+							$("#cancelCollectSuccessInfo").html(result.information);
+							$("#cancelCollectSuccessModal").modal('show');
+							$(obj).hide().prev().show();
+						}else if(result.information == '取消失败'){
+							$("#cancelCollectFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')
@@ -768,7 +766,7 @@
 
 		//取消收藏按钮确定改变图标
 		function cancelCloseModal(){
-			$("#cancelCollectFailModal").modal('hide');
+			$("#cancelCollectSuccessModal").modal('hide');
 		}
 	</script>
 </body>
