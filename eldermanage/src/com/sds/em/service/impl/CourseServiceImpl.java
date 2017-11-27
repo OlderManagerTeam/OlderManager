@@ -1060,7 +1060,7 @@ public class CourseServiceImpl implements CourseService {
 			if (flag1 != 0) {// 删除操作成功
 				return new Message(true, "取消成功", null);
 			} else {
-				return new Message(false, "删除操作失败", null);
+				return new Message(false, "取消失败", null);
 			}
 		} else {
 			return new Message(false, "数据错误，无该老人参加的活动记录", null);
@@ -1081,7 +1081,7 @@ public class CourseServiceImpl implements CourseService {
 			if (flag1 != 0) {// 删除操作成功
 				return new Message(true, "取消成功", null);
 			} else {
-				return new Message(false, "删除操作失败", null);
+				return new Message(false, "取消失败", null);
 			}
 		} else {
 			return new Message(false, "数据错误，无该老人参加的讲座", null);
@@ -1101,7 +1101,7 @@ public class CourseServiceImpl implements CourseService {
 			return new Message(true, "收藏成功", null);
 
 		} else {// 插入失败
-			return new Message(false, "数据错误，插入失败", null);
+			return new Message(false, "收藏失败", null);
 		}
 
 	}
@@ -1190,12 +1190,6 @@ public class CourseServiceImpl implements CourseService {
 		}
 	}
 
-
-
-
-
-
-
-
+	
 
 }
