@@ -116,8 +116,8 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/productStatistics.html">商品星级数据统计</a></li>
-											<li><a href="../dataStatistics/olderStarStatistics.html">老人片区积分定分数据统计</a></li>
+											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -330,14 +330,14 @@
 											<label for="productimg" class="col-sm-3 control-label">商品预览图：</label>
 											<div class="col-sm-5">
 												<input id="file-1" type="file" multiple class="file"
-													data-overwrite-initial="false" data-min-file-count="2">
+													data-overwrite-initial="false" data-min-file-count="2" name="productimg1">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="productimg" class="col-sm-3 control-label">商品展示图：</label>
 											<div class="col-sm-5">
 												<input id="file-2" type="file" multiple class="file"
-													data-overwrite-initial="false" data-min-file-count="2">
+													data-overwrite-initial="false" data-min-file-count="2" name="productimg2">
 											</div>
 										</div>
 										<div class="form-group">
@@ -516,7 +516,7 @@
 									}
 								}
 							},
-							productupondate : {
+							productUpondate : {
 								validators : {
 									notEmpty : {
 										message : '日期不能为空'
@@ -538,6 +538,46 @@
 									}
 								}
 							},
+							productdiscountprice : {
+								validators : {
+									notEmpty : {
+										message : '折扣价不能为空'
+									},
+									regexp : {
+										regexp : /^(0|[1-9][0-9]*)+(.[0-9]{1,2})?$/,
+										message : '折扣价只能是数字，可以带两位小数'
+									}
+								}
+							},
+							storecount : {
+								validators : {
+									notEmpty : {
+										message : '库存不能为空'
+									}
+								}
+							},
+							productImg: {
+								validators : {
+									notEmpty : {
+										message : '图片不能为空'
+									}
+								}
+							},
+							productimg1 : {
+								validators : {
+									notEmpty : {
+										message : '库存不能为空'
+									}
+								}
+							},
+							productimg2 : {
+								validators : {
+									notEmpty : {
+										message : '库存不能为空'
+									}
+								}
+							},
+							
 						}
 					});
 			

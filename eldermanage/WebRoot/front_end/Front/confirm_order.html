@@ -24,8 +24,7 @@
 		<ul class="message-l">
 			<div class="topMessage">
 				<div class="menu-hd">
-					<a href="login.html" target="_top" class="h">亲，请登录</a> <a
-						href="register.html" target="_top">免费注册</a>
+					<a id="loginid" target="_top" class="h"></a> 
 				</div>
 			</div>
 		</ul>
@@ -56,7 +55,7 @@
 
 		<div>
 			<div style="float:left;">
-				<img src="images/product/logo.png" />
+				<img src="images/product/shopinglog.jpg" width="200px" />
 			</div>
 
 			<div style="float:left;margin-top:40px;margin-left:40px;">
@@ -303,7 +302,17 @@
 		var productid = UrlParm.parm("productid");
 		var count = UrlParm.parm("count");
 	
-	    
+	        $.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/personal/older/info",
+			data : null,
+			success : function(result) {
+				if (result.success) {
+					document.getElementById("loginid").innerHTML ='您好 '+result.data.oldername;
+				}
+			},
+		})
 		//var productid=1;
 		//var count = 2;
 		//从商品详情页面到确认订单页
