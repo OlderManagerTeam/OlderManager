@@ -10,7 +10,7 @@ public interface OldermessageMapper {
 
     int deleteByExample(OldermessageExample example);
 
-    int deleteByPrimaryKey(Integer messageid);
+    int deleteByPrimaryKey(Long messageid);
 
     int insert(Oldermessage record);
 
@@ -18,7 +18,7 @@ public interface OldermessageMapper {
 
     List<Oldermessage> selectByExample(OldermessageExample example);
 
-    Oldermessage selectByPrimaryKey(Integer messageid);
+    Oldermessage selectByPrimaryKey(Long messageid);
 
     int updateByExampleSelective(@Param("record") Oldermessage record, @Param("example") OldermessageExample example);
 
@@ -27,4 +27,6 @@ public interface OldermessageMapper {
     int updateByPrimaryKeySelective(Oldermessage record);
 
     int updateByPrimaryKey(Oldermessage record);
+
+	List<Oldermessage> newmessagecount(int olderid);
 }

@@ -3,7 +3,7 @@ package com.sds.em.po;
 import java.util.Date;
 
 public class Oldermessage {
-    private Integer messageid;
+    private Long messageid;
 
     private Integer messageolderid;
 
@@ -15,11 +15,11 @@ public class Oldermessage {
 
     private String messagestatus;
 
-    public Integer getMessageid() {
+    public Long getMessageid() {
         return messageid;
     }
 
-    public void setMessageid(Integer messageid) {
+    public void setMessageid(Long messageid) {
         this.messageid = messageid;
     }
 
