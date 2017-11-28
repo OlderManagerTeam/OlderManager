@@ -64,7 +64,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -85,7 +86,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -112,8 +113,10 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
-											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
+											<li><a
+												href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a
+												href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -456,7 +459,7 @@
 			<!--验证js文件-->
 			<script type="text/javascript"
 				src="../../lib/js/bootstrapValidator.min.js"></script>
-				
+
 			<script type="text/javascript" src="../../js/personal.js"></script>
 			<script>
 				$("#file-3").fileinput({
@@ -610,13 +613,13 @@
 									}
 								}
 							},
-							olderheadurl: {
-							    validators : {
-								    notEmpty : {
-									    message : '视频缩略图不能为空'
-								    }
-							    }
-						   },
+							olderheadurl : {
+								validators : {
+									notEmpty : {
+										message : '视频缩略图不能为空'
+									}
+								}
+							},
 						}
 					});
 			
@@ -628,28 +631,31 @@
 			<script type="text/javascript">
 				$("#entrysubmit").click(function() {
 					var form = new FormData(document.getElementById("olderEntry"));
-				form.append("oldersex", document.getElementById("select2-oldersex-container").title);
+					form.append("oldersex", document.getElementById("select2-oldersex-container").title);
 					form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
 					form.append("oldernation", document.getElementById("select2-oldernation-container").title);
-					$.ajax({
-						type : 'post',
-						url : "/eldermanage/v1/brench/elder/info",
-						data : form,
-						processData : false,
-						contentType : false,
-						success : function(result) {
-							//var resultdata = JSON.parse(result);
-							if (result.success) {
-								window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
-							} else {
-								alert(result.information)
-							}
+					var bootstrapValidator = $("#olderEntry").data("bootstrapValidator");
+					bootstrapValidator.validate();
+					if (bootstrapValidator.isValid())
+						$.ajax({
+							type : 'post',
+							url : "/eldermanage/v1/brench/elder/info",
+							data : form,
+							processData : false,
+							contentType : false,
+							success : function(result) {
+								//var resultdata = JSON.parse(result);
+								if (result.success) {
+									window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
+								} else {
+									alert(result.information)
+								}
 			
-						},
-						error : function() {
-							alert('fail')
-						}
-					})
+							},
+							error : function() {
+								alert('fail')
+							}
+						})
 			
 				}
 				)
