@@ -17,6 +17,7 @@ import com.sds.em.mapper.RoleMapper;
 import com.sds.em.mapper.SecurityMapper;
 import com.sds.em.mapper.StaffbaseMapper;
 import com.sds.em.mapper.StafftokenMapper;
+import com.sds.em.mapper.VideorecordMapper;
 import com.sds.em.po.Branch;
 import com.sds.em.po.BranchExample;
 import com.sds.em.po.Department;
@@ -36,6 +37,9 @@ import com.sds.em.po.SecurityExample;
 import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
 import com.sds.em.po.Stafftoken;
+import com.sds.em.po.Video;
+import com.sds.em.po.Videorecord;
+import com.sds.em.po.VideorecordExample;
 import com.sds.em.pojo.LoginMassage;
 import com.sds.em.po.StaffbaseExample.Criteria;
 import com.sds.em.service.IndexService;
@@ -76,8 +80,12 @@ public class IndexServiceImpl implements IndexService {
 	OlderbaseExample olderbaseExample = new OlderbaseExample();
 	OlderbaseExample.Criteria olderbaseCriteria;
 
+	@Autowired
+	VideorecordMapper videorecord;
 	@Override
 	public Message checkStaffName(String staffTel) {// 验证员工电话号码是否可用
+		Videorecord video=videorecord.selectByPrimaryKey(1);
+		video.getVrecorddate();
 		try {
 			StaffbaseExample sexample = new StaffbaseExample();
 			Criteria scriteria = sexample.createCriteria();

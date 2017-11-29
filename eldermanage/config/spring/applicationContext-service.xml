@@ -36,6 +36,6 @@
 	<bean id="NewsFrontService" class="com.sds.em.service.impl.NewsFrontServiceImpl" />
 	
 	<bean id="IndexPersonalService" class="com.sds.em.service.impl.IndexPersonalServiceImpl" />
-
+	<bean id="OlderPersonalCenterService" class="com.sds.em.service.impl.OlderPersonalCenterServiceImpl" />
 
 </beans>
