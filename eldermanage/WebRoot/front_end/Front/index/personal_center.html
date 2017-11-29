@@ -114,6 +114,37 @@
         .layui-laypage .layui-laypage-curr .layui-laypage-em{
 			background-color: #1abb05;
 		}
+
+		/*收藏视频*/
+		.service-text {
+			padding: 5px 5px 10px 5px;
+		}
+		.tab-content a{
+			font-weight: 500;
+			color: black;
+		}
+		.tab-content a:hover{
+			font-weight: 500;
+			color: #7aba1e;
+		}
+
+		/*讲座活动按钮*/
+		.btn-default{
+			font-size: 20px;
+		}
+		.btn-default:hover{
+			color: #ffbc1e;
+			border-color: #ffbc1e;
+		}
+		/*讲座活动列表*/
+		.tab-content a{
+			font-weight: 500;
+			color: #7aba1e;
+		}
+		.tab-content a:hover{
+			font-weight: 500;
+			color: #ffbc1e;
+		}
 	</style>
 </head>
 
@@ -131,9 +162,12 @@
 				<!--Top Right-->
 				<div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href="personal_center.html"><span>个人中心</span></a>
-						<a href=""><span>请登录</span></a>
-						<a href=""><span>注册账号</span></a>
+						<a href="../login/login.html" id="myCenter">
+							<span id="myName">请登录</span>
+						</a>
+						<a href="" id="loginOut" onclick="login_out();return false;" data-toggle="modal">
+							<span>注销</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -155,8 +189,8 @@
 								<li><a href="videos.html" style="font-size: 25px;">课程视频</a></li>
 								<li><a href="lecture.html" style="font-size: 25px;">讲座活动</a></li>
 								<li><a href="news-center.html" style="font-size: 25px;">新闻中心</a></li>
-								<li><a href="service-single.html" style="font-size: 25px;">商城首页</a></li>
-								<li><a href="contact.html" style="font-size: 25px;">关于我们</a></li>
+								<li><a href="../shoppingindex.html" style="font-size: 25px;">商城首页</a></li>
+								<li><a href="about.html" style="font-size: 25px;">关于我们</a></li>
 							</ul> <!-- End of .menuzord-menu -->
 						</nav> <!-- End of #main_menu -->
 					</div>
@@ -246,64 +280,49 @@
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">姓名:</span>
-					    				<span style="font-size: 20px;" id="myName">某某</span>
+					    				<span style="font-size: 20px;" id="myName"></span>
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">年龄:</span>
-					    				<span style="font-size: 20px;" id="myAge">50</span>
+					    				<span style="font-size: 20px;" id="mySex"></span>
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">名族:</span>
-					    				<span style="font-size: 20px;" id="myNation">汉</span>
+					    				<span style="font-size: 20px;" id="myNation"></span>
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">出生日期:</span>
-					    				<span style="font-size: 20px;" id="myBirth">1949-10-1</span>
+					    				<span style="font-size: 20px;" id="myBirth"></span>
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">身份证号:</span>
-					    				<span style="font-size: 20px;" id="myIDE">520102111122224563</span>
+					    				<span style="font-size: 20px;" id="myIDE"></span>
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">电话:</span>
-					    				<span style="font-size: 20px;" id="myTel">130015154786</span>
+					    				<span style="font-size: 20px;" id="myTel"></span>
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">是否独居:</span>
-					    				<span style="font-size: 20px;" id="myStaute">否</span>
+					    				<span style="font-size: 20px;" id="myStaute"></span>
 					    			</div>
 					    			<div class="col-md-12" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">家庭住址:</span>
-					    				<span style="font-size: 20px;" id="myAddress">贵州大学</span>
+					    				<span style="font-size: 20px;" id="myAddress"></span>
 					    			</div>
-					    			<div class="col-md-12" style="margin-bottom: 50px;">
+					    			<!-- <div class="col-md-12" style="margin-bottom: 50px;">
 					    				<span style="font-size: 20px;">所属分店:</span>
-					    				<span style="font-size: 20px;" id="myBranch">贵大</span>
-					    			</div>
+					    				<span style="font-size: 20px;" id="myBranch"></span>
+					    			</div> -->
 
-					    			<div class="col-md-12" style="margin-bottom: 10px;">
+					    			<div class="col-md-12" style="margin-top: 30px;">
 					    				<span style="font-size: 25px;">我的病历</span>
 					    			</div>
-					    			<div class="col-md-12" style="margin-bottom: 10px;">
-					    				<span style="font-size: 20px;">病情描述:</span>
-					    				<span style="font-size: 20px;" id="mySickInfo">xxxxxxx</span>
+					    			<div class="col-md-12" style="padding: 0;" id="myMedicalRecord">
+					    				
 					    			</div>
-					    			<div class="col-md-12" style="margin-bottom: 10px;">
-					    				<span style="font-size: 20px;">检查医院:</span>
-					    				<span style="font-size: 20px;" id="mySickHospital">xxxxxxx</span>
-					    			</div>
-					    			<div class="col-md-6" style="margin-bottom: 10px;">
-					    				<span style="font-size: 20px;">检查医生:</span>
-					    				<span style="font-size: 20px;" id="mySickDoctor">xxx</span>
-					    			</div>
-					    			<div class="col-md-6" style="margin-bottom: 10px;">
-					    				<span style="font-size: 20px;">检查时间:</span>
-					    				<span style="font-size: 20px;" id="mySickDate">2017-09-01</span>
-					    			</div>
-					    			<div class="col-md-12" style="margin-bottom: 10px;">
-					    				<span style="font-size: 22px;color: #ff6000;">健康建议:</span>
-					    				<span style="font-size: 22px;" id="myAdvice">xxxxxxx</span>
-					    			</div>
+					    			<div id="myMedicalRecordPage" style="text-align: center;" class="col-md-12">
+									</div>
 
 					    		</div>
 					    	</div>
@@ -311,13 +330,13 @@
 
 					    <!-- 我的收藏 -->
 					    <div class="tab-pane fade" id="myCollection">
-					        <div class="col-md-12" style="padding-top: 20px;">
+					        <div class="col-md-12" style="padding-top: 20px;padding-left: 0px;padding-right: 0px;">
 					        	<div class="col-md-12">
 					        		<img src="images/logo/collection.png" style="width: 28px;margin-bottom: 10px;">
 					        		<span style="font-size: 25px;color: #525252">我收藏的视频</span>
 					        	</div>
-					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-12" id="myCollectionList">
+					        	<div class="col-md-12" style="margin-top: 30px;padding-left: 0px;padding-right: 0px;">
+					        		<div class="col-md-12" id="myCollectionList" style="padding: 0;">
 							
 									</div>
 									<div id="myCollectionListPage" style="text-align: center;" class="col-md-12">
@@ -496,6 +515,102 @@
 			</div>
 		</footer>
 
+		<!-- 取消收藏成功提示模态框-->
+		<div class="modal fade" id="cancelCollectSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body">取消收藏成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消收藏失败提示模态框-->
+		<div class="modal fade" id="cancelCollectFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="cancelCollectFailInfo">取消收藏失败,请稍后再试。</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消报名成功提示模态框-->
+		<div class="modal fade" id="cancelLectureEnrollSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消报名提示</h4>
+		            </div>
+		            <div class="modal-body">取消报名成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消报名失败提示模态框-->
+		<div class="modal fade" id="cancelLectureEnrollFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消报名提示</h4>
+		            </div>
+		            <div class="modal-body">取消报名失败,请稍后再试</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 注销提示模态框-->
+		<div class="modal fade" id="loginOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+		                <h4 class="modal-title" id="myModalLabel">注销提示</h4>
+		            </div>
+		            <div class="modal-body" id="login_info"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="reload()">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 注册提示模态框-->
+		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">注册提示</h4>
+		            </div>
+		            <div class="modal-body">亲，我们暂不支持在线注册，如需注册请联系工作人员:13310105261</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
 	<!-- Scroll Top Button -->
 	<button class="scroll-top tran3s color2_bg">
 		<span class="fa fa-angle-up"></span>
@@ -553,25 +668,7 @@
 	</div>
 
 	<script type="text/javascript">
-		var info = decodeURI(window.location.href.split("?")[1])
-
-		// $.ajax({
-		// 	type: 'get',
-		// 	contentType:'application/json',
-		// 	url:"/eldermanage/v1/course/lecture/lecturedetail",
-		// 	data:"lectureid=" + info,
-		// 	success:function(result){
-		// 		var lectureData = result.data;
-
-		// 		$("lectureTitle").html(lectureData.)
-		// 		$("lectureContent").html(lectureData.)
-		// 		$("lectureDatePeople").html(lectureData.)
-		// 		$("lectureNeedPeople").html(lectureData.)
-		// 		$("lectureTime").html(lectureData.)
-		// 		$("lectureState").html(lectureData.)
-		// 		$("lectureSite").html(lectureData.)
-		// 	}
-		// })
+		// var info = decodeURI(window.location.href.split("?")[1])
 
 		// 侧滑js
 		$("#mobile-nav-taggle").click(function () {
@@ -588,6 +685,144 @@
             }
         })
 
+        //判断登录
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/judgeLogin",
+			data : null,
+			success : function(result){
+				if (result.success) {
+					$("#myCenter").attr('href','personal_center.html')
+					$('#myName').html(result.data.oldername)
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+
+		//注销
+		function login_out(){
+			$.ajax({
+				type : 'delete',
+				contentType : false,
+				url : "/eldermanage/v1/index/person/accountnumber",
+				data : null,
+				success : function(result) {
+					$("#login_info").html(result.information);
+					$("#loginOutModal").modal('show');
+				},
+				error : function() {
+					alert('fail')
+				}
+			})
+		}
+
+		//注销返回首页
+		function reload(){
+			window.location.href="index.html";
+		}
+
+		//个人信息
+        $.ajax({
+			type: 'get',
+			contentType:'application/json',
+			url:"/eldermanage/v1/indexpersonal/olderbase",
+			data:null,
+			success:function(result){
+				var myInfoData = result.data;
+				let date = new Date(myInfoData.olderbirthday);
+				let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+
+				$("#myName").html(myInfoData.oldername)
+				$("#mySex").html(myInfoData.oldersex)
+				$("#myNation").html(myInfoData.oldernation)
+				$("#myBirth").html(year)
+				$("#myIDE").html(myInfoData.olderide)
+				$("#myTel").html(myInfoData.oldertel)
+				$("#myStaute").html(myInfoData.oldersinglestatus)
+				$("#myAddress").html(myInfoData.olderaddress)
+				// $("#myBranch").html(myInfoData.)
+			}
+		})
+
+        //我的病历
+        $.ajax({
+        	type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/indexpersonal/oldersick",
+        	data:null,
+        	success:function(result){
+        		var myMedicalRecordData = result.data;
+
+        		if(myMedicalRecordData != null){
+        			$("#myMedicalRecordPage").show();
+					pageMedicalRecord(myMedicalRecordData, $("#myMedicalRecordPage"));
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">当前没有病历数据,如有问题,请联系客服:13302578961</span>
+		    			</div>
+        			`;
+        			$("#myMedicalRecord").append(oDiv);
+        		}
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+        })
+
+        //我的病历分页
+		function pageMedicalRecord(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 5  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myMedicalRecord').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.sickdate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+				        	let datas =`
+										<div class="col-md-12" style="margin-bottom: 10px;margin-top:20px;">
+						    				<span style="font-size: 20px;">病情描述:</span>
+						    				<span style="font-size: 20px;">${item.sickinfo}</span>
+						    			</div>
+						    			<div class="col-md-12" style="margin-bottom: 10px;">
+						    				<span style="font-size: 20px;">检查医院:</span>
+						    				<span style="font-size: 20px;">${item.sickhospital}</span>
+						    			</div>
+						    			<div class="col-md-6" style="margin-bottom: 10px;">
+						    				<span style="font-size: 20px;">检查医生:</span>
+						    				<span style="font-size: 20px;">${item.sickdoctor}</span>
+						    			</div>
+						    			<div class="col-md-6" style="margin-bottom: 10px;">
+						    				<span style="font-size: 20px;">检查时间:</span>
+						    				<span style="font-size: 20px;">${year}</span>
+						    			</div>
+						    			<div class="col-md-12" style="margin-bottom: 10px;">
+						    				<span style="font-size: 22px;color: #ff6000;">健康建议:</span>
+						    				<span style="font-size: 22px;">${item.sickadvice}</span>
+						    			</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
         //已收藏视频列表
         $.ajax({
         	type: 'get',
@@ -597,13 +832,48 @@
         	success:function(result){
         		var myCollectionVideoData = result.data;
 
-        		$("#myCollectionListPage").show();
-				pageCollection(myCollectionVideoData, $("#myCollectionListPage"));
+        		if(myCollectionVideoData != null){
+        			$("#myCollectionListPage").show();
+					pageCollection(myCollectionVideoData, $("#myCollectionListPage"));
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">当前还没有收藏的视频</span>
+		    			</div>
+        			`;
+        			$("#myCollectionList").append(oDiv);
+        		}
         	},
         	error:function(){
         		alert('数据库错误')
         	}
         })
+
+        //取消收藏按钮
+		function cancelCollect(id,state,obj){
+			if (state == "未登录") {
+				$("#loginModal").modal('show');
+			}else if(state == "已收藏") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/video/cancelcollection?videoid="+id,
+					data:null,
+					success:function(result){
+						if(result.information == '取消成功'){
+							$("#cancelCollectSuccessModal").modal('show');
+							$(obj).closest('.videoItemHide').hide();
+						}else if(result.information == '取消失败'){
+							$("#cancelCollectFailModal").modal('show');
+						}
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
 
         //已收藏视频分页
 		function pageCollection(videodata, pageRoot){
@@ -632,7 +902,7 @@
 				        	let date = new Date(item.video.videopublishdate);
 				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
-								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+								<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 videoItemHide">
 									<div class="single-service-item">
 										<span class="top-border"></span>
 			                            <span class="right-border"></span>
@@ -687,8 +957,17 @@
         	success:function(result){
         		var myVideoRecordData = result.data;
 
-        		$("#myVideoRecordPage").show();
-				pageVideoRecord(myVideoRecordData, $("#myVideoRecordPage"));
+        		if(myVideoRecordData != null){
+        			$("#myVideoRecordPage").show();
+					pageVideoRecord(myVideoRecordData, $("#myVideoRecordPage"));
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">当前还没有播放记录</span>
+		    			</div>
+        			`;
+        			$("#myVideoRecordList").append(oDiv);
+        		}
         	},
         	error:function(){
         		alert('数据库错误')
@@ -712,11 +991,17 @@
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.vrecorddate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate()
+				        		+" "+date.getHours()+":"+date.getMinutes();
 				        	let datas =`
-								<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
-				        		<span>
-				        			<a href="" target="_blank" style="font-size: 20px;">${item.video.videoname}</a>
-				        		</span>
+					        	<div class="col-md-12" style="margin-top:10px;">
+									<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
+									<span style="font-size: 20px;">观看时间:${year}</span>
+					        		<span>
+					        			<a href="" target="_blank" style="font-size: 20px;">${item.video.videoname}</a>
+					        		</span>
+					        	</div>
 							`;
 				        	arr.push(datas);
 				        });
@@ -736,8 +1021,17 @@
         	success:function(result){
         		var myLectureRecordData = result.data;
 
-        		$("#myLectureRecordPage").show();
-				pageLectureRecord(myLectureRecordData, $("#myLectureRecordPage"));
+        		if(myLectureRecordData != null){
+        			$("#myLectureRecordPage").show();
+					pageLectureRecord(myLectureRecordData, $("#myLectureRecordPage"));
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">当前还没有讲座记录</span>
+		    			</div>
+        			`;
+        			$("#myLectureRecordList").append(oDiv);
+        		}
         	},
         	error:function(){
         		alert('数据库错误')
@@ -773,7 +1067,7 @@
 				        	}
 
 				        	let datas =`
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 lectureHide">
 									<div class="single-service-item">
 										<span class="top-border"></span>
 			                            <span class="right-border"></span>
@@ -782,7 +1076,7 @@
 										<!-- <div class="service-icon">
 											<i class="icon flaticon-budding-leaves"></i>
 										</div> -->
-										<div class="service-text">
+										<div class="service-text" style="padding:10px 10px 10px 10px">
 											<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
 												${item.lecture.lecturename}
 											</p>
@@ -845,8 +1139,17 @@
         	success:function(result){
         		var myActionRecordData = result.data;
 
-        		$("#myActionRecordPage").show();
-				pageActionRecord(myActionRecordData, $("#myActionRecordPage"));
+        		if(myActionRecordData != null){
+        			$("#myActionRecordPage").show();
+					pageActionRecord(myActionRecordData, $("#myActionRecordPage"));
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">当前还没有活动记录</span>
+		    			</div>
+        			`;
+        			$("#myActionRecordList").append(oDiv);
+        		}
         	},
         	error:function(){
         		alert('数据库错误')
@@ -882,7 +1185,7 @@
 				        	}
 				        	
 				        	let datas =`
-								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 actionHide">
 									<div class="single-service-item">
 										<span class="top-border"></span>
 			                            <span class="right-border"></span>
@@ -891,7 +1194,7 @@
 										<!-- <div class="service-icon">
 											<i class="icon flaticon-budding-leaves"></i>
 										</div> -->
-										<div class="service-text">
+										<div class="service-text" style="padding:10px 10px 10px 10px">
 											<p style="font-size: 25px;text-align: center;line-height: 30px;height: 60px;overflow:hidden;">
 												${item.action.actionname}
 											</p>
@@ -947,11 +1250,9 @@
 
 		//讲座取消报名按钮
 		function lectureCancel(id,state,obj){
-			//$("#myModalLabel").attr("data",id);
 			if (state == "未登录") {
 				$(obj).attr("data-toggle", "modal");
 				$(obj).attr("data-target", "#loginModal");
-				//$("#loginModal").show('modal');
 			}else if(state == "已报名") {
 				//报名
 				$.ajax({
@@ -960,8 +1261,12 @@
 					url:"/eldermanage/v1/course/actions/cancellecture?lectureid="+id,
 					data:null,
 					success:function(result){
-						alert(result.information)
-						window.location.reload();
+						if(result.information == '取消成功'){
+							$("#cancelLectureEnrollSuccessModal").modal('show');
+							$(obj).closest('.lectureHide').hide();
+						}else if(result.information == '取消失败'){
+							$("#cancelLectureEnrollFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')
@@ -972,11 +1277,9 @@
 
 		//活动取消报名按钮
 		function actionCancel(id,state,obj){
-			//$("#myModalLabel").attr("data",id);
 			if (state == "未登录") {
 				$(obj).attr("data-toggle", "modal");
 				$(obj).attr("data-target", "#loginModal");
-				//$("#loginModal").show('modal');
 			}else if(state == "已报名") {
 				//报名
 				$.ajax({
@@ -985,8 +1288,12 @@
 					url:"/eldermanage/v1/course/actions/cancelaction?actionid="+id,
 					data:null,
 					success:function(result){
-						alert(result.information)
-						window.location.reload();
+						if(result.information == '取消成功'){
+							$("#cancelLectureEnrollSuccessModal").modal('show');
+							$(obj).closest('.actionHide').hide();
+						}else if(result.information == '取消失败'){
+							$("#cancelLectureEnrollFailModal").modal('show');
+						}
 					},
 					error(){
 						alert('数据库错误')

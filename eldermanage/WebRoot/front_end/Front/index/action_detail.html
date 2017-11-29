@@ -59,8 +59,19 @@
 				<!--Top Right-->
 				<div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href=""><span>请登录</span></a>
-						<a href=""><span>注册账号</span></a>
+						<a href="personal_center.html" id="person_center">
+							<span>个人中心</span>
+							<span class="badge" style="margin-left: 3px;">1</span>
+						</a>
+						<a href="../login/login.html" id="myCenter">
+							<span id="myName">请登录</span>
+						</a>
+						<a href="" data-toggle="modal" data-target="#signUpModal" id="signUp">
+							<span>注册账号</span>
+						</a>
+						<a href="" id="loginOut" onclick="login_out();return false;" data-toggle="modal">
+							<span>注销</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -82,8 +93,8 @@
 								<li><a href="videos.html" style="font-size: 25px;">课程视频</a></li>
 								<li><a href="lecture.html" style="font-size: 25px;color: #ffbc1e;">讲座活动</a></li>
 								<li><a href="news-center.html" style="font-size: 25px;">新闻中心</a></li>
-								<li><a href="service-single.html" style="font-size: 25px;">商城首页</a></li>
-								<li><a href="contact.html" style="font-size: 25px;">关于我们</a></li>
+								<li><a href="../shoppingindex.html" style="font-size: 25px;">商城首页</a></li>
+								<li><a href="about.html" style="font-size: 25px;">关于我们</a></li>
 							</ul> <!-- End of .menuzord-menu -->
 						</nav> <!-- End of #main_menu -->
 					</div>
@@ -104,10 +115,10 @@
             	<div class="row clearfix">
                     <div class="col-md-6 col-sm-6 col-xs-12 pull-left">
 						<h1>活动详情</h1>
-						<span style="font-size: 18px;color: #b5b5b5;">ACTIVITY DETAIL</span>
+						<span style="font-size: 18px;color: #b5b5b5;">ACTION DETAIL</span>
 					</div>
                     <div class="col-md-6 col-sm-6 col-xs-12 pull-right text-right path">
-                    	<a href="lecture.html" style="font-size: 20px;">讲座活动</a><span style="font-size: 20px;"> > </span>
+                    	<a href="lecture.html" style="font-size: 20px;">活动活动</a><span style="font-size: 20px;"> > </span>
                     	<a href="" style="font-size: 20px;">活动详情</a></div>
 					<div class="overlay"></div>
                 </div>
@@ -119,41 +130,47 @@
         	<div class="container">
             	<div class="col-md-12" style="padding-top: 50px;padding-bottom: 50px;background-color: #f5f5f5;margin-top: 100px;margin-bottom: 100px;">
             		<div class="col-md-12" style="text-align: center;">
-            			<p style="font-size: 30px;line-height: 35px;height: 70px;overflow: hidden;" id="activityTitle">
-            				标题标题标题标题
+            			<p style="font-size: 30px;line-height: 35px;height: 70px;overflow: hidden;" id="actionTitle">
+            				
             			</p>
             		</div>
 
             		<div class="col-md-12" style="margin-top: 30px;margin-bottom: 30px;">
-            			<p style="font-size: 23px;text-indent: 4ex;line-height: 30px;" id="activityContent">
-            				这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢这是内容噢噢噢
+            			<p style="font-size: 23px;text-indent: 4ex;line-height: 30px;" id="actionContent">
+            				
             			</p>
             		</div>
 
 					<div class="col-md-6" style="margin-top: 10px;">
 						<span style="font-size: 25px;color: #7aba1e;">已预约人数:</span>
-						<span style="font-size: 25px;color: #ffbc1e;" id="activityDatePeople">50</span>
+						<span style="font-size: 25px;color: #ffbc1e;" id="actionDatePeople"></span>
 					</div>
 					<div class="col-md-6" style="margin-top: 10px;">
 						<span style="font-size: 25px;color: #7aba1e;">开启所需人数:</span>
-						<span style="font-size: 25px;color: #ffbc1e;" id="activityNeedPeople">100</span>
+						<span style="font-size: 25px;color: #ffbc1e;" id="actionNeedPeople"></span>
 					</div>
 					<div class="col-md-6" style="margin-top: 10px;">
 						<span style="font-size: 25px;color: #7aba1e;">活动时间:</span>
-						<span style="font-size: 25px;color: #ffbc1e;" id="activityTime">2017-10-1</span>
+						<span style="font-size: 25px;color: #ffbc1e;" id="actionTime"></span>
 					</div>
 					<div class="col-md-6" style="margin-top: 10px;">
 						<span style="font-size: 25px;color: #7aba1e;">活动状态:</span>
-						<span style="font-size: 25px;color: #ffbc1e;" id="activityState">预约中</span>
+						<span style="font-size: 25px;color: #ffbc1e;" id="actionState"></span>
 					</div>
 					<div class="col-md-12" style="margin-top: 10px;">
 						<span style="font-size: 25px;color: #7aba1e;">活动地点:</span>
-						<span style="font-size: 25px;color: #ffbc1e;" id="activitySite">贵州大学</span>
+						<span style="font-size: 25px;color: #ffbc1e;" id="actionSite"></span>
 					</div>
 					<div class="col-md-3 col-md-offset-9 col-lg-2 col-lg-offset-10" style="padding-top: 20px;">
-						<button type="button" class="btn btn-default" style="font-size: 25px;">
+						<button type="button" class="btn btn-default" style="font-size: 25px;" id="actionCancelbtn" 
+							onclick="actionCancel()">
+							取消报名
+						</button>
+						<button type="button" class="btn btn-default" style="font-size: 25px;" id="actionEnrollbtn" 
+							onclick="actionEnroll()">
 							点击报名
 						</button>
+						<input type="hidden" name="" id="actionJoinState">
 					</div>
 
             	</div>
@@ -253,7 +270,118 @@
 			</div>
 		</footer>
 
+		<!-- 注册提示模态框-->
+		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">注册提示</h4>
+		            </div>
+		            <div class="modal-body">亲，我们暂不支持在线注册，如需注册请联系工作人员:13310105261</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
 
+		<!-- 注销提示模态框-->
+		<div class="modal fade" id="loginOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+		                <h4 class="modal-title" id="myModalLabel">注销提示</h4>
+		            </div>
+		            <div class="modal-body" id="login_info"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="reload()">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 登录提示模态框-->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">登录提示</h4>
+		            </div>
+		            <div class="modal-body">亲，你还没有登录哦，请先登录</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+		                <button type="button" class="btn btn-primary">点我去登录</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 报名成功提示模态框-->
+		<div class="modal fade" id="actionEnrollSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">报名提示</h4>
+		            </div>
+		            <div class="modal-body">报名成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 报名失败提示模态框-->
+		<div class="modal fade" id="actionEnrollFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">报名提示</h4>
+		            </div>
+		            <div class="modal-body">报名失败,请稍后再试</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消报名成功提示模态框-->
+		<div class="modal fade" id="cancelActionEnrollSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消报名提示</h4>
+		            </div>
+		            <div class="modal-body">取消报名成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消报名失败提示模态框-->
+		<div class="modal fade" id="cancelActionEnrollFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消报名提示</h4>
+		            </div>
+		            <div class="modal-body">取消报名失败,请稍后再试</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
 
 	<!-- Scroll Top Button -->
 	<button class="scroll-top tran3s color2_bg">
@@ -314,23 +442,134 @@
 	<script type="text/javascript">
 		var info = decodeURI(window.location.href.split("?")[1])
 
+		//判断登录
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/judgeLogin",
+			data : null,
+			success : function(result){
+				if (result.success) {
+					$("#myCenter").attr('href','personal_center.html')
+					$('#myName').html(result.data.oldername)
+					$("#signUp").hide();
+				}else {
+					$("#loginOut").hide();
+					$("#person_center").hide();
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+
+		//注销
+		function login_out(){
+			$.ajax({
+				type : 'delete',
+				contentType : false,
+				url : "/eldermanage/v1/index/person/accountnumber",
+				data : null,
+				success : function(result) {
+					$("#login_info").html(result.information);
+					$("#loginOutModal").modal('show');
+				},
+				error : function() {
+					alert('fail')
+				}
+			})
+		}
+
+		//刷新页面
+		function reload(){
+			window.location.reload();
+		}
+
+		//活动详情
 		$.ajax({
 			type: 'get',
 			contentType:'application/json',
 			url:"/eldermanage/v1/course/actions/actiondetail",
 			data:"actionid=" + info,
 			success:function(result){
-				var activityData = result.data;
+				var actionData = result.data;
+				let date = new Date(actionData[0].action.actionpublishdate);
+				let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 
-				$("activityTitle").html(activityData.)
-				$("activityContent").html(activityData.)
-				$("activityDatePeople").html(activityData.)
-				$("activityNeedPeople").html(activityData.)
-				$("activityTime").html(activityData.)
-				$("activityState").html(activityData.)
-				$("activitySite").html(activityData.)
+				if(actionData[0].joinStatus == "已报名"){
+					$("#actionEnrollbtn").hide();
+				}else{
+					$("#actionCancelbtn").hide();
+				}
+
+				$("#actionJoinState").val(actionData[0].jionStatuString)
+
+				$("#actionTitle").html(actionData[0].action.actionname)
+				$("#actionContent").html(actionData[0].action.actionintro)
+				$("#actionDatePeople").html(actionData[0].action.actionenroll)
+				$("#actionNeedPeople").html(actionData[0].action.actiontotal)
+				$("#actionTime").html(year)
+				$("#actionState").html(actionData[0].action.actionstatus)
+				$("#actionSite").html(actionData[0].action.actionaddress)
+			},
+			error:function(){
+				alert("数据库错误")
 			}
 		})
+
+		//活动报名按钮
+		function actionEnroll(){
+			if ($("#actionJoinState").val() == "未登录") {
+				$("#loginModal").modal('show');
+			}else if($("#actionJoinState").val() == "未报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/joinaction?actionid=" + info,
+					data:null,
+					success:function(result){
+						if(result.information == '报名成功'){
+							$("#actionEnrollSuccessModal").modal('show');
+							$("#actionEnrollbtn").hide();
+							$("#actionCancelbtn").show();
+						}else if(result.information == '插入操作失败'){
+							$("#actionEnrollFailModal").modal('show');
+						}
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
+
+		//活动取消报名按钮
+		function actionCancel(){
+			if ($("#actionJoinState").val() == "未登录") {
+				$("#loginModal").modal('show');
+			}else if($("#actionJoinState").val() == "已报名") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/actions/cancelaction?actionid=" + info,
+					data:null,
+					success:function(result){
+						if(result.information == '取消成功'){
+							$("#cancelActionEnrollSuccessModal").modal('show');
+							$("#actionCancelbtn").hide();
+							$("#actionEnrollbtn").show();
+						}else if(result.information == '取消失败'){
+							$("#cancelActionEnrollFailModal").modal('show');
+						}
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
 	</script>
 	
 </body>
