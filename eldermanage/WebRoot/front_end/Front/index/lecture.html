@@ -51,8 +51,8 @@
 			color: #ffbc1e;
 		}
 		.nav-pills>li.active>a {
-			border-top-left-radius: 10px;
-			border-bottom-left-radius: 10px;
+			border-top-left-radius: 30px;
+			border-bottom-left-radius: 30px;
 			border-top-right-radius: 0px;
 			border-bottom-right-radius: 0px;
 			background-color: #ff7502;
@@ -77,8 +77,8 @@
 			line-height: 45px;
 			border-top-right-radius: 0px;
 			border-bottom-right-radius: 0px;
-			border-top-left-radius: 10px;
-			border-bottom-left-radius: 10px;
+			border-top-left-radius: 30px;
+			border-bottom-left-radius: 30px;
 		}
 		.nav-pills>li>a:hover{
 			background-color: #ff9600;
@@ -120,8 +120,19 @@
 				<!--Top Right-->
 				<div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href="../login/login.html"><span>请登录</span></a>
-						<a href=""><span>注册账号</span></a>
+						<a href="personal_center.html" id="person_center">
+							<span>个人中心</span>
+							<span class="badge" style="margin-left: 3px;">1</span>
+						</a>
+						<a href="../login/login.html" id="myCenter">
+							<span id="myName">请登录</span>
+						</a>
+						<a href="" data-toggle="modal" data-target="#signUpModal" id="signUp">
+							<span>注册账号</span>
+						</a>
+						<a href="" id="loginOut" onclick="login_out();return false;" data-toggle="modal">
+							<span>注销</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -143,8 +154,8 @@
 								<li><a href="videos.html" style="font-size: 25px;">课程视频</a></li>
 								<li><a href="lecture.html" style="font-size: 25px;color: #ffbc1e;">讲座活动</a></li>
 								<li><a href="news-center.html" style="font-size: 25px;">新闻中心</a></li>
-								<li><a href="service-single.html" style="font-size: 25px;">商城首页</a></li>
-								<li><a href="contact.html" style="font-size: 25px;">关于我们</a></li>
+								<li><a href="../shoppingindex.html" style="font-size: 25px;">商城首页</a></li>
+								<li><a href="about.html" style="font-size: 25px;">关于我们</a></li>
 							</ul> <!-- End of .menuzord-menu -->
 						</nav> <!-- End of #main_menu -->
 					</div>
@@ -188,7 +199,7 @@
 					<ul class="nav nav-pills" style="margin:0 auto;width:302px;">
 					  <li class="active"><a href="#lectureList" data-toggle="tab">讲座</a></li>
 					  <li><a href="#activityList" data-toggle="tab" 
-					  	style="border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;border-top-left-radius: 0px;border-top-right-radius: 10px;">
+					  	style="border-bottom-right-radius: 30px;border-bottom-left-radius: 0px;border-top-left-radius: 0px;border-top-right-radius: 30px;">
 					  活动</a></li>
 					</ul>
 				</div>
@@ -225,7 +236,7 @@
 		            </div>
 		            <div class="modal-body">亲，你还没有登录哦，请先登录</div>
 		            <div class="modal-footer">
-		                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
 		                <button type="button" class="btn btn-primary">点我去登录</button>
 		            </div>
 		        </div><!-- /.modal-content -->
@@ -280,7 +291,7 @@
 		    </div><!-- /.modal -->
 		</div>
 
-		<!-- 取消报名成功提示模态框-->
+		<!-- 取消报名失败提示模态框-->
 		<div class="modal fade" id="cancelLectureEnrollFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
 		    <div class="modal-dialog">
 		        <div class="modal-content">
@@ -291,6 +302,38 @@
 		            <div class="modal-body">取消报名失败,请稍后再试</div>
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 注销提示模态框-->
+		<div class="modal fade" id="loginOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+		                <h4 class="modal-title" id="myModalLabel">注销提示</h4>
+		            </div>
+		            <div class="modal-body" id="login_info"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="reload()">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 注册提示模态框-->
+		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">注册提示</h4>
+		            </div>
+		            <div class="modal-body">亲，我们暂不支持在线注册，如需注册请联系工作人员:13310105261</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
@@ -448,6 +491,49 @@
 	</div>
 
 	<script type="text/javascript">
+		//判断登录
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/judgeLogin",
+			data : null,
+			success : function(result){
+				if (result.success) {
+					$("#myCenter").attr('href','personal_center.html')
+					$('#myName').html(result.data.oldername)
+					$("#signUp").hide();
+				}else {
+					$("#loginOut").hide();
+					$("#person_center").hide();
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+
+		//注销
+		function login_out(){
+			$.ajax({
+				type : 'delete',
+				contentType : false,
+				url : "/eldermanage/v1/index/person/accountnumber",
+				data : null,
+				success : function(result) {
+					$("#login_info").html(result.information);
+					$("#loginOutModal").modal('show');
+				},
+				error : function() {
+					alert('fail')
+				}
+			})
+		}
+
+		//刷新页面
+		function reload(){
+			window.location.reload();
+		}
+
 		//讲座列表
 		$.ajax({
 			type:'get',
@@ -549,7 +635,7 @@
 													<span style="font-size: 20px;color: #ffbc1e;">${item.lecture.lectureaddress}</span>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<a href="" style="font-size: 20px;">查看详情 ></a>
+													<a href="lecture_detail.html?${item.lecture.lectureid}" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
 													<button id="lecturebtn${index}" class="btn btn-default" style="float: right;${joinState1}" onclick="lectureCancel(${item.lecture.lectureid},'${item.joinStatus}',this)">
@@ -642,7 +728,7 @@
 													<span style="font-size: 20px;color: #ffbc1e;">${item.action.actionaddress}</span>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
-													<a href="" style="font-size: 20px;">查看详情 ></a>
+													<a href="action_detail.html?${item.action.actionid}" style="font-size: 20px;">查看详情 ></a>
 												</div>
 												<div class="col-md-6" style="padding-top: 20px;">
 													<button id="actionbtn${index}" type="button" class="btn btn-default" style="float: right;${joinState1}" onclick="actionCancel(${item.action.actionid},'${item.jionStatuString}',this)">

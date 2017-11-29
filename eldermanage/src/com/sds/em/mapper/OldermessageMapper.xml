@@ -1,228 +1,246 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sds.em.mapper.OldermessageMapper" >
-  <resultMap id="BaseResultMap" type="com.sds.em.po.Oldermessage" >
-    <id column="messageId" property="messageid" jdbcType="INTEGER" />
-    <result column="messageOlderid" property="messageolderid" jdbcType="INTEGER" />
-    <result column="messageContent" property="messagecontent" jdbcType="VARCHAR" />
-    <result column="messageDate" property="messagedate" jdbcType="TIMESTAMP" />
-    <result column="messageType" property="messagetype" jdbcType="VARCHAR" />
-    <result column="messageStatus" property="messagestatus" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    messageId, messageOlderid, messageContent, messageDate, messageType, messageStatus
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sds.em.po.OldermessageExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from oldermessage
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from oldermessage
-    where messageId = #{messageid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from oldermessage
-    where messageId = #{messageid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.sds.em.po.OldermessageExample" >
-    delete from oldermessage
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.sds.em.po.Oldermessage" >
-    insert into oldermessage (messageId, messageOlderid, messageContent, 
-      messageDate, messageType, messageStatus
-      )
-    values (#{messageid,jdbcType=INTEGER}, #{messageolderid,jdbcType=INTEGER}, #{messagecontent,jdbcType=VARCHAR}, 
-      #{messagedate,jdbcType=TIMESTAMP}, #{messagetype,jdbcType=VARCHAR}, #{messagestatus,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.sds.em.po.Oldermessage" >
-    insert into oldermessage
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="messageid != null" >
-        messageId,
-      </if>
-      <if test="messageolderid != null" >
-        messageOlderid,
-      </if>
-      <if test="messagecontent != null" >
-        messageContent,
-      </if>
-      <if test="messagedate != null" >
-        messageDate,
-      </if>
-      <if test="messagetype != null" >
-        messageType,
-      </if>
-      <if test="messagestatus != null" >
-        messageStatus,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="messageid != null" >
-        #{messageid,jdbcType=INTEGER},
-      </if>
-      <if test="messageolderid != null" >
-        #{messageolderid,jdbcType=INTEGER},
-      </if>
-      <if test="messagecontent != null" >
-        #{messagecontent,jdbcType=VARCHAR},
-      </if>
-      <if test="messagedate != null" >
-        #{messagedate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="messagetype != null" >
-        #{messagetype,jdbcType=VARCHAR},
-      </if>
-      <if test="messagestatus != null" >
-        #{messagestatus,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.sds.em.po.OldermessageExample" resultType="java.lang.Integer" >
-    select count(*) from oldermessage
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update oldermessage
-    <set >
-      <if test="record.messageid != null" >
-        messageId = #{record.messageid,jdbcType=INTEGER},
-      </if>
-      <if test="record.messageolderid != null" >
-        messageOlderid = #{record.messageolderid,jdbcType=INTEGER},
-      </if>
-      <if test="record.messagecontent != null" >
-        messageContent = #{record.messagecontent,jdbcType=VARCHAR},
-      </if>
-      <if test="record.messagedate != null" >
-        messageDate = #{record.messagedate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.messagetype != null" >
-        messageType = #{record.messagetype,jdbcType=VARCHAR},
-      </if>
-      <if test="record.messagestatus != null" >
-        messageStatus = #{record.messagestatus,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update oldermessage
-    set messageId = #{record.messageid,jdbcType=INTEGER},
-      messageOlderid = #{record.messageolderid,jdbcType=INTEGER},
-      messageContent = #{record.messagecontent,jdbcType=VARCHAR},
-      messageDate = #{record.messagedate,jdbcType=TIMESTAMP},
-      messageType = #{record.messagetype,jdbcType=VARCHAR},
-      messageStatus = #{record.messagestatus,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Oldermessage" >
-    update oldermessage
-    <set >
-      <if test="messageolderid != null" >
-        messageOlderid = #{messageolderid,jdbcType=INTEGER},
-      </if>
-      <if test="messagecontent != null" >
-        messageContent = #{messagecontent,jdbcType=VARCHAR},
-      </if>
-      <if test="messagedate != null" >
-        messageDate = #{messagedate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="messagetype != null" >
-        messageType = #{messagetype,jdbcType=VARCHAR},
-      </if>
-      <if test="messagestatus != null" >
-        messageStatus = #{messagestatus,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where messageId = #{messageid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.sds.em.po.Oldermessage" >
-    update oldermessage
-    set messageOlderid = #{messageolderid,jdbcType=INTEGER},
-      messageContent = #{messagecontent,jdbcType=VARCHAR},
-      messageDate = #{messagedate,jdbcType=TIMESTAMP},
-      messageType = #{messagetype,jdbcType=VARCHAR},
-      messageStatus = #{messagestatus,jdbcType=VARCHAR}
-    where messageId = #{messageid,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.sds.em.mapper.OldermessageMapper">
+	<resultMap id="BaseResultMap" type="com.sds.em.po.Oldermessage">
+		<id column="messageId" property="messageid" jdbcType="BIGINT" />
+		<result column="messageOlderid" property="messageolderid"
+			jdbcType="INTEGER" />
+		<result column="messageContent" property="messagecontent"
+			jdbcType="VARCHAR" />
+		<result column="messageDate" property="messagedate" jdbcType="TIMESTAMP" />
+		<result column="messageType" property="messagetype" jdbcType="VARCHAR" />
+		<result column="messageStatus" property="messagestatus"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		messageId, messageOlderid, messageContent, messageDate, messageType,
+		messageStatus
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.sds.em.po.OldermessageExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from oldermessage
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from oldermessage
+		where messageId = #{messageid,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from oldermessage
+		where messageId = #{messageid,jdbcType=BIGINT}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.sds.em.po.OldermessageExample">
+		delete from oldermessage
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.sds.em.po.Oldermessage">
+		insert into oldermessage (messageId, messageOlderid, messageContent,
+		messageDate, messageType, messageStatus
+		)
+		values (#{messageid,jdbcType=BIGINT}, #{messageolderid,jdbcType=INTEGER},
+		#{messagecontent,jdbcType=VARCHAR},
+		#{messagedate,jdbcType=TIMESTAMP}, #{messagetype,jdbcType=VARCHAR}, #{messagestatus,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.sds.em.po.Oldermessage">
+		insert into oldermessage
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="messageid != null">
+				messageId,
+			</if>
+			<if test="messageolderid != null">
+				messageOlderid,
+			</if>
+			<if test="messagecontent != null">
+				messageContent,
+			</if>
+			<if test="messagedate != null">
+				messageDate,
+			</if>
+			<if test="messagetype != null">
+				messageType,
+			</if>
+			<if test="messagestatus != null">
+				messageStatus,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="messageid != null">
+				#{messageid,jdbcType=BIGINT},
+			</if>
+			<if test="messageolderid != null">
+				#{messageolderid,jdbcType=INTEGER},
+			</if>
+			<if test="messagecontent != null">
+				#{messagecontent,jdbcType=VARCHAR},
+			</if>
+			<if test="messagedate != null">
+				#{messagedate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="messagetype != null">
+				#{messagetype,jdbcType=VARCHAR},
+			</if>
+			<if test="messagestatus != null">
+				#{messagestatus,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.sds.em.po.OldermessageExample"
+		resultType="java.lang.Integer">
+		select count(*) from oldermessage
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update oldermessage
+		<set>
+			<if test="record.messageid != null">
+				messageId = #{record.messageid,jdbcType=BIGINT},
+			</if>
+			<if test="record.messageolderid != null">
+				messageOlderid = #{record.messageolderid,jdbcType=INTEGER},
+			</if>
+			<if test="record.messagecontent != null">
+				messageContent = #{record.messagecontent,jdbcType=VARCHAR},
+			</if>
+			<if test="record.messagedate != null">
+				messageDate = #{record.messagedate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.messagetype != null">
+				messageType = #{record.messagetype,jdbcType=VARCHAR},
+			</if>
+			<if test="record.messagestatus != null">
+				messageStatus = #{record.messagestatus,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update oldermessage
+		set messageId = #{record.messageid,jdbcType=BIGINT},
+		messageOlderid = #{record.messageolderid,jdbcType=INTEGER},
+		messageContent = #{record.messagecontent,jdbcType=VARCHAR},
+		messageDate = #{record.messagedate,jdbcType=TIMESTAMP},
+		messageType = #{record.messagetype,jdbcType=VARCHAR},
+		messageStatus = #{record.messagestatus,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.sds.em.po.Oldermessage">
+		update oldermessage
+		<set>
+			<if test="messageolderid != null">
+				messageOlderid = #{messageolderid,jdbcType=INTEGER},
+			</if>
+			<if test="messagecontent != null">
+				messageContent = #{messagecontent,jdbcType=VARCHAR},
+			</if>
+			<if test="messagedate != null">
+				messageDate = #{messagedate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="messagetype != null">
+				messageType = #{messagetype,jdbcType=VARCHAR},
+			</if>
+			<if test="messagestatus != null">
+				messageStatus = #{messagestatus,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where messageId = #{messageid,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Oldermessage">
+		update oldermessage
+		set messageOlderid = #{messageolderid,jdbcType=INTEGER},
+		messageContent = #{messagecontent,jdbcType=VARCHAR},
+		messageDate = #{messagedate,jdbcType=TIMESTAMP},
+		messageType = #{messagetype,jdbcType=VARCHAR},
+		messageStatus = #{messagestatus,jdbcType=VARCHAR}
+		where messageId = #{messageid,jdbcType=BIGINT}
+	</update>
+	<select id="newmessagecount" parameterType="int"
+		resultType="com.sds.em.po.Oldermessage">
+		SELECT * FROM oldermessage as om where om.messageOlderid=#{value} and
+		om.messageStatus="未读"
+	</select>
 </mapper>
