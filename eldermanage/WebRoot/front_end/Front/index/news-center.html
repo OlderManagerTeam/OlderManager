@@ -504,10 +504,10 @@
 					var oDiv = `
 							<div class="item">
 								<figure class="image-box">
-									<img src="${hotNewsData[i].newsimg}" alt="Awesome Image">
+									<a href="news_detail.html?${hotNewsData[i].newsid}" target="_blank"><img src="${hotNewsData[i].newsimg}" alt="Awesome Image"></a>
 								</figure>										
 								<h4 style="font-size: 22px;height:56px;overflow:hidden;">
-									<a href="blog-details.html">${hotNewsData[i].newstitle}</a>
+									<a href="news_detail.html?${hotNewsData[i].newsid}" target="_blank">${hotNewsData[i].newstitle}</a>
 								</h4>
 								<ul class="admin-comments">
 									<li><i class="icon flaticon-black" style="color: #7aba1e;">浏览数:${hotNewsData[i].newsheat}</i></li>
@@ -565,8 +565,8 @@
 							let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 								<div class="col-lg-4 col-md-6" style="margin-top: 50px;">
-									<img src="${item.newsimg}">
-									<a href="blog-details.html" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;overflow:hidden;height: 52px;">
+									<a href="news_detail.html?${item.newsid}" target="_blank"><img src="${item.newsimg}"></a>
+									<a href="news_detail.html?${item.newsid}" target="_blank" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;overflow:hidden;height: 52px;">
 									    ${item.newstitle}</a>
 									<li style="color: #7aba1e">
 										<i class="icon flaticon-black" style="font-size: 16px;"> 浏览数:${item.newsheat}</i>
@@ -626,8 +626,8 @@
 							let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 								<div class="col-lg-4 col-md-6" style="margin-top: 50px;">
-									<img src="${item.newsimg}">
-									<a href="blog-details.html" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;overflow:hidden;height: 52px;">
+									<a href="news_detail.html?${item.newsid}" target="_blank"><img src="${item.newsimg}"></a>
+									<a href="news_detail.html?${item.newsid}" target="_blank" style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;overflow:hidden;height: 52px;">
 									   ${item.newstitle}</a>
 									<li style="color: #7aba1e">
 										<i class="icon flaticon-black" style="font-size: 16px;"> 浏览数:${item.newsheat}</i>
