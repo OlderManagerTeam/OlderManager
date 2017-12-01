@@ -265,8 +265,8 @@
 								<div class="form-group">
 									<label for="branchManagerId" class="col-sm-3 control-label">修改分店管理员：</label>
 									<div class="col-sm-5">
-										<input type="text" id="branchmanagerid"
-											name="branchmanagerid" style="display: none;"></input> 
+										<input type="hidden" id="branchmanagerid"
+											name="branchmanagerid" style="display: block;"></input> 
 										<input type="text" class="form-control" id="staffcode" placeholder="修改分店管理员员工号"
 											name="staffcode" />
 									</div>
@@ -535,10 +535,9 @@
 							$('#staffname').val(result.data.staffname)
 							//alert(result.data.staffid)
 						}else {
-							alert('员工不存在!!!');
 							$('#staffcode').val("");
 							$('#branchmanagerid').val("");
-							$('#staffname').val("");
+							$('#staffname').val("员工不存在!!!");
 						}
 					},
 					error:function(){

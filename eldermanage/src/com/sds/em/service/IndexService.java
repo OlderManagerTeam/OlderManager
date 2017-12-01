@@ -4,6 +4,8 @@ import com.sds.em.po.Message;
 import com.sds.em.po.Security;
 import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.LoginMassage;
+import com.sds.em.pojo.ShowStaffView;
+import com.sds.em.pojo.StaffDepartmentRoleExtend;
 
 public interface IndexService {
 	// bo:10-12
@@ -45,4 +47,10 @@ public interface IndexService {
 	public Message staffregister(Staffbase staffbase, Security security);
 
 	public boolean usernotregister(String string);
+	
+	//lu
+	//首页动态显示员工
+	public ShowStaffView showStaff(int info);
+	
+	
 }

@@ -64,7 +64,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -85,7 +86,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -112,8 +113,10 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
-											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
+											<li><a
+												href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a
+												href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -279,16 +282,16 @@
 													placeholder="老人电话号码" name="oldertel">
 											</div>
 										</div>
-										<div class="form-group">
+<!-- 										<div class="form-group">
 											<label for="olderPassword" class="col-sm-3 control-label">老人账户密码：</label>
 											<div class="col-sm-5">
 												<input type="password" class="form-control"
 													id="olderPassword" placeholder="老人账户密码"
 													name="olderpassword">
 											</div>
-										</div>
+										</div> -->
 										<div class="form-group">
-											<label for="reOlderPassword" class="col-sm-3 control-label">请重新输入密码：</label>
+											<label for="reOlderPassword" class="col-sm-3 control-label">请输入新密码：</label>
 											<div class="col-sm-5">
 												<input type="password" class="form-control"
 													id="reOlderPassword" placeholder="老人账户密码" name="repassword">
@@ -456,7 +459,7 @@
 		<!--验证js文件-->
 		<script type="text/javascript"
 			src="../../lib/js/bootstrapValidator.min.js"></script>
-		
+
 		<script type="text/javascript" src="../../js/personal.js"></script>
 		<script>
 			$("#olderheadurl").fileinput({
@@ -518,7 +521,7 @@
 							}
 						},
 						//检验密码
-						olderpassword : {
+/* 						olderpassword : {
 							validators : {
 								//密码不能为空
 								notEmpty : {
@@ -536,17 +539,21 @@
 									message : '密码只能是6到12位'
 								},
 							}
-						},
+						}, */
 						repassword : {
 							validators : {
 								//密码不能为空
-								notEmpty : {
-									message : '密码不能为空'
+								//规定密码的组成方式
+								regexp : {
+									regexp : /^[a-zA-Z0-9]+$/,
+									message : '密码必须由数字与字母组成'
 								},
-								identical : {
-									field : 'olderpassword',
-									message : '两次密码不一致'
-								}
+								//规定密码的长度
+								stringLength : {
+									min : 6,
+									max : 12,
+									message : '密码只能是6到12位'
+								},
 							}
 						},
 						oldertel : {
@@ -598,13 +605,13 @@
 								},
 							}
 						},
-						olderheadurl : {
+/* 						olderheadurl : {
 							validators : {
 								notEmpty : {
 									message : '不能为空'
 								},
 							}
-						},
+						}, */
 		
 						olderbirthday : {
 							validators : {
@@ -695,24 +702,27 @@
 				var sex = document.getElementById("select2-oldersex-container").title;
 				form.append("oldersinglestatus", document.getElementById("select2-oldersinglestatus-container").title);
 				form.append("oldernation", document.getElementById("select2-oldernation-container").title);
-				$.ajax({
-					type : 'post',
-					url : "/eldermanage/v1/brench/elder/infoupdate",
-					data : form,
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						//var resultdata = JSON.parse(result);
-						alert('成功');
-						if (result.success) {
-							window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
+				var bootstrapValidator = $("#olderAlter").data("bootstrapValidator");
+				bootstrapValidator.validate();
+				if (bootstrapValidator.isValid())
+					$.ajax({
+						type : 'post',
+						url : "/eldermanage/v1/brench/elder/infoupdate",
+						data : form,
+						processData : false,
+						contentType : false,
+						success : function(result) {
+							//var resultdata = JSON.parse(result);
+							alert('成功');
+							if (result.success) {
+								window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/olderView.html";
+							}
+						//alert(result.success)
+						},
+						error : function() {
+							alert('失败')
 						}
-					//alert(result.success)
-					},
-					error : function() {
-						alert('失败')
-					}
-				})
+					})
 		
 			}
 			)
@@ -733,8 +743,8 @@
 						var olderTel = document.getElementById("olderTel");
 						olderTel.value = result.data.oldertel;
 		
-						var olderPassword = document.getElementById("olderPassword");
-						olderPassword.value = result.data.olderpassword;
+					//	var olderPassword = document.getElementById("olderPassword");
+					//	olderPassword.value = result.data.olderpassword;
 		
 		
 						var reOlderPassword = document.getElementById("reOlderPassword");

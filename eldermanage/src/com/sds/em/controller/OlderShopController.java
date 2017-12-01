@@ -331,6 +331,7 @@ public class OlderShopController {
 	@RequestMapping(method = RequestMethod.POST, value = "productgroup/info")
 	public @ResponseBody Message addproductgroup(String grouppublishDate, String groupstartDate, String groupstarttime,
 			String groupfinishDate, Productgroup productgroup) {
+		if(olderShopService.getproductinfo(productgroup.getGroupproductid()).isSuccess()){
 		if (grouppublishDate != "")
 			productgroup.setGrouppublishdate(new Date());
 		Date groupstartdate = new Date();
@@ -360,6 +361,8 @@ public class OlderShopController {
 		productgroup.setGroupstatus("未开始");
 		productgroup.setGrouppresentpeople(0);
 		return olderShopService.addproductgroup(productgroup);
+		}
+		return new Message(false,"商品ID错误",null);
 	}
 
 	// wuwenbo,上传图片
