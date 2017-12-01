@@ -12,4 +12,7 @@ public interface OlderPersonalCenterService {
 
 	Message oldmessagecount(int olderid);
 
+	Message messagebyid(int olderid, Long oldermessageid);
+
+	Message visited(int olderid);
 }
