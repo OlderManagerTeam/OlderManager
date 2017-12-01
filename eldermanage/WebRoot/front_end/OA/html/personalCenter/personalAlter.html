@@ -65,7 +65,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -86,7 +87,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -113,8 +114,10 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
-											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
+											<li><a
+												href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a
+												href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -364,9 +367,9 @@
 	<!--验证js文件-->
 	<script type="text/javascript"
 		src="../../lib/js/bootstrapValidator.min.js"></script>
-		
-		
-    <script type="text/javascript" src="../../js/personal.js"></script>
+
+
+	<script type="text/javascript" src="../../js/personal.js"></script>
 	<script type="text/javascript">
 		function load() {
 			$.ajax({
@@ -389,7 +392,7 @@
 					var date = new Date(result.data.staffbase.staffbirthday + 1000 * 60 * 60 * 8);
 					var d = date.toISOString().slice(0, 10);
 	
-					document.getElementById("staffaddress").value=result.data.staffbase.staffaddress;
+					document.getElementById("staffaddress").value = result.data.staffbase.staffaddress;
 					var staffbirthday = document.getElementById("staffbirthday");
 					staffbirthday.value = d;
 	
@@ -409,26 +412,30 @@
 	</script>
 	<script type="text/javascript">
 		$("#altersubmit").click(function() {
+			$("#personalalter").data("bootstrapValidator").validate();
+			var flag = $("#personalalter").data("bootstrapValidator").isValid();
 			var form = new FormData(document.getElementById("personalalter"));
 			form.append("staffsex", $("#staffsex option:selected").text());
-			$.ajax({
-				type : 'post',
-				url : "/eldermanage/v1/personal/update/message",
-				data : form,
-				processData : false,
-				contentType : false,
-				success : function(result) {
-					//var resultdata = JSON.parse(result);
-					//alert(result.success);
-					if (result.success) {
-						alert(result.information)
-						window.location.href = "/eldermanage/front_end/OA/html/personalCenter/personalCenter.html";
+			if (flag) {
+				$.ajax({
+					type : 'post',
+					url : "/eldermanage/v1/personal/update/message",
+					data : form,
+					processData : false,
+					contentType : false,
+					success : function(result) {
+						//var resultdata = JSON.parse(result);
+						//alert(result.success);
+						if (result.success) {
+							alert(result.information)
+							window.location.href = "/eldermanage/front_end/OA/html/personalCenter/personalCenter.html";
+						}
+					},
+					error : function() {
+						alert('fail')
 					}
-				},
-				error : function() {
-					alert('fail')
-				}
-			})
+				})
+			}
 		});
 	</script>
 	<script type="text/javascript">
@@ -478,14 +485,14 @@
 							}
 						}
 					},
-					staffimg : {
+/* 					staffimg : {
 						validators : {
 							//密码不能为空
 							notEmpty : {
 								message : '照片不能为空'
 							},
 						}
-					},
+					}, */
 					staffsex : {
 						validators : {
 							//密码不能为空
@@ -524,14 +531,14 @@
 							},
 						}
 					},
-					staffpassword : {
+/* 					staffpassword : {
 						validators : {
 							//密码不能为空
 							notEmpty : {
 								message : '密码不能为空'
 							},
 						}
-					},
+					}, */
 				}
 			});
 	

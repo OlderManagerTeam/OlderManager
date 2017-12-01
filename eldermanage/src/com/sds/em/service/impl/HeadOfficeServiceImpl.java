@@ -47,11 +47,24 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 	public Message addBranch(Branch branch) throws Exception {
 		try {
 			int flag = 0;
-			flag = branchMapper.insert(branch);
-			if (flag != 0) {
-				return new Message(true, "添加成功", null);
+			branch.setBranchkpi((float) 0);
+			if (staffbaseMapper.selectByPrimaryKey(branch.getBranchmanagerid()) != null) {
+				BranchExample branchExample = new BranchExample();
+				com.sds.em.po.BranchExample.Criteria criteria = branchExample.createCriteria();
+				criteria.andBranchmanageridEqualTo(branch.getBranchmanagerid());
+				if (branchMapper.selectByExample(branchExample).isEmpty()) {
+
+					flag = branchMapper.insert(branch);
+					if (flag != 0) {
+						return new Message(true, "添加成功", null);
+					} else {
+						return new Message(false, "数据库错误", null);
+					}
+				} else {
+					return new Message(false, "一个员工只能管理一个分店", null);
+				}
 			} else {
-				return new Message(false, "数据库错误", null);
+				return new Message(false, "无可用员工号", null);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -151,11 +164,23 @@ public class HeadOfficeServiceImpl implements HeadOfficeService {
 	public Message updateBranch(Branch branch) throws Exception {
 		try {
 			int flag = 0;
-			flag = branchMapper.updateByPrimaryKeySelective(branch);
-			if (flag != 0) {
-				return new Message(true, "修改成功", null);
-			} else {
-				return new Message(false, "数据库错误", null);
+			if (staffbaseMapper.selectByPrimaryKey(branch.getBranchmanagerid()) != null) {
+				BranchExample branchExample = new BranchExample();
+				com.sds.em.po.BranchExample.Criteria criteria = branchExample.createCriteria();
+				criteria.andBranchmanageridEqualTo(branch.getBranchmanagerid());
+				if (branchMapper.selectByExample(branchExample).isEmpty()) {
+					flag = branchMapper.updateByPrimaryKeySelective(branch);
+					if (flag != 0) {
+						return new Message(true, "修改成功", null);
+					} else {
+						return new Message(false, "数据库错误", null);
+					}
+				} else {
+					return new Message(false, "一个员工只能管理一个分店", null);
+				}
+			}
+			else {
+				return new Message(false, "无可用员工号", null);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
