@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sds.em.po.Message;
+import com.sds.em.po.Visited;
 import com.sds.em.pojo.LoginMassage;
 import com.sds.em.service.OlderPersonalCenterService;
 
@@ -82,7 +83,7 @@ public class OlderPersonalCenterController {
 		}
 	}
 	
-	// 回访评价返回
+	// 回访未评价返回
 	@RequestMapping(method = RequestMethod.GET, value = "visited")
 	public @ResponseBody Message visited(HttpSession s) {
 		LoginMassage loginMassage = null;
@@ -92,6 +93,19 @@ public class OlderPersonalCenterController {
 		} else {// 已登陆
 			int olderid = loginMassage.getOlderid();
 			return olderPersonalCenterService.visited(olderid);
+		}
+	}
+	
+	// 老人评价回访
+	@RequestMapping(method = RequestMethod.POST, value = "visited")
+	public @ResponseBody Message putvisited(HttpSession s,Visited visited) {
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false ,"未登录",null);
+		} else {// 已登陆
+			int olderid = loginMassage.getOlderid();
+			return olderPersonalCenterService.putvisited(visited,olderid);
 		}
 	}
 }
