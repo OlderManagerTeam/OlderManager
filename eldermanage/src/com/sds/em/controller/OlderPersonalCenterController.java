@@ -56,7 +56,7 @@ public class OlderPersonalCenterController {
 		}
 	}
 	
-	// 老人未读消息
+	// 老人已读消息
 	@RequestMapping(method = RequestMethod.GET, value = "oldmessagecount")
 	public @ResponseBody Message oldmessagecount(HttpSession s) {
 		LoginMassage loginMassage = null;
@@ -68,4 +68,17 @@ public class OlderPersonalCenterController {
 			return olderPersonalCenterService.oldmessagecount(olderid);
 		}
 	}
+	
+/*	// 消息消息详情
+	@RequestMapping(method = RequestMethod.GET, value = "oldmessagecount")
+	public @ResponseBody Message oldmessagecount(HttpSession s) {
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false ,"未登录",null);
+		} else {// 已登陆
+			int olderid = loginMassage.getOlderid();
+			return olderPersonalCenterService.oldmessagecount(olderid);
+		}
+	}*/
 }

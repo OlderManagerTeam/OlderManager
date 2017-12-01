@@ -66,7 +66,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -87,7 +88,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -114,8 +115,10 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
-											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
+											<li><a
+												href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a
+												href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -225,77 +228,79 @@
 										</ul>
 									</div>
 								</div></li>
-			
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-		</nav>
-	</div>
-	<!-- Main Content -->
-	<div class="container-fluid">
-		<div class="side-body">
-			<div class="page-title">
-				<span class="title">添加讲座</span>
-				<div class="description">Lecture Entry</div>
+
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</nav>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="card">
-						<div class="card-header">
-							<div class="card-title">
-								<div class="title">添加讲座</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<!--添加讲座时候需要的表单-->
-							<form class="form-horizontal" id="lectureEntry">
-								<div class="form-group">
-									<label for="lectureName" class="col-sm-3 control-label">讲座名称：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureName"
-											placeholder="讲座名称" name="lecturename">
+			<!-- Main Content -->
+			<div class="container-fluid">
+				<div class="side-body">
+					<div class="page-title">
+						<span class="title">添加讲座</span>
+						<div class="description">Lecture Entry</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">添加讲座</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="lectureIntro" class="col-sm-3 control-label">讲座简介：</label>
-									<div class="col-sm-5">
-										<textarea class="form-control" id="lectureIntro"
-											placeholder="讲座简介" style="height: 150px" name="lectureintro"></textarea>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lectureTotal" class="col-sm-3 control-label">讲座总人数：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureTotal"
-											placeholder="讲座总人数" name="lecturetotal">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lecturePublishDate" class="col-sm-3 control-label">讲座发布日期：</label>
-									<div class="col-sm-5">
-										<input type="date" class="form-control"
-											id="lecturePublishDate" placeholder="讲座发布日期"
-											name="lecturepublishdate">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lectureStatus" class="col-sm-3 control-label">讲座报名状态：</label>
-									<div class="col-sm-5">
-										<select id="lecturestatus">
-											<optgroup label="讲座报名状态">
-												<option value="1">正在进行</option>
-											</optgroup>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="lectureAddress" class="col-sm-3 control-label">讲座地址：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="lectureAddress"
-											placeholder="讲座地址" name="lectureaddress">
-									</div>
-								</div>
-								<!--
+								<div class="card-body">
+									<!--添加讲座时候需要的表单-->
+									<form class="form-horizontal" id="lectureEntry">
+										<div class="form-group">
+											<label for="lectureName" class="col-sm-3 control-label">讲座名称：</label>
+											<div class="col-sm-5">
+												<input type="text" class="form-control" id="lectureName"
+													placeholder="讲座名称" name="lecturename">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="lectureIntro" class="col-sm-3 control-label">讲座简介：</label>
+											<div class="col-sm-5">
+												<textarea class="form-control" id="lectureIntro"
+													placeholder="讲座简介" style="height: 150px"
+													name="lectureintro"></textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="lectureTotal" class="col-sm-3 control-label">讲座总人数：</label>
+											<div class="col-sm-5">
+												<input type="text" class="form-control" id="lectureTotal"
+													placeholder="讲座总人数" name="lecturetotal">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="lecturePublishDate"
+												class="col-sm-3 control-label">讲座发布日期：</label>
+											<div class="col-sm-5">
+												<input type="date" class="form-control"
+													id="lecturePublishDate" placeholder="讲座发布日期"
+													name="lecturepublishdate">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="lectureStatus" class="col-sm-3 control-label">讲座报名状态：</label>
+											<div class="col-sm-5">
+												<select id="lecturestatus">
+													<optgroup label="讲座报名状态">
+														<option value="1">报名中</option>
+													</optgroup>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="lectureAddress" class="col-sm-3 control-label">讲座地址：</label>
+											<div class="col-sm-5">
+												<input type="text" class="form-control" id="lectureAddress"
+													placeholder="讲座地址" name="lectureaddress">
+											</div>
+										</div>
+										<!--
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
                                               <div class="checkbox3 checkbox-round checkbox-check checkbox-light">
@@ -307,176 +312,180 @@
                                             </div>
                                         </div>
                                         -->
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-5">
-										<button type="button" class="btn btn-primary btn-lg" id="lecturesubmit">提交</button>
-									</div>
+										<div class="form-group">
+											<div class="col-sm-offset-3 col-sm-5">
+												<button type="button" class="btn btn-primary btn-lg"
+													id="lecturesubmit">提交</button>
+											</div>
+										</div>
+									</form>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	<footer class="app-footer">
-		<div class="wrapper">
-			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-		</div>
-	</footer>
-	<div>
-		<!-- Javascript Libs -->
-		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/bootstrap-switch.min.js"></script>
+		<footer class="app-footer">
+			<div class="wrapper">
+				<span class="pull-right">2.1 <a href="#"><i
+						class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
+			</div>
+		</footer>
+		<div>
+			<!-- Javascript Libs -->
+			<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/Chart.min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/bootstrap-switch.min.js"></script>
 
-		<script type="text/javascript"
-			src="../../lib/js/jquery.matchHeight-min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript"
-			src="../../lib/js/dataTables.bootstrap.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
-		<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
-		<!-- Javascript -->
-		<script type="text/javascript" src="../../js/app.js"></script>
-		<!-- 文件上传 JS -->
-		<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
-		<script src="../../lib/js/fileinput_locale_zh.js"
-			type="text/javascript"></script>
-		<!--验证js文件-->
-		<script type="text/javascript"
-			src="../../lib/js/bootstrapValidator.min.js"></script>
-			
+			<script type="text/javascript"
+				src="../../lib/js/jquery.matchHeight-min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/jquery.dataTables.min.js"></script>
+			<script type="text/javascript"
+				src="../../lib/js/dataTables.bootstrap.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/select2.full.min.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/ace.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/mode-html.js"></script>
+			<script type="text/javascript" src="../../lib/js/ace/theme-github.js"></script>
+			<!-- Javascript -->
+			<script type="text/javascript" src="../../js/app.js"></script>
+			<!-- 文件上传 JS -->
+			<script src="../../lib/js/fileinput.js" type="text/javascript"></script>
+			<script src="../../lib/js/fileinput_locale_zh.js"
+				type="text/javascript"></script>
+			<!--验证js文件-->
+			<script type="text/javascript"
+				src="../../lib/js/bootstrapValidator.min.js"></script>
+
 			<script type="text/javascript" src="../../js/personal.js"></script>
-		<script>
-			$("#file-3").fileinput({
-				showUpload : false,
-				showCaption : false,
-				browseClass : "btn btn-primary btn-lg",
-				fileType : "any",
-				previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
-			});
-		</script>
-
-		<!--表单验证-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				// Generate a simple captcha
-		
-				$('#lectureEntry').bootstrapValidator({
-					//        live: 'disabled',
-					message : 'This value is not valid',
-					feedbackIcons : {
-						valid : 'glyphicon glyphicon-ok-circle',
-						invalid : 'glyphicon glyphicon-remove-circle',
-						validating : 'glyphicon glyphicon-refresh',
-						regexp : 'glyphicon glyphicon-ok-circle'
-					},
-					fields : {
-						//检验用户名
-						lecturename : {
-							message : '姓名不能为空',
-							validators : {
-								notEmpty : {
-									message : '名称不能为空'
-								},
-								stringLength : {
-									min : 1,
-									max : 25,
-									message : '名称不能高于25位'
-								},
-							}
-						},
-						lectureintro : {
-							validators : {
-								notEmpty : {
-									message : '简介不能为空'
-								},
-								stringLength : {
-									min : 1,
-									max : 100,
-									message : '简介不能多余100字'
-								},
-							}
-						},
-						lecturetotal : {
-							validators : {
-								notEmpty : {
-									message : '总人数不能为空'
-								},
-								regexp : {
-									regexp : /^[1-9]\d*|0$/,
-									message : '请输入整数'
-								},
-							}
-						},
-						lectureaddress : {
-							validators : {
-								notEmpty : {
-									message : '地址不能为空'
-								}
-							}
-						},
-						lecturestatus : {
-							enabled : false,
-							validators : {
-								message : '必须选择'
-							}
-						},
-						lecturepublishdate : {
-							validators : {
-								notEmpty : {
-									message : '日期不能为空'
-								},
-								date : {
-									format : 'YYYY-MM-DD',
-									message : '请输入正确的日期格式'
-								}
-							}
-						},
-					}
+			<script>
+				$("#file-3").fileinput({
+					showUpload : false,
+					showCaption : false,
+					browseClass : "btn btn-primary btn-lg",
+					fileType : "any",
+					previewFileIcon : "<i class='glyphicon glyphicon-king'></i>"
 				});
-		
-				// Validate the form manually
-		
-			});
-		</script>
+			</script>
 
-		<script type="text/javascript">
-			$("#lecturesubmit").click(function() {
-				var form = new FormData(document.getElementById("lectureEntry"));
-				form.append("lecturestatus", $("#lecturestatus option:selected").text());
-				$.ajax({
-					type : 'post',
-					url : "/eldermanage/v1/brench/lecture/info",
-					data : form,
-					processData : false,
-					contentType : false,
-					success : function(result) {
-						//var resultdata = JSON.parse(result);
-						//alert(result.success);
-						if (result.success) {
-							window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
+			<!--表单验证-->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					// Generate a simple captcha
+			
+					$('#lectureEntry').bootstrapValidator({
+						//        live: 'disabled',
+						message : 'This value is not valid',
+						feedbackIcons : {
+							valid : 'glyphicon glyphicon-ok-circle',
+							invalid : 'glyphicon glyphicon-remove-circle',
+							validating : 'glyphicon glyphicon-refresh',
+							regexp : 'glyphicon glyphicon-ok-circle'
+						},
+						fields : {
+							//检验用户名
+							lecturename : {
+								message : '姓名不能为空',
+								validators : {
+									notEmpty : {
+										message : '名称不能为空'
+									},
+									stringLength : {
+										min : 1,
+										max : 25,
+										message : '名称不能高于25位'
+									},
+								}
+							},
+							lectureintro : {
+								validators : {
+									notEmpty : {
+										message : '简介不能为空'
+									},
+									stringLength : {
+										min : 1,
+										max : 100,
+										message : '简介不能多余100字'
+									},
+								}
+							},
+							lecturetotal : {
+								validators : {
+									notEmpty : {
+										message : '总人数不能为空'
+									},
+									regexp : {
+										regexp : /^[0-9]*$/,
+										message : '请输入整数'
+									},
+								}
+							},
+							lectureaddress : {
+								validators : {
+									notEmpty : {
+										message : '地址不能为空'
+									}
+								}
+							},
+							lecturestatus : {
+								enabled : false,
+								validators : {
+									message : '必须选择'
+								}
+							},
+							lecturepublishdate : {
+								validators : {
+									notEmpty : {
+										message : '日期不能为空'
+									},
+									date : {
+										format : 'YYYY-MM-DD',
+										message : '请输入正确的日期格式'
+									}
+								}
+							},
 						}
-					},
-					error : function() {
-						alert('fail')
-					}
-				})
-			}
-			)
-		</script>
-		<script type="text/javascript">
-			$('select').select2();
-			$('#branchname').next('span').width(200);
-		</script>
+					});
+			
+					// Validate the form manually
+			
+				});
+			</script>
+
+			<script type="text/javascript">
+				$("#lecturesubmit").click(function() {
+					var form = new FormData(document.getElementById("lectureEntry"));
+					form.append("lecturestatus", $("#lecturestatus option:selected").text());
+					var bootstrapValidator = $("#lectureEntry").data("bootstrapValidator");
+					bootstrapValidator.validate();
+					if (bootstrapValidator.isValid())
+						$.ajax({
+							type : 'post',
+							url : "/eldermanage/v1/brench/lecture/info",
+							data : form,
+							processData : false,
+							contentType : false,
+							success : function(result) {
+								//var resultdata = JSON.parse(result);
+								//alert(result.success);
+								if (result.success) {
+									window.location.href = "/eldermanage/front_end/OA/html/olderInfoManager/lectureView.html";
+								}
+							},
+							error : function() {
+								alert('fail')
+							}
+						})
+				}
+				)
+			</script>
+			<script type="text/javascript">
+				$('select').select2();
+				$('#branchname').next('span').width(200);
+			</script>
 </body>
 
 </html>
