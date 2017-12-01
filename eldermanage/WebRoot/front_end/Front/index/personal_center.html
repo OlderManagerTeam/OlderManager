@@ -145,6 +145,21 @@
 			font-weight: 500;
 			color: #ffbc1e;
 		}
+
+		/*评价*/
+		#star {
+	        position: absolute;
+	        height: 20px;
+	        width: 200px;
+	        left: 15px;
+	        top: 0;
+	        z-index: 9999;
+	        color: #ffd601;
+	    }
+	    #star span {
+	        margin-right: 6px;
+	    }
+
 	</style>
 </head>
 
@@ -231,13 +246,15 @@
 				            <li><a href="#myInfo" data-toggle="tab">个人信息</a></li>
 				            <li><a href="#myCollection" data-toggle="tab">我收藏的视频</a></li>
 				            <li><a href="#myPlayRecord" data-toggle="tab">播放记录</a></li>
-				            <li><a href="#myLectureRecord" data-toggle="tab">我的讲座记录</a></li>
-				            <li><a href="#myActivityRecord" data-toggle="tab">我的活动记录</a></li>
+				            <li><a href="#myLectureRecord" data-toggle="tab">讲座记录</a></li>
+				            <li><a href="#myActivityRecord" data-toggle="tab">活动记录</a></li>
 				            <li>
 				            	<a href="#myNews" data-toggle="tab">
-				            		<span class="badge pull-right">42</span>我的消息
+				            		<span class="badge pull-right" id="myNewsCountMobile">0</span>未读消息
 				            	</a>
 				            </li>
+				            <li><a href="#myOldNews" data-toggle="tab">已读消息</a></li>
+				            <li><a href="#myVisitedRecord" data-toggle="tab">回访评价</a></li>
 				        </ul>
 				    </div>
 				    <!--pc导航栏-->
@@ -248,13 +265,15 @@
 				                    <li class="active"><a href="#myInfo" data-toggle="tab">个人信息</a></li>
 				                    <li><a href="#myCollection" data-toggle="tab">我收藏的视频</a></li>
 				                    <li><a href="#myPlayRecord" data-toggle="tab">播放记录</a></li>
-				                    <li><a href="#myLectureRecord" data-toggle="tab">我的讲座记录</a></li>
-				                    <li><a href="#myActivityRecord" data-toggle="tab">我的活动记录</a></li>
+				                    <li><a href="#myLectureRecord" data-toggle="tab">讲座记录</a></li>
+				                    <li><a href="#myActivityRecord" data-toggle="tab">活动记录</a></li>
 				                    <li>
 				                    	<a href="#myNews" data-toggle="tab">
-				                    		<span class="badge pull-right">42</span>我的消息
+				                    		<span class="badge pull-right" id="myNewsCount">0</span>未读消息
 				                    	</a>
 				                    </li>
+				                    <li><a href="#myOldNews" data-toggle="tab">已读消息</a></li>
+				                    <li><a href="#myVisitedRecord" data-toggle="tab">回访评价</a></li>
 				                </ul>
 				            </div>
 				        </div>
@@ -398,21 +417,59 @@
 					        </div>
 					    </div>
 
-					    <!-- 我的消息 -->
+					    <!-- 未读消息 -->
 					    <div class="tab-pane fade" id="myNews">
 					        <div class="col-md-12" style="padding-top: 20px;">
 					        	<div class="col-md-12">
 					        		<img src="images/logo/info.png" style="width: 28px;margin-bottom: 10px;">
-					        		<span style="font-size: 25px;color: #525252">我的消息</span>
+					        		<span style="font-size: 25px;color: #525252">未读消息</span>
+					        		<span style="float: right;">
+					        			<button type="button" class="btn btn-primary" onclick="myNewsAllChange()">标记为全部已读</button>
+					        		</span>
 					        	</div>
 					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;">
-						        		<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
-						        		<span>
-						        			<a href="" target="_blank" style="font-size: 20px;">标题标题标题</a>
-						        		</span>
+					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;" id="myNewsList">
+						        		
 					        		</div>
 
+					        		<div id="myNewsPage" style="text-align: center;" class="col-md-12">
+									</div>
+					        	</div>
+					        </div>
+					    </div>
+
+					    <!-- 已读消息 -->
+					    <div class="tab-pane fade" id="myOldNews">
+					        <div class="col-md-12" style="padding-top: 20px;">
+					        	<div class="col-md-12">
+					        		<img src="images/logo/info.png" style="width: 28px;margin-bottom: 10px;">
+					        		<span style="font-size: 25px;color: #525252">已读消息</span>
+					        	</div>
+					        	<div class="col-md-12" style="margin-top: 30px;">
+					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;" id="myOldNewsList">
+						        		
+					        		</div>
+
+					        		<div id="myOldNewsPage" style="text-align: center;" class="col-md-12">
+									</div>
+					        	</div>
+					        </div>
+					    </div>
+
+					    <!-- 回访评价 -->
+					    <div class="tab-pane fade" id="myVisitedRecord">
+					        <div class="col-md-12" style="padding-top: 20px;">
+					        	<div class="col-md-12">
+					        		<img src="images/logo/assess.png" style="width: 28px;margin-bottom: 10px;">
+					        		<span style="font-size: 25px;color: #525252">回访评价</span>
+					        	</div>
+					        	<div class="col-md-12" style="margin-top: 30px;">
+					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;" id="myVisitedRecordList">
+						        		
+					        		</div>
+
+					        		<div id="myVisitedRecordPage" style="text-align: center;" class="col-md-12">
+									</div>
 					        	</div>
 					        </div>
 					    </div>
@@ -604,6 +661,102 @@
 		                <h4 class="modal-title" id="myModalLabel">注册提示</h4>
 		            </div>
 		            <div class="modal-body">亲，我们暂不支持在线注册，如需注册请联系工作人员:13310105261</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 标记全部已读提示模态框-->
+		<div class="modal fade" id="myNewsAllChangeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">错误提示</h4>
+		            </div>
+		            <div class="modal-body">亲,现在还没有未读消息哦</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 评价模态框-->
+		<div class="modal fade" id="assessVisitedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">评价</h4>
+		            </div>
+		            <div class="modal-body">
+		            	<div>评语(可以不填)</div>
+		            	<textarea rows="5" cols="30" style="font-size: 18px;" id="textContent"></textarea>
+		            	<div>星级评价(必填)</div>
+		            	<div class="container" style="position: relative;">
+					          <div class="row" id="one">
+					            <span class="glyphicon glyphicon-star"></span>
+					            <span class="glyphicon glyphicon-star"></span>
+					            <span class="glyphicon glyphicon-star"></span>
+					            <span class="glyphicon glyphicon-star"></span>
+					            <span class="glyphicon glyphicon-star"></span>
+					          </div>
+					          <div id="star" class="row"></div>
+					    </div>
+					    <input type="hidden" name="" id="assessId">
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+		                <button type="button" class="btn btn-primary" onclick="saveAssess()">提交</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 提交成功提示模态框-->
+		<div class="modal fade" id="assessSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">成功提示</h4>
+		            </div>
+		            <div class="modal-body">提交成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" onclick="reloadassess()">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 提交失败提示模态框-->
+		<div class="modal fade" id="assessFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">提示</h4>
+		            </div>
+		            <div class="modal-body">提交失败</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 提交失败提示模态框-->
+		<div class="modal fade" id="assessStarFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">提示</h4>
+		            </div>
+		            <div class="modal-body">请填写星级</div>
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
 		            </div>
@@ -1300,6 +1453,322 @@
 					}
 				})
 			}
+		}
+
+		//未读消息
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
+        	data:null,
+        	success:function(result){
+        		var myNewsData = result.data;
+
+        		if(myNewsData.length != 0){
+        			$("#myNewsPage").show();
+					pageMyNews(myNewsData, $("#myNewsPage"));
+					$("#myNewsCount").html(myNewsData.length)
+					$("#myNewsCountMobile").html(myNewsData.length)
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">亲,当前还没有未读消息哦</span>
+		    			</div>
+        			`;
+        			$("#myNewsList").append(oDiv);
+        		}
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+		})
+
+		//未读消息分页
+		function pageMyNews(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 10  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myNewsList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.messagedate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate()
+				        		+" "+date.getHours()+":"+date.getMinutes();
+				        	let datas =`
+					        	<div class="col-md-12" style="margin-top:10px;" id="myNewsItem${index}">
+									<img src="images/logo/mynewsimg.png" style="width: 22px;margin-bottom: 6px;">
+									<span style="font-size: 20px;">${year}</span>
+					        		<span>
+					        			<a href="myNews_Detail.html?${item.messageid}" target="_blank" style="font-size:20px;height:26px;overflow:hidden;width:400px;vertical-align:sub;" onclick="myNewsChange(${item.messageid},${index})">${item.messagecontent}</a>
+					        		</span>
+					        	</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//未读消息变为已读消息
+		function myNewsChange(id,newsindex){
+			$("#myNewsItem"+newsindex).remove();
+			$.ajax({
+				type: 'get',
+	        	contentType: 'application/json',
+	        	url:"/eldermanage/v1/olderpersonal/readAmessage?messageid="+id,
+	        	data:null,
+	        	success:function(result){
+	        		alert("成功")
+	        		window.location.reload()
+	        	},
+	        	error:function(){
+	        		alert('数据库错误')
+	        	}
+			})
+		}
+
+		//标记为全部已读
+		function myNewsAllChange(){
+			if($("#myNewsCount").html() != 0 || $("#myNewsCountMobile").html() != 0){
+				$.ajax({
+					type: 'get',
+		        	contentType: 'application/json',
+		        	url:"/eldermanage/v1/olderpersonal/readallmessage",
+		        	data:null,
+		        	success:function(result){
+		        		alert("成功")
+		        		window.location.reload()
+		        	},
+		        	error:function(){
+		        		alert('数据库错误')
+		        	}
+				})
+			}else{
+				$("#myNewsAllChangeModal").modal("show")
+			}
+		}
+
+		//已读消息
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/olderpersonal/oldmessagecount",
+        	data:null,
+        	success:function(result){
+        		var myOldNewsData = result.data;
+
+        		if(myOldNewsData.length != 0){
+        			$("#myOldNewsPage").show();
+					pageMyOldNews(myOldNewsData, $("#myOldNewsPage"));
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">亲,当前还没有已读消息哦</span>
+		    			</div>
+        			`;
+        			$("#myOldNewsList").append(oDiv);
+        		}
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+		})
+
+		//已读消息分页
+		function pageMyOldNews(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 10  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myOldNewsList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.messagedate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate()
+				        		+" "+date.getHours()+":"+date.getMinutes();
+				        	let datas =`
+					        	<div class="col-md-12" style="margin-top:10px;">
+									<img src="images/logo/myoldnewsimg.png" style="width: 22px;margin-bottom: 6px;">
+									<span style="font-size: 20px;">${year}</span>
+					        		<span>
+					        			<a href="myNews_Detail.html?${item.messageid}" target="_blank" style="font-size: 20px;height:26px;overflow:hidden;width:400px;vertical-align:sub;">${item.messagecontent}</a>
+					        		</span>
+					        	</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//回访评价
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/olderpersonal/visited",
+        	data:null,
+        	success:function(result){
+        		var myVisitedData = result.data;
+
+        		if(myVisitedData.length != 0){
+        			$("#myVisitedRecordPage").show();
+					pageVisited(myVisitedData, $("#myVisitedRecordPage"));
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">亲,当前还没有可以评价的回放记录哦</span>
+		    			</div>
+        			`;
+        			$("#myVisitedRecordList").append(oDiv);
+        		}
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+		})
+
+		//回访评价
+		function pageVisited(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 10  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myVisitedRecordList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.visiteddate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
+				        	let datas =`
+					        	<div class="col-md-12" style="margin-top:10px;">
+									<img src="images/logo/assess.png" style="width: 22px;margin-bottom: 6px;">
+									<span style="font-size: 20px;">${year}</span>
+					        		<span style="font-size:20px;width:300px;overflow:hidden;display:-webkit-inline-box;vertical-align:top;height:26px;">
+					        			${item.visitedcontent}
+					        		</span>
+					        		<span style="padding-left:30px;">
+					        			<a href="" onclick="assessVisited(${item.visitedid});return false;" style="font-size:20px;">评价</a>
+					        		</span>
+					        	</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
+
+		//评价
+		function assessVisited(id){
+			$("#assessVisitedModal").modal("show");
+			$("#assessId").val(id);
+		}
+
+		var starnum;
+		$(function (){
+	      $("#star").click(function (event){
+	          var e = event || window.event;
+	          var width = e.clientX - parseInt($(this).closest(".modal-dialog").css("marginLeft"))-30;
+	          // console.log(width);
+	          if(width > -10 && width < 110) {
+	            $(this).html('');
+	            $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	             $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	             $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	             $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	            $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	            starnum =5;
+	            if(width < 80){
+	              $(this).html('');
+	              $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	              $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	              $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	              $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	              starnum = 4;
+	              if(width < 53){
+	                $(this).html('');
+	                $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                starnum = 3;
+	                if(width < 34){
+	                  $(this).html('');
+	                  $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                  $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                  starnum = 2;
+	                  if(width < 17){
+	                    $(this).html('');
+	                    $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                    starnum = 1;
+	                  }
+	                }
+	              }
+	            }
+	          } 
+	      });
+	    })
+
+		// 评价提交
+		function saveAssess(){
+			if(starnum != null){
+				var form = new FormData();
+				form.append("visitedid",$("#assessId").val())
+				form.append("visitedjudgestar",starnum)
+				form.append("visitedjudgecontent",$("#textContent").val())
+				$.ajax({
+					type: 'post',
+					processData : false,
+					contentType : false,
+		        	url:"/eldermanage/v1/olderpersonal/visited",
+		        	data:form,
+		        	success:function(result){
+		        		$("#assessVisitedModal").modal("hide");
+		        		$("#assessSuccessModal").modal("show");
+		        	},
+		        	error:function(){
+		        		$("#assessFailModal").modal("show");
+		        	}
+				})
+			}else{
+				$("#assessStarFailModal").modal("show");
+			}
+		}
+
+		// 刷新页面
+		function reloadassess(){
+			window.location.reload();
 		}
 	</script>
 	
