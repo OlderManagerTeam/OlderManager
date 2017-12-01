@@ -3,9 +3,11 @@ package com.sds.em.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sds.em.mapper.OldermessageMapper;
+import com.sds.em.mapper.VisitedMapper;
 import com.sds.em.po.Message;
 import com.sds.em.po.Oldermessage;
 import com.sds.em.po.OldermessageExample;
+import com.sds.em.po.VisitedExample;
 import com.sds.em.service.OlderPersonalCenterService;
 
 public class OlderPersonalCenterServiceImpl implements OlderPersonalCenterService{
@@ -14,6 +16,11 @@ public class OlderPersonalCenterServiceImpl implements OlderPersonalCenterServic
 	OldermessageMapper oldermessageMapper;
 	OldermessageExample oldermessageExample=new OldermessageExample();
 	OldermessageExample.Criteria oldermessageCriteria;
+	
+	@Autowired
+	VisitedMapper visitedMapper;
+	VisitedExample visitedExample=new VisitedExample();
+	VisitedExample.Criteria visitedCriteria;
 	@Override
 	//未读消息返回
 	public Message newmessagecount(int olderid) {
@@ -62,7 +69,9 @@ public class OlderPersonalCenterServiceImpl implements OlderPersonalCenterServic
 	@Override
 	//未评价回访
 	public Message visited(int olderid) {
-		// TODO 自动生成的方法存根
-		return null;
+		visitedExample.clear();
+		visitedCriteria=visitedExample.createCriteria();
+		visitedCriteria.andVisitedolderidEqualTo(olderid);
+		return new Message(true,"未评价回访",visitedMapper.selectByExample(visitedExample));
 	}
 }
