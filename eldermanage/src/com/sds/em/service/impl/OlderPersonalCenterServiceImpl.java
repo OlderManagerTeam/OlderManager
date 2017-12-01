@@ -7,6 +7,7 @@ import com.sds.em.mapper.VisitedMapper;
 import com.sds.em.po.Message;
 import com.sds.em.po.Oldermessage;
 import com.sds.em.po.OldermessageExample;
+import com.sds.em.po.Visited;
 import com.sds.em.po.VisitedExample;
 import com.sds.em.service.OlderPersonalCenterService;
 
@@ -72,6 +73,22 @@ public class OlderPersonalCenterServiceImpl implements OlderPersonalCenterServic
 		visitedExample.clear();
 		visitedCriteria=visitedExample.createCriteria();
 		visitedCriteria.andVisitedolderidEqualTo(olderid);
+		visitedCriteria.andVisitedjudgecontentEqualTo("未评价");
 		return new Message(true,"未评价回访",visitedMapper.selectByExample(visitedExample));
+	}
+	@Override
+	// 老人评价回访
+	public Message putvisited(Visited visited, int olderid) {
+		if(visitedMapper.selectByPrimaryKey(visited.getVisitedid()).getVisitedolderid()==olderid){
+			Visited v=new Visited();
+			if(visited.getVisitedjudgecontent()=="未评价")
+				visited.setVisitedjudgecontent("");
+			v.setVisitedjudgestar(visited.getVisitedjudgestar());
+			v.setVisitedjudgestar(visited.getVisitedjudgestar());
+			v.setVisitedid(visited.getVisitedid());
+			return new Message(true,"老人评价回访",visitedMapper.updateByPrimaryKeySelective(v));
+		}else{
+			return new Message(false,"这条记录老人ID不匹配",null);
+		}
 	}
 }

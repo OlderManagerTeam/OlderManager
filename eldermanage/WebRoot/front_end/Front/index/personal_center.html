@@ -231,13 +231,14 @@
 				            <li><a href="#myInfo" data-toggle="tab">个人信息</a></li>
 				            <li><a href="#myCollection" data-toggle="tab">我收藏的视频</a></li>
 				            <li><a href="#myPlayRecord" data-toggle="tab">播放记录</a></li>
-				            <li><a href="#myLectureRecord" data-toggle="tab">我的讲座记录</a></li>
-				            <li><a href="#myActivityRecord" data-toggle="tab">我的活动记录</a></li>
+				            <li><a href="#myLectureRecord" data-toggle="tab">讲座记录</a></li>
+				            <li><a href="#myActivityRecord" data-toggle="tab">活动记录</a></li>
 				            <li>
 				            	<a href="#myNews" data-toggle="tab">
-				            		<span class="badge pull-right">42</span>我的消息
+				            		<span class="badge pull-right" id="myNewsCountMobile"></span>未读消息
 				            	</a>
 				            </li>
+				            <li><a href="#myOldNews" data-toggle="tab">已读消息</a></li>
 				        </ul>
 				    </div>
 				    <!--pc导航栏-->
@@ -248,13 +249,14 @@
 				                    <li class="active"><a href="#myInfo" data-toggle="tab">个人信息</a></li>
 				                    <li><a href="#myCollection" data-toggle="tab">我收藏的视频</a></li>
 				                    <li><a href="#myPlayRecord" data-toggle="tab">播放记录</a></li>
-				                    <li><a href="#myLectureRecord" data-toggle="tab">我的讲座记录</a></li>
-				                    <li><a href="#myActivityRecord" data-toggle="tab">我的活动记录</a></li>
+				                    <li><a href="#myLectureRecord" data-toggle="tab">讲座记录</a></li>
+				                    <li><a href="#myActivityRecord" data-toggle="tab">活动记录</a></li>
 				                    <li>
 				                    	<a href="#myNews" data-toggle="tab">
-				                    		<span class="badge pull-right">42</span>我的消息
+				                    		<span class="badge pull-right" id="myNewsCount"></span>未读消息
 				                    	</a>
 				                    </li>
+				                    <li><a href="#myOldNews" data-toggle="tab">已读消息</a></li>
 				                </ul>
 				            </div>
 				        </div>
@@ -398,21 +400,38 @@
 					        </div>
 					    </div>
 
-					    <!-- 我的消息 -->
+					    <!-- 未读消息 -->
 					    <div class="tab-pane fade" id="myNews">
 					        <div class="col-md-12" style="padding-top: 20px;">
 					        	<div class="col-md-12">
 					        		<img src="images/logo/info.png" style="width: 28px;margin-bottom: 10px;">
-					        		<span style="font-size: 25px;color: #525252">我的消息</span>
+					        		<span style="font-size: 25px;color: #525252">未读消息</span>
 					        	</div>
 					        	<div class="col-md-12" style="margin-top: 30px;">
-					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;">
-						        		<img src="images/logo/playHisItem.png" style="width: 22px;margin-bottom: 6px;">
-						        		<span>
-						        			<a href="" target="_blank" style="font-size: 20px;">标题标题标题</a>
-						        		</span>
+					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;" id="myNewsList">
+						        		
 					        		</div>
 
+					        		<div id="myNewsPage" style="text-align: center;" class="col-md-12">
+									</div>
+					        	</div>
+					        </div>
+					    </div>
+
+					    <!-- 已读消息 -->
+					    <div class="tab-pane fade" id="myOldNews">
+					        <div class="col-md-12" style="padding-top: 20px;">
+					        	<div class="col-md-12">
+					        		<img src="images/logo/info.png" style="width: 28px;margin-bottom: 10px;">
+					        		<span style="font-size: 25px;color: #525252">已读消息</span>
+					        	</div>
+					        	<div class="col-md-12" style="margin-top: 30px;">
+					        		<div class="col-md-11 col-sm-12 col-md-offset-1" style="margin-bottom: 10px;" id="myOldNewsList">
+						        		
+					        		</div>
+
+					        		<div id="myOldNewsPage" style="text-align: center;" class="col-md-12">
+									</div>
 					        	</div>
 					        </div>
 					    </div>
@@ -1300,6 +1319,72 @@
 					}
 				})
 			}
+		}
+
+		//未读消息
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
+        	data:null,
+        	success:function(result){
+        		var myNewsData = result.data;
+
+        		if(myNewsData != null){
+        			$("#myNewsPage").show();
+					pageVideoRecord(myNewsData, $("#myNewsPage"));
+					$("#myNewsCount").html(myNewsData.length)
+					$("#myNewsCountMobile").html(myNewsData.length)
+        		}else{
+        			var oDiv =`
+        				<div class="col-md-12" style="margin-bottom: 10px;">
+		    				<span style="font-size: 20px;">亲,当前还没有未读消息哦</span>
+		    			</div>
+        			`;
+        			$("#myNewsList").append(oDiv);
+        		}
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
+		})
+
+		//未读消息分页
+		function pageVideoRecord(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 10  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('myNewsList').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let date = new Date(item.messagedate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate()
+				        		+" "+date.getHours()+":"+date.getMinutes();
+				        	let datas =`
+					        	<div class="col-md-12" style="margin-top:10px;">
+									<img src="images/logo/mynewsimg.png" style="width: 22px;margin-bottom: 6px;">
+									<span style="font-size: 20px;">${year}</span>
+					        		<span>
+					        			<a href="" target="_blank" style="font-size: 20px;height:30px;overflow:hidden;padding-top:4px;">${item.messagecontent}</a>
+					        		</span>
+					        	</div>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
 		}
 	</script>
 	
