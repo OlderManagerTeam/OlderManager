@@ -41,11 +41,28 @@ public class OlderPersonalCenterServiceImpl implements OlderPersonalCenterServic
 		return new Message(true,messageid+"已读",null);
 	}
 	@Override
+	//已读消息返回
 	public Message oldmessagecount(int olderid) {
 		oldermessageExample.clear();
 		oldermessageCriteria=oldermessageExample.createCriteria();
 		oldermessageCriteria.andMessageolderidEqualTo(olderid);
 		oldermessageCriteria.andMessagecontentEqualTo("已读");
 		return new Message(true,"已读消息返回",oldermessageMapper.selectByExample(oldermessageExample));
+	}
+	@Override
+	//单个消息详情
+	public Message messagebyid(int olderid, Long oldermessageid) {
+		oldermessageExample.clear();
+		oldermessageCriteria=oldermessageExample.createCriteria();
+		oldermessageCriteria.andMessageolderidEqualTo(olderid);
+		oldermessageCriteria.andMessageidEqualTo(oldermessageid);
+		return new Message(true,"单个消息详情",oldermessageMapper.selectByExample(oldermessageExample));
+	}
+	
+	@Override
+	//未评价回访
+	public Message visited(int olderid) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 }

@@ -5,7 +5,7 @@
     <id column="vRecordId" property="vrecordid" jdbcType="INTEGER" />
     <result column="vRecordOlderId" property="vrecordolderid" jdbcType="INTEGER" />
     <result column="vRecordVideoId" property="vrecordvideoid" jdbcType="INTEGER" />
-    <result column="vRecordDate" property="vrecorddate" jdbcType="TIME" />
+    <result column="vRecordDate" property="vrecorddate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >

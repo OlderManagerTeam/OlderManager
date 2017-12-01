@@ -69,16 +69,29 @@ public class OlderPersonalCenterController {
 		}
 	}
 	
-/*	// 消息消息详情
-	@RequestMapping(method = RequestMethod.GET, value = "oldmessagecount")
-	public @ResponseBody Message oldmessagecount(HttpSession s) {
+	// 消息消息详情
+	@RequestMapping(method = RequestMethod.GET, value = "messagebyid")
+	public @ResponseBody Message messagebyid(HttpSession s,Long oldermessageid) {
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
 		if (loginMassage == null) {
 			return new Message(false ,"未登录",null);
 		} else {// 已登陆
 			int olderid = loginMassage.getOlderid();
-			return olderPersonalCenterService.oldmessagecount(olderid);
+			return olderPersonalCenterService.messagebyid(olderid,oldermessageid);
 		}
-	}*/
+	}
+	
+	// 回访评价返回
+	@RequestMapping(method = RequestMethod.GET, value = "visited")
+	public @ResponseBody Message visited(HttpSession s) {
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false ,"未登录",null);
+		} else {// 已登陆
+			int olderid = loginMassage.getOlderid();
+			return olderPersonalCenterService.visited(olderid);
+		}
+	}
 }
