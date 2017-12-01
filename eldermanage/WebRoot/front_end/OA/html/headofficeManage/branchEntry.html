@@ -63,7 +63,8 @@
 						</button>
 						<li class="dropdown profile"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-expanded="false" id="username" style="font-size: 1.5em"><span class="caret"></span></a>
+							aria-expanded="false" id="username" style="font-size: 1.5em"><span
+								class="caret"></span></a>
 							<ul class="dropdown-menu animated fadeInDown">
 								<li class="profile-img"><img class="profile-img"
 									id="textheadphoto"></li>
@@ -84,7 +85,7 @@
 									</div>
 								</li>
 							</ul></li>
-						</ul>
+					</ul>
 				</div>
 			</nav>
 			<div class="side-menu sidebar-inverse">
@@ -111,8 +112,10 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
-											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
+											<li><a
+												href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a
+												href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -222,90 +225,94 @@
 										</ul>
 									</div>
 								</div></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-		</nav>
-	</div>
-	<!-- Main Content -->
-	<div class="container-fluid">
-		<div class="side-body">
-			<div class="page-title">
-				<span class="title">添加分店</span>
-				<div class="description">Add Branch</div>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</nav>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="card">
-						<div class="card-header">
-							<div class="card-title">
-								<div class="title">添加分店</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<form class="form-horizontal" id="branchEntry">
-								<div class="form-group">
-									<label for="branchName" class="col-sm-3 control-label">分店名称：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchName"
-											placeholder="分店名称" name="branchname">
+			<!-- Main Content -->
+			<div class="container-fluid">
+				<div class="side-body">
+					<div class="page-title">
+						<span class="title">添加分店</span>
+						<div class="description">Add Branch</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">
+										<div class="title">添加分店</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="branchPostCode" class="col-sm-3 control-label">分店邮编：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchPostCode"
-											placeholder="分店邮编" name="branchpostcode">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="branchManagerId" class="col-sm-3 control-label">分店管理员员工号：</label>
-									<div class="col-sm-5">
-										<input type="text" readonly="readonly" id="staffId" name="branchmanagerid" 
-										style="padding-left: 7px;display: none;"></input>
-										<input type="text" class="form-control" id="staffcode"
-											placeholder="分店管理员">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="branchManagerId" class="col-sm-3 control-label">分店管理员姓名：</label>
-									<div class="col-sm-5">
-										<input type="text" readonly="readonly" class="form-control" id="branchmanagername" placeholder="分店管理员姓名"></input>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="branchAdress" class="col-sm-3 control-label">分店地址：</label>
-									<div class="col-sm-5">
-										<input type="text" class="form-control" id="branchAdress"
-											placeholder="分店地址" name="branchadress">
-									</div>
-								</div>
-<!-- 								<div class="form-group">
+								<div class="card-body">
+									<form class="form-horizontal" id="branchEntry">
+										<div class="form-group">
+											<label for="branchName" class="col-sm-3 control-label">分店名称：</label>
+											<div class="col-sm-5">
+												<input type="text" class="form-control" id="branchName"
+													placeholder="分店名称" name="branchname">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="branchPostCode" class="col-sm-3 control-label">分店邮编：</label>
+											<div class="col-sm-5">
+												<input type="text" class="form-control" id="branchPostCode"
+													placeholder="分店邮编" name="branchpostcode">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="branchManagerId" class="col-sm-3 control-label">分店管理员员工号：</label>
+											<div class="col-sm-5">
+												<input type="hidden" readonly="readonly" id="staffId"
+											
+													style="padding-left: 7px;display: block;"></input> <input
+													type="text" class="form-control" id="staffcode"
+													placeholder="分店管理员">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="branchManagerId" class="col-sm-3 control-label">分店管理员姓名：</label>
+											<div class="col-sm-5">
+												<input type="text" readonly="readonly" class="form-control"
+													id="branchmanagername" placeholder="分店管理员姓名"
+													name="staffname"></input>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="branchAdress" class="col-sm-3 control-label">分店地址：</label>
+											<div class="col-sm-5">
+												<input type="text" class="form-control" id="branchAdress"
+													placeholder="分店地址" name="branchadress">
+											</div>
+										</div>
+										<!-- 								<div class="form-group">
 									<label for="branchKPI" class="col-sm-3 control-label">分店管理员绩效：</label>
 									<div class="col-sm-5">
 										<input type="text" class="form-control" id="branchKPI"
 											placeholder="分店管理员绩效" name="branchkpi">
 									</div>
 								</div> -->
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-5">
-										<button type="button" class="btn btn-primary btn-lg" id="entrysubmit">提交</button>
-									</div>
+										<div class="form-group">
+											<div class="col-sm-offset-3 col-sm-5">
+												<button type="button" class="btn btn-primary btn-lg"
+													id="entrysubmit">提交</button>
+											</div>
+										</div>
+									</form>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	<footer class="app-footer">
-		<div class="wrapper">
-			<span class="pull-right">2.1 <a href="#"><i
-					class="fa fa-long-arrow-up"></i></a></span> 漏 2015 Copyright.
-		</div>
-	</footer>
+		<footer class="app-footer">
+			<div class="wrapper">
+				<span class="pull-right">2.1 <a href="#"><i
+						class="fa fa-long-arrow-up"></i></a></span> 漏 2015 Copyright.
+			</div>
+		</footer>
 		<!-- Javascript Libs -->
 		<script type="text/javascript" src="../../lib/js/jquery.min.js"></script>
 		<script type="text/javascript" src="../../lib/js/bootstrap.min.js"></script>
@@ -374,11 +381,32 @@
 								},
 							}
 						},
+/* 						staffname : {
+							message : '管理员名不能为空',
+							validators : {
+								notEmpty : {
+									message : '管理员名不能为空'
+								},
+								stringLength : {
+									min : 2,
+									max : 6,
+									message : '名字必须为2到6位'
+								},
+								regexp : {
+									regexp : /^[\u4e00-\u9fa5]+$/,
+									message : '名字必须为中文'
+								},
+							}
+						}, */
 						branchpostcode : {
 							validators : {
 								notEmpty : {
 									message : '邮编不能为空'
 								},
+								regexp : {
+									regexp : /^[1-9][0-9]{5}$/,
+									message : '邮编格式不对'
+								}
 							}
 						},
 						branchmanagerid : {
@@ -388,17 +416,17 @@
 								},
 							}
 						},
-					branchadress: {
+						branchadress : {
 							validators : {
 								notEmpty : {
 									message : '分店地址不能为空'
 								},
 								regexp : {
-									regexp : /^[\u4e00-\u9fa5]{2,4}省\u4e00-\u9fa5]{2,6}市\u4e00-\u9fa5]{2,6}县\u4e00-\u9fa5]{0,20}$/,
+									regexp : /^[\u4e00-\u9fa5]{2,4}省[\u4e00-\u9fa5]{2,6}市[\u4e00-\u9fa5]{2,6}县[\u4e00-\u9fa5]{0,20}$/,
 									message : '分店地址格式为：XX省XX市XX县XX'
 								}
 							}
-						}, 
+						},
 					}
 				});
 		
@@ -407,53 +435,57 @@
 			});
 		</script>
 
-		
+
 		<script type="text/javascript">
 			$("#entrysubmit").click(function() {
 				var form = new FormData(document.getElementById("branchEntry"));
-			
+				form.append("branchmanagerid", $('#staffId').val());
+				var bootstrapValidator = $("#branchEntry").data("bootstrapValidator");
+				bootstrapValidator.validate();
+				if (bootstrapValidator.isValid())
+					$.ajax({
+						type : 'post',
+						url : "/eldermanage/v1/headoffice/branch",
+						data : form,
+						processData : false,
+						contentType : false,
+						success : function(result) {
+							//var resultdata = JSON.parse(result);
+							if (result.success) {
+								window.location.href = "/eldermanage/front_end/OA/html/headofficeManage/branchView.html";
+							}else{
+							
+							alert(result.information);
+							}
+						},
+						error : function() {
+							alert('fail')
+						}
+					})
+			})
+		
+			$("#staffcode").blur(function() {
+				//alert('abc')
+				var staffcode = $('#staffcode').val()
+		
 				$.ajax({
-					type : 'post',
-					url : "/eldermanage/v1/headoffice/branch",
-					data : form,
-					processData : false,
-					contentType : false,
+					type : 'get',
+					contentType : 'application/json',
+					url : "/eldermanage/v1/headoffice/branch/staff?staffcode=" + staffcode,
+					data : staffcode,
 					success : function(result) {
-						//var resultdata = JSON.parse(result);
-						alert(result.success);
-						if (result.success) {
-							window.location.href = "/eldermanage/front_end/OA/html/headofficeManage/branchView.html";
+						var staffinfo = result.data
+						if (result.success == true) {
+							$('#staffId').attr("value", result.data.staffid);
+							$('#branchmanagername').val(result.data.staffname);
+						//alert(result.data.staffid)
+						} else {
+							$('#staffcode').val("");
+							$('#staffId').val("");
+							$('#branchmanagername').val("员工不存在!!!");
 						}
 					},
 					error : function() {
-						alert('fail')
-					}
-				})
-			})
-
-			$("#staffcode").blur(function(){
-				//alert('abc')
-				var staffcode = $('#staffcode').val()
-
-				$.ajax({
-					type:'get',
-					contentType:'application/json',
-					url:"/eldermanage/v1/headoffice/branch/staff?staffcode="+staffcode,
-					data:staffcode,
-					success:function(result){
-						var staffinfo = result.data
-						if (result.success == true) {
-							$('#staffId').attr("value",result.data.staffid);
-							$('#branchmanagername').val(result.data.staffname);
-							//alert(result.data.staffid)
-						}else {
-							alert('员工不存在!!!');
-							$('#staffcode').val("");
-							$('#staffId').val("");
-							$('#branchmanagername').val("");
-						}
-					},
-					error:function(){
 						alert('数据库错误')
 					}
 				})

@@ -116,8 +116,10 @@
 									<div class="panel-body">
 										<ul class="nav navbar-nav">
 											<li><a href="../dataStatistics/shopDataStatistics.html">商品数据统计</a></li>
-											<li><a href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
-											<li><a href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
+											<li><a
+												href="../dataStatistics/newsAndVideoStatistics.html">新闻及视频数据统计</a></li>
+											<li><a
+												href="../dataStatistics/headofficeStatististics.html">分店数据统计</a></li>
 										</ul>
 									</div>
 								</div></li>
@@ -517,7 +519,7 @@
 								}
 							}
 						},
-						productupondate : {
+						productUpondate : {
 							validators : {
 								notEmpty : {
 									message : '日期不能为空'
@@ -528,7 +530,7 @@
 								}
 							}
 						},
-						productDiscountPrice : {
+						productdiscountprice : {
 							validators : {
 								notEmpty : {
 									message : '商品折扣价不能为空'
@@ -611,6 +613,7 @@
 				document.getElementById("return").href = "../olderShop/productView.html?producttypenumber=1";
 			document.getElementById("productAlter")
 			$("#productarltersubmit").click(function() {
+		
 				var form = new FormData(document.getElementById("productAlter"));
 				var producttypenumber = $("#producttypenumber").val()
 				form.append("productid", UrlParm.parm("productid"));
@@ -623,18 +626,21 @@
 					form.append("filepic", file[i]); //++++++++++    
 				}
 				form.append("producttypenumber", producttypenumber);
-				$.ajax({
-					type : 'post',
-					url : "/eldermanage/v1/oldershop/product/infoupdate",
-					data : form,
-					processData : false,
-					contentType : false,
-				})
-					.then(function(result) {
-						if (result.success) {
-							window.location.href = "/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + producttypenumber;
+				var bootstrapValidator = $("#productAlter").data("bootstrapValidator");
+				bootstrapValidator.validate();
+				if (bootstrapValidator.isValid())
+					$.ajax({
+						type : 'post',
+						url : "/eldermanage/v1/oldershop/product/infoupdate",
+						data : form,
+						processData : false,
+						contentType : false,
+					})
+						.then(function(result) {
+							if (result.success) {
+								window.location.href = "/eldermanage/front_end/OA/html/olderShop/productView.html?producttypenumber=" + producttypenumber;
+							}
 						}
-					}
 				)
 			}
 			)
@@ -670,14 +676,14 @@
 								for (var i = roledata.length - 1; i >= 0; i--) {
 									if (productinfo.typetwotypeid == roledata[i].typetwoid) {
 										var oOption = `
-																																																					<option value="${productinfo.typetwotypeid}" selected="selected">${roledata[i].typetwocontent}</option>
-																																																				`;
+																																																							<option value="${productinfo.typetwotypeid}" selected="selected">${roledata[i].typetwocontent}</option>
+																																																						`;
 										$("#select2-producttypenumbertwo-container").html(roledata[i].typetwocontent);
 										$('#producttypenumbertwo').append(oOption);
 									} else {
 										var oOption = `
-																																											<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
-																																										`;
+																																													<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
+																																												`;
 										$('#producttypenumbertwo').append(oOption);
 									}
 								}
@@ -717,14 +723,14 @@
 					success : function(result) {
 						roledata = result.data;
 						var oOption = `
-																																																								<option value="0" selected="selected">无</option>
-																																																							`;
+																																																										<option value="0" selected="selected">无</option>
+																																																									`;
 						$("#select2-producttypenumbertwo-container").html("无");
 						$('#producttypenumbertwo').append(oOption);
 						for (var i = roledata.length - 1; i >= 0; i--) {
 							var oOption = `
-																																														<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
-																																													`;
+																																																<option value="${roledata[i].typetwoid}">${roledata[i].typetwocontent}</option>
+																																															`;
 							$('#producttypenumbertwo').append(oOption);
 						}
 					},
