@@ -2,6 +2,8 @@ package com.sds.em.mapper;
 
 import com.sds.em.po.Staffbase;
 import com.sds.em.po.StaffbaseExample;
+import com.sds.em.pojo.ShowStaffView;
+import com.sds.em.pojo.StaffDepartmentRoleExtend;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -31,4 +33,8 @@ public interface StaffbaseMapper {
     
     //	//返回该部门该职位的员工人数，好形成员工号
     public List<Staffbase> getStaffcodeCount(Staffbase staffbase);
+    
+    //首页显示员工
+    public List<ShowStaffView> showStaff(int roleid);
+    
 }
