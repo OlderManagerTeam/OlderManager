@@ -441,13 +441,14 @@
 
 	<script type="text/javascript">
 	
-	
+	var olderid;
 		$.ajax({
 			type : 'get',
 			contentType : 'application/json',
 			url : "/eldermanage/v1/shop/personal/older/info",
 			data : null,
 			success : function(result) {
+			    olderid=result.data.olderid;
 				document.getElementById("oldername").innerHTML = result.data.oldername;
 				document.getElementById("oldertel").innerHTML = result.data.oldertel;
 				document.getElementById("olderaddress").innerHTML = result.data.olderaddress;
