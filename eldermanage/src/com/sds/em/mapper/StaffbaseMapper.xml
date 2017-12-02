@@ -32,7 +32,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -64,7 +65,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -82,9 +84,11 @@
 		</where>
 	</sql>
 	<sql id="Base_Column_List">
-		staffId, staffName, staffSex, staffBirthday, staffiIDE, staffTel, staffCode,
+		staffId, staffName, staffSex, staffBirthday, staffiIDE,
+		staffTel, staffCode,
 		staffImg,
-		staffAddress, staffDepartmentId, staffPassword, staffRoleId
+		staffAddress, staffDepartmentId,
+		staffPassword, staffRoleId
 	</sql>
 	<select id="selectByExample" resultMap="BaseResultMap"
 		parameterType="com.sds.em.po.StaffbaseExample">
@@ -109,7 +113,8 @@
 		where staffId = #{staffid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from staffbase
+		delete from
+		staffbase
 		where staffId = #{staffid,jdbcType=INTEGER}
 	</delete>
 	<delete id="deleteByExample" parameterType="com.sds.em.po.StaffbaseExample">
@@ -119,21 +124,27 @@
 		</if>
 	</delete>
 	<insert id="insert" parameterType="com.sds.em.po.Staffbase">
-		insert into staffbase (staffId, staffName, staffSex,
+		insert into staffbase
+		(staffId, staffName, staffSex,
 		staffBirthday, staffiIDE, staffTel,
 		staffCode, staffImg, staffAddress,
-		staffDepartmentId, staffPassword, staffRoleId
+		staffDepartmentId, staffPassword,
+		staffRoleId
 		)
-		values (#{staffid,jdbcType=INTEGER}, #{staffname,jdbcType=VARCHAR},
+		values (#{staffid,jdbcType=INTEGER},
+		#{staffname,jdbcType=VARCHAR},
 		#{staffsex,jdbcType=VARCHAR},
-		#{staffbirthday,jdbcType=DATE}, #{staffiide,jdbcType=VARCHAR}, #{stafftel,jdbcType=VARCHAR},
-		#{staffcode,jdbcType=VARCHAR}, #{staffimg,jdbcType=VARCHAR},
+		#{staffbirthday,jdbcType=DATE}, #{staffiide,jdbcType=VARCHAR},
+		#{stafftel,jdbcType=VARCHAR},
+		#{staffcode,jdbcType=VARCHAR},
+		#{staffimg,jdbcType=VARCHAR},
 		#{staffaddress,jdbcType=VARCHAR},
 		#{staffdepartmentid,jdbcType=INTEGER},
 		#{staffpassword,jdbcType=VARCHAR}, #{staffroleid,jdbcType=INTEGER}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="com.sds.em.po.Staffbase" useGeneratedKeys="true" keyProperty="staffid">
+	<insert id="insertSelective" parameterType="com.sds.em.po.Staffbase"
+		useGeneratedKeys="true" keyProperty="staffid">
 		insert into staffbase
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="staffid != null">
@@ -250,7 +261,8 @@
 				staffAddress = #{record.staffaddress,jdbcType=VARCHAR},
 			</if>
 			<if test="record.staffdepartmentid != null">
-				staffDepartmentId = #{record.staffdepartmentid,jdbcType=INTEGER},
+				staffDepartmentId =
+				#{record.staffdepartmentid,jdbcType=INTEGER},
 			</if>
 			<if test="record.staffpassword != null">
 				staffPassword = #{record.staffpassword,jdbcType=VARCHAR},
@@ -267,16 +279,26 @@
 		update staffbase
 		set staffId = #{record.staffid,jdbcType=INTEGER},
 		staffName = #{record.staffname,jdbcType=VARCHAR},
-		staffSex = #{record.staffsex,jdbcType=VARCHAR},
-		staffBirthday = #{record.staffbirthday,jdbcType=DATE},
-		staffiIDE = #{record.staffiide,jdbcType=VARCHAR},
-		staffTel = #{record.stafftel,jdbcType=VARCHAR},
-		staffCode = #{record.staffcode,jdbcType=VARCHAR},
-		staffImg = #{record.staffimg,jdbcType=VARCHAR},
-		staffAddress = #{record.staffaddress,jdbcType=VARCHAR},
-		staffDepartmentId = #{record.staffdepartmentid,jdbcType=INTEGER},
-		staffPassword = #{record.staffpassword,jdbcType=VARCHAR},
-		staffRoleId = #{record.staffroleid,jdbcType=INTEGER}
+		staffSex =
+		#{record.staffsex,jdbcType=VARCHAR},
+		staffBirthday =
+		#{record.staffbirthday,jdbcType=DATE},
+		staffiIDE =
+		#{record.staffiide,jdbcType=VARCHAR},
+		staffTel =
+		#{record.stafftel,jdbcType=VARCHAR},
+		staffCode =
+		#{record.staffcode,jdbcType=VARCHAR},
+		staffImg =
+		#{record.staffimg,jdbcType=VARCHAR},
+		staffAddress =
+		#{record.staffaddress,jdbcType=VARCHAR},
+		staffDepartmentId =
+		#{record.staffdepartmentid,jdbcType=INTEGER},
+		staffPassword =
+		#{record.staffpassword,jdbcType=VARCHAR},
+		staffRoleId =
+		#{record.staffroleid,jdbcType=INTEGER}
 		<if test="_parameter != null">
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
@@ -309,7 +331,8 @@
 				staffAddress = #{staffaddress,jdbcType=VARCHAR},
 			</if>
 			<if test="staffdepartmentid != null">
-				staffDepartmentId = #{staffdepartmentid,jdbcType=INTEGER},
+				staffDepartmentId =
+				#{staffdepartmentid,jdbcType=INTEGER},
 			</if>
 			<if test="staffpassword != null">
 				staffPassword = #{staffpassword,jdbcType=VARCHAR},
@@ -323,21 +346,44 @@
 	<update id="updateByPrimaryKey" parameterType="com.sds.em.po.Staffbase">
 		update staffbase
 		set staffName = #{staffname,jdbcType=VARCHAR},
-		staffSex = #{staffsex,jdbcType=VARCHAR},
-		staffBirthday = #{staffbirthday,jdbcType=DATE},
-		staffiIDE = #{staffiide,jdbcType=VARCHAR},
+		staffSex =
+		#{staffsex,jdbcType=VARCHAR},
+		staffBirthday =
+		#{staffbirthday,jdbcType=DATE},
+		staffiIDE =
+		#{staffiide,jdbcType=VARCHAR},
 		staffTel = #{stafftel,jdbcType=VARCHAR},
 		staffCode = #{staffcode,jdbcType=VARCHAR},
-		staffImg = #{staffimg,jdbcType=VARCHAR},
-		staffAddress = #{staffaddress,jdbcType=VARCHAR},
-		staffDepartmentId = #{staffdepartmentid,jdbcType=INTEGER},
-		staffPassword = #{staffpassword,jdbcType=VARCHAR},
-		staffRoleId = #{staffroleid,jdbcType=INTEGER}
-		where staffId = #{staffid,jdbcType=INTEGER}
+		staffImg =
+		#{staffimg,jdbcType=VARCHAR},
+		staffAddress =
+		#{staffaddress,jdbcType=VARCHAR},
+		staffDepartmentId =
+		#{staffdepartmentid,jdbcType=INTEGER},
+		staffPassword =
+		#{staffpassword,jdbcType=VARCHAR},
+		staffRoleId =
+		#{staffroleid,jdbcType=INTEGER}
+		where staffId =
+		#{staffid,jdbcType=INTEGER}
 	</update>
 
 	<select id="getStaffcodeCount" parameterType="com.sds.em.po.Staffbase"
 		resultType="com.sds.em.po.Staffbase">
-		select staffbase.* from staffbase WHERE staffdepartmentid=#{staffdepartmentid} and staffroleid=#{staffroleid}
+		select staffbase.* from staffbase WHERE
+		staffdepartmentid=#{staffdepartmentid} and staffroleid=#{staffroleid}
+	</select>
+
+	<select id="showStaff" parameterType="int"
+		resultType="com.sds.em.pojo.ShowStaffView">
+		select * from staffbase
+		INNER JOIN role
+		ON
+		staffbase.staffRoleId=roleId
+		INNER JOIN department
+		ON
+		staffbase.staffDepartmentId=department.departmentId
+		WHERE
+		staffRoleId=#{value}
 	</select>
 </mapper>
