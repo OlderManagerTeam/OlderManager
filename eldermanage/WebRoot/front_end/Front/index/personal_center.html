@@ -145,6 +145,21 @@
 			font-weight: 500;
 			color: #ffbc1e;
 		}
+
+		/*评价*/
+		#star {
+	        position: absolute;
+	        height: 20px;
+	        width: 200px;
+	        left: 15px;
+	        top: 0;
+	        z-index: 9999;
+	        color: #ffd601;
+	    }
+	    #star span {
+	        margin-right: 6px;
+	    }
+
 	</style>
 </head>
 
@@ -662,6 +677,86 @@
 		                <h4 class="modal-title" id="myModalLabel">错误提示</h4>
 		            </div>
 		            <div class="modal-body">亲,现在还没有未读消息哦</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 评价模态框-->
+		<div class="modal fade" id="assessVisitedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">评价</h4>
+		            </div>
+		            <div class="modal-body">
+		            	<div>评语(可以不填)</div>
+		            	<textarea rows="5" cols="30" style="font-size: 18px;" id="textContent"></textarea>
+		            	<div>星级评价(必填)</div>
+		            	<div class="container" style="position: relative;">
+					          <div class="row" id="one">
+					            <span class="glyphicon glyphicon-star"></span>
+					            <span class="glyphicon glyphicon-star"></span>
+					            <span class="glyphicon glyphicon-star"></span>
+					            <span class="glyphicon glyphicon-star"></span>
+					            <span class="glyphicon glyphicon-star"></span>
+					          </div>
+					          <div id="star" class="row"></div>
+					    </div>
+					    <input type="hidden" name="" id="assessId">
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+		                <button type="button" class="btn btn-primary" onclick="saveAssess()">提交</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 提交成功提示模态框-->
+		<div class="modal fade" id="assessSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">成功提示</h4>
+		            </div>
+		            <div class="modal-body">提交成功</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" onclick="reloadassess()">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 提交失败提示模态框-->
+		<div class="modal fade" id="assessFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">提示</h4>
+		            </div>
+		            <div class="modal-body">提交失败</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 提交失败提示模态框-->
+		<div class="modal fade" id="assessStarFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">提示</h4>
+		            </div>
+		            <div class="modal-body">请填写星级</div>
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
 		            </div>
@@ -1413,7 +1508,7 @@
 									<img src="images/logo/mynewsimg.png" style="width: 22px;margin-bottom: 6px;">
 									<span style="font-size: 20px;">${year}</span>
 					        		<span>
-					        			<a href="myNews_Detail.html?${item.messageid}" target="_blank" style="font-size:20px;height:26px;overflow:hidden;" onclick="myNewsChange(${item.messageid},${index})">${item.messagecontent}</a>
+					        			<a href="myNews_Detail.html?${item.messageid}" target="_blank" style="font-size:20px;height:26px;overflow:hidden;width:400px;vertical-align:sub;" onclick="myNewsChange(${item.messageid},${index})">${item.messagecontent}</a>
 					        		</span>
 					        	</div>
 							`;
@@ -1516,7 +1611,7 @@
 									<img src="images/logo/myoldnewsimg.png" style="width: 22px;margin-bottom: 6px;">
 									<span style="font-size: 20px;">${year}</span>
 					        		<span>
-					        			<a href="myNews_Detail.html?${item.messageid}" target="_blank" style="font-size: 20px;height:26px;overflow:hidden;">${item.messagecontent}</a>
+					        			<a href="myNews_Detail.html?${item.messageid}" target="_blank" style="font-size: 20px;height:26px;overflow:hidden;width:400px;vertical-align:sub;">${item.messagecontent}</a>
 					        		</span>
 					        	</div>
 							`;
@@ -1568,19 +1663,21 @@
 				    ,hash: 'fenye' //自定义hash值
 				    ,jump: function(obj){
 				      //模拟渲染
-				      document.getElementById('myOldNewsList').innerHTML = function(){
+				      document.getElementById('myVisitedRecordList').innerHTML = function(){
 				        var arr = []
 				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 				        layui.each(thisData, function(index, item){
-				        	let date = new Date(item.messagedate);
-				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate()
-				        		+" "+date.getHours()+":"+date.getMinutes();
+				        	let date = new Date(item.visiteddate);
+				        	let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 				        	let datas =`
 					        	<div class="col-md-12" style="margin-top:10px;">
-									<img src="images/logo/myoldnewsimg.png" style="width: 22px;margin-bottom: 6px;">
+									<img src="images/logo/assess.png" style="width: 22px;margin-bottom: 6px;">
 									<span style="font-size: 20px;">${year}</span>
-					        		<span>
-					        			<a href="myNews_Detail.html?${item.messageid}" target="_blank" style="font-size: 20px;height:26px;overflow:hidden;">${item.messagecontent}</a>
+					        		<span style="font-size:20px;width:300px;overflow:hidden;display:-webkit-inline-box;vertical-align:top;height:26px;">
+					        			${item.visitedcontent}
+					        		</span>
+					        		<span style="padding-left:30px;">
+					        			<a href="" onclick="assessVisited(${item.visitedid});return false;" style="font-size:20px;">评价</a>
 					        		</span>
 					        	</div>
 							`;
@@ -1591,6 +1688,87 @@
 				    }
 				});
 			});
+		}
+
+		//评价
+		function assessVisited(id){
+			$("#assessVisitedModal").modal("show");
+			$("#assessId").val(id);
+		}
+
+		var starnum;
+		$(function (){
+	      $("#star").click(function (event){
+	          var e = event || window.event;
+	          var width = e.clientX - parseInt($(this).closest(".modal-dialog").css("marginLeft"))-30;
+	          // console.log(width);
+	          if(width > -10 && width < 110) {
+	            $(this).html('');
+	            $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	             $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	             $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	             $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	            $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	            starnum =5;
+	            if(width < 80){
+	              $(this).html('');
+	              $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	              $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	              $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	              $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	              starnum = 4;
+	              if(width < 53){
+	                $(this).html('');
+	                $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                starnum = 3;
+	                if(width < 34){
+	                  $(this).html('');
+	                  $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                  $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                  starnum = 2;
+	                  if(width < 17){
+	                    $(this).html('');
+	                    $('<span class="glyphicon glyphicon-star">').appendTo($(this));
+	                    starnum = 1;
+	                  }
+	                }
+	              }
+	            }
+	          } 
+	      });
+	    })
+
+		// 评价提交
+		function saveAssess(){
+			if(starnum != null){
+				var form = new FormData();
+				form.append("visitedid",$("#assessId").val())
+				form.append("visitedjudgestar",starnum)
+				form.append("visitedjudgecontent",$("#textContent").val())
+				$.ajax({
+					type: 'post',
+					processData : false,
+					contentType : false,
+		        	url:"/eldermanage/v1/olderpersonal/visited",
+		        	data:form,
+		        	success:function(result){
+		        		$("#assessVisitedModal").modal("hide");
+		        		$("#assessSuccessModal").modal("show");
+		        	},
+		        	error:function(){
+		        		$("#assessFailModal").modal("show");
+		        	}
+				})
+			}else{
+				$("#assessStarFailModal").modal("show");
+			}
+		}
+
+		// 刷新页面
+		function reloadassess(){
+			window.location.reload();
 		}
 	</script>
 	
