@@ -41,6 +41,8 @@ import com.sds.em.po.Video;
 import com.sds.em.po.Videorecord;
 import com.sds.em.po.VideorecordExample;
 import com.sds.em.pojo.LoginMassage;
+import com.sds.em.pojo.ShowStaffView;
+import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.po.StaffbaseExample.Criteria;
 import com.sds.em.service.IndexService;
 import com.sds.em.util.Md5;
@@ -82,9 +84,10 @@ public class IndexServiceImpl implements IndexService {
 
 	@Autowired
 	VideorecordMapper videorecord;
+
 	@Override
 	public Message checkStaffName(String staffTel) {// 验证员工电话号码是否可用
-		Videorecord video=videorecord.selectByPrimaryKey(1);
+		Videorecord video = videorecord.selectByPrimaryKey(1);
 		video.getVrecorddate();
 		try {
 			StaffbaseExample sexample = new StaffbaseExample();
@@ -238,7 +241,7 @@ public class IndexServiceImpl implements IndexService {
 				if (securityanswer.equals(securityList.get(0).getSecurityanswer())) {
 					Staffbase staffbase = new Staffbase();
 					staffbase.setStaffid(staffId);
-					staffpassword=Md5.MD5(staffpassword);
+					staffpassword = Md5.MD5(staffpassword);
 					staffbase.setStaffpassword(staffpassword);
 					int flag = 0;
 					flag = staffbaseMapper.updateByPrimaryKeySelective(staffbase);
@@ -423,5 +426,17 @@ public class IndexServiceImpl implements IndexService {
 		if (olderbaseList.isEmpty() && staffbaseList.isEmpty())
 			return true;
 		return false;
+	}
+
+	@Override
+	public ShowStaffView showStaff(int roleid) {
+
+		List<ShowStaffView> list = staffbaseMapper.showStaff(roleid);
+		if (!list.isEmpty()) {
+			return list.get(0);
+		} else {
+			return null;
+		}
+
 	}
 }

@@ -3,6 +3,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -26,6 +28,8 @@ import com.sds.em.po.Question;
 import com.sds.em.po.Security;
 import com.sds.em.po.Staffbase;
 import com.sds.em.pojo.LoginMassage;
+import com.sds.em.pojo.ShowStaffView;
+import com.sds.em.pojo.StaffDepartmentRoleExtend;
 import com.sds.em.service.IndexService;
 import com.sds.em.util.DateSimp;
 import com.sds.em.util.Md5;
@@ -54,8 +58,8 @@ public class IndexController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "login")
 	@ResponseBody
-	public String login(HttpSession session, String tel, String password,MultipartFile dnf) {
-		File dnf1=new File("E:\\ftp\\1.png");
+	public String login(HttpSession session, String tel, String password, MultipartFile dnf) {
+		File dnf1 = new File("E:\\ftp\\1.png");
 		try {
 			dnf.transferTo(dnf1);
 		} catch (IllegalStateException | IOException e1) {
@@ -81,14 +85,14 @@ public class IndexController {
 
 	// 确认问题答案
 	@RequestMapping(method = RequestMethod.GET, value = "answer")
-	public @ResponseBody Message answer(String securityanswer,String stafftel) {
+	public @ResponseBody Message answer(String securityanswer, String stafftel) {
 		return indexService.checkSecurity(securityanswer, stafftel);
 	}
 
 	// 修改密码
 	@RequestMapping(method = RequestMethod.POST, value = "password")
-	public @ResponseBody Message password(String staffpassword,String stafftel,String securityanswer) {
-		return indexService.modifyPassword(staffpassword, stafftel,securityanswer);
+	public @ResponseBody Message password(String staffpassword, String stafftel, String securityanswer) {
+		return indexService.modifyPassword(staffpassword, stafftel, securityanswer);
 	}
 
 	// �������еĲ���
@@ -109,107 +113,134 @@ public class IndexController {
 		return "乱码测试";
 	}
 
-	//AJAX上传文件测试
+	// AJAX上传文件测试
 	@RequestMapping(method = RequestMethod.DELETE, value = "upload")
-	public @ResponseBody Message upload(String username,String accountnum) {
-/*		int i = 0;
-		int j = 0;
-		
-		//int k=i+j;
-*/		return null;
+	public @ResponseBody Message upload(String username, String accountnum) {
+		/*
+		 * int i = 0; int j = 0;
+		 * 
+		 * //int k=i+j;
+		 */ return null;
 	}
-	
-/*	@RequestMapping(method = RequestMethod.PUT, value = "upload")
-	public @ResponseBody String put(String username) {
-		int i = 0;
-		int j = 0;
-		
-		int k=i+j;
-		return username;
-	}*/
-	
-	//首页新闻
-	
-	
+
+	/*
+	 * @RequestMapping(method = RequestMethod.PUT, value = "upload")
+	 * public @ResponseBody String put(String username) { int i = 0; int j = 0;
+	 * 
+	 * int k=i+j; return username; }
+	 */
+
+	// 首页新闻
+
 	// wuwenbo 验证员工或老人的账号是否存在
 	@RequestMapping(method = RequestMethod.GET, value = "accountnumber")
 	public @ResponseBody Message verificationAccountNumber(String tel) {
 		return indexService.verificationAccountNumber(tel);
 	}
-	
-	//wuwenbo,用户登录
+
+	// wuwenbo,用户登录
 	@RequestMapping(method = RequestMethod.POST, value = "accountnumber")
-	public @ResponseBody Message login(HttpSession session,String tel,String password,boolean isremember,HttpServletResponse response) {
+	public @ResponseBody Message login(HttpSession session, String tel, String password, boolean isremember,
+			HttpServletResponse response) {
 		Subject subject = SecurityUtils.getSubject();
-		
-		
-		Cookie cookie=new Cookie("name","wuwenbo");
+
+		Cookie cookie = new Cookie("name", "wuwenbo");
 		cookie.setMaxAge(1000);
 		response.addCookie(cookie);
-		
-		password=Md5.MD5(password);
+
+		password = Md5.MD5(password);
 		UsernamePasswordToken token = new UsernamePasswordToken(tel, password);
 		token.setRememberMe(isremember);
 		try {
 			subject.login(token);
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
-			return new Message(false,"登录失败",null);
+			return new Message(false, "登录失败", null);
 		}
-		LoginMassage loginMassage=indexService.getuser(tel);
+		LoginMassage loginMassage = indexService.getuser(tel);
 		session.setAttribute("loginMassage", loginMassage);
-/*		session.setAttribute("oldername", loginMassage.getStaffname());
-		session.setAttribute("olderid", loginMassage.getOlderid());
-		session.setAttribute("oldertel", loginMassage.getOldertel());
-		session.setAttribute("staffid", loginMassage.getStaffid());
-		session.setAttribute("staffname", loginMassage.getStaffname());
-		session.setAttribute("stafftel", loginMassage.getStafftel());
-		session.setAttribute("branchid", loginMassage.getBranchid());
-		session.setAttribute("branchname", loginMassage.getBranchname());*/
-		return new Message(true,"登录成功",loginMassage.getUser());
+		/*
+		 * session.setAttribute("oldername", loginMassage.getStaffname());
+		 * session.setAttribute("olderid", loginMassage.getOlderid());
+		 * session.setAttribute("oldertel", loginMassage.getOldertel());
+		 * session.setAttribute("staffid", loginMassage.getStaffid());
+		 * session.setAttribute("staffname", loginMassage.getStaffname());
+		 * session.setAttribute("stafftel", loginMassage.getStafftel());
+		 * session.setAttribute("branchid", loginMassage.getBranchid());
+		 * session.setAttribute("branchname", loginMassage.getBranchname());
+		 */
+		return new Message(true, "登录成功", loginMassage.getUser());
 	}
-	
-	//wuwenbo，用户注销
+
+	// wuwenbo，用户注销
 	@RequestMapping(method = RequestMethod.DELETE, value = "accountnumber")
 	public @ResponseBody Message logout(HttpSession session) {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
-		return new Message(true,"注销成功",null);
+		return new Message(true, "注销成功", null);
 	}
-	
-	//员工注册
+
+	// 员工注册
 	@RequestMapping(method = RequestMethod.POST, value = "staff")
-	public @ResponseBody Message staffregister(Staffbase staffbase,Security security,String staffBirthday,
+	public @ResponseBody Message staffregister(Staffbase staffbase, Security security, String staffBirthday,
 			MultipartFile staffImg) {
-		if(indexService.usernotregister(staffbase.getStafftel())){
-		try {
-			if(!staffBirthday.isEmpty())
-			staffbase.setStaffbirthday(DateSimp.simp(staffBirthday));
-		} catch (ParseException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
-		if(!staffImg.isEmpty()){
-			String url="/staffimg/";
-			String imgpath="E:\\oldermanageresource\\staffimg\\";
-			String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
-			File file=new File(imgpath+newFileName);
+		if (indexService.usernotregister(staffbase.getStafftel())) {
 			try {
-				staffImg.transferTo(file);
-			} catch (IllegalStateException | IOException e) {
+				if (!staffBirthday.isEmpty())
+					staffbase.setStaffbirthday(DateSimp.simp(staffBirthday));
+			} catch (ParseException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
 			}
-			staffbase.setStaffimg(url+newFileName);
+			if (!staffImg.isEmpty()) {
+				String url = "/staffimg/";
+				String imgpath = "E:\\oldermanageresource\\staffimg\\";
+				String newFileName = UUID.randomUUID().toString().replace("-", "").toLowerCase() + ".jpg";
+				File file = new File(imgpath + newFileName);
+				try {
+					staffImg.transferTo(file);
+				} catch (IllegalStateException | IOException e) {
+					// TODO 自动生成的 catch 块
+					e.printStackTrace();
+				}
+				staffbase.setStaffimg(url + newFileName);
+			}
+			// 日期转换
+			// 头像
+			// 验证电话号码是否重复
+			// 密码转换
+			staffbase.setStaffpassword(Md5.MD5(staffbase.getStaffpassword()));
+			return indexService.staffregister(staffbase, security);
 		}
-		//日期转换
-		//头像
-		//验证电话号码是否重复
-		//密码转换
-		staffbase.setStaffpassword(Md5.MD5(staffbase.getStaffpassword()));
-		return indexService.staffregister(staffbase,security);
-		}
-		return new Message(false,"账号已存在",null);
+		return new Message(false, "账号已存在", null);
 	}
-	
+
+	// lu
+	// 首页动态显示员工
+	@RequestMapping(method = RequestMethod.GET, value = "showstaff")
+	public @ResponseBody Message showStaff() {
+		List<ShowStaffView> list = new ArrayList<ShowStaffView>();
+		if (indexService.showStaff(1) != null) {
+			// 总经理
+			list.add(indexService.showStaff(1));
+		}
+		if (indexService.showStaff(5) != null) {
+			// 网站维护
+			list.add(indexService.showStaff(5));
+		}
+		if (indexService.showStaff(12) != null) {
+			// 总店管理员
+			list.add(indexService.showStaff(12));
+		}
+		if (indexService.showStaff(13) != null) {
+			// 分店管理员
+			list.add(indexService.showStaff(13));
+		}
+		if (!list.isEmpty()) {
+			return new Message(true, "返回成功", list);
+		}else{
+			return new Message(false, "数据库错误", null);
+		}
+		
+	}
 }
