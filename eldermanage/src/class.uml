@@ -1,7 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" 
-	xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" 
-	xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" 
-	xmi:id="_qb8akM37EdqwVrslYOdUDA"
-	name="class">
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA" name="class">
+  <packagedElement xmi:type="uml:Package" xmi:id="_908-0NcvEeeHHfg-64lJQw" name="com">
+    <packagedElement xmi:type="uml:Package" xmi:id="__B4sANcvEeeHHfg-64lJQw" name="sds">
+      <packagedElement xmi:type="uml:Package" xmi:id="_Fe5ywNcwEeeHHfg-64lJQw" name="em">
+        <packagedElement xmi:type="uml:Package" xmi:id="_HRPTENcwEeeHHfg-64lJQw" name="controller">
+          <packagedElement xmi:type="uml:Class" xmi:id="_jDIFoNcwEeeHHfg-64lJQw" name="ShopPayFrontController" clientDependency="_hXCTENc3EeeHHfg-64lJQw">
+            <ownedAttribute xmi:id="_J-YZUNcxEeeHHfg-64lJQw" name="addShopcart()"/>
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_hrIX8NcwEeeHHfg-64lJQw" name="Class1">
+              <nestedClassifier xmi:type="uml:Class" xmi:id="_f4OP4NcwEeeHHfg-64lJQw" name="Class1">
+                <nestedClassifier xmi:type="uml:Class" xmi:id="_eMoQwNcwEeeHHfg-64lJQw" name="Class1">
+                  <nestedClassifier xmi:type="uml:Class" xmi:id="_bynscNcwEeeHHfg-64lJQw" name="Class1" classifierBehavior="_dFdNUNcwEeeHHfg-64lJQw">
+                    <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_dFdNUNcwEeeHHfg-64lJQw">
+                      <region xmi:id="_dFd0YNcwEeeHHfg-64lJQw"/>
+                    </ownedBehavior>
+                    <nestedClassifier xmi:type="uml:Class" xmi:id="_Ul5nENcwEeeHHfg-64lJQw" name="IndexController"/>
+                  </nestedClassifier>
+                </nestedClassifier>
+              </nestedClassifier>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_Yh67QNcxEeeHHfg-64lJQw" name="IndexService">
+              <ownedAttribute xmi:id="_oXr6ENcxEeeHHfg-64lJQw" name="login()"/>
+              <nestedClassifier xmi:type="uml:Class" xmi:id="_ZPUMwNcxEeeHHfg-64lJQw" name="Class1">
+                <nestedClassifier xmi:type="uml:Class" xmi:id="_ZPUMwdcxEeeHHfg-64lJQw" name="Class1">
+                  <nestedClassifier xmi:type="uml:Class" xmi:id="_ZPUMwtcxEeeHHfg-64lJQw" name="Class1">
+                    <nestedClassifier xmi:type="uml:Class" xmi:id="_ZPUMw9cxEeeHHfg-64lJQw" name="Class1" classifierBehavior="_ZPUMxNcxEeeHHfg-64lJQw">
+                      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_ZPUMxNcxEeeHHfg-64lJQw">
+                        <region xmi:id="_ZPUMxdcxEeeHHfg-64lJQw"/>
+                      </ownedBehavior>
+                      <nestedClassifier xmi:type="uml:Class" xmi:id="_ZPUMxtcxEeeHHfg-64lJQw" name="IndexController"/>
+                    </nestedClassifier>
+                  </nestedClassifier>
+                </nestedClassifier>
+              </nestedClassifier>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_HPOnQNc4EeeHHfg-64lJQw" name="IndexService">
+              <ownedAttribute xmi:id="_HPOnQdc4EeeHHfg-64lJQw" name="login()"/>
+              <nestedClassifier xmi:type="uml:Class" xmi:id="_HPOnQtc4EeeHHfg-64lJQw" name="Class1">
+                <nestedClassifier xmi:type="uml:Class" xmi:id="_HPOnQ9c4EeeHHfg-64lJQw" name="Class1">
+                  <nestedClassifier xmi:type="uml:Class" xmi:id="_HPOnRNc4EeeHHfg-64lJQw" name="Class1">
+                    <nestedClassifier xmi:type="uml:Class" xmi:id="_HPOnRdc4EeeHHfg-64lJQw" name="Class1" classifierBehavior="_HPOnRtc4EeeHHfg-64lJQw">
+                      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_HPOnRtc4EeeHHfg-64lJQw">
+                        <region xmi:id="_HPOnR9c4EeeHHfg-64lJQw"/>
+                      </ownedBehavior>
+                      <nestedClassifier xmi:type="uml:Class" xmi:id="_HPOnSNc4EeeHHfg-64lJQw" name="IndexController"/>
+                    </nestedClassifier>
+                  </nestedClassifier>
+                </nestedClassifier>
+              </nestedClassifier>
+            </nestedClassifier>
+            <nestedClassifier xmi:type="uml:Class" xmi:id="_I8VCQNc4EeeHHfg-64lJQw" name="IndexService">
+              <ownedAttribute xmi:id="_I8VCQdc4EeeHHfg-64lJQw" name="login()"/>
+              <nestedClassifier xmi:type="uml:Class" xmi:id="_I8VCQtc4EeeHHfg-64lJQw" name="Class1">
+                <nestedClassifier xmi:type="uml:Class" xmi:id="_I8VCQ9c4EeeHHfg-64lJQw" name="Class1">
+                  <nestedClassifier xmi:type="uml:Class" xmi:id="_I8VCRNc4EeeHHfg-64lJQw" name="Class1">
+                    <nestedClassifier xmi:type="uml:Class" xmi:id="_I8VCRdc4EeeHHfg-64lJQw" name="Class1" classifierBehavior="_I8VCRtc4EeeHHfg-64lJQw">
+                      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_I8VCRtc4EeeHHfg-64lJQw">
+                        <region xmi:id="_I8VCR9c4EeeHHfg-64lJQw"/>
+                      </ownedBehavior>
+                      <nestedClassifier xmi:type="uml:Class" xmi:id="_I8VCSNc4EeeHHfg-64lJQw" name="IndexController"/>
+                    </nestedClassifier>
+                  </nestedClassifier>
+                </nestedClassifier>
+              </nestedClassifier>
+            </nestedClassifier>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_wOCLQNcxEeeHHfg-64lJQw" name="ShopPayFrontServiceImpl" clientDependency="_iJQaMNc3EeeHHfg-64lJQw _isd08Nc3EeeHHfg-64lJQw">
+          <generalization xmi:id="_tmedsNcyEeeHHfg-64lJQw" general="_Yh67QNcxEeeHHfg-64lJQw"/>
+          <ownedAttribute xmi:id="_x96NcNcxEeeHHfg-64lJQw" name="addShopcart()"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_0ei-MNcxEeeHHfg-64lJQw" name="StaffbaseMapper"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_9L8MINcxEeeHHfg-64lJQw" name="CartMapper">
+          <ownedAttribute xmi:id="_uGSM4Nc3EeeHHfg-64lJQw" name="insert()"/>
+          <ownedAttribute xmi:id="_fappcNc4EeeHHfg-64lJQw" name="update()"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_pBqR4Nc2EeeHHfg-64lJQw" name="ShopPayFrontService">
+          <ownedAttribute xmi:id="_r3IDINc2EeeHHfg-64lJQw" name="addShopcart()">
+            <qualifier xmi:id="_PB4OwNc5EeeHHfg-64lJQw" name="addShopcart()"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_mGSbANc4EeeHHfg-64lJQw" name="A_&lt;shopPayFrontService>_&lt;shopPayFrontServiceImpl>" memberEnd="_mGTCENc4EeeHHfg-64lJQw _mGTCE9c4EeeHHfg-64lJQw">
+          <ownedEnd xmi:id="_mGTCENc4EeeHHfg-64lJQw" name="shopPayFrontService" type="_pBqR4Nc2EeeHHfg-64lJQw" association="_mGSbANc4EeeHHfg-64lJQw">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mGTCEdc4EeeHHfg-64lJQw" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mGTCEtc4EeeHHfg-64lJQw" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_mGTCE9c4EeeHHfg-64lJQw" name="shopPayFrontServiceImpl" type="_wOCLQNcxEeeHHfg-64lJQw" aggregation="shared" association="_mGSbANc4EeeHHfg-64lJQw">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mGTCFNc4EeeHHfg-64lJQw" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mGTCFdc4EeeHHfg-64lJQw" value="1"/>
+          </ownedEnd>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_PLv2ENcxEeeHHfg-64lJQw" name="Class1">
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_PLv2EdcxEeeHHfg-64lJQw" name="Class1">
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_PLv2EtcxEeeHHfg-64lJQw" name="Class1">
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_PLv2E9cxEeeHHfg-64lJQw" name="Class1" classifierBehavior="_PLv2FNcxEeeHHfg-64lJQw">
+          <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_PLv2FNcxEeeHHfg-64lJQw">
+            <region xmi:id="_PLv2FdcxEeeHHfg-64lJQw"/>
+          </ownedBehavior>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_PLv2FtcxEeeHHfg-64lJQw" name="IndexController"/>
+        </nestedClassifier>
+      </nestedClassifier>
+    </nestedClassifier>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_QoEDENcxEeeHHfg-64lJQw" name="Class1">
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_QoEDEdcxEeeHHfg-64lJQw" name="Class1">
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_QoEDEtcxEeeHHfg-64lJQw" name="Class1">
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_QoEDE9cxEeeHHfg-64lJQw" name="Class1" classifierBehavior="_QoEDFNcxEeeHHfg-64lJQw">
+          <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_QoEDFNcxEeeHHfg-64lJQw">
+            <region xmi:id="_QoEDFdcxEeeHHfg-64lJQw"/>
+          </ownedBehavior>
+          <nestedClassifier xmi:type="uml:Class" xmi:id="_QoEDFtcxEeeHHfg-64lJQw" name="IndexController"/>
+        </nestedClassifier>
+      </nestedClassifier>
+    </nestedClassifier>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_hXCTENc3EeeHHfg-64lJQw" name="Dependency1" supplier="_pBqR4Nc2EeeHHfg-64lJQw" client="_jDIFoNcwEeeHHfg-64lJQw"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_iJQaMNc3EeeHHfg-64lJQw" name="Dependency2" supplier="_0ei-MNcxEeeHHfg-64lJQw" client="_wOCLQNcxEeeHHfg-64lJQw"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_isd08Nc3EeeHHfg-64lJQw" name="Dependency3" supplier="_9L8MINcxEeeHHfg-64lJQw" client="_wOCLQNcxEeeHHfg-64lJQw"/>
 </uml:Model>

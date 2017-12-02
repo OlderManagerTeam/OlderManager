@@ -299,7 +299,7 @@
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">姓名:</span>
-					    				<span style="font-size: 20px;" id="myName"></span>
+					    				<span style="font-size: 20px;" id="myNames"></span>
 					    			</div>
 					    			<div class="col-md-6" style="margin-bottom: 10px;">
 					    				<span style="font-size: 20px;">年龄:</span>
@@ -888,7 +888,7 @@
 				let date = new Date(myInfoData.olderbirthday);
 				let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 
-				$("#myName").html(myInfoData.oldername)
+				$("#myNames").html(myInfoData.oldername)
 				$("#mySex").html(myInfoData.oldersex)
 				$("#myNation").html(myInfoData.oldernation)
 				$("#myBirth").html(year)
