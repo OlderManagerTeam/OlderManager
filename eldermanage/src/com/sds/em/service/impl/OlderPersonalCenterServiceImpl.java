@@ -81,10 +81,10 @@ public class OlderPersonalCenterServiceImpl implements OlderPersonalCenterServic
 	public Message putvisited(Visited visited, int olderid) {
 		if(visitedMapper.selectByPrimaryKey(visited.getVisitedid()).getVisitedolderid()==olderid){
 			Visited v=new Visited();
-			if(visited.getVisitedjudgecontent()=="未评价")
-				visited.setVisitedjudgecontent("");
+			if(visited.getVisitedjudgecontent()=="未评价"&&visited.getVisitedjudgecontent()=="")
+				visited.setVisitedjudgecontent("已评价");
 			v.setVisitedjudgestar(visited.getVisitedjudgestar());
-			v.setVisitedjudgestar(visited.getVisitedjudgestar());
+			v.setVisitedjudgecontent(visited.getVisitedjudgecontent());
 			v.setVisitedid(visited.getVisitedid());
 			return new Message(true,"老人评价回访",visitedMapper.updateByPrimaryKeySelective(v));
 		}else{
