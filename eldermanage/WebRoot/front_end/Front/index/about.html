@@ -2,14 +2,41 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title></title> 
+	<title>关于我们</title> 
 
-	<!-- mobile responsive meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	<link rel="stylesheet" href="fonts/flaticon.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.bootstrap-touchspin.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/flaticon.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/settings.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="assets/revolution/css/navigation.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+	<link rel="stylesheet" type="text/css" href="css/flexslider.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css">
+	<link rel="stylesheet" type="text/css" href="css/polyglot-language-switcher.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/nouislider.css">
+	<link rel="stylesheet" type="text/css" href="css/nouislider.pips.css">
+	<link rel="stylesheet" type="text/css" href="css/menuzord.css">
+	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+	<link rel="stylesheet" type="text/css" href="css/hover.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+
+	<style type="text/css">
+		
+	</style>
 
 </head>
 
@@ -20,18 +47,26 @@
 				<!--Top Left-->
 				<div class="top-left pull-left">
 					<ul class="links-nav clearfix">
-						<li><a href="#"><span class="fa fa-phone"></span> Call:  123 4561 5523 </a></li>
-						<li><a href="#"><span class="fa fa-envelope"></span>Email:  info@templatepath.com</a></li>
+						<li><a href=""><span class="fa fa-phone"></span> 全国热线:  123 4561 5523 </a></li>
+						<li><a href=""><span class="fa fa-envelope"></span>电子邮箱:  info@templatepath.com</a></li>
 					</ul>
 				</div>
                 <!--Top Right-->
 				<div class="top-right pull-right">
 					<div class="social-links clearfix">
-						<a href="#"><span class="fa fa-facebook-f"></span></a>
-						<a href="#"><span class="fa fa-twitter"></span></a>
-						<a href="#"><span class="fa fa-linkedin"></span></a>
-						<a href="#"><span class="fa fa-instagram"></span></a>
-						<a href="#"><span class="fa fa-pinterest-p"></span></a>
+						<a href="personal_center.html" id="person_center">
+							<span>个人中心</span>
+							<span class="badge" style="margin-left: 3px;">1</span>
+						</a>
+						<a href="../login/login.html" id="myCenter">
+							<span id="myName">请登录</span>
+						</a>
+						<a href="" data-toggle="modal" data-target="#signUpModal" id="signUp">
+							<span>注册账号</span>
+						</a>
+						<a href="" id="loginOut" onclick="login_out();return false;" data-toggle="modal">
+							<span>注销</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -40,30 +75,32 @@
 		<!-- Menu -->
 		<section class="theme_menu stricky">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-5">
+				<div class="row" style="background-color: #fff;">
+					<div class="col-md-3">
 						<div class="main-logo">
 							<a href="index.html"><img src="images/logo/logo.png" alt=""></a>
 						</div>
 					</div>
-					<div class="col-md-5 menu-column">
+					<div class="col-md-9 menu-column">
 						<nav class="menuzord" id="main_menu">
 						   <ul class="menuzord-menu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="service.html">Service</a></li>
-								<li><a href="service-single.html">Service Single</a></li>									
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="index.html" style="font-size: 25px;">首页</a></li>
+								<li><a href="videos.html" style="font-size: 25px;">课程视频</a></li>
+								<li><a href="lecture.html" style="font-size: 25px;">讲座活动</a></li>
+								<li><a href="news-center.html" style="font-size: 25px;">新闻中心</a></li>
+								<li><a href="../shoppingindex.html" style="font-size: 25px;">商城首页</a></li>
+								<li><a href="about.html" style="font-size: 25px;color: #ffbc1e;">关于我们</a></li>
 							</ul> <!-- End of .menuzord-menu -->
 						</nav> <!-- End of #main_menu -->
 					</div>
-					<div class="col-md-2">
+					<!-- <div class="col-md-2">
 						<div class="right-area">
 						   <div class="link_btn float_right">
 							   <a href="#" class="thm-btn">GET A Quote?</a>
 						   </div>
 						</div>	
-					</div>
+					</div> -->
+				</div>
 				</div>
 			</div> <!-- End of .conatiner -->
 		</section> <!-- End of .theme_menu -->
@@ -73,10 +110,12 @@
         	<div class="container">
             	<div class="row clearfix">
                     <div class="col-md-6 col-sm-6 col-xs-12 pull-left">
-						<h1>about us</h1>
-						<p>Excepteur sint occaecat cupidatat non proident sunt </p>
+						<h1>关于我们</h1>
+						<span style="font-size: 18px;color: #b5b5b5;">ABOUT US</span>
 					</div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 pull-right text-right path"><a href="index.html">Home</a>&ensp;/&ensp;<a href="#">about us</a></div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 pull-right text-right path">
+                    	<a href="index.html" style="font-size: 20px;">首页</a><span style="font-size: 20px;"> > </span>
+                    	<a href="about.html" style="font-size: 20px;">关于我们</a></div>
 					<div class="overlay"></div>
                 </div>
             </div>
@@ -90,11 +129,11 @@
 						<div class="col-md-8 col-sm-12 col-xs-12">
 							<div class="item clearfix">
 								<div class="sec-title">
-									<h2>About <span>Gardenor</span></h2>
+									<h2>关于 <span>南山</span></h2>
 								</div>
 								<div class="content-box">
-									<h4>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Perspiciatis unde omnis ist natuserrorsit.voluptatem accusantium doloremque laudantium. </h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+									<h4>南山家园是孝和养老集团是国际化的养老行业专业运营服务商，具有多年投资、策划、管理养老机构、养老社区、养老地产等多种业态 的综合经验和实力。 </h4>
+									<p>集团成功创立并运营了 “ 和佑尊长园 ” 高端养老服务品牌，采用直接投资、品牌授权和提供专业化的连锁管理模式对旗下和佑尊长园、和佑老年医院、和佑养老职业培训学校、和佑养老设备用品公司、和佑养老地产公司、和佑养老投资公司等专业机构进行运营管理，得到业界和全社会的高度赞誉。</p>
 								</div>
 								
 								<!--Fact Counter-->
@@ -162,109 +201,18 @@
 			</div>
 		</section>
 		
-		<!--Paralax Style One-->
-		<section class="parallax-style-one" style="background-image:url(images/background/bg-3.jpg);">
-			<div class="container">
-				<div class="sec-title">
-					<h2>Need to<br> take care of your<span> Garden & Lawn </span></h2>
-					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim<br> id est laborum. Perspiciatis unde omnis iste natus error sit.</p>
-				</div>									
-				<ul class="link_btn text-center">
-					<li><a href="service.html" class="thm-btn style-two">View Services</a></li>
-					<li><a href="contact.html" class="thm-btn style-two">Contact us</a></li>
-				</ul>	
-			</div>
-		</section>
-		
 		<!--team section-->
 		<section class="our-team">
 			<div class="container">
 				<div class="sec-title">
-					<h2>Our<span> Experts</span></h2>
-					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Perspiciatis unde omnis iste natus error sit.</p>
+					<h2 style="margin-bottom: 0px;">
+						我们的<span>团队</span>
+					</h2>
+					<span style="font-size: 18px;color: #929292;">OUR TEAM</span>
+					<p>健康专家专评，出色的职员，贴心的专员，更强大更团结的team,值得信赖.</p>
 				</div>
-				<div class="team-carousel">
-					<div class="single-team">
-						<div class="img-holder">
-							<img src="images/team/team-1.jpg" alt="Awesome Image">
-							<div class="overlay">
-								<div class="inner">
-									<ul class="social">
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="content-holder">
-							<h4><a href="#">Sarah Smith</a></h4>
-							<h5>Founder</h5>
-							<p>Lorem ipsum dolor sit amet, consecte tur adipisicing elit</p>
-						</div>
-					</div>
-					<div class="single-team">
-						<div class="img-holder">
-							<img src="images/team/team-2.jpg" alt="Awesome Image">
-							<div class="overlay">
-								<div class="inner">
-									<ul class="social">
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="content-holder">
-							<h4><a href="#">Shamus Walton</a></h4>
-							<h5>Senior Worker</h5>
-							<p>Lorem ipsum dolor sit amet, consecte tur adipisicing elit</p>
-						</div>
-					</div>
-					<div class="single-team">
-						<div class="img-holder">
-							<img src="images/team/team-3.jpg" alt="Awesome Image">
-							<div class="overlay">
-								<div class="inner">
-									<ul class="social">
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="content-holder">
-							<h4><a href="#">Kim Colinfa</a></h4>
-							<h5>Gardener</h5>
-							<p>Lorem ipsum dolor sit amet, consecte tur adipisicing elit</p>
-						</div>
-					</div>
-					<div class="single-team">
-						<div class="img-holder">
-							<img src="images/team/team-4.jpg" alt="Awesome Image">
-							<div class="overlay">
-								<div class="inner">
-									<ul class="social">
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="content-holder">
-							<h4><a href="#">Austin Rob</a></h4>
-							<h5>Worker</h5>
-							<p>Lorem ipsum dolor sit amet, consecte tur adipisicing elit</p>
-						</div>
-					</div>          
-				</div>
+
+				<div class="team-carousel" id="teamItem"></div>
 			</div>
 		</section>
 		<!--call-to-action section-->
@@ -272,48 +220,69 @@
 			<div class="container">
 				<div class="row">	
 					<div class="col-md-9">
-						<h3>Get Early Contact to Gardenor </h3>
-						<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+						<h3>及早加入我们，我们会提供您更好的贴切服务 </h3>
+						<p>我们会根据您的情况，为您量身定制符合您情况的一套服务体系，更好地服务您的生活. </p>
 					</div>
 					<div class="col-md-3">
-						<a href="contact.html" class="thm-btn inverse pull-right">contact us</a>
+						<a href="about.html" class="thm-btn inverse pull-right">about us</a>
 					</div>
 				</div>
 			</div>
 		</section>
 
+		<!-- 注册提示模态框-->
+		<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">注册提示</h4>
+		            </div>
+		            <div class="modal-body">亲，我们暂不支持在线注册，如需注册请联系工作人员:13310105261</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 注销提示模态框-->
+		<div class="modal fade" id="loginOutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+		                <h4 class="modal-title" id="myModalLabel">注销提示</h4>
+		            </div>
+		            <div class="modal-body" id="login_info"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="reload()">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>		
+
 		<footer class="footer bg-style" style="background-image:url(images/background/bg-3.jpg);">
 			<div class="container">
-				<div class="footer-upper">
+				<div class="footer-upper" style="padding: 50px 0 20px;">
 				
 					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<div class="footer-widget about-widget">
-								<a href="#">
-									<img src="images/logo/logo2.png" alt="Awesome Image" />
-								</a>
-								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor</p>
-								<div class="link_btn">
-								   <a href="contact.html" class="button-style-one">contact us</a>
-								</div>
-							</div>
-						</div>
 						<div class="col-md-2 col-sm-6">
 							<div class="footer-widget quick-links">
-								<h3 class="title">Our Services</h3>
+								<h3 class="title">孝和集团</h3>
 								<ul>
-									<li><a href="#">Snow Removal</a></li>
-									<li><a href="#"> Watering Garden</a></li>
-									<li><a href="#">Design Lawn</a></li>
-									<li><a href="#">Landscaping</a></li>
-									<li><a href="#">Garden Planting</a></li>
+									<li><a href="index.html">官网首页</a></li>
+									<li><a href="video.html">课程视频</a></li>
+									<li><a href="lecture.html">讲座活动</a></li>
+									<li><a href="news-center.html">新闻中心</a></li>
+									<li><a href="../shoppingindex.html">官方商城</a></li>
+									<li><a href="about.html">关于我们</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-6">
 							<div class="footer-widget opening-hour">
-								<h3 class="title">Oppening Hours</h3>
-								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+								<h3 class="title">营业时间</h3>
 								
 								<ul class="day-time">
 									<li><span>Mon-Set &nbsp;:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>08.00 - 17.00 </span></li>
@@ -322,55 +291,18 @@
 								</ul>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-6">
-							<div class="footer-widget contact-widget">
-								<h3 class="title">Leave Message</h3>
-								 <div class="default-form-area">
-									<form id="contact-form" name="contact_form" class="default-form" action="inc/sendmail.php" method="post">
-										<div class="row-10 clearfix">
-											<div class="column col-md-6 col-sm-6 col-xs-12">
-												<div class="form-group">
-													<input type="text" name="form_name" class="form-control" value="" placeholder="Your Name" required="">
-												</div>
-											</div>
-											
-											<div class="column col-md-6 col-sm-6 col-xs-12">
-												<div class="form-group">
-													<input type="text" name="form_phone" class="form-control" value="" placeholder="Phone Number">
-												</div>
-											</div>
-											
-											<div class="column col-md-12 col-sm-12 col-xs-12">
-												<div class="form-group">
-													<textarea name="form_message" class="form-control textarea required" placeholder="Message"></textarea>
-												</div>
-											</div>   
-											<div class="column col-md-12 col-sm-12 col-xs-12">
-												<div class="form-group">
-													<input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-													<button class="thm-btn thm-color" type="submit" data-loading-text="Please wait...">Contac Now</button>
-												</div>
-											</div>   
-
-										</div>
-									</form>
-								</div>
+						<div class="col-md-2 col-sm-6 col-xs-6">
+							<div class="footer-widget opening-hour">
+								<h3 class="title">官方微信</h3>
+								
+								<img src="images/logo/code.png">
 							</div>
 						</div>
 					</div>
 				</div>
 				<!--Footer Bottom-->
 				<div class="footer-bottom">					
-					<div class="pull-left"><div class="copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div></div>
-					<div class="pull-right">
-						<div class="social-links pull-right">
-							<a href="#"><span class="fa fa-facebook-f"></span></a>
-							<a href="#"><span class="fa fa-twitter"></span></a>
-							<a href="#"><span class="fa fa-linkedin"></span></a>
-							<a href="#"><span class="fa fa-instagram"></span></a>
-							<a href="#"><span class="fa fa-pinterest-p"></span></a>							
-						</div>
-					</div>			         
+					<div class="pull-left"><div class="copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/"></a></div></div>
 				</div>
 			</div>
 		</footer>
@@ -433,6 +365,91 @@
 
 	</div>
 	
+	<script type="text/javascript">
+		//判断登录
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/shop/judgeLogin",
+			data : null,
+			success : function(result){
+				if (result.success) {
+					$("#myCenter").attr('href','personal_center.html')
+					$('#myName').html(result.data.oldername)
+					$("#signUp").hide();
+				}else {
+					$("#loginOut").hide();
+					$("#person_center").hide();
+				}
+			},
+			error:function(){
+				alert('数据库错误')
+			}
+		})
+
+		//注销
+		function login_out(){
+			$.ajax({
+				type : 'delete',
+				contentType : false,
+				url : "/eldermanage/v1/index/person/accountnumber",
+				data : null,
+				success : function(result) {
+					$("#login_info").html(result.information);
+					$("#loginOutModal").modal('show');
+				},
+				error : function() {
+					alert('fail')
+				}
+			})
+		}
+
+		//刷新页面
+		function reload(){
+			window.location.reload();
+		}
+
+		/* 显示我的团队 */
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/index/person/showstaff",
+			data : null,
+			success : function(result) {
+				var staffData = result.data;
+	
+				for (i = 0; i <= 4; i++) {
+					var oDiv = `
+						<div class="single-team">
+							<div class="img-holder">
+								<img src="${staffData[i].staffimg}" alt="Awesome Image">
+								<div class="overlay">
+									<div class="inner">
+										<ul class="social">
+											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+											<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="content-holder">
+								<h4><a href="#">${staffData[i].staffname}  </a></h4>
+								<h5>${staffData[i].rolecontent} - ${staffData[i].departmentname}</h5>
+								<p>联系方式： ${staffData[i].stafftel}</p>
+							</div>
+						</div>
+						
+						`;
+					$("#teamItem").append(oDiv);
+				}
+			},
+			error () {
+				alert('数据库错误')
+			}
+		})
+	</script>
 </body>
 </html>
 
