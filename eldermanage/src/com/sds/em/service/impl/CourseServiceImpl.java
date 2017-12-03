@@ -333,7 +333,7 @@ public class CourseServiceImpl implements CourseService {
 		
 			video.setVideoid(videoList.get(0).getVideoid());
 			video.setVideoheat(videoList.get(0).getVideoheat() + 1);
-			flag1 = videoMapper.updateByPrimaryKey(video);
+			flag1 = videoMapper.updateByPrimaryKeySelective(video);
 			
 			if(!videoExtendList.isEmpty() && flag1!=0){//+1操作成功
 				return new Message(true, "返回成功", videoExtendList);
