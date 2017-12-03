@@ -21,16 +21,19 @@
 
 	<link rel="stylesheet" href="css/keyao/bootstrapEx.css">
 
+	<link type="text/css" href="css/style.css" rel="stylesheet" />
 
-		<link type="text/css" href="css/style.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript"
+		src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript"
-			src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+	<script type="text/javascript" src="js/keyao/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/keyao/bootstrapEx.js"></script>
+	<script type="text/javascript" src="js/keyao/bootstrap.js"></script>
 
-		<script type="text/javascript" src="js/keyao/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/keyao/bootstrapEx.js"></script>
-		<script type="text/javascript" src="js/keyao/bootstrap.js"></script>
+	<link rel="stylesheet" href="css/layui.css"  media="all">
+	<script src="js/layui.all.js" charset="utf-8"></script>
+	<script src="js/laypage.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -288,18 +291,7 @@
 
 											</ul>
 										</div>
-										<div class="clear"></div>
-
-										<!--分页 -->
-										<ul class="am-pagination am-pagination-right">
-											<li class="am-disabled"><a href="#">&laquo;</a></li>
-											<li class="am-active"><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#">4</a></li>
-											<li><a href="#">5</a></li>
-											<li><a href="#">&raquo;</a></li>
-										</ul>
+										<div id="myFootPage" style="text-align: center;" class="col-md-12"></div>
 										<div class="clear"></div>
 
 									</div>
@@ -844,32 +836,56 @@
 			data : null,
 			success : function(result) {
 				var resultData = result.data;
-				for (var i = 0; i < resultData.length; i++) {
-		
-				var oLi = `
-								<li>
-									<div class="i-pic limit">
-									<a href="../Front/introduction.html?productid=${resultData[i].productid}">
-										<img src="${resultData[i].productimg}" />
-									</a>
-									
-										<p><span>${resultData[i].productname}</span></p>
-										<p class="price fl">
-											<b>浏览次数：</b>
-											<strong>${resultData[i].pviewocount}</strong>
-										</p>
-									</div>
-								</li>
-							`;
-	
-						$('#MyfootPrintItem').append(oLi);
+
+				$("#myFootPage").show();
+				pageMyfoot(resultData, $("#myFootPage"));
 				
-				}
 			},
 			error : function() {
 				alert('数据库错误')
 			}
 		})
+
+		//我的足迹分页
+		function pageMyfoot(videodata, pageRoot){
+			layui.use(['laypage', 'layer'], function(){
+				var laypage = layui.laypage
+				,layer = layui.layer;
+				laypage.render({
+				    elem: pageRoot
+				    ,count: videodata.length
+				    ,limit: 8  //每页个数
+				    ,curr: location.hash.replace('#!fenye=', '') //获取hash值为fenye的当前页
+				    ,hash: 'fenye' //自定义hash值
+				    ,jump: function(obj){
+				      //模拟渲染
+				      document.getElementById('MyfootPrintItem').innerHTML = function(){
+				        var arr = []
+				        ,thisData = videodata.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+				        layui.each(thisData, function(index, item){
+				        	let datas =`
+								<li>
+									<div class="i-pic limit">
+									<a href="../Front/introduction.html?productid=${item.productid}">
+										<img src="${item.productimg}" />
+									</a>
+									
+										<p><span>${item.productname}</span></p>
+										<p class="price fl">
+											<b>浏览次数：</b>
+											<strong>${item.pviewocount}</strong>
+										</p>
+									</div>
+								</li>
+							`;
+				        	arr.push(datas);
+				        });
+				        return arr.join('');
+				      }();
+				    }
+				});
+			});
+		}
 	</script>
 </body>
 </html>
