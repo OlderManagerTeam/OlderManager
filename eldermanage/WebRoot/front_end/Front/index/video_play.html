@@ -107,8 +107,15 @@
 
 		<section>
         	<div class="container">
-            	<div class="col-md-12" style="padding-top: 50px;padding-bottom: 50px;background-color: #f5f5f5;margin-top: 100px;margin-bottom: 100px;" id="">
-
+            	<div class="col-md-12" style="padding-top: 50px;padding-bottom: 50px;background-color: #f5f5f5;margin-top: 100px;margin-bottom: 100px;">
+            		<video width="320" height="240" controls>
+					  <source src="" type="video/mp4" id="videomp4">
+					  <source src="" type="video/ogg" id="videoogg">
+					  <source src="" type="video/webm" id="videowebm">
+					  <object data="" width="320" height="240" id="videomp4o">
+					    <embed src="" width="320" height="240" id="videoswf">
+					  </object> 
+					</video>
             	</div>
             </div>
         </section>
@@ -185,7 +192,7 @@
 				</div>
 				<!--Footer Bottom-->
 				<div class="footer-bottom">					
-					<div class="pull-left"><div class="copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div></div>
+					<div class="pull-left"><div class="copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/"></a></div></div>
 				</div>
 			</div>
 		</footer>
@@ -247,6 +254,7 @@
 	</div>
 	
 	<script type="text/javascript">
+		var info = decodeURI(window.location.href.split("?")[1]);
 		//判断登录
 		$.ajax({
 			type : 'get',
@@ -289,6 +297,26 @@
 		function reload(){
 			window.location.reload();
 		}
+
+		//视频详情
+		$.ajax({
+			type : 'get',
+			contentType : 'application/json',
+			url : "/eldermanage/v1/course/detail?videoid="+info,
+			data : null,
+			success:function(result){
+				var resultData = result.data;
+
+				$("#videomp4").attr("src",resultData[0].videourl)
+				$("#videoogg").attr("src",resultData[0].videourl)
+				$("#videowebm").attr("src",resultData[0].videourl)
+				$("#videomp4o").attr("data",resultData[0].videourl)
+				$("#videoswf").attr("src",resultData[0].videourl)
+			},
+			error:function(){
+				alert("数据库错误")
+			}
+		})
 	</script>
 </body>
 </html>
