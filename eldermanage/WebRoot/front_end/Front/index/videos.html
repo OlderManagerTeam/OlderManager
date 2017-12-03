@@ -371,36 +371,25 @@
 		
 		<footer class="footer bg-style" style="background-image:url(images/background/bg-3.jpg);">
 			<div class="container">
-				<div class="footer-upper">
+				<div class="footer-upper" style="padding: 50px 0 20px;">
 				
 					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<div class="footer-widget about-widget">
-								<a href="#">
-									<img src="images/logo/logo2.png" alt="Awesome Image" />
-								</a>
-								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor</p>
-								<div class="link_btn">
-								   <a href="contact.html" class="button-style-one">contact us</a>
-								</div>
-							</div>
-						</div>
 						<div class="col-md-2 col-sm-6">
 							<div class="footer-widget quick-links">
-								<h3 class="title">Our Services</h3>
+								<h3 class="title">孝和集团</h3>
 								<ul>
-									<li><a href="#">Snow Removal</a></li>
-									<li><a href="#"> Watering Garden</a></li>
-									<li><a href="#">Design Lawn</a></li>
-									<li><a href="#">Landscaping</a></li>
-									<li><a href="#">Garden Planting</a></li>
+									<li><a href="index.html">官网首页</a></li>
+									<li><a href="video.html">课程视频</a></li>
+									<li><a href="lecture.html">讲座活动</a></li>
+									<li><a href="news-center.html">新闻中心</a></li>
+									<li><a href="../shoppingindex.html">官方商城</a></li>
+									<li><a href="about.html">关于我们</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-6">
 							<div class="footer-widget opening-hour">
-								<h3 class="title">Oppening Hours</h3>
-								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p>
+								<h3 class="title">营业时间</h3>
 								
 								<ul class="day-time">
 									<li><span>Mon-Set &nbsp;:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>08.00 - 17.00 </span></li>
@@ -409,55 +398,18 @@
 								</ul>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-6">
-							<div class="footer-widget contact-widget">
-								<h3 class="title">Leave Message</h3>
-								 <div class="default-form-area">
-									<form id="contact-form" name="contact_form" class="default-form" action="inc/sendmail.php" method="post">
-										<div class="row-10 clearfix">
-											<div class="column col-md-6 col-sm-6 col-xs-12">
-												<div class="form-group">
-													<input type="text" name="form_name" class="form-control" value="" placeholder="Your Name" required="">
-												</div>
-											</div>
-											
-											<div class="column col-md-6 col-sm-6 col-xs-12">
-												<div class="form-group">
-													<input type="text" name="form_phone" class="form-control" value="" placeholder="Phone Number">
-												</div>
-											</div>
-											
-											<div class="column col-md-12 col-sm-12 col-xs-12">
-												<div class="form-group">
-													<textarea name="form_message" class="form-control textarea required" placeholder="Message"></textarea>
-												</div>
-											</div>   
-											<div class="column col-md-12 col-sm-12 col-xs-12">
-												<div class="form-group">
-													<input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-													<button class="thm-btn thm-color" type="submit" data-loading-text="Please wait...">Contac Now</button>
-												</div>
-											</div>   
-
-										</div>
-									</form>
-								</div>
+						<div class="col-md-2 col-sm-6 col-xs-6">
+							<div class="footer-widget opening-hour">
+								<h3 class="title">官方微信</h3>
+								
+								<img src="images/logo/code.png">
 							</div>
 						</div>
 					</div>
 				</div>
 				<!--Footer Bottom-->
 				<div class="footer-bottom">					
-					<div class="pull-left"><div class="copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div></div>
-					<div class="pull-right">
-						<div class="social-links pull-right">
-							<a href="#"><span class="fa fa-facebook-f"></span></a>
-							<a href="#"><span class="fa fa-twitter"></span></a>
-							<a href="#"><span class="fa fa-linkedin"></span></a>
-							<a href="#"><span class="fa fa-instagram"></span></a>
-							<a href="#"><span class="fa fa-pinterest-p"></span></a>							
-						</div>
-					</div>			         
+					<div class="pull-left"><div class="copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.17sucai.com/"></a></div></div>
 				</div>
 			</div>
 		</footer>
@@ -587,11 +539,11 @@
 					var oDiv =`
 						<div class="item">
 							<figure class="image-box">
-								<a href="index.html" target="_blank">
+								<a href="video_play.html?${heatdata[i].video.videoid}" target="_blank">
 									<img src="${heatdata[i].video.videopicurl}" alt="Awesome Image">
 								</a>
 							</figure>										
-							<h4><a href="index.html" target="_blank" style="height:38px;overflow:hidden;">${heatdata[i].video.videoname}</a></h4>
+							<h4><a href="video_play.html?${heatdata[i].video.videoid}" target="_blank" style="height:38px;overflow:hidden;">${heatdata[i].video.videoname}</a></h4>
 							<ul class="admin-comments">
 								<li style="color: #7aba1e;">
 									<i class="glyphicon glyphicon-play-circle" style="color: #7aba1e;"></i>
@@ -685,8 +637,8 @@
 											<i class="icon flaticon-budding-leaves"></i>
 										</div> -->
 										<div class="service-text">
-											<a href="index.html" target="_blank"><img src="${item.video.videopicurl}"></a>
-											<a href="index.html" target="_blank" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
+											<a href="video_play.html?${item.video.videoid}" target="_blank"><img src="${item.video.videopicurl}"></a>
+											<a href="video_play.html?${item.video.videoid}" target="_blank" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
 												${item.video.videoname}
 											</a>
 											<div>
@@ -755,8 +707,8 @@
 											<i class="icon flaticon-budding-leaves"></i>
 										</div> -->
 										<div class="service-text">
-											<a href="index.html" target="_blank"><img src="${item.video.videopicurl}"></a>
-											<a href="index.html" target="_blank" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
+											<a href="video_play.html?${item.video.videoid}" target="_blank"><img src="${item.video.videopicurl}"></a>
+											<a href="video_play.html?${item.video.videoid}" target="_blank" style="font-size: 20px;overflow:hidden;height: 46px;line-height: 23px;">
 												${item.video.videoname}
 											</a>
 											<!-- <p style="color: #ff6c00;font-size: 20px;overflow:hidden;height: 44px;">
