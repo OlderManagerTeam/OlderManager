@@ -196,7 +196,7 @@
 				</div>
 				
 				<div class="col-md-12" style="margin-top: 10px;">
-					<ul class="nav nav-pills" style="margin:0 auto;width:302px;">
+					<ul class="nav nav-pills" style="margin:0 auto;width:302px;" id="myPage">
 					  <li class="active"><a href="#lectureList" data-toggle="tab">讲座</a></li>
 					  <li><a href="#activityList" data-toggle="tab" 
 					  	style="border-bottom-right-radius: 30px;border-bottom-left-radius: 0px;border-top-left-radius: 0px;border-top-right-radius: 30px;">
@@ -455,6 +455,7 @@
 					$("#myCenter").attr('href','personal_center.html')
 					$('#myName').html(result.data.oldername)
 					$("#signUp").hide();
+					myNewsCounts();
 				}else {
 					$("#loginOut").hide();
 					$("#person_center").hide();
@@ -502,7 +503,7 @@
 			error(){
 				alert('数据库错误')
 			}
-		})
+		});
 
 		//活动列表
 		$.ajax({
@@ -543,10 +544,15 @@
 
 				        	var joinState1;
 				        	var joinState2;
-				        	if(item.joinStatus == '已报名'){
+				        	if(item.lecture.lecturestatus == "报名已结束"){
+				        		joinState1 = "display:none;"
 				        		joinState2 = "display:none;"
 				        	}else{
-				        		joinState1 = "display:none;"
+				        		if(item.joinStatus == '已报名'){
+					        		joinState2 = "display:none;"
+					        	}else{
+					        		joinState1 = "display:none;"
+					        	}
 				        	}
 
 				        	let datas =`
@@ -605,6 +611,7 @@
 								</div>
 							`;
 				        	arr.push(datas);
+				        	$('html').scrollTop(0);
 				        	//data-toggle="modal" data-target="#myModal"
 				        });
 				        return arr.join('');
@@ -636,10 +643,15 @@
 
 				        	var joinState1;
 				        	var joinState2;
-				        	if(item.jionStatuString == '已报名'){
+				        	if(item.action.actionstatus == "报名已结束"){
+				        		joinState1 = "display:none;"
 				        		joinState2 = "display:none;"
 				        	}else{
-				        		joinState1 = "display:none;"
+				        		if(item.joinStatus == '已报名'){
+					        		joinState2 = "display:none;"
+					        	}else{
+					        		joinState1 = "display:none;"
+					        	}
 				        	}
 				        	
 				        	let datas =`
@@ -698,6 +710,7 @@
 								</div>
 							`;
 				        	arr.push(datas);
+				        	$('html').scrollTop(0);
 				        });
 				        return arr.join('');
 				      }();
@@ -815,23 +828,25 @@
 		}
 
 		// 未读消息数量
-		$.ajax({
-			type: 'get',
-        	contentType: 'application/json',
-        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
-        	data:null,
-        	success:function(result){
-        		var myNewsData = result.data;
-
-        		if(myNewsData.length != 0){
-					$("#myNewsCount").html(myNewsData.length)
-					$("#myNewsCountMobile").html(myNewsData.length)
-        		}
-        	},
-        	error:function(){
-        		alert('数据库错误')
-        	}
-		})
+		function myNewsCounts(){
+			$.ajax({
+				type: 'get',
+	        	contentType: 'application/json',
+	        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
+	        	data:null,
+	        	success:function(result){
+	        		var myNewsData = result.data;
+	
+	        		if(myNewsData.length != 0){
+						$("#myNewsCount").html(myNewsData.length)
+						$("#myNewsCountMobile").html(myNewsData.length)
+	        		}
+	        	},
+	        	error:function(){
+	        		alert('数据库错误')
+	        	}
+			})
+		}
 	</script>
 	
 </body>
