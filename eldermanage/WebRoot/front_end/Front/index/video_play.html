@@ -308,11 +308,11 @@
 			success:function(result){
 				var resultData = result.data;
 
-				$("#videomp4").attr("src",resultData[0].videourl)
-				$("#videoogg").attr("src",resultData[0].videourl)
-				$("#videowebm").attr("src",resultData[0].videourl)
-				$("#videomp4o").attr("data",resultData[0].videourl)
-				$("#videoswf").attr("src",resultData[0].videourl)
+				$("#videomp4").attr("src",resultData[0].video.videourl)
+				$("#videoogg").attr("src",resultData[0].video.videourl)
+				$("#videowebm").attr("src",resultData[0].video.videourl)
+				$("#videomp4o").attr("data",resultData[0].video.videourl)
+				$("#videoswf").attr("src",resultData[0].video.videourl)
 			},
 			error:function(){
 				alert("数据库错误")
