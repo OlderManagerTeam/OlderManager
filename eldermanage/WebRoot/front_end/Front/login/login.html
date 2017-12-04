@@ -103,7 +103,7 @@ a:hover {
 					</div>
 					<div class="form-group">
 						<p>
-							没有账号? <a href="/eldermanage/front_end/Front/register/register.html">注册</a> | <a href="/eldermanage/front_end/Front/login/resetPassword.html">找回密码</a>
+							没有账号? <a href="" data-toggle="modal" data-target="#signUpModal">注册</a> | <a href="" data-toggle="modal" data-target="#forgetPasswordModal">找回密码</a>
 						</p>
 					</div>
 					<div class="form-group">
@@ -119,13 +119,61 @@ a:hover {
 		<div class="row" style="padding-top: 60px; clear: both;">
 			<div class="col-md-12 text-center">
 				<p style="color: #7aba1e;">
-					<small>&copy; <a
-						href="/eldermanage/front_end/Front/index.html" target="_blank"
-						title="孝和集团官网">孝和集团官网</a>
+					<small>&copy; 
+						<a href="../index/index.html" title="孝和集团官网">孝和集团官网</a>
 					</small>
 				</p>
 			</div>
 		</div>
+	</div>
+
+	<!-- 登录成功提示模态框-->
+	<div class="modal fade" id="loginSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+	                <h4 class="modal-title" id="myModalLabel">登录提示</h4>
+	            </div>
+	            <div class="modal-body" id="login_info">登录成功</div>
+	            <input type="hidden" name="" id="loginType" />
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="loginSuccess()">确定</button>
+	            </div>
+	        </div><!-- /.modal-content -->
+	    </div><!-- /.modal -->
+	</div>
+
+	<!-- 注册提示模态框-->
+	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="myModalLabel">注册提示</h4>
+	            </div>
+	            <div class="modal-body">亲，我们暂不支持在线注册，如需注册请联系工作人员:13310105261</div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+	            </div>
+	        </div><!-- /.modal-content -->
+	    </div><!-- /.modal -->
+	</div>
+
+	<!-- 忘记密码提示模态框-->
+	<div class="modal fade" id="forgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="myModalLabel">提示</h4>
+	            </div>
+	            <div class="modal-body">亲，请联系工作人员:13310105261</div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+	            </div>
+	        </div><!-- /.modal-content -->
+	    </div><!-- /.modal -->
 	</div>
 
 	<!-- jQuery -->
@@ -157,7 +205,9 @@ a:hover {
 				url : "/eldermanage/v1/index/person/accountnumber",
 				data : form,
 				success : function(result) {
-					alert(result.information);
+					$("#loginSuccessModal").modal("show")
+					$("#loginType").val(result.data)
+
 					var d = new Date();
 					d.setHours(d.getHours() + (24 * 15));
 					document.cookie = "tel=" + $("#tel").val() + ";expires=" + d.toGMTString();
@@ -165,11 +215,6 @@ a:hover {
 					document.cookie = "remember=" + $('#remember').prop("checked") + ";expires=" + d.toGMTString();
 					if (!$('#remember').prop("checked")) {
 						delCookie("password");
-					}
-					if (result.data == "elder") {
-						window.location.href = "/eldermanage/front_end/Front/index/index.html";
-					} else {
-						window.location.href = "/eldermanage/front_end/OA/html/personalCenter/personalCenter.html";
 					}
 				},
 				error : function() {
@@ -224,6 +269,14 @@ a:hover {
 				checked : getCookie("remember")
 			});
 		})
+
+		function loginSuccess(){
+			if($("#loginType").val() == "elder"){
+				window.location.href = "/eldermanage/front_end/Front/index/index.html";
+			}else{
+				window.location.href = "/eldermanage/front_end/OA/html/personalCenter/personalCenter.html";
+			}
+		}
 	</script>
 </body>
 </html>
