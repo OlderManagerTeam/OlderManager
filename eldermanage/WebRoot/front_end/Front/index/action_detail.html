@@ -406,6 +406,7 @@
 					$("#myCenter").attr('href','personal_center.html')
 					$('#myName').html(result.data.oldername)
 					$("#signUp").hide();
+					myNewsCounts();
 				}else {
 					$("#loginOut").hide();
 					$("#person_center").hide();
@@ -446,13 +447,18 @@
 			data:"actionid=" + info,
 			success:function(result){
 				var actionData = result.data;
-				let date = new Date(actionData[0].action.actionpublishdate);
+				let date = new Date(actionData[0].action.actionstartdate);
 				let year = date.getFullYear().toString() +"-"+ (date.getMonth()+1) +"-"+date.getDate();
 
-				if(actionData[0].joinStatus == "已报名"){
+				if(actionData[0].action.actionstatus == "报名已结束"){
 					$("#actionEnrollbtn").hide();
-				}else{
 					$("#actionCancelbtn").hide();
+				}else{
+					if(actionData[0].joinStatus == "已报名"){
+						$("#actionEnrollbtn").hide();
+					}else{
+						$("#actionCancelbtn").hide();
+					}
 				}
 
 				$("#actionJoinState").val(actionData[0].jionStatuString)
@@ -525,23 +531,25 @@
 		}
 
 		// 未读消息数量
-		$.ajax({
-			type: 'get',
-        	contentType: 'application/json',
-        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
-        	data:null,
-        	success:function(result){
-        		var myNewsData = result.data;
-
-        		if(myNewsData.length != 0){
-					$("#myNewsCount").html(myNewsData.length)
-					$("#myNewsCountMobile").html(myNewsData.length)
-        		}
-        	},
-        	error:function(){
-        		alert('数据库错误')
-        	}
-		})
+		function myNewsCounts(){
+			$.ajax({
+				type: 'get',
+	        	contentType: 'application/json',
+	        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
+	        	data:null,
+	        	success:function(result){
+	        		var myNewsData = result.data;
+	
+	        		if(myNewsData.length != 0){
+						$("#myNewsCount").html(myNewsData.length)
+						$("#myNewsCountMobile").html(myNewsData.length)
+	        		}
+	        	},
+	        	error:function(){
+	        		alert('数据库错误')
+	        	}
+			})
+		}
 	</script>
 	
 </body>
