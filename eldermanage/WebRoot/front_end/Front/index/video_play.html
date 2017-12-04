@@ -108,7 +108,7 @@
 		<section>
         	<div class="container">
             	<div class="col-md-12" style="padding-top: 50px;padding-bottom: 50px;background-color: #f5f5f5;margin-top: 100px;margin-bottom: 100px;">
-            		<video width="320" height="240" controls>
+            		<video class="col-md-12 col-sm-12 col-xs-12" controls>
 					  <source src="" type="video/mp4" id="videomp4">
 					  <source src="" type="video/ogg" id="videoogg">
 					  <source src="" type="video/webm" id="videowebm">
@@ -116,6 +116,21 @@
 					    <embed src="" width="320" height="240" id="videoswf">
 					  </object> 
 					</video>
+					<div class="col-md-12" style="margin-top:50px;">
+						<div class="col-md-12">
+							<span style="font-size:20px;">视频简介</span>
+							<a href="" style="float:right;" onclick="collectVideo();return false;" id="nullStar">
+								<img src="images/logo/collectionStar_none.png" style="width:25px;"/>
+							</a>
+							<a href="" style="float:right;" onclick="cancelCollect();return false;" id="fullStar">
+								<img src="images/logo/collectionStar.png" style="width:25px;"/>
+							</a>
+						</div>
+						<div class="col-md-12">
+							<p style="font-size:15px;" id="videoInfo"></p>
+							<input type="hidden" id="starState">
+						</div>
+					</div>
             	</div>
             </div>
         </section>
@@ -197,6 +212,87 @@
 				</div>
 			</div>
 		</footer>
+		
+		<!-- 登录提示模态框-->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">登录提示</h4>
+		            </div>
+		            <div class="modal-body">亲，你还没有登录哦，请先登录</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+		                <button type="button" class="btn btn-primary">点我去登录</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+		
+		<!-- 收藏成功提示模态框-->
+		<div class="modal fade" id="collectSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="collectSuccessInfo"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消收藏成功提示模态框-->
+		<div class="modal fade" id="cancelCollectSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="cancelCollectSuccessInfo"></div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 收藏失败提示模态框-->
+		<div class="modal fade" id="collectFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="collectFailInfo">收藏失败,请稍后再试。</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
+
+		<!-- 取消收藏失败提示模态框-->
+		<div class="modal fade" id="cancelCollectFailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px;">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">取消收藏提示</h4>
+		            </div>
+		            <div class="modal-body" id="cancelCollectFailInfo">取消收藏失败,请稍后再试。</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+		</div>
 
 	<!-- Scroll Top Button -->
 	<button class="scroll-top tran3s color2_bg">
@@ -313,6 +409,14 @@
 				$("#videowebm").attr("src",resultData[0].video.videourl)
 				$("#videomp4o").attr("data",resultData[0].video.videourl)
 				$("#videoswf").attr("src",resultData[0].video.videourl)
+				
+				$("#videoInfo").html(resultData[0].video.videointro)
+				$("#starState").val(resultData[0].collectionStatue)
+				if(resultData[0].collectionStatue =="未收藏"){
+					$("#fullStar").hide();
+				}else if(resultData[0].collectionStatue =="已收藏"){
+					$("#nullStar").hide();
+				}
 			},
 			error:function(){
 				alert("数据库错误")
@@ -337,6 +441,64 @@
         		alert('数据库错误')
         	}
 		})
+		
+		//收藏按钮
+		function collectVideo(){
+			if ($("#starState").val() == "未登录") {
+				$("#loginModal").modal('show');
+			}else if($("#starState").val() == "未收藏") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/video/collectionvideo?videoid="+info,
+					data:null,
+					success:function(result){
+						if(result.information == '收藏成功'){
+							$("#collectSuccessInfo").html(result.information);
+							$("#collectSuccessModal").modal('show');
+							$("#nullStar").hide()
+							$("#fullStar").show()
+							$("#starState").val("已收藏")
+						}else if(result.information == '收藏失败'){
+							$("#collectFailModal").modal('show');
+						}
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
+
+		//取消收藏按钮
+		function cancelCollect(){
+			if ($("#starState").val() == "未登录") {
+				$("#loginModal").modal('show');
+			}else if($("#starState").val() == "已收藏") {
+				//报名
+				$.ajax({
+					type:'post',
+					contentType:'application/json',
+					url:"/eldermanage/v1/course/video/cancelcollection?videoid="+info,
+					data:null,
+					success:function(result){
+						if(result.information == '取消成功'){
+							$("#cancelCollectSuccessInfo").html(result.information);
+							$("#cancelCollectSuccessModal").modal('show');
+							$("#nullStar").show()
+							$("#fullStar").hide()
+							$("#starState").val("未收藏")
+						}else if(result.information == '取消失败'){
+							$("#cancelCollectFailModal").modal('show');
+						}
+					},
+					error(){
+						alert('数据库错误')
+					}
+				})
+			}
+		}
 	</script>
 </body>
 </html>
