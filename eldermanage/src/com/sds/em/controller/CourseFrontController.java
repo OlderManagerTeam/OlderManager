@@ -1,8 +1,6 @@
 package com.sds.em.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,14 +61,14 @@ public class CourseFrontController {
 	
 	//添加老人观看课程（视频）记录表       ----写完
 	@RequestMapping(method =RequestMethod.POST,value = "record" )
-	public @ResponseBody Message insertRecord(HttpSession s,int videoid){
+	public @ResponseBody Message insertRecord(HttpSession s,int videoid,double watchtime){
 		LoginMassage loginMassage = null;
 		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
 		if (loginMassage == null) {
 			return new Message(false, "未登录", null);
 		}else{//已登陆
 			int olderid = loginMassage.getOlderid();
-		return courseService.classRecord(olderid,videoid,new Date());
+		return courseService.classRecord(olderid,videoid,new Date(),watchtime);
 		}
 	}
 	
@@ -153,6 +151,18 @@ public class CourseFrontController {
 		}else{//已登陆
 			int olderid = loginMassage.getOlderid();
 		    return courseService.videoRecord(olderid);
+		}
+	}
+	//历史播放记录   -----写完--测试过
+	@RequestMapping(method = RequestMethod.GET,value= "video/singlevideorecord")
+	public @ResponseBody Message singlevideorecord(HttpSession s,int videoid){
+		LoginMassage loginMassage = null;
+		loginMassage = (LoginMassage) s.getAttribute("loginMassage");
+		if (loginMassage == null) {
+			return new Message(false, "未登录", null);
+		}else{//已登陆
+			int olderid = loginMassage.getOlderid();
+		    return courseService.singlevideorecord(olderid,videoid);
 		}
 	}
 	//活动发布

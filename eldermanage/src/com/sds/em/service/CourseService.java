@@ -23,7 +23,7 @@ public interface CourseService {
     public Message classDetailNo(int videoid);
 	 
 	// 添加老人观看课程记录
-	public Message classRecord(int olderid,int videoid,Date lrecorddate);
+	public Message classRecord(int olderid,int videoid,Date lrecorddate, double watchtime);
 
 	// 返回未登录时的所有讲座
 	public Message allLectureByolder(int olderid);
@@ -83,6 +83,7 @@ public interface CourseService {
  	public boolean jugeCollect(int videoid,int olderid);
  	public boolean jugeJoinLecture(int lectureid,int olderid);
  	public boolean jugeJoinAction(int actionid,int olderid);
+	public Message singlevideorecord(int olderid, int videoid);
 
  	
 }
