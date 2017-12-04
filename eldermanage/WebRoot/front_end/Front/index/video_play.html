@@ -363,6 +363,7 @@
 					$("#myCenter").attr('href','personal_center.html')
 					$('#myName').html(result.data.oldername)
 					$("#signUp").hide();
+					myNewsCounts();
 				}else {
 					$("#loginOut").hide();
 					$("#person_center").hide();
@@ -424,23 +425,25 @@
 		})
 
 		// 未读消息数量
-		$.ajax({
-			type: 'get',
-        	contentType: 'application/json',
-        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
-        	data:null,
-        	success:function(result){
-        		var myNewsData = result.data;
-
-        		if(myNewsData.length != 0){
-					$("#myNewsCount").html(myNewsData.length)
-					$("#myNewsCountMobile").html(myNewsData.length)
-        		}
-        	},
-        	error:function(){
-        		alert('数据库错误')
-        	}
-		})
+		function myNewsCounts(){
+			$.ajax({
+				type: 'get',
+	        	contentType: 'application/json',
+	        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
+	        	data:null,
+	        	success:function(result){
+	        		var myNewsData = result.data;
+	
+	        		if(myNewsData.length != 0){
+						$("#myNewsCount").html(myNewsData.length)
+						$("#myNewsCountMobile").html(myNewsData.length)
+	        		}
+	        	},
+	        	error:function(){
+	        		alert('数据库错误')
+	        	}
+			})
+		}
 		
 		//收藏按钮
 		function collectVideo(){
