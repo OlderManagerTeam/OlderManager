@@ -494,6 +494,7 @@
 									<li><a href="news-center.html">新闻中心</a></li>
 									<li><a href="../shoppingindex.html">官方商城</a></li>
 									<li><a href="about.html">关于我们</a></li>
+									<li><a href="../login/login_staff.html">后台管理</a></li>
 								</ul>
 							</div>
 						</div>
@@ -678,7 +679,7 @@
 		            </div>
 		            <div class="modal-body">提交成功</div>
 		            <div class="modal-footer">
-		                <button type="button" class="btn btn-primary" onclick="reloadassess()">确定</button>
+		                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
@@ -1482,8 +1483,66 @@
 	        	url:"/eldermanage/v1/olderpersonal/readAmessage?messageid="+id,
 	        	data:null,
 	        	success:function(result){
-	        		alert("成功")
-	        		window.location.reload()
+	        		reMyNews();
+	        	},
+	        	error:function(){
+	        		alert('数据库错误')
+	        	}
+			})
+		}
+
+		function reMyNews(){
+			//未读消息
+			$.ajax({
+				type: 'get',
+	        	contentType: 'application/json',
+	        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
+	        	data:null,
+	        	success:function(result){
+	        		var myNewsData = result.data;
+	        		$("#myNewsList").html("");
+	        		$("#myNewsCount").html("")
+					$("#myNewsCountMobile").html("")
+
+	        		if(myNewsData.length != 0){
+	        			$("#myNewsPage").show();
+						pageMyNews(myNewsData, $("#myNewsPage"));
+						$("#myNewsCount").html(myNewsData.length)
+						$("#myNewsCountMobile").html(myNewsData.length)
+	        		}else{
+	        			var oDiv =`
+	        				<div class="col-md-12" style="margin-bottom: 10px;">
+			    				<span style="font-size: 20px;">亲,当前还没有未读消息哦</span>
+			    			</div>
+	        			`;
+	        			$("#myNewsList").append(oDiv);
+	        		}
+	        	},
+	        	error:function(){
+	        		alert('数据库错误')
+	        	}
+			})
+			//已读消息
+			$.ajax({
+				type: 'get',
+	        	contentType: 'application/json',
+	        	url:"/eldermanage/v1/olderpersonal/oldmessagecount",
+	        	data:null,
+	        	success:function(result){
+	        		var myOldNewsData = result.data;
+	        		$("#myOldNewsList").html("");
+
+	        		if(myOldNewsData.length != 0){
+	        			$("#myOldNewsPage").show();
+						pageMyOldNews(myOldNewsData, $("#myOldNewsPage"));
+	        		}else{
+	        			var oDiv =`
+	        				<div class="col-md-12" style="margin-bottom: 10px;">
+			    				<span style="font-size: 20px;">亲,当前还没有已读消息哦</span>
+			    			</div>
+	        			`;
+	        			$("#myOldNewsList").append(oDiv);
+	        		}
 	        	},
 	        	error:function(){
 	        		alert('数据库错误')
@@ -1500,8 +1559,7 @@
 		        	url:"/eldermanage/v1/olderpersonal/readallmessage",
 		        	data:null,
 		        	success:function(result){
-		        		alert("成功")
-		        		window.location.reload()
+		        		reMyNews();
 		        	},
 		        	error:function(){
 		        		alert('数据库错误')
@@ -1708,6 +1766,7 @@
 		        	success:function(result){
 		        		$("#assessVisitedModal").modal("hide");
 		        		$("#assessSuccessModal").modal("show");
+		        		reloadassess();
 		        	},
 		        	error:function(){
 		        		$("#assessFailModal").modal("show");
@@ -1720,7 +1779,32 @@
 
 		// 刷新页面
 		function reloadassess(){
-			window.location.reload();
+			//回访评价
+			$.ajax({
+				type: 'get',
+	        	contentType: 'application/json',
+	        	url:"/eldermanage/v1/olderpersonal/visited",
+	        	data:null,
+	        	success:function(result){
+	        		var myVisitedData = result.data;
+	        		$("#myVisitedRecordList").html("")
+
+	        		if(myVisitedData.length != 0){
+	        			$("#myVisitedRecordPage").show();
+						pageVisited(myVisitedData, $("#myVisitedRecordPage"));
+	        		}else{
+	        			var oDiv =`
+	        				<div class="col-md-12" style="margin-bottom: 10px;">
+			    				<span style="font-size: 20px;">亲,当前还没有可以评价的回放记录哦</span>
+			    			</div>
+	        			`;
+	        			$("#myVisitedRecordList").append(oDiv);
+	        		}
+	        	},
+	        	error:function(){
+	        		alert('数据库错误')
+	        	}
+			})
 		}
 	</script>
 	

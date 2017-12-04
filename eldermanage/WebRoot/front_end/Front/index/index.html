@@ -72,7 +72,7 @@
 					<div class="social-links clearfix">
 						<a href="personal_center.html" id="person_center">
 							<span>个人中心</span>
-							<span class="badge" style="margin-left: 3px;">1</span>
+							<span class="badge" style="margin-left: 3px;" id="myNewsCount"></span>
 						</a>
 						<a href="../login/login.html" id="myCenter">
 							<span id="myName">请登录</span>
@@ -399,7 +399,7 @@
 								<div class="content-box">
 									<h4 style="text-indent: 4ex;">孝和养老集团是国际化的养老行业专业运营服务商，具有多年投资、策划、管理养老机构、养老社区、养老地产等多种业态 的综合经验和实力。集团成功创立并运营了 “ 和佑尊长园 ” 高端养老服务品牌，采用直接投资、品牌授权和提供专业化的连锁管理模式对旗下和佑尊长园、和佑老年医院、和佑养老职业培训学校、和佑养老设备用品公司、和佑养老地产公司、和佑养老投资公司等专业机构进 行运营管理，得到业界和全社会的高度赞誉。</h4>
 									<div style="margin-top: 10px;">
-										<button type="button" class="btn btn-default" style="height: 40px;width: 120px;font-size: 17px;float: right;"><a href="about.html">了解更多 ></a></button>
+										<a href="about.html" style="float: right;"><button type="button" class="btn btn-default" style="height: 40px;width: 120px;font-size: 17px;">了解更多 ></button></a>
 									</div>
 								</div>
 								
@@ -785,6 +785,7 @@
 									<li><a href="news-center.html">新闻中心</a></li>
 									<li><a href="../shoppingindex.html">官方商城</a></li>
 									<li><a href="about.html">关于我们</a></li>
+									<li><a href="../login/login_staff.html">后台管理</a></li>
 								</ul>
 							</div>
 						</div>
@@ -1030,6 +1031,25 @@
 			error () {
 				alert('数据库错误')
 			}
+		})
+
+		// 未读消息数量
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
+        	data:null,
+        	success:function(result){
+        		var myNewsData = result.data;
+
+        		if(myNewsData.length != 0){
+					$("#myNewsCount").html(myNewsData.length)
+					$("#myNewsCountMobile").html(myNewsData.length)
+        		}
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
 		})
 	</script>
 </body>
