@@ -57,7 +57,7 @@
 					<div class="social-links clearfix">
 						<a href="personal_center.html" id="person_center">
 							<span>个人中心</span>
-							<span class="badge" style="margin-left: 3px;">1</span>
+							<span class="badge" style="margin-left: 3px;" id="myNewsCount"></span>
 						</a>
 						<a href="../login/login.html" id="myCenter">
 							<span id="myName">请登录</span>
@@ -167,6 +167,7 @@
 									<li><a href="news-center.html">新闻中心</a></li>
 									<li><a href="../shoppingindex.html">官方商城</a></li>
 									<li><a href="about.html">关于我们</a></li>
+									<li><a href="../login/login_staff.html">后台管理</a></li>
 								</ul>
 							</div>
 						</div>
@@ -307,15 +308,34 @@
 			success:function(result){
 				var resultData = result.data;
 
-				$("#videomp4").attr("src",resultData[0].videourl)
-				$("#videoogg").attr("src",resultData[0].videourl)
-				$("#videowebm").attr("src",resultData[0].videourl)
-				$("#videomp4o").attr("data",resultData[0].videourl)
-				$("#videoswf").attr("src",resultData[0].videourl)
+				$("#videomp4").attr("src",resultData[0].video.videourl)
+				$("#videoogg").attr("src",resultData[0].video.videourl)
+				$("#videowebm").attr("src",resultData[0].video.videourl)
+				$("#videomp4o").attr("data",resultData[0].video.videourl)
+				$("#videoswf").attr("src",resultData[0].video.videourl)
 			},
 			error:function(){
 				alert("数据库错误")
 			}
+		})
+
+		// 未读消息数量
+		$.ajax({
+			type: 'get',
+        	contentType: 'application/json',
+        	url:"/eldermanage/v1/olderpersonal/newmessagecount",
+        	data:null,
+        	success:function(result){
+        		var myNewsData = result.data;
+
+        		if(myNewsData.length != 0){
+					$("#myNewsCount").html(myNewsData.length)
+					$("#myNewsCountMobile").html(myNewsData.length)
+        		}
+        	},
+        	error:function(){
+        		alert('数据库错误')
+        	}
 		})
 	</script>
 </body>
