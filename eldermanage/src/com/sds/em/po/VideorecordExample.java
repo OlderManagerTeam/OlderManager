@@ -2,7 +2,6 @@ package com.sds.em.po;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class VideorecordExample {
@@ -104,32 +103,6 @@ public class VideorecordExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                timeList.add(new java.sql.Time(iter.next().getTime()));
-            }
-            addCriterion(condition, timeList, property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
         }
 
         public Criteria andVrecordidIsNull() {
@@ -323,52 +296,112 @@ public class VideorecordExample {
         }
 
         public Criteria andVrecorddateEqualTo(Date value) {
-            addCriterionForJDBCTime("vRecordDate =", value, "vrecorddate");
+            addCriterion("vRecordDate =", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateNotEqualTo(Date value) {
-            addCriterionForJDBCTime("vRecordDate <>", value, "vrecorddate");
+            addCriterion("vRecordDate <>", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateGreaterThan(Date value) {
-            addCriterionForJDBCTime("vRecordDate >", value, "vrecorddate");
+            addCriterion("vRecordDate >", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("vRecordDate >=", value, "vrecorddate");
+            addCriterion("vRecordDate >=", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateLessThan(Date value) {
-            addCriterionForJDBCTime("vRecordDate <", value, "vrecorddate");
+            addCriterion("vRecordDate <", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("vRecordDate <=", value, "vrecorddate");
+            addCriterion("vRecordDate <=", value, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateIn(List<Date> values) {
-            addCriterionForJDBCTime("vRecordDate in", values, "vrecorddate");
+            addCriterion("vRecordDate in", values, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateNotIn(List<Date> values) {
-            addCriterionForJDBCTime("vRecordDate not in", values, "vrecorddate");
+            addCriterion("vRecordDate not in", values, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("vRecordDate between", value1, value2, "vrecorddate");
+            addCriterion("vRecordDate between", value1, value2, "vrecorddate");
             return (Criteria) this;
         }
 
         public Criteria andVrecorddateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("vRecordDate not between", value1, value2, "vrecorddate");
+            addCriterion("vRecordDate not between", value1, value2, "vrecorddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeIsNull() {
+            addCriterion("vRecordTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeIsNotNull() {
+            addCriterion("vRecordTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeEqualTo(Integer value) {
+            addCriterion("vRecordTime =", value, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeNotEqualTo(Integer value) {
+            addCriterion("vRecordTime <>", value, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeGreaterThan(Integer value) {
+            addCriterion("vRecordTime >", value, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("vRecordTime >=", value, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeLessThan(Integer value) {
+            addCriterion("vRecordTime <", value, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeLessThanOrEqualTo(Integer value) {
+            addCriterion("vRecordTime <=", value, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeIn(List<Integer> values) {
+            addCriterion("vRecordTime in", values, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeNotIn(List<Integer> values) {
+            addCriterion("vRecordTime not in", values, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeBetween(Integer value1, Integer value2) {
+            addCriterion("vRecordTime between", value1, value2, "vrecordtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVrecordtimeNotBetween(Integer value1, Integer value2) {
+            addCriterion("vRecordTime not between", value1, value2, "vrecordtime");
             return (Criteria) this;
         }
     }
