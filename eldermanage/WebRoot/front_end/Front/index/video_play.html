@@ -121,13 +121,8 @@
 			<div class="container">
 				<div class="col-md-12"
 					style="padding-top: 50px;padding-bottom: 50px;background-color: #f5f5f5;margin-top: 100px;margin-bottom: 100px;">
-					<video class="col-md-12 col-sm-12 col-xs-12" controls id="myvideo">
-						<source src="" type="video/mp4" id="videomp4">
-						<source src="" type="video/ogg" id="videoogg">
-						<source src="" type="video/webm" id="videowebm">
-						<object data="" width="320" height="240" id="videomp4o">
-							<embed src="" width="320" height="240" id="videoswf">
-						</object>
+					<video class="col-md-12 col-sm-12 col-xs-12" src=""
+						controls="controls" id="myvideo">
 					</video>
 					<div class="col-md-12" style="margin-top:50px;">
 						<div class="col-md-12">
@@ -473,12 +468,7 @@
 			success : function(result) {
 				var resultData = result.data;
 	
-				$("#videomp4").attr("src", resultData[0].video.videourl)
-				$("#videoogg").attr("src", resultData[0].video.videourl)
-				$("#videowebm").attr("src", resultData[0].video.videourl)
-				$("#videomp4o").attr("data", resultData[0].video.videourl)
-				$("#videoswf").attr("src", resultData[0].video.videourl)
-	
+				document.getElementById("myvideo").src=resultData[0].video.videourl
 				$("#videoInfo").html(resultData[0].video.videointro)
 				$("#starState").val(resultData[0].collectionStatue)
 				if (resultData[0].collectionStatue == "未收藏") {
@@ -600,7 +590,7 @@
 				$.ajax({
 					type : 'POST',
 					contentType : 'application/json',
-					url : "/eldermanage/v1/course/record?videoid=" + info+"&watchtime="+document.getElementById("myvideo").currentTime,
+					url : "/eldermanage/v1/course/record?videoid=" + info + "&watchtime=" + document.getElementById("myvideo").currentTime,
 					data : null,
 					success : function(result) {
 						var resultData = result.data;

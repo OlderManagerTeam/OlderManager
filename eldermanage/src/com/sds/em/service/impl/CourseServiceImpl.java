@@ -367,13 +367,13 @@ public class CourseServiceImpl implements CourseService {
 			VideoExample videoExample = new VideoExample();
 			Criteria videoCriteria = videoExample.createCriteria();
 			videoCriteria.andVideoidEqualTo(videoid);
-			List<Video> videoList = videoMapper.selectByExample(videoExample);
+		//	List<Video> videoList = videoMapper.selectByExample(videoExample);
 
-			int videoheat = videoList.get(0).getVideoheat() + 1;
+		//	int videoheat = videoList.get(0).getVideoheat() + 1;
 
-			Video video = new Video();
-			video.setVideoid(videoid);
-			video.setVideoheat(videoheat);
+		//	Video video = new Video();
+		//	video.setVideoid(videoid);
+		//	video.setVideoheat(videoheat);
 			// videoMapper.updateByPrimaryKeySelective(video);//此条重复更新热度，wuwenbo
 			// 12-04
 
