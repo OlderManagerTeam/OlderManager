@@ -986,7 +986,8 @@
 							</div>
 					`;
 					$("#recentNews").append(oDiv);
-				}
+				};
+				clientCarousel();
 			},
 			error(){
 				alert('数据库错误')
@@ -1002,7 +1003,7 @@
 			success : function(result) {
 				var staffData = result.data;
 	
-				for (i = 0; i <= 4; i++) {
+				for (i = 0; i <= staffData.length-1; i++) {
 					var oDiv = `
 						<div class="single-team">
 							<div class="img-holder">
@@ -1028,6 +1029,7 @@
 						`;
 					$("#teamItem").append(oDiv);
 				}
+				teamCarousel();
 			},
 			error () {
 				alert('数据库错误')

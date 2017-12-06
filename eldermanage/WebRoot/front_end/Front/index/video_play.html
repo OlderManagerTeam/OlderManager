@@ -257,7 +257,7 @@
 							aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="myModalLabel">登录提示</h4>
 					</div>
-					<div class="modal-body">亲，你还没有登录哦，请先登录</div>
+					<div class="modal-body">亲，没有登录是不能观看视频的哦</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary">点我去登录</button>
@@ -435,6 +435,7 @@
 				} else {
 					$("#loginOut").hide();
 					$("#person_center").hide();
+					$("#loginModal").modal("show");
 				}
 			},
 			error : function() {

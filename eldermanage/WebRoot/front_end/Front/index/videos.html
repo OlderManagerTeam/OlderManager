@@ -267,7 +267,7 @@
 		            <div class="modal-body">亲，你还没有登录哦，请先登录</div>
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
-		                <button type="button" class="btn btn-primary">点我去登录</button>
+		                <button type="button" class="btn btn-primary" onclick="login()">点我去登录</button>
 		            </div>
 		        </div><!-- /.modal-content -->
 		    </div><!-- /.modal -->
@@ -519,6 +519,11 @@
 			window.location.reload();
 		}
 		
+		//跳转到登录页面
+		function login(){
+			window.location.href="../login/login.html";
+		}
+		
 		// 热门视频
 		$.ajax({
 			type:'get',
@@ -563,6 +568,7 @@
 
 					$("#heatVideoList").append(oDiv);
 				}
+				clientCarousel();
 			}
 		})
 
