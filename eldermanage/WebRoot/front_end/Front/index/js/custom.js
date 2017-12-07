@@ -747,14 +747,14 @@ jQuery(document).ready(function () {
 // instance of fuction while Window Load event
 jQuery(window).load(function () {
 	(function ($) {
-		clientCarousel();
+		//clientCarousel();
 		gallerycarousel();
 		galleryslide();
 		testimonialsarousel();
 		testimonialsarousel2();
 		feedbackcarousel();
 		projectcarousel();
-		teamCarousel();
+		//teamCarousel();
 	})(jQuery);
 });
 
